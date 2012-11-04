@@ -1,0 +1,23 @@
+<h1>Listing users</h1>
+
+<table>
+  <thead>
+    <tr>
+        <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= content_tag_for(:tr, @users) do |user| %>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>

@@ -1,0 +1,9 @@
+<%= simple_form_for @user, html: { :class => "form-horizontal" } do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :username, input_html: { :class => 'special' } %>
+  <%= f.input :password, input_html: { :maxlength => 20 } %>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

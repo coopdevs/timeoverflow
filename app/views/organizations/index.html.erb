@@ -1,0 +1,25 @@
+<h1>Listing organizations</h1>
+
+<table>
+  <thead>
+    <tr>
+        <th>Name</th>
+        <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= content_tag_for(:tr, @organizations) do |organization| %>
+        <td><%= organization.name %></td>
+        <td><%= link_to 'Show', organization %></td>
+      <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
+      <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Organization', new_organization_path %>

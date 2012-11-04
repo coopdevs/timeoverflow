@@ -9,4 +9,4 @@
 
 # Make sure your secret_token is kept private
 # if you're sharing your code publicly.
-TimeOverflow::Application.config.secret_token = ENV['SECRET_TOKEN']
+Timeoverflow::Application.config.secret_token = ENV['SECRET_TOKEN'] || "8df86bdf5c64ce11154ea056d592ddab1f668c8c6982f1d9e2396c78246d6d7cbe05765684abf9767c41d7ebadc90c05175fc55fddf0ea83e65ee261a41dd631"
