@@ -1,7 +1,9 @@
 Timeoverflow::Application.routes.draw do
+  resources :categories
+  resources :organizations
+
   devise_for :users
 
-  resources :organizations
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
