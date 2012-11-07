@@ -42,7 +42,7 @@ gem "haml-rails"
 
 gem "devise"
 gem "cancan"
-gem "rails-admin"
+gem "rails_admin", ">= 0.2"
 gem "simple_form"
 gem "acts_as_tenant"
 gem "closure_tree"

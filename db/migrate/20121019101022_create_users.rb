@@ -8,7 +8,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :identity_document
       t.string :member_code
       t.references :organization
-      t.text :extra_data
+      t.string :phone
+      t.string :alt_phone
+      t.text :address
 
       t.timestamps
     end
