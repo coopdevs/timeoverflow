@@ -33,3 +33,4 @@ rerun.txt
 pickle-email-*.html
 
 .env
+.DS_Store

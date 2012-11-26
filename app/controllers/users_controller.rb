@@ -1,36 +1,28 @@
 class UsersController < ApplicationController
+  respond_to :json
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    respond_with @users
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    respond_with @user
   end
 
-  # GET /users/new
-  # GET /users/new.json
-  def new
-    @user = User.new
-  end
-
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
-  end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      respond_with @user, status: :created, location: @user
     else
-      render action: "new"
+      respond_with @user.errors, status: :unprocessable_entity
     end
   end
 
@@ -38,11 +30,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
     if @user.update_attributes(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      respond_with @user, location: @user
     else
-      render action: "edit"
+      respond_with @user.errors, status: :unprocessable_entity
     end
   end
 
@@ -52,7 +43,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to users_url
+    head 204
   end
 
   private
@@ -60,6 +51,6 @@ class UsersController < ApplicationController
   # Use this method to whitelist the permissible parameters. Example: params.require(:person).permit(:name, :age)
   # Also, you can specialize this method with per-user checking of permissible attributes.
   def user_params
-    params[:user].permit()
+    params[:user].permit *%w"username email category_ids date_of_birth phone alt_phone password password_confirmation"
   end
 end

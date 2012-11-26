@@ -40,9 +40,13 @@ gem 'jquery-rails'
 
 gem "haml-rails"
 
-gem "devise"
+gem 'bcrypt-ruby', :require => 'bcrypt'
 gem "cancan"
-gem "rails_admin", ">= 0.2"
-gem "simple_form"
+# gem "rails_admin", ">= 0.2"
+# gem "simple_form"
 gem "acts_as_tenant"
 gem "closure_tree"
+
+gem "awesome_print"
+gem 'yaml_db'
+gem 'strong_parameters'

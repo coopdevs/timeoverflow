@@ -1,0 +1,50 @@
+@APP.config ["$routeProvider", "$locationProvider", "$httpProvider",
+  ($routeProvider, $locationProvider, $httpProvider) ->
+
+    #####################################
+    # Configuration of the httpProvider #
+
+    # see http://stackoverflow.com/questions/11971213/error-401-handling-with-angularjs
+    interceptor = ["$rootScope", "$q", "$filter", (scope, $q, $filter) ->
+      success = (response) ->
+        response
+      error = (response) ->
+        status = response.status
+        if status is 401
+          deferred = $q.defer()
+          req = config: response.config, deferred: deferred
+          window.location = "/"
+
+        # otherwise
+        $q.reject response
+      (promise) -> promise.then success, error
+    ]
+    $httpProvider.responseInterceptors.push interceptor
+
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+
+    ######################################
+    # Configuration of the routeProvider #
+
+    $routeProvider.when "/categories/:id",
+      templateUrl: "<%= asset_path('category.html') %>"
+      controller: CategoriesController
+    $routeProvider.when "/categories",
+      templateUrl: "<%= asset_path('categories.html') %>"
+      controller: CategoriesController
+
+
+    $routeProvider.when("/users",
+      templateUrl: "<%= asset_path('users.html') %>"
+      controller: UsersController
+    )
+
+    $routeProvider.otherwise redirectTo: "/"
+
+    #########################################
+    # Configuration of the locationProvider #
+
+
+    $locationProvider.html5Mode true
+
+]

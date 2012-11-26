@@ -1,0 +1,6 @@
+@APP = angular.module("APP", ["ui.directives", "ngResource"])
+
+
+Function::property = (prop, desc) ->
+  Object.defineProperty @prototype, prop, desc
+

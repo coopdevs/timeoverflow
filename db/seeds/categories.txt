@@ -1,0 +1,333 @@
+Atenció a les persones:
+- Acompanyament:
+  - Acompanyament nens
+  - Cangurs
+  - Acompanyament a persones grans
+  - Acompanyament a visites mèdiques
+  - Acompanyar en cotxe
+  - Acompanyar en moto
+  - Xofer amb cotxe dels altres
+  - Acompanyar a actes socials
+- Lectures:
+  - Explicar contes
+  - Lectures a invidents
+- Companyia:
+  - Companyia a malalts
+  - Saber escoltar tranquil·lament
+  - Converses per telèfon
+Salut:
+- Cura del cos:
+  - Massatges normals
+  - Estiraments
+  - Prendre la tensió arterial
+  - Rehabilitació
+  - Fisioteràpia
+  - Osteopatia
+  - Quiromassatge
+  - Higiene postural
+  - Orientació tràmits sistema sanitari
+  - Infermeria
+  - Suport domiciliari a malalts crònics
+  - Nocions de dietètica
+  - Consultoria de lactància
+  - Consells gestació, part, puerperi
+  - Logopèdia
+- Estètica
+  - Manicura
+  - Tallar les ungles dels peus
+  - Depilació
+  - Depilació facial
+  - Estilisme
+  - Perruqueria
+  - Tintar pestanyes
+  - Tallar el cabell
+  - Maquillatge
+- Creixement personal:
+  - Psicologia
+  - Psicoteràpia
+  - Coaching
+  - Meditació
+  - Ioga
+  - Autoestima
+- Teràpies alternatives:
+  - Reflexoteràpia
+  - Equilibri d'energia
+  - Relaxació
+  - Medicina tradicional xinesa
+  - Cosmètica natural:problemes de pell i cabell
+  - Tècnica metamòrfica
+  - Reiki
+  - Feng-Shui
+  - Flors de Bach
+  - Consulta Oraculo "I Ching"
+  - Cristaloteràpia
+  - Classes de gimnàstica ocular
+  - Manoteràpia
+  - Shiatsu
+  - Astrologia
+  - Vidre i miralls
+  - Tarot
+  - Massatges metamòrfics
+  - Massatge tailandès
+  - Massatge ayurvèdic
+  - Reflexologia
+  - Teràpia Gestalt
+  - Numerologia
+  - Alliberament de pericardi
+  - Par biomagnètic
+  - Geometria sagrada
+  - Artteràpia
+  - Dansa ioga 
+  - Oligoteràpia
+  - Mètode Yueng
+Cuidar animals:
+- Tenir cura dels animals:
+  - Passejar gossos
+  - Cuidar gossos per vacances
+  - Cuidar gats
+- Assessorament:
+  - Adopció animals, assessorament
+Informàtica:
+- Programes:
+  - Autocad
+  - Office
+  - Photoshop
+  - Lightroom 
+  - Flash
+  - Illustrator
+  - Indesign
+- Formació informàtica:
+  - Programari lliure
+  - Internet, classes
+  - Ofimàtica, classes
+  - Informàtica, classes
+- Tasques per ordinador:
+  - Disseny gràfic per ordinador
+  - Recerca informació per Internet
+  - Creació pàgines Web
+  - Crear Blogs
+  - Presència xarxes socials
+- Solucionar problemes:
+  - Arreglar l'ordinador
+  - Netejar Virus
+Tasques domèstiques:
+- Reparacions:
+  - Telefonia
+  - Electricitat
+  - Fusteria
+  - Reparacions bàsiques de casa
+  - Reparacions aparells de la llar
+  - Canviar el pany de la porta
+  - Reparació persianes
+  - Ajudar a fer mudances
+  - Arreglar jardí i regar plantes
+  - Jardineria, classes bàsiques
+  - Fer la bugada
+  - Bricolatge
+  - Decoració
+  - "Arreglos" amb "Pladur"
+  - Muntar mobles Ikea
+  - Pintar parets
+  - Ajuda restauració mobles antics
+  - Descongelar el congelador
+  - Tapisseria
+  - Reparació/Manteniment calderes
+- Feines de la llar:
+  - Tasques domèstiques en general
+  - Neteges
+  - Anar a comprar
+  - Fer encàrrecs
+  - Compostures de roba (ma o màquina)
+  - Organitzar i endreçar armaris
+  - Cuinar
+  - Càtering a domicili
+  - Fer pastissos
+  - Planxar
+- Formació tasques domèstiques:
+  - Economia alimentació "administrar"
+  - Assessorament jardineria
+  - Horticultura
+Tasques administratives:
+- Tramits:
+  - Declaració de la renda
+  - Recórrer les multes
+- Assessorament:
+  - Assessorament financer
+  - Assessorament empresarial
+  - Orientador professional
+  - Assessorament Jurídic immigració
+  - Assessorament Legal (Família)
+- Realitzar tasques administratives
+  - Redactar textos a net
+  - Passar apunts a l'ordinador
+  - Escriure textos narratius, contes i altres
+  - Ajudar a realitzar projectes
+  - Il·lustració de contes
+  - Traduir Currículum Vitae
+  - Revisar Currículum Vitae
+  - Treballs de secretariat
+Formació:
+- Coneixements acadèmics:
+  - Filosofia classes
+  - Física, classes
+  - Matemàtiques classes
+  - Geografia classes
+  - Biologia, classes
+  - Infermeria, classes
+  - Ciències exactes, classes
+  - Humanitats, classes
+  - Tècniques d'estudi
+  - Teatre, classes
+- Suport formació:
+  - Nens, classes (ajudar a fer deures)
+  - Assessorament i orientació pedagògica
+  - Assessorament llenguatge/parla per a pares
+  - Técnica vocabulari
+  - Oratòria
+  - Assessorament professors (preparació classes)
+- Arts:
+  - Aquarel·la
+  - Ensenyar a dibuixar
+  - Creativitat, classes
+  - Tècniques de pintura
+  - Pintar roba
+  - Papiroflèxia
+  - Poesia
+  - Refranys
+  - Llenguatge musical
+  - Solfeig, classes
+  - Cantar, classes
+  - Piano, classes
+  - Guitarra classes
+  - Violi classes
+  - Fotografia classes
+- Cuina:
+  - Cuina bàsica consells
+  - Receptes de cuina per telèfon
+  - Ensenyar a fer pastissos
+  - Cuina Paraguaiana
+  - Cuina suïssa
+  - Cuina peruana
+  - Cuina mexicana
+  - Cuina Marroquí
+  - Consells sobre cuina vegetariana i macrobiòtica
+  - Ensenyar a fer cupcakes i galetes
+  - Consells i informació sobre Vins
+  - Te marroquí
+- Idiomes:
+  - Francès classes
+  - Francès conversa
+  - Francès traducció
+  - Català classes
+  - Català conversa
+  - Català traduccions
+  - Català correccions
+  - Castellà classes
+  - Castellà conversa
+  - Castellà traduccions
+  - Castellà correccions
+  - Anglès classes
+  - Anglès conversa
+  - Anglès traduccions
+  - Anglès correccions
+  - Alemany classes
+  - Alemany conversa
+  - Àrab, conversa
+  - Japonès classes
+  - Italià classes
+  - Italià conversa
+  - Italià traduccions
+  - Gallec Classes
+  - Serbi
+  - Hebreu, classes
+- Viatges:
+  - Informació Àfrica negra de l'oest
+  - Història del Japó
+  - Informació sobre Àfrica
+- Altres coneixements:
+  - Ensenyar a planxar
+  - Ensenyar a fer ganxet
+  - Ensenyar a fer mitja
+  - Punt de creu
+  - Ensenyar a fer "arreglos" de vestuari
+  - Escacs
+  - Història classes de Catalunya
+  - Xerrades d'àmbit científic
+  - Xerrades i reflexions del comunisme
+  - Xerrades sobre temes de viatges
+  - Fer tertúlies
+  - Assessorament problemàtica social
+  - Assessorament comercial (Shopping)
+  - Assessorament general d'història
+  - Assessorament senderisme
+  - Assessorament acadèmic
+  - Consells i informació sobre Cava
+  - Educació sexual
+  - Arquitectura, assessorament
+  - Restauració de documents, assessorament
+  - Consells consum energètic
+  - Economia, converses
+  - Grafologia
+  - Maquillatge, classes
+  - Assessorament diversitat sexual
+  - Assessorament literari telefònic
+  - Fer sabó natural
+  - Ikebana, art floral japonès
+  - Parapsicologia
+  - Formació en quantum i orion
+  - Escriptura creativa
+  - Escriptura, classes
+  - Bicicleta a la ciutat: assessorament
+  - Drets laborals, assessorament
+Per divertir-se:
+- Festes:
+  - Organització festes infantils
+  - Pallasso infantil
+  - Embolicar regals
+- Sortides:
+  - Oci en general
+  - Sortides culturals
+  - Visites per Barcelona
+  - Passejades per Collserola
+- Per apendre:
+  - Fer dibuixos i manualitats
+  - Coses relacionades amb els hobbies
+  - Escriure contes
+  - Ballar Salsa, classes
+  - Sevillanas, ball
+  - Dansa del ventre
+  - Dansa Kathak
+  - Malabars
+  - Lacat Japonès
+  - Ensenyar joieria a la cera perduda
+  - Dansa Samba / jazz tango
+  - Pintura teixits
+  - Serigrafia
+  - Macramé, ensenyar a fer collarets
+- Viatges:
+  - Assessorament en viatges
+  - Planificació de viatges per Internet
+  - Viatges
+- Jocs de taula:
+  - Ensenyar "canasta" (joc cartes)
+  - Ensenyar a jugar RUMMIKUB
+  - Go (joc de taula oriental)
+- Altres:
+  - Filmació de vídeo
+  - Edició de vídeo
+  - Editar pel·lícules domèstiques
+  - Fotografia: Book, retrats
+  - Cinema Japonès
+  - Aeromodelisme
+Esports:
+- Pràctica d'esport:
+  - Ping Pong
+  - Tenis de Camp
+  - Sortides en bicicleta
+  - Pàdel
+  - Volei platja
+  - Defensa personal
+  - Esqui, classes
+  - Sortir a córrer
+  - Excursions per la muntanya
+  - Pilates
