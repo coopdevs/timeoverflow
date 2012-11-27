@@ -69,5 +69,8 @@ module Timeoverflow
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.paths << Rails.root.join("app", "assets", "templates")
 
+    # Avoid connecting to the database on precompilation
+    config.assets.initialize_on_precompile = false
+
   end
 end
