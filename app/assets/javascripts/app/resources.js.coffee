@@ -1,4 +1,5 @@
-@APP.factory "Category", ($resource) ->
+@APP.factory "Category", [ "$resource",
+($resource) ->
   Category = $resource "/categories/:id", {},
     query:  method: "GET", isArray: true
     update: method: "PUT"
@@ -14,9 +15,9 @@
     get: -> @_fqn ?= if @parent then @parent.fqn + ' > ' + @name else @name
   # console.log Category, Category.prototype, Category.identityMap
   Category
+]
 
-
-@APP.factory "User", ["$resource", "Organization",
+@APP.factory "User", [ "$resource", "Organization",
 ($resource, Organization) ->
   User = $resource "/users/:id", {},
     query:  method: "GET", isArray: true
@@ -42,7 +43,8 @@
   User
 ]
 
-@APP.factory "Organization", ($resource) ->
+@APP.factory "Organization", [ "$resource",
+($resource) ->
   Organization = $resource "/organizations/:id", {},
     query:  method: "GET", isArray: true
     update: method: "PUT"
@@ -52,3 +54,4 @@
   Organization::toData = ->
     name: @name
   Organization
+]
