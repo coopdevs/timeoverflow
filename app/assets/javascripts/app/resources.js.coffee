@@ -30,10 +30,12 @@
   User.property "organization"
     get: -> @_organization ?= if @organization_id then Organization.identityMap[@organization_id] else null
   User::toData = ->
+    console.log this
     username: @username
     email: @email
     category_ids: @categories
     date_of_birth: @date_of_birth
+    identity_document: @identity_document
     phone: @phone
     alt_phone: @alt_phone
     password: @password

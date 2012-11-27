@@ -18,3 +18,4 @@
 //= require angular-ui
 //= require bootstrap
 //= require_tree .
+//  require_tree ../templates

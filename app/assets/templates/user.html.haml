@@ -30,7 +30,11 @@
           .control-group
             %label.control-label{:for => "dob"} Date of birth
             .controls
-              %input#dob.input-xxlarge{"type" => "date", "ng-model" => "object.date_of_birth", "ui-jq" => "datepicker"}
+              %input#dob.input-xxlarge{"type" => "text", "ng-model" => "object.date_of_birth", "ui-date" => "{changeYear: true}", "ui-date-format"=>"yyyy-MM-dd"}
+          .control-group
+            %label.control-label{:for => "identity_document"} ID
+            .controls
+              %input#identity_document.input-xxlarge{"type" => "text", "ng-model" => "object.identity_document"}
           .control-group
             %label.control-label{:for => "phone"} Phone
             .controls

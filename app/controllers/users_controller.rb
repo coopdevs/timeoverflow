@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    fields_to_permit = %w"username email category_ids date_of_birth phone alt_phone password password_confirmation"
+    fields_to_permit = %w"username email category_ids date_of_birth phone alt_phone password password_confirmation identity_document"
     fields_to_permit << "organization_id" if can? :manage, Organization
     params[:user].permit(*fields_to_permit).tap &method(:ap)
   end

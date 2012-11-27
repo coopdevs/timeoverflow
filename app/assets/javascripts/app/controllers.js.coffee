@@ -48,8 +48,8 @@
 
 
 
-@OrganizationsController = ["$scope", "$http", "$routeParams", "Organization",
-($scope, $http, $routeParams, Organization) ->
+@OrganizationsController = ["$scope", "$http", "$routeParams", "$rootScope", "Organization",
+($scope, $http, $routeParams, $rootScope, Organization) ->
   if $routeParams.id is "new"
     $scope.object = new Organization()
   else if $routeParams.id
@@ -69,6 +69,10 @@
       Organization.save {organization: obj.toData()}, success, failure
   $scope.formTitle = ->
     if $scope.object?.id then "Edit \"#{$scope.object.name}\"" else "New organization"
+  $rootScope.$on "event:auth-loginRequired", ->
+    $rootScope.showLogin = true
+  $rootScope.$on "event:auth-loginConfirmed", ->
+    $rootScope.showLogin = false
 ]
 
 

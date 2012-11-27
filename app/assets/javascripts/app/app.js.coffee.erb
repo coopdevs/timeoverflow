@@ -1,5 +1,4 @@
-@APP = angular.module("APP", ["ui.directives", "ngResource"])
-
+@APP = angular.module("APP", ["http-auth-interceptor", "ui.directives", "ngResource"])
 
 Function::property = (prop, desc) ->
   Object.defineProperty @prototype, prop, desc
