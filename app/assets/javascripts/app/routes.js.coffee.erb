@@ -34,10 +34,13 @@
       controller: CategoriesController
 
 
-    $routeProvider.when("/users",
+    $routeProvider.when "/users/:id",
+      templateUrl: "<%= asset_path('user.html') %>"
+      controller: UsersController
+    $routeProvider.when "/users",
       templateUrl: "<%= asset_path('users.html') %>"
       controller: UsersController
-    )
+
 
     $routeProvider.otherwise redirectTo: "/"
 

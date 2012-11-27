@@ -28,7 +28,7 @@
   User::toData = ->
     username: @username
     email: @email
-    categories: @categories
+    category_ids: @categories
     date_of_birth: @date_of_birth
     phone: @phone
     alt_phone: @alt_phone

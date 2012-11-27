@@ -15,8 +15,13 @@ class ApplicationController < ActionController::Base
     Rails.logger.warn request.format
   end
 
+  # rescue_from Exception do |exc|
+  #   render json: {message: exc.message, type: exc.class.name}, status: 500
+  # end
+
   private
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    # @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.first
   end
 end

@@ -1,68 +1,17 @@
-.row{"ng-switch" => "detailView"}
-  .span8{"ng-switch-when" => "list"}
+.row
+  .span8
 
     %h1 Listing users
 
     .navbar
       .navbar-inner
         %ul.nav
-          %a.btn.btn-primary{"ng-click" => "show({})"} New {{ resource_name }}
+          %a.btn.btn-primary{href: "/users/new"} New {{ resource_name }}
         %form.navbar-search.pull-left
           %input.search-query{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
 
     %table.table.table-hover.table-condensed
-      / %thead
-      /   %tr
-      /     %th
-      /       name
-      /       %input.search-query{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
       %tbody
         %tr{"ng-repeat" => "u in (users | orderBy:username | filter:searchTerm)"}
           %td
-            %a{"ng-click" => "show(u)"} {{ u.name() }}
-  .span8{"ng-switch-when" => "detail"}
-    .well
-      %form.form-horizontal{name: "userForm"}
-        %fieldset
-          %legend
-            {{ formTitle() }}
-          .control-group
-            %label.control-label{:for => "name"} Name
-            .controls
-              %input#name.input-xxlarge{"type" => "text", "ng-model" => "object.username"}
-          .control-group
-            %label.control-label{:for => "email"} Email
-            .controls
-              %input#email.input-xxlarge{"type" => "email", "ng-model" => "object.email"}
-          .control-group
-            %label.control-label{:for => "pwd"} Password
-            .controls
-              %input#pwd.input-xxlarge{"type" => "password", "ng-model" => "object.password"}
-          .control-group
-            %label.control-label{:for => "pwd2"} Repeat password
-            .controls
-              %input#pwd2.input-xxlarge{"type" => "password", "ng-model" => "object.password_confirmation"}
-          .control-group
-            %label.control-label{:for => "dob"} Date of birth
-            .controls
-              %input#dob.input-xxlarge{"type" => "date", "ng-model" => "object.date_of_birth", "ui-jq" => "datepicker"}
-          .control-group
-            %label.control-label{:for => "phone"} Phone
-            .controls
-              %input#phone.input-xxlarge{"type" => "tel", "ng-model" => "object.phone"}
-          .control-group
-            %label.control-label{:for => "alt_phone"} Alternative phone
-            .controls
-              %input#alt_phone.input-xxlarge{"type" => "tel", "ng-model" => "object.alt_phone"}
-          .control-group
-            %label.control-label{:for => "categories"} Categories
-            .controls
-              %select#categories.input-xxlarge{"ui-select2" => "{allowClear:true}", "ng-model" => "object.categories", "data-placeholder" => "Select categories", "multiple" => true}
-                %option{"ng-repeat" => "cat in categories", "value" => "{{ cat.id }}"} {{ cat.fqn }}
-        / %pre {{ category | json }}
-        .form-actions
-          %button.btn.btn-primary{:type => "submit", "ng-click" => "save(object)"} Save changes
-          %button.btn{:type => "button", "ng-click" => "show()"} Cancel
-
-
-  / :email, :username, :date_of_birth, :address, :phone, :alt_phone, :identity_document
+            %a{href: "/users/{{u.id}}"} {{ u.name() }}

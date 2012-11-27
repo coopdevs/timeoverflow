@@ -8,18 +8,12 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
-  has_many :categories
+  has_and_belongs_to_many :categories
 
-  # Setup accessible (or protected) attributes for your model
   def admin?
     username == "admin"
   end
 
-  def name
-    "#{username} <#{email}>"
-  end
-
   belongs_to :organization
-  acts_as_tenant :organization
 
 end

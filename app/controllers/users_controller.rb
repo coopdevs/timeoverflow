@@ -1,24 +1,22 @@
 class UsersController < ApplicationController
   respond_to :json
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-    respond_with @users
+
+  before_filter do
+    params[:user] &&= user_params
   end
 
-  # GET /users/1
-  # GET /users/1.json
+  load_and_authorize_resource
+
+  def index
+    respond_with @users.includes(:categories)
+  end
+
   def show
-    @user = User.find(params[:id])
+    # @user = @users.includes(:categories).find(params[:id])
     respond_with @user
   end
 
-
-  # POST /users
-  # POST /users.json
   def create
-    @user = User.new(user_params)
     if @user.save
       respond_with @user, status: :created, location: @user
     else
@@ -26,31 +24,24 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(params[:user])
       respond_with @user, location: @user
     else
       respond_with @user.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
-
-    head 204
+    head :no_content
   end
 
   private
 
-  # Use this method to whitelist the permissible parameters. Example: params.require(:person).permit(:name, :age)
-  # Also, you can specialize this method with per-user checking of permissible attributes.
   def user_params
-    params[:user].permit *%w"username email category_ids date_of_birth phone alt_phone password password_confirmation"
+    fields_to_permit = %w"username email category_ids date_of_birth phone alt_phone password password_confirmation"
+    fields_to_permit << "organization_id" if can? :manage, Organization
+    params[:user].permit(*fields_to_permit).tap &method(:ap)
   end
 end
