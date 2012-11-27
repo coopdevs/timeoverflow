@@ -16,7 +16,8 @@
   Category
 
 
-@APP.factory "User", ($resource, Organization) ->
+@APP.factory "User", ["$resource", "Organization",
+($resource, Organization) ->
   User = $resource "/users/:id", {},
     query:  method: "GET", isArray: true
     update: method: "PUT"
@@ -39,7 +40,7 @@
     organization_id: @organization_id
   # console.log User, User.prototype, User.identityMap
   User
-
+]
 
 @APP.factory "Organization", ($resource) ->
   Organization = $resource "/organizations/:id", {},
