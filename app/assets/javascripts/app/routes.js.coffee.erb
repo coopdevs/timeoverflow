@@ -42,6 +42,14 @@
       controller: UsersController
 
 
+    $routeProvider.when "/organizations/:id",
+      templateUrl: "<%= asset_path('organization.html') %>"
+      controller: OrganizationsController
+    $routeProvider.when "/organizations",
+      templateUrl: "<%= asset_path('organizations.html') %>"
+      controller: OrganizationsController
+
+
     $routeProvider.otherwise redirectTo: "/"
 
     #########################################

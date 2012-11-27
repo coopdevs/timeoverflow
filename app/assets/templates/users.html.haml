@@ -1,17 +1,19 @@
 .row
   .span8
-
-    %h1 Listing users
-
     .navbar
       .navbar-inner
-        %ul.nav
-          %a.btn.btn-primary{href: "/users/new"} New {{ resource_name }}
-        %form.navbar-search.pull-left
+        .brand Listing users
+        %form.navbar-search
           %input.search-query{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
+        %ul.nav.pull-right
+          %a.btn.btn-primary{href: "/users/new"} New user
 
     %table.table.table-hover.table-condensed
       %tbody
-        %tr{"ng-repeat" => "u in (users | orderBy:username | filter:searchTerm)"}
+        %tr{"ng-repeat" => "u in (users | orderBy:'username' | filter:searchTerm)"}
           %td
-            %a{href: "/users/{{u.id}}"} {{ u.name() }}
+            %a{href: "/users/{{u.id}}"} {{ u.username }}
+          %td
+            {{ u.email }}
+          %td
+            {{ u.organization.name }}

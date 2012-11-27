@@ -10,6 +10,12 @@
             .controls
               %input#name.input-xxlarge{"type" => "text", "ng-model" => "object.username"}
           .control-group
+            %label.control-label{:for => "org"} Organization
+            .controls
+              %select#org.input-xxlarge{"ui-select2" => "{allowClear:true}", "ng-model" => "object.organization_id", "data-placeholder" => "organization"}
+                %option{value: ""} (no org)
+                %option{"ng-repeat" => "o in organizations", "value" => "{{ o.id }}"} {{ o.name }}
+          .control-group
             %label.control-label{:for => "email"} Email
             .controls
               %input#email.input-xxlarge{"type" => "email", "ng-model" => "object.email"}

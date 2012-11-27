@@ -40,7 +40,7 @@ class OrganizationsController < ApplicationController
 
   private
   def organization_params
-    params[:user].permit(*%w"username email category_ids date_of_birth phone alt_phone password password_confirmation").tap(&method(:ap))
+    params[:organization].permit(*%w"name").tap(&method(:ap))
   end
 
 

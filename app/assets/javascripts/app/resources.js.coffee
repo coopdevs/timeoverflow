@@ -16,7 +16,7 @@
   Category
 
 
-@APP.factory "User", ($resource) ->
+@APP.factory "User", ($resource, Organization) ->
   User = $resource "/users/:id", {},
     query:  method: "GET", isArray: true
     update: method: "PUT"
@@ -25,6 +25,8 @@
     "#{@username} <#{@email}>"
   User::addToIdentityMap = ->
     User.identityMap[@id] = this
+  User.property "organization"
+    get: -> @_organization ?= if @organization_id then Organization.identityMap[@organization_id] else null
   User::toData = ->
     username: @username
     email: @email
@@ -34,5 +36,18 @@
     alt_phone: @alt_phone
     password: @password
     password_confirmation: @password_confirmation
+    organization_id: @organization_id
   # console.log User, User.prototype, User.identityMap
   User
+
+
+@APP.factory "Organization", ($resource) ->
+  Organization = $resource "/organizations/:id", {},
+    query:  method: "GET", isArray: true
+    update: method: "PUT"
+  Organization.identityMap = {}
+  Organization::addToIdentityMap = ->
+    Organization.identityMap[@id] = this
+  Organization::toData = ->
+    name: @name
+  Organization

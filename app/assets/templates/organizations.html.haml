@@ -2,17 +2,17 @@
   .span8
     .navbar
       .navbar-inner
-        .brand Listing categories
+        .brand Listing organizations
         %form.navbar-search
           %input.search-query{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
         %ul.nav.pull-right
-          %a.btn.btn-primary{href: "/categories/new"} New category
+          %a.btn.btn-primary{href: "/organizations/new"} New organization
 
     %table.table.table-hover.table-condensed
       %thead
         %tr
           %th name
       %tbody
-        %tr{"ng-repeat" => "cat in ( categories | filter:searchTerm | orderBy:'fqn' )"}
+        %tr{"ng-repeat" => "org in ( organizations | filter:searchTerm | orderBy:'name' )"}
           %td
-            %a{href: "/categories/{{ cat.id }}"} {{ cat.fqn }}
+            %a{href: "/organizations/{{ org.id }}"} {{ org.name }}
