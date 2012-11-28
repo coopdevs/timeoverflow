@@ -5,16 +5,12 @@
         %fieldset
           %legend
             {{ formTitle() }}
-          .control-group
-            %label.control-label{:for => "name"} Name
-            .controls
-              %input#name.input-xlarge{"type" => "text", "ng-model" => "object.name"}
-          .control-group
-            %label.control-label{:for => "parent_id"} Parent
-            .controls
-              %select.input-xlarge{"ui-select2" => "{allowClear:true}", "ng-model" => "object.parent_id", "data-placeholder" => "category"}
-                %option{value: ""} (no parent)
-                %option{"ng-repeat" => "cat in categories", "value" => "{{ cat.id }}"} {{ cat.fqn }}
+          %div{field: "", label: "Name"}
+            %input#name.input-xlarge{"type" => "text", "ng-model" => "object.name"}
+          %div{field: "", label: "Parent"}
+            %select.input-xlarge{"ui-select2" => "{allowClear:true}", "ng-model" => "object.parent_id", "data-placeholder" => "category"}
+              %option{value: ""} (no parent)
+              %option{"ng-repeat" => "cat in categories", "value" => "{{ cat.id }}"} {{ cat.fqn }}
         %pre {{ object | json }}
         .form-actions
           %button.btn.btn-primary{:type => "submit", "ng-click" => "save(object)"} Save changes

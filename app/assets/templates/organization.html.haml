@@ -2,13 +2,14 @@
   .span8
     .well
       %form.form-horizontal{name: "orgForm"}
-        %fieldset
-          %legend
-            {{ formTitle() }}
-          .control-group
-            %label.control-label{:for => "name"} Name
-            .controls
-              %input#name.input-xlarge{"type" => "text", "ng-model" => "object.name"}
+        %legend
+          {{ formTitle() }}
+        %div{field: "", label: "Code"}
+          %input#name.input-xlarge{"type" => "text", "ng-model" => "object.code"}
+        %div{field: "", label: "Name"}
+          %input#name.input-xlarge{"type" => "text", "ng-model" => "object.name"}
         .form-actions
           %button.btn.btn-primary{:type => "submit", "ng-click" => "save(object)"} Save changes
           %a.btn{href: "/organizations"} Cancel
+
+  %pre {{ object | json }}

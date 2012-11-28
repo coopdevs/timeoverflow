@@ -20,22 +20,23 @@
 
 
   %body{"ng-controller" => "RootController"}
-    .navbar.navbar-fixed-top
+    .navbar.navbar-fixed-top.navbar-inverse
       .navbar-inner
         .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
           %a.brand(href="/") {{ brand }}
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Link 1", "/path1"
+
+    .container
+      .row
+        .span2
+          .well.well-small
+            %ul.nav.nav-list
+              %li.nav-header Hola
               %li= link_to "Organizations", "/organizations"
               %li= link_to "Categories", "/categories"
               %li= link_to "Users", "/users"
 
-    .container{"ng-view" => ""}
+        .span10{"ng-view" => ""}
+
     .fade#loginForm{"ui-modal" => "", "ng-model" => "$root.showLogin"}
       %form.form{"ng-submit" => "submit()"}
         %input{type: "text", "data-placeholder" => "email"}

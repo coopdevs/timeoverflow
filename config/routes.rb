@@ -2,13 +2,9 @@ Timeoverflow::Application.routes.draw do
   # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
 
-  constraints :format => "application/json" do
-
-    resources :categories
-    resources :organizations
-    resources :users
-
-  end
+  resources :categories
+  resources :organizations
+  resources :users
 
   # devise_for :users
 

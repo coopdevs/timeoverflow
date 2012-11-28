@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-    Rails.logger.warn request.headers
-    Rails.logger.warn request.format
+    ap request.headers.reject { |k, v| /[a-z]/ === k }
+    ap format: request.format
   end
 
   # rescue_from Exception do |exc|
