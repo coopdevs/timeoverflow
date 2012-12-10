@@ -127,7 +127,7 @@
           <input class='input-xxlarge' id='alt_phone' ng-model='object.alt_phone' type='tel' />
         </div>
         <div field='' label='Categories'>
-          <select class='input-xxlarge' data-placeholder='Select categories' id='categories' multiple='multiple' ng-model='object.categories' ui-select2='{allowClear:true}'>
+          <select class='input-xxlarge' data-placeholder='Select categories' id='categories' multiple='multiple' ng-model='object.category_ids' ui-select2='{allowClear:true}'>
             <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
           </select>
         </div>

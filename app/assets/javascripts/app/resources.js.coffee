@@ -33,7 +33,7 @@
     console.log this
     username: @username
     email: @email
-    category_ids: @categories
+    category_ids: @category_ids
     date_of_birth: @date_of_birth
     identity_document: @identity_document
     phone: @phone
