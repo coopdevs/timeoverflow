@@ -1,7 +1,9 @@
 
-@RootController = ["$scope", "$http", "$routeParams", "$location", "Category", "Organization",
-($scope, $http, $routeParams, $location, Category, Organization) ->
-  $scope.brand = "TimeOverflow"
+@RootController = ["$scope", "$http", "$routeParams", "$location", "$rootScope", "Category", "Organization",
+($scope, $http, $routeParams, $location, $rootScope, Category, Organization) ->
+  $rootScope.brand = "TimeOverflow"
+  $rootScope.pageTitle = () ->
+    [ $rootScope.brand, ($rootScope.title || [])... ][-2..-1].join " » "
   $scope.loadCategories = ->
     $scope.categories = Category.query {}, (data) ->
       c.addToIdentityMap() for c in data
@@ -16,21 +18,41 @@
     if where.search then $location.search where.search
   $scope.$on "loadCategories", (ev) -> $scope.loadCategories()
   $scope.$on "loadOrganizations", (ev) -> $scope.loadOrganizations()
+  $rootScope.$on "event:auth-loginRequired", -> $rootScope.showLogin = true
+  $rootScope.$on "event:auth-loginConfirmed", -> $rootScope.showLogin = false
+  $rootScope.$on "crumbs", (ev, crumbs...) ->
+    $rootScope.title = (c.display for c in crumbs)
+    $rootScope.breadcrumbs = [{href: "/", display: $rootScope.brand}, (crumbs || [])...]
 ]
 
-# class Category
-#   constructor: (attrs) -> angular.extend this, attrs
-#   fqn: -> @_fqn ?= if @parent then @parent.fqn() + ' > ' + @name else @name
 
+@TitleController = ["$scope", "$rootScope", ($scope, $rootScope) ->
+  angular.noop()
+]
 
 
 @CategoriesController = ["$scope", "$http", "$routeParams", "Category", ($scope, $http, $routeParams, Category) ->
   if $routeParams.id is "new"
     $scope.object = new Category()
+    $scope.$emit "crumbs",
+      href: "/categories"
+      display: "Categories"
+    ,
+      href: "/categories/new"
+      display: "NEW CATEGORY"
   else if $routeParams.id
-    $scope.object = Category.get id: $routeParams.id
+    $scope.object = Category.get id: $routeParams.id, (data) ->
+      $scope.$emit "crumbs",
+        href: "/categories"
+        display: "Categories"
+      ,
+        href: "/categories/#{$routeParams.id}"
+        display: data.name
   else
     $scope.object = null
+    $scope.$emit "crumbs",
+      href: "/categories"
+      display: "Categories"
   $scope.save = (obj) ->
     success = ->
       $scope.$emit "go", path: "/categories"
@@ -48,7 +70,7 @@
 
 
 
-@OrganizationsController = ["$scope", "$http", "$routeParams", "$rootScope", "Organization",
+@OrganizationsController = ["$scope", "$http", "$routeParams", "Organization",
 ($scope, $http, $routeParams, $rootScope, Organization) ->
   if $routeParams.id is "new"
     $scope.object = new Organization()
@@ -69,10 +91,6 @@
       Organization.save {organization: obj.toData()}, success, failure
   $scope.formTitle = ->
     if $scope.object?.id then "Edit \"#{$scope.object.name}\"" else "New organization"
-  $rootScope.$on "event:auth-loginRequired", ->
-    $rootScope.showLogin = true
-  $rootScope.$on "event:auth-loginConfirmed", ->
-    $rootScope.showLogin = false
 ]
 
 

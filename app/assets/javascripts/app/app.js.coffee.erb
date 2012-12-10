@@ -3,3 +3,6 @@
 Function::property = (prop, desc) ->
   Object.defineProperty @prototype, prop, desc
 
+Array::detect = (f) ->
+  (return x if f x) for x in @
+  undefined

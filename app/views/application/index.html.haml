@@ -4,7 +4,7 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "Timeoverflow"
+    %title{"ng-controller" => "TitleController"} {{ pageTitle() }}
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"
@@ -23,19 +23,24 @@
     .navbar.navbar-fixed-top.navbar-inverse
       .navbar-inner
         .container
-          %a.brand(href="/") {{ brand }}
-
-    .container
-      .row
-        .span2
-          .well.well-small
-            %ul.nav.nav-list
-              %li.nav-header Hola
+          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand(href="/") {{ pageTitle() }}
+          .container.nav-collapse
+            %ul.nav
+              %li= link_to "Link 1", "/path1"
               %li= link_to "Organizations", "/organizations"
               %li= link_to "Categories", "/categories"
               %li= link_to "Users", "/users"
+            %form.navbar-search.pull-right
+              %input.search-query.xxlarge{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
 
-        .span10{"ng-view" => ""}
+
+    .container
+      .row
+        .span12{"ng-view" => ""}
 
     .fade#loginForm{"ui-modal" => "", "ng-model" => "$root.showLogin"}
       %form.form{"ng-submit" => "submit()"}

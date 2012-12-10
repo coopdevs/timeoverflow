@@ -4,49 +4,236 @@
     #####################################
     # Configuration of the httpProvider #
 
-    # see http://stackoverflow.com/questions/11971213/error-401-handling-with-angularjs
-    interceptor = ["$rootScope", "$q", "$filter", (scope, $q, $filter) ->
-      success = (response) ->
-        response
-      error = (response) ->
-        status = response.status
-        if status is 401
-          deferred = $q.defer()
-          req = config: response.config, deferred: deferred
-          window.location = "/"
-
-        # otherwise
-        $q.reject response
-      (promise) -> promise.then success, error
-    ]
-    $httpProvider.responseInterceptors.push interceptor
 
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 
     ######################################
     # Configuration of the routeProvider #
 
+    $routeProvider.when "/",
+      template: """
+      <div class="hero-unit">
+        <h1>TimeOverflow</h1>
+        <p>Welcome to the new-generation time banking system</p>
+        <p>
+          <a class="btn btn-primary btn-large">
+            Learn more
+          </a>
+        </p>
+      </div>
+      """
+      controller: RootController
+      breadcrumb: '<i class="icon-home"></i>'
+
     $routeProvider.when "/categories/:id",
-      templateUrl: "<%= asset_path('category.html') %>"
+      # templateUrl: "<%= asset_path('category.html') %>"
+      template: """
+      <div class='row'>
+        <div class='span8'>
+          <div class='well'>
+            <form class='form-horizontal' name='categoryForm'>
+              <fieldset>
+                <legend>
+                  {{ formTitle() }}
+                </legend>
+                <div field label='Name'>
+                  <input class='input-xlarge' id='name' ng-model='object.name' type='text' />
+                </div>
+                <div field label='Parent'>
+                  <select class='input-xlarge' data-placeholder='category' ng-model='object.parent_id' ui-select2='{allowClear:true}'>
+                    <option value=''>(no parent)</option>
+                    <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
+                  </select>
+                </div>
+              </fieldset>
+              <pre>{{ object | json }}</pre>
+              <div class='form-actions'>
+                <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
+                <a class='btn' href='/categories'>Cancel</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      """
       controller: CategoriesController
     $routeProvider.when "/categories",
-      templateUrl: "<%= asset_path('categories.html') %>"
+      # templateUrl: "<%= asset_path('categories.html') %>"
+      template: """
+      <table class='table table-hover table-condensed'>
+        <thead>
+          <tr>
+            <th colspan='10'>
+              <div class='navbar'>
+                <div class='navbar-inner'>
+                  <ul class='nav pull-right'>
+                    <a class='btn btn-primary' href='/categories/new'>New category</a>
+                  </ul>
+                </div>
+              </div>
+            </th>
+          </tr>
+          <tr>
+            <th>name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cat in ( categories | filter:searchTerm | orderBy:'fqn' )">
+            <td>
+              <a href='/categories/{{ cat.id }}'>{{ cat.fqn }}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      """
       controller: CategoriesController
+      breadcrumb: 'categories'
 
 
     $routeProvider.when "/users/:id",
-      templateUrl: "<%= asset_path('user.html') %>"
+      # templateUrl: "<%= asset_path('user.html') %>"
+      template: """
+      <form class='form-horizontal' name='userForm'>
+        <legend>{{ formTitle() }}</legend>
+        <div field='' label='Name'>
+          <input class='input-xxlarge' id='name' ng-model='object.username' type='text' />
+        </div>
+        <div field='' label='Organization'>
+          <select class='input-xxlarge' data-placeholder='organization' id='org' ng-model='object.organization_id' ui-select2='{allowClear:true}'>
+            <option value=''>(no org)</option>
+            <option ng-repeat='o in organizations' value='{{ o.id }}'>{{ o.name }}</option>
+          </select>
+        </div>
+        <div field='' label='Email'>
+          <input class='input-xxlarge' id='email' ng-model='object.email' type='email' />
+        </div>
+        <div field='' label='Password'>
+          <input class='input-xxlarge' id='pwd' ng-model='object.password' type='password' />
+        </div>
+        <div field='' label='Repeat password'>
+          <input class='input-xxlarge' id='pwd2' ng-model='object.password_confirmation' type='password' />
+        </div>
+        <div field='' label='Date of birth'>
+          <input class='input-xxlarge' id='dob2' ng-model='object.date_of_birth' type='date' ui-jq='datepicker' ui-options="{dateFormat: 'dd/mm/yy'}" />
+        </div>
+        <div field='' label='ID'>
+          <input class='input-xxlarge' id='identity_document' ng-model='object.identity_document' type='text' />
+        </div>
+        <div field='' label='Phone'>
+          <input class='input-xxlarge' id='phone' ng-model='object.phone' type='tel' />
+        </div>
+        <div field='' label='Alternative phone'>
+          <input class='input-xxlarge' id='alt_phone' ng-model='object.alt_phone' type='tel' />
+        </div>
+        <div field='' label='Categories'>
+          <select class='input-xxlarge' data-placeholder='Select categories' id='categories' multiple='multiple' ng-model='object.categories' ui-select2='{allowClear:true}'>
+            <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
+          </select>
+        </div>
+        <!-- %pre {{ category | json }} -->
+        <div class='form-actions'>
+          <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
+          <a class='btn' href='/users'>Cancel</a>
+        </div>
+      </form>
+      """
       controller: UsersController
     $routeProvider.when "/users",
-      templateUrl: "<%= asset_path('users.html') %>"
+      # templateUrl: "<%= asset_path('users.html') %>"
+      template: """
+      <table class='table table-hover table-condensed'>
+        <thead>
+          <tr>
+            <th colspan='5'>
+              <div class='navbar'>
+                <div class='navbar-inner'>
+                  <ul class='nav pull-right'>
+                    <a class='btn btn-primary' href='/users/new'>New user</a>
+                  </ul>
+                </div>
+              </div>
+            </th>
+          </tr>
+          <tr>
+            <th>Username</th>
+            <th>email</th>
+            <th>ID</th>
+            <th>dob</th>
+            <th>organization</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="u in (users | orderBy:'username' | filter:searchTerm)">
+            <td>
+              <a href='/users/{{u.id}}'>{{ u.username }}</a>
+            </td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.identity_document }}</td>
+            <td>{{ u.date_of_birth }}</td>
+            <td>{{ u.organization.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+      """
       controller: UsersController
 
 
     $routeProvider.when "/organizations/:id",
-      templateUrl: "<%= asset_path('organization.html') %>"
+      # templateUrl: "<%= asset_path('organization.html') %>"
+      template: """
+      <div class='row'>
+        <div class='span8'>
+          <div class='well'>
+            <form class='form-horizontal' name='orgForm'>
+              <fieldset>
+                <legend>
+                  {{ formTitle() }}
+                </legend>
+                <div field label='Name'>
+                  <input class='input-xlarge' id='name' ng-model='object.name' type='text' />
+                </div>
+              </fieldset>
+              <pre>{{ object | json }}</pre>
+              <div class='form-actions'>
+                <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
+                <a class='btn' href='/organizations'>Cancel</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      """
       controller: OrganizationsController
     $routeProvider.when "/organizations",
-      templateUrl: "<%= asset_path('organizations.html') %>"
+      # templateUrl: "<%= asset_path('organizations.html') %>"
+      template: """
+      <table class='table table-hover table-condensed'>
+        <thead>
+          <tr>
+            <th>
+              <div class='navbar'>
+                <div class='navbar-inner'>
+                  <ul class='nav pull-right'>
+                    <a class='btn btn-primary' href='/organizations/new'>New organization</a>
+                  </ul>
+                </div>
+              </div>
+            </th>
+          </tr>
+          <tr>
+            <th>name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="org in ( organizations | filter:searchTerm | orderBy:'name' )">
+            <td>
+              <a href='/organizations/{{ org.id }}'>{{ org.name }}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      """
       controller: OrganizationsController
 
 
