@@ -18,7 +18,7 @@ angular.module('http-auth-interceptor', [])
      */
     this.pushToBuffer = function(config, deferred) {
       buffer.push({
-        config: config, 
+        config: config,
         deferred: deferred
       });
     }

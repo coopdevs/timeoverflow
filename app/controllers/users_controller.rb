@@ -11,6 +11,11 @@ class UsersController < ApplicationController
     respond_with @users.includes(:categories)
   end
 
+  def me
+    head 401 and return unless current_user
+    respond_with current_user
+  end
+
   def show
     # @user = @users.includes(:categories).find(params[:id])
     respond_with @user

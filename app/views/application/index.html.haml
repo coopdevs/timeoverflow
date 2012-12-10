@@ -34,6 +34,9 @@
               %li= link_to "Organizations", "/organizations"
               %li= link_to "Categories", "/categories"
               %li= link_to "Users", "/users"
+            %ul.nav.pull-right
+              %li
+                %a{"ng-click" => "logout()"} Log out
             %form.navbar-search.pull-right
               %input.search-query.xxlarge{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
 
@@ -43,10 +46,13 @@
         .span12{"ng-view" => ""}
 
     .fade#loginForm{"ui-modal" => "", "ng-model" => "$root.showLogin"}
-      %form.form{"ng-submit" => "submit()"}
-        %input{type: "text", "data-placeholder" => "email"}
-        %input{type: "password", "data-placeholder" => "password"}
-        %button.btn{type: "submit"} Login
+      .well{"ng-controller" => "LoginController"}
+        %form.form{"ng-submit" => "submit()"}
+          %label email
+          %input{type: "text", "ng-model" => "login.email"}
+          %label password
+          %input{type: "password", "ng-model" => "login.password"}
+          %button.btn{type: "submit"} Login
 
 
 

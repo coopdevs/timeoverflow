@@ -5,6 +5,14 @@ Timeoverflow::Application.routes.draw do
   resources :categories
   resources :organizations
   resources :users
+  # resources :sessions, only: [:create, :destroy]
+
+  match '/me' => 'users#me', :via => :get
+
+  # match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#create', via: :post
+  match '/signout', to: 'sessions#destroy', via: :delete
+
 
   # devise_for :users
 

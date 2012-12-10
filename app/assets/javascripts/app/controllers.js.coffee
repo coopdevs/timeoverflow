@@ -2,15 +2,22 @@
 @RootController = ["$scope", "$http", "$routeParams", "$location", "$rootScope", "Category", "Organization",
 ($scope, $http, $routeParams, $location, $rootScope, Category, Organization) ->
   $rootScope.brand = "TimeOverflow"
+  $scope.whoAmI = () ->
+    @currentUser ?= $http.get "/me"
+  $scope.logout = () ->
+    $http.delete("/signout").success ->
+      @currentUser = undefined
+      $location.path "/"
+      $location.search {}
   $rootScope.pageTitle = () ->
-    [ $rootScope.brand, ($rootScope.title || [])... ][-2..-1].join " » "
+    # [ $rootScope.brand, ($rootScope.title || [])... ][-2..-1].join " » "
+    $rootScope.brand
   $scope.loadCategories = ->
     $scope.categories = Category.query {}, (data) ->
       c.addToIdentityMap() for c in data
   $scope.loadOrganizations = ->
     $scope.organizations = Organization.query {}, (data) ->
       c.addToIdentityMap() for c in data
-      console.log Organization.identityMap
   $scope.loadCategories()
   $scope.loadOrganizations()
   $scope.$on "go", (ev, where) ->
@@ -20,11 +27,13 @@
   $scope.$on "loadOrganizations", (ev) -> $scope.loadOrganizations()
   $rootScope.$on "event:auth-loginRequired", -> $rootScope.showLogin = true
   $rootScope.$on "event:auth-loginConfirmed", -> $rootScope.showLogin = false
-  $rootScope.$on "crumbs", (ev, crumbs...) ->
-    $rootScope.title = (c.display for c in crumbs)
-    $rootScope.breadcrumbs = [{href: "/", display: $rootScope.brand}, (crumbs || [])...]
 ]
 
+
+@LoginController = ["$scope", "$http", "authService", ($scope, $http, authService) ->
+  $scope.submit = () ->
+    $http.post("/signin", $scope.login).success(-> authService.loginConfirmed())
+]
 
 @TitleController = ["$scope", "$rootScope", ($scope, $rootScope) ->
   angular.noop()
@@ -32,6 +41,7 @@
 
 
 @CategoriesController = ["$scope", "$http", "$routeParams", "Category", ($scope, $http, $routeParams, Category) ->
+  $scope.whoAmI()
   if $routeParams.id is "new"
     $scope.object = new Category()
     $scope.$emit "crumbs",
@@ -72,6 +82,7 @@
 
 @OrganizationsController = ["$scope", "$http", "$routeParams", "Organization",
 ($scope, $http, $routeParams, $rootScope, Organization) ->
+  $scope.whoAmI()
   if $routeParams.id is "new"
     $scope.object = new Organization()
   else if $routeParams.id
@@ -98,6 +109,7 @@
 
 @UsersController = ["$scope", "$http", "$routeParams", "User", "Organization",
 ($scope, $http, $routeParams, User, Organization) ->
+  $scope.whoAmI()
   if $routeParams.id is "new"
     $scope.object = new User()
   else if $routeParams.id
