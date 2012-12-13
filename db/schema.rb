@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20121121233818) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",          :null => false
-    t.string   "email",             :null => false
+    t.string   "username",            :null => false
+    t.string   "email",               :null => false
     t.string   "password_digest"
     t.date     "date_of_birth"
     t.string   "identity_document"
@@ -56,8 +56,12 @@ ActiveRecord::Schema.define(:version => 20121121233818) do
     t.string   "phone"
     t.string   "alt_phone"
     t.text     "address"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.date     "registration_date"
+    t.integer  "registration_number"
+    t.boolean  "admin"
+    t.boolean  "superadmin"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

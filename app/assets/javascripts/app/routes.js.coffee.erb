@@ -108,6 +108,12 @@
         <div field='' label='Email'>
           <input class='input-xxlarge' id='email' ng-model='object.email' type='email' />
         </div>
+        <div field='' label='Registration number'>
+          <input class='input-xxlarge' ng-model='object.registration_number' type='text' />
+        </div>
+        <div field='' label='Registration date'>
+          <input class='input-xxlarge' ng-model='object.registration_date' type='date' ui-jq='datepicker' ui-options="{dateFormat: 'dd/mm/yy'}" />
+        </div>
         <div field='' label='Password'>
           <input class='input-xxlarge' id='pwd' ng-model='object.password' type='password' />
         </div>
@@ -117,7 +123,7 @@
         <div field='' label='Date of birth'>
           <input class='input-xxlarge' id='dob2' ng-model='object.date_of_birth' type='date' ui-jq='datepicker' ui-options="{dateFormat: 'dd/mm/yy'}" />
         </div>
-        <div field='' label='ID'>
+        <div field='' label='Identity number'>
           <input class='input-xxlarge' id='identity_document' ng-model='object.identity_document' type='text' />
         </div>
         <div field='' label='Phone'>

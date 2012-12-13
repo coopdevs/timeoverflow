@@ -36,7 +36,7 @@
               %li= link_to "Users", "/users"
             %ul.nav.pull-right
               %li
-                %a{"ng-click" => "logout()"} Log out
+                %a{"ng-click" => "logout()"} Log out {{ current_user.email }}  ssss 
             %form.navbar-search.pull-right
               %input.search-query.xxlarge{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
 

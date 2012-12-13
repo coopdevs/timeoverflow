@@ -3,10 +3,10 @@
 ($scope, $http, $routeParams, $location, $rootScope, Category, Organization) ->
   $rootScope.brand = "TimeOverflow"
   $scope.whoAmI = () ->
-    @currentUser ?= $http.get "/me"
+    $scope.currentUser ?= $http.get "/me"
   $scope.logout = () ->
     $http.delete("/signout").success ->
-      @currentUser = undefined
+      $scope.currentUser = undefined
       $location.path "/"
       $location.search {}
   $rootScope.pageTitle = () ->

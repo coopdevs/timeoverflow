@@ -11,6 +11,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone
       t.string :alt_phone
       t.text :address
+      t.date :registration_date
+      t.integer :registration_number
+      t.boolean :admin
+      t.boolean :superadmin
 
       t.timestamps
     end

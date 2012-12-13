@@ -5,9 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def intercept_html_requests
-    if request.format == Mime::HTML and request.method == "GET"
-      render "application/index"
-    end
+    render "application/index" and return if request.format == Mime::HTML and request.method == "GET"
   end
 
   def index

@@ -8,10 +8,16 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  validates :registration_number, :uniqueness => { :scope => :organization_id }
+
   has_and_belongs_to_many :categories
 
   def admin?
-    username == "admin"
+    admin or superadmin
+  end
+
+  def superadmin?
+    superadmin
   end
 
   belongs_to :organization
