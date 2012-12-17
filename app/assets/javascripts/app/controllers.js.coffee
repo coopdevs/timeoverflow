@@ -80,7 +80,7 @@
 
 
 
-@OrganizationsController = ["$scope", "$http", "$routeParams", "Organization",
+@OrganizationsController = ["$scope", "$http", "$routeParams", "$rootScope", "Organization",
 ($scope, $http, $routeParams, $rootScope, Organization) ->
   $scope.whoAmI()
   if $routeParams.id is "new"
