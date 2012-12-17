@@ -11,85 +11,16 @@
     # Configuration of the routeProvider #
 
     $routeProvider.when "/",
-      template: """
-      <div class="hero-unit">
-        <h1>TimeOverflow</h1>
-        <p>Welcome to the new-generation time banking system</p>
-        <p>
-          <a class="btn btn-primary btn-large">
-            Learn more
-          </a>
-        </p>
-      </div>
-      """
+      templateUrl: "<%= asset_path 'home.html' %>"
       controller: RootController
-      breadcrumb: '<i class="icon-home"></i>'
 
     $routeProvider.when "/categories/:id",
-      # templateUrl: "<%= asset_path('category.html') %>"
-      template: """
-      <div class='row'>
-        <div class='span8'>
-          <div class='well'>
-            <form class='form-horizontal' name='categoryForm'>
-              <fieldset>
-                <legend>
-                  {{ formTitle() }}
-                </legend>
-                <div field label='Name'>
-                  <input class='input-xlarge' id='name' ng-model='object.name' type='text' />
-                </div>
-                <div field label='Parent'>
-                  <select class='input-xlarge' data-placeholder='category' ng-model='object.parent_id' ui-select2='{allowClear:true}'>
-                    <option value=''>(no parent)</option>
-                    <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
-                  </select>
-                </div>
-              </fieldset>
-              <pre>{{ object | json }}</pre>
-              <div class='form-actions'>
-                <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
-                <a class='btn' href='/categories'>Cancel</a>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      """
+      templateUrl: "<%= asset_path 'category.html' %>"
       controller: CategoriesController
+
     $routeProvider.when "/categories",
-      # templateUrl: "<%= asset_path('categories.html') %>"
-      template: """
-      <table class='table table-hover table-condensed'>
-        <thead>
-          <tr>
-            <th colspan='10'>
-              <div class='navbar'>
-                <div class='navbar-inner'>
-                  <ul class='nav pull-right'>
-                    <a class='btn btn-primary' href='/categories/new'>New category</a>
-                  </ul>
-                </div>
-              </div>
-            </th>
-          </tr>
-          <tr>
-            <th>name</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="cat in ( categories | filter:searchTerm | orderBy:'fqn' )">
-            <td>
-              <a href='/categories/{{ cat.id }}'>{{ cat.fqn }}</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      """
+      templateUrl: "<%= asset_path 'categories.html' %>"
       controller: CategoriesController
-      breadcrumb: 'categories'
-
 
     $routeProvider.when "/users/:id",
       # templateUrl: "<%= asset_path('user.html') %>"
