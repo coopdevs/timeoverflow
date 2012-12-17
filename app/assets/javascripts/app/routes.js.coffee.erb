@@ -117,60 +117,10 @@
 
 
     $routeProvider.when "/organizations/:id",
-      # templateUrl: "<%= asset_path('organization.html') %>"
-      template: """
-      <div class='row'>
-        <div class='span8'>
-          <div class='well'>
-            <form class='form-horizontal' name='orgForm'>
-              <fieldset>
-                <legend>
-                  {{ formTitle() }}
-                </legend>
-                <div field label='Name'>
-                  <input class='input-xlarge' id='name' ng-model='object.name' type='text' />
-                </div>
-              </fieldset>
-              <pre>{{ object | json }}</pre>
-              <div class='form-actions'>
-                <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
-                <a class='btn' href='/organizations'>Cancel</a>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      """
+      templateUrl: "<%= asset_path('organization.html') %>"
       controller: OrganizationsController
     $routeProvider.when "/organizations",
-      # templateUrl: "<%= asset_path('organizations.html') %>"
-      template: """
-      <table class='table table-hover table-condensed'>
-        <thead>
-          <tr>
-            <th>
-              <div class='navbar'>
-                <div class='navbar-inner'>
-                  <ul class='nav pull-right'>
-                    <a class='btn btn-primary' href='/organizations/new'>New organization</a>
-                  </ul>
-                </div>
-              </div>
-            </th>
-          </tr>
-          <tr>
-            <th>name</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="org in ( organizations | filter:searchTerm | orderBy:'name' )">
-            <td>
-              <a href='/organizations/{{ org.id }}'>{{ org.name }}</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      """
+      templateUrl: "<%= asset_path('organizations.html') %>"
       controller: OrganizationsController
 
 
