@@ -13,7 +13,9 @@ class UsersController < ApplicationController
 
   def me
     head 401 and return unless current_user
-    respond_with current_user
+    respond_with @user = current_user do |format|
+      format.json { render action: :show }
+    end
   end
 
   def show
