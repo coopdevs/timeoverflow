@@ -46,9 +46,8 @@ class UsersController < ApplicationController
 
   def user_params
     fields_to_permit = %w"username email category_ids date_of_birth phone alt_phone password password_confirmation identity_document"
-    fields_to_permit << "organization_id" if can? :manage, Organization
-    fields_to_permit << "admin" << "registration_number" if current_user.admin?
-    fields_to_permit << "superadmin" if current_user.superadmin?
+    fields_to_permit += %w"admin registration_number registration_date" if current_user.admin?
+    fields_to_permit += %w"organization_id superadmin" if current_user.superadmin?
     params[:user].permit(*fields_to_permit).tap &method(:ap)
   end
 end

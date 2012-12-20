@@ -30,7 +30,6 @@
   User.property "organization"
     get: -> @_organization ?= if @organization_id then Organization.identityMap[@organization_id] else null
   User::toData = ->
-    console.log this
     username: @username
     email: @email
     category_ids: @category_ids
@@ -41,7 +40,10 @@
     password: @password
     password_confirmation: @password_confirmation
     organization_id: @organization_id
-  # console.log User, User.prototype, User.identityMap
+    registration_number: @registration_number
+    registration_date: @registration_date
+    admin: @admin
+    superadmin: @superadmin
   User
 ]
 
@@ -56,4 +58,10 @@
   Organization::toData = ->
     name: @name
   Organization
+]
+
+
+@APP.factory "CurrentUser", ["$resource",
+($resource) ->
+  $resource "/me"
 ]

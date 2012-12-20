@@ -22,97 +22,17 @@
       templateUrl: "<%= asset_path 'categories.html' %>"
       controller: CategoriesController
 
+    $routeProvider.when "/users/new",
+      templateUrl: "<%= asset_path('user-form.html') %>"
+      controller: UsersController
     $routeProvider.when "/users/:id",
-      # templateUrl: "<%= asset_path('user.html') %>"
-      template: """
-      <form class='form-horizontal' name='userForm'>
-        <legend>{{ formTitle() }}</legend>
-        <div field='' label='Name'>
-          <input class='input-xxlarge' id='name' ng-model='object.username' type='text' />
-        </div>
-        <div field='' label='Organization'>
-          <select class='input-xxlarge' data-placeholder='organization' id='org' ng-model='object.organization_id' ui-select2='{allowClear:true}'>
-            <option value=''>(no org)</option>
-            <option ng-repeat='o in organizations' value='{{ o.id }}'>{{ o.name }}</option>
-          </select>
-        </div>
-        <div field='' label='Email'>
-          <input class='input-xxlarge' id='email' ng-model='object.email' type='email' />
-        </div>
-        <div field='' label='Registration number'>
-          <input class='input-xxlarge' ng-model='object.registration_number' type='text' />
-        </div>
-        <div field='' label='Registration date'>
-          <input class='input-xxlarge' ng-model='object.registration_date' type='date' ui-jq='datepicker' ui-options="{dateFormat: 'dd/mm/yy'}" />
-        </div>
-        <div field='' label='Password'>
-          <input class='input-xxlarge' id='pwd' ng-model='object.password' type='password' />
-        </div>
-        <div field='' label='Repeat password'>
-          <input class='input-xxlarge' id='pwd2' ng-model='object.password_confirmation' type='password' />
-        </div>
-        <div field='' label='Date of birth'>
-          <input class='input-xxlarge' id='dob2' ng-model='object.date_of_birth' type='date' ui-jq='datepicker' ui-options="{dateFormat: 'dd/mm/yy'}" />
-        </div>
-        <div field='' label='Identity number'>
-          <input class='input-xxlarge' id='identity_document' ng-model='object.identity_document' type='text' />
-        </div>
-        <div field='' label='Phone'>
-          <input class='input-xxlarge' id='phone' ng-model='object.phone' type='tel' />
-        </div>
-        <div field='' label='Alternative phone'>
-          <input class='input-xxlarge' id='alt_phone' ng-model='object.alt_phone' type='tel' />
-        </div>
-        <div field='' label='Categories'>
-          <select class='input-xxlarge' data-placeholder='Select categories' id='categories' multiple='multiple' ng-model='object.category_ids' ui-select2='{allowClear:true}'>
-            <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
-          </select>
-        </div>
-        <!-- %pre {{ category | json }} -->
-        <div class='form-actions'>
-          <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
-          <a class='btn' href='/users'>Cancel</a>
-        </div>
-      </form>
-      """
+      templateUrl: "<%= asset_path('user.html') %>"
+      controller: UsersController
+    $routeProvider.when "/users/:id/edit",
+      templateUrl: "<%= asset_path('user-form.html') %>"
       controller: UsersController
     $routeProvider.when "/users",
-      # templateUrl: "<%= asset_path('users.html') %>"
-      template: """
-      <table class='table table-hover table-condensed'>
-        <thead>
-          <tr>
-            <th colspan='5'>
-              <div class='navbar'>
-                <div class='navbar-inner'>
-                  <ul class='nav pull-right'>
-                    <a class='btn btn-primary' href='/users/new'>New user</a>
-                  </ul>
-                </div>
-              </div>
-            </th>
-          </tr>
-          <tr>
-            <th>Username</th>
-            <th>email</th>
-            <th>ID</th>
-            <th>dob</th>
-            <th>organization</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="u in (users | orderBy:'username' | filter:searchTerm)">
-            <td>
-              <a href='/users/{{u.id}}'>{{ u.username }}</a>
-            </td>
-            <td>{{ u.email }}</td>
-            <td>{{ u.identity_document }}</td>
-            <td>{{ u.date_of_birth }}</td>
-            <td>{{ u.organization.name }}</td>
-          </tr>
-        </tbody>
-      </table>
-      """
+      templateUrl: "<%= asset_path('users.html') %>"
       controller: UsersController
 
 

@@ -1,9 +1,9 @@
 
-@RootController = ["$scope", "$http", "$routeParams", "$location", "$rootScope", "Category", "Organization",
-($scope, $http, $routeParams, $location, $rootScope, Category, Organization) ->
+@RootController = ["$scope", "$http", "$routeParams", "$location", "$rootScope", "CurrentUser", "Category", "Organization",
+($scope, $http, $routeParams, $location, $rootScope, CurrentUser, Category, Organization) ->
   $rootScope.brand = "TimeOverflow"
   $scope.whoAmI = () ->
-    $scope.currentUser ?= $http.get "/me"
+    $scope.currentUser ?= CurrentUser.get()
   $scope.logout = () ->
     $http.delete("/signout").success ->
       $scope.currentUser = undefined
@@ -30,7 +30,8 @@
 ]
 
 
-@LoginController = ["$scope", "$http", "authService", ($scope, $http, authService) ->
+@LoginController = ["$scope", "$http", "authService",
+($scope, $http, authService) ->
   $scope.submit = () ->
     $http.post("/signin", $scope.login).success(-> authService.loginConfirmed())
 ]
@@ -40,7 +41,8 @@
 ]
 
 
-@CategoriesController = ["$scope", "$http", "$routeParams", "Category", ($scope, $http, $routeParams, Category) ->
+@CategoriesController = ["$scope", "$http", "$routeParams", "Category",
+($scope, $http, $routeParams, Category) ->
   $scope.whoAmI()
   if $routeParams.id is "new"
     $scope.object = new Category()
@@ -127,9 +129,9 @@
       console.log "ERROR", data
       alert "error"
     if obj.id?
-      User.update {id: obj.id}, {user: obj.toData()}, success, failure
+      User.update {id: obj.id}, {user: obj}, success, failure
     else
-      User.save {user: obj.toData()}, success, failure
+      User.save {user: obj}, success, failure
   $scope.formTitle = ->
     if $scope.object?.id then "Edit \"#{$scope.object.name()}\"" else "New user"
   $scope.loadUsers()

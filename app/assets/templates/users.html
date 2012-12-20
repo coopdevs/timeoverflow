@@ -1,0 +1,35 @@
+<table class='table table-hover table-condensed'>
+  <thead>
+    <tr>
+      <th colspan='12'>
+        <div class='navbar'>
+          <div class='navbar-inner'>
+            <ul class='nav pull-right'>
+              <a class='btn btn-primary' href='/users/new'>Nuevo usuario</a>
+            </ul>
+          </div>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <th>Nombre usuario</th>
+      <th>Correo</th>
+      <th>Código de miembro</th>
+      <th>Fecha de alta</th>
+      <th>Organización</th>
+      <th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="u in (users | orderBy:'username' | filter:searchTerm)">
+      <td>{{ u.username }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.registration_number }}</td>
+      <td>{{ u.registration_date }}</td>
+      <td>{{ u.organization.name }}</td>
+      <td class="hover-actions">
+        <a class="action" href='/users/{{u.id}}'><i class="icon-eye-open"></i> ver</a>
+        <a class="action" href='/users/{{u.id}}/edit'><i class="icon-pencil"></i> modificar</a>
+    </tr>
+  </tbody>
+</table>
