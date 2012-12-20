@@ -10,7 +10,6 @@
  *
  *= require angular-ui
  *= require select2
- *= require bootstrap
  *= require_self
  *= require_tree .
  */
@@ -18,3 +17,9 @@
 body {
   padding-top: 60px;
 }
+
+
+// td.hover-actions {
+//   > a.action { display: none; }
+//   &:hover > a.action { display: inline; }
+// }

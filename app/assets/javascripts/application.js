@@ -10,12 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//  require jquery-1.8.2
-//  require jquery-ui-1.9.1
-//  require angular
-//  require angular-resource
 //= require select2
 //= require angular-ui
-//= require bootstrap
 //= require_tree .
 //  require_tree ../templates
