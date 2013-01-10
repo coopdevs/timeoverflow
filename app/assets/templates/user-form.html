@@ -1,9 +1,9 @@
 <form class='form-horizontal' name='userForm'>
-  <legend>{{ formTitle() }}</legend>
+  <legend>Nuevo usuario</legend>
   <div field label='Nombre'>
     <input class='input-xxlarge' id='name' ng-model='object.username' type='text' />
   </div>
-  <div field label='Organización'>
+  <div field label='Organización' ng-show='currentUser.superadmin'>
     <select class='input-xxlarge' data-placeholder='organization' id='org' ng-model='object.organization_id' ui-select2='{allowClear:true}'>
       <option value=''>(no org)</option>
       <option ng-repeat='o in organizations' value='{{ o.id }}'>{{ o.name }}</option>
@@ -15,7 +15,7 @@
   <div field label='Administrador' ng-show="currentUser.admin">
     <input class='input-xxlarge' id='admin' ng-model='object.admin' type='checkbox' />
   </div>
-  <div field label='Administrador de sistema' ng-show="currentUser.admin">
+  <div field label='Administrador de sistema' ng-show="currentUser.superadmin">
     <input class='input-xxlarge' id='superadmin' ng-model='object.superadmin' type='checkbox' />
   </div>
   <div field label='Código de miembro'>
@@ -30,24 +30,23 @@
   <div field label='Repeat password'>
     <input class='input-xxlarge' id='pwd2' ng-model='object.password_confirmation' type='password' />
   </div>
-  <div field label='Date of birth'>
+  <div field label='Fecha de nacimiento'>
     <input class='input-xxlarge' id='dob2' ng-model='object.date_of_birth' type='date' ui-jq='datepicker' />
   </div>
   <div field label='Número de documento (DNI/Pasaporte/...)'>
     <input class='input-xxlarge' id='identity_document' ng-model='object.identity_document' type='text' />
   </div>
-  <div field label='Phone'>
+  <div field label='Teléfono'>
     <input class='input-xxlarge' id='phone' ng-model='object.phone' type='tel' />
   </div>
-  <div field label='Alternative phone'>
+  <div field label='Otro teléfono'>
     <input class='input-xxlarge' id='alt_phone' ng-model='object.alt_phone' type='tel' />
   </div>
-  <div field label='Categories'>
-    <select class='input-xxlarge' data-placeholder='Select categories' id='categories' multiple='multiple' ng-model='object.category_ids' ui-select2='{allowClear:true}'>
+  <div field label='Categorías'>
+    <select class='input-xxlarge' data-placeholder='Seleccionar' id='categories' multiple='multiple' ng-model='object.category_ids' ui-select2='{allowClear:true}'>
       <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
     </select>
   </div>
-  <pre>{{ object | json }}</pre>
   <div class='form-actions'>
     <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
     <a class='btn' href='/users'>Cancel</a>

@@ -6,6 +6,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
+require 'tilt'
 # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -68,6 +69,8 @@ module Timeoverflow
     # Add fonts to assets
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.paths << Rails.root.join("app", "assets", "templates")
+
+    config.assets.register_engine '.haml', Tilt::HamlTemplate
 
     # Avoid connecting to the database on precompilation
     config.assets.initialize_on_precompile = false

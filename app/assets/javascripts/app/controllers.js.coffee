@@ -112,12 +112,10 @@
 @UsersController = ["$scope", "$http", "$routeParams", "User", "Organization",
 ($scope, $http, $routeParams, User, Organization) ->
   $scope.whoAmI()
-  if $routeParams.id is "new"
-    $scope.object = new User()
-  else if $routeParams.id
+  if $routeParams.id?
     $scope.object = User.get id: $routeParams.id
   else
-    $scope.object = null
+    $scope.object = new User()
   $scope.loadUsers = ->
     $scope.users = User.query()
   $scope.save = (obj) ->
