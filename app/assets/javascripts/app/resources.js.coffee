@@ -44,6 +44,12 @@
     registration_date: @registration_date
     admin: @admin
     superadmin: @superadmin
+  User.addToIdentityMap = (data) ->
+    if data instanceof Array
+      d.addToIdentityMap?() for d in data
+    else
+      data.addToIdentityMap?()
+
   User
 ]
 

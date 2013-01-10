@@ -1,9 +1,10 @@
 <form class='form-horizontal' name='userForm'>
-  <legend>Nuevo usuario</legend>
+  <legend ng-hide="object.id">Nuevo usuario</legend>
+  <legend ng-show="object.id">Modificar {{object.username}}</legend>
   <div field label='Nombre'>
     <input class='input-xxlarge' id='name' ng-model='object.username' type='text' />
   </div>
-  <div field label='Organización' ng-show='currentUser.superadmin'>
+  <div field label='Organización' ng-show="currentUser.admin">
     <select class='input-xxlarge' data-placeholder='organization' id='org' ng-model='object.organization_id' ui-select2='{allowClear:true}'>
       <option value=''>(no org)</option>
       <option ng-repeat='o in organizations' value='{{ o.id }}'>{{ o.name }}</option>
@@ -22,7 +23,7 @@
     <input class='input-xxlarge' ng-model='object.registration_number' type='text' />
   </div>
   <div field label='Fecha de alta'>
-    <input class='input-xxlarge' ng-model='object.registration_date' type='date' ui-jq='datepicker' />
+    <input class='input-xxlarge' ng-model='object.registration_date' type='date' />
   </div>
   <div field label='Password'>
     <input class='input-xxlarge' id='pwd' ng-model='object.password' type='password' />
@@ -31,7 +32,7 @@
     <input class='input-xxlarge' id='pwd2' ng-model='object.password_confirmation' type='password' />
   </div>
   <div field label='Fecha de nacimiento'>
-    <input class='input-xxlarge' id='dob2' ng-model='object.date_of_birth' type='date' ui-jq='datepicker' />
+    <input class='input-xxlarge' id='dob2' ng-model='object.date_of_birth' type='date' />
   </div>
   <div field label='Número de documento (DNI/Pasaporte/...)'>
     <input class='input-xxlarge' id='identity_document' ng-model='object.identity_document' type='text' />
@@ -49,6 +50,6 @@
   </div>
   <div class='form-actions'>
     <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
-    <a class='btn' href='/users'>Cancel</a>
+    <a class='btn' href='#/users'>Cancel</a>
   </div>
 </form>

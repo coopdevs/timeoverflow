@@ -1,35 +1,53 @@
-<table class='table table-hover table-condensed'>
-  <thead>
-    <tr>
-      <th colspan='12'>
-        <div class='navbar'>
-          <div class='navbar-inner'>
-            <ul class='nav pull-right'>
-              <a class='btn btn-primary' href='/users/new'>Nuevo usuario</a>
-            </ul>
-          </div>
+<div>
+  <h1>Usuarios <small>({{ users.length }})</small></h1>
+  <div class='navbar'>
+    <div class='navbar-inner'>
+      <ul class='nav pull-right'>
+        <button class='btn' ng-click='show.by=null' ng-class="{active: show.by==null}">Por usuario</button>
+        <button class='btn' ng-click='show.by="category"' ng-class="{active: show.by=='category'}">Por categoría</button>
+        <a class='btn btn-primary' href='#/users/new'>Nuevo usuario</a>
+      </ul>
+    </div>
+  </div>
+  <ng:switch on="show.by">
+    <div ng-switch-when="category">
+      <div ng-repeat="cat in (categories | orderBy:'fqn')">
+        <div ng-show="usersByCategory[cat.id]">
+          <h5>{{ cat.fqn }}</h5>
+            <!-- <span ng-repeat="u in usersOfCat">{{ User[u].email }}<span ng-hide="$last">, </span></span> -->
+          <span ng-repeat="u in usersByCategory[cat.id]">{{ User.identityMap[u].email }} <span ng-show="User.identityMap[u].organization">({{ User.identityMap[u].organization.name }})</span><span ng-hide="$last">, </span></span>
         </div>
-      </th>
-    </tr>
-    <tr>
-      <th>Nombre usuario</th>
-      <th>Correo</th>
-      <th>Código de miembro</th>
-      <th>Fecha de alta</th>
-      <th>Organización</th>
-      <th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="u in (users | orderBy:'username' | filter:searchTerm)">
-      <td>{{ u.username }}</td>
-      <td>{{ u.email }}</td>
-      <td>{{ u.registration_number }}</td>
-      <td>{{ u.registration_date }}</td>
-      <td>{{ u.organization.name }}</td>
-      <td class="hover-actions">
-        <a class="action" href='/users/{{u.id}}'><i class="icon-eye-open"></i> ver</a>
-        <a class="action" href='/users/{{u.id}}/edit'><i class="icon-pencil"></i> modificar</a>
-    </tr>
-  </tbody>
-</table>
+      </div>
+    </div>
+    <div ng-switch-default="">
+      <table class='table table-hover table-condensed'>
+        <thead>
+          <tr>
+            <th colspan='12'>
+            </th>
+          </tr>
+          <tr>
+            <th>Nombre usuario</th>
+            <th>Correo</th>
+            <th>Código de miembro</th>
+            <th>Fecha de alta</th>
+            <th>Organización</th>
+            <th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="u in (users | orderBy:'username' | filter:searchTerm)">
+            <td>{{ u.username }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.registration_number }}</td>
+            <td>{{ u.registration_date }}</td>
+            <td>{{ u.organization.name }}</td>
+            <td class="hover-actions">
+              <a class="action" href='#/users/{{u.id}}'><i class="icon-eye-open"></i> ver</a>
+              <a class="action" href='#/users/{{u.id}}/edit'><i class="icon-pencil"></i> modificar</a>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng:switch>
+</div>

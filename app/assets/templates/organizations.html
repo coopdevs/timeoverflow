@@ -18,7 +18,7 @@
   <tbody>
     <tr ng-repeat="org in ( organizations | filter:searchTerm | orderBy:'name' )">
       <td>
-        <a href='/organizations/{{ org.id }}'>{{ org.name }}</a>
+        <a href='#/organizations/{{ org.id }}'>{{ org.name }}</a>
       </td>
     </tr>
   </tbody>

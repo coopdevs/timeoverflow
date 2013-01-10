@@ -5,7 +5,7 @@
         <div class='navbar'>
           <div class='navbar-inner'>
             <ul class='nav pull-right'></ul>
-            <a class='btn btn-primary' href='/categories/new'>New category</a>
+            <a class='btn btn-primary' href='#/categories/new'>New category</a>
           </div>
         </div>
       </th>
@@ -17,7 +17,7 @@
   <tbody>
     <tr ng-repeat="cat in ( categories | filter:searchTerm | orderBy:'fqn' )">
       <td>
-        <a href='/categories/{{ cat.id }}'>{{ cat.fqn }}</a>
+        <a href='#/categories/{{ cat.id }}'>{{ cat.fqn }}</a>
       </td>
     </tr>
   </tbody>

@@ -21,8 +21,7 @@
   $scope.loadCategories()
   $scope.loadOrganizations()
   $scope.$on "go", (ev, where) ->
-    if where.path then $location.path where.path
-    if where.search then $location.search where.search
+    $location[d] where[d] for d in ["path", "search"] when where[d]
   $scope.$on "loadCategories", (ev) -> $scope.loadCategories()
   $scope.$on "loadOrganizations", (ev) -> $scope.loadOrganizations()
   $rootScope.$on "event:auth-loginRequired", -> $rootScope.showLogin = true
@@ -109,20 +108,33 @@
 
 
 
-@UsersController = ["$scope", "$http", "$routeParams", "User", "Organization",
-($scope, $http, $routeParams, User, Organization) ->
+@UsersController = ["$scope", "$http", "$routeParams", "$location", "User", "Organization", "Category",
+($scope, $http, $routeParams, $location, User, Organization, Category) ->
   $scope.whoAmI()
   if $routeParams.id?
     $scope.object = User.get id: $routeParams.id
   else
     $scope.object = new User()
+  $scope.show = {}
+  $scope.User = User
+  $scope.Category = Category
+  $scope.usersByCategory = {}
   $scope.loadUsers = ->
-    $scope.users = User.query()
+    $scope.users = User.query (data) ->
+      User.addToIdentityMap(data)
+      usersByCategory = {}
+      for u in data
+        for cat in u.category_ids
+          usersByCategory[cat] ?= []
+          usersByCategory[cat].push u.id
+      angular.copy usersByCategory, $scope.usersByCategory
+      data
+      console.log $scope.users
   $scope.save = (obj) ->
     success = (data, headers) ->
       $scope.loadUsers()
       console.log "SUCCESS", data, headers()
-      $scope.$emit "go", path: "/users"
+      $location.path "/users"
     failure = (data, headers) ->
       console.log "ERROR", data
       alert "error"
