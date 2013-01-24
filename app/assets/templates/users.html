@@ -11,14 +11,29 @@
   </div>
   <ng:switch on="show.by">
     <div ng-switch-when="category">
-      <div ng-repeat="cat in (categories | orderBy:'fqn')">
+      <table class='table table-hover table-condensed'>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Miembros</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cat in (categories | orderBy:'fqn')" ng-show="usersByCategory[cat.id]">
+            <td>{{ cat.name }}</td>
+            <td>
+              <span ng-repeat="u in usersByCategory[cat.id]">{{ User.identityMap[u].registration_number }} <span ng-show="currentUser.superadmin &amp;&amp; User.identityMap[u].organization">({{ User.identityMap[u].organization.name }})</span><span ng-hide="$last">, </span></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+<!--       <div ng-repeat="cat in (categories | orderBy:'fqn')">
         <div ng-show="usersByCategory[cat.id]">
-          <h5>{{ cat.fqn }}</h5>
-            <!-- <span ng-repeat="u in usersOfCat">{{ User[u].email }}<span ng-hide="$last">, </span></span> -->
-          <span ng-repeat="u in usersByCategory[cat.id]">{{ User.identityMap[u].email }} <span ng-show="User.identityMap[u].organization">({{ User.identityMap[u].organization.name }})</span><span ng-hide="$last">, </span></span>
+          <h5><span><i class="icon-chevron-right"></i></span> {{ cat.name }}</h5>
+          <span ng-repeat="u in usersByCategory[cat.id]">{{ User.identityMap[u].registration_number }} <span ng-show="currentUser.superadmin &amp;&amp; User.identityMap[u].organization">({{ User.identityMap[u].organization.name }})</span><span ng-hide="$last">, </span></span>
         </div>
       </div>
-    </div>
+ -->    </div>
     <div ng-switch-default="">
       <table class='table table-hover table-condensed'>
         <thead>
@@ -27,21 +42,21 @@
             </th>
           </tr>
           <tr>
+            <th ng-show="currentUser.superadmin">Organización</th>
+            <th>Código de miembro</th>
             <th>Nombre usuario</th>
             <th>Correo</th>
-            <th>Código de miembro</th>
-            <th>Fecha de alta</th>
-            <th>Organización</th>
+            <th>Teléfono</th>
             <th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="u in (users | orderBy:'username' | filter:searchTerm)">
+          <tr ng-repeat="u in (users | orderBy:'registration_number' | filter:searchTerm)">
+            <td ng-show="currentUser.superadmin">{{ u.organization.name }}</td>
+            <td>{{ u.registration_number }}</td>
             <td>{{ u.username }}</td>
             <td>{{ u.email }}</td>
-            <td>{{ u.registration_number }}</td>
-            <td>{{ u.registration_date }}</td>
-            <td>{{ u.organization.name }}</td>
+            <td>{{ u.phone }}</td>
             <td class="hover-actions">
               <a class="action" href='#/users/{{u.id}}'><i class="icon-eye-open"></i> ver</a>
               <a class="action" href='#/users/{{u.id}}/edit'><i class="icon-pencil"></i> modificar</a>

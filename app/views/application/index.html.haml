@@ -31,7 +31,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="/") {{ pageTitle() }}
+          %a.brand{href: "#/"} {{ pageTitle() }}
           .container.nav-collapse
             %ul.nav
               %li= link_to "Organizations", "#/organizations"
@@ -39,8 +39,8 @@
               %li= link_to "Users", "#/users"
             %ul.nav.pull-right
               %li
-                %a{"ng-click" => "logout()", "ng-show" => "currentUser"} Log out {{ currentUser.email }}
-                %a{"ng-click" => "whoAmI()", "ng-hide" => "currentUser"} Log in
+                %a{"ng-click" => "logout()", "ng-show" => "currentUser.id"} Log out {{ currentUser.email }}
+                %a{"ng-click" => "whoAmI()", "ng-hide" => "currentUser.id"} Log in
 
             %form.navbar-search.pull-right
               %input.search-query.xxlarge{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}

@@ -127,9 +127,18 @@
         for cat in u.category_ids
           usersByCategory[cat] ?= []
           usersByCategory[cat].push u.id
+          c = Category.identityMap[cat]
+          while true
+            c = c.parent
+            if (not c?) or usersByCategory[c.id]?
+              console.log "exists", usersByCategory, c
+              break
+            else
+              console.log "adding", c
+              usersByCategory[c.id] = []
+
       angular.copy usersByCategory, $scope.usersByCategory
       data
-      console.log $scope.users
   $scope.save = (obj) ->
     success = (data, headers) ->
       $scope.loadUsers()

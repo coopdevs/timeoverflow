@@ -23,7 +23,7 @@
     <input class='input-xxlarge' ng-model='object.registration_number' type='text' />
   </div>
   <div field label='Fecha de alta'>
-    <input class='input-xxlarge' ng-model='object.registration_date' type='date' />
+    <input ng-model='object.registration_date' type='date' />
   </div>
   <div field label='Password'>
     <input class='input-xxlarge' id='pwd' ng-model='object.password' type='password' />
@@ -32,7 +32,7 @@
     <input class='input-xxlarge' id='pwd2' ng-model='object.password_confirmation' type='password' />
   </div>
   <div field label='Fecha de nacimiento'>
-    <input class='input-xxlarge' id='dob2' ng-model='object.date_of_birth' type='date' />
+    <input id='dob2' ng-model='object.date_of_birth' type='date' />
   </div>
   <div field label='Número de documento (DNI/Pasaporte/...)'>
     <input class='input-xxlarge' id='identity_document' ng-model='object.identity_document' type='text' />

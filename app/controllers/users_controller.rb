@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user.organization_id ||= current_user.organization_id
     if @user.save
       respond_with @user, status: :created, location: @user
     else

@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   before_filter :intercept_html_requests
   helper_method :current_user
 
+  rescue_from CanCan::AccessDenied do |exception|
+    head 401
+  end
+
   def intercept_html_requests
     render "application/index" and return if request.format == Mime::HTML and request.method == "GET"
   end
