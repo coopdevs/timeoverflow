@@ -3,10 +3,10 @@ TimeOverflow
 
 Sistema de Banco de Tiempo. 
 
-TimeOverflow es un software desarrollado de manera altruista para ofrecer un sistema que facilite la gestión y la interacción 
-de los miembros de los Bancos de Tiempo. El modelo sobre el que se trabaja está guiado por las necesidades de los Bancos de Tiempo 
-que hacen uso de él y está preparado para poder albergar varios Bancos de Tiempo en una sola instalación para ello es
-necesario contar con tres niveles de privilegios: superadmin, admin (solo gestiona un Banco) y miembros de un Banco.
+TimeOverflow es un software desarrollado de manera altruista para ofrecer un sistema que facilite la interacción 
+de los miembros y la gestión de los Bancos de Tiempo. El modelo sobre el que se trabaja está guiado por las necesidades de los Bancos de Tiempo 
+que hacen uso de él y está preparado para poder albergar varios Bancos de Tiempo en una sola instalación, para ello cuenta
+con tres niveles de privilegios: superadmin, admin (solo gestiona un Banco) y miembros de un Banco.
 
 TimeOverflow está dividido en 2 grandes bloques:
 * **Sistema de gestión**
@@ -17,7 +17,7 @@ TimeOverflow está dividido en 2 grandes bloques:
 
 ## Sistema de gestión
 Los Bancos de Tiempo físicos (a los que principalmente se enfoca TimeOverflow) a menudo funcionan sin internet, se realizan
-un listados de servicios y miembros y se pagan las horas con talones que finalmente se ingresan en la oficina, por tanto
+unos listados de servicios y de miembros y se pagan las horas con talones que finalmente se ingresan en la oficina, por tanto
 el sistema de gestión nos permite gestionar los miembros y sus servicios, sacar listados y llevar la contabilidad. También
 es importante que los gestores del Banco (admin), tengan información útil sobre la comunidad para poder actuar sobre ella 
 (por ejemplo, estadísticas sobre usuarios poco activos, gestión de incidencias, equilibrio de las cuentas, etc)
