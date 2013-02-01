@@ -119,23 +119,21 @@
   $scope.User = User
   $scope.Category = Category
   $scope.usersByCategory = {}
+  $scope.showCat = (id) ->
+    id of $scope.usersByCategory
+  $scope.depth = (cat, range) ->
+    dpth = if p = cat.parent then $scope.depth(p) + 1 else 0
+    if range then [0...dpth] else dpth
   $scope.loadUsers = ->
     $scope.users = User.query (data) ->
       User.addToIdentityMap(data)
       usersByCategory = {}
       for u in data
         for cat in u.category_ids
+          c = Category.identityMap[cat]
+          usersByCategory[c.id] = [] while (c = c.parent)?
           usersByCategory[cat] ?= []
           usersByCategory[cat].push u.id
-          c = Category.identityMap[cat]
-          while true
-            c = c.parent
-            if (not c?) or usersByCategory[c.id]?
-              console.log "exists", usersByCategory, c
-              break
-            else
-              console.log "adding", c
-              usersByCategory[c.id] = []
 
       angular.copy usersByCategory, $scope.usersByCategory
       data

@@ -19,8 +19,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="cat in (categories | orderBy:'fqn')" ng-show="usersByCategory[cat.id]">
-            <td>{{ cat.name }}</td>
+          <tr ng-repeat="cat in (categories | orderBy:'fqn')" ng-show="showCat(cat.id)">
+            <td>
+              <span ng-repeat="t in depth(cat, true)">
+                <i class="icon-angle-right"></i>
+              </span>
+              {{ cat.name }}
+            </td>
             <td>
               <span ng-repeat="u in usersByCategory[cat.id]">{{ User.identityMap[u].registration_number }} <span ng-show="currentUser.superadmin &amp;&amp; User.identityMap[u].organization">({{ User.identityMap[u].organization.name }})</span><span ng-hide="$last">, </span></span>
             </td>
@@ -29,7 +34,7 @@
       </table>
 <!--       <div ng-repeat="cat in (categories | orderBy:'fqn')">
         <div ng-show="usersByCategory[cat.id]">
-          <h5><span><i class="icon-chevron-right"></i></span> {{ cat.name }}</h5>
+          <h5><span ng-repeat="depth(cat, true)"><i class="icon-chevron-right"></i></span> {{ cat.name }}</h5>
           <span ng-repeat="u in usersByCategory[cat.id]">{{ User.identityMap[u].registration_number }} <span ng-show="currentUser.superadmin &amp;&amp; User.identityMap[u].organization">({{ User.identityMap[u].organization.name }})</span><span ng-hide="$last">, </span></span>
         </div>
       </div>
