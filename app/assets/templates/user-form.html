@@ -1,53 +1,53 @@
 <form class='form-horizontal' name='userForm'>
   <legend ng-hide="object.id">Nuevo usuario</legend>
   <legend ng-show="object.id">Modificar {{object.username}}</legend>
-  <div field label='Nombre'>
+  <control-group label='Nombre'>
     <input class='input-xxlarge' id='name' ng-model='object.username' type='text' />
-  </div>
-  <div field label='Organización' ng-show="currentUser.admin">
+  </control-group>
+  <control-group label='Organización' ng-show="currentUser.admin">
     <select class='input-xxlarge' data-placeholder='organization' id='org' ng-model='object.organization_id' ui-select2='{allowClear:true}'>
       <option value=''>(no org)</option>
       <option ng-repeat='o in organizations' value='{{ o.id }}'>{{ o.name }}</option>
     </select>
-  </div>
-  <div field label='Email'>
+  </control-group>
+  <control-group label='Email'>
     <input class='input-xxlarge' id='email' ng-model='object.email' type='email' />
-  </div>
-  <div field label='Administrador' ng-show="currentUser.admin">
+  </control-group>
+  <control-group label='Administrador' ng-show="currentUser.admin">
     <input class='input-xxlarge' id='admin' ng-model='object.admin' type='checkbox' />
-  </div>
-  <div field label='Administrador de sistema' ng-show="currentUser.superadmin">
+  </control-group>
+  <control-group label='Administrador de sistema' ng-show="currentUser.superadmin">
     <input class='input-xxlarge' id='superadmin' ng-model='object.superadmin' type='checkbox' />
-  </div>
-  <div field label='Código de miembro'>
+  </control-group>
+  <control-group label='Código de miembro'>
     <input class='input-xxlarge' ng-model='object.registration_number' type='text' />
-  </div>
-  <div field label='Fecha de alta'>
+  </control-group>
+  <control-group label='Fecha de alta'>
     <input ng-model='object.registration_date' type='date' />
-  </div>
-  <div field label='Password'>
+  </control-group>
+  <control-group label='Password'>
     <input class='input-xxlarge' id='pwd' ng-model='object.password' type='password' />
-  </div>
-  <div field label='Repeat password'>
+  </control-group>
+  <control-group label='Repeat password'>
     <input class='input-xxlarge' id='pwd2' ng-model='object.password_confirmation' type='password' />
-  </div>
-  <div field label='Fecha de nacimiento'>
+  </control-group>
+  <control-group label='Fecha de nacimiento'>
     <input id='dob2' ng-model='object.date_of_birth' type='date' />
-  </div>
-  <div field label='Número de documento (DNI/Pasaporte/...)'>
+  </control-group>
+  <control-group label='Número de documento (DNI/Pasaporte/...)'>
     <input class='input-xxlarge' id='identity_document' ng-model='object.identity_document' type='text' />
-  </div>
-  <div field label='Teléfono'>
+  </control-group>
+  <control-group label='Teléfono'>
     <input class='input-xxlarge' id='phone' ng-model='object.phone' type='tel' />
-  </div>
-  <div field label='Otro teléfono'>
+  </control-group>
+  <control-group label='Otro teléfono'>
     <input class='input-xxlarge' id='alt_phone' ng-model='object.alt_phone' type='tel' />
-  </div>
-  <div field label='Categorías'>
+  </control-group>
+  <control-group label='Categorías'>
     <select class='input-xxlarge' data-placeholder='Seleccionar' id='categories' multiple='multiple' ng-model='object.category_ids' ui-select2='{allowClear:true}'>
       <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
     </select>
-  </div>
+  </control-group>
   <div class='form-actions'>
     <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
     <a class='btn' href='#/users'>Cancel</a>

@@ -1,11 +1,8 @@
-@APP.directive "field", ->
+@APP.directive "controlGroup", ->
   transclude: true
-  restrict: "A"
+  restrict: "E"
   scope:
     label: "@"
-    field: "="
-  compile: (tElement, tAttrs, transclude) ->
-
   template: """
   <div class="control-group">
     <label class="control-label">{{label}}</label>

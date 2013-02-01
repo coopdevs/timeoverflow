@@ -6,9 +6,9 @@
           <legend>
             {{ formTitle() }}
           </legend>
-          <div field label='Name'>
+          <control-group label='Name'>
             <input class='input-xlarge' id='name' ng-model='object.name' type='text' />
-          </div>
+          </control-group>
         </fieldset>
         <pre>{{ object | json }}</pre>
         <div class='form-actions'>

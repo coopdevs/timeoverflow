@@ -6,15 +6,15 @@
           <legend>
             {{ formTitle() }}
           </legend>
-          <div field='' label='Name'>
+          <control-group label='Name'>
             <input class='input-xlarge' id='name' ng-model='object.name' type='text' />
-          </div>
-          <div field='' label='Parent'>
+          </control-group>
+          <control-group label='Parent'>
             <select class='input-xlarge' data-placeholder='category' ng-model='object.parent_id' ui-select2='{allowClear:true}'>
               <option value=''>(no parent)</option>
               <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
             </select>
-          </div>
+          </control-group>
         </fieldset>
         <pre>{{ object | json }}</pre>
         <div class='form-actions'>
