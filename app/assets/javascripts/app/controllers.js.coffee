@@ -131,7 +131,7 @@
       for u in data
         for cat in u.category_ids
           c = Category.identityMap[cat]
-          usersByCategory[c.id] = [] while (c = c.parent)?
+          usersByCategory[c.id] ?= [] while (c = c.parent)?
           usersByCategory[cat] ?= []
           usersByCategory[cat].push u.id
 
