@@ -12,6 +12,7 @@ class Ability
       can :manage, :all
     elsif user.admin?
       can :manage, User, organization_id: user.organization_id
+      can :create, Category
     end
 
 
