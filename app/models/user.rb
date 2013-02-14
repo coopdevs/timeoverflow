@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
       unless organization.reg_number_seq
         organization.update_column(:reg_number_seq, organization.users.maximum(:registration_number))
       end
-      organization.increment(:reg_number_seq).reg_number_seq
+      organization.increment!(:reg_number_seq)
+      organization.reg_number_seq
     end
   end
 
