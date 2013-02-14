@@ -3,7 +3,7 @@
   <div class="span6">
     <dl class="well">
       <dt>Organización</dt>
-      <dd>{{ organizations.find(object.organization_id) }}</dd>
+      <dd>{{ organizations.find(object.organization_id).name }}</dd>
       <dt>Correo electrónico</dt>
       <dd>{{ object.email }}</dd>
       <dt>Administrador</dt>
@@ -27,7 +27,7 @@
       <dt>Número de documento (DNI/Pasaporte/...)</dt>
       <dd>{{ object.identity_document }}</dd>
       <dt>Teléfonos</dt>
-      <dd>{{ [object.phone, object.alt_phone] }}</dd>
+      <dd>{{ [object.phone, object.alt_phone].join(", ") }}</dd>
     </dl>
   </div>
   <div class="span6">

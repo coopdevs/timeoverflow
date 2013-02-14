@@ -52,6 +52,7 @@
             <th>Nombre usuario</th>
             <th>Correo</th>
             <th>Teléfono</th>
+            <th>Otro tel.</th>
             <th>
           </tr>
         </thead>
@@ -62,6 +63,7 @@
             <td>{{ u.username }}</td>
             <td>{{ u.email }}</td>
             <td>{{ u.phone }}</td>
+            <td>{{ u.alt_phone }}</td>
             <td class="hover-actions">
               <a class="action" href='#/users/{{u.id}}'><i class="icon-eye-open"></i> ver</a>
               <a class="action" href='#/users/{{u.id}}/edit'><i class="icon-pencil"></i> modificar</a>
