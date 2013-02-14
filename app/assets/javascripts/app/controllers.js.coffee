@@ -139,6 +139,10 @@
       data
   $scope.showEmailsToCopy = ->
     window.prompt "Copiar usando Ctrl-C", (u.email for u in $scope.users).join(", ")
+  $scope.deleteUser = (u) ->
+    if confirm("Estás seguro de borrar???")
+      User.delete u, ->
+        $scope.loadUsers()
   $scope.save = (obj) ->
     success = (data, headers) ->
       $scope.loadUsers()

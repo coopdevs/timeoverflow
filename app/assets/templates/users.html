@@ -68,6 +68,8 @@
             <td class="hover-actions">
               <a class="action" href='#/users/{{u.id}}'><i class="icon-eye-open"></i> ver</a>
               <a class="action" href='#/users/{{u.id}}/edit'><i class="icon-pencil"></i> modificar</a>
+              <a class="action" ng-click='deleteUser(u)'><i class="icon-ban-circle"></i> borrar</a>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -58,3 +58,4 @@ gem "awesome_print"
 gem 'yaml_db'
 gem 'strong_parameters'
 gem "jbuilder"
+gem "paranoia"

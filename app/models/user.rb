@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
 
+  acts_as_paranoid
   has_secure_password
 
   validates_confirmation_of :password
@@ -19,7 +20,7 @@ class User < ActiveRecord::Base
   def assign_registration_number
     self.registration_number ||= begin
       unless organization.reg_number_seq
-        organization.update_column(:reg_number_seq, organization.users.maximum(:registration_number))
+        organization.update_column(:reg_number_seq, organization.users.with_deleted.maximum(:registration_number))
       end
       organization.increment!(:reg_number_seq)
       organization.reg_number_seq

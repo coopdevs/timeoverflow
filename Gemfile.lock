@@ -67,6 +67,8 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.5.0)
+    paranoia (1.2.0)
+      activerecord (>= 3.0.0)
     pg (0.14.1)
     polyglot (0.3.3)
     puma (1.6.3)
@@ -135,6 +137,7 @@ DEPENDENCIES
   haml-rails
   jbuilder
   jquery-rails
+  paranoia
   pg
   puma
   rails (~> 3.2.9)
