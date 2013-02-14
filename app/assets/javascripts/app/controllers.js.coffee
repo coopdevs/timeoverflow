@@ -137,6 +137,8 @@
 
       angular.copy usersByCategory, $scope.usersByCategory
       data
+  $scope.showEmailsToCopy = ->
+    window.prompt "Copiar usando Ctrl-C", (u.email for u in $scope.users).join(", ")
   $scope.save = (obj) ->
     success = (data, headers) ->
       $scope.loadUsers()
