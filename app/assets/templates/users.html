@@ -28,7 +28,7 @@
               {{ cat.name }}
             </td>
             <td>
-              <span ng-repeat="u in usersByCategory[cat.id]">{{ User.identityMap[u].registration_number }} <span ng-show="currentUser.superadmin &amp;&amp; User.identityMap[u].organization">({{ User.identityMap[u].organization.name }})</span><span ng-hide="$last">, </span></span>
+              <span ng-repeat="u in usersByCategory[cat.id]"><a ng-href="{{'#/users/' + u}}">{{ User.identityMap[u].registration_number }} <span ng-show="currentUser.superadmin &amp;&amp; User.identityMap[u].organization">({{ User.identityMap[u].organization.name }})</span></a><span ng-hide="$last">, </span></span>
             </td>
           </tr>
         </tbody>
@@ -67,8 +67,8 @@
             <td>{{ u.alt_phone }}</td>
             <td class="hover-actions">
               <a class="action" href='#/users/{{u.id}}'><i class="icon-eye-open"></i> ver</a>
-              <a class="action" href='#/users/{{u.id}}/edit'><i class="icon-pencil"></i> modificar</a>
-              <a class="action" ng-click='deleteUser(u)'><i class="icon-ban-circle"></i> borrar</a>
+              <a class="action" href='#/users/{{u.id}}/edit' ng-show="currentUser.admin"><i class="icon-pencil"></i> modificar</a>
+              <a class="action" ng-click='deleteUser(u)' ng-show="currentUser.admin"><i class="icon-ban-circle"></i> borrar</a>
             </td>
           </tr>
         </tbody>
