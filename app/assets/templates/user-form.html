@@ -1,10 +1,11 @@
 <form class='form-horizontal' name='userForm'>
+
   <legend ng-hide="object.id">Nuevo usuario</legend>
   <legend ng-show="object.id">Modificar {{object.username}}</legend>
   <control-group label='Nombre'>
     <input class='input-xxlarge' id='name' ng-model='object.username' type='text' />
   </control-group>
-  <control-group label='Organización' ng-show="currentUser.admin">
+  <control-group label='Organización' ng-show="currentUser.superadmin">
     <select class='input-xxlarge' data-placeholder='organization' id='org' ng-model='object.organization_id' ui-select2='{allowClear:true}'>
       <option value=''>(no org)</option>
       <option ng-repeat='o in organizations' value='{{ o.id }}'>{{ o.name }}</option>
@@ -13,11 +14,19 @@
   <control-group label='Email'>
     <input class='input-xxlarge' id='email' ng-model='object.email' type='email' />
   </control-group>
-  <control-group label='Administrador' ng-show="currentUser.admin">
-    <input class='input-xxlarge' id='admin' ng-model='object.admin' type='checkbox' />
+  <control-group ng-show="currentUser.admin">
+    <label class="checkbox">
+      <input class='input-xxlarge' id='admin' ng-model='object.admin' type='checkbox' />
+      Administrador
+      <span class="label label-warning" ng-show="object.admin">Atención!!! Estás dando poderes a este usuario!!</span>
+    </label>
   </control-group>
-  <control-group label='Administrador de sistema' ng-show="currentUser.superadmin">
-    <input class='input-xxlarge' id='superadmin' ng-model='object.superadmin' type='checkbox' />
+  <control-group ng-show="currentUser.superadmin">
+    <label class="checkbox">
+      <input class='input-xxlarge' id='admin' ng-model='object.superadmin' type='checkbox' />
+      Administrador de sistema
+      <span class="label label-important" ng-show="object.superadmin">Atención!!! Estás dando PODERES DIVINOS a este usuario!!</span>
+    </label>
   </control-group>
   <control-group label='Fecha de alta'>
     <input ng-model='object.registration_date' type='date' />
