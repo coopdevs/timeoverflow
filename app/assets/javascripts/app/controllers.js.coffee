@@ -1,5 +1,6 @@
 
-@RootController = ["$scope", "$http", "$routeParams", "$location", "$rootScope", "CurrentUser", "Category", "Organization",
+@APP.controller "RootController", [
+  "$scope", "$http", "$routeParams", "$location", "$rootScope", "CurrentUser", "Category", "Organization",
 ($scope, $http, $routeParams, $location, $rootScope, CurrentUser, Category, Organization) ->
   $rootScope.brand = "TimeOverflow"
   $scope.whoAmI = () ->
@@ -14,14 +15,16 @@
     $rootScope.brand
   $scope.loadCategories = ->
     $scope.categories = Category.query {}, (data) ->
-      c.addToIdentityMap() for c in data
+      for c in data
+        c.addToIdentityMap()
   $scope.loadOrganizations = ->
     $scope.organizations = Organization.query {}, (data) ->
       c.addToIdentityMap() for c in data
   $scope.loadCategories()
   $scope.loadOrganizations()
   $scope.$on "go", (ev, where) ->
-    $location[d] where[d] for d in ["path", "search"] when where[d]
+    $location.path where.path if where.path
+    $location.search where.search if where.search
   $scope.$on "loadCategories", (ev) -> $scope.loadCategories()
   $scope.$on "loadOrganizations", (ev) -> $scope.loadOrganizations()
   $rootScope.$on "event:auth-loginRequired", -> $rootScope.showLogin = true
@@ -105,7 +108,24 @@
     if $scope.object?.id then "Edit \"#{$scope.object.name}\"" else "New organization"
 ]
 
-
+@APP.controller "UserController", [
+"$scope", "$http", "$routeParams", "$location", "User", "Organization", "Category",
+($scope, $http, $routeParams, $location, User, Organization, Category) ->
+  $scope.object ||= new User()
+  $scope.show = {}
+  $scope.save = (obj) ->
+    success = (data, headers) ->
+      $scope.loadUsers()
+      console.log "SUCCESS", data, headers()
+      $location.path "/users"
+    failure = (data, headers) ->
+      console.log "ERROR", data
+      alert "error"
+    if obj.id?
+      User.update {id: obj.id}, {user: obj}, success, failure
+    else
+      User.save {user: obj}, success, failure
+]
 
 
 @UsersController = ["$scope", "$http", "$routeParams", "$location", "User", "Organization", "Category",

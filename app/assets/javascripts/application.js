@@ -10,7 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require select2
-//= require angular-ui
+//  require select2
+//= require angular-ui.min
 //= require_tree .
 //  require_tree ../templates

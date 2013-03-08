@@ -5,20 +5,22 @@
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %title{"ng-controller" => "TitleController"} {{ pageTitle() }}
-    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
-    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"
-    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/i18n/jquery.ui.datepicker-es.js"
-    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"
-    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-resource.min.js"
-    = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"
+    = cdn :"lodash.js", "1.0.1", "lodash.min.js"
+    = cdn :jquery, "1.9.1", "jquery.min.js"
+    = cdn :jqueryui, "1.10.1", "jquery-ui.min.js"
+    = cdn :select2, "3.3.0", "select2.min.js"
+    = cdn :angularjs, "1.0.5", "angular.min.js"
+    = cdn :angularjs, "1.0.5", "angular-resource.min.js"
+    = cdn :"twitter-bootstrap", "2.3.1", "js/bootstrap.min.js"
+    = cdn :"bootstrap-datepicker", "1.0.0", "js/bootstrap-datepicker.js"
+    = cdn :"angular-strap", "0.6.6", "angular-strap.min.js"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    / Le HTML5 shim, for IE6-8 support of HTML elements
-    /[if lt IE 9]
-      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-    = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/base/jquery-ui.css"
-    = stylesheet_link_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css"
-    = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css"
+    = cdn :jqueryui, "1.10.1", "themes/base/jquery-ui.css"
+    = cdn :select2, "3.3.0", "select2.css"
+    = cdn :"twitter-bootstrap", "2.3.1", "css/bootstrap.no-icons.min.css"
+    = cdn :"bootstrap-datepicker", "1.0.0", "css/datepicker.css"
+    = cdn :"font-awesome", "3.0.2", "css/font-awesome.css"
     = stylesheet_link_tag "application", :media => "all"
     %link(href="favicon.ico" rel="shortcut icon")
 
@@ -34,9 +36,12 @@
           %a.brand{href: "#/"} {{ pageTitle() }}
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Organizations", "#/organizations"
-              %li= link_to "Categories", "#/categories"
-              %li= link_to "Users", "#/users"
+              %li
+                %a{href: "#/organizations"} Organizations
+              %li
+                %a{href: "#/categories"} Categories
+              %li
+                %a{href: "#/users"} Users
             %ul.nav.pull-right
               %li
                 %a{"ng-click" => "logout()", "ng-show" => "currentUser.id"} Log out {{ currentUser.email }}

@@ -1,61 +1,75 @@
-<form class='form-horizontal' name='userForm'>
+<div class="modal-header">
+  <h3 ng-switch on="!!object.id">
+    <span ng-switch-when="false">Nuevo usuario
+    <span ng-switch-when="true">Modificar {{object.username}}
+  </h3>
+</div>
+<div class="modal-body" translation-context="userForm">
+  <form class='form' ng-show="!step">
 
-  <legend ng-hide="object.id">Nuevo usuario</legend>
-  <legend ng-show="object.id">Modificar {{object.username}}</legend>
-  <control-group label='Nombre'>
-    <input class='input-xxlarge' id='name' ng-model='object.username' type='text' />
-  </control-group>
-  <control-group label='Organización' ng-show="currentUser.superadmin">
-    <select class='input-xxlarge' data-placeholder='organization' id='org' ng-model='object.organization_id' ui-select2='{allowClear:true}'>
-      <option value=''>(no org)</option>
-      <option ng-repeat='o in organizations' value='{{ o.id }}'>{{ o.name }}</option>
-    </select>
-  </control-group>
-  <control-group label='Email'>
-    <input class='input-xxlarge' id='email' ng-model='object.email' type='email' />
-  </control-group>
-  <control-group ng-show="currentUser.admin">
-    <label class="checkbox">
-      <input class='input-xxlarge' id='admin' ng-model='object.admin' type='checkbox' />
-      Administrador
+
+    <label translate=".name">Username</label>
+    <input type='text' ng-model='object.username' />
+
+    <fieldset ng-show="currentUser.superadmin">
+      <label>Organización</label>
+      <select data-placeholder='organization' ng-model='object.organization_id'>
+        <option value=''>(no org)</option>
+        <option ng-repeat='o in organizations' value='{{ o.id }}'>{{ o.name }}</option>
+      </select>
+    </fieldset>
+
+    <label>Email</label>
+    <input type='email' ng-model='object.email' />
+
+    <fieldset ng-show="currentUser.admin || currentUser.superadmin">
+      <label class="checkbox">
+        <input type='checkbox' ng-model='object.admin' />
+        Administrador
+      </label>
       <span class="label label-warning" ng-show="object.admin">Atención!!! Estás dando poderes a este usuario!!</span>
-    </label>
-  </control-group>
-  <control-group ng-show="currentUser.superadmin">
-    <label class="checkbox">
-      <input class='input-xxlarge' id='admin' ng-model='object.superadmin' type='checkbox' />
-      Administrador de sistema
+    </fieldset>
+
+    <fieldset ng-show="currentUser.superadmin">
+      <label class="checkbox">
+        <input type='checkbox' ng-model='object.superadmin' />
+        Administrador de sistema
+      </label>
       <span class="label label-important" ng-show="object.superadmin">Atención!!! Estás dando PODERES DIVINOS a este usuario!!</span>
-    </label>
-  </control-group>
-  <control-group label='Fecha de alta'>
-    <input ng-model='object.registration_date' type='date' />
-  </control-group>
-  <control-group label='Password'>
-    <input class='input-xxlarge' id='pwd' ng-model='object.password' type='password' />
-  </control-group>
-  <control-group label='Repeat password'>
-    <input class='input-xxlarge' id='pwd2' ng-model='object.password_confirmation' type='password' />
-  </control-group>
-  <control-group label='Fecha de nacimiento'>
-    <input id='dob2' ng-model='object.date_of_birth' type='date' />
-  </control-group>
-  <control-group label='Número de documento (DNI/Pasaporte/...)'>
-    <input class='input-xxlarge' id='identity_document' ng-model='object.identity_document' type='text' />
-  </control-group>
-  <control-group label='Teléfono'>
-    <input class='input-xxlarge' id='phone' ng-model='object.phone' type='tel' />
-  </control-group>
-  <control-group label='Otro teléfono'>
-    <input class='input-xxlarge' id='alt_phone' ng-model='object.alt_phone' type='tel' />
-  </control-group>
-  <control-group label='Categorías'>
+    </fieldset>
+
+    <label>Fecha de alta</label>
+    <input type='text' ng-model='object.registration_date' data-date-format="dd/mm/yyyy" bs-datepicker />
+
+    <label>Password</label>
+    <input type='password' ng-model='object.password' />
+
+    <label>Repeat password</label>
+    <input type='password' ng-model='object.password_confirmation' />
+
+    <label>Fecha de nacimiento</label>
+    <input type='text' ng-model='object.date_of_birth' data-date-format="dd/mm/yyyy" bs-datepicker />
+
+    <label>Número de documento (DNI/Pasaporte/...)</label>
+    <input type='text' ng-model='object.identity_document' />
+
+    <label>Teléfono</label>
+    <input type='tel' ng-model='object.phone' />
+
+    <label>Otro teléfono</label>
+    <input type='tel' ng-model='object.alt_phone' />
+
+  </form>
+  <form class="form" ng-show="step == 1">
+    <label>Categorías</label>
     <select class='input-xxlarge' data-placeholder='Seleccionar' id='categories' multiple='multiple' ng-model='object.category_ids' ui-select2='{allowClear:true}'>
       <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
     </select>
-  </control-group>
-  <div class='form-actions'>
-    <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
-    <a class='btn' href='#/users'>Cancel</a>
-  </div>
-</form>
+
+  </form>
+</div>
+<div class='modal-footer'>
+  <button class='btn' ng-click='step = (step || 0) + 1' ng-show="!step">Next step</button>
+  <button class='btn btn-primary' ng-click='step = 0; save(object); dismiss()' ng-show="step == 1">Save changes</button>
+  <a class='btn' ng-click='step = 0; dismiss()'>Cancel</a>
+</div>

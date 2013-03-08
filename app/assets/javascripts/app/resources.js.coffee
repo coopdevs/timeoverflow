@@ -12,7 +12,7 @@
   Category.property "parent"
     get: -> @_parent ?= if @parent_id then Category.identityMap[@parent_id] else null
   Category.property "fqn",
-    get: -> @_fqn ?= if @parent then @parent.fqn + ' > ' + @name else @name
+    get: -> @_fqn ?= if @parent then "#{@parent.fqn} > #{@name}" else @name
   # console.log Category, Category.prototype, Category.identityMap
   Category
 ]

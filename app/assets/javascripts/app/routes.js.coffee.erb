@@ -10,41 +10,45 @@
     ######################################
     # Configuration of the routeProvider #
 
-    $routeProvider.when "/",
-      templateUrl: "<%= asset_path 'home.html' %>"
-      controller: RootController
+    $routeProvider
 
-    $routeProvider.when "/categories/:id",
+    .when "/"
+      templateUrl: "<%= asset_path 'home.html' %>"
+      controller: "RootController"
+
+    .when "/categories/:id"
       templateUrl: "<%= asset_path 'category.html' %>"
       controller: CategoriesController
 
-    $routeProvider.when "/categories",
+    .when "/categories"
       templateUrl: "<%= asset_path 'categories.html' %>"
       controller: CategoriesController
 
-    $routeProvider.when "/users/new",
+    .when "/users/new"
       templateUrl: "<%= asset_path('user-form.html') %>"
       controller: UsersController
-    $routeProvider.when "/users/:id",
+
+    .when "/users/:id"
       templateUrl: "<%= asset_path('user.html') %>"
       controller: UsersController
-    $routeProvider.when "/users/:id/edit",
+
+    .when "/users/:id/edit"
       templateUrl: "<%= asset_path('user-form.html') %>"
       controller: UsersController
-    $routeProvider.when "/users",
+
+    .when "/users"
       templateUrl: "<%= asset_path('users.html') %>"
       controller: UsersController
 
-
-    $routeProvider.when "/organizations/:id",
+    .when "/organizations/:id"
       templateUrl: "<%= asset_path('organization.html') %>"
       controller: OrganizationsController
-    $routeProvider.when "/organizations",
+
+    .when "/organizations"
       templateUrl: "<%= asset_path('organizations.html') %>"
       controller: OrganizationsController
 
-
-    $routeProvider.otherwise redirectTo: "/"
+    .otherwise redirectTo: "/"
 
     #########################################
     # Configuration of the locationProvider #
