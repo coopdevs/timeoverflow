@@ -2,11 +2,25 @@
 
   translations =
     ca:
-      "Save changes": "Desar"
-      "userForm.name": "Nom d'usuari"
-    es:
-      "Save changes": "Guardar"
-      "userForm.name": "Nombre de usuario"
+      "userForm.nombre": "Nom"
+      "userForm.organizacion": "Organització"
+      "userForm.email": "Email"
+      "userForm.admin": "És administrador"
+      "userForm.superadmin": "És superadministrador"
+      "userForm.fechaalta": "Data d'alta"
+      "userForm.password": "Contrasenya"
+      "userForm.rpassword": "Repetir contrasenya"
+      "userForm.fechanacimiento": "Data de neixement"
+      "userForm.ndocumento": "Número de document (DNI/Pasaport/...)"
+      "userForm.telofono": "Telèfon principal"
+      "userForm.telefonoalt": "Telèfon alternatiu"
+      "userForm.servicios": "Serveis ofertats"
+      "userForm.siguientepaso": "Pas següent"
+      "userForm.guardar": "Desar"
+      "userForm.cancelar": "Cancel·la"
+      "userForm.nombre": "Nom"
+      "userForm.nombre": "Nom"
+    
 
   currentLanguage: navigator.language || navigator.userLanguage
 
