@@ -1,12 +1,12 @@
-<div>
-  <h1>Usuarios <small>({{ users.length }})</small></h1>
+<div translation-context="userForm">
+  <h1><span translate=".usuarios">Usuarios</span> <small>({{ users.length }})</small></h1>
   <div class='navbar'>
     <div class='navbar-inner'>
       <ul class='nav pull-right'>
-        <button class='btn' ng-click='show.by=null' ng-class="{active: show.by==null}">Por usuario</button>
-        <button class='btn' ng-click='show.by="category"' ng-class="{active: show.by=='category'}">Por categoría</button>
-        <button class='btn btn-info' ng-click='showEmailsToCopy()'>Ver emails</button>
-        <a class='btn btn-primary' bs-modal="'assets/user-form.html'">Nuevo usuario</a>
+        <button class='btn' ng-click='show.by=null' ng-class="{active: show.by==null}" translate=".porusuario">Por usuario</button>
+        <button class='btn' ng-click='show.by="category"' ng-class="{active: show.by=='category'}" translate=".porcategoria">Por servicios</button>
+        <button class='btn btn-info' ng-click='showEmailsToCopy()' translate=".veremails">Ver emails</button>
+        <a class='btn btn-primary' bs-modal="'assets/user-form.html'" translate="nuevouser">Nuevo usuario</a>
       </ul>
     </div>
   </div>
@@ -15,8 +15,8 @@
       <table class='table table-hover table-condensed'>
         <thead>
           <tr>
-            <th>Categoría</th>
-            <th>Miembros</th>
+            <th translate=".servicios">Servicios ofrecidos</th>
+            <th translate=".usuarios">Usuarios</th>
           </tr>
         </thead>
         <tbody>
@@ -48,12 +48,12 @@
             </th>
           </tr>
           <tr>
-            <th ng-show="currentUser.superadmin">Organización</th>
-            <th>Código de miembro</th>
-            <th>Nombre usuario</th>
-            <th>Correo</th>
-            <th>Teléfono</th>
-            <th>Otro tel.</th>
+            <th ng-show="currentUser.superadmin" translate=".organizacion">Organización</th>
+            <th translate=".codigo">Código de usuario</th>
+            <th translate=".nombre">Nombre</th>
+            <th translate=".email">Email</th>
+            <th translate=".telofono">Teléfono principal</th>
+            <th translate=".telefonoalt">Teléfono alternativo</th>
             <th>
           </tr>
         </thead>
@@ -66,9 +66,9 @@
             <td>{{ u.phone }}</td>
             <td>{{ u.alt_phone }}</td>
             <td class="hover-actions">
-              <a class="action" href='#/users/{{u.id}}'><i class="icon-eye-open"></i> ver</a>
-              <a class="action" href='#/users/{{u.id}}/edit' ng-show="currentUser.admin"><i class="icon-pencil"></i> modificar</a>
-              <a class="action" ng-click='deleteUser(u)' ng-show="currentUser.admin"><i class="icon-ban-circle"></i> borrar</a>
+              <a class="action" href='#/users/{{u.id}}' translate="ver"><i class="icon-eye-open"></i> ver</a>
+              <a class="action" href='#/users/{{u.id}}/edit' ng-show="currentUser.admin" translate="modificaruser"><i class="icon-pencil"></i> modificar</a>
+              <a class="action" ng-click='deleteUser(u)' ng-show="currentUser.admin" translate="borrar"><i class="icon-ban-circle"></i> borrar</a>
             </td>
           </tr>
         </tbody>

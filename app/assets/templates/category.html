@@ -11,15 +11,15 @@
           </control-group>
           <control-group label='Parent'>
             <select class='input-xlarge' data-placeholder='category' ng-model='object.parent_id' ui-select2='{allowClear:true}'>
-              <option value=''>(no parent)</option>
+              <option value=''  translate="sincatsup">(sin categoria superior)</option>
               <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
             </select>
           </control-group>
         </fieldset>
         <pre>{{ object | json }}</pre>
         <div class='form-actions'>
-          <button class='btn btn-primary' ng-click='save(object)' type='submit'>Save changes</button>
-          <a class='btn' href='#/categories'>Cancel</a>
+          <button class='btn btn-primary' ng-click='save(object)' type='submit' translate="guardar">Guardar</button>
+          <a class='btn' href='#/categories' translate="cancelar">Cancelar</a>
         </div>
       </form>
     </div>

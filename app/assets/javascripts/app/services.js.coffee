@@ -2,6 +2,23 @@
 
   translations =
     ca:
+      "catchPhrase": "Benvingut al sistema de gestió de Bancs de Temps"
+      "nuevouser": "Nou usuari"
+      "modificaruser": "Modificar"
+      "ver": "Veure"
+      "borrar": "Esborra"
+      "nuevaorg": "Nova organització"
+      "nombre": "Nom"
+      "guardar": "Desa"
+      "cancelar": "Cancel·la"
+      "nuevacat": "Nou servei"
+      "sincatsup": "(sense categoria superior)"
+      "nuevaorg": "Nova organització"
+      "nuevaorg": "Nova organització"
+      "nuevaorg": "Nova organització"
+      "nuevaorg": "Nova organització"
+      "nuevaorg": "Nova organització"
+      
       "userForm.nombre": "Nom"
       "userForm.organizacion": "Organització"
       "userForm.email": "Email"
@@ -18,8 +35,15 @@
       "userForm.siguientepaso": "Pas següent"
       "userForm.guardar": "Desar"
       "userForm.cancelar": "Cancel·la"
-      "userForm.nombre": "Nom"
-      "userForm.nombre": "Nom"
+      "userForm.codigo": "Codi d'usuari"
+      "userForm.telefonos": "Telèfons"
+      "userForm.porusuario": "Per usuari"
+      "userForm.porcategoria": "Per serveis"
+      "userForm.veremails": "Veure emails"
+      "userForm.usuarios": "Usuaris"
+      "userForm.usuarios": "Usuaris"
+      
+     
     
 
   currentLanguage: navigator.language || navigator.userLanguage
