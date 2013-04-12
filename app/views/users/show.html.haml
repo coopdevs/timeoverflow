@@ -1,0 +1,67 @@
+.page-header
+  %h1
+    %i.icon-user.icon-border
+    = @user.username
+    %small= @user.email
+  - if @user.superadmin?
+    %span.label.label-important= t ".superadmin"
+  - if @user.admin
+    %span.label.label-warning= t ".admin"
+
+%ul.nav.nav-pills
+  %li
+    %a{href: users_path}
+      %i.icon-list
+      = t 'list'
+  - if current_user == @user or admin?
+    %li
+      %a{href: edit_user_path(@user)}
+        %i.icon-pencil
+        = t "edit"
+  - if current_user == @user or admin?
+    %li
+      %a{href: change_password_user_path(@user)}
+        %i.icon-key
+        = t "change password"
+  - if admin?
+    %li
+      %a{href: user_path(@user), data: {method: :delete, confirm: t("are_you_sure") }}
+        %i.icon-trash
+        = t "delete"
+
+.row-fluid
+  .span4
+    %dl
+      %dt
+        %i.icon-group.icon-muted.pull-left.icon-2x
+        = t ".organizacion"
+      %dd= link_to @user.organization.name, @user.organization
+
+      - if @user.registration_number.present?
+        %dt{:translate => ".codigo"} Código de usuario
+        %dd= @user.registration_number
+      - if @user.registration_date.present?
+        %dt{:translate => ".fechaalta"} Fecha de alta
+        %dd= l @user.registration_date
+
+  .span4
+    %dl
+      - if @user.date_of_birth.present?
+        %dt{:translate => ".fechaalta"} Fecha de nacimiento
+        %dd= l @user.date_of_birth
+      - if @user.identity_document.present?
+        %dt{:translate => ".ndocumento"} Número de documento (DNI/Pasaporte/...)
+        %dd= @user.identity_document
+      - if (phones = [@user.phone, @user.alt_phone].map(&:presence).compact).present?
+        %dt= t(".phone", count: phones.size)
+        %dd
+          - phones.each_with_index do |ph, idx|
+            - unless idx.zero?
+              &mdash;
+            = ph
+
+  .span4
+    %h3{:translate => ".servicios"} Servicios ofrecidos
+    %ul
+      - @user.categories.each do |cat|
+        %li= cat.fqn

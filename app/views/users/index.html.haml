@@ -1,0 +1,48 @@
+.page-header
+  %h1
+    %i.icon-user.icon-border
+    = User.model_name.human.pluralize
+
+%table.table.table-hover.table-condensed
+  %thead
+    %tr
+      .navbar
+        .navbar-inner
+          %ul.nav.pull-right
+            - if admin?
+              %a.btn.btn-primary{href: new_user_path}
+                = t ".create"
+    %tr
+      - if superadmin?
+        %th= User.human_attribute_name(:organization)
+      %th= User.human_attribute_name(:registration_number)
+      %th= User.human_attribute_name(:username)
+      %th= User.human_attribute_name(:email)
+      %th= User.human_attribute_name(:phone)
+      %th= User.human_attribute_name(:alt_phone)
+
+      %th
+        %i.icon-hand-down
+        Acciones
+  %tbody
+    - @users.each do |user|
+      %tr
+        - if superadmin?
+          %td= link_to(user.organization, user.organization)
+        %td= user.registration_number
+        %td= link_to(user, user)
+        %td= user.email
+        %td= user.phone
+        %td= user.alt_phone
+        %td.hover-actions
+          %a.action{href: user_path(user)}
+            %i.icon-eye-open
+            = t ".ver"
+          - if admin?
+            %a.action{href: edit_user_path(user)}
+              %i.icon-pencil
+              = t "edit"
+            %a.action{href: user_path(user), data: {method: :delete}}
+              %i.icon-trash
+              = t ".borrar"
+

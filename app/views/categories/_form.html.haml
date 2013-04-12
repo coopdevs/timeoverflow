@@ -1,0 +1,33 @@
+.well
+  = simple_form_for @category do |f|
+    = f.input :name
+    = f.association :parent
+    = f.submit
+/ <div class='row'>
+/   <div class='span8'>
+/     <div class='well'>
+/       <form class='form-horizontal' name='categoryForm'>
+/         <fieldset>
+/           <legend>
+/             {{ formTitle() }}
+/           </legend>
+/           <control-group label='Name'>
+/             <input class='input-xlarge' id='name' ng-model='object.name' type='text' />
+/           </control-group>
+/           <control-group label='Parent'>
+/             <select class='input-xlarge' data-placeholder='category' ng-model='object.parent_id' ui-select2='{allowClear:true}'>
+/               <option value=''  translate="sincatsup">(sin categoria superior)</option>
+/               <option ng-repeat='cat in categories' value='{{ cat.id }}'>{{ cat.fqn }}</option>
+/             </select>
+/           </control-group>
+/         </fieldset>
+/         <pre>{{ object | json }}</pre>
+/         <div class='form-actions'>
+/           <button class='btn btn-primary' ng-click='save(object)' type='submit' translate="guardar">Guardar</button>
+/           <a class='btn' href='#/categories' translate="cancelar">Cancelar</a>
+/         </div>
+/       </form>
+/     </div>
+/   </div>
+/ </div>
+

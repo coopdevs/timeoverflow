@@ -1,0 +1,16 @@
+%table.table.table-hover.table-condensed
+  %thead
+    %tr
+      %th{colspan: 10}
+        .navbar
+          .navbar-inner
+            %ul.nav.pull-right
+            %a.btn.btn-primary{href: "/categories/new"}
+              = t "Nuevo servicio"
+    %tr
+      %th= t ".nombre"
+  %tbody
+    - @categories.each do |cat|
+      %tr
+        %td
+          %a{href: "/categories/#{cat.id}"}= cat.fqn

@@ -1,0 +1,27 @@
+%h1
+  %i.icon-group.icon-border
+  = @organization.name
+
+
+%ul.nav.nav-pills
+  %li
+    %a{href: organizations_path}
+      %i.icon-hand-left
+      = t 'back'
+  %li
+    %a{href: edit_organization_path(@organization)}
+      %i.icon-pencil
+      = t "edit"
+  %li
+    %a{href: organization_path(@organization), data: {method: :DELETE, confirm: t("are_you_sure") }}
+      %i.icon-trash
+      = t "delete"
+
+
+%dl
+  %dt= t ".created_at"
+  %dd= l @organization.created_at
+  %dt= t ".updated_at"
+  %dd= l @organization.updated_at
+  %dt= t ".reg_number_seq"
+  %dd= @organization.reg_number_seq

@@ -1,0 +1,18 @@
+.page-header
+  %h1
+    %i.icon-user.icon-border
+    New user
+
+= simple_form_for @user do |f|
+
+  = f.input :username
+  = f.input :email
+  - if superadmin?
+    = f.association :organization
+    = f.input :superadmin, hint: t(".superadmin_warning")
+  - if admin?
+    = f.input :admin, hint: t(".admin_warning")
+
+  = f.input :password
+  = f.input :password_confirmation
+  = f.submit

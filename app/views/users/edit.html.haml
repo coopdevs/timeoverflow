@@ -1,0 +1,26 @@
+.page-header
+  %h1
+    %i.icon-edit.icon-border
+    = @user.username
+    %small
+      = t "edit"
+
+= simple_form_for @user do |f|
+
+  = f.input :username
+  = f.input :email
+  - if current_user.try :superadmin?
+    = f.association :organization
+    = f.input :superadmin, hint: t(".superadmin_warning")
+  - if current_user.try :admin?
+    = f.input :admin, hint: t(".admin_warning")
+
+  = f.input :registration_date, as: :string, input_html: {type: :date}
+  = f.input :date_of_birth, as: :string, input_html: {type: :date}
+  = f.input :identity_document
+  = f.input :phone
+  = f.input :alt_phone
+
+  = f.association :categories, as: :check_boxes
+
+  = f.submit

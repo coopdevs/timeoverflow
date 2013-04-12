@@ -1,0 +1,62 @@
+!!! 5
+%html{lang: "en", "ng-app" => "APP"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", content: "IE=Edge,chrome=1"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %title
+      = yield :title
+    = cdn :"lodash.js", "1.0.1", "lodash.min.js"
+    = cdn :jquery, "1.9.1", "jquery.min.js"
+    = cdn :jqueryui, "1.10.1", "jquery-ui.min.js"
+    = cdn :select2, "3.3.0", "select2.min.js"
+    = cdn :"twitter-bootstrap", "2.3.1", "js/bootstrap.min.js"
+    = cdn :"bootstrap-datepicker", "1.0.0", "js/bootstrap-datepicker.js"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = cdn :jqueryui, "1.10.1", "themes/base/jquery-ui.css"
+    = cdn :select2, "3.3.0", "select2.css"
+    = cdn :"twitter-bootstrap", "2.3.1", "css/bootstrap.no-icons.min.css"
+    = cdn :"bootstrap-datepicker", "1.0.0", "css/datepicker.css"
+    = cdn :"font-awesome", "3.0.2", "css/font-awesome.css"
+    = stylesheet_link_tag "application", :media => "all"
+    %link{href: "/favicon.ico", rel: "shortcut icon"}
+
+  %body
+    .navbar.navbar-fixed-top.navbar-inverse
+      .navbar-inner
+        .container-fluid
+          %a.brand{href: "/"} TimeOverflow
+          .nav-collapse
+            %ul.nav
+              %li
+                %a{href: "/organizations"}
+                  %i.icon-group
+                  = Organization.model_name.human(count: :many)
+              %li
+                %a{href: "/categories"}
+                  %i.icon-tags
+                  = Category.model_name.human.pluralize
+              %li
+                %a{href: "/users"}
+                  %i.icon-user
+                  = User.model_name.human.pluralize
+            %ul.nav.pull-right
+              %li
+                - if current_user
+                  %a{href: "/sessions", data: {method: :delete}}
+                    Log out
+                    = current_user.email
+                - else
+                  %a{href: "/sessions/new"} Log in
+
+            %form.navbar-search.pull-right
+              %input.search-query.xxlarge{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
+
+
+    .container-fluid
+      .row-fluid
+        .span12
+          = yield
+
+

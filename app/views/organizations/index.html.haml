@@ -1,0 +1,37 @@
+%h1
+  %i.icon-group.icon-border
+  = t "organizations"
+%table.table.table-hover.table-condensed
+  %thead
+    %tr
+      .navbar
+        .navbar-inner
+          %ul.nav.pull-right
+            - if current_user.try(:superadmin?)
+              %a.btn.btn-primary{href: '/organizations/new'}
+                = t ".nueva organización"
+    %tr
+      %th= t ".nombre"
+      %th= t ".member_count"
+      %th
+        %i.icon-hand-down
+        Acciones
+  %tbody
+    - @organizations.each do |org|
+      %tr
+        %td
+          = link_to(org.name, org)
+        %td
+          = org.users.count
+        %td.hover-actions
+          %a.action{href: organization_path(org)}
+            %i.icon-eye-open
+            = t ".ver"
+          - if current_user.try(:admin?)
+            %a.action{href: edit_organization_path(org)}
+              %i.icon-pencil
+              = t "edit"
+            %a.action{href: organization_path(org), data: {method: :delete}}
+              %i.icon-trash
+              = t ".borrar"
+

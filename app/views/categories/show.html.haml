@@ -1,0 +1,22 @@
+.well
+  %h1= @category.name
+  %dl
+    %dt= t ".created_at"
+    %dd= l @category.created_at
+    %dt= t ".updated_at"
+    %dd= l @category.updated_at
+    - if @category.ancestors.present?
+      %dt= t ".parent"
+      %dd
+        - @category.ancestors.reverse.each_with_index do |cat, idx|
+          - unless idx.zero?
+            = Category::FQN_SEPARATOR
+          = link_to(cat, category_path(cat))
+    - if @category.children.present?
+      %dt= t ".children"
+      %dd
+        - @category.children.each_with_index do |cat, idx|
+          - unless idx.zero?
+            &mdash;
+          = link_to(cat, category_path(cat))
+
