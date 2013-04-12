@@ -108,8 +108,7 @@
     if $scope.object?.id then "Edit \"#{$scope.object.name}\"" else "New organization"
 ]
 
-@APP.controller "UserController", [
-"$scope", "$http", "$routeParams", "$location", "User", "Organization", "Category",
+@APP.controller "UserController", ["$scope", "$http", "$routeParams", "$location", "User", "Organization", "Category",
 ($scope, $http, $routeParams, $location, User, Organization, Category) ->
   $scope.object ||= new User()
   $scope.show = {}

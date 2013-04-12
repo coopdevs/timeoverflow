@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  respond_to :json
+  respond_to :html
 
   before_filter do
     params[:user] &&= user_params

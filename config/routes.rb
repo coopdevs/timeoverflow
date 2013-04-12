@@ -4,15 +4,19 @@ Timeoverflow::Application.routes.draw do
 
   resources :categories
   resources :organizations
-  resources :users
-  # resources :sessions, only: [:create, :destroy]
+  resources :users do
+    member do
+      get :change_password
+    end
+  end
+  resources :sessions, only: [:new, :create, :destroy]
 
-  match '/me' => 'users#me', :via => :get
+  # # match '/signup',  to: 'users#new'
+  match '/sign_in',  to: 'sessions#new', via: :post
+  match '/sign_out', to: 'sessions#destroy', via: :delete
 
-  # match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#create', via: :post
-  match '/signout', to: 'sessions#destroy', via: :delete
-
+  # get "log_in" => "sessions#new", :as => "log_in"
+  # get "log_out" => "sessions#destroy", :as => "log_out"
 
   # devise_for :users
 
@@ -64,7 +68,7 @@ Timeoverflow::Application.routes.draw do
   #     resources :products
   #   end
 
-  match '(*any)' => "application#index"
+  # match '(*any)' => "application#index"
 
 
   root to: "application#index"

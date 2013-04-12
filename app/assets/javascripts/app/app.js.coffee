@@ -1,15 +1,7 @@
-@APP = angular.module("APP", ["http-auth-interceptor", "ui.directives", "ngResource"])
+@APP = angular.module("APP", ["http-auth-interceptor", "ngResource", "$strap.directives", "ui"])
 
 Function::property = (prop, desc) ->
   Object.defineProperty @prototype, prop, desc
-
-Array::detect = (f) ->
-  (return x if f x) for x in @
-  undefined
-
-Array::find = (id) ->
-  (return x if x.id is id) for x in @
-  undefined
 
 
 @APP.value 'ui.config',

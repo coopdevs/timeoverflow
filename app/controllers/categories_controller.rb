@@ -1,14 +1,14 @@
 class CategoriesController < ApplicationController
-  respond_to :json
+  respond_to :json, :html
 
   load_and_authorize_resource
 
   def index
-    respond_with @categories
+    # respond_with @categories
   end
 
   def show
-    respond_with @category
+    # respond_with @category
   end
 
   def create
@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
     if @category.update_attributes params[:category]
       respond_with @category
     else
-      respond_with @category.errors, status: :unprocessable_entity
+      respond_with @category, status: :unprocessable_entity
     end
   end
 
@@ -31,4 +31,5 @@ class CategoriesController < ApplicationController
     @category.destroy
     head :no_content
   end
+
 end

@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
 
-  respond_to :json
+  respond_to :json, :html
 
   before_filter do
     params[:organization] &&= organization_params
@@ -8,20 +8,19 @@ class OrganizationsController < ApplicationController
 
   load_and_authorize_resource
 
-
   def index
-    respond_with @organizations
+    # respond_with @organizations
   end
 
   def show
-    respond_with @organization
+    # respond_with @organization
   end
 
   def create
     if @organization.save
-      render json: @organization, status: :created, location: @organization
+      redirect_to @organization, status: :created
     else
-      render json: @organization.errors, status: :unprocessable_entity
+      render action: :new, status: :unprocessable_entity
     end
   end
 
@@ -29,13 +28,13 @@ class OrganizationsController < ApplicationController
     if @organization.update_attributes(params[:organization])
       respond_with @organization
     else
-      render json: @organization.errors, status: :unprocessable_entity
+      render action: :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @organization.destroy
-    head :no_content
+    redirect_to organizations_path, notice: "deleted"
   end
 
   private

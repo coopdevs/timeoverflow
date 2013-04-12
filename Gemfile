@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 3.2.9'
-
+gem 'rails-i18n'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -50,7 +50,7 @@ gem "haml-rails"
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem "cancan"
 # gem "rails_admin", ">= 0.2"
-# gem "simple_form"
+gem "simple_form"
 # gem "acts_as_tenant"
 gem "closure_tree"
 

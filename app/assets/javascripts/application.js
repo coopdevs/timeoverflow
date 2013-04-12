@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //  require select2
-//= require angular-ui.min
-//= require_tree .
+//  require angular-ui.min
+//  require_tree .
 //  require_tree ../templates
+//= require jquery_ujs

@@ -37,4 +37,7 @@ class User < ActiveRecord::Base
 
   belongs_to :organization
 
+  def to_s
+    username
+  end
 end

@@ -1,69 +1,9 @@
-!!! 5
-%html{lang: "en", "ng-app" => "APP"}
-  %head
-    %meta(charset="utf-8")
-    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
-    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title{"ng-controller" => "TitleController"} {{ pageTitle() }}
-    = cdn :"lodash.js", "1.0.1", "lodash.min.js"
-    = cdn :jquery, "1.9.1", "jquery.min.js"
-    = cdn :jqueryui, "1.10.1", "jquery-ui.min.js"
-    = cdn :select2, "3.3.0", "select2.min.js"
-    = cdn :angularjs, "1.0.5", "angular.min.js"
-    = cdn :angularjs, "1.0.5", "angular-resource.min.js"
-    = cdn :"twitter-bootstrap", "2.3.1", "js/bootstrap.min.js"
-    = cdn :"bootstrap-datepicker", "1.0.0", "js/bootstrap-datepicker.js"
-    = cdn :"angular-strap", "0.6.6", "angular-strap.min.js"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-    = cdn :jqueryui, "1.10.1", "themes/base/jquery-ui.css"
-    = cdn :select2, "3.3.0", "select2.css"
-    = cdn :"twitter-bootstrap", "2.3.1", "css/bootstrap.no-icons.min.css"
-    = cdn :"bootstrap-datepicker", "1.0.0", "css/datepicker.css"
-    = cdn :"font-awesome", "3.0.2", "css/font-awesome.css"
-    = stylesheet_link_tag "application", :media => "all"
-    %link(href="favicon.ico" rel="shortcut icon")
-
-
-  %body{"ng-controller" => "RootController"}
-    .navbar.navbar-fixed-top.navbar-inverse
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand{href: "#/"} {{ pageTitle() }}
-          .container.nav-collapse
-            %ul.nav
-              %li
-                %a{href: "#/organizations"} Organizations
-              %li
-                %a{href: "#/categories"} Categories
-              %li
-                %a{href: "#/users"} Users
-            %ul.nav.pull-right
-              %li
-                %a{"ng-click" => "logout()", "ng-show" => "currentUser.id"} Log out {{ currentUser.email }}
-                %a{"ng-click" => "whoAmI()", "ng-hide" => "currentUser.id"} Log in
-
-            %form.navbar-search.pull-right
-              %input.search-query.xxlarge{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
-
-
-    .container
-      .row
-        .span12{"ng-view" => ""}
-
-    .fade#loginForm{"ui-modal" => "", "ng-model" => "$root.showLogin"}
-      .well{"ng-controller" => "LoginController"}
-        %form.form{"ng-submit" => "submit()"}
-          %label email
-          %input{type: "text", "ng-model" => "login.email"}
-          %label password
-          %input{type: "password", "ng-model" => "login.password"}
-          %button.btn{type: "submit"} Login
-
-
-
+.hero-unit
+  %h1
+    TimeOverflow
+    - if @current_organization
+      &mdash;
+      = @current_organization
+  %p= t "catchPhrase"
+  %p Bienvenido al sistema de gestión de Bancos de Tiempo
 
