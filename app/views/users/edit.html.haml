@@ -3,12 +3,12 @@
     %i.icon-edit.icon-border
     = @user.username
     %small
-      = t "edit"
+      = @user.email
 
 = simple_form_for @user do |f|
 
   = f.input :username
-  = f.input :email
+  / = f.input :email
   - if current_user.try :superadmin?
     = f.association :organization
     = f.input :superadmin, hint: t(".superadmin_warning")

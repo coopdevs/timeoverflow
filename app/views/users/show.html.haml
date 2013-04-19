@@ -28,9 +28,14 @@
       %a{href: user_path(@user), data: {method: :delete, confirm: t("are_you_sure") }}
         %i.icon-trash
         = t "delete"
+  - if admin?
+    %li
+      %a{href: ""}
+        %i.icon-time
+        = t "give time"
 
 .row-fluid
-  .span4
+  .span3
     %dl
       %dt
         %i.icon-group.icon-muted.pull-left.icon-2x
@@ -44,7 +49,7 @@
         %dt{:translate => ".fechaalta"} Fecha de alta
         %dd= l @user.registration_date
 
-  .span4
+  .span3
     %dl
       - if @user.date_of_birth.present?
         %dt{:translate => ".fechaalta"} Fecha de nacimiento
@@ -60,8 +65,15 @@
               &mdash;
             = ph
 
-  .span4
-    %h3{:translate => ".servicios"} Servicios ofrecidos
+  .span3
+    %h3 Servicios ofrecidos
+    %ul
+      - @user.categories.each do |cat|
+        %li= cat.fqn  .span3
+
+  .span3
+    %h3 Saldo
     %ul
       - @user.categories.each do |cat|
         %li= cat.fqn
+

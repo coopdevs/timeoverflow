@@ -15,3 +15,4 @@
 //  require_tree .
 //  require_tree ../templates
 //= require jquery_ujs
+//= require jquery.dataTables
