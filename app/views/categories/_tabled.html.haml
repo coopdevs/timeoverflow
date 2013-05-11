@@ -1,0 +1,28 @@
+%table.table.table-hover.table-condensed
+  %thead
+    %tr
+      %th= Category.human_attribute_name(:name)
+      %th
+        %i.icon-hand-down
+        = t "global.table.actions"
+  %tbody
+    - categories.each do |cat|
+      %tr
+        %td
+          - if cat.organization_id
+            %i.icon-group
+          -else
+            %i.icon-globe
+          = link_to(cat.fqn, cat)
+        %td
+          %a.action{href: category_path(cat)}
+            %i.icon-eye-open
+            = t "global.show"
+          - if superadmin? or (admin? and cat.organization_id == current_organization.id)
+            %a.action{href: edit_category_path(cat)}
+              %i.icon-pencil
+              = t "global.edit"
+            %a.action{href: category_path(cat), data: {method: :delete}}
+              %i.icon-trash
+              = t "global.delete"
+

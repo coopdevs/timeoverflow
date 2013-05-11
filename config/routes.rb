@@ -2,12 +2,16 @@ Timeoverflow::Application.routes.draw do
   # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
 
-  resources :categories
+  resources :categories do
+    collection do
+      get :global
+      get :local
+      get :root
+    end
+  end
   resources :organizations
   resources :users do
-    member do
-      get :change_password
-    end
+    get :change_password, on: :member
   end
   resources :sessions, only: [:new, :create, :destroy]
 

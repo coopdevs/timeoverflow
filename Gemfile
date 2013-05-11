@@ -55,7 +55,10 @@ gem "simple_form"
 gem "closure_tree"
 
 gem "awesome_print"
-gem 'yaml_db'
+# gem 'yaml_db'
 gem 'strong_parameters'
 gem "jbuilder"
 gem "paranoia"
+
+gem 'activerecord-postgres-hstore', '~> 0.4.0' # only required for ActiveRecord 3.x
+gem 'hstore_translate'

@@ -1,22 +1,51 @@
-.well
-  %h1= @category.name
-  %dl
-    %dt= t ".created_at"
-    %dd= l @category.created_at
-    %dt= t ".updated_at"
-    %dd= l @category.updated_at
-    - if @category.ancestors.present?
-      %dt= t ".parent"
-      %dd
-        - @category.ancestors.reverse.each_with_index do |cat, idx|
-          - unless idx.zero?
-            = Category::FQN_SEPARATOR
-          = link_to(cat, category_path(cat))
-    - if @category.children.present?
-      %dt= t ".children"
-      %dd
-        - @category.children.each_with_index do |cat, idx|
-          - unless idx.zero?
-            &mdash;
-          = link_to(cat, category_path(cat))
+%ul.breadcrumb
+  %li
+    %a{href: root_path}
+      %i.icon-home
+    %span.divider •
+  %li
+    %a{href: categories_path}
+      %i.icon-tags
+      = t "application.nav.categories"
+    %span.divider •
+  - @category.ancestors.reverse.each do |k|
+    %li
+      %a{href: category_path(k)}= k.name
+      %span.divider •
+  %li.active= @category.name
 
+
+
+%h1
+  %i.icon-tags.icon-border
+  = @category.name
+  - if @category.organization
+    %small= "(#{@category.organization})"
+
+.container-fluid
+  .row-fluid
+    .span5
+      %h4= t 'data'
+      %dl
+        %dt= t ".created_at"
+        %dd= l @category.created_at
+        %dt= t ".updated_at"
+        %dd= l @category.updated_at
+
+    .span7
+      %h4= t 'translations'
+      %table.table.table-condensed
+        %thead
+          %tr
+            %th= t '.locale'
+            %th= t '.name'
+        %tbody
+          - I18n.available_locales.each do |lo|
+            %tr{"class" => ("warning" unless @category.name_translations[lo.to_s])}
+              %td= "[#{lo}]"
+              %td= @category.name_translations[lo.to_s] or "—"
+
+
+- if @category.children.present?
+  %h4= t 'children'
+  = render 'tabled', categories: @category.children

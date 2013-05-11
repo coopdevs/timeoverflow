@@ -22,6 +22,10 @@ GEM
       activesupport (= 3.2.11)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-postgres-hstore (0.4.1)
+      pg
+      rails
+      rake
     activeresource (3.2.11)
       activemodel (= 3.2.11)
       activesupport (= 3.2.11)
@@ -53,6 +57,9 @@ GEM
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
     hike (1.2.1)
+    hstore_translate (0.0.5)
+      activerecord (>= 3.1.0)
+      activerecord-postgres-hstore (~> 0.4.0)
     i18n (0.6.1)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
@@ -128,18 +135,19 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     with_advisory_lock (0.0.4)
       activerecord (>= 3.2.0)
-    yaml_db (0.2.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgres-hstore (~> 0.4.0)
   awesome_print
   bcrypt-ruby
   cancan
   closure_tree
   coffee-rails (~> 3.2.1)
   haml-rails
+  hstore_translate
   jbuilder
   jquery-rails
   paranoia
@@ -151,4 +159,3 @@ DEPENDENCIES
   simple_form
   strong_parameters
   uglifier (>= 1.0.3)
-  yaml_db

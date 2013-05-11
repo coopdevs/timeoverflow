@@ -35,6 +35,13 @@ es:
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
+  application:
+    nav:
+      administration: Administración
+      users: Usuarios
+      categories: Categorías
+      organizations: Organizaciones
+
   users:
 
     index:

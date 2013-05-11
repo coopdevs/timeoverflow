@@ -35,7 +35,7 @@ def load_categories(list_or_hash, parent)
   end
 end
 
-load_categories(categories, nil)
+# load_categories(categories, nil)
 
 # categories.each do |c|
 #   Category.find_or_create_by_name c

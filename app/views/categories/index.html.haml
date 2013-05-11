@@ -1,16 +1,40 @@
-%table.table.table-hover.table-condensed
-  %thead
-    %tr
-      %th{colspan: 10}
-        .navbar
-          .navbar-inner
-            %ul.nav.pull-right
-            %a.btn.btn-primary{href: "/categories/new"}
-              = t "Nuevo servicio"
-    %tr
-      %th= t ".nombre"
-  %tbody
-    - @categories.each do |cat|
-      %tr
-        %td
-          %a{href: "/categories/#{cat.id}"}= cat.fqn
+%ul.breadcrumb
+  %li
+    = link_to root_path do
+      %i.icon-home
+    %span.divider •
+  %li.active
+    = link_to_unless_current categories_path do
+      %i.icon-tags
+      = t "application.nav.categories"
+
+
+%h1
+  %i.icon-tags.icon-border
+  = t "application.nav.categories"
+
+%ul.nav.nav-pills
+  %li{class: ('active' if current_page? categories_path)}
+    %a{href: categories_path}
+      %i.icon-list
+      = t 'all'
+  %li{class: ('active' if current_page? root_categories_path)}
+    %a{href: root_categories_path}
+      %i.icon-sitemap
+      = t 'tree'
+  %li{class: ('active' if current_page? global_categories_path)}
+    %a{href: global_categories_path}
+      %i.icon-globe
+      = t 'global'
+  %li{class: ('active' if current_page? local_categories_path)}
+    %a{href: local_categories_path}
+      %i.icon-group
+      = t 'local'
+
+  - if admin?
+    %li{class: ('active' if current_page? new_category_path)}
+      %a{href: new_category_path}
+        %i.icon-plus
+        = t 'add'
+
+= render 'tabled', categories: @categories

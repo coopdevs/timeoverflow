@@ -1,9 +1,7 @@
 .hero-unit
   %h1
     TimeOverflow
-    - if @current_organization
-      &mdash;
-      = @current_organization
+    - if current_organization
+      %small= current_organization.name
   %p= t "catchPhrase"
-  %p Bienvenido al sistema de gestión de Bancos de Tiempo
 

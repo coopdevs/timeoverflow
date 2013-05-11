@@ -4,7 +4,26 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    # respond_with @categories
+
+  end
+
+  def root
+    @categories = @categories.roots
+    render 'index'
+  end
+
+  def global
+    @categories = @categories.where organization_id: nil
+    render 'index'
+  end
+
+  def local
+    @categories = if superadmin?
+      @categories.where "organization_id IS NOT NULL"
+    else
+      @categories.where organization_id: current_organization
+    end
+    render 'index'
   end
 
   def show

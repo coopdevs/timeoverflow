@@ -22,6 +22,20 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
+--
+-- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
+
+
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -34,10 +48,11 @@ SET default_with_oids = false;
 
 CREATE TABLE categories (
     id integer NOT NULL,
-    name character varying(255),
     parent_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    organization_id integer,
+    name_translations hstore
 );
 
 
@@ -109,7 +124,8 @@ CREATE TABLE organizations (
     id integer NOT NULL,
     name character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    reg_number_seq integer
 );
 
 
@@ -162,7 +178,8 @@ CREATE TABLE users (
     admin boolean,
     superadmin boolean,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -312,3 +329,13 @@ INSERT INTO schema_migrations (version) VALUES ('20121104004639');
 INSERT INTO schema_migrations (version) VALUES ('20121104085711');
 
 INSERT INTO schema_migrations (version) VALUES ('20121121233818');
+
+INSERT INTO schema_migrations (version) VALUES ('20130214175758');
+
+INSERT INTO schema_migrations (version) VALUES ('20130214181128');
+
+INSERT INTO schema_migrations (version) VALUES ('20130222185624');
+
+INSERT INTO schema_migrations (version) VALUES ('20130425165150');
+
+INSERT INTO schema_migrations (version) VALUES ('20130508085004');

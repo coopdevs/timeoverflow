@@ -4,7 +4,7 @@
     New user
 
 = simple_form_for @user do |f|
-
+  = f.error_notification
   = f.input :username
   = f.input :email
   - if superadmin?
@@ -13,6 +13,4 @@
   - if admin?
     = f.input :admin, hint: t(".admin_warning")
 
-  = f.input :password
-  = f.input :password_confirmation
   = f.submit

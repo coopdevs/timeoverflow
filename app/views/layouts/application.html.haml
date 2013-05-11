@@ -18,7 +18,7 @@
     = cdn :select2, "3.3.0", "select2.css"
     = cdn :"twitter-bootstrap", "2.3.1", "css/bootstrap.no-icons.min.css"
     = cdn :"bootstrap-datepicker", "1.0.0", "css/datepicker.css"
-    = cdn :"font-awesome", "3.0.2", "css/font-awesome.css"
+    = cdn :"font-awesome", "3.1.0", "css/font-awesome.css"
     = stylesheet_link_tag "application", :media => "all"
     %link{href: "/favicon.ico", rel: "shortcut icon"}
 
@@ -26,37 +26,14 @@
     .navbar.navbar-fixed-top.navbar-inverse
       .navbar-inner
         .container-fluid
-          %a.brand{href: "/"} TimeOverflow
-          .nav-collapse
-            %ul.nav
-              %li
-                %a{href: "/organizations"}
-                  %i.icon-group
-                  = Organization.model_name.human(count: :many)
-              %li
-                %a{href: "/categories"}
-                  %i.icon-tags
-                  = Category.model_name.human.pluralize
-              %li
-                %a{href: "/users"}
-                  %i.icon-user
-                  = User.model_name.human.pluralize
-            %ul.nav.pull-right
-              %li
-                - if current_user
-                  %a{href: "/sessions", data: {method: :delete}}
-                    Log out
-                    = current_user.email
-                - else
-                  %a{href: "/sessions/new"} Log in
-
-            %form.navbar-search.pull-right
-              %input.search-query.xxlarge{"type" => "text", "placeholder" => "Search", "ng-model" => "searchTerm"}
-
+          = render 'menu'
 
     .container-fluid
       .row-fluid
-        .span12
+        #side-nav.sidebar-nav.span2
+          %ul.clearfix.nav.nav-list.well
+            = render 'nav'
+        #main_container.span10
           = yield
 
 

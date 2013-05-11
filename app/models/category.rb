@@ -1,6 +1,8 @@
 class Category < ActiveRecord::Base
   acts_as_tree
+  translates :name
   attr_accessible :name, :parent_id
+  belongs_to :organization
 
   FQN_SEPARATOR = " > "
 

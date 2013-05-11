@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def create_fake_password
+    [*('a'..'z'),*('0'..'9')].shuffle[0,8].join
+  end
+
   def admin?
     admin or superadmin
   end

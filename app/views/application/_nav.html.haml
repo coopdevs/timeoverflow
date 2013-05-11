@@ -1,0 +1,23 @@
+%li.nav-header= t ".administration"
+%li{class: ('active' if current_page? controller: "organizations")}
+  %a{href: organizations_path}
+    %i.icon-group
+    = Organization.model_name.human(count: :many)
+%li{class: ('active' if current_page? controller: "categories")}
+  %a{href: categories_path}
+    %i.icon-tags
+    = Category.model_name.human.pluralize
+%li{class: ('active' if current_page? controller: "users")}
+  %a{href: users_path}
+    %i.icon-user
+    = User.model_name.human.pluralize
+
+%li.nav-header= t ".reports"
+%li
+  %a{href: "/reports/users_by_email"}
+    %i.icon-list-alt
+    = t ".reports.users_by_email"
+%li
+  %a{href: "/reports/users_by_email"}
+    %i.icon-list-alt
+    = t ".reports.users_by_email"
