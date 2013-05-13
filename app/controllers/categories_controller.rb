@@ -4,17 +4,15 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource
 
   def index
-
+    send params[:filter] if params[:filter]
   end
 
   def root
     @categories = @categories.roots
-    render 'index'
   end
 
   def global
     @categories = @categories.where organization_id: nil
-    render 'index'
   end
 
   def local
@@ -23,7 +21,6 @@ class CategoriesController < ApplicationController
     else
       @categories.where organization_id: current_organization
     end
-    render 'index'
   end
 
   def show
@@ -32,23 +29,23 @@ class CategoriesController < ApplicationController
 
   def create
     if @category.save
-      render json: @category, status: :created, location: @category
+      redirect_to @category
     else
-      render json: @category.errors, status: :unprocessable_entity
+      render :new
     end
   end
 
   def update
     if @category.update_attributes params[:category]
-      respond_with @category
+      redirect_to @category
     else
-      respond_with @category, status: :unprocessable_entity
+      render :edit
     end
   end
 
   def destroy
     @category.destroy
-    head :no_content
+    redirect_to :index
   end
 
 end

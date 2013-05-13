@@ -2,6 +2,8 @@
   %thead
     %tr
       %th= Category.human_attribute_name(:name)
+      %th= Category.human_attribute_name(:children)
+      %th= Category.human_attribute_name(:descendants)
       %th
         %i.icon-hand-down
         = t "global.table.actions"
@@ -14,6 +16,8 @@
           -else
             %i.icon-globe
           = link_to(cat.fqn, cat)
+        %td= cat.children.count
+        %td= cat.descendants.count
         %td
           %a.action{href: category_path(cat)}
             %i.icon-eye-open

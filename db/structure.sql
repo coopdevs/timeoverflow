@@ -52,7 +52,8 @@ CREATE TABLE categories (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     organization_id integer,
-    name_translations hstore
+    name_translations hstore,
+    fqn_translations hstore
 );
 
 
@@ -339,3 +340,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130222185624');
 INSERT INTO schema_migrations (version) VALUES ('20130425165150');
 
 INSERT INTO schema_migrations (version) VALUES ('20130508085004');
+
+INSERT INTO schema_migrations (version) VALUES ('20130513092219');

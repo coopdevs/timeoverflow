@@ -4,9 +4,9 @@ Timeoverflow::Application.routes.draw do
 
   resources :categories do
     collection do
-      get :global
-      get :local
-      get :root
+      get :global, action: :index, filter: :global
+      get :local, action: :index, filter: :local
+      get :root, action: :index, filter: :root
     end
   end
   resources :organizations

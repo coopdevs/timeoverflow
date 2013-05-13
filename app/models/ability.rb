@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    can :read, Category
+    can :read, Category, organization_id: [user.organization_id, nil]
     can :read, Organization
     if user.id
       can :read, User, organization_id: user.organization_id
