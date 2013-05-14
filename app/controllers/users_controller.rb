@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
 
   def index
-    respond_with scoped_users.includes(:categories)
+    @users = scoped_users.includes(:categories)
   end
 
   def show

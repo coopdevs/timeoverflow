@@ -3,6 +3,10 @@ require 'translates'
 class Category < ActiveRecord::Base
   extend Translates
   acts_as_tree
+  belongs_to :parent,
+        class_name: "Category",
+        foreign_key: :parent_id,
+        counter_cache: :children_count
   translates :name, :fqn
   attr_accessible :name_translations, :parent_id
   belongs_to :organization

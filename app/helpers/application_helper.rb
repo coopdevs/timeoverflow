@@ -19,7 +19,8 @@ module ApplicationHelper
       :"lodash.js" => :cloudflare,
       select2: :cloudflare,
       :"twitter-bootstrap" => :netdna,
-      :"font-awesome" => :netdna
+      :"font-awesome" => :netdna,
+      datatables: :cloudflare
     }
 
     def cdn(library, version, resource, *rest)

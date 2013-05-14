@@ -58,7 +58,10 @@ es:
       admin_warning: Atención!!! Estás dando poderes a este usuario!!
 
 
-
+  global:
+    show: Mostrar
+    edit: Modificar
+    delete: Borrar
 
 
 

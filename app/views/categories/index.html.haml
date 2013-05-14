@@ -17,24 +17,24 @@
   %li{class: ('active' if current_page? categories_path)}
     %a{href: categories_path}
       %i.icon-list
-      = t 'all'
+      = t '.all'
   %li{class: ('active' if current_page? root_categories_path)}
     %a{href: root_categories_path}
       %i.icon-sitemap
-      = t 'tree'
+      = t '.tree'
   %li{class: ('active' if current_page? global_categories_path)}
     %a{href: global_categories_path}
       %i.icon-globe
-      = t 'global'
+      = t '.global'
   %li{class: ('active' if current_page? local_categories_path)}
     %a{href: local_categories_path}
       %i.icon-group
-      = t 'local'
+      = t '.local'
 
   - if admin?
     %li{class: ('active' if current_page? new_category_path)}
       %a{href: new_category_path}
         %i.icon-plus
-        = t 'add'
+        = t '.add'
 
 = render 'tabled', categories: @categories

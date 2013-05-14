@@ -15,7 +15,8 @@
 //  require_tree .
 //  require_tree ../templates
 //= require jquery_ujs
-//= require jquery.dataTables
-//= require_self
+//= require dataTables.bootstrap
+//  require jquery.dataTables
+//  require_self
 
 $(document).ready(function() { $(".select2").select2(); });

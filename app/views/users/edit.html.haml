@@ -1,6 +1,6 @@
 .page-header
   %h1
-    %i.icon-edit.icon-border
+    %i.icon-edit.icon-fixed-width
     = @user.username
     %small
       = @user.email
@@ -21,6 +21,6 @@
   = f.input :phone
   = f.input :alt_phone
 
-  = f.association :categories, as: :check_boxes
+  = f.association :categories, label_method: :fqn, input_html: {class: 'select2', style: 'width: 75%'}
 
   = f.submit
