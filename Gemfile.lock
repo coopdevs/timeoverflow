@@ -74,6 +74,7 @@ GEM
     memcachier (0.0.2)
     mime-types (1.23)
     multi_json (1.7.3)
+    newrelic_rpm (3.6.2.96)
     paranoia (1.2.0)
       activerecord (>= 3.0.0)
     pg (0.15.1)
@@ -155,6 +156,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   memcachier
+  newrelic_rpm
   paranoia
   pg
   puma
