@@ -64,3 +64,5 @@ gem "paranoia"
 
 gem 'activerecord-postgres-hstore'
 
+gem 'memcachier'
+gem 'dalli'
