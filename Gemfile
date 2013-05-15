@@ -27,9 +27,7 @@ group :assets do
   # gem "twitter-bootstrap-rails"
 end
 
-group :development, :test do
-  gem 'seed-fu'
-end
+gem 'seed-fu'
 
 gem 'jquery-rails'
 
