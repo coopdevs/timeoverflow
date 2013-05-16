@@ -3,6 +3,7 @@ require 'translates'
 class Category < ActiveRecord::Base
   extend Translates
   acts_as_tree
+
   belongs_to :parent,
         class_name: "Category",
         foreign_key: :parent_id,
@@ -12,6 +13,9 @@ class Category < ActiveRecord::Base
   belongs_to :organization
 
   after_save :recalculate_descendent_fqns, :if => :name_translations_changed?
+
+  has_many :transfers
+  has_many :user, :through => :transfer
 
   FQN_SEPARATOR = " > "
 

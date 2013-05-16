@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @transfer.user
+%p
+  %b Amount:
+  = @transfer.amount
+%p
+  %b Category:
+  = @transfer.category
+%p
+  %b Date:
+  = @transfer.date
+
+= link_to 'Edit', edit_transfer_path(@transfer)
+\|
+= link_to 'Back', transfers_path
