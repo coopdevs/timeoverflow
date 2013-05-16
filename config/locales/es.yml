@@ -57,14 +57,53 @@ es:
       superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
       admin_warning: Atención!!! Estás dando poderes a este usuario!!
 
+  categories:
+    index:
+      all: Todas
+      tree: Principales
+      global: Globales
+      local: Locales
+      add: Añadir categoría
 
   global:
     show: Mostrar
     edit: Modificar
     delete: Borrar
+    save: Guardar
 
 
-
+    "Save changes": "Guardar"
+    "New service": "Nuevo servicio"
+    "Cancel": "Cancelar"
+    "no parent": "Sin padre"
+    "Welcome to the new-generation time banking system": "Bienvenido al nuevo sistema de Bancos de Tiempo" 
+    "Learn more": "Saber más"
+    "New organization": "Nuevo Banco"
+    "Name": "Nombre"
+    "Organization": "Banco de Tiempo"
+    "E-mail": "Correo electrónico"
+    "Administrator": "Administrador"
+    "Super Administrator": "Administrador de sistema"
+    "Member Code": "Código de miembro"
+    "Register date": "Fecha de alta"
+    "Document ID": "Número de documento"
+    "Phones": "Teléfonos"
+    "Offers categories": "Servicios ofrecidos"
+    "New user": "Nuevo usuario"
+    "Edit": "Modificar"
+    "Password": "Contraseña"
+    "Repeat password": "Repetir contraña"
+    "Birth date": "Fecha de nacimiento"
+    "Phone": "Teléfono"
+    "Alternate Phone": "Teléfono alternativo"
+    "Categories": "Servicios"
+    "Users": "Usuarios"
+    "By user": "Por usuarios"
+    "By category": "Por servicios"
+    "Category": "Categoría"
+    "Members": "Miembros"
+    "View": "Ver"
+ 
 
   "catchPhrase": "Benvingut al sistema de gestió de Bancs de Temps"
   "nuevouser": "Nou usuari"
