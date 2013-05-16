@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   acts_as_paranoid
   has_secure_password
 
+
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
@@ -14,6 +15,11 @@ class User < ActiveRecord::Base
   validates :registration_number, :uniqueness => { :scope => :organization_id }
 
   has_and_belongs_to_many :categories
+
+  has_many :tranfers
+  has_many :categories, :through => :transfer
+  
+  attr_accessible :username
 
   before_create :assign_registration_number
 

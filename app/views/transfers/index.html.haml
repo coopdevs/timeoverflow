@@ -1,0 +1,25 @@
+%h1 Listing transfers
+
+%table
+  %tr
+    %th User
+    %th Amount
+    %th Category
+    %th Date
+    %th
+    %th
+    %th
+
+  - @transfers.each do |transfer|
+    %tr
+      %td= transfer.user
+      %td= transfer.amount
+      %td= transfer.category
+      %td= transfer.date
+      %td= link_to 'Show', transfer
+      %td= link_to 'Edit', edit_transfer_path(transfer)
+      %td= link_to 'Destroy', transfer, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Transfer', new_transfer_path
