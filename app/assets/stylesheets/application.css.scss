@@ -10,7 +10,9 @@
  *
  *  require angular-ui
  *= require_self
- *= require_tree .
+ *= require main
+ *= require datatables_bs_fix
+ *= require side_nav
  *= jquery.dataTables
  */
 
@@ -24,31 +26,4 @@ body {
 //   &:hover > a.action { display: inline; }
 // }
 
-table.table thead {
-  .sorting {
-      cursor: pointer;
-      *cursor: hand;
-      background: url('//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/images/sort_both.png') no-repeat center right;
-  }
-  .sorting_asc {
-    @extend .sorting;
-    background-image: url('//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/images/sort_asc.png');
-  }
-  .sorting_desc {
-    @extend .sorting;
-    background-image: url('//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/images/sort_desc.png');
-  }
-  .sorting_asc_disabled {
-    @extend .sorting;
-    background-image: url('//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/images/sort_asc_disabled.png');
-  }
-  .sorting_desc_disabled {
-    @extend .sorting;
-    background-image: url('//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/images/sort_desc_disabled.png');
-  }
-}
 
-
-.dataTables_paginate.pagination {
-  margin: 0;
-}

@@ -18,6 +18,7 @@ gem 'rails-i18n'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem 'compass-rails'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -67,3 +68,5 @@ gem 'activerecord-postgres-hstore'
 gem 'memcachier'
 gem 'dalli'
 gem 'newrelic_rpm'
+gem 'turbolinks'
+

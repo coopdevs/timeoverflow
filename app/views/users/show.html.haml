@@ -1,18 +1,26 @@
-.page-header
-  %h1
-    %i.icon-user.icon-border
-    = @user.username
-    %small= @user.email
+%ul.breadcrumb#breadcrumb
+  %li
+    = link_to root_path do
+      %i.icon-home
+    %span.divider •
+  %li
+    = link_to users_path do
+      %i.icon-user
+      = t "application.nav.users"
+    %span.divider •
+  %li.active= @user.username
+
+
+%h1
+  %i.icon-user.icon-border
+  = @user.username
+  %small= @user.email
   - if @user.superadmin?
     %span.label.label-important= t ".superadmin"
   - if @user.admin
     %span.label.label-warning= t ".admin"
 
 %ul.nav.nav-pills
-  %li
-    %a{href: users_path}
-      %i.icon-list
-      = t 'list'
   - if current_user == @user or admin?
     %li
       %a{href: edit_user_path(@user)}
@@ -35,29 +43,22 @@
         = t "give time"
 
 .row-fluid
-  .span3
-    %dl
-      %dt
-        %i.icon-group.icon-muted.pull-left.icon-2x
-        = t ".organizacion"
-      %dd= link_to @user.organization.name, @user.organization
+  .span4
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top= t "data"
+      %dl.dl-horizontal.block
+        %dt= User.human_attribute_name(:organization)
+        %dd= link_to @user.organization.name, @user.organization
 
-      - if @user.registration_number.present?
-        %dt{:translate => ".codigo"} Código de usuario
+        %dt= User.human_attribute_name(:registration_number)
         %dd= @user.registration_number
-      - if @user.registration_date.present?
-        %dt{:translate => ".fechaalta"} Fecha de alta
-        %dd= l @user.registration_date
-
-  .span3
-    %dl
-      - if @user.date_of_birth.present?
-        %dt{:translate => ".fechaalta"} Fecha de nacimiento
-        %dd= l @user.date_of_birth
-      - if @user.identity_document.present?
-        %dt{:translate => ".ndocumento"} Número de documento (DNI/Pasaporte/...)
+        %dt= User.human_attribute_name(:registration_date)
+        %dd= l @user.registration_date rescue "-"
+        %dt= User.human_attribute_name(:date_of_birth)
+        %dd= l @user.date_of_birth rescue "-"
+        %dt= User.human_attribute_name(:identity_document)
         %dd= @user.identity_document
-      - if (phones = [@user.phone, @user.alt_phone].map(&:presence).compact).present?
+        - phones = [@user.phone, @user.alt_phone].map(&:presence).compact
         %dt= t(".phone", count: phones.size)
         %dd
           - phones.each_with_index do |ph, idx|
@@ -65,15 +66,19 @@
               &mdash;
             = ph
 
-  .span3
-    %h3 Servicios ofrecidos
-    %ul
-      - @user.categories.each do |cat|
-        %li= cat.fqn
+  .span4
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Servicios ofrecidos
+      %ul.unstyled.block.padding_10
+        - @user.categories.each do |cat|
+          %li= cat.fqn
 
-  .span3
-    %h3 Saldo
-    %ul
-      - @user.categories.each do |cat|
-        %li= cat.fqn
+  .span4.portlet
+    .box.grad_colour_dark_blue
+      %h2.box_head.round_top Saldo
+      %p{style: "color: red"}
+        %i.icon-warning
+        WORK IN PROGRESS
+
+
 

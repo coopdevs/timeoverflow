@@ -1,7 +1,16 @@
-.page-header
-  %h1
-    %i.icon-user.icon-border
-    = User.model_name.human.pluralize
+%ul.breadcrumb#breadcrumb
+  %li
+    = link_to root_path do
+      %i.icon-home
+    %span.divider •
+  %li.active
+    = link_to_unless_current users_path do
+      %i.icon-tags
+      = t "application.nav.users"
+
+%h1
+  %i.icon-user.icon-border
+  = User.model_name.human.pluralize
 
 %table.table.table-hover.table-condensed
   %thead

@@ -46,8 +46,6 @@ class UsersController < ApplicationController
     if @user.save
       respond_with @user, status: :created, location: @user
     else
-      ap @user
-      ap @user.errors
       render :new
     end
   end

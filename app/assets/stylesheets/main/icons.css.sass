@@ -1,0 +1,31 @@
+li
+  a span.icon
+    right: 5px
+    margin-top: -1px
+  span.icon, a span.icon
+    background: url(../images/nav_right.png) no-repeat
+    position: absolute
+    right: 5px
+    width: 12px
+    height: 12px
+    top: 11px
+    display: block
+    cursor: pointer
+  span.left.icon
+    background: url(../images/nav_left.png) no-repeat
+  &.openable span.icon
+    background: url(../images/nav_plus.png) no-repeat
+
+#side_nav ul li.toggle span.icon
+  background: url(../images/nav_plus.png) no-repeat
+
+li.openable.active span.icon
+  background: url(../images/nav_minus.png) no-repeat
+
+.nav_down
+  > ul > li > a > span.icon, li.has_mega_menu span.icon
+    background: url(../images/nav_down.png) no-repeat
+
+.nav_up
+  > ul > li > a > span.icon, li.has_mega_menu span.icon
+    background: url(../images/nav_up.png) no-repeat

@@ -1,2 +1,18 @@
+%ul.breadcrumb#breadcrumb
+  %li
+    %a{href: root_path}
+      %i.icon-home
+    %span.divider •
+  %li
+    %a{href: categories_path}
+      %i.icon-tags
+      = t "application.nav.categories"
+    %span.divider •
+  - @category.ancestors.reverse.each do |k|
+    %li
+      %a{href: category_path(k)}= k.name
+      %span.divider •
+  %li.active= t ".new"
+
 %h1= t ".new"
 = render partial: "form"

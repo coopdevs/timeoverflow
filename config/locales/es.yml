@@ -21,6 +21,8 @@ es:
         email: Correo
         registration_date: Fecha de alta
         registration_number: Código de usuario
+        birth_date: Fecha de nacimiento
+        identity_document: N. de documento
         phone: Teléfono
         alt_phone: Otro Teléfono
         password: Contraseña
@@ -50,10 +52,7 @@ es:
       phone:
         one: Teléfono
         other: Teléfonos
-    new:
-      superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
-      admin_warning: Atención!!! Estás dando poderes a este usuario!!
-    edit:
+    form:
       superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
       admin_warning: Atención!!! Estás dando poderes a este usuario!!
 

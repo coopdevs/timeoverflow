@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
   # end
 
   def index
-    ap request.headers.reject { |k, v| /[a-z]/ === k }
-    ap format: request.format
+    # ap request.headers.reject { |k, v| /[a-z]/ === k }
+    # ap format: request.format
   end
 
   # rescue_from Exception do |exc|
