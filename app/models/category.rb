@@ -17,17 +17,6 @@ class Category < ActiveRecord::Base
 
   FQN_SEPARATOR = " > "
 
-  # def fqn(memo=nil)
-  #   @fqn ||= if memo
-  #     other_self = memo.find { |c| c.id == self.id }
-  #     # (class memoized)
-  #     @@memo ||= {}
-  #     @@memo[self.id] ||= [self.parent.try(:fqn), self.name].compact.join FQN_SEPARATOR
-  #   else
-  #     self_and_ancestors.collect(&:name).reverse.join FQN_SEPARATOR
-  #   end
-  # end
-
   def calculate_fqn
     self_and_ancestors.reverse.inject(Hash.new) do |memo, cat|
       I18n.available_locales.each do |lo|
