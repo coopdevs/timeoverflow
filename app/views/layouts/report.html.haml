@@ -1,0 +1,29 @@
+!!! 5
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", content: "IE=Edge,chrome=1"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %title REPORT
+    / = cdn :"lodash.js", "1.0.1", "lodash.min.js"
+    / = cdn :jquery, "1.9.1", "jquery.min.js"
+    / = cdn :jqueryui, "1.10.1", "jquery-ui.min.js"
+    / = cdn :datatables, "1.9.4", "jquery.dataTables.min.js"
+    / = cdn :select2, "3.3.0", "select2.min.js"
+    = cdn :"twitter-bootstrap", "2.3.1", "js/bootstrap.min.js"
+    = cdn :"bootstrap-datepicker", "1.0.0", "js/bootstrap-datepicker.js"
+    = javascript_include_tag "application"
+    / = csrf_meta_tags
+    = cdn :jqueryui, "1.10.1", "themes/base/jquery-ui.css"
+    / = cdn :select2, "3.3.0", "select2.css"
+    = cdn :"twitter-bootstrap", "2.3.1", "css/bootstrap.no-icons.min.css", media: "all"
+    / = cdn :"bootstrap-datepicker", "1.0.0", "css/datepicker.css"
+    = cdn :"font-awesome", "3.1.0", "css/font-awesome.css", media: "all"
+    = stylesheet_link_tag "application", :media => "all"
+    %link{href: "/favicon.ico", rel: "shortcut icon"}
+
+  %body
+
+    = yield
+
+

@@ -14,10 +14,10 @@
 
 %li.nav-header= t ".reports"
 %li
-  %a{href: "/reports/users_by_email"}
-    %i.icon-list-alt
-    = t ".reports.users_by_email"
+  %a{href: "/report/cat_with_users", data: {popup: true}}
+    %i.icon-list-alt.icon-fixed-width
+    = t "reports.cat_with_users.title"
 %li
-  %a{href: "/reports/users_by_email"}
-    %i.icon-list-alt
-    = t ".reports.users_by_email"
+  %a{href: "/report/user_list", data: {popup: true}}
+    %i.icon-list-alt.icon-fixed-width
+    = t "reports.user_list.title"

@@ -44,41 +44,38 @@
 
 .row-fluid
   .span4
-    .box.grad_colour_dark_blue
-      %h2.box_head.round_top= t "data"
-      %dl.dl-horizontal.block
-        %dt= User.human_attribute_name(:organization)
-        %dd= link_to @user.organization.name, @user.organization
+    %h2= t "data"
+    %dl.dl-horizontal
+      %dt= User.human_attribute_name(:organization)
+      %dd= link_to @user.organization.name, @user.organization
 
-        %dt= User.human_attribute_name(:registration_number)
-        %dd= @user.registration_number
-        %dt= User.human_attribute_name(:registration_date)
-        %dd= l @user.registration_date rescue "-"
-        %dt= User.human_attribute_name(:date_of_birth)
-        %dd= l @user.date_of_birth rescue "-"
-        %dt= User.human_attribute_name(:identity_document)
-        %dd= @user.identity_document
-        - phones = [@user.phone, @user.alt_phone].map(&:presence).compact
-        %dt= t(".phone", count: phones.size)
-        %dd
-          - phones.each_with_index do |ph, idx|
-            - unless idx.zero?
-              &mdash;
-            = ph
+      %dt= User.human_attribute_name(:registration_number)
+      %dd= @user.registration_number
+      %dt= User.human_attribute_name(:registration_date)
+      %dd= l @user.registration_date rescue "-"
+      %dt= User.human_attribute_name(:date_of_birth)
+      %dd= l @user.date_of_birth rescue "-"
+      %dt= User.human_attribute_name(:identity_document)
+      %dd= @user.identity_document || "-"
+      - phones = [@user.phone, @user.alt_phone].map(&:presence).compact
+      %dt= t(".phone", count: phones.size)
+      %dd
+        - phones.each_with_index do |ph, idx|
+          - unless idx.zero?
+            &mdash;
+          = ph
 
   .span4
-    .box.grad_colour_dark_blue
-      %h2.box_head.round_top Servicios ofrecidos
-      %ul.unstyled.block.padding_10
-        - @user.categories.each do |cat|
-          %li= cat.fqn
+    %h2 Servicios ofrecidos
+    %ul.unstyled
+      - @user.categories.each do |cat|
+        %li= cat.fqn
 
-  .span4.portlet
-    .box.grad_colour_dark_blue
-      %h2.box_head.round_top Saldo
-      %p{style: "color: red"}
-        %i.icon-warning
-        WORK IN PROGRESS
+  .span4
+    %h2 Saldo
+    %p{style: "color: red"}
+      %i.icon-warning
+      WORK IN PROGRESS
 
 
 

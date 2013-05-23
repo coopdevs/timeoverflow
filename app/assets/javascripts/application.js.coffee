@@ -19,3 +19,7 @@
 $(document).ready -> $(".select2").select2()
 
 $(document).bind 'page:load', -> $(".select2").select2()
+
+$(document).on 'click', 'a[data-popup]', (event) ->
+  window.open($(this).attr('href'), 'popup', 'width=600,height=600')
+  event.preventDefault()

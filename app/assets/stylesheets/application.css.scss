@@ -10,16 +10,17 @@
  *
  *  require angular-ui
  *= require_self
- *= require main
+ *  require main
  *= require datatables_bs_fix
- *= require side_nav
+ *  require side_nav
  *= jquery.dataTables
  */
 
-body {
-  padding-top: 60px;
+@media screen {
+  body {
+    padding-top: 60px;
+  }
 }
-
 
 // td.hover-actions {
 //   > a.action { display: none; }
@@ -27,3 +28,8 @@ body {
 // }
 
 
+@media print {
+  body {
+    padding-top: 0px;
+  }
+}

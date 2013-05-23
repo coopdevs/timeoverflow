@@ -72,6 +72,13 @@ Timeoverflow::Application.routes.draw do
   #     resources :products
   #   end
 
+  resource "report" do
+    collection do
+      get "user_list"
+      get "cat_with_users"
+    end
+  end
+
   # match '(*any)' => "application#index"
 
 

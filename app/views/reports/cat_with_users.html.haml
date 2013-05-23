@@ -1,0 +1,11 @@
+%table.table.table-condensed.table-bordered.table-striped
+  %thead
+    %tr
+      %th= Category.model_name.human
+      %th= User.model_name.human.pluralize
+  %tbody
+    - @categories.each do |c|
+      - d = c.self_and_ancestors.size - 1
+      %tr
+        %td{style: "font-size: #{1.25 - 0.125 * d}em; padding-left: #{5 + 20 * d}px"}= c.name
+        %td= c.user_ids.sort.join(', ')

@@ -11,6 +11,8 @@ class Category < ActiveRecord::Base
   attr_accessible :name_translations, :parent_id
   belongs_to :organization
 
+  has_and_belongs_to_many :users
+
   after_save :recalculate_descendent_fqns, :if => :name_translations_changed?
 
   FQN_SEPARATOR = " > "

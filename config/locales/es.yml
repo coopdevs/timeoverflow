@@ -64,6 +64,12 @@ es:
       local: Locales
       add: Añadir categoría
 
+  reports:
+    cat_with_users:
+      title: Servicios ofrecidos
+    user_list:
+      title: Listado usuarios
+
   global:
     show: Mostrar
     edit: Modificar
