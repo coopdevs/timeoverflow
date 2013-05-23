@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   # load_and_authorize_resource
 
   def scoped_users
-    return [] unless current_user
+    return User.where(id: nil) unless current_user
     res = User.scoped
     res = res.where organization_id: current_user.organization_id unless current_user.try :superadmin?
     res
