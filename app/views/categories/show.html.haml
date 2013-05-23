@@ -36,7 +36,7 @@
 
 .container-fluid
   .row-fluid
-    .span5
+    .span6
       .box.grad_colour_dark_blue
         %h2.box_head.round_top= t 'data'
         %dl.dl-horizontal.block
@@ -45,7 +45,7 @@
           %dt= t ".updated_at"
           %dd= l @category.updated_at
 
-    .span7
+    .span6
       .box.grad_colour_dark_blue
         %h2.box_head.round_top= t 'translations'
         %dl.dl-horizontal.block
@@ -55,5 +55,6 @@
 
 
 - if @category.children.present?
-  %h4= t 'children'
-  = render 'tabled', categories: @category.children
+  .box.grad_colour_dark_blue
+    %h2.box_head.round_top= t 'children'
+    = render 'tabled', categories: @category.children
