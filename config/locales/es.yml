@@ -8,16 +8,16 @@ es:
       # User.model_name.human
       user: Usuario
       organization:
-        one: Organización
-        other: Organizaciones
-      category: Categoría
+        one: Banco de Tiempo
+        other: Bancos de Tiempo
+      category: Servicio
 
     attributes:
       user:
         username: Nombre
         organization:
-          one: Organización
-          other: Organizaciones
+        one: Banco de Tiempo
+        other: Bancos de Tiempo
         email: Correo
         registration_date: Fecha de alta
         registration_number: Código de usuario
@@ -33,7 +33,7 @@ es:
         name: Nombre
       category:
         name: Nombre
-        parent: Categoría superior
+        parent: Categoría padre
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
@@ -41,7 +41,7 @@ es:
     nav:
       administration: Administración
       users: Usuarios
-      categories: Categorías
+      categories: Servicios
       organizations: Organizaciones
 
   users:
@@ -52,6 +52,9 @@ es:
       phone:
         one: Teléfono
         other: Teléfonos
+      data: Datos del usuario
+      categories: Servicios Ofrecidos
+      account: Últimos movimientos
     form:
       superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
       admin_warning: Atención!!! Estás dando poderes a este usuario!!
@@ -62,7 +65,7 @@ es:
       tree: Principales
       global: Globales
       local: Locales
-      add: Añadir categoría
+      add: Añadir servicio
 
   reports:
     cat_with_users:
@@ -76,7 +79,7 @@ es:
     delete: Borrar
     save: Guardar
 
-
+    "catchPhrase": "Benvenido al sistema de gestión del Banco de Tiempo"
     "Save changes": "Guardar"
     "New service": "Nuevo servicio"
     "Cancel": "Cancelar"
@@ -108,45 +111,5 @@ es:
     "Category": "Categoría"
     "Members": "Miembros"
     "View": "Ver"
- 
-
-  "catchPhrase": "Benvingut al sistema de gestió de Bancs de Temps"
-  "nuevouser": "Nou usuari"
-  "modificaruser": "Modificar"
-  "ver": "Veure"
-  "borrar": "Esborra"
-  "nuevaorg": "Nova organització"
-  "nombre": "Nom"
-  "guardar": "Desa"
-  "cancelar": "Cancel·la"
-  "nuevacat": "Nou servei"
-  "sincatsup": "(sense categoria superior)"
-  "nuevaorg": "Nova organització"
-  "nuevaorg": "Nova organització"
-  "nuevaorg": "Nova organització"
-  "nuevaorg": "Nova organització"
-  "nuevaorg": "Nova organització"
-
-  "userForm.nombre": "Nom"
-  "userForm.organizacion": "Organització"
-  "userForm.email": "Email"
-  "userForm.admin": "És administrador"
-  "userForm.superadmin": "És superadministrador"
-  "userForm.fechaalta": "Data d'alta"
-  "userForm.password": "Contrasenya"
-  "userForm.rpassword": "Repetir contrasenya"
-  "userForm.fechanacimiento": "Data de neixement"
-  "userForm.ndocumento": "Número de document (DNI/Pasaport/...)"
-  "userForm.telofono": "Telèfon principal"
-  "userForm.telefonoalt": "Telèfon alternatiu"
-  "userForm.servicios": "Serveis ofertats"
-  "userForm.siguientepaso": "Pas següent"
-  "userForm.guardar": "Desar"
-  "userForm.cancelar": "Cancel·la"
-  "userForm.codigo": "Codi d'usuari"
-  "userForm.telefonos": "Telèfons"
-  "userForm.porusuario": "Per usuari"
-  "userForm.porcategoria": "Per serveis"
-  "userForm.veremails": "Veure emails"
-  "userForm.usuarios": "Usuaris"
-  "userForm.usuarios": "Usuaris"
+    "give time": "Ingresar horas"
+    "change password": "Cambiar password"

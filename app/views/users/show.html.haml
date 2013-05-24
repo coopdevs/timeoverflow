@@ -44,7 +44,7 @@
 
 .row-fluid
   .span4
-    %h2= t "data"
+    %h2= t ".data"
     %dl.dl-horizontal
       %dt= User.human_attribute_name(:organization)
       %dd= link_to @user.organization.name, @user.organization
@@ -66,13 +66,13 @@
           = ph
 
   .span4
-    %h2 Servicios ofrecidos
+    %h2 t ".categories"
     %ul.unstyled
       - @user.categories.each do |cat|
         %li= cat.fqn
 
   .span4
-    %h2 Saldo
+    %h2 t ".account"
     %p{style: "color: red"}
       %i.icon-warning
       WORK IN PROGRESS
