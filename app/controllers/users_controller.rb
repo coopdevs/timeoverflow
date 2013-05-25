@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     unless @user.password.present?
       @user.password = @user.password_confirmation = @user.create_fake_password
     end
+
     @user.organization_id ||= current_user.organization_id
     @user.assign_registration_number
     if @user.save

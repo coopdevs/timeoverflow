@@ -1,0 +1,14 @@
+= simple_form_for(@transfer) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.fields_for :inbound_movement do |in_m|
+      = in_m.association :user
+    = f.fields_for :outbound_movement do |out_m|
+      = in_m.association :user
+    = f.input :amount
+    = f.association :category
+    = f.input :date
+
+  .form-actions
+    = f.button :submit
