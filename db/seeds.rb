@@ -14,4 +14,3 @@ admin = User.find_or_create_by_email("admin@example.com") do |u|
   organization_id = 1
 end
 
-
