@@ -17,6 +17,7 @@ class Category < ActiveRecord::Base
   after_save :recalculate_descendent_fqns, :if => :name_translations_changed?
 
   has_many :transfers
+
   has_many :user, :through => :transfer
 
   FQN_SEPARATOR = " > "

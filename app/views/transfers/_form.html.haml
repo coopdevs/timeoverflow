@@ -4,7 +4,8 @@
   .form-inputs
     = f.fields_for :inbound_movement do |in_m|
       = in_m.association :user
-    = f.association :user2
+    = f.fields_for :outbound_movement do |out_m|
+      = in_m.association :user
     = f.input :amount
     = f.association :category
     = f.input :date

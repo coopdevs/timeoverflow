@@ -119,6 +119,39 @@ CREATE TABLE category_hierarchies (
 
 
 --
+-- Name: movements; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE movements (
+    id integer NOT NULL,
+    user_id integer,
+    transfer_id integer,
+    type character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: movements_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE movements_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: movements_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE movements_id_seq OWNED BY movements.id;
+
+
+--
 -- Name: organizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -157,6 +190,40 @@ ALTER SEQUENCE organizations_id_seq OWNED BY organizations.id;
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
+
+
+--
+-- Name: transfers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE transfers (
+    id integer NOT NULL,
+    user_id integer,
+    amount double precision,
+    category_id integer,
+    date date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: transfers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE transfers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: transfers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE transfers_id_seq OWNED BY transfers.id;
 
 
 --
@@ -222,7 +289,21 @@ ALTER TABLE ONLY categories_users ALTER COLUMN id SET DEFAULT nextval('categorie
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY movements ALTER COLUMN id SET DEFAULT nextval('movements_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY organizations ALTER COLUMN id SET DEFAULT nextval('organizations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY transfers ALTER COLUMN id SET DEFAULT nextval('transfers_id_seq'::regclass);
 
 
 --
@@ -249,11 +330,27 @@ ALTER TABLE ONLY categories_users
 
 
 --
+-- Name: movements_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY movements
+    ADD CONSTRAINT movements_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY organizations
     ADD CONSTRAINT organizations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: transfers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY transfers
+    ADD CONSTRAINT transfers_pkey PRIMARY KEY (id);
 
 
 --
@@ -300,6 +397,20 @@ CREATE INDEX index_category_hierarchies_on_descendant_id ON category_hierarchies
 
 
 --
+-- Name: index_movements_on_transfer_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_movements_on_transfer_id ON movements USING btree (transfer_id);
+
+
+--
+-- Name: index_movements_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_movements_on_user_id ON movements USING btree (user_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -338,6 +449,8 @@ INSERT INTO schema_migrations (version) VALUES ('20130214181128');
 
 INSERT INTO schema_migrations (version) VALUES ('20130222185624');
 
+INSERT INTO schema_migrations (version) VALUES ('20130424181827');
+
 INSERT INTO schema_migrations (version) VALUES ('20130425165150');
 
 INSERT INTO schema_migrations (version) VALUES ('20130508085004');
@@ -345,3 +458,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130508085004');
 INSERT INTO schema_migrations (version) VALUES ('20130513092219');
 
 INSERT INTO schema_migrations (version) VALUES ('20130514094755');
+
+INSERT INTO schema_migrations (version) VALUES ('20130516170532');
