@@ -10,4 +10,6 @@ class Post < ActiveRecord::Base
     foreign_key: "post_id",
     association_foreign_key: "user_id"
 
+  acts_as_taggable
+
 end

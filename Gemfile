@@ -55,7 +55,7 @@ gem "cancan"
 # gem "rails_admin", ">= 0.2"
 gem "simple_form"
 # gem "acts_as_tenant"
-gem "closure_tree"
+gem "acts-as-taggable-on"
 
 gem "awesome_print"
 # gem 'yaml_db'
@@ -63,7 +63,7 @@ gem 'strong_parameters'
 gem "jbuilder"
 gem "paranoia"
 
-gem 'activerecord-postgres-hstore'
+# gem 'activerecord-postgres-hstore'
 
 gem 'memcachier'
 gem 'dalli'

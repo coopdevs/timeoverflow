@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   acts_as_paranoid
   has_secure_password
+  acts_as_taggable on: :skills, :needs
 
   attr_readonly :registration_number
 
