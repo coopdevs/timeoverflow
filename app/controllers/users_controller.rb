@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = scoped_users.includes(:categories)
+    @users = scoped_users
   end
 
   def show
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       respond_with @user, location: @user
     else
-      respond_with @user.errors, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -68,9 +68,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    fields_to_permit = %w"username email category_ids date_of_birth phone alt_phone password password_confirmation identity_document"
+    fields_to_permit = %w"gender username email date_of_birth phone alt_phone password password_confirmation identity_document"
     fields_to_permit += %w"admin registration_number registration_date" if current_user.admin?
     fields_to_permit += %w"organization_id superadmin" if current_user.superadmin?
-    params[:user].permit(*fields_to_permit).tap &method(:ap)
+    # params[:user].permit(*fields_to_permit).tap &method(:ap)
+    params.require(:user).permit *fields_to_permit
   end
 end

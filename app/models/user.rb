@@ -4,16 +4,14 @@ class User < ActiveRecord::Base
   acts_as_paranoid
   has_secure_password
 
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
-
   attr_readonly :registration_number
 
-  validates :registration_number, :uniqueness => { :scope => :organization_id }
-
-  has_and_belongs_to_many :categories
+  validates :email, presence: true, uniqueness: true
+  validates :password, on: :create, presence: true, confirmation: true
+  validates :gender, presence: true, inclusion: {:in => %w[male female]}
+  validates :organization_id, presence: true, :unless => :superadmin?
+  validates :identity_document, presence: true, uniqueness: {scope: :organization_id}
+  validates :registration_number, uniqueness: { scope: :organization_id }
 
   before_create :assign_registration_number
 

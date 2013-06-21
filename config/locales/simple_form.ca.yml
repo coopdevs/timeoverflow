@@ -1,4 +1,4 @@
-en:
+ca:
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -26,5 +26,5 @@ en:
     options:
       user:
         gender:
-          male: Male
-          female: Female
+          male: Home
+          female: Dona

@@ -181,7 +181,8 @@ CREATE TABLE users (
     superadmin boolean,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    deleted_at timestamp without time zone
+    deleted_at timestamp without time zone,
+    gender character varying(255)
 );
 
 
@@ -345,3 +346,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130508085004');
 INSERT INTO schema_migrations (version) VALUES ('20130513092219');
 
 INSERT INTO schema_migrations (version) VALUES ('20130514094755');
+
+INSERT INTO schema_migrations (version) VALUES ('20130618210236');

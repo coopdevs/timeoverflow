@@ -12,11 +12,12 @@
 
       = f.input :registration_date, as: :string, input_html: {type: :date}
       = f.input :date_of_birth, as: :string, input_html: {type: :date}
+      = f.input :gender, collection: [:male, :female], required: true
       = f.input :identity_document
       = f.input :phone
       = f.input :alt_phone
 
-      = f.association :categories, label_method: :fqn, input_html: {style: 'width: 100%'}
+      / = f.association :categories, label_method: :fqn, input_html: {style: 'width: 100%'}
 
     .form-actions
       = f.button :submit
