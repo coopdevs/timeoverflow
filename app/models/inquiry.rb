@@ -1,0 +1,2 @@
+class Inquiry < Post
+end

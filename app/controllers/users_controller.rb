@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     if @user.save
       respond_with @user, status: :created, location: @user
     else
-      render :new
+      render action: :new
     end
   end
 
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       respond_with @user, location: @user
     else
-      render :edit, status: :unprocessable_entity
+      render action: :edit, status: :unprocessable_entity
     end
   end
 

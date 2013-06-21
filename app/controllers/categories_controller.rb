@@ -4,23 +4,6 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    send params[:filter] if params[:filter]
-  end
-
-  def root
-    @categories = @categories.roots
-  end
-
-  def global
-    @categories = @categories.where organization_id: nil
-  end
-
-  def local
-    @categories = if superadmin?
-      @categories.where "organization_id IS NOT NULL"
-    else
-      @categories.where organization_id: current_organization
-    end
   end
 
   def show

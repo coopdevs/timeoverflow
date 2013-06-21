@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  category: 
+  user: 
+  permanent: false
+  description: MyText
+  start_on: 2013-06-21
+  end_on: 2013-06-21
+  permanent: false
+  joinable: false
+  global: false
+
+two:
+  title: MyString
+  category: 
+  user: 
+  permanent: false
+  description: MyText
+  start_on: 2013-06-21
+  end_on: 2013-06-21
+  permanent: false
+  joinable: false
+  global: false

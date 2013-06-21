@@ -15,6 +15,12 @@ class User < ActiveRecord::Base
 
   before_create :assign_registration_number
 
+  has_and_belongs_to_many :joined_posts,
+    class_name: "Post",
+    join_table: "user_joined_post",
+    foreign_key: "user_id",
+    association_foreign_key: "post_id"
+
   def assign_registration_number
     self.registration_number ||= begin
       unless organization.reg_number_seq
