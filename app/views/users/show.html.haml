@@ -72,7 +72,12 @@
   /       %li= cat.fqn
 
   .span4
-    %h2 t ".account"
+    %h2= t ".offers"
+    %ul
+      - @user.joined_offers.each do |offer|
+        %li= link_to(offer.title, offer)
+
+
     %p{style: "color: red"}
       %i.icon-warning
       WORK IN PROGRESS

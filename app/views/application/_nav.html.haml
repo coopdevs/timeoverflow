@@ -3,10 +3,10 @@
   %a{href: organizations_path}
     %i.icon-group.icon-fixed-width
     = Organization.model_name.human(count: :many)
-%li{class: ('active' if current_page? controller: "categories")}
-  %a{href: categories_path}
-    %i.icon-tags.icon-fixed-width
-    = Category.model_name.human.pluralize
+/ %li{class: ('active' if current_page? controller: "categories")}
+/   %a{href: categories_path}
+/     %i.icon-tags.icon-fixed-width
+/     = Category.model_name.human.pluralize
 %li{class: ('active' if current_page? controller: "users")}
   %a{href: users_path}
     %i.icon-user.icon-fixed-width

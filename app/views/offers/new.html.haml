@@ -1,0 +1,13 @@
+= simple_form_for(@offer) do |f|
+  .form_inputs
+    = f.input :title
+    = f.input :description
+    = f.association :category
+    = f.input :tag_list
+    = f.input :joinable
+    = f.input :permanent
+    = f.input :start_on, as: :string, input_html: {type: :date}
+    = f.input :end_on, as: :string, input_html: {type: :date}
+
+  .form_controls
+    = f.button :submit

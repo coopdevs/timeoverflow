@@ -1,0 +1,23 @@
+%h1
+  = @offer.title
+  %small= @offer.category
+  %div.tags.pull-right
+    - @offer.tags.each do |tag|
+
+      %span.label
+        %i.icon-tag
+        = tag
+%p= @offer.description
+%dl
+
+  - [:end_on, :global, :joinable, :permanent, :start_on].each do |m|
+    - if @offer.send(m).present?
+      %dt= m
+      %dd= @offer.send m
+
+
+
+%h3= t 'offered_by'
+%p
+  - @offer.joined_users.each do |u|
+    = link_to("#{u.username} (#{u.registration_number})", u)

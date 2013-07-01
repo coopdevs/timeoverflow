@@ -8,10 +8,10 @@
       %i.icon-tags
       = t "application.nav.categories"
     %span.divider •
-  - @category.ancestors.reverse.each do |k|
-    %li
-      %a{href: category_path(k)}= k.name
-      %span.divider •
+  / - @category.ancestors.reverse.each do |k|
+  /   %li
+  /     %a{href: category_path(k)}= k.name
+  /     %span.divider •
   %li.active= @category.name
 
 
@@ -19,42 +19,42 @@
 %h1
   %i.icon-tags.icon-border
   = @category.name
-  - if @category.organization
-    %small= "(#{@category.organization})"
+  / - if @category.organization
+  /   %small= "(#{@category.organization})"
 
-- if (admin? and @category.organization == current_organization) or superadmin?
-  %ul.nav.nav-pills
-    %li
-      %a{href: edit_category_path(@category)}
-        %i.icon-pencil
-        = t "edit"
-    %li
-      %a{href: category_path(@category), data: {method: :delete, confirm: t("are_you_sure") }}
-        %i.icon-trash
-        = t "delete"
-
-
-.container-fluid
-  .row-fluid
-    .span6
-      .box.grad_colour_dark_blue
-        %h2.box_head.round_top= t 'data'
-        %dl.dl-horizontal.block
-          %dt= t ".created_at"
-          %dd= l @category.created_at
-          %dt= t ".updated_at"
-          %dd= l @category.updated_at
-
-    .span6
-      .box.grad_colour_dark_blue
-        %h2.box_head.round_top= t 'translations'
-        %dl.dl-horizontal.block
-          - I18n.available_locales.each do |lo|
-            %dt= "[#{lo}]"
-            %dd= @category.name_translations[lo.to_s] or "—"
+/ - if superadmin?
+/   %ul.nav.nav-pills
+/     %li
+/       %a{href: edit_category_path(@category)}
+/         %i.icon-pencil
+/         = t "edit"
+/     %li
+/       %a{href: category_path(@category), data: {method: :delete, confirm: t("are_you_sure") }}
+/         %i.icon-trash
+/         = t "delete"
 
 
-- if @category.children.present?
-  .box.grad_colour_dark_blue
-    %h2.box_head.round_top= t 'children'
-    = render 'tabled', categories: @category.children
+/ .container-fluid
+/   .row-fluid
+/     .span6
+/       .box.grad_colour_dark_blue
+/         %h2.box_head.round_top= t 'data'
+/         %dl.dl-horizontal.block
+/           %dt= t ".created_at"
+/           %dd= l @category.created_at
+/           %dt= t ".updated_at"
+/           %dd= l @category.updated_at
+
+/     .span6
+/       .box.grad_colour_dark_blue
+/         %h2.box_head.round_top= t 'translations'
+/         %dl.dl-horizontal.block
+/           - I18n.available_locales.each do |lo|
+/             %dt= "[#{lo}]"
+/             %dd= @category.name_translations[lo.to_s] or "—"
+
+
+/ - if @category.children.present?
+/   .box.grad_colour_dark_blue
+/     %h2.box_head.round_top= t 'children'
+/     = render 'tabled', categories: @category.children
