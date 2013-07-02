@@ -32,6 +32,12 @@ class User < ActiveRecord::Base
     foreign_key: "user_id",
     association_foreign_key: "post_id"
 
+  has_and_belongs_to_many :joined_inquiries,
+    class_name: "Inquiry",
+    join_table: "user_joined_post",
+    foreign_key: "user_id",
+    association_foreign_key: "post_id"
+
 
   def assign_registration_number
     self.registration_number ||= begin

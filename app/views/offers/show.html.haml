@@ -8,16 +8,35 @@
         %i.icon-tag
         = tag
 %p= @offer.description
+
+%p.actions
+  - if @offer.joined_users.include? current_user
+    = link_to t(".leave"), leave_offer_path(@offer), data: {method: :POST}
+  - else
+    = link_to t(".join"), join_offer_path(@offer), data: {method: :POST}
+
+  - if admin? or @offer.user == current_user
+    = link_to t(".edit"), edit_offer_path(@offer)
+
+    - if @offer.joined_users.empty? or @offer.joined_users == [current_user]
+      = link_to t(".delete"), @offer, data: {method: :DELETE, confirm: "sure?" }
+
+%p
+  = t '.created_by'
+  = link_to "#{@offer.user.username} (#{@offer.user.registration_number})", @offer.user
+
 %dl
 
-  - [:end_on, :global, :joinable, :permanent, :start_on].each do |m|
+  - [:global, :joinable, :permanent, :start_on, :end_on].each do |m|
     - if @offer.send(m).present?
       %dt= m
       %dd= @offer.send m
 
 
 
-%h3= t 'offered_by'
+%h3= t '.offered_by'
 %p
-  - @offer.joined_users.each do |u|
-    = link_to("#{u.username} (#{u.registration_number})", u)
+  - @offer.joined_users.each_with_index do |u, i|
+    = precede(i.zero? ? "" : " — ") do
+      = link_to("#{u.username} (#{u.registration_number})", u)
+

@@ -8,13 +8,19 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *  require angular-ui
  *= require_self
- *  require main
  *= require datatables_bs_fix
- *  require side_nav
  *= jquery.dataTables
  */
+
+%li.post {
+  border-top: solid black 1px;
+  list-style: none;
+}
+
+li.offer, li.inquiry {
+  @extend %li.post;
+}
 
 @media screen {
   body {

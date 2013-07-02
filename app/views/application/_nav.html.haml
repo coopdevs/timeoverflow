@@ -12,6 +12,16 @@
     %i.icon-user.icon-fixed-width
     = User.model_name.human.pluralize
 
+%li{class: ('active' if current_page? controller: "offers")}
+  %a{href: offers_path}
+    %i.icon-hand-up.icon-fixed-width
+    = Offer.model_name.human.pluralize
+
+%li{class: ('active' if current_page? controller: "inquiries")}
+  %a{href: inquiries_path}
+    %i.icon-bell.icon-fixed-width
+    = Inquiry.model_name.human.pluralize
+
 %li.nav-header= t ".reports"
 %li
   %a{href: "/report/cat_with_users", data: {popup: true}}

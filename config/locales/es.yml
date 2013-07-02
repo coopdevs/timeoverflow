@@ -59,6 +59,12 @@ es:
       superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
       admin_warning: Atención!!! Estás dando poderes a este usuario!!
 
+  offers:
+    index:
+      offered_by: "Ofrecido por %{size} personas"
+    show:
+      offered_by: "Ofertantes"
+
   categories:
     index:
       all: Todas

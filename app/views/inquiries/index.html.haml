@@ -1,0 +1,23 @@
+= link_to(".new", new_inquiry_path)
+
+%ul
+
+  - @inquiries.each do |inquiry|
+    %li.inquiry
+      %h3
+        = link_to inquiry.title, inquiry
+        %small= inquiry.category
+        %div.tags.pull-right
+          - inquiry.tags.each do |tag|
+
+            %span.label
+              %i.icon-tag
+              = tag
+      %p= inquiry.description
+      %dl
+
+        - [:end_on, :global, :joinable, :permanent, :start_on].each do |m|
+          - if inquiry.send(m).present?
+            %dt= m
+            %dd= inquiry.send m
+

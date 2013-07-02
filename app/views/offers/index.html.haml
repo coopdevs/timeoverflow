@@ -1,11 +1,38 @@
 = link_to("New offer", new_offer_path)
 
+
+.tag-cloud
+  %strong
+    - if params[:tag].present?
+      = link_to "×", offers_path(params.merge(:tag => nil))
+      = succeed ":" do
+        = t ".by_tag"
+      = params[:tag]
+    - else
+      = t ".by_tag"
+
+  - tag_cloud(current_organization.offers.tag_counts_on(:tags), %w(css1 css2 css3 css4)) do |tag, css_class|
+    = link_to tag.name, offers_path(params.merge(:tag => tag.name)), :class => css_class
+
+.categ
+  %strong
+    - if params[:cat].present?
+      = link_to "×", offers_path(params.merge(:cat => nil))
+      = succeed ":" do
+        = t ".by_category"
+      = Category.find(params[:cat]).name
+    - else
+      = t ".by_category"
+  - Category.all.each do |cat|
+    = link_to cat.name, offers_path(params.merge(:cat => cat.id))
+
+
 %ul
 
   - @offers.each do |offer|
     %li.offer
       %h3
-        = offer.title
+        = link_to offer.title, offer
         %small= offer.category
         %div.tags.pull-right
           - offer.tags.each do |tag|
@@ -14,6 +41,7 @@
               %i.icon-tag
               = tag
       %p= offer.description
+      %p= t ".offered_by", size: offer.joined_users.size
       %dl
 
         - [:end_on, :global, :joinable, :permanent, :start_on].each do |m|
