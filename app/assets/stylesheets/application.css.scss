@@ -22,6 +22,10 @@ li.offer, li.inquiry {
   @extend %li.post;
 }
 
+#side-nav .well {
+  padding: 15px;
+}
+
 @media screen {
   body {
     padding-top: 60px;

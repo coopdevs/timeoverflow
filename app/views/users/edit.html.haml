@@ -1,14 +1,4 @@
-%ul.breadcrumb#breadcrumb
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li
-    = link_to users_path do
-      %i.icon-user
-      = t "application.nav.users"
-    %span.divider •
-  %li.active= @user.username
+= render "breadcrumb"
 
 %h1
   %i.icon-edit.icon-fixed-width

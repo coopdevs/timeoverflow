@@ -1,12 +1,4 @@
-%ul.breadcrumb#breadcrumb
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li.active
-    = link_to_unless_current users_path do
-      %i.icon-tags
-      = t "application.nav.users"
+= render "breadcrumb"
 
 %h1
   %i.icon-user.icon-border

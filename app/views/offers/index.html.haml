@@ -1,30 +1,46 @@
+= render 'breadcrumb'
+
 = link_to("New offer", new_offer_path)
 
+- if @category.present?
+  = link_to offers_path(params.merge(:cat => nil)), :class => ["label", "label-success"] do
+    %i.icon-folder-open-alt
+    = @category.name
+    ×
+- if @tag_list.present?
 
-.tag-cloud
-  %strong
-    - if params[:tag].present?
-      = link_to "×", offers_path(params.merge(:tag => nil))
-      = succeed ":" do
-        = t ".by_tag"
-      = params[:tag]
-    - else
-      = t ".by_tag"
+  - @tag_list.each do |tag|
+    = link_to offers_path(params.merge(:tag => (@tag_list.dup.remove tag).to_s.presence)), :class => ["label"] do
+      %i.icon-tag
+      = tag
+      ×
+.accordion
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{href: "#filterPanel", data: {toggle: "collapse"}}
+        %i.icon-filter
+        = t ".filter"
 
-  - tag_cloud(current_organization.offers.tag_counts_on(:tags), %w(css1 css2 css3 css4)) do |tag, css_class|
-    = link_to tag.name, offers_path(params.merge(:tag => tag.name)), :class => css_class
+    .accordion-body.collapse#filterPanel{class: ("in" if @tag_list.present? or @category.present?)}
+      .accordion-inner
+        .row-fluid
 
-.categ
-  %strong
-    - if params[:cat].present?
-      = link_to "×", offers_path(params.merge(:cat => nil))
-      = succeed ":" do
-        = t ".by_category"
-      = Category.find(params[:cat]).name
-    - else
-      = t ".by_category"
-  - Category.all.each do |cat|
-    = link_to cat.name, offers_path(params.merge(:cat => cat.id))
+          .span4
+            %h5
+              %i.icon-folder-open-alt
+              = t ".by_category"
+            - Category.all.each do |cat|
+              = link_to cat.name, offers_path(params.merge(:cat => (cat.id unless cat == @category))), :class => ["btn", "btn-small", (cat == @category ? "btn-info" : "btn-link")]
+
+          .span4
+            %h5
+              %i.icon-tag
+              = t ".by_tag"
+            - tag_cloud(@tag_cloud, %w(css1 css2 css3 css4)) do |tag, css_class|
+              - if @tag_list.include? tag.name
+                = link_to tag.name, offers_path(params.merge(:tag => (@tag_list.dup.remove tag.name).to_s.presence)), :class => ["btn", "btn-small", "btn-inverse"]
+              - else
+                = link_to tag.name, offers_path(params.merge(:tag => (@tag_list.dup.add tag.name).to_s)), :class => ["btn", "btn-small", "btn-link"]
 
 
 %ul
