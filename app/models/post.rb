@@ -11,8 +11,5 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable
 
-  attr_accessible :description, :end_on, :global, :joinable, :permanent, :permanent, :start_on, :title
-  attr_accessible :category_id, :tag_list
-
 
 end

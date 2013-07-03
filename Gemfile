@@ -1,72 +1,37 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.9'
+gem 'rails', '>= 4.0.0'
 gem 'rails-i18n'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'pg'
+gem 'dalli'
 
-# group :develompent, :test do
-#   gem 'sqlite3'
-# end
+gem 'sass-rails'
+gem 'compass-rails'
+gem 'coffee-rails', github: 'rails/coffee-rails'
+gem 'uglifier', '>= 1.0.3'
 
-# group :production do
-  gem "pg"
-# end
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'compass-rails'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-  # gem "twitter-bootstrap-rails"
-end
-
-gem 'seed-fu'
+gem 'seed-fu', github: 'irfn/seed-fu'
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 gem 'puma'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
+gem 'foreman'
 # To use debugger
 # gem 'debugger'
 
 gem "haml-rails"
+gem 'turbolinks'
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
-gem "cancan"
-# gem "rails_admin", ">= 0.2"
-gem "simple_form"
-# gem "acts_as_tenant"
+gem "simple_form", "~> 3.0.0.rc"
 gem "acts-as-taggable-on"
 
 gem "awesome_print"
-# gem 'yaml_db'
-gem 'strong_parameters'
 gem "jbuilder"
 gem "paranoia"
 
-# gem 'activerecord-postgres-hstore'
 
 gem 'memcachier'
-gem 'dalli'
 gem 'newrelic_rpm'
-gem 'turbolinks'
 

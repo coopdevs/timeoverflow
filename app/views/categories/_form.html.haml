@@ -1,9 +1,0 @@
-.well
-  = simple_form_for @category do |f|
-    .form-inputs
-      = f.input :name
-      / = f.association :parent, label_method: :fqn, input_html: {style: 'width: 75%'}
-      / - I18n.available_locales.each do |lo|
-      /   = f.input "name_#{lo}", input_html: {name: "category[name_translations][#{lo}]", class: "span7"}
-    .form-actions
-      = f.button :submit

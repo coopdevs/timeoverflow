@@ -1,11 +1,6 @@
 class UsersController < ApplicationController
   respond_to :html
 
-  before_filter do
-    params[:user] &&= user_params
-  end
-
-  # load_and_authorize_resource
 
   def scoped_users
     return User.where(id: nil) unless current_user
@@ -52,7 +47,7 @@ class UsersController < ApplicationController
 
   def update
     @user = scoped_users.find(params[:id])
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       respond_with @user, location: @user
     else
       render action: :edit, status: :unprocessable_entity

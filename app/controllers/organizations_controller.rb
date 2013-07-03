@@ -2,21 +2,27 @@ class OrganizationsController < ApplicationController
 
   respond_to :json, :html
 
-  before_filter do
-    params[:organization] &&= organization_params
+  before_filter :load_resource
+
+  def load_resource
+    if params[:id]
+      @organization = Organization.find(params[:id])
+    else
+      @organizations = Organization.all
+    end
   end
 
-  load_and_authorize_resource
 
   def index
-    # respond_with @organizations
+    @organizations = @organizations.matching(params[:q]) if params[:q].present?
+    respond_with @organizations
   end
 
   def show
-    # respond_with @organization
   end
 
   def create
+    @organization = @organizations.build organization_params
     if @organization.save
       redirect_to @organization, status: :created
     else
@@ -25,7 +31,7 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    if @organization.update_attributes(params[:organization])
+    if @organization.update_attributes(organization_params)
       respond_with @organization
     else
       render action: :edit, status: :unprocessable_entity
