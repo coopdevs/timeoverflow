@@ -15,12 +15,12 @@
 %li{class: ('active' if current_page? controller: "offers")}
   %a{href: offers_path}
     %i.icon-hand-up.icon-fixed-width
-    = Offer.model_name.human.pluralize
+    = Offer.model_name.human(count: :many)
 
 %li{class: ('active' if current_page? controller: "inquiries")}
   %a{href: inquiries_path}
     %i.icon-bell.icon-fixed-width
-    = Inquiry.model_name.human.pluralize
+    = Inquiry.model_name.human(count: :many)
 
 %li.nav-header= t ".reports"
 %li
@@ -31,3 +31,9 @@
   %a{href: "/report/user_list", data: {popup: true}}
     %i.icon-list-alt.icon-fixed-width
     = t "reports.user_list.title"
+
+%li.nav-header= t ".stats"
+%li
+  %a{href: "#"}
+    %i.icon-tasks.icon-fixed-width
+    = t "stats.min_balance.title"

@@ -11,6 +11,12 @@ es:
         one: Banco de Tiempo
         other: Bancos de Tiempo
       category: Servicio
+      offer:
+        one: Oferta
+        other: Ofertas
+      inquiry:
+        one: Demanda
+        other: Demandas
 
     attributes:
       user:
@@ -40,9 +46,13 @@ es:
   application:
     nav:
       administration: Administración
+      reports: Informes
+      stats: Estadísticas
       users: Usuarios
       categories: Servicios
       organizations: Organizaciones
+
+  # views/users/index...
 
   users:
 
@@ -79,43 +89,12 @@ es:
     user_list:
       title: Listado usuarios
 
+  stats:
+    min_balance: 
+      title: Usuarios Saldo Mínimo
+
   global:
     show: Mostrar
     edit: Modificar
     delete: Borrar
     save: Guardar
-
-    "catchPhrase": "Benvenido al sistema de gestión del Banco de Tiempo"
-    "Save changes": "Guardar"
-    "New service": "Nuevo servicio"
-    "Cancel": "Cancelar"
-    "no parent": "Sin padre"
-    "Welcome to the new-generation time banking system": "Bienvenido al nuevo sistema de Bancos de Tiempo" 
-    "Learn more": "Saber más"
-    "New organization": "Nuevo Banco"
-    "Name": "Nombre"
-    "Organization": "Banco de Tiempo"
-    "E-mail": "Correo electrónico"
-    "Administrator": "Administrador"
-    "Super Administrator": "Administrador de sistema"
-    "Member Code": "Código de miembro"
-    "Register date": "Fecha de alta"
-    "Document ID": "Número de documento"
-    "Phones": "Teléfonos"
-    "Offers categories": "Servicios ofrecidos"
-    "New user": "Nuevo usuario"
-    "Edit": "Modificar"
-    "Password": "Contraseña"
-    "Repeat password": "Repetir contraña"
-    "Birth date": "Fecha de nacimiento"
-    "Phone": "Teléfono"
-    "Alternate Phone": "Teléfono alternativo"
-    "Categories": "Servicios"
-    "Users": "Usuarios"
-    "By user": "Por usuarios"
-    "By category": "Por servicios"
-    "Category": "Categoría"
-    "Members": "Miembros"
-    "View": "Ver"
-    "give time": "Ingresar horas"
-    "change password": "Cambiar password"

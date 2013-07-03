@@ -28,7 +28,7 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = current_user.offers.create(params[:offer])
+    @offer = current_user.offers.create(offer_params)
     unless admin?
       current_user.join(@offer)
     end

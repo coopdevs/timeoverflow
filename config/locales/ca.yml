@@ -1,72 +1,101 @@
 ca:
-  "catchPhrase": "Benvingut al sistema de gestió de Bancs de Temps"
-  "nuevouser": "Nou usuari"
-  "modificaruser": "Modificar"
-  "ver": "Veure"
-  "borrar": "Esborra"
-  "nuevaorg": "Nova organització"
-  "nombre": "Nom"
-  "guardar": "Desa"
-  "cancelar": "Cancel·la"
-  "nuevacat": "Nou servei"
-  "sincatsup": "(sense categoria superior)"
-  "nuevaorg": "Nova organització"
-  "nuevaorg": "Nova organització"
-  "nuevaorg": "Nova organització"
-  "nuevaorg": "Nova organització"
-  "nuevaorg": "Nova organització"
 
-  "userForm.nombre": "Nom"
-  "userForm.organizacion": "Organització"
-  "userForm.email": "Email"
-  "userForm.admin": "És administrador"
-  "userForm.superadmin": "És superadministrador"
-  "userForm.fechaalta": "Data d'alta"
-  "userForm.password": "Contrasenya"
-  "userForm.rpassword": "Repetir contrasenya"
-  "userForm.fechanacimiento": "Data de neixement"
-  "userForm.ndocumento": "Número de document (DNI/Pasaport/...)"
-  "userForm.telofono": "Telèfon principal"
-  "userForm.telefonoalt": "Telèfon alternatiu"
-  "userForm.servicios": "Serveis ofertats"
-  "userForm.siguientepaso": "Pas següent"
-  "userForm.guardar": "Desar"
-  "userForm.cancelar": "Cancel·la"
-  "userForm.codigo": "Codi d'usuari"
-  "userForm.telefonos": "Telèfons"
-  "userForm.porusuario": "Per usuari"
-  "userForm.porcategoria": "Per serveis"
-  "userForm.veremails": "Veure emails"
-  "userForm.usuarios": "Usuaris"
-  "userForm.usuarios": "Usuaris"
+  # NOMBRES DE LAS COSAS
+  activerecord:
 
-  "New service": "Nou servei"
-  "Cancel": "Cancel·la"
-  "no parent": "Sense pare"
-  "Welcome to the new-generation time banking system": "Benvingut al nou sistema de Banc de Temps"
-  "Learn more": "Saber-ne més"
-  "New organization": "Nou Banc"
-  "Name": "Nom"
-  "Organization": "Banc de Temps"
-  "E-mail": "Correu electrònic"
-  "Administrator": "Administrador"
-  "Super Administrator": "Administrador de sistema"
-  "Member Code": "Códi de membre"
-  "Register date": "Data d'alta"
-  "Document ID": "Número de document"
-  "Phones": "Telèfons"
-  "Offers categories": "Serveis ofertats"
-  "New user": "Nou usuari"
-  "Edit": "Modificar"
-  "Password": "Contrasenya"
-  "Repeat password": "Repetir contranseya"
-  "Birth date": "Data de neixement"
-  "Phone": "Telèfon"
-  "Alternate Phone": "Telèfon alternatiu"
-  "Categories": "Serveis"
-  "Users": "Usuaris"
-  "By user": "Per usuaris"
-  "By category": "Per serveis"
-  "Category": "Categoria"
-  "Members": "Membres"
-  "View": "Veure"
+    models:
+      # Para usar:
+      # User.model_name.human
+      user: Usuari
+      organization:
+        one: Banc de Temps
+        other: Bancs de Temps
+      category: Servicio
+      offer:
+        one: Oferta
+        other: Ofertes
+      inquiry:
+        one: Demanda
+        other: Demandes
+
+
+    attributes:
+      user:
+        username: Nom
+        organization:
+        one: Banc de Temps
+        other: Bancs de Temps
+        email: Correo
+        registration_date: Data de alta
+        registration_number: Codi d'usuari
+        birth_date: Data de naixement
+        identity_document: DNI
+        phone: Telèfon
+        alt_phone: Telèfon alternatiu
+        password: Contrasenya
+        password_confirmation: Repeteix Contrasenya
+        admin: Administrador del Banc de Temps
+        superadmin: SuperAdministrador del Sistema
+      organization:
+        name: Nom
+      category:
+        name: Nom
+        parent: Categoría padre
+
+  # ETIQUETAS VARIADAS EN PLANTILLAS
+
+  application:
+    nav:
+      administration: Administració
+      reports: Informes
+      stats: Estadístiques
+      users: Usuaris
+      categories: Serveis
+      organizations: Bancs de Temps
+
+  # views/users/index...
+
+  users:
+
+    index:
+      create: Crear nou Usuari
+    show:
+      phone:
+        one: Telèfon
+        other: Telèfons
+      data: Dades del Usuari
+      categories: Serveis Oferts
+      account: Darrers moviments
+    form:
+      superadmin_warning: Compte!!! Estás donant poders de SuperAdministrador a aquest usuari
+      admin_warning: Compte!!! Estás donant poders d'Administrador del Banc de Temps a aquest usuari
+
+  offers:
+    index:
+      offered_by: "Ofertat per %{size} persones"
+    show:
+      offered_by: "Ofertants"
+
+  categories:
+    index:
+      all: Totes
+      tree: Principals
+      global: Globals
+      local: Locals
+      add: Afegir servei
+
+  reports:
+    cat_with_users:
+      title: Servicios ofrecidos
+    user_list:
+      title: Listado usuarios
+
+  stats:
+    min_balance: 
+      title: Usuaris Saldo Mínim
+
+  global:
+    show: Mostrar
+    edit: Modificar
+    delete: Borrar
+    save: Guardar
