@@ -25,11 +25,10 @@
       %a{href: user_path(@user), data: {method: :delete, confirm: t("are_you_sure") }}
         %i.icon-trash
         = t "delete"
-  - if admin?
-    %li
-      %a{href: ""}
-        %i.icon-time
-        = t "give time"
+  %li
+    %a{href: give_time_user_path(@user)}
+      %i.icon-time
+      = t "give time"
 
 .row-fluid
   .span4
@@ -64,12 +63,26 @@
     %h2= t ".offers"
     %ul
       - @user.joined_offers.each do |offer|
-        %li= link_to(offer.title, offer)
+        %li
+          = link_to(offer.title, offer)
+          = link_to(give_time_user_path(@user, offer: offer.id), {:class => "btn btn-success btn-mini"}) do
+            %i.icon-time
+            = t ".give_time_for"
 
 
-    %p{style: "color: red"}
-      %i.icon-warning
-      WORK IN PROGRESS
+  .span4
+    %h2
+      = t ".account"
+      %small
+        = succeed ":" do
+          = t ".balance"
+        = @user.account.balance
+    %table.table
+      - @user.account.movements.order("created_at DESC").limit(10).each do |mv|
+        %tr
+          %td= l mv.created_at, format: :short
+          %td= mv.transfer.post || mv.transfer.reason
+          %td= mv.amount
 
 
 

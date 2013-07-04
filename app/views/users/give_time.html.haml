@@ -1,0 +1,25 @@
+= render "breadcrumb", action: "give_time"
+
+%h1
+  %i.icon-key.icon-border
+  = @user.username
+  %small= t ".give_time"
+
+- if @offer
+  %h3= @offer
+
+
+= simple_form_for @transfer do |f|
+  .form-inputs
+    = f.input :amount
+    = f.input :reason
+    = f.input :destination, as: :hidden
+    - if admin?
+      = f.input :source, collection: @sources
+    - if @offer
+      = f.input :post, readonly: true
+
+
+
+  .form-actions
+    = f.button :submit
