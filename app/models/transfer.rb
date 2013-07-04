@@ -8,7 +8,7 @@ class Transfer < ActiveRecord::Base
   attr_accessor :source, :destination, :amount
 
   def make_movements
-    movements.create(account: source, amount: -amount)
-    movements.create(account: destination, amount: amount)
+    movements.create(account: Account.find(source), amount: -amount.to_i)
+    movements.create(account: Account.find(destination), amount: amount.to_i)
   end
 end

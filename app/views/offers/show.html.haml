@@ -41,4 +41,7 @@
   - @offer.joined_users.each_with_index do |u, i|
     = precede(i.zero? ? "" : " — ") do
       = link_to("#{u.username} (#{u.registration_number})", u)
+      = link_to(give_time_user_path(u, offer: @offer.id), {:class => "btn btn-success btn-mini"}) do
+        %i.icon-time
+        = t ".give_time"
 

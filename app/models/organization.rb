@@ -5,6 +5,8 @@ class Organization < ActiveRecord::Base
   has_one :account, as: :accountable
   after_create :create_account
 
+  has_many :user_accounts, through: :users, source: :account
+
   has_many :offers, through: :users
   has_many :inquiries, through: :users
 

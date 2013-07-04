@@ -15,4 +15,8 @@ class Account < ActiveRecord::Base
   def allowance
     min_allowed_balance ? [0, balance - min_allowed_balance].min : Float::INFINITY
   end
+
+  def to_s
+    "#{accountable}"
+  end
 end

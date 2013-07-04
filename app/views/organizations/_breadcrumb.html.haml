@@ -1,0 +1,25 @@
+%ul.breadcrumb#breadcrumb
+  %li
+    = link_to root_path do
+      %i.icon-home
+    %span.divider •
+  - if @organization
+    %li
+      = link_to organizations_path do
+        %i.icon-group
+        = t "application.nav.organizations"
+      %span.divider •
+    - if @organization.persisted?
+      - if defined?(action)
+        %li
+          = link_to @organization.name, @organization
+          %span.divider •
+        %li.active= t action
+      - else
+        %li.active= @organization.name
+    - else
+      %li.active= t '.new'
+  - else
+    %li.active
+      %i.icon-group
+      = t "application.nav.organizations"

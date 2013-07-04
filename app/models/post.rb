@@ -13,4 +13,8 @@ class Post < ActiveRecord::Base
    # HACK: there is a known issue that acts_as_taggable breaks asset precompilation on Heroku.
 
 
+  def to_s
+    title
+  end
+
 end
