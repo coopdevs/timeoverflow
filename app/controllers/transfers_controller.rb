@@ -1,6 +1,6 @@
 class TransfersController < ApplicationController
   def create
-    if admin? and false
+    if admin?
       transfer_params = params.require(:transfer).permit(:source, :destination, :amount)
       @source = Account.find(transfer_params[:source])
     else
