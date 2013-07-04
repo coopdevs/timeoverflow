@@ -9,7 +9,6 @@ gem 'pg'
 gem 'dalli'
 
 gem 'sass-rails'
-gem 'compass-rails'
 gem 'coffee-rails', github: 'rails/coffee-rails'
 gem 'uglifier', '>= 1.0.3'
 

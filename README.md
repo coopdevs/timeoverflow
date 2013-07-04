@@ -1,6 +1,8 @@
 TimeOverflow
 ============
 
+[![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow.png)](https://codeclimate.com/github/timeoverflow/timeoverflow)
+
 Sistema de Banco de Tiempo. 
 
 TimeOverflow es un software desarrollado de manera altruista para ofrecer un sistema que facilite la interacción 

@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
 
   acts_as_paranoid
   has_secure_password
-  acts_as_taggable_on :skills, :needs
+  acts_as_taggable_on :skills, :needs rescue nil
+   # HACK: there is a known issue that acts_as_taggable breaks asset precompilation on Heroku.
+
 
   attr_readonly :registration_number
 
