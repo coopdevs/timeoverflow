@@ -10,13 +10,7 @@ class ReportsController < ApplicationController
   end
 
   def cat_with_users
-    @users = User.all
-    @users = @users.where organization_id: current_user.organization_id unless current_user.try :superadmin?
-    @categories = Category.
-      includes(:users, :self_and_ancestors, :self_and_descendants => :users).
-      select("categories.name, users.id").
-      where('users_categories.id' => @users).sort_by {|c| c.fqn}
-    # TODO todavía hay una 1+n aquí...
+    @offers = current_organization.offers.group_by(&:category)
   end
 
 end
