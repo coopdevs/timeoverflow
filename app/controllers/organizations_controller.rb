@@ -43,6 +43,17 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_path, notice: "deleted"
   end
 
+  def give_time
+    @destination = @organization.account.id
+    @source = current_user.account.id
+    @offer = current_organization.offers.find(params[:offer]) if params[:offer].present?
+    @transfer = Transfer.new(source: @source, destination: @destination)
+    if admin?
+      @sources = [current_organization.account] + current_organization.user_accounts
+    end
+  end
+
+
   private
   def organization_params
     params[:organization].permit(*%w"name").tap(&method(:ap))

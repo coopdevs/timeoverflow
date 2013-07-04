@@ -1,3 +1,5 @@
+= render "breadcrumb"
+
 %h1
   %i.icon-group.icon-border
   = @organization.name
@@ -8,14 +10,20 @@
     %a{href: organizations_path}
       %i.icon-hand-left
       = t 'back'
+  - if admin?
+    %li
+      %a{href: edit_organization_path(@organization)}
+        %i.icon-pencil
+        = t "edit"
+  - if superadmin?
+    %li
+      %a{href: organization_path(@organization), data: {method: :DELETE, confirm: t("are_you_sure") }}
+        %i.icon-trash
+        = t "delete"
   %li
-    %a{href: edit_organization_path(@organization)}
-      %i.icon-pencil
-      = t "edit"
-  %li
-    %a{href: organization_path(@organization), data: {method: :DELETE, confirm: t("are_you_sure") }}
-      %i.icon-trash
-      = t "delete"
+    %a{href: give_time_organization_path(@organization)}
+      %i.icon-time
+      = t "give time"
 
 
 %dl

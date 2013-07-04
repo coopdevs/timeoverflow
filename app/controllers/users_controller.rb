@@ -60,6 +60,17 @@ class UsersController < ApplicationController
     head :no_content
   end
 
+  def give_time
+    @user = scoped_users.find(params[:id])
+    @destination = @user.account.id
+    @source = current_user.account.id
+    @offer = current_organization.offers.find(params[:offer]) if params[:offer].present?
+    @transfer = Transfer.new(source: @source, destination: @destination, post: @offer)
+    if admin?
+      @sources = [current_organization.account] + current_organization.user_accounts
+    end
+  end
+
   private
 
   def user_params
