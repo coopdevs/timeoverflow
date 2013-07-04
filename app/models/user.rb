@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
 
   before_create :assign_registration_number
 
+  has_one :account, as: :accountable
+  after_create :create_account
+
   has_many :posts
   has_many :offers
   has_many :inquiries
