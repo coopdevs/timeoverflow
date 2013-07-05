@@ -17,6 +17,12 @@ ca:
       inquiry:
         one: Demanda
         other: Demandes
+      transfer:
+        one: Transferencia
+        other: Transferencies
+      post: 
+        one: Anuncio
+        other: Anuncios
 
 
     attributes:
@@ -25,10 +31,11 @@ ca:
         organization:
         one: Banc de Temps
         other: Bancs de Temps
-        email: Correo
+        email: Correu
         registration_date: Data de alta
+        gender: Gènere
         registration_number: Codi d'usuari
-        birth_date: Data de naixement
+        date_of_birth: Data de naixement
         identity_document: DNI
         phone: Telèfon
         alt_phone: Telèfon alternatiu
@@ -41,6 +48,19 @@ ca:
       category:
         name: Nom
         parent: Categoría padre
+      transfer:
+        amount: Quantitat
+        reason: Comentaris
+        source: Origen
+      post:
+        title: Títol
+        description: Descripció
+        category: Categoria
+        tag_list: Etiquetes
+        joinable: Es poden afegir altres
+        permanent: Permanent
+        start_on: Comença el
+        end_on: Finalitza el
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
@@ -59,6 +79,8 @@ ca:
 
     index:
       create: Crear nou Usuari
+    new:
+      new_user: Nou usuari
     show:
       phone:
         one: Telèfon
@@ -66,15 +88,25 @@ ca:
       data: Dades del Usuari
       categories: Serveis Oferts
       account: Darrers moviments
+    give_time:
+      give_time: Donar Temps a 
     form:
       superadmin_warning: Compte!!! Estás donant poders de SuperAdministrador a aquest usuari
       admin_warning: Compte!!! Estás donant poders d'Administrador del Banc de Temps a aquest usuari
 
   offers:
     index:
-      offered_by: "Ofertat per %{size} persones"
+      offered_by: Ofertat per %{size} persones
+      new_offer: Nova oferta
+      filter: Filtra
+      by_category: Per categoria
+      by_tag: Per etiqueta
     show:
-      offered_by: "Ofertants"
+      offered_by: Ofertants
+
+  inquiries:
+    index:
+      new_inquiry: Nova demanda
 
   categories:
     index:
@@ -94,8 +126,17 @@ ca:
     min_balance: 
       title: Usuaris Saldo Mínim
 
+  organizations:
+    index:
+      member_count: Número de usuaris
+
   global:
+    table:
+      actions: Accions
     show: Mostrar
     edit: Modificar
     delete: Borrar
     save: Guardar
+    add_new: Crear nou
+
+

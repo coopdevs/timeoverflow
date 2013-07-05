@@ -1,6 +1,13 @@
 = render 'breadcrumb'
+%h1
+  %i.icon-hand-up.icon-border
+  = Offer.model_name.human(count: :many)
 
-= link_to("New offer", new_offer_path)
+%ul.nav.nav-pills
+  %li
+  %a{href: new_offer_path}
+    %i.icon-plus
+    = t '.new_offer'
 
 - if @category.present?
   = link_to offers_path(params.merge(:cat => nil)), :class => ["label", "label-success"] do

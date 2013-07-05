@@ -1,9 +1,10 @@
 = render "breadcrumb", action: "give_time"
 
 %h1
-  %i.icon-key.icon-border
-  = @user.username
-  %small= t ".give_time"
+  %i.icon-time.icon-border
+  = t ".give_time" 
+  %small
+  = link_to "#{@user.registration_number} - #{@user.username}"  , @user
 
 - if @offer
   %h3= @offer
