@@ -69,6 +69,6 @@ class User < ActiveRecord::Base
   belongs_to :organization
 
   def to_s
-    "#{username} (#{registration_number})"
+    "#{registration_number} - #{username}"
   end
 end

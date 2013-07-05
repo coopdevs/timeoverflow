@@ -15,6 +15,6 @@ class Organization < ActiveRecord::Base
   }
 
   def to_s
-    "#{id} - #{name}"
+    "#{name}"
   end
 end
