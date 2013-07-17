@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
     server = 'https://verifier.login.persona.org/verify'
     assertion_params = {
       assertion: assertion,
-      audience: 'http://0.0.0.0:3000'
+      audience: ENV['PERSONA_AUDIENCE'] || 'http://0.0.0.0:3000'
     }
     request = RestClient::Resource.new(server, verify_ssl: true).post(assertion_params)
     response = JSON.parse(request)
