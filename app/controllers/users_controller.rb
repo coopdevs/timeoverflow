@@ -27,10 +27,6 @@ class UsersController < ApplicationController
     @user = scoped_users.find(params[:id])
   end
 
-  def change_password
-    @user = scoped_users.find(params[:id])
-  end
-
   def create
     @user = scoped_users.build(user_params)
     unless @user.password.present?

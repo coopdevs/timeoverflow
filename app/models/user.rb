@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
 
   acts_as_paranoid
-  has_secure_password
+  # has_secure_password
   acts_as_taggable_on :skills, :needs rescue nil
    # HACK: there is a known issue that acts_as_taggable breaks asset precompilation on Heroku.
 
@@ -42,6 +42,24 @@ class User < ActiveRecord::Base
     join_table: "user_joined_post",
     foreign_key: "user_id",
     association_foreign_key: "post_id"
+
+
+  def self.authenticate_with_persona(assertion)
+    server = 'https://verifier.login.persona.org/verify'
+    assertion_params = {
+      assertion: assertion,
+      audience: 'http://0.0.0.0:3000'
+    }
+    request = RestClient::Resource.new(server, verify_ssl: true).post(assertion_params)
+    response = JSON.parse(request)
+
+    if response['status'] == 'okay'
+      return response
+    else
+      ap response
+      return {status: 'error'}.to_json
+    end
+  end
 
 
   def assign_registration_number

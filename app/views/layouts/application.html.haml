@@ -6,6 +6,10 @@
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %title
       = yield :title
+    - if session[:email]
+      :javascript
+        var $USER = "#{session[:email]}"
+
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
@@ -13,6 +17,7 @@
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/select2/3.4.0/select2.min.js"
     = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.0.2/js/bootstrap-datepicker.min.js"
+    = javascript_include_tag "https://login.persona.org/include.js"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/base/jquery-ui.css"
@@ -32,6 +37,7 @@
     .container-fluid
       .row-fluid
         #side-nav.sidebar-nav.span2
+
           %ul.clearfix.nav.nav-list.well
             = render 'nav'
         #main_container.span10

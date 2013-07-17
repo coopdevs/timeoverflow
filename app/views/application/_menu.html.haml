@@ -2,7 +2,7 @@
 %ul.nav.pull-right
   - if current_user
     %li.dropdown
-      %a.dropdown-toggle{data: {toggle: "dropdown"}}
+      %a.dropdown-toggle{href: true, data: {toggle: "dropdown"}}
         %i.icon-user
         = current_user.email
         %b.caret
@@ -12,10 +12,12 @@
             %i.icon-wrench
             = t "menu.preferences"
         %li
-          %a{href: "/sign_out", data: {method: :delete}}
+          %a#signout{href: true}
             %i.icon-signout
             Log out
 
   - else
     %li
-      %a{href: "/sessions/new"} Log in
+      .persona-button.orange
+        %a#signin{href: true, style: "color: inherit;"}
+          %span Log in

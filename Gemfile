@@ -9,6 +9,7 @@ gem 'pg'
 gem 'dalli'
 
 gem 'sass-rails'
+# gem 'compass-rails'
 gem 'coffee-rails', github: 'rails/coffee-rails'
 gem 'uglifier', '>= 1.0.3'
 
@@ -18,6 +19,7 @@ gem 'jquery-rails'
 
 gem 'puma'
 gem 'foreman'
+
 # To use debugger
 # gem 'debugger'
 
@@ -32,6 +34,7 @@ gem "awesome_print"
 gem "jbuilder"
 gem "paranoia"
 
+gem "rest-client"
 
 gem 'memcachier'
 gem 'newrelic_rpm'
