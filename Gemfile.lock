@@ -46,7 +46,6 @@ GEM
     arel (4.0.0)
     atomic (1.1.10)
     awesome_print (1.1.0)
-    bcrypt-ruby (3.1.1)
     builder (3.1.4)
     coffee-script (2.2.0)
       coffee-script-source
@@ -147,7 +146,6 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   awesome_print
-  bcrypt-ruby
   coffee-rails!
   dalli
   foreman

@@ -1,4 +1,12 @@
-= render 'breadcrumb'
+- content_for :breadcrumb do
+  %li
+    = link_to root_path do
+      %i.icon-home
+    %span.divider •
+  %li.active
+    %i.icon-hand-up
+    = t "application.nav.offers"
+
 
 = link_to("New offer", new_offer_path)
 

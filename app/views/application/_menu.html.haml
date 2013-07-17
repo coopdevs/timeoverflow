@@ -11,13 +11,13 @@
           %a.disabled
             %i.icon-wrench
             = t "menu.preferences"
-        %li
-          %a#signout{href: true}
-            %i.icon-signout
-            Log out
+    %li
+      %a#signout{href: true}
+        %i.icon-signout
+        Sign out
 
   - else
     %li
-      .persona-button.orange
-        %a#signin{href: true, style: "color: inherit;"}
-          %span Log in
+      %a#signin{href: true}
+        %i.icon-signin
+        Sign in

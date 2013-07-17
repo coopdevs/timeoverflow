@@ -6,9 +6,11 @@
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %title
       = yield :title
-    - if session[:email]
+    :javascript
+      var $PERSONA = #{session[:email].try(:inspect) || "null"};
+    - if session[:user_id]
       :javascript
-        var $USER = "#{session[:email]}"
+        var $USER_ID = #{session[:user_id]};
 
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
@@ -29,18 +31,32 @@
     %link{href: "/favicon.ico", rel: "shortcut icon"}
 
   %body
-    .navbar.navbar-fixed-top.navbar-inverse
-      .navbar-inner
-        .container-fluid
-          = render 'menu'
+    .container
+      %ul.breadcrumb#breadcrumb
+        = yield :breadcrumb
+        .pull-right
+          - if current_user
+            %a#signout{href: true}
+              %i.icon-signout
+              Sign out
+              = current_user.email
 
-    .container-fluid
-      .row-fluid
-        #side-nav.sidebar-nav.span2
+          - else
+            %a#signin{href: true}
+              %i.icon-signin
+              Sign in
+
+      %header.page-header
+        %h1
+          = yield :title
+          %small
+            = yield :subtitle
+      .row
+        #side-nav.sidebar-nav.span3
 
           %ul.clearfix.nav.nav-list.well
             = render 'nav'
-        #main_container.span10
+        #main_container.span9
           = yield
 
 

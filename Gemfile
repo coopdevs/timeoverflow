@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby "1.9.3"
-
 gem 'rails', '>= 4.0.0'
 gem 'rails-i18n'
 
@@ -26,7 +24,6 @@ gem 'foreman'
 gem "haml-rails"
 gem 'turbolinks'
 
-gem 'bcrypt-ruby', :require => 'bcrypt'
 gem "simple_form", "~> 3.0.0.rc"
 gem "acts-as-taggable-on"
 

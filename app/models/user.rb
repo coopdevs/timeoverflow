@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
 
   acts_as_paranoid
   # has_secure_password
@@ -70,10 +69,6 @@ class User < ActiveRecord::Base
       organization.increment!(:reg_number_seq)
       organization.reg_number_seq
     end
-  end
-
-  def create_fake_password
-    [*('a'..'z'),*('0'..'9')].shuffle[0,8].join
   end
 
   def admin?

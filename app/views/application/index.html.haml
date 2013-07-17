@@ -1,7 +1,42 @@
-.hero-unit
+
+- content_for :title do
+  TimeOverflow
+
+- if current_organization
+  - content_for :subtitle do
+    = current_organization.name
+
+- content_for :breadcrumb do
+  %li.active
+    %i.icon-home
+
+%header
   %h1
     TimeOverflow
     - if current_organization
       %small= current_organization.name
   %p= t "catchPhrase"
 
+
+%ul.nav.nav-pills
+
+  %li
+
+    %a{href: organizations_path}
+      %i.icon-group
+      = Organization.model_name.human(count: :many)
+
+  %li
+    %a{href: users_path}
+      %i.icon-user
+      = User.model_name.human.pluralize
+
+  %li
+    %a{href: offers_path}
+      %i.icon-hand-up
+      = Offer.model_name.human.pluralize
+
+  %li
+    %a{href: inquiries_path}
+      %i.icon-bell
+      = Inquiry.model_name.human.pluralize
