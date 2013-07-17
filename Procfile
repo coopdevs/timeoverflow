@@ -1,1 +1,1 @@
-web: bundle exec puma -p $PORT
+web: script/rails server -p $PORT
