@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
   attr_readonly :registration_number
 
   validates :email, presence: true, uniqueness: true
-  validates :password, on: :create, presence: true, confirmation: true
+  # validates :password, on: :create, presence: true, confirmation: true
   validates :gender, presence: true, inclusion: {:in => %w[male female]}
-  validates :organization_id, presence: true, :unless => :superadmin?
-  validates :identity_document, presence: true, uniqueness: {scope: :organization_id}
+  validates :organization_id, presence: true
+  validates :identity_document, presence: true, uniqueness: { scope: :organization_id }
   validates :registration_number, uniqueness: { scope: :organization_id }
 
   before_create :assign_registration_number
