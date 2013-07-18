@@ -15,11 +15,6 @@
       %a{href: edit_user_path(@user)}
         %i.icon-pencil
         = t "edit"
-  - if current_user == @user or admin?
-    %li
-      %a{href: change_password_user_path(@user)}
-        %i.icon-key
-        = t "change password"
   - if admin?
     %li
       %a{href: user_path(@user), data: {method: :delete, confirm: t("are_you_sure") }}
