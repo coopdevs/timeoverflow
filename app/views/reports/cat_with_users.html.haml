@@ -10,5 +10,5 @@
       - offers_in_cat.each do |of|
         %tr
           %td= of.title
-          %td= of.joined_users.pluck("users.id").sort.join(', ')
+          %td= of.joined_users.pluck("users.registration_number").sort.join(', ')
 

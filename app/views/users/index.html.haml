@@ -1,8 +1,15 @@
-= render "breadcrumb"
+- content_for :breadcrumb do
+  %li
+    = link_to root_path do
+      %i.icon-home
+    %span.divider •
+  %li.active
+    %i.icon-user
+    = t "application.nav.users"
 
-%h1
-  %i.icon-user.icon-border
+- content_for :title do
   = User.model_name.human.pluralize
+
 
 %table.table.table-hover.table-condensed
   %thead

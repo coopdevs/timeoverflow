@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :skills, :needs rescue nil
    # HACK: there is a known issue that acts_as_taggable breaks asset precompilation on Heroku.
 
-
   attr_readonly :registration_number
 
   validates :email, presence: true, uniqueness: true
@@ -26,19 +25,14 @@ class User < ActiveRecord::Base
     class_name: "Post",
     join_table: "user_joined_post",
     foreign_key: "user_id",
-    association_foreign_key: "post_id"
-
-  has_and_belongs_to_many :joined_offers,
-    class_name: "Offer",
-    join_table: "user_joined_post",
-    foreign_key: "user_id",
-    association_foreign_key: "post_id"
-
-  has_and_belongs_to_many :joined_inquiries,
-    class_name: "Inquiry",
-    join_table: "user_joined_post",
-    foreign_key: "user_id",
-    association_foreign_key: "post_id"
+    association_foreign_key: "post_id" do
+      def offers
+        where type: "Offer"
+      end
+      def inquiries
+        where type: "Inquiry"
+      end
+    end
 
 
   def self.authenticate_with_persona(assertion)

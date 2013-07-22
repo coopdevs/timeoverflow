@@ -1,13 +1,25 @@
-= render "breadcrumb"
+- content_for :breadcrumb do
+  %li
+    = link_to root_path do
+      %i.icon-home
+    %span.divider •
+  %li
+    = link_to users_path do
+      %i.icon-user
+      = t "application.nav.users"
+    %span.divider •
+  %li.active= @user.username
 
-%h1
-  %i.icon-user.icon-border
+- content_for :title do
   = @user.username
-  %small= @user.email
+
+- content_for :subtitle do
+  = @user.email
   - if @user.superadmin?
     %span.label.label-important= t ".superadmin"
   - if @user.admin
     %span.label.label-warning= t ".admin"
+
 
 %ul.nav.nav-pills
   - if current_user == @user or admin?
@@ -57,7 +69,7 @@
   .span4
     %h2= t ".offers"
     %ul
-      - @user.joined_offers.each do |offer|
+      - @user.joined_posts.offers.each do |offer|
         %li
           = link_to(offer.title, offer)
           = link_to(give_time_user_path(@user, offer: offer.id), {:class => "btn btn-success btn-mini"}) do
