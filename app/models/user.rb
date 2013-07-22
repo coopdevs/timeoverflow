@@ -52,15 +52,8 @@ class User < ActiveRecord::Base
     end
   end
 
-
   def assign_registration_number
-    self.registration_number ||= begin
-      unless organization.reg_number_seq
-        organization.update_column(:reg_number_seq, organization.users.with_deleted.maximum(:registration_number))
-      end
-      organization.increment!(:reg_number_seq)
-      organization.reg_number_seq
-    end
+    self.registration_number ||= organization.next_reg_number_seq
   end
 
   def admin?
