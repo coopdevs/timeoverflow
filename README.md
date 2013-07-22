@@ -30,3 +30,13 @@ así como poder publicar anuncios de ofertas/demandas explicados en detalle.
 
 Por otro lado los miembros pueden pagarse los servicios de manera virtual para ahorrarse el paso por la oficina del Banco
 de Tiempo y también tienen la posibilidad de consultar el extracto de su cuenta.
+
+
+ERD
+===
+
+Entity-relation diagram written using
+
+    bundle exec rake erd filetype=png inheritance=false polymorphism=true indirect=false
+
+![ERD](./erd.png)

@@ -37,3 +37,4 @@ gem "rest-client"
 gem 'memcachier'
 gem 'newrelic_rpm'
 
+gem "rails-erd", group: :development
