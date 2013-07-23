@@ -38,8 +38,6 @@ es:
         identity_document: DNI
         phone: Teléfono
         alt_phone: Teléfono alternativo
-        password: Contraseña
-        password_confirmation: Repetir contraseña
         admin: Administrador de organización
         superadmin: Administrador de sistema
       organization:
@@ -138,3 +136,4 @@ es:
     delete: Borrar
     save: Guardar
     add_new: Crear nuevo
+

@@ -39,8 +39,6 @@ ca:
         identity_document: DNI
         phone: Telèfon
         alt_phone: Telèfon alternatiu
-        password: Contrasenya
-        password_confirmation: Repeteix Contrasenya
         admin: Administrador del Banc de Temps
         superadmin: SuperAdministrador del Sistema
       organization:
@@ -138,5 +136,4 @@ ca:
     delete: Borrar
     save: Guardar
     add_new: Crear nou
-
 

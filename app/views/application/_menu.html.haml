@@ -2,7 +2,7 @@
 %ul.nav.pull-right
   - if current_user
     %li.dropdown
-      %a.dropdown-toggle{data: {toggle: "dropdown"}}
+      %a.dropdown-toggle{href: true, data: {toggle: "dropdown"}}
         %i.icon-user
         = current_user.email
         %b.caret
@@ -11,11 +11,13 @@
           %a.disabled
             %i.icon-wrench
             = t "menu.preferences"
-        %li
-          %a{href: "/sign_out", data: {method: :delete}}
-            %i.icon-signout
-            Log out
+    %li
+      %a#signout{href: true}
+        %i.icon-signout
+        Sign out
 
   - else
     %li
-      %a{href: "/sessions/new"} Log in
+      %a#signin{href: true}
+        %i.icon-signin
+        Sign in

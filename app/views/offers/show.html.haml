@@ -1,9 +1,33 @@
-= render 'breadcrumb'
+- content_for :breadcrumb do
+  %li
+    = link_to root_path do
+      %i.icon-home
+    %span.divider •
+  %li
+    = link_to offers_path do
+      %i.icon-hand-up
+      = t "application.nav.offers"
+    %span.divider •
+  - if defined?(action)
+    %li
+      = link_to @offer.title, @offer
+      %span.divider •
+    %li.active= t action
+  - else
+    %li.active= @offer.title
 
-%h1
+- content_for :title do
   = @offer.title
-  %small= @offer.category
-  %div.tags.pull-right
+
+- content_for :subtitle do
+  = @offer.class.model_name.human
+
+.row
+  .span12
+    %span.label
+      %i.icon-folder-open-alt
+      = @offer.category
+
     - @offer.tags.each do |tag|
 
       %span.label

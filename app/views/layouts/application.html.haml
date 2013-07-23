@@ -6,16 +6,23 @@
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %title
       = yield :title
-    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"
+    :javascript
+      var $PERSONA = #{session[:email].try(:inspect) || "null"};
+    - if session[:user_id]
+      :javascript
+        var $USER_ID = #{session[:user_id]};
+
+    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/select2/3.4.0/select2.min.js"
     = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.0.2/js/bootstrap-datepicker.min.js"
+    = javascript_include_tag "https://login.persona.org/include.js"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/base/jquery-ui.css"
+    = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/select2/3.4.0/select2.css"
     = stylesheet_link_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.0.2/css/bootstrap-datepicker.css"
@@ -24,17 +31,32 @@
     %link{href: "/favicon.ico", rel: "shortcut icon"}
 
   %body
-    .navbar.navbar-fixed-top.navbar-inverse
-      .navbar-inner
-        .container-fluid
-          = render 'menu'
+    .container
+      %ul.breadcrumb#breadcrumb
+        = yield :breadcrumb
+        .pull-right
+          - if current_user
+            %a#signout{href: true}
+              %i.icon-signout
+              Sign out
+              = current_user.email
 
-    .container-fluid
-      .row-fluid
-        #side-nav.sidebar-nav.span2
+          - else
+            %a#signin{href: true}
+              %i.icon-signin
+              Sign in
+
+      %header.page-header
+        %h1
+          = yield :title
+          %small
+            = yield :subtitle
+      .row
+        #side-nav.sidebar-nav.span3
+
           %ul.clearfix.nav.nav-list.well
             = render 'nav'
-        #main_container.span10
+        #main_container.span9
           = yield
 
 
