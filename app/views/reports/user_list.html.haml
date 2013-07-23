@@ -8,7 +8,7 @@
       %th= User.human_attribute_name(:phone)
       %th= User.human_attribute_name(:alt_phone)
   %tbody
-    - @users.each do |u|
+    - @users.order(:registration_number).each do |u|
       %tr
         %th= u.registration_number
         %td= u.username
