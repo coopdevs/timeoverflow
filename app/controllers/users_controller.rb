@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
-  respond_to :html
-
 
   def scoped_users
-    return User.where(id: nil) unless current_user
-    res = User.scoped
-    res = res.where organization_id: current_user.organization_id unless current_user.try :superadmin?
+    return User.none unless current_user
+    res = User.all
+    res = res.where organization_id: current_organization unless superadmin?
     res
   end
 
@@ -16,11 +14,10 @@ class UsersController < ApplicationController
 
   def show
     @user = scoped_users.find(params[:id])
-    respond_with @user
   end
 
   def new
-    @user = scoped_users.build
+    @user = scoped_users.build user_defaults
   end
 
   def edit
@@ -28,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = scoped_users.build(user_params)
+    @user = scoped_users.build(user_defaults.merge user_params)
     @user.organization_id ||= current_user.organization_id
     @user.assign_registration_number
     if @user.save
@@ -65,6 +62,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_defaults
+    {
+      registration_date: Date.today
+    }
+  end
 
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone alt_phone identity_document"
