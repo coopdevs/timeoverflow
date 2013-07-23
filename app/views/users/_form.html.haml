@@ -13,7 +13,7 @@
       = f.input :registration_date, as: :string, input_html: {type: :date}
       = f.input :date_of_birth, as: :string, input_html: {type: :date}
       = f.input :gender, collection: [:male, :female], required: true
-      = f.input :identity_document
+      = f.input :identity_document, required: true
       = f.input :phone
       = f.input :alt_phone
 
