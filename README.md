@@ -40,3 +40,12 @@ Entity-relation diagram written using
     bundle exec rake erd filetype=png inheritance=false polymorphism=true indirect=false
 
 ![ERD](./erd.png)
+
+
+License
+=======
+
+This project is in the public domain.
+
+
+
