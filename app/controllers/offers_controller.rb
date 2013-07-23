@@ -25,14 +25,16 @@ class OffersController < ApplicationController
   def create
     redirect_to current_user.offers.create(offer_defaults.merge offer_params).tap do |offer|
       current_user.join(offer) unless admin?
-    end, notice: "Created!"
+      flash[:notice] = "Created!"
+    end
   end
 
   def update
     redirect_to current_user.offers.find(params[:id]).tap do |offer|
       offer.update! offer_params
       current_user.join(offer) unless admin?
-    end, notice: "Updated!"
+      flash[:notice] = "Updated!"
+    end
   end
 
   def edit
