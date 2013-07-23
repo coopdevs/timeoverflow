@@ -9,16 +9,15 @@
       = t "application.nav.users"
     %span.divider •
   %li
-    = link_to @user.username, @user
+    = link_to @user, @user
     %span.divider •
   %li.active= t ".give_time"
 
 - content_for :title do
-  = @user.username
+  = @user
 
 - content_for :subtitle do
   = t ".give_time"
-
 
 - if @offer
   %h3= @offer
