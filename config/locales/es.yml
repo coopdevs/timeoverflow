@@ -11,6 +11,18 @@ es:
         one: Banco de Tiempo
         other: Bancos de Tiempo
       category: Servicio
+      offer:
+        one: Oferta
+        other: Ofertas
+      inquiry:
+        one: Demanda
+        other: Demandas
+      transfer:
+        one: Transferencia
+        other: Transferencias
+      post: 
+        one: Anuncio
+        other: Anuncios
 
     attributes:
       user:
@@ -20,11 +32,12 @@ es:
         other: Bancos de Tiempo
         email: Correo
         registration_date: Fecha de alta
+        gender: Género
         registration_number: Código de usuario
-        birth_date: Fecha de nacimiento
-        identity_document: N. de documento
+        date_of_birth: Fecha de nacimiento
+        identity_document: DNI
         phone: Teléfono
-        alt_phone: Otro Teléfono
+        alt_phone: Teléfono alternativo
         admin: Administrador de organización
         superadmin: Administrador de sistema
       organization:
@@ -32,20 +45,40 @@ es:
       category:
         name: Nombre
         parent: Categoría padre
+      transfer:
+        amount: Cantidad
+        reason: Comentarios
+        source: Origen
+      post:
+        title: Título
+        description: Descripción
+        category: Categoria
+        tag_list: Etiquetas
+        joinable: Se puede unir otros
+        permanent: Permanente
+        start_on: Empieza el
+        end_on: Termina el
+
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
     nav:
       administration: Administración
+      reports: Informes
+      stats: Estadísticas
       users: Usuarios
       categories: Servicios
       organizations: Organizaciones
+
+  # views/users/index...
 
   users:
 
     index:
       create: Crear nuevo usuario
+    new:
+      new_user: Nuevo usuario
     show:
       phone:
         one: Teléfono
@@ -53,6 +86,8 @@ es:
       data: Datos del usuario
       categories: Servicios Ofrecidos
       account: Últimos movimientos
+    give_time:
+      give_time: Dar Tiempo a
     form:
       superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
       admin_warning: Atención!!! Estás dando poderes a este usuario!!
@@ -60,8 +95,16 @@ es:
   offers:
     index:
       offered_by: "Ofrecido por %{size} personas"
+      new_offer: "Nueva oferta"
+      filter: Filtrar
+      by_category: Por categoría
+      by_tag: Por etiqueta
     show:
       offered_by: "Ofertantes"
+
+  inquiries:
+    index:
+      new_inquiry: Nueva demanda
 
   categories:
     index:
@@ -77,40 +120,20 @@ es:
     user_list:
       title: Listado usuarios
 
+  stats:
+    min_balance: 
+      title: Usuarios Saldo Mínimo
+
+  organizations:
+    index:
+      member_count: Número de usuarios
+
   global:
+    table:
+      actions: Acciones  
     show: Mostrar
     edit: Modificar
     delete: Borrar
     save: Guardar
+    add_new: Crear nuevo
 
-    "catchPhrase": "Benvenido al sistema de gestión del Banco de Tiempo"
-    "Save changes": "Guardar"
-    "New service": "Nuevo servicio"
-    "Cancel": "Cancelar"
-    "no parent": "Sin padre"
-    "Welcome to the new-generation time banking system": "Bienvenido al nuevo sistema de Bancos de Tiempo" 
-    "Learn more": "Saber más"
-    "New organization": "Nuevo Banco"
-    "Name": "Nombre"
-    "Organization": "Banco de Tiempo"
-    "E-mail": "Correo electrónico"
-    "Administrator": "Administrador"
-    "Super Administrator": "Administrador de sistema"
-    "Member Code": "Código de miembro"
-    "Register date": "Fecha de alta"
-    "Document ID": "Número de documento"
-    "Phones": "Teléfonos"
-    "Offers categories": "Servicios ofrecidos"
-    "New user": "Nuevo usuario"
-    "Edit": "Modificar"
-    "Birth date": "Fecha de nacimiento"
-    "Phone": "Teléfono"
-    "Alternate Phone": "Teléfono alternativo"
-    "Categories": "Servicios"
-    "Users": "Usuarios"
-    "By user": "Por usuarios"
-    "By category": "Por servicios"
-    "Category": "Categoría"
-    "Members": "Miembros"
-    "View": "Ver"
-    "give time": "Ingresar horas"

@@ -2,22 +2,22 @@
 
 %h1
   %i.icon-group.icon-border
-  = t "organizations"
+  = Organization.model_name.human(count: :many)
 
 %ul.nav.nav-pills
   - if superadmin?
     %li
       %a{href: new_organization_path}
         %i.icon-plus
-        = t 'add'
+        = t 'global.add_new'
 
 %table.table.table-hover.table-condensed
   %thead
     %tr
-      %th= t ".nombre"
+      %th= Organization.model_name.human(count: :one)
       %th= t ".member_count"
       %th
-        %i.icon-hand-down
+        %i.icon-wrench
         = t "global.table.actions"
   %tbody
     - @organizations.each do |org|

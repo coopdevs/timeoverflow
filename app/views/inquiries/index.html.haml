@@ -1,4 +1,12 @@
-= link_to(".new", new_inquiry_path)
+%h1
+  %i.icon-bell.icon-border
+  = Inquiry.model_name.human(count: :many)
+
+%ul.nav.nav-pills
+  %li
+  %a{href: new_inquiry_path}
+    %i.icon-plus
+    = t '.new_inquiry'
 
 %ul
 
