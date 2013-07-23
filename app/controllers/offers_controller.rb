@@ -7,7 +7,7 @@ class OffersController < ApplicationController
 
   def index
     @offers = current_organization.offers
-    @offers = @offers.tagged_with(@tag_list) if @tag_list
+    @offers = @offers.tagged_with(@tag_list) if @tag_list.present?
     @offers = @offers.where(category_id: @category) if @category
     if params[:q].present?
       @offers = @offers.where(Post.arel_table[:title].matches("%#{params[:q]}%"))
@@ -78,7 +78,7 @@ class OffersController < ApplicationController
     end
 
     def parse_parameters
-      @tag_list = ActsAsTaggableOn::TagList.from params[:tag] if params[:tag].present?
+      @tag_list = ActsAsTaggableOn::TagList.from params[:tag]
       @category = Category.find params[:cat] if params[:cat].present?
     end
 

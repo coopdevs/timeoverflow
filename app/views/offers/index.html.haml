@@ -52,7 +52,7 @@
               %i.icon-tag
               = t ".by_tag"
             - tag_cloud(@tag_cloud, %w(css1 css2 css3 css4)) do |tag, css_class|
-              - if @tag_list.try :include?, tag.name
+              - if @tag_list.include? tag.name
                 = link_to tag.name, offers_path(params.merge(:tag => (@tag_list.dup.remove tag.name).to_s.presence)), :class => ["btn", "btn-small", "btn-inverse"]
               - else
                 = link_to tag.name, offers_path(params.merge(:tag => (@tag_list.dup.add tag.name).to_s)), :class => ["btn", "btn-small", "btn-link"]
@@ -64,10 +64,16 @@
     %li.offer
       %h3
         = link_to offer.title, offer
-        %small= offer.category
+        %small
+          = t ".by"
+          - offer.joined_users.each do |offerer|
+            %span.offerer<
+              = link_to offerer, offerer
         %div.tags.pull-right
+          %span.label
+            %i.icon-folder-open
+            = offer.category
           - offer.tags.each do |tag|
-
             %span.label
               %i.icon-tag
               = tag

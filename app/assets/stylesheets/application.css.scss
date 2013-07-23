@@ -20,6 +20,9 @@
 
 li.offer, li.inquiry {
   @extend %li.post;
+  h3 small span.offerer:not(:last-of-type):after {
+    content: ",";
+  }
 }
 
 #side-nav .well {
