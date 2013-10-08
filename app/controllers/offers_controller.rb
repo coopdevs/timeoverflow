@@ -12,6 +12,9 @@ class OffersController < ApplicationController
     if params[:q].present?
       @offers = @offers.where(Post.arel_table[:title].matches("%#{params[:q]}%"))
     end
+    if request.xhr?
+      render partial: 'offers'
+    end
   end
 
   def show
@@ -50,14 +53,32 @@ class OffersController < ApplicationController
   end
 
   def join
-    redirect_to current_organization.offers.find(params[:id]).tap do |offer|
-      offer.joined_users << current_user
+    user = if admin? and params[:for_user].present?
+      User.find(params[:for_user])
+    else
+      current_user
+    end
+    offer = current_organization.offers.find(params[:id])
+    offer.joined_users << user
+    if request.xhr?
+      render nothing: true, status: :created
+    else
+      redirect_to offer
     end
   end
 
   def leave
-    redirect_to current_organization.offers.find(params[:id]).tap do |offer|
-      offer.joined_users -= [current_user]
+    user = if admin? and params[:for_user].present?
+      User.find(params[:for_user])
+    else
+      current_user
+    end
+    offer = current_organization.offers.find(params[:id])
+    offer.joined_users -= [current_user]
+    if request.xhr?
+      render nothing: true, status: :no_content
+    else
+      redirect_to offer
     end
   end
 
@@ -80,6 +101,7 @@ class OffersController < ApplicationController
     def parse_parameters
       @tag_list = ActsAsTaggableOn::TagList.from params[:tag]
       @category = Category.find params[:cat] if params[:cat].present?
+      @user = User.find params[:for_user] if params[:for_user].present?
     end
 
 

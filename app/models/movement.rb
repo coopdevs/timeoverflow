@@ -12,4 +12,6 @@ class Movement < ActiveRecord::Base
   after_create do
     account.update_balance
   end
+
+  has_one :other_side, (->(self_)  { where ["NOT movements.id = #{self_.id}"] }), through: :transfer, source: :movements
 end

@@ -1,0 +1,15 @@
+%ul
+
+  - @offers.each do |offer|
+    %li.post.offer(data-post-id="#{offer.id}" data-user-id="#{@user.id}")
+      %h5
+        = offer.title
+        %small
+          %i.icon-folder-open
+          = offer.category
+          - offer.tags.each do |tag|
+            %i.icon-tag
+            = tag
+      %p= offer.description
+      %a.join-post(href="#") join me
+

@@ -5,6 +5,8 @@
     %meta{"http-equiv" => "X-UA-Compatible", content: "IE=Edge,chrome=1"}
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %title
+      = current_organization
+      —
       = yield :title
     :javascript
       var $PERSONA = #{session[:email].try(:inspect) || "null"};
@@ -19,7 +21,8 @@
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/select2/3.4.0/select2.min.js"
     = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.0.2/js/bootstrap-datepicker.min.js"
-    = javascript_include_tag "https://login.persona.org/include.js"
+    =# javascript_include_tag "https://login.persona.org/include.js"
+    = javascript_include_tag "https://login.persona.org/include.orig.js"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"
@@ -51,12 +54,6 @@
           = yield :title
           %small
             = yield :subtitle
-      .row
-        #side-nav.sidebar-nav.span3
-
-          %ul.clearfix.nav.nav-list.well
-            = render 'nav'
-        #main_container.span9
-          = yield
+      = yield
 
 

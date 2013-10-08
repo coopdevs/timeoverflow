@@ -2,7 +2,7 @@ module Persona
 
   def self.authenticate(assertion, options={})
     server = 'https://verifier.login.persona.org/verify'
-    available_audience = ENV['PERSONA_AUDIENCE'].split
+    available_audience = ENV['PERSONA_AUDIENCE'].split rescue []
     if requested_audience = options[:audience]
       return {status: 'error'}.to_json unless available_audience.include? requested_audience
     end

@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   # before_filter :intercept_html_requests
   helper_method :current_user, :current_organization, :admin?, :superadmin?
 
-  before_filter do
-    ap session.keys
-  end
+  # before_filter do
+  #   ap session.keys
+  # end
 
   def index
   end

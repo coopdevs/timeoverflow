@@ -21,37 +21,46 @@
     %span.label.label-warning= t ".admin"
 
 
-%ul.nav.nav-pills
-  - if current_user == @user or admin?
-    %li
-      %a{href: edit_user_path(@user)}
-        %i.icon-pencil
-        = t "edit"
-  - if admin?
-    %li
-      %a{href: user_path(@user), data: {method: :delete, confirm: t("are_you_sure") }}
-        %i.icon-trash
-        = t "delete"
-  %li
-    %a{href: give_time_user_path(@user)}
-      %i.icon-time
-      = t "give time"
 
-.row-fluid
-  .span4
-    %h2= t ".data"
+.row
+  .span2
+    %h1
+      %i.icon-user.icon-border
+    %ul.nav.nav-pills
+      - if admin? or @user == current_user
+        %li
+          %a{href: edit_user_path(@user)}
+            %i.icon-pencil
+            = t "edit"
+
+  .span10
+
+    %ul.nav.nav-pills.pull-right
+      - if admin?
+        %li
+          %a{href: user_path(@user), data: {method: :delete, confirm: t("are_you_sure")}}
+            %i.icon-trash
+            = t "edit"
+      %li
+        %a{href: give_time_user_path(@user)}
+          %i.icon-time
+          = t "give time"
+      - unless @user == current_user
+        %li
+          %a
+            %i.icon-envelope
+            = t "send message"
+
+    %h1= @user
+    %p= @user.description
+
     %dl.dl-horizontal
-      %dt= User.human_attribute_name(:organization)
-      %dd= link_to @user.organization.name, @user.organization
-
-      %dt= User.human_attribute_name(:registration_number)
-      %dd= @user.registration_number
-      %dt= User.human_attribute_name(:registration_date)
-      %dd= l @user.registration_date rescue "-"
-      %dt= User.human_attribute_name(:date_of_birth)
-      %dd= l @user.date_of_birth rescue "-"
-      %dt= User.human_attribute_name(:identity_document)
-      %dd= @user.identity_document || "-"
+      - if @user.registration_date.present?
+        %dt= User.human_attribute_name(:registration_date)
+        %dd= l @user.registration_date
+      - if @user.date_of_birth.present?
+        %dt= User.human_attribute_name(:date_of_birth)
+        %dd= l @user.date_of_birth
       - phones = [@user.phone, @user.alt_phone].map(&:presence).compact
       %dt= t(".phone", count: phones.size)
       %dd
@@ -60,24 +69,80 @@
             &mdash;
           = ph
 
-  / .span4
-  /   %h2 t ".categories"
-  /   %ul.unstyled
-  /     - @user.categories.each do |cat|
-  /       %li= cat.fqn
+.row
+  .span6.offers
 
-  .span4
-    %h2= t ".offers"
-    %ul
-      - @user.joined_posts.offers.each do |offer|
-        %li
-          = link_to(offer.title, offer)
-          = link_to(give_time_user_path(@user, offer: offer.id), {:class => "btn btn-success btn-mini"}) do
-            %i.icon-time
-            = t ".give_time_for"
+    %h2
+      = t ".offers"
+      - if admin? or @user == current_user
+        %small
+          %a#bulk-add-offers(href="#" data-user-id="#{@user.id}")
+            %i.icon-plus
+            = t ".join another"
+
+    %ul.offers
+      - @user.joined_posts.offers.each do |post|
+        %li.post
+          .post-title= post.title
+          - if (other_posters = post.joined_users.select {|u| u != @user}).present?
+            .post-posters
+              = t ".by"
+              - other_posters.each do |poster|
+                %span.poster<
+                  = link_to poster, poster
+          .post-time
+            %span.timeago= time_ago_in_words post.updated_at
+          .post-description
+            = post.description
+          .post-actions
+            = link_to t(".show"), post
+            - if current_user == @user
+              = link_to t(".leave"), leave_offer_path(post), data: {method: :POST}
+            - elsif admin? or current_user == @user
+              = link_to t(".leave"), leave_offer_path(post, user: @user.id), data: {method: :POST}
+
+    #offers-bulk-modal.modal.hide.fade(tabindex="-1" role="dialog" aria-hidden=true aria-labelledby="offersBulkModal")
+      .modal-header
+        %button.close(data-dismiss="modal" aria-hidden="true") ×
+        %h3= t "add_offers"
+      .modal-body
+      .modal-footer
+        %button.btn(data-dismiss="modal" aria-hidden="true")
+
+  .span6.inquiries
+
+    %h2
+      = t ".inquiries"
+      - if admin? or @user == current_user
+        %small
+          %a{href: true}
+            %i.icon-plus
+            = t ".join another"
+
+    %ul.inquiries
+      - @user.joined_posts.inquiries.each do |post|
+        %li.post
+          .post-title= post.title
+          - if (other_posters = post.joined_users.select {|u| u != @user}).present?
+            .post-posters
+              = t ".by"
+              - other_posters.each do |poster|
+                %span.poster<
+                  = link_to poster, poster
+          .post-time
+            %span.timeago= time_ago_in_words post.updated_at
+          .post-description
+            = post.description
+          .post-actions
+            = link_to t(".show"), post
+            - if current_user == @user
+              = link_to t(".leave"), leave_inquiry_path(post), data: {method: :POST}
+            - elsif admin? or current_user == @user
+              = link_to t(".leave"), leave_inquiry_path(post, user: @user.id), data: {method: :POST}
 
 
-  .span4
+.row
+  .span12.transactions
     %h2
       = t ".account"
       %small
@@ -88,8 +153,7 @@
       - @user.account.movements.order("created_at DESC").limit(10).each do |mv|
         %tr
           %td= l mv.created_at, format: :short
-          %td= mv.transfer.post || mv.transfer.reason
+          %td= mv.other_side.account
+          %td= mv.transfer.post
+          %td= mv.transfer.reason
           %td= mv.amount
-
-
-

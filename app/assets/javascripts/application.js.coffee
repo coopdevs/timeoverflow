@@ -14,7 +14,7 @@
 #= require dataTables.bootstrap
 #  require jquery.dataTables
 #= require_self
-#= require turbolinks
+# require turbolinks
 #= require_tree .
 
 $(document).ready -> $(".select2").select2()
@@ -24,3 +24,22 @@ $(document).bind 'page:load', -> $(".select2").select2()
 $(document).on 'click', 'a[data-popup]', (event) ->
   window.open($(this).attr('href'), 'popup', 'width=600,height=600')
   event.preventDefault()
+
+
+
+$(document).on "click", "#bulk-add-offers", (event) ->
+  userId = $(event.currentTarget).attr("data-user-id")
+  console.log event.currentTarget, userId
+  $("#offers-bulk-modal").modal
+    remote: '/offers?for_user=' + userId
+
+$(document).on "click", ".join-post", (event) ->
+  id = $(event.target).closest("li.post").attr("data-post-id")
+  userId = $(event.target).closest("li.post").attr("data-user-id")
+  $.ajax("/user/#{userId}/joined/#{id}", type: "POST")
+
+$(document).on "click", ".leave-post", (event) ->
+  id = $(event.target).closest("li.post").attr("data-post-id")
+  userId = $(event.target).closest("li.post").attr("data-user-id")
+  $.ajax("/user/#{userId}/joined/#{id}", type: "DELETE")
+

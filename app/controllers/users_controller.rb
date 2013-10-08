@@ -29,9 +29,10 @@ class UsersController < ApplicationController
     @user.organization_id ||= current_user.organization_id
     @user.assign_registration_number
     if @user.save
-      respond_with @user, status: :created, location: @user
+      redirect_to @user
+      # respond_with @user, status: :created, location: @user
     else
-      render action: :new
+      redirect_to :action => "new"
     end
   end
 
