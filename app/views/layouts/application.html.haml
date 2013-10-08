@@ -22,7 +22,7 @@
     = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.0.2/js/bootstrap-datepicker.min.js"
     =# javascript_include_tag "https://login.persona.org/include.js"
-    = javascript_include_tag "https://login.persona.org/include.orig.js"
+    = browserid_js_tag
     = javascript_include_tag "application"
     = csrf_meta_tags
     = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"
@@ -45,9 +45,7 @@
               = current_user.email
 
           - else
-            %a#signin{href: true}
-              %i.icon-signin
-              Sign in
+            = link_to (image_tag "persona/plain_sign_in_blue.png", :class => "persona-login-button"), '#'
 
       %header.page-header
         %h1

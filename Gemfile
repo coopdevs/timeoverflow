@@ -14,6 +14,8 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
 
+gem "devise_browserid_authenticatable"
+
 gem 'puma'
 gem 'foreman'
 

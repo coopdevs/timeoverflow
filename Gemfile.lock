@@ -30,6 +30,7 @@ GEM
     arel (4.0.0)
     atomic (1.1.14)
     awesome_print (1.2.0)
+    bcrypt-ruby (3.1.2)
     builder (3.1.4)
     choice (0.1.6)
     coffee-rails (4.0.0)
@@ -40,6 +41,14 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     dalli (2.6.4)
+    devise (3.1.1)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    devise_browserid_authenticatable (1.3.2)
+      devise (>= 2.1)
     dotenv (0.9.0)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -69,6 +78,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.1)
     newrelic_rpm (3.6.7.159)
+    orm_adapter (0.4.0)
     paranoia (2.0.0)
       activerecord (~> 4.0)
     pg (0.17.0)
@@ -138,6 +148,8 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -147,6 +159,7 @@ DEPENDENCIES
   awesome_print
   coffee-rails
   dalli
+  devise_browserid_authenticatable
   foreman
   haml-rails
   jbuilder

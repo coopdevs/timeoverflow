@@ -1,34 +1,13 @@
-currentUser = $PERSONA
+$(document).on "click", ".persona-login-button", (e) ->
+  e.preventDefault()
 
-navigator.id.watch
-  loggedInUser: currentUser
-  onlogin: (assertion) ->
-    alert(assertion, "login")
+  navigator.id.get (assertion) ->
+    return unless assertion
     $.ajax
-      type: 'POST'
-      url: '/login'
-      data: {assertion}
-      success: (res, status, xhr) ->
-        alert [res, status, xhr].join("\n"),  "login - success"
-        window.location.reload()
-      error: (xhr, status, err) ->
-        alert [xhr, status, err].join("\n"),  "login - error"
-        # console.log "navigator.id.logout()"
-        navigator.id.logout()
-        console.log "Login failure: #{err}"
-  onlogout: ->
-    alert("logout", "logout")
-    $.ajax
-      type: 'POST'
-      url: '/logout'
-      success: (res, status, xhr) ->
-        alert [res, status, xhr].join("\n"),  "login - success"
-        window.location.reload()
-      error: (xhr, status, err) ->
-        alert [xhr, status, err].join("\n"),  "login - error"
-        console.log "Logout failure: #{err}"
-
-
-$(document).on "click", "#signin", -> navigator.id.request()
-$(document).on "click", "#signout", -> navigator.id.logout()
-
+      url: '/users/sign_in'
+      type: "POST"
+      dataType: "json"
+      cache: false
+      data:
+        "assertion": assertion
+      success: (data, status) -> window.location.href = '/'
