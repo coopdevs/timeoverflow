@@ -9,10 +9,8 @@ gem 'dalli'
 
 gem 'sass-rails'
 # gem 'compass-rails'
-gem 'coffee-rails', github: 'rails/coffee-rails'
+gem 'coffee-rails'
 gem 'uglifier', '>= 1.0.3'
-
-gem 'seed-fu', github: 'irfn/seed-fu'
 
 gem 'jquery-rails'
 
@@ -25,7 +23,7 @@ gem 'foreman'
 gem "haml-rails"
 gem 'turbolinks'
 
-gem "simple_form", "~> 3.0.0.rc"
+gem "simple_form", "~> 3.0.0"
 gem "acts-as-taggable-on"
 
 gem "awesome_print"
