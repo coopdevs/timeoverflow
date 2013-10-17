@@ -1,36 +1,20 @@
-- content_for :breadcrumb do
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li
-    = link_to users_path do
-      %i.icon-user
-      = t "application.nav.users"
-    %span.divider •
-  %li.active= @user.username
-
-- content_for :title do
+%h1
   = @user.username
-
-- content_for :subtitle do
-  = @user.email
-  - if @user.superadmin?
-    %span.label.label-important= t ".superadmin"
-  - if @user.admin
-    %span.label.label-warning= t ".admin"
-
+  %small
+    = @user.email
+    - if @user.superadmin?
+      %span.label.label-important= t ".superadmin"
+    - if @user.admin
+      %span.label.label-warning= t ".admin"
 
 
 .row
   .span2
-    %h1
-      %i.icon-user.icon-border
     %ul.nav.nav-pills
       - if admin? or @user == current_user
         %li
           %a{href: edit_user_path(@user)}
-            %i.icon-pencil
+            %span.glyphicon.glyphicon-pencil
             = t "edit"
 
   .span10
@@ -39,16 +23,16 @@
       - if admin?
         %li
           %a{href: user_path(@user), data: {method: :delete, confirm: t("are_you_sure")}}
-            %i.icon-trash
+            %span.glyphicon.glyphicon-trash
             = t "edit"
       %li
         %a{href: give_time_user_path(@user)}
-          %i.icon-time
+          %span.glyphicon.glyphicon-time
           = t "give time"
       - unless @user == current_user
         %li
           %a
-            %i.icon-envelope
+            %span.glyphicon.glyphicon-envelope
             = t "send message"
 
     %h1= @user
@@ -77,7 +61,7 @@
       - if admin? or @user == current_user
         %small
           %a#bulk-add-offers(href="#" data-user-id="#{@user.id}")
-            %i.icon-plus
+            %span.glyphicon.glyphicon-plus
             = t ".join another"
 
     %ul.offers
@@ -116,7 +100,7 @@
       - if admin? or @user == current_user
         %small
           %a{href: true}
-            %i.icon-plus
+            %span.glyphicon.glyphicon-plus
             = t ".join another"
 
     %ul.inquiries

@@ -5,10 +5,10 @@
       %h5
         = offer.title
         %small
-          %i.icon-folder-open
+          %span.glyphicon.glyphicon-folder-open
           = offer.category
           - offer.tags.each do |tag|
-            %i.icon-tag
+            %span.glyphicon.glyphicon-tag
             = tag
       %p= offer.description
       %a.join-post(href="#") join me

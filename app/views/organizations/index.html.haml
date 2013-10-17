@@ -16,7 +16,7 @@
       %th= Organization.model_name.human(count: :one)
       %th= t ".member_count"
       %th
-        %i.icon-wrench
+        %span.glyphicon.glyphicon-wrench
         = t "global.table.actions"
   %tbody
     - @organizations.each do |org|

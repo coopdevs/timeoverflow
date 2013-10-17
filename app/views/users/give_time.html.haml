@@ -1,27 +1,9 @@
-- content_for :breadcrumb do
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li
-    = link_to users_path do
-      %i.icon-user
-      = t "application.nav.users"
-    %span.divider •
-  %li
-    = link_to @user, @user
-    %span.divider •
-  %li.active= t ".give_time"
-
-- content_for :title do
-  = @user
-
-- content_for :subtitle do
-  = t ".give_time"
+%h1
+  = link_to @user
+  %small= t ".give_time"
 
 - if @offer
   %h3= @offer
-
 
 = simple_form_for @transfer do |f|
   .form-inputs

@@ -5,7 +5,7 @@
   - if @organization
     %li
       = link_to organizations_path do
-        %i.icon-group
+        %span.glyphicon.glyphicon-group
         = t "application.nav.organizations"
     - if @organization.persisted?
       - if defined?(action)
@@ -18,5 +18,5 @@
       %li.active= t '.new'
   - else
     %li.active
-      %i.icon-group
+      %span.glyphicon.glyphicon-group
       = t "application.nav.organizations"

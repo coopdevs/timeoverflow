@@ -3,39 +3,39 @@
 %li.nav-header= t ".administration"
 %li{class: ('active' if current_page? controller: "organizations")}
   %a{href: organizations_path}
-    %i.icon-group.icon-fixed-width
+    %span.glyphicon.glyphicon-group
     = Organization.model_name.human(count: :many)
 / %li{class: ('active' if current_page? controller: "categories")}
 /   %a{href: categories_path}
-/     %i.icon-tags.icon-fixed-width
+/     %span.glyphicon.glyphicon-tags
 /     = Category.model_name.human.pluralize
 %li{class: ('active' if current_page? controller: "users")}
   %a{href: users_path}
-    %i.icon-user.icon-fixed-width
+    %span.glyphicon.glyphicon-user
     = User.model_name.human.pluralize
 
 %li{class: ('active' if current_page? controller: "offers")}
   %a{href: offers_path}
-    %i.icon-hand-up.icon-fixed-width
+    %span.glyphicon.glyphicon-hand-up
     = Offer.model_name.human(count: :many)
 
 %li{class: ('active' if current_page? controller: "inquiries")}
   %a{href: inquiries_path}
-    %i.icon-bell.icon-fixed-width
+    %span.glyphicon.glyphicon-bell
     = Inquiry.model_name.human(count: :many)
 
 %li.nav-header= t ".reports"
 %li
   %a{href: "/report/cat_with_users", data: {popup: true}}
-    %i.icon-list-alt.icon-fixed-width
+    %span.glyphicon.glyphicon-list-alt
     = t "reports.cat_with_users.title"
 %li
   %a{href: "/report/user_list", data: {popup: true}}
-    %i.icon-list-alt.icon-fixed-width
+    %span.glyphicon.glyphicon-list-alt
     = t "reports.user_list.title"
 
 %li.nav-header= t ".stats"
 %li
   %a{href: "#"}
-    %i.icon-tasks.icon-fixed-width
+    %span.glyphicon.glyphicon-tasks
     = t "stats.min_balance.title"

@@ -1,16 +1,14 @@
 = simple_form_for(@offer) do |f|
-  .form_inputs
-    = f.input :title
-    = f.input :description
-    = f.association :category, as: :radio_buttons
-    / = f.association :category, as: :collection_select2
-    = f.input :tag_list
-    / = f.input :joinable
-    / = f.input :permanent
-    / = f.input :start_on, as: :string, input_html: {type: :date}
-    / = f.input :end_on, as: :string, input_html: {type: :date}
-    / = f.input :start_on, as: :string, input_html: { :class => 'date_picker' }
-    / = f.input :end_on, as: :datepicker
+  = f.input :title
+  = f.input :description
+  = f.association :category, as: :radio_buttons
+  =# f.association :category, as: :collection_select2
+  = f.input :tag_list
+  =# f.input :joinable
+  =# f.input :permanent
+  =# f.input :start_on, as: :string, input_html: {type: :date}
+  =# f.input :end_on, as: :string, input_html: {type: :date}
+  =# f.input :start_on, as: :string, input_html: { :class => 'date_picker' }
+  =# f.input :end_on, as: :datepicker
 
-  .form_controls
-    = f.button :submit
+  = f.button :submit

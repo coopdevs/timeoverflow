@@ -1,13 +1,4 @@
-- content_for :breadcrumb do
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li.active
-    %i.icon-user
-    = t "application.nav.users"
-
-- content_for :title do
+%h1
   = User.model_name.human.pluralize
 
 
@@ -30,7 +21,7 @@
       %th= User.human_attribute_name(:alt_phone)
 
       %th
-        %i.icon-hand-down
+        %span.glyphicon.glyphicon-hand-down
         Acciones
   %tbody
     - @users.each do |user|
@@ -44,13 +35,13 @@
         %td= user.alt_phone
         %td.hover-actions
           %a.action{href: user_path(user)}
-            %i.icon-eye-open
+            %span.glyphicon.glyphicon-eye-open
             = t ".ver"
           - if admin?
             %a.action{href: edit_user_path(user)}
-              %i.icon-pencil
+              %span.glyphicon.glyphicon-pencil
               = t "edit"
             %a.action{href: user_path(user), data: {method: :delete}}
-              %i.icon-trash
+              %span.glyphicon.glyphicon-trash
               = t ".borrar"
 

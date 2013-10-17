@@ -5,13 +5,13 @@
 .row
   .span12
     %span.label
-      %i.icon-folder-open-alt
+      %span.glyphicon.glyphicon-folder-open-alt
       = @offer.category
 
     - @offer.tags.each do |tag|
 
       %span.label
-        %i.icon-tag
+        %span.glyphicon.glyphicon-tag
         = tag
 %p= @offer.description
 
@@ -44,6 +44,6 @@
     = precede(i.zero? ? "" : " — ") do
       = link_to("#{u.username} (#{u.registration_number})", u)
       = link_to(give_time_user_path(u, offer: @offer.id), {:class => "btn btn-success btn-mini"}) do
-        %i.icon-time
+        %span.glyphicon.glyphicon-time
         = t ".give_time"
 

@@ -1,22 +1,6 @@
-- content_for :breadcrumb do
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li
-    = link_to users_path do
-      %i.icon-user
-      = t "application.nav.users"
-    %span.divider •
-  %li
-    = link_to @user.username, @user
-    %span.divider •
-  %li.active= t ".edit"
-
-- content_for :title do
-  = t ".edit"
+%h1
   = @user.username
-
-- content_for :subtitle do
-  = @user.email
+  %small
+    = t ".edit"
 
 = render "form"

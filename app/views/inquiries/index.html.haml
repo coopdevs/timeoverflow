@@ -1,11 +1,10 @@
 %h1
-  %i.icon-bell.icon-border
   = Inquiry.model_name.human(count: :many)
 
 %ul.nav.nav-pills
   %li
   %a{href: new_inquiry_path}
-    %i.icon-plus
+    %span.glyphicon.glyphicon-plus
     = t '.new_inquiry'
 
 %ul
@@ -19,7 +18,7 @@
           - inquiry.tags.each do |tag|
 
             %span.label
-              %i.icon-tag
+              %span.glyphicon.glyphicon-tag
               = tag
       %p= inquiry.description
       %dl

@@ -14,7 +14,7 @@
 #= require dataTables.bootstrap
 #  require jquery.dataTables
 #= require_self
-# require turbolinks
+#= require turbolinks
 #= require_tree .
 
 $(document).ready -> $(".select2").select2()
