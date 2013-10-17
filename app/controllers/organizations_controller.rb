@@ -60,7 +60,7 @@ class OrganizationsController < ApplicationController
 
   private
   def organization_params
-    params[:organization].permit(*%w"name").tap(&method(:ap))
+    params[:organization].permit(*%w"name theme")
   end
 
 

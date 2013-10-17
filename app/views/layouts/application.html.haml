@@ -21,14 +21,12 @@
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/select2/3.4.0/select2.min.js"
     = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/js/bootstrap.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.0.2/js/bootstrap-datepicker.min.js"
-    =# javascript_include_tag "https://login.persona.org/include.js"
     = browserid_js_tag
     = javascript_include_tag "application"
     = csrf_meta_tags
     = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/select2/3.4.0/select2.css"
-    =# stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
-    = stylesheet_link_tag "//netdna.bootstrapcdn.com/bootswatch/3.0.0/flatly/bootstrap.min.css"
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/bootswatch/3.0.0/#{current_theme}/bootstrap.min.css"
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.0.2/css/bootstrap-datepicker.css"
     = stylesheet_link_tag "application", :media => "all"
     %link{href: "/favicon.ico", rel: "shortcut icon"}

@@ -10,6 +10,11 @@ class Organization < ActiveRecord::Base
   has_many :offers, through: :users
   has_many :inquiries, through: :users
 
+  BOOTSWATCH_THEMES = %w[amelia cerulean cosmo cyborg flatly journal readable simplex slate spacelab united]
+  validates :theme, inclusion: {
+    in: BOOTSWATCH_THEMES
+  }
+
   scope :matching, ->(str) {
     where(Organization.arel_table[:name].matches("%#{str}%"))
   }
