@@ -1,7 +1,7 @@
 = simple_form_for(@offer) do |f|
   = f.input :title
   = f.input :description
-  = f.association :category, as: :radio_buttons
+  = f.association :category
   =# f.association :category, as: :collection_select2
   = f.input :tag_list
   =# f.input :joinable
