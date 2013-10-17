@@ -19,7 +19,7 @@
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/select2/3.4.0/select2.min.js"
-    = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"
+    = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/js/bootstrap.min.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.0.2/js/bootstrap-datepicker.min.js"
     =# javascript_include_tag "https://login.persona.org/include.js"
     = browserid_js_tag
@@ -27,31 +27,53 @@
     = csrf_meta_tags
     = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/select2/3.4.0/select2.css"
-    = stylesheet_link_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    =# stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css"
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.0.2/css/bootstrap-datepicker.css"
-    = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
     = stylesheet_link_tag "application", :media => "all"
     %link{href: "/favicon.ico", rel: "shortcut icon"}
 
   %body
-    .container
-      %ul.breadcrumb#breadcrumb
-        = yield :breadcrumb
-        .pull-right
-          - if current_user
-            %a#signout{href: true}
-              %i.icon-signout
-              Sign out
-              = current_user.email
+    %nav.navbar.navbar-default{role: "navigation"}
+      .navbar-header
+        %a.navbar-brand(href="/") TimeOverflow
 
-          - else
+      %ul.nav.navbar-nav
+        %li{class: current_page?(organizations_path) && "active"}
+          %a{href: organizations_path}
+            %span.glyphicon.glyphicon-tower
+            = Organization.model_name.human(count: :many)
+
+        %li{class: current_page?(users_path) && "active"}
+          %a{href: users_path}
+            %span.glyphicon.glyphicon-user
+            = User.model_name.human.pluralize
+
+        %li{class: current_page?(offers_path) && "active"}
+          %a{href: offers_path}
+            %span.glyphicon.glyphicon-hand-up
+            = Offer.model_name.human.pluralize
+
+        %li{class: current_page?(inquiries_path) && "active"}
+          %a{href: inquiries_path}
+            %span.glyphicon.glyphicon-bell
+            = Inquiry.model_name.human.pluralize
+
+
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user
+          %p.navbar-text
+            = current_user.email
+          %li
+            = link_to "/sessions", method: :delete  do
+              %span.glyphicon.glyphicon-log-out
+              Sign out
+
+        - else
+          %li
             = link_to (image_tag "persona/plain_sign_in_blue.png", :class => "persona-login-button"), '#'
 
-      %header.page-header
-        %h1
-          = yield :title
-          %small
-            = yield :subtitle
+    .container
       = yield
 
 

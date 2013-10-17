@@ -16,7 +16,7 @@ gem 'jquery-rails'
 
 gem "devise_browserid_authenticatable"
 
-gem 'puma'
+gem 'thin'
 gem 'foreman'
 
 # To use debugger
@@ -38,3 +38,9 @@ gem 'memcachier'
 gem 'newrelic_rpm'
 
 gem "rails-erd", group: :development
+
+
+group :development do
+  gem "binding_of_caller"
+  gem "better_errors"
+end

@@ -1,26 +1,6 @@
-- content_for :breadcrumb do
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li
-    = link_to offers_path do
-      %i.icon-hand-up
-      = t "application.nav.offers"
-    %span.divider •
-  - if defined?(action)
-    %li
-      = link_to @offer.title, @offer
-      %span.divider •
-    %li.active= t action
-  - else
-    %li.active= @offer.title
-
-- content_for :title do
+%h1
   = @offer.title
-
-- content_for :subtitle do
-  = @offer.class.model_name.human
+  %small= @offer.class.model_name.human
 
 .row
   .span12
@@ -57,8 +37,6 @@
     - if @offer.send(m).present?
       %dt= m
       %dd= @offer.send m
-
-
 
 %h3= t '.offered_by'
 %p

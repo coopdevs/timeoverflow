@@ -1,28 +1,24 @@
-= render "breadcrumb"
-
 %h1
-  %i.icon-group.icon-border
   = @organization.name
-
 
 %ul.nav.nav-pills
   %li
     %a{href: organizations_path}
-      %i.icon-hand-left
+      %span.glyphicon.glyphicon-hand-left
       = t 'back'
   - if admin?
     %li
       %a{href: edit_organization_path(@organization)}
-        %i.icon-pencil
+        %span.glyphicon.glyphicon-pencil
         = t "edit"
   - if superadmin?
     %li
       %a{href: organization_path(@organization), data: {method: :DELETE, confirm: t("are_you_sure") }}
-        %i.icon-trash
+        %span.glyphicon.glyphicon-trash
         = t "delete"
   %li
     %a{href: give_time_organization_path(@organization)}
-      %i.icon-time
+      %span.glyphicon.glyphicon-time
       = t "give time"
 
 

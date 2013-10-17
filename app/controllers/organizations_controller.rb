@@ -13,6 +13,10 @@ class OrganizationsController < ApplicationController
   end
 
 
+  def new
+    @organization = Organization.new
+  end
+
   def index
     @organizations = @organizations.matching(params[:q]) if params[:q].present?
     respond_with @organizations

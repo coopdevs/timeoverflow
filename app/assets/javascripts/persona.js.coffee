@@ -6,8 +6,6 @@ $(document).on "click", ".persona-login-button", (e) ->
     $.ajax
       url: '/users/sign_in'
       type: "POST"
-      dataType: "json"
       cache: false
-      data:
-        "assertion": assertion
-      success: (data, status) -> window.location.href = '/'
+      data: {assertion}
+      success: -> window.location.href = '/'

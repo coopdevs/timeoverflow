@@ -1,4 +1,5 @@
 Timeoverflow::Application.routes.draw do
+  # devise_for :users
   # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   concern :joinable do
@@ -25,6 +26,9 @@ Timeoverflow::Application.routes.draw do
   match '/login',  to: 'sessions#create', via: :post
   match '/logout', to: 'sessions#destroy', via: :post
 
+  resource :sessions, only: [:create, :destroy]
+
+  post '/users/sign_in', to: 'sessions#create'
 
   resource "report" do
     collection do

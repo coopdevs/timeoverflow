@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
         session[:user_id] = _logged_user.id
       end
       flash.now.alert = "Logged in!"
-      redirect_to root_url
+      head :created
     else
       flash.now.alert = "Invalid email or something"
-      redirect_to root_url
+      head 401
     end
   end
 
@@ -22,6 +22,4 @@ class SessionsController < ApplicationController
   end
 
 end
-
-
 

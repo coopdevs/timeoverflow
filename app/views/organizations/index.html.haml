@@ -1,14 +1,13 @@
-= render "breadcrumb"
+/ = render "breadcrumb"
 
 %h1
-  %i.icon-group.icon-border
   = Organization.model_name.human(count: :many)
 
 %ul.nav.nav-pills
   - if superadmin?
     %li
       %a{href: new_organization_path}
-        %i.icon-plus
+        %span.glyphicon.glyphicon-plus
         = t 'global.add_new'
 
 %table.table.table-hover.table-condensed
@@ -27,14 +26,11 @@
         %td
           = org.users.count
         %td.hover-actions
-          / %a.action{href: organization_path(org)}
-          /   %i.icon-eye-open
-          /   = t "global.show"
           - if current_user.try(:admin?) and current_organization == org
             %a.action{href: edit_organization_path(org)}
-              %i.icon-pencil
+              %span.glyphicon.glyphicon-pencil
               = t "global.edit"
             %a.action{href: organization_path(org), data: {method: :delete}}
-              %i.icon-trash
+              %span.glyphicon.glyphicon-trash
               = t "global.borrar"
 

@@ -1,8 +1,5 @@
-= render "breadcrumb"
-
 %h1
-  %i.icon-group.icon-border
-  = t "gobal.edit"
-  = @organization.name
-%hr
+  = link_to @organization, organization_path(@organization)
+  %small= t "gobal.edit"
+
 = render partial: "form"
