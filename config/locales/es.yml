@@ -20,12 +20,16 @@ es:
       transfer:
         one: Transferencia
         other: Transferencias
-      post: 
+      post:
         one: Anuncio
         other: Anuncios
 
     attributes:
+      common: &common_attributes
+        created_at: Creado
+        updated_at: Actualizado
       user:
+        <<: *common_attributes
         username: Nombre
         organization:
         one: Banco de Tiempo
@@ -41,15 +45,22 @@ es:
         admin: Administrador de organización
         superadmin: Administrador de sistema
       organization:
+        <<: *common_attributes
         name: Nombre
+        reg_number_seq: Número de secuencia de usuario
+        theme: Tema visual
+
       category:
+        <<: *common_attributes
         name: Nombre
         parent: Categoría padre
       transfer:
+        <<: *common_attributes
         amount: Cantidad
         reason: Comentarios
         source: Origen
       post:
+        <<: *common_attributes
         title: Título
         description: Descripción
         category: Categoria
@@ -121,19 +132,23 @@ es:
       title: Listado usuarios
 
   stats:
-    min_balance: 
+    min_balance:
       title: Usuarios Saldo Mínimo
 
   organizations:
     index:
       member_count: Número de usuarios
+    new:
+      new: Nuevo banco
 
   global:
     table:
-      actions: Acciones  
+      actions: Acciones
     show: Mostrar
     edit: Modificar
     delete: Borrar
     save: Guardar
     add_new: Crear nuevo
+    back: Atrás
+    give_time: Transferir tiempo
 

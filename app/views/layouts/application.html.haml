@@ -50,12 +50,12 @@
         %li{class: current_page?(offers_path) && "active"}
           %a{href: offers_path}
             %span.glyphicon.glyphicon-hand-up
-            = Offer.model_name.human.pluralize
+            = Offer.model_name.human(count: :many)
 
         %li{class: current_page?(inquiries_path) && "active"}
           %a{href: inquiries_path}
             %span.glyphicon.glyphicon-bell
-            = Inquiry.model_name.human.pluralize
+            = Inquiry.model_name.human(count: :many)
 
 
       %ul.nav.navbar-nav.navbar-right
