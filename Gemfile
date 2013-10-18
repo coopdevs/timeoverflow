@@ -44,3 +44,12 @@ group :development do
   gem "binding_of_caller"
   gem "better_errors"
 end
+
+group :development, :test do
+  gem "rspec-rails"
+end
+
+group :test do
+  gem "debugger"
+end
+

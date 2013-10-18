@@ -12,10 +12,15 @@ class Account < ActiveRecord::Base
   belongs_to :accountable, polymorphic: true
   has_many :movements
 
-  after_save :update_overflow, :if => :balance_changed?
-
   def update_balance
-    update_attributes balance: movements.sum(:amount)
+    ap "Account#update_balance START"
+    new_balance = movements.sum(:amount)
+    self.balance = new_balance
+    if balance_changed?
+      self.flagged = !allowed?(self.balance)
+    end
+    save
+    ap "Account#update_balance END"
   end
 
   # Return the maximum allowed amount of time that the acccount is able to
@@ -31,9 +36,6 @@ class Account < ActiveRecord::Base
 
   private
 
-  def update_overflow
-    update_attributes flagged: !allowed?(balance)
-  end
 
   def allowed?(new_balance)
     new_balance < (max_allowed_balance || Float::INFINITY) and

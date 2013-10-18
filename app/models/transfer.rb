@@ -20,7 +20,14 @@ class Transfer < ActiveRecord::Base
   attr_accessor :source, :destination, :amount
 
   def make_movements
-    movements.create(account: Account.find(source), amount: -amount.to_i)
-    movements.create(account: Account.find(destination), amount: amount.to_i)
+    ap "Transfer#make_movements START"
+    source_account = Account.find(source)
+    destination_account = Account.find(destination)
+    movements.create(account: source_account, amount: -amount.to_i)
+    movements.create(account: destination_account, amount: amount.to_i)
+    ap valid? || errors
+    ap [source_account, destination_account]
+    debugger
+    ap "Transfer#make_movements END"
   end
 end
