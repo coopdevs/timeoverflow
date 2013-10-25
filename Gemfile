@@ -21,6 +21,8 @@ gem "devise_browserid_authenticatable"
 gem 'thin'
 gem 'foreman'
 
+gem 'kaminari'
+
 # To use debugger
 # gem 'debugger'
 

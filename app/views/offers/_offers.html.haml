@@ -1,9 +1,9 @@
 %ul
 
   - @offers.each do |offer|
-    %li.post.offer(data-post-id="#{offer.id}" data-user-id="#{@user.id}")
+    %li.post.offer
       %h5
-        = offer.title
+        = link_to offer.title, @offer
         %small
           %span.glyphicon.glyphicon-folder-open
           = offer.category
@@ -11,5 +11,4 @@
             %span.glyphicon.glyphicon-tag
             = tag
       %p= offer.description
-      %a.join-post(href="#") join me
 

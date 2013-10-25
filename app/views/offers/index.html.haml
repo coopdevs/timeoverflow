@@ -50,31 +50,10 @@
                 = link_to tag.name, offers_path(params.merge(:tag => (@tag_list.dup.add tag.name).to_s)), :class => ["btn", "btn-small", "btn-link"]
 
 
-%ul
+.offers
+  = render :partial => 'offers/offers', :locals => { :offers => @offers }
 
-  - @offers.each do |offer|
-    %li.offer
-      %h3
-        = link_to offer.title, offer
-        %small
-          = t ".by"
-          - offer.joined_users.each do |offerer|
-            %span.offerer<
-              = link_to offerer, offerer
-        %div.tags.pull-right
-          %span.label
-            %span.glyphicon.glyphicon-folder-open
-            = offer.category
-          - offer.tags.each do |tag|
-            %span.label
-              %span.glyphicon.glyphicon-tag
-              = tag
-      %p= offer.description
-      %p= t ".offered_by", size: offer.joined_users.size
-      %dl
+= link_to_next_page @offers, t('.more'), remote: true
 
-        - [:end_on, :global, :joinable, :permanent, :start_on].each do |m|
-          - if offer.send(m).present?
-            %dt= m
-            %dd= offer.send m
+
 

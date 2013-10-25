@@ -12,8 +12,10 @@ class OffersController < ApplicationController
     if params[:q].present?
       @offers = @offers.where(Post.arel_table[:title].matches("%#{params[:q]}%"))
     end
-    if request.xhr?
-      render partial: 'offers'
+    @offers = @offers.page(params[:page]).per(5)
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
