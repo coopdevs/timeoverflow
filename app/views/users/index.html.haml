@@ -12,6 +12,7 @@
               %a.btn.btn-primary{href: new_user_path}
                 = t ".create"
     %tr
+      %th
       - if superadmin?
         %th= User.human_attribute_name(:organization)
       %th= User.human_attribute_name(:registration_number)
@@ -26,6 +27,7 @@
   %tbody
     - @users.each do |user|
       %tr
+        %td= image_tag avatar_url(user)
         - if superadmin?
           %td= link_to(user.organization, user.organization)
         %td= user.registration_number

@@ -60,13 +60,16 @@
 
       %ul.nav.navbar-nav.navbar-right
         - if current_user
-          %p.navbar-text
-            = current_user.email
-          %li
-            = link_to "/sessions", method: :delete  do
-              %span.glyphicon.glyphicon-log-out
-              Sign out
-
+          %li.dropdown
+            %a.dropdown-toggle{href: "#", "data-toggle" => "dropdown"}
+              = image_tag avatar_url(current_user), style: "margin: -8px auto"
+              = current_user.email
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                = link_to "/sessions", method: :delete  do
+                  %span.glyphicon.glyphicon-log-out
+                  Sign out
         - else
           %li
             = link_to (image_tag "persona/plain_sign_in_blue.png", :class => "persona-login-button"), '#'

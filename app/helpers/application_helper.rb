@@ -1,4 +1,16 @@
 module ApplicationHelper
+
+  # froom http://railscasts.com/episodes/244-gravatar?language=en&view=asciicast
+  def avatar_url(user, size=32)
+    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+    gravatar_options = Hash[
+      s: size,
+      d: image_url("default-avatar-#{size}.png")
+    ]
+    "http://gravatar.com/avatar/#{gravatar_id}.png?#{Rack::Utils.build_query(gravatar_options)}"
+  end
+
+
   def theme_stylesheet_link_tag
     theme = current_organization.try(:theme)
     url = if Organization::BOOTSWATCH_THEMES.include? theme
@@ -8,4 +20,5 @@ module ApplicationHelper
     end
     stylesheet_link_tag url
   end
+
 end
