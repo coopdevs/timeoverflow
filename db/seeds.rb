@@ -19,15 +19,13 @@ User.find_or_create_by(email: "saverio.trioni@gmail.com") do |user|
   user.identity_document = "X0000000X"
 end
 
-%w(
-    accompainment
-    health
-    domestic
-    administrative tasks
-    learning
-    leisure
-    consulting
-    other
-  ).each do |name|
-  Category.find_or_create_by(name: name)
+unless Category.exists?
+  Category.connection.execute "ALTER SEQUENCE categories_id_seq RESTART;"
+  [
+    "Acompañamiento", "Salud", "Domestic", "administrative tasks", "Clases", "Ocio", "consulting", "Otro"
+  ].each do |name|
+    unless Category.with_name_translation(name).exists?
+      Category.create { |c| c.name = name }
+    end
+  end
 end

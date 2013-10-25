@@ -19,6 +19,10 @@ GEM
       activesupport (= 4.0.0)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-postgres-hstore (0.7.6)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
     activesupport (4.0.0)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -73,6 +77,10 @@ GEM
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
     hike (1.2.3)
+    hstore_translate (0.0.12)
+      activerecord (>= 3.1.0)
+      activerecord-postgres-hstore (~> 0.7.0)
+      pg
     i18n (0.6.5)
     jbuilder (1.5.1)
       activesupport (>= 3.0.0)
@@ -92,6 +100,7 @@ GEM
     paranoia (2.0.0)
       activerecord (~> 4.0)
     pg (0.17.0)
+    pg-hstore (1.2.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -187,6 +196,7 @@ DEPENDENCIES
   devise_browserid_authenticatable
   foreman
   haml-rails
+  hstore_translate
   jbuilder
   jquery-rails
   memcachier

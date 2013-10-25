@@ -54,3 +54,20 @@ https://moqups.com/sseerrggii/JIu1Z1eD/
 
 
 
+
+Notas para desarrollo
+=====================
+
+La gestión de la plataforma se hace en el sistema TeamBox.
+
+Si quieres probar la plataforma en local, necesitas Postgres y cuidado que los ficheros
+son UTF-8.
+
+Hay que añadir
+
+export RUBYOPT=-Ku
+
+a tu fichero .bashrc o .zshrc
+
+
+

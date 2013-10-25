@@ -5,6 +5,8 @@ gem 'rails-i18n'
 gem 'rails_12factor'
 
 gem 'pg'
+gem 'hstore_translate'
+
 gem 'dalli'
 
 gem 'sass-rails'
