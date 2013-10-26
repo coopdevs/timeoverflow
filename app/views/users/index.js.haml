@@ -1,0 +1,2 @@
+$('table.users tbody').append('#{escape_javascript(render partial: "users/user_rows", locals: { users: @users })}');
+$('table.users a[rel=next]').replaceWith('#{link_to_next_page @users, t('.more'), remote: true, class: "btn btn-default"}');

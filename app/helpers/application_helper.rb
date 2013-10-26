@@ -5,7 +5,7 @@ module ApplicationHelper
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
     gravatar_options = Hash[
       s: size,
-      d: image_url("default-avatar-#{size}.png")
+      d: 'identicon'
     ]
     "http://gravatar.com/avatar/#{gravatar_id}.png?#{Rack::Utils.build_query(gravatar_options)}"
   end

@@ -1,0 +1,21 @@
+- users.each do |user|
+  %tr
+    %td= image_tag avatar_url(user)
+    - if superadmin?
+      %td= link_to(user.organization, user.organization)
+    %td= user.registration_number
+    %td= link_to(user, user)
+    %td= user.email
+    %td= user.phone
+    %td= user.alt_phone
+    %td.hover-actions
+      %a.action{href: user_path(user)}
+        %span.glyphicon.glyphicon-eye-open
+        = t ".ver"
+      - if admin?
+        %a.action{href: edit_user_path(user)}
+          %span.glyphicon.glyphicon-pencil
+          = t "edit"
+        %a.action{href: user_path(user), data: {method: :delete}}
+          %span.glyphicon.glyphicon-trash
+          = t ".borrar"

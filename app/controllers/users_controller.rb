@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :html, :js
 
   def scoped_users
     return User.none unless current_user
@@ -9,7 +10,8 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = scoped_users
+    @users = scoped_users.
+      page(params[:page]).per(10)
   end
 
   def show
