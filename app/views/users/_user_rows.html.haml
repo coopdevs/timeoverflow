@@ -1,11 +1,11 @@
 - users.each do |user|
   %tr
-    %td= image_tag avatar_url(user)
+    %td= image_tag avatar_url(user), height: "32px", width: "32px"
     - if superadmin?
       %td= link_to(user.organization, user.organization)
     %td= user.registration_number
-    %td= link_to(user, user)
-    %td= user.email
+    %td= link_to(user.username, user)
+    %td= mail_to(user.email)
     %td= user.phone
     %td= user.alt_phone
     %td.hover-actions

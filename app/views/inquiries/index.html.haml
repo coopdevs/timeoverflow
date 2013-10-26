@@ -4,37 +4,36 @@
     %small
       %span.glyphicon.glyphicon-folder-open
       = @category.name
+  - if params[:q].present?
+    %small
+      %span.glyphicon.glyphicon-search
+      = params[:q]
 
-.row
+.navbar
+  %form.navbar-form.navbar-left{action: inquiries_path, role: "search", method: "get"}
+    .form-group
+      %input.form-control{type: "text", placeholder: t("global.search"), name: "q", value: params[:q]}
+    %button.btn.btn-default{type: "submit"}= t("global.search")
 
-  .col-md-2.col-md-push-10
-
-    %a.btn.btn-info{href: new_inquiry_path}
-      %span.glyphicon.glyphicon-plus
-      = t "helpers.submit.create", model: Inquiry.model_name.human
-
-    %h4= t 'global.filter'
-    .btn-group
-      - if @category
-        %button.btn.dropdown-toggle.btn-warning(data-toggle="dropdown")
-          %span.glyphicon.glyphicon-folder-open
-          = @category.name
-          %span.caret
-      - else
-        %button.btn.dropdown-toggle.btn-default(data-toggle="dropdown")
-          %span.glyphicon.glyphicon-folder-open
-          = Category.model_name.human
-          %span.caret
+  %ul.nav.navbar-nav
+    %li.dropdown
+      %a.dropdown-toggle{href: "#", "data-toggle" => "dropdown"}
+        = @category ? @category.name : Category.model_name.human
+        %span.caret
       %ul.dropdown-menu{role: "menu"}
         %li= link_to "× #{t("global.all")}", inquiries_path
         - Category.all.each do |c|
           - next if c == @category
           %li= link_to c.name, inquiries_path(cat: c.id)
 
-  .col-md-10.col-md-pull-2
+  %ul.nav.navbar-nav.pull-right
+    %li
+      %a{href: new_inquiry_path}
+        %span.glyphicon.glyphicon-plus
+        = t "helpers.submit.create", model: Inquiry.model_name.human
 
-    .inquiries
-      = render :partial => 'shared/posts', :locals => { :posts => @inquiries }
+.inquiries
+  = render :partial => 'shared/posts', :locals => { :posts => @inquiries }
 
-    = link_to_next_page @inquiries, t('.more'), remote: true
+= link_to_next_page @inquiries, t('.more'), remote: true, params: params
 

@@ -4,9 +4,9 @@ class InquiriesController < ApplicationController
 
 
   def index
-    @inquiries = current_organization.inquiries.
-      categorized(@category).
-      page(params[:page]).per(5)
+    @inquiries = current_organization.inquiries.categorized(@category)
+    @inquiries = @inquiries.fuzzy_search(params[:q]) if params[:q]
+    @inquiries = @inquiries.page(params[:page]).per(5)
     respond_with @inquiries
   end
 

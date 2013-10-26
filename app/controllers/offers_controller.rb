@@ -6,9 +6,7 @@ class OffersController < ApplicationController
 
   def index
     @offers = current_organization.offers.categorized(@category)
-    if params[:q].present?
-      @offers = @offers.where(Post.arel_table[:title].matches("%#{params[:q]}%"))
-    end
+    @offers = @offers.fuzzy_search(params[:q]) if params[:q].present?
     @offers = @offers.page(params[:page]).per(5)
     respond_with @offers
   end

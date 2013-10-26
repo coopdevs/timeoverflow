@@ -2,22 +2,21 @@
   = User.model_name.human.pluralize
   - if params[:q].present?
     %small
-      = succeed(":") do
-        = t("global.search")
+      %span.glyphicon.glyphicon-search
       = params[:q]
 
 .navbar
   %form.navbar-form.navbar-left{action: users_path, role: "search", method: "get"}
     .form-group
-      %input.form-control{type: "text", placeholder: t("global.search"), name: "q"}
+      %input.form-control{type: "text", placeholder: t("global.search"), name: "q", value: params[:q]}
     %button.btn.btn-default{type: "submit"}= t("global.search")
-    %button.btn.btn-default{type: "reset"}= t("global.clear")
+
   %ul.nav.navbar-nav.pull-right
     - if admin?
       %li
         %a{href: new_user_path}
           %span.glyphicon.glyphicon-plus
-          = t ".create"
+          = t "helpers.submit.create", model: User.model_name.human
 
 %table.table.table-hover.table-condensed.users
   %thead
