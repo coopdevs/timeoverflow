@@ -10,8 +10,9 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = scoped_users.
-      page(params[:page]).per(10)
+    @users = scoped_users
+    @users = @users.fuzzy_search(params[:q]) if params[:q].present?
+    @users = @users.page(params[:page]).per(10)
   end
 
   def show

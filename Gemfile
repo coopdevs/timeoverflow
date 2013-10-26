@@ -22,6 +22,7 @@ gem 'thin'
 gem 'foreman'
 
 gem 'kaminari'
+gem 'textacular', "~> 3.0", require: 'textacular/rails'
 
 # To use debugger
 # gem 'debugger'
