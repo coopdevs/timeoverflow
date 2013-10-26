@@ -1,14 +1,40 @@
 %h1
   = Inquiry.model_name.human(count: :many)
+  - if @category.present?
+    %small
+      %span.glyphicon.glyphicon-folder-open
+      = @category.name
 
-%ul.nav.nav-pills
-  %li
-  %a{href: new_inquiry_path}
-    %span.glyphicon.glyphicon-plus
-    = t '.new_inquiry'
+.row
 
-%ul.inquiries
-  = render :partial => 'shared/posts', :locals => { :posts => @inquiries }
+  .col-md-2.col-md-push-10
 
-= link_to_next_page @inquiries, t('.more'), remote: true
+    %a.btn.btn-info{href: new_inquiry_path}
+      %span.glyphicon.glyphicon-plus
+      = t "helpers.submit.create", model: Inquiry.model_name.human
+
+    %h4= t 'global.filter'
+    .btn-group
+      - if @category
+        %button.btn.dropdown-toggle.btn-warning(data-toggle="dropdown")
+          %span.glyphicon.glyphicon-folder-open
+          = @category.name
+          %span.caret
+      - else
+        %button.btn.dropdown-toggle.btn-default(data-toggle="dropdown")
+          %span.glyphicon.glyphicon-folder-open
+          = Category.model_name.human
+          %span.caret
+      %ul.dropdown-menu{role: "menu"}
+        %li= link_to "× #{t("global.all")}", inquiries_path
+        - Category.all.each do |c|
+          - next if c == @category
+          %li= link_to c.name, inquiries_path(cat: c.id)
+
+  .col-md-10.col-md-pull-2
+
+    .inquiries
+      = render :partial => 'shared/posts', :locals => { :posts => @inquiries }
+
+    = link_to_next_page @inquiries, t('.more'), remote: true
 

@@ -1,9 +1,12 @@
 class InquiriesController < ApplicationController
   respond_to :html, :js
+  before_filter :parse_parameters, only: [:index]
+
 
   def index
-    @inquiries = current_organization.inquiries
-    @inquiries = @inquiries.page(params[:page]).per(5)
+    @inquiries = current_organization.inquiries.
+      categorized(@category).
+      page(params[:page]).per(5)
     respond_with @inquiries
   end
 
@@ -68,6 +71,10 @@ class InquiriesController < ApplicationController
       joinable: false,
       permanent: true
     }
+  end
+
+  def parse_parameters
+    @category = Category.find params[:cat] if params[:cat].present?
   end
 
 end

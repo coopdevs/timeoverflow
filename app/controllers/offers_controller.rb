@@ -5,9 +5,7 @@ class OffersController < ApplicationController
   before_filter :parse_parameters, only: [:index]
 
   def index
-    @offers = current_organization.offers
-    @offers = @offers.tagged_with(@tag_list) if @tag_list.present?
-    @offers = @offers.where(category_id: @category) if @category
+    @offers = current_organization.offers.categorized(@category)
     if params[:q].present?
       @offers = @offers.where(Post.arel_table[:title].matches("%#{params[:q]}%"))
     end
