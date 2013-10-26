@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
   acts_as_taggable rescue nil
    # HACK: there is a known issue that acts_as_taggable breaks asset precompilation on Heroku.
 
+  default_scope ->{ order('posts.created_at DESC') }
 
   def to_s
     title
