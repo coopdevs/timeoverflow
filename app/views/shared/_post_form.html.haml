@@ -1,0 +1,7 @@
+= simple_form_for(post) do |f|
+  = f.input :title
+  = f.input :description
+  = f.association :category
+  = f.input :tag_list, input_html: {"data-role" => "tagsinput"}
+
+  = f.button :submit

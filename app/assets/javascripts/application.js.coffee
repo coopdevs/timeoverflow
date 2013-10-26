@@ -11,7 +11,6 @@
 # GO AFTER THE REQUIRES BELOW.
 #
 #= require jquery_ujs
-#= require dataTables.bootstrap
 #  require jquery.dataTables
 #= require_self
 #= require turbolinks

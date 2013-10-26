@@ -1,8 +1,7 @@
 class OffersController < ApplicationController
+  respond_to :html, :js
 
-  helper ActsAsTaggableOn::TagsHelper
-
-  before_filter :load_tag_cloud, only: [:index]
+  # helper ActsAsTaggableOn::TagsHelper
   before_filter :parse_parameters, only: [:index]
 
   def index
@@ -13,10 +12,7 @@ class OffersController < ApplicationController
       @offers = @offers.where(Post.arel_table[:title].matches("%#{params[:q]}%"))
     end
     @offers = @offers.page(params[:page]).per(5)
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    respond_with @offers
   end
 
   def show
@@ -95,7 +91,7 @@ class OffersController < ApplicationController
 
     def offer_defaults
       {
-        joinable: true,
+        joinable: false,
         permanent: true
       }
     end

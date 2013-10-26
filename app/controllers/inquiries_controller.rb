@@ -1,7 +1,10 @@
 class InquiriesController < ApplicationController
+  respond_to :html, :js
 
   def index
     @inquiries = current_organization.inquiries
+    @inquiries = @inquiries.page(params[:page]).per(5)
+    respond_with @inquiries
   end
 
   def show
@@ -13,7 +16,7 @@ class InquiriesController < ApplicationController
   end
 
   def create
-    @inquiry = current_user.inquiries.create(params[:inquiry])
+    @inquiry = current_user.inquiries.create(inquiry_params)
     unless admin?
       current_user.join(@inquiry)
     end
@@ -21,6 +24,9 @@ class InquiriesController < ApplicationController
   end
 
   def update
+    @inquiry = current_user.inquiries.find(params[:id])
+    @inquiry.update_attributes(inquiry_params)
+    redirect_to @inquiry, notice: "Updated!"
   end
 
   def edit
@@ -45,6 +51,23 @@ class InquiriesController < ApplicationController
     @inquiry = current_organization.inquiries.find(params[:id])
     @inquiry.joined_users -= [current_user]
     redirect_to @inquiry
+  end
+
+
+  private
+
+  def inquiry_params
+    params.require(:inquiry).permit(
+      :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
+      :category_id, :tag_list
+    )
+  end
+
+  def inquiry_defaults
+    {
+      joinable: false,
+      permanent: true
+    }
   end
 
 end

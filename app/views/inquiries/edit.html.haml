@@ -1,1 +1,6 @@
-= render 'form'
+%h1
+  = @inquiry.title
+  %small
+    = t ".edit"
+
+= render partial: 'shared/post_form', locals: {post: @inquiry}

@@ -1,0 +1,12 @@
+- posts.each do |post|
+  %li.post
+    %h5
+      = link_to post.title, post
+      %small
+        - if post.category
+          %span.glyphicon.glyphicon-folder-open
+          = post.category
+        - post.tags.each do |tag|
+          %span.glyphicon.glyphicon-tag
+          = tag
+    %p= post.description

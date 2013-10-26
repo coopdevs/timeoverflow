@@ -1,23 +1,6 @@
-- content_for :breadcrumb do
-  %li
-    = link_to root_path do
-      %span.glyphicon.glyphicon-home
-    %span.divider •
-  %li
-    = link_to offers_path do
-      %span.glyphicon.glyphicon-hand-up
-      = t "application.nav.offers"
-    %span.divider •
-  %li
-    = link_to @offer.title, @offer
-    %span.divider •
-  %li.active= t ".edit"
-
-- content_for :title do
+%h1
   = @offer.title
+  %small
+    = t ".edit"
 
-- content_for :subtitle do
-  = @offer.class.model_name.human
-
-
-= render 'form'
+= render partial: 'shared/post_form', locals: {post: @offer}

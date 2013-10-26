@@ -7,24 +7,8 @@
     %span.glyphicon.glyphicon-plus
     = t '.new_inquiry'
 
-%ul
+%ul.inquiries
+  = render :partial => 'shared/posts', :locals => { :posts => @inquiries }
 
-  - @inquiries.each do |inquiry|
-    %li.inquiry
-      %h3
-        = link_to inquiry.title, inquiry
-        %small= inquiry.category
-        %div.tags.pull-right
-          - inquiry.tags.each do |tag|
-
-            %span.label
-              %span.glyphicon.glyphicon-tag
-              = tag
-      %p= inquiry.description
-      %dl
-
-        - [:end_on, :global, :joinable, :permanent, :start_on].each do |m|
-          - if inquiry.send(m).present?
-            %dt= m
-            %dd= inquiry.send m
+= link_to_next_page @inquiries, t('.more'), remote: true
 

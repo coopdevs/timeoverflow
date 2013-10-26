@@ -9,17 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require datatables_bs_fix
- *= jquery.dataTables
  */
 
-%li.post {
+li.post {
   border-top: solid black 1px;
   list-style: none;
-}
-
-li.offer, li.inquiry {
-  @extend %li.post;
   h3 small span.offerer:not(:last-of-type):after {
     content: ",";
   }
