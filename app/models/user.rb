@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     admin or superadmin
   end
 
+  def admins?(organization)
+    superadmin? || (admin? && organization == self.organization)
+  end
+
   def superadmin?
     superadmin
   end
