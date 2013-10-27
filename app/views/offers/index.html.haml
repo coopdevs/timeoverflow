@@ -3,11 +3,11 @@
   = Offer.model_name.human(count: :many)
   - if @category.present?
     %small
-      %span.glyphicon.glyphicon-folder-open
+      = glyph(Category)
       = @category.name
   - if params[:q].present?
     %small
-      %span.glyphicon.glyphicon-search
+      = glyph(:search)
       = params[:q]
 
 
