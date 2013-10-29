@@ -42,17 +42,17 @@
 
         %li{class: current_page?(users_path) && "active"}
           %a{href: users_path}
-            %span.glyphicon.glyphicon-user
+            = glyph(User)
             = User.model_name.human.pluralize
 
         %li{class: current_page?(offers_path) && "active"}
           %a{href: offers_path}
-            %span.glyphicon.glyphicon-hand-up
+            = glyph(Offer)
             = Offer.model_name.human(count: :many)
 
         %li{class: current_page?(inquiries_path) && "active"}
           %a{href: inquiries_path}
-            %span.glyphicon.glyphicon-bell
+            = glyph(Inquiry)
             = Inquiry.model_name.human(count: :many)
 
 
@@ -66,7 +66,7 @@
             %ul.dropdown-menu
               %li
                 = link_to "/sessions", method: :delete  do
-                  %span.glyphicon.glyphicon-log-out
+                  = glyph("log-out")
                   Sign out
         - else
           %li

@@ -2,7 +2,7 @@ module GlyphHelper
 
   GLYPHS = Hash[
     "offer" => "hand-up",
-    "inquiry" => "belt",
+    "inquiry" => "bell",
     "user" => "user",
     "tag" => "tag",
     "category" => "folder-open",
@@ -11,7 +11,7 @@ module GlyphHelper
 
   def glyph(kind)
     kind = kind.to_s.underscore
-    content_tag :span, "", class: "glyphicon glyphicon-#{GLYPHS.fetch kind, kind}"
+    content_tag :span, "", class: "glyphicon glyphicon-#{GLYPHS.fetch kind, kind.gsub("_", "-")}"
   end
 
 end
