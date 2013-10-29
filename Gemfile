@@ -4,6 +4,8 @@ gem 'rails', '>= 4.0.0'
 gem 'rails-i18n'
 gem 'rails_12factor'
 
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 gem 'pg'
 gem 'hstore_translate'
 

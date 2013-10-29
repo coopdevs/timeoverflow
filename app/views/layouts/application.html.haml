@@ -35,10 +35,6 @@
         %a.navbar-brand(href="/") TimeOverflow
 
       %ul.nav.navbar-nav
-        %li{class: current_page?(organizations_path) && "active"}
-          %a{href: organizations_path}
-            %span.glyphicon.glyphicon-tower
-            = Organization.model_name.human(count: :many)
 
         %li{class: current_page?(users_path) && "active"}
           %a{href: users_path}
@@ -64,6 +60,12 @@
               = current_user.email
               %b.caret
             %ul.dropdown-menu
+              - if superadmin?
+                %li{"data-no-turbolink" => true}
+                  = link_to admin_root_path do
+                    = glyph(:cog)
+                    Admin
+
               %li
                 = link_to "/sessions", method: :delete  do
                   = glyph("log-out")

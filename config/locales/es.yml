@@ -10,7 +10,9 @@ es:
       organization:
         one: Banco de Tiempo
         other: Bancos de Tiempo
-      category: Servicio
+      category:
+        one: Categoría
+        other: Categorías
       offer:
         one: Oferta
         other: Ofertas
@@ -23,6 +25,9 @@ es:
       post:
         one: Anuncio
         other: Anuncios
+      comment:
+        one: Comentario
+        other: Comentarios
 
     attributes:
       common: &common_attributes
@@ -54,6 +59,7 @@ es:
         <<: *common_attributes
         name: Nombre
         parent: Categoría padre
+        name_translations: Nombre (traducciones)
       transfer:
         <<: *common_attributes
         amount: Cantidad
@@ -154,4 +160,9 @@ es:
     filter: Filtro
     all: Todo
     search: Buscar
+
+  active_admin:
+    comments:
+      resource_type: Tipo de recurso
+      author_type: Tipo de autor
 

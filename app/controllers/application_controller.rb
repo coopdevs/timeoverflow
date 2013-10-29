@@ -12,6 +12,16 @@ class ApplicationController < ActionController::Base
   def index
   end
 
+  before_filter :set_locale
+
+  def set_locale
+    if params[:locale]
+      session[:locale] = params[:locale]
+    end
+    I18n.locale = session[:locale] || I18n.default_locale
+    ap I18n.locale
+  end
+
   private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -27,5 +37,9 @@ class ApplicationController < ActionController::Base
 
   def superadmin?
     current_user.try :superadmin?
+  end
+
+  def authenticate_superuser!
+    superadmin?
   end
 end
