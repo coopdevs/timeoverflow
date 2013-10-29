@@ -1,25 +1,54 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-_config: &base
+<%
+
+require 'cgi'
+require 'uri'
+
+begin
+  uri = URI.parse(ENV["DATABASE_URL"])
+rescue URI::InvalidURIError
+  uri = nil
+end
+
+def attribute(name, value, force_string = false)
+  if value
+    value_string = force_string ? value.to_s.inspect : value
+    "\#{name}: \#{value_string}"
+  else
+    ""
+  end
+end
+
+adapter = uri.try(:scheme) || ENV["DATABASE_ADAPTER"] || "postgresql"
+adapter = "postgresql" if adapter == "postgres"
+
+database = uri ? (uri.path || "").split("/")[1] : ENV["DATABASE_NAME"]
+
+username = uri.try(:user) || ENV["DATABASE_USER"]
+password = uri.try(:password) || ENV["DATABASE_PASSWORD"]
+
+host = uri.try(:host) || ENV["DATABASE_HOST"]
+port = uri.try(:port) || ENV["DATABASE_PORT"]
+
+params = uri ? CGI.parse(uri.query || "") : {}
+
+%>
+
+defaults: &defaults
   adapter: postgresql
   encoding: utf8
-  database: timeoverflow_development
+  database: timeoverflow_<%= ENV["RAILS_ENV"] || ENV["RACK_ENV"]  || "development" %>
   host: localhost
   pool: 5
 
-development:
-  <<: *base
+<%= ENV["RAILS_ENV"] || ENV["RACK_ENV"] || "development" %>:
+  <<: *defaults
+  <%= attribute "adapter",  adapter %>
+  <%= attribute "database", database %>
+  <%= attribute "username", username %>
+  <%= attribute "password", password, true %>
+  <%= attribute "host",     host %>
+  <%= attribute "port",     port %>
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *base
-  database: timeoverflow_test
-
-production:
-  <<: *base
-  database: timeoverflow_production
+<% params.each do |key, value| %>
+  <%= key %>: <%= value.first %>
+<% end %>
