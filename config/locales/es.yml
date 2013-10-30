@@ -6,7 +6,9 @@ es:
     models:
       # Para usar:
       # User.model_name.human
-      user: Usuario
+      user:
+        one: Usuario
+        other: Usuarios
       organization:
         one: Banco de Tiempo
         other: Bancos de Tiempo

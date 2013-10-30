@@ -35,21 +35,13 @@
         %a.navbar-brand(href="/") TimeOverflow
 
       %ul.nav.navbar-nav
-
-        %li{class: current_page?(users_path) && "active"}
-          %a{href: users_path}
-            = glyph(User)
-            = User.model_name.human.pluralize
-
-        %li{class: current_page?(offers_path) && "active"}
-          %a{href: offers_path}
-            = glyph(Offer)
-            = Offer.model_name.human(count: :many)
-
-        %li{class: current_page?(inquiries_path) && "active"}
-          %a{href: inquiries_path}
-            = glyph(Inquiry)
-            = Inquiry.model_name.human(count: :many)
+        - if current_user
+          - [User, Offer, Inquiry].each do |item|
+            - path = send("#{item.to_s.downcase.pluralize}_path")
+            %li{class: current_page?(path) && "active"}
+              %a{href: path}
+                = glyph(item)
+                = item.model_name.human(count: :many)
 
 
       %ul.nav.navbar-nav.navbar-right
@@ -67,9 +59,9 @@
                     Admin
 
               %li
-                = link_to "/sessions", method: :delete  do
+                = link_to sessions_path, method: :delete  do
                   = glyph("log-out")
-                  Sign out
+                  = t "Log out"
         - else
           %li
             = link_to (image_tag "persona/plain_sign_in_blue.png", :class => "persona-login-button"), '#'
