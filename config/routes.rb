@@ -23,12 +23,7 @@ Timeoverflow::Application.routes.draw do
 
   resources :transfers, only: [:create]
 
-  match '/login',  to: 'sessions#create', via: :post
-  match '/logout', to: 'sessions#destroy', via: :post
-
   resource :sessions, only: [:create, :destroy]
-
-  post '/users/sign_in', to: 'sessions#create'
 
   resource "report" do
     collection do
