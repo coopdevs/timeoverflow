@@ -40,6 +40,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_superuser!
-    superadmin?
+    superadmin? || redirect_to(root_path)
   end
 end
