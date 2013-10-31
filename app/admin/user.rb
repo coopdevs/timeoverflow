@@ -3,10 +3,9 @@ ActiveAdmin.register User do
     column do |user|
       link_to image_tag(avatar_url(user, 24)), admin_user_path(user)
     end
-    column :email
     column :username
+    column :email
     column :organization
-    column :superadmin
     default_actions
   end
 
@@ -16,14 +15,17 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Admin Details" do
+      f.input :username
       f.input :email
       f.input :organization
+      f.input :gender
+      f.input :identity_document
     end
     f.actions
   end
   controller do
     def permitted_params
-      params.permit admin_user: [:email, :organization_id]
+      params.permit user: [:username, :email, :organization_id, :gender, :identity_document]
     end
   end
 end

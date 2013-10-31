@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   attr_readonly :registration_number
 
+  validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :gender, presence: true, inclusion: {:in => %w[male female]}
   validates :organization_id, presence: true
