@@ -55,12 +55,14 @@ class User < ActiveRecord::Base
   end
 
   def superadmin?
-    superadmin
+    ADMINS.include? email
   end
+
+  alias :superuser? :superadmin?
 
   belongs_to :organization
 
   def to_s
-    "#{registration_number} - #{username}"
+    "#{username}"
   end
 end

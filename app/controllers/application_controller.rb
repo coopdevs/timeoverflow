@@ -35,10 +35,12 @@ class ApplicationController < ActionController::Base
   end
 
   def superadmin?
-    current_user.try :superadmin?
+    current_user.try :superuser?
   end
 
+  alias :superuser? :superadmin?
+
   def authenticate_superuser!
-    superadmin? || redirect_to(root_path)
+    superuser? || redirect_to(root_path)
   end
 end

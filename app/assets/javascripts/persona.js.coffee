@@ -7,7 +7,6 @@ $(document).on "click", ".persona-login-button", (e) ->
       url: '/sessions'
       type: "POST"
       headers:
-        'X-Transaction': 'POST Example',
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       cache: false
       data: {assertion}

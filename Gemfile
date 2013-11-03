@@ -22,6 +22,7 @@ gem "devise_browserid_authenticatable"
 
 gem 'thin'
 gem 'foreman'
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'kaminari'
 gem 'textacular', "~> 3.0", require: 'textacular/rails'

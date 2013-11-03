@@ -3,9 +3,7 @@ class UsersController < ApplicationController
 
   def scoped_users
     return User.none unless current_user
-    res = User.all
-    res = res.where organization_id: current_organization unless superadmin?
-    res
+    current_organization.users
   end
 
 
