@@ -6,7 +6,7 @@
         - if post.category
           %span.glyphicon.glyphicon-folder-open
           = post.category
-        - post.tags.each do |tag|
+        - (post.tag_list || []).each do |tag|
           %span.glyphicon.glyphicon-tag
           = tag
     %p= post.description

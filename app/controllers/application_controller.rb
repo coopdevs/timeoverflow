@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :glyph
 
-  # before_filter :intercept_html_requests
   helper_method :current_user, :current_organization, :admin?, :superadmin?
 
   # before_filter do

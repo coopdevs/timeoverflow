@@ -1,7 +1,6 @@
 class OffersController < ApplicationController
   respond_to :html, :js
 
-  # helper ActsAsTaggableOn::TagsHelper
   before_filter :parse_parameters, only: [:index]
 
   def index
@@ -20,18 +19,18 @@ class OffersController < ApplicationController
   end
 
   def create
-    redirect_to current_user.offers.create(offer_defaults.merge offer_params).tap do |offer|
+    redirect_to current_user.offers.create(offer_defaults.merge resource_params).tap { |offer|
       current_user.join(offer) unless admin?
       flash[:notice] = "Created!"
-    end
+    }
   end
 
   def update
-    redirect_to current_user.offers.find(params[:id]).tap do |offer|
-      offer.update! offer_params
+    redirect_to current_user.offers.find(params[:id]).tap { |offer|
+      offer.update! resource_params
       current_user.join(offer) unless admin?
       flash[:notice] = "Updated!"
-    end
+    }
   end
 
   def edit
@@ -78,7 +77,7 @@ class OffersController < ApplicationController
 
   private
 
-    def offer_params
+    def resource_params
       params.require(:offer).permit(
         :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
         :category_id, :tag_list
@@ -93,15 +92,8 @@ class OffersController < ApplicationController
     end
 
     def parse_parameters
-      @tag_list = ActsAsTaggableOn::TagList.from params[:tag]
       @category = Category.find params[:cat] if params[:cat].present?
       @user = User.find params[:for_user] if params[:for_user].present?
     end
-
-
-    def load_tag_cloud
-      @tag_cloud = current_organization.offers.all_tags
-    end
-
 
 end

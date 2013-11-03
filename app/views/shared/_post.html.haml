@@ -1,0 +1,30 @@
+%h1
+  = post.title
+.row
+  .sidebar.col-md-3
+
+    .panel.panel-info
+      .panel-heading
+        %h3.panel-title
+          = post.class.model_name.human
+          %small= post.category
+      .panel-body
+        - if post.tags.present?
+          - post.tags.each do |tag|
+            %span.badge.badge-info
+              = glyph(:tag)
+              = tag
+          %br
+        = t '.created_by'
+        = link_to post.user, {}, title: post.user.email
+        %br
+        = t '.created_at'
+        = l post.created_at.to_date, format: :short
+
+
+  .col-md-9
+
+
+    %p.lead= post.description
+
+

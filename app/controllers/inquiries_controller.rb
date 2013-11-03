@@ -19,7 +19,7 @@ class InquiriesController < ApplicationController
   end
 
   def create
-    @inquiry = current_user.inquiries.create(inquiry_params)
+    @inquiry = current_user.inquiries.create(resource_params)
     unless admin?
       current_user.join(@inquiry)
     end
@@ -28,7 +28,7 @@ class InquiriesController < ApplicationController
 
   def update
     @inquiry = current_user.inquiries.find(params[:id])
-    @inquiry.update_attributes(inquiry_params)
+    @inquiry.update_attributes(resource_params)
     redirect_to @inquiry, notice: "Updated!"
   end
 
@@ -59,7 +59,7 @@ class InquiriesController < ApplicationController
 
   private
 
-  def inquiry_params
+  def resource_params
     params.require(:inquiry).permit(
       :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
       :category_id, :tag_list

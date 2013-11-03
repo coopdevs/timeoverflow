@@ -33,7 +33,6 @@ gem "haml-rails"
 gem 'turbolinks'
 
 gem "simple_form", "~> 3.0.0"
-gem "acts-as-taggable-on"
 
 gem "awesome_print"
 gem "jbuilder"
