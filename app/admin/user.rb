@@ -25,7 +25,7 @@ ActiveAdmin.register User do
   end
   controller do
     def permitted_params
-      params.permit user: [:username, :email, :organization_id, :gender, :identity_document]
+      params.permit!
     end
   end
 end
