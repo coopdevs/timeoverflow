@@ -15,9 +15,7 @@ class Post < ActiveRecord::Base
 
   default_scope ->{ order('posts.created_at DESC') }
 
-  def self.categorized(cat=nil)
-    cat ? where(category_id: cat) : self
-  end
+  scope :categorized, ->(cat) { where(category_id: cat) if cat }
 
   def to_s
     title
