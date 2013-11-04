@@ -1,143 +1,107 @@
+
+
 %h1
   = @user.username
   %small
     = @user.email
     - if @user.superadmin?
       %span.label.label-important= t ".superadmin"
-    - if @user.admin
-      %span.label.label-warning= t ".admin"
-
 
 .row
-  .span2
-    %ul.nav.nav-pills
-      - if admin? or @user == current_user
+  .col-sm-2
+    = image_tag avatar_url(@user, 160)
+
+  .col-sm-10
+    %p= @user.description
+
+    %ul.nav.nav-pills.pull-right
+      - if @user == current_user
         %li
           %a{href: edit_user_path(@user)}
             %span.glyphicon.glyphicon-pencil
-            = t "edit"
-
-  .span10
-
-    %ul.nav.nav-pills.pull-right
-      - if admin?
+            = t "global.edit"
+      - else
         %li
-          %a{href: user_path(@user), data: {method: :delete, confirm: t("are_you_sure")}}
-            %span.glyphicon.glyphicon-trash
-            = t "edit"
-      %li
-        %a{href: give_time_user_path(@user)}
-          %span.glyphicon.glyphicon-time
-          = t "give time"
-      - unless @user == current_user
+          %a{href: give_time_user_path(@user)}
+            %span.glyphicon.glyphicon-time
+            = t "global.give_time"
         %li
           %a
             %span.glyphicon.glyphicon-envelope
             = t "send message"
 
-    %h1= @user
-    %p= @user.description
+
 
     %dl.dl-horizontal
-      - if @user.registration_date.present?
-        %dt= User.human_attribute_name(:registration_date)
-        %dd= l @user.registration_date
       - if @user.date_of_birth.present?
         %dt= User.human_attribute_name(:date_of_birth)
         %dd= l @user.date_of_birth
       - phones = [@user.phone, @user.alt_phone].map(&:presence).compact
-      %dt= t(".phone", count: phones.size)
-      %dd
-        - phones.each_with_index do |ph, idx|
-          - unless idx.zero?
-            &mdash;
-          = ph
+      - if phones.present?
+        %dt= t(".phone", count: phones.size)
+        %dd
+          - phones.each_with_index do |ph, idx|
+            - unless idx.zero?
+              &mdash;
+            = ph
 
 .row
-  .span6.offers
+  .col-sm-6.offers
+    .panel.panel-default
+      .panel-heading
+        %h2.panel-title= Offer.model_name.human(count: :many)
 
-    %h2
-      = t ".offers"
-      - if admin? or @user == current_user
-        %small
-          %a#bulk-add-offers(href="#" data-user-id="#{@user.id}")
-            %span.glyphicon.glyphicon-plus
-            = t ".join another"
+      %table.table.table-condensed.offers
+        - @user.offers.each do |post|
+          %tr
+            %td= link_to post
+            %td= time_ago_in_words post.updated_at
+            %td= post.description
 
-    %ul.offers
-      - @user.joined_posts.offers.each do |post|
-        %li.post
-          .post-title= post.title
-          - if (other_posters = post.joined_users.select {|u| u != @user}).present?
-            .post-posters
-              = t ".by"
-              - other_posters.each do |poster|
-                %span.poster<
-                  = link_to poster, poster
-          .post-time
-            %span.timeago= time_ago_in_words post.updated_at
-          .post-description
-            = post.description
-          .post-actions
-            = link_to t(".show"), post
-            - if current_user == @user
-              = link_to t(".leave"), leave_offer_path(post), data: {method: :POST}
-            - elsif admin? or current_user == @user
-              = link_to t(".leave"), leave_offer_path(post, user: @user.id), data: {method: :POST}
+  .col-sm-6.inquiries
+    .panel.panel-default
+      .panel-heading
+        %h2.panel-title= Inquiry.model_name.human(count: :many)
 
-    #offers-bulk-modal.modal.hide.fade(tabindex="-1" role="dialog" aria-hidden=true aria-labelledby="offersBulkModal")
-      .modal-header
-        %button.close(data-dismiss="modal" aria-hidden="true") ×
-        %h3= t "add_offers"
-      .modal-body
-      .modal-footer
-        %button.btn(data-dismiss="modal" aria-hidden="true")
+      %table.table.table-condensed.offers
+        - @user.inquiries.each do |post|
+          %tr
+            %td= link_to post
+            %td= time_ago_in_words post.updated_at
+            %td= post.description
 
-  .span6.inquiries
-
-    %h2
-      = t ".inquiries"
-      - if admin? or @user == current_user
-        %small
-          %a{href: true}
-            %span.glyphicon.glyphicon-plus
-            = t ".join another"
-
-    %ul.inquiries
-      - @user.joined_posts.inquiries.each do |post|
-        %li.post
-          .post-title= post.title
-          - if (other_posters = post.joined_users.select {|u| u != @user}).present?
-            .post-posters
-              = t ".by"
-              - other_posters.each do |poster|
-                %span.poster<
-                  = link_to poster, poster
-          .post-time
-            %span.timeago= time_ago_in_words post.updated_at
-          .post-description
-            = post.description
-          .post-actions
-            = link_to t(".show"), post
-            - if current_user == @user
-              = link_to t(".leave"), leave_inquiry_path(post), data: {method: :POST}
-            - elsif admin? or current_user == @user
-              = link_to t(".leave"), leave_inquiry_path(post, user: @user.id), data: {method: :POST}
-
-
+%h2
+  Cuentas
 .row
-  .span12.transactions
-    %h2
-      = t ".account"
-      %small
-        = succeed ":" do
-          = t ".balance"
-        = @user.account.balance
-    %table.table
-      - @user.account.movements.order("created_at DESC").limit(10).each do |mv|
-        %tr
-          %td= l mv.created_at, format: :short
-          %td= mv.other_side.account
-          %td= mv.transfer.post
-          %td= mv.transfer.reason
-          %td= mv.amount
+  - @user.members.each do |member|
+    .col-sm-4
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title= member.organization
+        .panel-body
+          - if member.manager
+            %p.danger
+              ADMIN
+          %p
+            %strong Balance:
+            = member.account.balance
+
+
+%h3
+  Movimientos
+.transactions
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th Fecha
+        %th Origen/Destino
+        %th Anuncio
+        %th Razón
+        %th Cantidad
+    - @user.movements.order("created_at DESC").limit(10).each do |mv|
+      %tr
+        %td= l mv.created_at, format: :short
+        %td= mv.other_side.account
+        %td= mv.transfer.post
+        %td= mv.transfer.reason
+        %td= mv.amount

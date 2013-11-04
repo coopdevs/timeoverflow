@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :members
   accepts_nested_attributes_for :members
   has_many :organizations, through: :members
+  has_many :accounts, through: :members
+  has_many :movements, through: :accounts
 
   has_many :posts
   has_many :offers

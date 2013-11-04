@@ -2,17 +2,15 @@
   %tr
     %td= image_tag avatar_url(user), height: "32px", width: "32px"
     - if superadmin?
-      %td= link_to(user.organization, user.organization)
-    %td= user.registration_number
-    %td= link_to(user.username, user)
+      %td
+        - user.members.each do |member|
+          = "#{member.organization} (#{member.member_uid})"
+    %td= link_to user, user
     %td= mail_to(user.email)
     %td= user.phone
     %td= user.alt_phone
     %td.hover-actions
-      %a.action{href: user_path(user)}
-        %span.glyphicon.glyphicon-eye-open
-        = t ".ver"
-      - if admin?
+      - if user == current_user
         %a.action{href: edit_user_path(user)}
           %span.glyphicon.glyphicon-pencil
           = t "edit"

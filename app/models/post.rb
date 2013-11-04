@@ -19,6 +19,8 @@ class Post < ActiveRecord::Base
 
   scope :by_category, ->(cat) { where(category_id: cat) if cat }
 
+  validates :user, presence: true
+
   def to_s
     title
   end
