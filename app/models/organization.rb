@@ -1,6 +1,7 @@
 class Organization < ActiveRecord::Base
-  has_many :users
   validates_uniqueness_of :name
+  has_many :members
+  has_many :users, through: :members
 
   has_one :account, as: :accountable
   after_create :create_account
