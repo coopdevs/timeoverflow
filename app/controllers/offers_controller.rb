@@ -4,6 +4,7 @@ class OffersController < InheritedResources::Base
   has_scope :by_category, as: :cat
   has_scope :fuzzy_search, as: :q
 
+
   protected
 
   def collection
@@ -11,7 +12,12 @@ class OffersController < InheritedResources::Base
   end
 
   def begin_of_association_chain
-    current_organization
+    case params[:action].to_s
+    when "index"
+      current_organization
+    else
+      current_user
+    end
   end
 
   def permitted_params

@@ -1,4 +1,4 @@
-class InquiriesController < ApplicationController
+class InquiriesController < InheritedResources::Base
   respond_to :html, :js
 
   has_scope :by_category, as: :cat
@@ -11,11 +11,16 @@ class InquiriesController < ApplicationController
   end
 
   def begin_of_association_chain
-    current_organization
+    case params[:action].to_s
+    when "index"
+      current_organization
+    else
+      current_user
+    end
   end
 
   def permitted_params
-    params.permit(offer: [
+    params.permit(inquiry: [
       :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
       :category_id, :tag_list
     ])
