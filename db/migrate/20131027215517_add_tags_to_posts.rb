@@ -16,7 +16,7 @@ class AddTagsToPosts < ActiveRecord::Migration
       GROUP BY "posts"."id"
     )
     UPDATE "posts"
-    SET "tag_list" = "prepared_tags"."tags"
+    SET "tags" = "prepared_tags"."tags"
     FROM "prepared_tags"
     WHERE "posts"."id" = "prepared_tags"."id"
     SQL
