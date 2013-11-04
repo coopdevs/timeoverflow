@@ -27,11 +27,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_organization
-    @current_organization ||= current_user.try(:organization)
+    @current_organization ||= current_user.try(:organizations).try(:first)
   end
 
   def admin?
-    current_user.try :admin?
+    current_user.try :manages?, current_organization
   end
 
   def superadmin?

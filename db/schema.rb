@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103221044) do
+ActiveRecord::Schema.define(version: 20131104032622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,19 @@ ActiveRecord::Schema.define(version: 20131103221044) do
     t.datetime "updated_at",        null: false
     t.hstore   "name_translations"
   end
+
+  create_table "members", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.boolean  "manager"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "entry_date"
+    t.integer  "member_uid"
+  end
+
+  add_index "members", ["organization_id"], name: "index_members_on_organization_id", using: :btree
+  add_index "members", ["user_id"], name: "index_members_on_user_id", using: :btree
 
   create_table "movements", force: true do |t|
     t.integer  "account_id"
@@ -108,27 +121,21 @@ ActiveRecord::Schema.define(version: 20131103221044) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",            null: false
-    t.string   "email",               null: false
+    t.string   "username",          null: false
+    t.string   "email",             null: false
     t.string   "password_digest"
     t.date     "date_of_birth"
     t.string   "identity_document"
-    t.string   "member_code"
-    t.integer  "organization_id"
     t.string   "phone"
     t.string   "alt_phone"
     t.text     "address"
-    t.date     "registration_date"
-    t.integer  "registration_number"
-    t.boolean  "admin"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.datetime "deleted_at"
     t.string   "gender"
     t.text     "description"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["organization_id"], name: "index_users_on_organization_id", using: :btree
 
 end

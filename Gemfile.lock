@@ -243,7 +243,9 @@ DEPENDENCIES
   dotenv-rails
   foreman
   haml-rails
+  has_scope
   hstore_translate
+  inherited_resources
   jbuilder
   jquery-rails
   kaminari

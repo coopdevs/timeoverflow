@@ -1,5 +1,8 @@
+require 'textacular/searchable'
+
 class Post < ActiveRecord::Base
   include Taggable
+  extend Searchable :title, :description
 
   belongs_to :category
   belongs_to :user
@@ -15,7 +18,7 @@ class Post < ActiveRecord::Base
 
   default_scope ->{ order('posts.created_at DESC') }
 
-  scope :categorized, ->(cat) { where(category_id: cat) if cat }
+  scope :by_category, ->(cat) { where(category_id: cat) if cat }
 
   def to_s
     title

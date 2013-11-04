@@ -6,6 +6,9 @@ gem 'rails_12factor'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+gem 'has_scope'
+gem 'inherited_resources'
+
 gem 'pg'
 gem 'hstore_translate'
 

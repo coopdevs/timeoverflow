@@ -1,80 +1,24 @@
 class InquiriesController < ApplicationController
   respond_to :html, :js
-  before_filter :parse_parameters, only: [:index]
 
+  has_scope :by_category, as: :cat
+  has_scope :fuzzy_search, as: :q
 
-  def index
-    @inquiries = current_organization.inquiries.categorized(@category)
-    @inquiries = @inquiries.fuzzy_search(params[:q]) if params[:q]
-    @inquiries = @inquiries.page(params[:page]).per(5)
-    respond_with @inquiries
+  protected
+
+  def collection
+    @inquiries ||= end_of_association_chain.page(params[:page]).per(5)
   end
 
-  def show
-    @inquiry = current_organization.inquiries.find(params[:id])
+  def begin_of_association_chain
+    current_organization
   end
 
-  def new
-    @inquiry = current_user.inquiries.new
-  end
-
-  def create
-    @inquiry = current_user.inquiries.create(resource_params)
-    unless admin?
-      current_user.join(@inquiry)
-    end
-    redirect_to :inquiries, notice: "Created!"
-  end
-
-  def update
-    @inquiry = current_user.inquiries.find(params[:id])
-    @inquiry.update_attributes(resource_params)
-    redirect_to @inquiry, notice: "Updated!"
-  end
-
-  def edit
-    inquiries = if admin?
-      current_organization.inquiries
-    else
-      current_user.inquiries
-    end
-    @inquiry = inquiries.find(params[:id])
-  end
-
-  def destroy
-  end
-
-  def join
-    @inquiry = current_organization.inquiries.find(params[:id])
-    @inquiry.joined_users << current_user
-    redirect_to @inquiry
-  end
-
-  def leave
-    @inquiry = current_organization.inquiries.find(params[:id])
-    @inquiry.joined_users -= [current_user]
-    redirect_to @inquiry
-  end
-
-
-  private
-
-  def resource_params
-    params.require(:inquiry).permit(
+  def permitted_params
+    params.permit(offer: [
       :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
       :category_id, :tag_list
-    )
-  end
-
-  def inquiry_defaults
-    {
-      joinable: false,
-      permanent: true
-    }
-  end
-
-  def parse_parameters
-    @category = Category.find params[:cat] if params[:cat].present?
+    ])
   end
 
 end
