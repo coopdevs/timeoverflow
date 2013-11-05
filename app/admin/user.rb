@@ -22,7 +22,6 @@ ActiveAdmin.register User do
     f.inputs "Admin Details" do
       f.input :username
       f.input :email
-      f.input :organization
       f.input :gender, :as => :select, :collection => User::GENDERS
       f.input :identity_document
     end
