@@ -5,7 +5,7 @@ class Member < ActiveRecord::Base
   has_one :account, as: :accountable
 
   after_create :create_account
-  before_create :assign_registration_number
+  before_validation :assign_registration_number, :on => :create
 
   validates :organization_id, presence: true
   validates :member_uid,

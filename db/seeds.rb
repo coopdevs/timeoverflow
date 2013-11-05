@@ -14,11 +14,13 @@ end
 
 User.find_or_create_by(email: "saverio.trioni@gmail.com") do |user|
   user.username = "admin"
-  user.organization_id = 1
-  user.admin = true
-  user.superadmin = true
   user.gender = "male"
   user.identity_document = "X0000000X"
+end
+
+User.find_by(email: "saverio.trioni@gmail.com").members.find_or_create_by(organization_id: 1) do |member|
+  member.manager = true
+  member.entry_date = DateTime.now.utc
 end
 
 unless Category.exists?

@@ -23,7 +23,7 @@ class Organization < ActiveRecord::Base
   end
 
   def ensure_reg_number_seq!
-    update_column(:reg_number_seq, users.with_deleted.maximum(:registration_number))
+    update_column(:reg_number_seq, members.maximum(:member_uid))
   end
 
   def ensure_reg_number_seq
