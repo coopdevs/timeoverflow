@@ -1,5 +1,3 @@
-
-
 %h1
   = @user.username
   %small
@@ -83,8 +81,14 @@
             %p.danger
               ADMIN
           %p
+            %strong Alta:
+            = member.entry_date ? l(member.entry_date, format: :short) : mdash
+            %br
+            %strong Nº Usuario:
+            = member.member_uid || mdash
+            %br
             %strong Balance:
-            = member.account.balance
+            = member.account.try(:balance) || mdash
 
 
 %h3

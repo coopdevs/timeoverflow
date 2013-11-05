@@ -18,4 +18,8 @@ module ApplicationHelper
     stylesheet_link_tag url
   end
 
+  def mdash
+    "&mdash;".html_safe
+  end
+
 end
