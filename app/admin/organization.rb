@@ -18,6 +18,8 @@ ActiveAdmin.register Organization do
     f.actions
   end
 
+  filter :name
+
   controller do
     def permitted_params
       params.permit!
