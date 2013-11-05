@@ -51,6 +51,8 @@ gem "rails-erd", group: :development
 
 gem 'travis-lint'
 
+gem 'faker'
+gem 'fabrication'
 
 group :development do
   gem "binding_of_caller"
