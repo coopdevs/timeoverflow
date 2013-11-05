@@ -13,7 +13,7 @@ class OffersController < InheritedResources::Base
 
   def begin_of_association_chain
     case params[:action].to_s
-    when "index"
+    when "index", "show"
       current_organization
     else
       current_user
