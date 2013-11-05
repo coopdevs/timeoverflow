@@ -51,17 +51,28 @@
               = image_tag avatar_url(current_user), style: "margin: -8px auto"
               = current_user.email
               %b.caret
-            %ul.dropdown-menu
+            %ul.dropdown-menu{role: :menu}
               - if superadmin?
-                %li{"data-no-turbolink" => true}
+                %li{role: :presentation, "data-no-turbolink" => true}
                   = link_to admin_root_path do
                     = glyph(:cog)
                     Admin
 
-              %li
+              %li{role: :presentation}
                 = link_to sessions_path, method: :delete  do
                   = glyph("log-out")
                   = t "Log out"
+              %li.divider{role: :presentation}
+              %li{role: :presentation}
+                %a{role: :menuitem}
+                  = glyph(:user)
+                  = t ".edit_profile"
+              - current_user.members.where(manager: true).each do |m|
+                %li{role: :presentation}
+                  %a{role: :menuitem}
+                    = glyph(:pencil)
+                    = t ".edit_org", organization: m.organization
+
         - else
           %li
             = link_to (image_tag "persona/plain_sign_in_blue.png", :class => "persona-login-button"), '#'

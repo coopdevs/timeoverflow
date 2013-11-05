@@ -168,3 +168,7 @@ es:
       resource_type: Tipo de recurso
       author_type: Tipo de autor
 
+  layouts:
+    application:
+      edit_profile: Modificar mi perfil
+      edit_org: "Modificar %{organization}"
