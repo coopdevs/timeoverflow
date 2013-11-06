@@ -1,6 +1,7 @@
 TimeOverflow
 ============
 
+[![Build Status](https://travis-ci.org/coopdevs/timeoverflow.png)](https://travis-ci.org/coopdevs/timeoverflow)
 [![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow.png)](https://codeclimate.com/github/timeoverflow/timeoverflow)
 
 Sistema de Banco de Tiempo. 
