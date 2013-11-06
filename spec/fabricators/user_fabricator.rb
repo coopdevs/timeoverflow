@@ -1,6 +1,4 @@
 Fabricator(:user) do
-  transient :with_profile => true
-
   Faker::Config.locale = :es
 
   username { Faker::Internet.user_name }
