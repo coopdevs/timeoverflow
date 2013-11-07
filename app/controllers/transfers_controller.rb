@@ -1,7 +1,7 @@
 class TransfersController < ApplicationController
   def create
-    ap ["Logged user", current_user]
-    ap ["Current organization", current_organization]
+    # ap ["Logged user", current_user.username]
+    # ap ["Current organization", current_organization.name]
 
     if admin?
       transfer_params = params.require(:transfer).permit(:source, :destination, :amount)
