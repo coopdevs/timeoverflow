@@ -1,9 +1,9 @@
-= render "shared/post", post: @offer
+= render "shared/post", post: @inquiry
 
 %p.actions
 
   - if admin? or @inquiry.user == current_user
-    = link_to edit_offer_path(@inquiry), class: "btn btn-warning" do
+    = link_to edit_inquiry_path(@inquiry), class: "btn btn-warning" do
       = glyph :pencil
       = t ".edit"
 
