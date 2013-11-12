@@ -54,12 +54,12 @@ class UsersController < ApplicationController
 
   def give_time
     @user = scoped_users.find(params[:id])
-    @destination = @user.account.id
-    @source = current_user.account.id
+    @destination = @user.members.find_by(organization: current_organization).account.id
+    @source = current_user.members.find_by(organization: current_organization).account.id
     @offer = current_organization.offers.find(params[:offer]) if params[:offer].present?
     @transfer = Transfer.new(source: @source, destination: @destination, post: @offer)
     if admin?
-      @sources = [current_organization.account] + current_organization.user_accounts
+      @sources = [current_organization.account] + current_organization.member_accounts
     end
   end
 

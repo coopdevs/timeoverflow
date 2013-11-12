@@ -12,6 +12,10 @@ class Member < ActiveRecord::Base
     presence: true,
     uniqueness: { scope: :organization_id }
 
+  def to_s
+    "#{user}"
+  end
+
   def assign_registration_number
     self.member_uid ||= organization.next_reg_number_seq
   end
