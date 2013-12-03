@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20131104032622) do
   create_table "accounts", force: true do |t|
     t.integer  "accountable_id"
     t.string   "accountable_type"
-    t.integer  "balance"
+    t.integer  "balance",             default: 0
     t.integer  "max_allowed_balance"
     t.integer  "min_allowed_balance"
     t.boolean  "flagged"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20131104032622) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "categories", force: true do |t|
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.hstore   "name_translations"
   end
 
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20131104032622) do
 
   create_table "organizations", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "reg_number_seq"
     t.string   "theme"
   end
@@ -95,9 +95,9 @@ ActiveRecord::Schema.define(version: 20131104032622) do
     t.boolean  "permanent"
     t.boolean  "joinable"
     t.boolean  "global"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "tags",                     array: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "tags",        array: true
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(version: 20131104032622) do
     t.string   "phone"
     t.string   "alt_phone"
     t.text     "address"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "deleted_at"
     t.string   "gender"
     t.text     "description"

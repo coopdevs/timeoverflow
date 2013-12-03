@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = scoped_users.build user_defaults
+    @user = scoped_users.build
   end
 
   def edit
@@ -26,10 +26,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = scoped_users.build(user_defaults.merge user_params)
-    @user.organization_id ||= current_user.organization_id
-    @user.assign_registration_number
+    @user = scoped_users.build(user_params)
+
     if @user.save
+      @user.members.create(:organization => current_organization) do |member|
+        member.entry_date = DateTime.now.utc
+      end
+
       redirect_to @user
       # respond_with @user, status: :created, location: @user
     else
@@ -65,16 +68,10 @@ class UsersController < ApplicationController
 
   private
 
-  def user_defaults
-    {
-      registration_date: Date.today
-    }
-  end
-
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone alt_phone identity_document"
-    fields_to_permit += %w"admin registration_number registration_date" if current_user.admin?
-    fields_to_permit += %w"organization_id superadmin" if current_user.superadmin?
+    fields_to_permit += %w"admin registration_number registration_date" if admin?
+    fields_to_permit += %w"organization_id superadmin" if superadmin?
     # params[:user].permit(*fields_to_permit).tap &method(:ap)
     params.require(:user).permit *fields_to_permit
   end
