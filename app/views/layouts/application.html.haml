@@ -64,7 +64,7 @@
                   = t "Log out"
               %li.divider{role: :presentation}
               %li{role: :presentation}
-                %a{role: :menuitem}
+                = link_to current_user do
                   = glyph(:user)
                   = t ".edit_profile"
               - current_user.members.where(manager: true).each do |m|

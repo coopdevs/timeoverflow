@@ -10,7 +10,7 @@
     %td= user.phone
     %td= user.alt_phone
     %td.hover-actions
-      - if user == current_user
+      - if admin? || user == current_user
         %a.action{href: edit_user_path(user)}
           %span.glyphicon.glyphicon-pencil
           = t "edit"
