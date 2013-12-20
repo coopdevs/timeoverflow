@@ -19,7 +19,9 @@ Timeoverflow::Application.routes.draw do
 
   resources :organizations, concerns: :accountable
 
-  resources :users, concerns: :accountable
+  resources :users, concerns: :accountable, except: :destroy do
+    put :toggle_active, on: :member
+  end
 
   resources :transfers, only: [:create]
 
