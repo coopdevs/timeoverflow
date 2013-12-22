@@ -5,9 +5,14 @@
     %meta{"http-equiv" => "X-UA-Compatible", content: "IE=Edge,chrome=1"}
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %title
-      = current_organization
-      —
-      = yield :title
+      - if content_for? :window_title
+        -
+        = content_for :window_title
+      - else
+        - if current_organization
+          = current_organization
+          —
+        = yield :title
     :javascript
       var $PERSONA = #{session[:email].try(:inspect) || "null"};
     - if session[:user_id]
