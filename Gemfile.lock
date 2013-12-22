@@ -179,6 +179,7 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
+    rdiscount (2.1.7)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
@@ -268,6 +269,7 @@ DEPENDENCIES
   rails-i18n
   rails_12factor
   rake
+  rdiscount
   rest-client
   rspec-rails
   sass-rails
