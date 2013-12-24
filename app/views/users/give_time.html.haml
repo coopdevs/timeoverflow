@@ -5,10 +5,10 @@
 - if @offer
   %h3= @offer
 
-= simple_form_for @transfer, :html => {:onsubmit => "computeSeconds();"} do |f|
+= simple_form_for @transfer do |f|
   .form-inputs
-    = f.input :hours, as: :integer, input_html: { min: 0 }
-    = f.input :minutes, as: :integer, input_html: { min: 0, max: 60, step: 15 }
+    = f.input :hours, as: :integer, input_html: { min: 0, max: 20, "data-rule-either-hours-minutes-informed" => "true", "data-rule-range" => "[0,20]"}
+    = f.input :minutes, as: :integer, input_html: { min: 0, max: 59, step: 15, "data-rule-either-hours-minutes-informed" => "true", "data-rule-range" => "[0,59]"}
     = f.input :amount, as: :hidden
     = f.input :reason
     = f.input :destination, as: :hidden
@@ -19,9 +19,3 @@
 
   .form-actions
     = f.button :submit
-
-:javascript
-  function computeSeconds() {
-    $("#transfer_amount").val($("#transfer_hours").val() * 3600 + $("#transfer_minutes").val() * 60);
-    return true;
-  }

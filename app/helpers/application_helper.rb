@@ -22,4 +22,18 @@ module ApplicationHelper
     "&mdash;".html_safe
   end
 
+  def seconds_to_hm(seconds)
+    mm, ss = seconds.divmod(60)
+    hh, mm = mm.divmod(60)
+
+    output = "%d horas" % hh unless hh.zero?
+
+    if output
+      output.concat(" y %d minutos" % mm) unless mm.zero?
+    else
+      output = "%d minutos" % mm unless mm.zero?
+    end
+
+    output
+  end
 end
