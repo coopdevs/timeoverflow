@@ -6,11 +6,15 @@ ca:
     models:
       # Para usar:
       # User.model_name.human
-      user: Usuari
+      user:
+        one: Usuari
+        other: Usuaris
       organization:
         one: Banc de Temps
         other: Bancs de Temps
-      category: Servicio
+      category:
+        one: Categoria
+        other: Categories
       offer:
         one: Oferta
         other: Ofertes
@@ -19,14 +23,20 @@ ca:
         other: Demandes
       transfer:
         one: Transferencia
-        other: Transferencies
-      post: 
+        other: Transferències
+      post:
         one: Anuncio
         other: Anuncios
-
+      comment:
+        one: Comentario
+        other: Comentaris
 
     attributes:
+      common: &common_attributes
+        created_at: Creat
+        updated_at: Actualitzat
       user:
+        <<: *common_attributes
         username: Nom
         organization:
         one: Banc de Temps
@@ -42,15 +52,22 @@ ca:
         admin: Administrador del Banc de Temps
         superadmin: SuperAdministrador del Sistema
       organization:
+        <<: *common_attributes
         name: Nom
+        reg_number_seq: Nombre de seqüència d'usuari
+        theme: Tema visual
       category:
+        <<: *common_attributes
         name: Nom
-        parent: Categoría padre
+        parent: Categoria pare
+        name_translations: Nom (traducciones)
       transfer:
+        <<: *common_attributes
         amount: Quantitat
         reason: Comentaris
         source: Origen
       post:
+        <<: *common_attributes
         title: Títol
         description: Descripció
         category: Categoria
@@ -87,10 +104,13 @@ ca:
       categories: Serveis Oferts
       account: Darrers moviments
     give_time:
-      give_time: Donar Temps a 
+      give_time: Donar Temps a
     form:
       superadmin_warning: Compte!!! Estás donant poders de SuperAdministrador a aquest usuari
       admin_warning: Compte!!! Estás donant poders d'Administrador del Banc de Temps a aquest usuari
+    user_rows:
+      activate: Activar
+      deactivate: Desactivar
 
   offers:
     index:
@@ -121,12 +141,24 @@ ca:
       title: Listado usuarios
 
   stats:
-    min_balance: 
+    min_balance:
       title: Usuaris Saldo Mínim
 
   organizations:
     index:
       member_count: Número de usuaris
+    new:
+      new: Nou banc
+
+  transfers:
+    computation:
+      joiner: " i "
+      hour:
+        one: ! '%{count} hora'
+        other: ! '%{count} hores'
+      minute:
+        one: ! '%{count} minut'
+        other: ! '%{count} minuts'
 
   global:
     table:
@@ -136,4 +168,18 @@ ca:
     delete: Borrar
     save: Guardar
     add_new: Crear nou
+    back: Enrere
+    give_time: Transferir temps
+    filter: Filtre
+    all: Tot
+    search: Cercar
 
+  active_admin:
+    comments:
+      resource_type: Tipus de recurs
+      author_type: "Tipus d'autor"
+
+  layouts:
+    application:
+      edit_profile: Modificar el meu perfil
+      edit_org: "Modificar %{organization}"

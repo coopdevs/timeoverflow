@@ -26,7 +26,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = scoped_users.build(user_params)
+    if @user = User.find_by_email(user_params[:email])
+      if @user.active?
+        # User already exists and it's active!
+        raise ActiveRecord::RecordNotFound
+      else
+        # Deactivated user is registered again
+        @user.attributes = user_params.merge(:active => true)
+      end
+    else
+      # New User
+      @user = scoped_users.build(user_params)
+
+    end
 
     if @user.save
       @user.members.create(:organization => current_organization) do |member|
@@ -34,7 +46,6 @@ class UsersController < ApplicationController
       end
 
       redirect_to @user
-      # respond_with @user, status: :created, location: @user
     else
       redirect_to :action => "new"
     end
@@ -49,12 +60,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user = scoped_users.find(params[:id])
-    @user.destroy
-    head :no_content
-  end
-
   def give_time
     @user = scoped_users.find(params[:id])
     @destination = @user.members.find_by(organization: current_organization).account.id
@@ -66,13 +71,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def toggle_active
+    @user = scoped_users.find(params[:id])
+    @user.toggle!(:active)
+
+    if @user.active?
+      # Could an admin/superadmin reactivate a user?
+    else
+      @user.members.delete_all
+      # TODO - Inquiries and Offers
+    end
+
+    redirect_to :action => "index"
+  end
+
   private
 
   def user_params
-    fields_to_permit = %w"gender username email date_of_birth phone alt_phone identity_document"
+    fields_to_permit = %w"gender username email date_of_birth phone alt_phone active"
     fields_to_permit += %w"admin registration_number registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
     # params[:user].permit(*fields_to_permit).tap &method(:ap)
     params.require(:user).permit *fields_to_permit
   end
+
 end

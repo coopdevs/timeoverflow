@@ -45,7 +45,6 @@
   }
 }
 
-
 body {
   // padding-top: 60px;
   padding-bottom: 40px;
@@ -59,4 +58,8 @@ nav.navbar-static-top.navbar-inverse {
 .container-inner{
   // background-image: image-url('furley_bg.png');
   // padding: 0 20px;
+}
+
+.error {
+  color: red;
 }

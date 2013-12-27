@@ -88,7 +88,7 @@
             = member.member_uid || mdash
             %br
             %strong Balance:
-            = member.account.try(:balance) || mdash
+            = seconds_to_hm(member.account.try(:balance) || mdash)
 
 
 %h3
@@ -108,4 +108,4 @@
         %td= mv.other_side.account
         %td= mv.transfer.post
         %td= mv.transfer.reason
-        %td= mv.amount
+        %td= seconds_to_hm(mv.amount)
