@@ -22,4 +22,8 @@ module ApplicationHelper
     "&mdash;".html_safe
   end
 
+  def tnc_path
+    document_path(Document.find_by_label("t&c"), modal: true)
+  end
+
 end
