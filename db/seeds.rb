@@ -1,4 +1,4 @@
-# coding: utf-8
+# encoding: utf-8
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
@@ -32,4 +32,10 @@ unless Category.exists?
       Category.create { |c| c.name = name }
     end
   end
+end
+
+
+Document.find_or_create_by(label: "t&c") do |doc|
+  doc.title = "Terms and Conditions"
+  doc.content = "blah blah blah"
 end

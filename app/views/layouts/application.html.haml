@@ -5,9 +5,14 @@
     %meta{"http-equiv" => "X-UA-Compatible", content: "IE=Edge,chrome=1"}
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %title
-      = current_organization
-      —
-      = yield :title
+      - if content_for? :window_title
+        -
+        = content_for :window_title
+      - else
+        - if current_organization
+          = current_organization
+          —
+        = yield :title
     :javascript
       var $PERSONA = #{session[:email].try(:inspect) || "null"};
     - if session[:user_id]
@@ -16,68 +21,28 @@
 
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"
     = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
+    = javascript_include_tag "//ajax.aspnetcdn.com/ajax/jQuery.validate/1.11.1/jquery.validate.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
-    = javascript_include_tag "//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/js/bootstrap.min.js"
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.0/tagmanager.js"
+    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.3/tagmanager.js"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"
     = browserid_js_tag
     = javascript_include_tag "application"
     = csrf_meta_tags
     = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"
-    = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.0/tagmanager.css"
+    = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.3/tagmanager.css"
     = theme_stylesheet_link_tag
     = stylesheet_link_tag "application", :media => "all"
     %link{href: "/favicon.ico", rel: "shortcut icon"}
 
   %body
-    %nav.navbar.navbar-default{role: "navigation"}
-      .navbar-header
-        %a.navbar-brand(href="/") TimeOverflow
-
-      %ul.nav.navbar-nav
-        - if current_user
-          - [User, Offer, Inquiry].each do |item|
-            - path = send("#{item.to_s.downcase.pluralize}_path")
-            %li{class: current_page?(path) && "active"}
-              %a{href: path}
-                = glyph(item)
-                = item.model_name.human(count: :many)
-
-
-      %ul.nav.navbar-nav.navbar-right
-        - if current_user
-          %li.dropdown
-            %a.dropdown-toggle{href: "#", "data-toggle" => "dropdown"}
-              = image_tag avatar_url(current_user), style: "margin: -8px auto"
-              = current_user.email
-              %b.caret
-            %ul.dropdown-menu{role: :menu}
-              - if superadmin?
-                %li{role: :presentation, "data-no-turbolink" => true}
-                  = link_to admin_root_path do
-                    = glyph(:cog)
-                    Admin
-
-              %li{role: :presentation}
-                = link_to sessions_path, method: :delete  do
-                  = glyph("log-out")
-                  = t "Log out"
-              %li.divider{role: :presentation}
-              %li{role: :presentation}
-                = link_to current_user do
-                  = glyph(:user)
-                  = t ".edit_profile"
-              - current_user.members.where(manager: true).each do |m|
-                %li{role: :presentation}
-                  %a{role: :menuitem}
-                    = glyph(:pencil)
-                    = t ".edit_org", organization: m.organization
-
-        - else
-          %li
-            = link_to (image_tag "persona/plain_sign_in_blue.png", :class => "persona-login-button"), '#'
+    = render 'navbar'
 
     .container
       = yield
 
 
+      .row#footer
+        %a{href: tnc_path, "data-toggle" => "modal", "data-target" => "#modal"} términos del servicio
+
+    .modal.fade#modal
