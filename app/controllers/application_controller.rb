@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   #   ap session.keys
   # end
 
+  MissingTOSAcceptance = Class.new(Exception)
+  OutadedTOSAcceptance = Class.new(Exception)
+
   def index
   end
 
@@ -21,7 +24,24 @@ class ApplicationController < ActionController::Base
     true
   end
 
+  append_before_filter :check_for_terms_acceptance!
+
+  rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
+    redirect_to terms_path
+  end
+
   private
+
+  def check_for_terms_acceptance!
+    if user_signed_in?
+      # raise "sdfsdf"
+      if current_user.terms_accepted_at.nil?
+        raise MissingTOSAcceptance
+      elsif current_user.terms_accepted_at < Document.terms_and_conditions.updated_at
+        raise OutadedTOSAcceptance
+      end
+    end
+  end
 
   def current_organization
     @current_organization ||= current_user.try(:organizations).try(:first)

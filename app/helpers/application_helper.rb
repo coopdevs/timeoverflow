@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def tnc_path
-    document_path(Document.find_by_label("t&c"), modal: true)
+    document_path(Document.terms_and_conditions, modal: true)
   end
 
 end
