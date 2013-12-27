@@ -23,6 +23,10 @@
   padding: 15px;
 }
 
+#footer {
+  font-size: 10px;
+}
+
 @media screen {
   body {
     // padding-top: 60px;
@@ -39,6 +43,21 @@
   body {
     padding-top: 0px;
   }
+}
+
+body {
+  // padding-top: 60px;
+  padding-bottom: 40px;
+  // background-image: image-url('light_wool.png');
+}
+nav.navbar-static-top.navbar-inverse {
+  // background-image: image-url('denim.png');
+  // height: 40px;
+  // color: white;
+}
+.container-inner{
+  // background-image: image-url('furley_bg.png');
+  // padding: 0 20px;
 }
 
 .error {

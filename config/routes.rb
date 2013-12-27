@@ -25,6 +25,8 @@ Timeoverflow::Application.routes.draw do
 
   resource :sessions, only: [:create, :destroy]
 
+  resources :documents
+
   resource "report" do
     collection do
       get "user_list"

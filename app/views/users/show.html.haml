@@ -52,7 +52,7 @@
       %table.table.table-condensed.offers
         - @user.offers.each do |post|
           %tr
-            %td= link_to post
+            %td= link_to post, post
             %td= time_ago_in_words post.updated_at
             %td= post.description
 
@@ -64,7 +64,7 @@
       %table.table.table-condensed.offers
         - @user.inquiries.each do |post|
           %tr
-            %td= link_to post
+            %td= link_to post, post
             %td= time_ago_in_words post.updated_at
             %td= post.description
 
