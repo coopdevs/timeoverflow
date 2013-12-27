@@ -17,7 +17,7 @@ class Transfer < ActiveRecord::Base
 
   after_create :make_movements
 
-  attr_accessor :source, :destination, :amount
+  attr_accessor :source, :destination, :amount, :hours, :minutes
 
   def make_movements
     movements.create(account: Account.find(source), amount: -amount.to_i)
