@@ -20,7 +20,7 @@ ca:
       transfer:
         one: Transferencia
         other: Transferencies
-      post: 
+      post:
         one: Anuncio
         other: Anuncios
 
@@ -87,10 +87,13 @@ ca:
       categories: Serveis Oferts
       account: Darrers moviments
     give_time:
-      give_time: Donar Temps a 
+      give_time: Donar Temps a
     form:
       superadmin_warning: Compte!!! Estás donant poders de SuperAdministrador a aquest usuari
       admin_warning: Compte!!! Estás donant poders d'Administrador del Banc de Temps a aquest usuari
+    user_rows:
+      activate: Activar
+      deactivate: Desactivar
 
   offers:
     index:
@@ -121,7 +124,7 @@ ca:
       title: Listado usuarios
 
   stats:
-    min_balance: 
+    min_balance:
       title: Usuaris Saldo Mínim
 
   organizations:
