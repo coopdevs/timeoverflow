@@ -15,7 +15,6 @@
 # require turbolinks
 #= require datepicker
 #= require give_time
-#= require persona
 #  require_tree .
 
 

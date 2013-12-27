@@ -34,7 +34,6 @@ class ApplicationController < ActionController::Base
 
   def check_for_terms_acceptance!
     if user_signed_in?
-      # raise "sdfsdf"
       if current_user.terms_accepted_at.nil?
         raise MissingTOSAcceptance
       elsif current_user.terms_accepted_at < Document.terms_and_conditions.updated_at
