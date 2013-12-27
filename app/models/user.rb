@@ -2,6 +2,15 @@ require 'persona'
 
 class User < ActiveRecord::Base
 
+  devise *[
+    :database_authenticatable,
+    :registerable,
+    :recoverable,
+    :rememberable,
+    :confirmable,
+    :lockable,
+  ]
+
   GENDERS = %w[male female]
 
   validates :username, presence: true, uniqueness: true

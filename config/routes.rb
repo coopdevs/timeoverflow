@@ -1,4 +1,8 @@
 Timeoverflow::Application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: "sessions"
+  }
+
   ActiveAdmin.routes(self)
   # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
@@ -25,8 +29,6 @@ Timeoverflow::Application.routes.draw do
 
   resources :transfers, only: [:create]
 
-  resource :sessions, only: [:create, :destroy]
-
   resources :documents
 
   resource "report" do
@@ -38,5 +40,10 @@ Timeoverflow::Application.routes.draw do
 
 
   root to: "application#index"
+
+  resource :terms, only: [:show] do
+    post :accept
+  end
+
 
 end
