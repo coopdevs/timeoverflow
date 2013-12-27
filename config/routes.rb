@@ -27,8 +27,6 @@ Timeoverflow::Application.routes.draw do
 
   resources :transfers, only: [:create]
 
-  resource :sessions, only: [:create, :destroy]
-
   resources :documents
 
   resource "report" do
