@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def seconds_to_hm(seconds)
-    if !seconds.zero?
+    if seconds.kind_of?(Numeric) && !seconds.zero?
       sign = seconds / seconds.abs
       mm, ss = seconds.abs.divmod(60)
       hh, mm = mm.divmod(60)
@@ -37,6 +37,8 @@ module ApplicationHelper
       end
 
       sign > 0 ? output : "-".concat(output)
+    else
+      mdash
     end
   end
 
