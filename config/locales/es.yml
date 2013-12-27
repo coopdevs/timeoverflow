@@ -56,7 +56,6 @@ es:
         name: Nombre
         reg_number_seq: Número de secuencia de usuario
         theme: Tema visual
-
       category:
         <<: *common_attributes
         name: Nombre
@@ -77,7 +76,6 @@ es:
         permanent: Permanente
         start_on: Empieza el
         end_on: Termina el
-
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
@@ -148,6 +146,16 @@ es:
       member_count: Número de usuarios
     new:
       new: Nuevo banco
+
+  transfers:
+    computation:
+      joiner: " y "
+      hour:
+        one: ! '%{count} hora'
+        other: ! '%{count} horas'
+      minute:
+        one: ! '%{count} minuto'
+        other: ! '%{count} minutos'
 
   global:
     table:

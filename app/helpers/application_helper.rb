@@ -23,17 +23,20 @@ module ApplicationHelper
   end
 
   def seconds_to_hm(seconds)
-    mm, ss = seconds.divmod(60)
-    hh, mm = mm.divmod(60)
+    if !seconds.zero?
+      sign = seconds / seconds.abs
+      mm, ss = seconds.abs.divmod(60)
+      hh, mm = mm.divmod(60)
 
-    output = "%d horas" % hh unless hh.zero?
+      output = I18n.translate "transfers.computation.hour", count: hh unless hh.zero?
 
-    if output
-      output.concat(" y %d minutos" % mm) unless mm.zero?
-    else
-      output = "%d minutos" % mm unless mm.zero?
+      if output
+        output.concat(I18n.translate("transfers.computation.joiner")).concat(I18n.translate("transfers.computation.minute", count: mm)) unless mm.zero?
+      else
+        output = I18n.translate("transfers.computation.minute", count: mm) unless mm.zero?
+      end
+
+      sign > 0 ? output : "-".concat(output)
     end
-
-    output
   end
 end

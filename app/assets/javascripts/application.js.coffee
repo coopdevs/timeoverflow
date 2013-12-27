@@ -12,7 +12,7 @@
 #
 #= require jquery_ujs
 #= require_self
-#= require turbolinks
+# require turbolinks
 #= require datepicker
 #= require give_time
 #= require persona
