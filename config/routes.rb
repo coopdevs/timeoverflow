@@ -1,4 +1,5 @@
 Timeoverflow::Application.routes.draw do
+  devise_for :user
   ActiveAdmin.routes(self)
   # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 

@@ -2,6 +2,15 @@ require 'persona'
 
 class User < ActiveRecord::Base
 
+  devise *[
+    :database_authenticatable,
+    :registerable,
+    :recoverable,
+    :rememberable,
+    :confirmable,
+    :lockable,
+  ]
+
   acts_as_paranoid
 
   GENDERS = %w[male female]
