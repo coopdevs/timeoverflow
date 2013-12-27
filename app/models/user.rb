@@ -2,14 +2,11 @@ require 'persona'
 
 class User < ActiveRecord::Base
 
-  acts_as_paranoid
-
   GENDERS = %w[male female]
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :gender, presence: true, inclusion: {in: GENDERS}
-  validates :identity_document, presence: true, uniqueness: true
 
   has_many :members
   accepts_nested_attributes_for :members

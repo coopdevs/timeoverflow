@@ -108,6 +108,9 @@ ca:
     form:
       superadmin_warning: Compte!!! Estás donant poders de SuperAdministrador a aquest usuari
       admin_warning: Compte!!! Estás donant poders d'Administrador del Banc de Temps a aquest usuari
+    user_rows:
+      activate: Activar
+      deactivate: Desactivar
 
   offers:
     index:

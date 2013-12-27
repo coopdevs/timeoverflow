@@ -10,10 +10,15 @@
     %td= user.phone
     %td= user.alt_phone
     %td.hover-actions
-      - if admin? || user == current_user
+      - if superadmin? || admin? || user == current_user
         %a.action{href: edit_user_path(user)}
           %span.glyphicon.glyphicon-pencil
-          = t "edit"
-        %a.action{href: user_path(user), data: {method: :delete}}
-          %span.glyphicon.glyphicon-trash
-          = t ".borrar"
+          = t "global.edit"
+      - if superadmin?
+        %a.action{href: toggle_active_user_path(user), :data => {:method => :put}}
+          - if user.active?
+            %span.glyphicon.glyphicon-remove
+            = t ".deactivate"
+          - else
+            %span.glyphicon.glyphicon-ok
+            = t ".activate"
