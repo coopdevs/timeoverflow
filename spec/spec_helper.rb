@@ -48,6 +48,12 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with :truncation
 
+    # Create terms and conditions
+    Document.create(label: "t&c") do |doc|
+      doc.title = "Terms and Conditions"
+      doc.content = "blah blah blah"
+    end
+
   end
 
   config.before(:each) do
