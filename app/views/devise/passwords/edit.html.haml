@@ -1,0 +1,23 @@
+.row
+  .col-sm-4
+    = render "devise/shared/links"
+  .col-sm-8
+    .panel.panel-primary
+      .panel-heading
+        %h2.panel-title Change your password
+
+      .panel-body
+        - if resource.errors.any?
+          .alert.alert-danger
+            - resource.errors.full_messages.each do |msg|
+              %p= msg
+        = form_for resource, url: password_path(resource_name), html: { method: :put } do |f|
+          = f.hidden_field :reset_password_token
+          .form-group
+            = f.label :password, "New password", class: "control-label"
+            = f.password_field :password, required: true, autofocus: true, class: "form-control"
+          .form-group
+            = f.label :password_confirmation, "Confirm your new password", class: "control-label"
+            = f.password_field :password_confirmation, required: true, class: "form-control"
+          .form-group
+            = f.submit "Change my password", class: "btn btn-primary"

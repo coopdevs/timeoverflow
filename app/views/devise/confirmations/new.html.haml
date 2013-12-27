@@ -1,0 +1,19 @@
+.row
+  .col-sm-4
+    = render "devise/shared/links"
+  .col-sm-8
+    .panel.panel-primary
+      .panel-heading
+        %h2.panel-title Resend confirmation instructions
+
+      .panel-body
+        - if resource.errors.any?
+          .alert.alert-danger
+            - resource.errors.full_messages.each do |msg|
+              %p= msg
+        = form_for resource, url: confirmation_path(resource_name), html: { method: :post } do |f|
+          .form-group
+            = f.label :email, class: "control-label"
+            = f.text_field :email, :required => true, :autofocus => true, class: "form-control"
+          .form-group
+            = f.submit "Resend confirmation instructions", class: "btn btn-primary"
