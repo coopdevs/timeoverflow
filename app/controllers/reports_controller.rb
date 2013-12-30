@@ -1,16 +1,15 @@
 class ReportsController < ApplicationController
+  before_filter :authenticate_user!
 
   layout "report"
 
   def user_list
-    @users = User.all
-    @users = @users.where organization_id: current_user.organization_id unless current_user.try :superadmin?
-    @users = @users.select("id, registration_number, username, email, phone, alt_phone")
-    @users = @users.order("registration_number asc")
+    @members = current_organization.members.includes(:user).order("members.member_uid")
   end
 
-  def cat_with_users
-    @offers = current_organization.offers.group_by(&:category)
+  def post_list
+    @post_type = (params[:type] || "offer").capitalize.constantize
+    @posts = current_organization.posts.where(type: @post_type).group_by(&:category).to_a.sort_by {|c, p| c.try(:name) || ""}
   end
 
 end

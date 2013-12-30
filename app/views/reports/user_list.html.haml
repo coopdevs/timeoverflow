@@ -1,18 +1,19 @@
-%table.table.table-condensed.table-bordered.table-striped
-  %thead
-    %tr
-      / %th= User.human_attribute_name(:registration_number)
-      %th N
-      %th= User.human_attribute_name(:username)
-      %th= User.human_attribute_name(:email)
-      %th= User.human_attribute_name(:phone)
-      %th= User.human_attribute_name(:alt_phone)
-  %tbody
-    - @users.order(:registration_number).each do |u|
+.row
+  %table.table.table-condensed.table-bordered.table-striped
+    %thead
       %tr
-        %th= u.registration_number
-        %td= u.username
-        %td= u.email
-        %td= u.phone
-        %td= u.alt_phone
-  %tfoot
+        / %th= User.human_attribute_name(:registration_number)
+        %th N
+        %th= User.human_attribute_name(:username)
+        %th= User.human_attribute_name(:email)
+        %th= User.human_attribute_name(:phone)
+        %th= User.human_attribute_name(:alt_phone)
+    %tbody
+      - @members.each do |u|
+        %tr
+          %th= u.member_uid
+          %td= u.user.username
+          %td= u.user.email
+          %td= u.user.phone
+          %td= u.user.alt_phone
+    %tfoot

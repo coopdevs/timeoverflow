@@ -34,7 +34,8 @@ Timeoverflow::Application.routes.draw do
   resource "report" do
     collection do
       get "user_list"
-      get "cat_with_users"
+      get "offer_list" => :post_list, type: "offer"
+      get "inquiry_list" => :post_list, type: "inquiry"
     end
   end
 

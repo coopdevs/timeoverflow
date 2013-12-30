@@ -1,4 +1,4 @@
-%nav.navbar.navbar-static-top.navbar-inverse{role: "navigation"}
+%nav.navbar.navbar-static-top.navbar-inverse{role: :navigation}
   .container
     .navbar-header
       %a.navbar-brand(href="/") TimeOverflow
@@ -11,17 +11,35 @@
             %a{href: path}
               = glyph(item)
               = item.model_name.human(count: :many)
+        %li.dropdown
+          %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+            = glyph("paperclip")
+            = t ".reports"
+            %b.caret
+          %ul.dropdown-menu{role: :menu}
+            %li
+              %a{href: "/report/user_list", data: {popup: true}}
+                %span.glyphicon.glyphicon-list-alt
+                = User.model_name.human(count: :many)
+            %li
+              %a{href: "/report/offer_list", data: {popup: true}}
+                %span.glyphicon.glyphicon-list-alt
+                = Offer.model_name.human(count: :many)
+            %li
+              %a{href: "/report/inquiry_list", data: {popup: true}}
+                %span.glyphicon.glyphicon-list-alt
+                = Inquiry.model_name.human(count: :many)
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user
         %li.dropdown
-          %a.dropdown-toggle{href: "#", "data-toggle" => "dropdown"}
+          %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
             = image_tag avatar_url(current_user), style: "margin: -8px auto"
             = current_user.email
             %b.caret
           %ul.dropdown-menu{role: :menu}
             - if superadmin?
-              %li{role: :presentation, "data-no-turbolink" => true}
+              %li{role: :presentation}
                 = link_to admin_root_path do
                   = glyph(:cog)
                   Admin

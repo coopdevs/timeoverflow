@@ -8,6 +8,7 @@ class Organization < ActiveRecord::Base
 
   has_many :member_accounts, through: :members, source: :account
 
+  has_many :posts, through: :users
   has_many :offers, through: :users
   has_many :inquiries, through: :users
 
