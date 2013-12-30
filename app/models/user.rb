@@ -1,5 +1,3 @@
-require 'persona'
-
 class User < ActiveRecord::Base
 
   devise *[
@@ -27,9 +25,6 @@ class User < ActiveRecord::Base
   has_many :offers
   has_many :inquiries
 
-  def self.authenticate_with_persona(assertion)
-    Persona.authenticate(assertion)
-  end
 
   def admins?(organization)
     members.where(organization: organization, manager: true).exists?
