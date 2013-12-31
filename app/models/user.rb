@@ -45,4 +45,13 @@ class User < ActiveRecord::Base
   def to_s
     "#{username}"
   end
+
+  def add_to_organization organization
+    unless members.where(organization: organization).exists?
+      member = members.create(organization: organization) do |member|
+        member.entry_date = DateTime.now.utc
+      end
+    end
+    member
+  end
 end

@@ -12,6 +12,12 @@
         %a.action{href: edit_user_path(user)}
           %span.glyphicon.glyphicon-pencil
           = t "global.edit"
+
+      - if superadmin? || admin?
+        %a.action{href: member_path(@memberships[user.id]), :data => {:method => :delete}}
+          %span.glyphicon.glyphicon-ban-circle
+          = t "global.cancel_membership"
+
       - if superadmin?
         %a.action{href: toggle_active_user_path(user), :data => {:method => :put}}
           - if user.active?

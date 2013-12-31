@@ -29,23 +29,20 @@ class UsersController < ApplicationController
 
   def create
     if @user = User.find_by_email(user_params[:email])
-      if @user.active?
-        # User already exists and it's active!
-        raise ActiveRecord::RecordNotFound
-      else
-        # Deactivated user is registered again
+      if !@user.active?
+        # Deactivated user is registered again (overwrite new attributes)
         @user.attributes = user_params.merge(:active => true)
+        @user.save!
       end
     else
       # New User
-      @user = scoped_users.build(user_params)
+      @user = User.create!(user_params)
+      @user.send_confirmation_instructions
 
     end
 
-    if @user.save
-      @user.members.create(:organization => current_organization) do |member|
-        member.entry_date = DateTime.now.utc
-      end
+    if @user.persisted?
+      @user.add_to_organization current_organization
 
       redirect_to @user
     else
