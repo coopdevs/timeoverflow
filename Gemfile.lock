@@ -201,6 +201,9 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    shelly-dependencies (0.2.3)
+      rake
+      thin
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -273,6 +276,7 @@ DEPENDENCIES
   rest-client
   rspec-rails
   sass-rails
+  shelly-dependencies
   simple_form (~> 3.0.0)
   textacular (~> 3.0)
   thin
