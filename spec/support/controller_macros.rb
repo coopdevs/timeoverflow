@@ -1,18 +1,12 @@
 module ControllerMacros
 
   def login(user = nil)
-    user = Fabricate(:user) unless user
+    @request.env["devise.mapping"] = Devise.mappings[:user]
 
-    request.session["user_id"] = user.id
-    request.session["email"] = user.email
-  end
+    @current_user = (user ? user : Fabricate(:user))
+    @current_organization = @current_user.try(:organizations).try(:first)
 
-  def current_user
-    @current_user ||= User.find(request.session["user_id"]) if request.session["user_id"]
-  end
-
-  def current_organization
-    @current_organization ||= current_user.try(:organizations).try(:first)
+    sign_in @current_user
   end
 
 end

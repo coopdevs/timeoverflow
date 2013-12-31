@@ -11,4 +11,6 @@ Fabricator(:user) do
   gender { ["male", "female"].shuffle.first }
   description { Faker::Lorem.paragraph }
 
+  terms_accepted_at DateTime.now.utc
+  confirmed_at DateTime.now.utc
 end
