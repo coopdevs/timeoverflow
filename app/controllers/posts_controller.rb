@@ -18,16 +18,25 @@ class PostsController < InheritedResources::Base
     case params[:action].to_s
     when "index", "show"
       current_organization
+    elsif current_user.manages?(current_organization)
+      User.find(params[resource_instance_name][:user_id])
     else
       current_user
     end
   end
 
   def permitted_params
-    params.permit(resource_instance_name => [
-      :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
-      :category_id, :tag_list
-    ])
+    if current_user.manages?(current_organization)
+      params.permit(resource_instance_name => [
+        :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
+        :category_id, :tag_list, :user_id, :publisher_id
+      ])
+    else
+      params.permit(resource_instance_name => [
+        :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
+        :category_id, :tag_list
+      ])
+    end
   end
 
 end
