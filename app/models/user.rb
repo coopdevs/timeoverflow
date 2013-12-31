@@ -1,3 +1,5 @@
+require 'textacular/searchable'
+
 class User < ActiveRecord::Base
 
   devise *[
@@ -8,6 +10,8 @@ class User < ActiveRecord::Base
     :confirmable,
     :lockable,
   ]
+
+  extend Searchable :username, :email, :phone, :alt_phone
 
   GENDERS = %w[male female]
 
