@@ -55,6 +55,8 @@ gem 'travis-lint'
 gem 'faker'
 gem 'fabrication'
 
+gem "shelly-dependencies"
+
 group :development do
   gem "binding_of_caller"
   gem "better_errors"

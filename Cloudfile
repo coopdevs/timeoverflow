@@ -1,0 +1,19 @@
+timeoverflow:
+  ruby_version: 2.0.0 # 2.0.0, jruby, 1.9.3, 1.9.2 or ree-1.8.7
+  environment: production # RAILS_ENV
+  monitoring_email: saverio.trioni@gmail.com
+  domains:
+    - timeoverflow.shellyapp.com
+  servers:
+    app1:
+      size: small
+      thin: 4
+      # delayed_job: 1
+      # sidekiq: 1
+      # clockwork: on
+      # whenever: on
+      # elasticsearch: on
+      databases:
+        - postgresql
+        # - mongodb
+        # - redis
