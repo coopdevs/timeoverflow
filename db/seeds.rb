@@ -13,6 +13,7 @@ Organization.find_or_create_by(id: 1) do |org|
 end
 
 User.find_or_create_by(email: "saverio.trioni@gmail.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
   user.confirmed_at = DateTime.now.utc
   user.username = "admin"
   user.gender = "male"

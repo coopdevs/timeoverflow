@@ -23,13 +23,15 @@ Timeoverflow::Application.routes.draw do
 
   resources :organizations, concerns: :accountable
 
-  resources :users, concerns: :accountable, except: :destroy do
-    put :toggle_active, on: :member
+  resources :users, concerns: :accountable, except: :destroy, :path => "members" do
+    put :toggle_active
   end
 
   resources :transfers, only: [:create]
 
   resources :documents
+
+  resources :members, only: [:destroy]
 
   resource "report" do
     collection do

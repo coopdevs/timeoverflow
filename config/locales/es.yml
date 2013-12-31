@@ -168,6 +168,7 @@ es:
     delete: Borrar
     save: Guardar
     add_new: Crear nuevo
+    cancel_membership: Cancelar afiliación
     back: Atrás
     give_time: Transferir tiempo
     filter: Filtro
