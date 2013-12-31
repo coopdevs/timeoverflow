@@ -3,6 +3,7 @@ class Member < ActiveRecord::Base
   belongs_to :organization
 
   has_one :account, as: :accountable
+  delegate :balance, to: :account, prefix: true, allow_nil: true
 
   after_create :create_account
   before_validation :assign_registration_number, :on => :create

@@ -1,14 +1,12 @@
 - users.each do |user|
   %tr
     %td= image_tag avatar_url(user), height: "32px", width: "32px"
-    - if superadmin?
-      %td
-        - user.members.each do |member|
-          = "#{member.organization} (#{member.member_uid})"
+    %td= @memberships[user.id].member_uid
     %td= link_to user, user
     %td= mail_to(user.email)
     %td= user.phone
     %td= user.alt_phone
+    %td= seconds_to_hm @memberships[user.id].account_balance
     %td.hover-actions
       - if superadmin? || admin? || user == current_user
         %a.action{href: edit_user_path(user)}

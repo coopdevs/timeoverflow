@@ -23,12 +23,12 @@
     %tr
     %tr
       %th
-      - if superadmin?
-        %th= User.human_attribute_name(:organization)
+      %th ID
       %th= User.human_attribute_name(:username)
       %th= User.human_attribute_name(:email)
       %th= User.human_attribute_name(:phone)
       %th= User.human_attribute_name(:alt_phone)
+      %th= Account.human_attribute_name(:balance)
 
       %th
         %span.glyphicon.glyphicon-hand-down

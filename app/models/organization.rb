@@ -1,7 +1,7 @@
 class Organization < ActiveRecord::Base
   validates_uniqueness_of :name
   has_many :members
-  has_many :users, through: :members
+  has_many :users, through: :members, order: "members.created_at DESC"
 
   has_one :account, as: :accountable
   after_create :create_account
