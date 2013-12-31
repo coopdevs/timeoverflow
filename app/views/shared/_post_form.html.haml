@@ -4,6 +4,9 @@
   = f.association :category
   = f.input :tag_list, as: :string
 
+  - if current_user.manages? current_organization
+    = f.association :user, collection: current_organization.users
+    = f.hidden_field :publisher_id, value: current_user.id
   = f.button :submit
 
 :javascript
