@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227155440) do
+ActiveRecord::Schema.define(version: 20131231110424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,12 +107,14 @@ ActiveRecord::Schema.define(version: 20131227155440) do
     t.boolean  "permanent"
     t.boolean  "joinable"
     t.boolean  "global"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "tags",                     array: true
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.text     "tags",                      array: true
+    t.integer  "publisher_id"
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
+  add_index "posts", ["publisher_id"], name: "index_posts_on_publisher_id", using: :btree
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
