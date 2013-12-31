@@ -18,10 +18,12 @@ class PostsController < InheritedResources::Base
     case params[:action].to_s
     when "index", "show"
       current_organization
-    elsif current_user.manages?(current_organization)
-      User.find(params[resource_instance_name][:user_id])
     else
-      current_user
+      if params[resource_instance_name].present? and current_user.manages?(current_organization)
+        User.find(params[resource_instance_name][:user_id])
+      else
+        current_user
+      end
     end
   end
 
