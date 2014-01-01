@@ -4,7 +4,7 @@ timeoverflow:
   monitoring_email: saverio.trioni@gmail.com
   domains:
     - timeoverflow.shellyapp.com
-    - "*.timeoverflow.org"
+    - www.timeoverflow.org
   servers:
     app1:
       size: small
