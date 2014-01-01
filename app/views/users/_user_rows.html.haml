@@ -19,7 +19,7 @@
           = t "global.cancel_membership"
 
       - if superadmin?
-        %a.action{href: toggle_active_user_path(user), :data => {:method => :put}}
+        %a.action{href: user_toggle_active_path(user), :data => {:method => :put}}
           - if user.active?
             %span.glyphicon.glyphicon-remove
             = t ".deactivate"
