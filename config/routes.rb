@@ -1,10 +1,7 @@
 Timeoverflow::Application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: "sessions"
-  }
+  devise_for :users
 
   ActiveAdmin.routes(self)
-  # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   concern :joinable do
     member do

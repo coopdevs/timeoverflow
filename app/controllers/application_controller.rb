@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :glyph
 
-  helper_method :current_user, :current_organization, :admin?, :superadmin?
+  helper_method :current_organization, :admin?, :superadmin?
 
   # before_filter do
   #   ap session.keys
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     true
   end
 
-  append_before_filter :check_for_terms_acceptance!
+  append_before_filter :check_for_terms_acceptance!, unless: :devise_controller?
 
   rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
     redirect_to terms_path
