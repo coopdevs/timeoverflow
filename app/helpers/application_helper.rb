@@ -19,24 +19,15 @@ module ApplicationHelper
   end
 
   def mdash
-    "&mdash;".html_safe
+    raw "&mdash;"
   end
 
   def seconds_to_hm(seconds)
-    if seconds.kind_of?(Numeric) && !seconds.zero?
-      sign = seconds / seconds.abs
-      mm, ss = seconds.abs.divmod(60)
-      hh, mm = mm.divmod(60)
-
-      output = I18n.translate "transfers.computation.hour", count: hh unless hh.zero?
-
-      if output
-        output.concat(I18n.translate("transfers.computation.joiner")).concat(I18n.translate("transfers.computation.minute", count: mm)) unless mm.zero?
-      else
-        output = I18n.translate("transfers.computation.minute", count: mm) unless mm.zero?
-      end
-
-      sign > 0 ? output : "-".concat(output)
+    sign = seconds <=> 0
+    if sign.try :nonzero?
+      minutes, seconds = seconds.abs.divmod(60)
+      hours, minutes = minutes.divmod(60)
+      raw format("%s%d:%02d", ("-" if sign < 0), hours, minutes)
     else
       mdash
     end
