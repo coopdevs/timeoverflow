@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  include Pundit
   protect_from_forgery
   helper :glyph
 

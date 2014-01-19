@@ -6,9 +6,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :category
   belongs_to :user
+  belongs_to :organization
   belongs_to :publisher, :class_name => "User", :foreign_key => "publisher_id"
-
-  has_many :organizations, through: :user
 
   has_and_belongs_to_many :joined_users,
     class_name: "User",

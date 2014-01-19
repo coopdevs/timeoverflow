@@ -9,6 +9,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'has_scope'
 gem 'inherited_resources'
+gem 'pundit'
 
 gem 'pg'
 gem 'hstore_translate'

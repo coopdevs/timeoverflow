@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231110424) do
+ActiveRecord::Schema.define(version: 20140119161433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,13 +108,15 @@ ActiveRecord::Schema.define(version: 20131231110424) do
     t.boolean  "permanent"
     t.boolean  "joinable"
     t.boolean  "global"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.text     "tags",                      array: true
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.text     "tags",                         array: true
     t.integer  "publisher_id"
+    t.integer  "organization_id"
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
+  add_index "posts", ["organization_id"], name: "index_posts_on_organization_id", using: :btree
   add_index "posts", ["publisher_id"], name: "index_posts_on_publisher_id", using: :btree
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
@@ -135,22 +138,21 @@ ActiveRecord::Schema.define(version: 20131231110424) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",                            null: false
-    t.string   "email",                               null: false
+    t.string   "username",                              null: false
+    t.string   "email",                                 null: false
     t.string   "password_digest"
     t.date     "date_of_birth"
     t.string   "identity_document"
     t.string   "phone"
     t.string   "alt_phone"
     t.text     "address"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.datetime "deleted_at"
     t.string   "gender"
     t.text     "description"
-    t.boolean  "active",            default: true
     t.datetime "terms_accepted_at"
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -166,6 +168,7 @@ ActiveRecord::Schema.define(version: 20131231110424) do
     t.integer  "failed_attempts",        default: 0
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.boolean  "active",                 default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

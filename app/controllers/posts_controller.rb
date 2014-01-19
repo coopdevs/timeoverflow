@@ -4,6 +4,10 @@ class PostsController < InheritedResources::Base
   has_scope :by_category, as: :cat
   has_scope :fuzzy_search, as: :q
 
+  before_action only: %i[update destroy] do
+    authorize resource
+  end
+
 
   protected
 
@@ -15,30 +19,20 @@ class PostsController < InheritedResources::Base
   end
 
   def begin_of_association_chain
-    case params[:action].to_s
-    when "index", "show"
-      current_organization
-    else
-      if params[resource_instance_name].present? and current_user.manages?(current_organization)
-        User.find(params[resource_instance_name][:user_id])
-      else
-        current_user
-      end
-    end
+    current_organization
   end
 
-  def permitted_params
-    if current_user.manages?(current_organization)
-      params.permit(resource_instance_name => [
-        :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
-        :category_id, :tag_list, :user_id, :publisher_id
-      ])
-    else
-      params.permit(resource_instance_name => [
-        :description, :end_on, :global, :joinable, :permanent, :start_on, :title,
-        :category_id, :tag_list
-      ])
-    end
+  def build_resource_params
+    permitted_fields = %i[description end_on global joinable permanent start_on title category_id tag_list user_id publisher_id]
+    [
+      params.fetch(resource_instance_name, {}).permit(*permitted_fields).tap { |p|
+        if current_user.manages?(current_organization)
+          p.update publisher_id: current_user.id
+          p.reverse_merge! user_id: current_user.id
+        else
+          p.update user_id: current_user.id
+        end
+      }
+    ]
   end
-
 end
