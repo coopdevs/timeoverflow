@@ -37,8 +37,7 @@ class UsersController < ApplicationController
     else
       # New User
       @user = User.create!(user_params)
-      @user.send_confirmation_instructions
-
+      @user.touch :confirmed_at # auto-confirm
     end
 
     if @user.persisted?
