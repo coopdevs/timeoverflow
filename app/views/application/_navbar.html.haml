@@ -11,24 +11,25 @@
             %a{href: path}
               = glyph(item)
               = item.model_name.human(count: :many)
-        %li.dropdown
-          %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
-            = glyph("paperclip")
-            = t ".reports"
-            %b.caret
-          %ul.dropdown-menu{role: :menu}
-            %li
-              %a{href: "/report/user_list", data: {popup: true}}
-                %span.glyphicon.glyphicon-list-alt
-                = User.model_name.human(count: :many)
-            %li
-              %a{href: "/report/offer_list", data: {popup: true}}
-                %span.glyphicon.glyphicon-list-alt
-                = Offer.model_name.human(count: :many)
-            %li
-              %a{href: "/report/inquiry_list", data: {popup: true}}
-                %span.glyphicon.glyphicon-list-alt
-                = Inquiry.model_name.human(count: :many)
+        - if current_user.manages? current_organization
+          %li.dropdown
+            %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+              = glyph("paperclip")
+              = t ".reports"
+              %b.caret
+            %ul.dropdown-menu{role: :menu}
+              %li
+                %a{href: "/report/user_list", data: {popup: true}}
+                  %span.glyphicon.glyphicon-list-alt
+                  = User.model_name.human(count: :many)
+              %li
+                %a{href: "/report/offer_list", data: {popup: true}}
+                  %span.glyphicon.glyphicon-list-alt
+                  = Offer.model_name.human(count: :many)
+              %li
+                %a{href: "/report/inquiry_list", data: {popup: true}}
+                  %span.glyphicon.glyphicon-list-alt
+                  = Inquiry.model_name.human(count: :many)
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user
