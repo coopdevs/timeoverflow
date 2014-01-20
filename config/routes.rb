@@ -28,7 +28,11 @@ Timeoverflow::Application.routes.draw do
 
   resources :documents
 
-  resources :members, only: [:destroy]
+  resources :members, only: [:destroy] do
+    member do
+      patch :toggle_manager
+    end
+  end
 
   resource "report" do
     collection do

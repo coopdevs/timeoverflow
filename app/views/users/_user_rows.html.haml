@@ -18,6 +18,15 @@
           %span.glyphicon.glyphicon-ban-circle
           = t "global.cancel_membership"
 
+        - unless user == current_user
+          %a.action{href: toggle_manager_member_path(@memberships[user.id]), :data => {:method => :patch}}
+            - if @memberships[user.id].manager
+              %span.glyphicon.glyphicon-arrow-down
+              = t "global.demote"
+            - else
+              %span.glyphicon.glyphicon-arrow-up
+              = t "global.promote"
+
       - if superadmin?
         %a.action{href: user_toggle_active_path(user), :data => {:method => :put}}
           - if user.active?
