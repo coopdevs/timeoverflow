@@ -184,3 +184,22 @@ es:
     application:
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
+
+
+  # ETIQUETAS PARA DEVISE
+  devise:
+    sessions:
+      password: Contraseña
+      remember: Recuerdame
+    shared:
+      links:
+        sign_in: Login
+        sign_up: Registrarse
+        forgot_your_password: ¿Has olvidado tu contraseña?
+        didnt_receive_confirmation_instructions: No tienes la confirmación
+
+  #For Login
+  confirmation:
+    didnt_receive_unlock_instructions: No has recibido las instrucciones de desbloqueo
+    resend_confirmation_instructions: Reenviar confirmación
+    resend_unlock_instructions: Renviar confirmación desbloqueo
