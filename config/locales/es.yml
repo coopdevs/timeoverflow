@@ -184,10 +184,6 @@ es:
     application:
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
-
-
-
-
   #For Login
   confirmation:
     didnt_receive_unlock_instructions: No has recibido las instrucciones de desbloqueo
