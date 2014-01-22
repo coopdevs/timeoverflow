@@ -184,11 +184,6 @@ es:
     application:
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
-  #For Login
-  confirmation:
-    didnt_receive_unlock_instructions: No has recibido las instrucciones de desbloqueo
-    resend_confirmation_instructions: Reenviar confirmación
-    resend_unlock_instructions: Renviar confirmación desbloqueo
 
   # ETIQUETAS PARA DEVISE
   devise:
@@ -203,6 +198,9 @@ es:
       confirmed_and_signed_in: "Su cuenta ha sido confirmada. Ha sido identificado correctamente."
       send_instructions: "Recibira un correo electrónico en unos minutos con instrucciones sobre cómo restablecer su contraseña."
       send_paranoid_instructions: "Si su correo electrónico existe en nuestra base de datos recibirás un correo electrónico en unos minutos con instrucciones sobre cómo reiniciar su contraseña."
+      didnt_receive_unlock_instructions: No has recibido las instrucciones de desbloqueo
+      resend_confirmation_instructions: Reenviar confirmación
+      resend_unlock_instructions: Renviar confirmación desbloqueo
     failure:
       already_authenticated: "Ya ha sido identificado."
       inactive: "su cuenta aún no ha sido activada."
@@ -252,7 +250,7 @@ es:
       already_confirmed: "ya ha sido confirmado, por favor intente iniciar sesión."
       confirmation_period_expired: "necesita ser confirmado en %{period}, por favor vuelva a solicitarla."
       expired: "ha expirado, por favor vuelva a solicitarla."
-      not_found: "no se ha encontró."
+      not_found: "no se ha encontrado."
       not_locked: "no estaba bloqueado."
       not_saved:
         one: "1 error impidió que este %{resource} fuese guardado:"
