@@ -10,7 +10,8 @@
     = image_tag avatar_url(@user, 160)
 
   .col-sm-10
-    %p= @user.description
+    :markdown
+      #{@user.description}
 
     %ul.nav.nav-pills.pull-right
       - if @user == current_user
@@ -54,7 +55,9 @@
           %tr
             %td= link_to post, post
             %td= time_ago_in_words post.updated_at
-            %td= post.description
+            %td
+              :markdown
+                #{post.description}
 
   .col-sm-6.inquiries
     .panel.panel-default
@@ -66,7 +69,9 @@
           %tr
             %td= link_to post, post
             %td= time_ago_in_words post.updated_at
-            %td= post.description
+            %td
+              :markdown
+                #{post.description}
 
 %h2
   Cuentas
