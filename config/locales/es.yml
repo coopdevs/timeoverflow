@@ -51,6 +51,7 @@ es:
         alt_phone: Teléfono alternativo
         admin: Administrador de organización
         superadmin: Administrador de sistema
+        description: Descripción <small>(opcional)</small>
       organization:
         <<: *common_attributes
         name: Nombre
@@ -185,73 +186,3 @@ es:
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
 
-  # ETIQUETAS PARA DEVISE
-  devise:
-    shared:
-      links:
-        sign_in: Iniciar sesión
-        sign_up: Registrarse
-        forgot_your_password: ¿Has olvidado tu contraseña?
-        didnt_receive_confirmation_instructions: No tienes la confirmación
-    confirmations:
-      confirmed: "Su cuenta ha sido confirmada."
-      confirmed_and_signed_in: "Su cuenta ha sido confirmada. Ha sido identificado correctamente."
-      send_instructions: "Recibira un correo electrónico en unos minutos con instrucciones sobre cómo restablecer su contraseña."
-      send_paranoid_instructions: "Si su correo electrónico existe en nuestra base de datos recibirás un correo electrónico en unos minutos con instrucciones sobre cómo reiniciar su contraseña."
-      didnt_receive_unlock_instructions: No has recibido las instrucciones de desbloqueo
-      resend_confirmation_instructions: Reenviar confirmación
-      resend_unlock_instructions: Renviar confirmación desbloqueo
-    failure:
-      already_authenticated: "Ya ha sido identificado."
-      inactive: "su cuenta aún no ha sido activada."
-      invalid: "Correo o contraseña inválidos."
-      invalid_token: "Cadena de autenticación invalida."
-      locked: "Su cuenta ha sido bloqueada."
-      not_found_in_database: "Correo o contraseña inválidos."
-      timeout: "su sesión ha expirado, por favor identifíquese de nuevo para continuar."
-      unauthenticated: "Necesita iniciar sesión o registrarse para continuar."
-      unconfirmed: "Debe confirmar su cuenta para continuar."
-      last_attempt: "Tiene un intento más antes de que su cuenta sea bloqueada."
-    mailer:
-      confirmation_instructions:
-        subject: "Instrucciones de confirmación"
-      reset_password_instructions:
-        subject: "Instrucciones para restablecer su contraseña"
-      unlock_instructions:
-        subject: "Instrucciones de desbloqueo"
-    omniauth_callbacks:
-      failure: "No se le ha podido autorizar de %{kind} debido a \"%{reason}\"."
-      success: "Identificado correctamente de %{kind}."
-    passwords:
-      no_token: "No puede acceder a esta página sino es por medio de un enlace para restablecer contraseña. Si ha accedido desde el enlace para restablecer la contraseña, asegúrese de que la URL esté completa."
-      send_instructions: "Recibira un correo electrónico con instrucciones sobre cómo restablecer su contraseña en unos minutos."
-      send_paranoid_instructions: "Si su correo electrónico existe en nuestra base de datos, recibira un enlace para restablecer la contraseña en unos minutos."
-      updated: "Su contraseña ha cambiado correctamente. Ha sido identificado correctamente."
-      updated_not_active: "Su contraseña se ha cambiado correctamente."
-    registrations:
-      destroyed: "¡Adiós! Su cuenta ha sido cancelada. Esperamos volver a verle pronto."
-      signed_up: "¡Bienvenido! Usted ha sido identificado."
-      signed_up_but_inactive: "Se ha registrado correctamente, pero no ha podido iniciar sesión porque su cuenta no ha sido activada."
-      signed_up_but_locked: "Se ha registrado correctamente, pero no ha podido iniciar sesión porque su cuenta está bloqueada."
-      signed_up_but_unconfirmed: "Se le ha enviado un mensaje con un enlace de confirmación. Por favor visite el enlace para activar su cuenta."
-      update_needs_confirmation: "Ha actualizado su cuenta correctamente, sin embargo necesitamos verificar su nueva cuenta de correo. Por favor revise su correo electrónico y visite el enlace para finalizar la confirmación de su nueva dirección de correo electrónico."
-      updated: "Ha actualizado tu cuenta correctamente."
-    sessions:
-      password: Contraseña
-      remember: Recuerdame
-      signed_in: "Ha iniciado sesión satisfactoriamente."
-      signed_out: "Ha cerrado la sesión satisfactoriamente."
-    unlocks:
-      send_instructions: "Recibira un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear su cuenta."
-      send_paranoid_instructions: "Si su cuenta existe, recibira un correo electrónico en unos minutos con instrucciones sobre cómo desbloquear su cuenta."
-      unlocked: "Su cuenta ha sido desbloqueada. Por favor inicie sesión para continuar."
-  errors:
-    messages:
-      already_confirmed: "ya ha sido confirmado, por favor intente iniciar sesión."
-      confirmation_period_expired: "necesita ser confirmado en %{period}, por favor vuelva a solicitarla."
-      expired: "ha expirado, por favor vuelva a solicitarla."
-      not_found: "no se ha encontrado."
-      not_locked: "no estaba bloqueado."
-      not_saved:
-        one: "1 error impidió que este %{resource} fuese guardado:"
-        other: "%{count} errores impidieron que este %{resource} fuese guardado:"
