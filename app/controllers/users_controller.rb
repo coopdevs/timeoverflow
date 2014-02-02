@@ -86,7 +86,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    fields_to_permit = %w"gender username email date_of_birth phone alt_phone active"
+    fields_to_permit = %w"gender username email date_of_birth phone alt_phone active description"
     fields_to_permit += %w"admin registration_number registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
     # params[:user].permit(*fields_to_permit).tap &method(:ap)
