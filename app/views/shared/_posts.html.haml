@@ -9,4 +9,6 @@
         - (post.tags || []).each do |tag|
           %span.glyphicon.glyphicon-tag
           = tag
-    %p= post.description
+    %p
+      :markdown
+        #{post.description}

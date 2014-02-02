@@ -51,6 +51,7 @@ es:
         alt_phone: Teléfono alternativo
         admin: Administrador de organización
         superadmin: Administrador de sistema
+        description: Descripción <small>(opcional)</small>
       organization:
         <<: *common_attributes
         name: Nombre
@@ -184,3 +185,4 @@ es:
     application:
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
+

@@ -4,6 +4,8 @@
 
       = f.input :username
 
+      = f.input :description, :as => 'text'
+
       - if @user.id
         = f.input :email, :readonly => true
       - else

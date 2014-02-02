@@ -25,6 +25,8 @@
   .col-md-9
 
 
-    %p.lead= post.description
+    %p.lead
+      :markdown
+        #{post.description}
 
 

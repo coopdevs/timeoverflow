@@ -4,7 +4,8 @@
   .col-sm-8
     .panel.panel-primary
       .panel-heading
-        %h2.panel-title Resend unlock instructions
+        %h2.panel-title
+          = t "devise.confirmations.resend_unlock_instructions"
 
       .panel-body
         - if resource.errors.any?
@@ -16,4 +17,4 @@
             = f.label :email, class: "control-label"
             = f.text_field :email, :required => false, :autofocus => true, class: "form-control"
           .form-group
-            = f.submit "Resend unlock instructions", class: "btn btn-primary"
+            = f.submit t("devise.confirmations.resend_unlock_instructions"), class: "btn btn-primary"
