@@ -66,6 +66,5 @@ module Timeoverflow
 
     # Avoid connecting to the database on precompilation
     config.assets.initialize_on_precompile = false
-
   end
 end

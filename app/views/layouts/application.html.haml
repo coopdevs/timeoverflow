@@ -14,19 +14,10 @@
           —
         = yield :title
 
-    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"
-    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
-    = javascript_include_tag "//ajax.aspnetcdn.com/ajax/jQuery.validate/1.11.1/jquery.validate.js"
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
-    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.0/tagmanager.js"
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"
-    = browserid_js_tag
-    = javascript_include_tag "application"
     = csrf_meta_tags
+    = theme_stylesheet_link_tag
     = stylesheet_link_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"
     = stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.0/tagmanager.css"
-    = theme_stylesheet_link_tag
     = stylesheet_link_tag "application", :media => "all"
     %link{href: "/favicon.ico", rel: "shortcut icon"}
 
@@ -41,3 +32,15 @@
         %a{href: tnc_path, "data-toggle" => "modal", "data-target" => "#modal"} términos del servicio
 
     .modal.fade#modal
+      .modal-dialog
+        .modal-content
+
+    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"
+    = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"
+    = javascript_include_tag "//ajax.aspnetcdn.com/ajax/jQuery.validate/1.11.1/jquery.validate.js"
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
+    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.0/tagmanager.js"
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"
+    = browserid_js_tag
+    = javascript_include_tag "application"
