@@ -1,7 +1,9 @@
 - posts.each do |post|
   .post
     %h5
-      = link_to post.title, post
+      = link_to post do
+        = post.title
+        %span.glyphicon.glyphicon-expand
       %small
         - if post.category
           %span.glyphicon.glyphicon-folder-open
