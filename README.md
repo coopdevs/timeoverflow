@@ -59,7 +59,7 @@ https://moqups.com/sseerrggii/JIu1Z1eD/
 Notas para desarrollo
 =====================
 
-La gestión de tareas se hace en Redbooth.com para colaborar contactar a través del formulario http://adbdt.org/contacta/.
+La gestión de tareas se hace en Redbooth.com https://redbooth.com/public/timeoverflow
 
 Si quieres probar la plataforma en local, necesitas Postgres y cuidado que los ficheros
 son UTF-8.
