@@ -16,6 +16,4 @@
           %tr
             %td
               %strong= post.title
-              —
-              = truncate(post.description, length: 50, separator: ' ')
-            %td= post.user
+            %td= "#{post.user} (#{post.user.id})"
