@@ -1,0 +1,2 @@
+LOG:  could not open configuration file "/usr/local/pgsql/data/postgresql.conf": Permiso denegado
+FATAL:  configuration file "/usr/local/pgsql/data/postgresql.conf" contains errors

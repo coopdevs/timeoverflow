@@ -43,6 +43,15 @@
   body {
     padding-top: 0px;
   }
+  .table {
+    border-collapse: collapse;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+
 }
 
 body {
