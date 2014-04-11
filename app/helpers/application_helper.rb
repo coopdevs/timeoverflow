@@ -37,4 +37,12 @@ module ApplicationHelper
     document_path(Document.terms_and_conditions || 0, modal: true)
   end
 
+  def sortable(column, title = nil)  
+    title ||= column.humanize 
+    sort, dir = params[:sort], params[:direction]
+    css_class = (column == sort)? "current #{dir}" : nil
+    direction = (column == sort && dir == "asc")? "desc" : "asc"  
+    link_to title, {:sort => column, :direction => direction}, {:class => css_class}  
+  end  
+
 end
