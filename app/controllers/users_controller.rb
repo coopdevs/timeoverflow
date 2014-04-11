@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @users = scoped_users
     @users = @users.fuzzy_search(params[:q]) if params[:q].present?
     sort, dir = params[:sort], params[:direction]
-    if sort == "username"
+    if sort == "username" || sort == "email"
       @users = @users.reorder(sort + ' ' + dir)
     elsif sort.present?
       model_att = (sort == "balance")? 'accounts' : 'members'
