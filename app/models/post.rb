@@ -24,4 +24,8 @@ class Post < ActiveRecord::Base
   def to_s
     title
   end
+
+  def member_id
+    organization.members.where(user_id: user_id).take.member_uid
+  end
 end
