@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
     foreign_key: "post_id",
     association_foreign_key: "user_id"
 
-  default_scope ->{ order('posts.created_at DESC') }
+  default_scope ->{ order('posts.updated_at DESC') }
 
   scope :by_category, ->(cat) { where(category_id: cat) if cat }
 
