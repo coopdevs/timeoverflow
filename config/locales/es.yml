@@ -111,6 +111,9 @@ es:
     user_rows:
       activate: Activar
       deactivate: Desactivar
+      promote_warning: "Va a dar privilegios de administrador al usuario %{user}"
+      demote_warning: "Va a quitar privilegios de administrador al usuario %{user}"
+      cancel_warning: "Va a eliminar del banco al usuario %{user}"  
 
   offers:
     index:
@@ -174,6 +177,8 @@ es:
     filter: Filtro
     all: Todo
     search: Buscar
+    demote: Degradar
+    promote: Promover
 
   active_admin:
     comments:
