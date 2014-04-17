@@ -9,13 +9,8 @@ class UsersController < ApplicationController
   def index
     @users = scoped_users
     @users = @users.fuzzy_search(params[:q]) if params[:q].present?
-    sort, dir = params[:sort], params[:direction]
-    if sort == "username" || sort == "email"
-      @users = @users.reorder(sort + ' ' + dir)
-    elsif sort.present?
-      model_att = (sort == "balance")? 'accounts' : 'members'
-      @users = @users.includes("#{model_att}").reorder("#{model_att}.#{sort}" + ' ' + dir)
-    end
+    sort, direction = params[:sort], params[:direction]
+    @users = (sort != 'balance')? @users.by_params("#{sort}" + ' ' + "#{direction}") : @users.by_balance(direction) 
     @users = @users.page(params[:page]).per(10)
     @memberships = current_organization.members.where(user_id: @users.map(&:id)).includes(:account).each_with_object({}) do |mem, ob|
       ob[mem.user_id] = mem
