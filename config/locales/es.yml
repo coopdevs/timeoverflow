@@ -149,6 +149,8 @@ es:
       inactive_users: Usuarios inactivos (Top 20)
       last_movement: Útimo intercambio
       no_movements: Sin intercambios 
+      demographics: Datos demográficos
+      by_ages: Por edades
 
   stats:
     min_balance:

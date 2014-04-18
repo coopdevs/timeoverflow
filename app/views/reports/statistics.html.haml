@@ -39,5 +39,74 @@
           %td= link_to mem.user.username, mem.user
           %td= (mem.account.balance.zero?)? t(".no_movements") : l(mem.account.updated_at, format: :short)
 
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      = t ".demographics"
+  .panel-body
+    - age = 0
+    - @date = { 'Desconocida' => 0, '-17' => 0, '18-24' =>  0, '25-34' => 0, '35-44' => 0, '45-54' => 0, '55-64' => 0, '65+' => 0 }
+    - @members.each do |m|
+      - age = (m.user.date_of_birth.present?)? age(m.user.date_of_birth) : -1
+      - case age
+        - when 0 .. 17 
+          - @date['-17']+= 1
+        - when 18 .. 24
+          - @date['18-24']+= 1
+        - when 25 .. 34 
+          - @date['25-34']+= 1 
+        - when 35 .. 44
+          - @date['35-44']+= 1
+        - when 45 .. 54 
+          - @date['45-54']+= 1
+        - when 55 .. 64
+          - @date['55-64']+= 1
+        - when 65 .. 100
+          - @date['65+']+= 1
+        - else
+          - @date['Desconocida']+= 1
+    #pie
 
+:javascript
+  window.onload = function () {
+      //demograficos
+      var keys1 =  #{@date.keys.to_json};
+      var values1 = #{@date.values.to_json};
+      var i = 0;
+      var ages = [];
+      for(i in keys1){
+        ages[i] = [keys1[i], values1[i]]
+        i++;
+      }
+      $('#pie').highcharts({
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+        },
+        title: {
+          text: "#{t '.by_ages'}"
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.y}</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              color: '#000000',
+              connectorColor: '#000000',
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+          }
+        },
+        series: [{
+          type: 'pie',
+          name: 'Nº personas',
+          data: ages
+        }]
+    }); 
+  }
 
