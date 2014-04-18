@@ -39,6 +39,7 @@ Timeoverflow::Application.routes.draw do
       get "user_list"
       get "offer_list" => :post_list, type: "offer"
       get "inquiry_list" => :post_list, type: "inquiry"
+      get "statistics"
     end
   end
 
