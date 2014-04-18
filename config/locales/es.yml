@@ -146,9 +146,10 @@ es:
       users_reg: " Altas de usuario"
       num_swaps: " Intercambios"
       total_hours: " Horas intercambiadas"
-      inactive_users: Usuarios inactivos (Top 20)
+      inactive_users: Usuarios inactivos
       last_movement: Útimo intercambio
-      no_movements: Sin intercambios 
+      no_movements: Sin intercambios
+      days_without_swaps: Días sin intercambios
       demographics: Datos demográficos
       by_ages: Por edades
 

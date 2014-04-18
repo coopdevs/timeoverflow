@@ -21,4 +21,7 @@ class Member < ActiveRecord::Base
     self.member_uid ||= organization.next_reg_number_seq
   end
 
+  def days_without_swaps
+    (DateTime.now.to_date - account.updated_at.to_date).to_i
+  end
 end
