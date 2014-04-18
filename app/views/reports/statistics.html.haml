@@ -1,0 +1,43 @@
+%h1
+  = t ".statistics"
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      = t ".global_activity"
+  .panel-body
+    %ul.nav.nav-pills.statistics
+      %li
+        = t ".users_reg"
+        .badge
+          = @members.count  
+      %li
+        = t ".num_swaps"
+        .badge
+          = @num_swaps
+      %li
+        = t ".total_hours"
+        .badge
+          = seconds_to_hm @total_hours
+    #chart
+
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      = t ".inactive_users"
+  .panel-body
+    %table.table.table-hover.table-condensed
+      %thead
+        %tr
+          %th ID
+          %th= User.human_attribute_name(:username) 
+          %th= t ".last_movement"
+      %tbody    
+      / NO movimientos: balance = 0, movimientos: actualiza cuenta
+      - @members.includes(:account).order("abs(accounts.balance) asc, accounts.updated_at").limit(20).each do |mem|
+        %tr
+          %td= mem.member_uid
+          %td= link_to mem.user.username, mem.user
+          %td= (mem.account.balance.zero?)? t(".no_movements") : l(mem.account.updated_at, format: :short)
+
+
+

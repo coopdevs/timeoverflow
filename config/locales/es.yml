@@ -80,13 +80,14 @@ es:
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
-    nav:
+    navbar:
       administration: Administración
       reports: Informes
       stats: Estadísticas
       users: Usuarios
       categories: Servicios
       organizations: Organizaciones
+      statistics: Estadísticas
 
   # views/users/index...
 
@@ -139,6 +140,15 @@ es:
       title: Servicios ofrecidos
     user_list:
       title: Listado usuarios
+    statistics:
+      statistics: Estadísticas
+      global_activity: "Actividad global"
+      users_reg: " Altas de usuario"
+      num_swaps: " Intercambios"
+      total_hours: " Horas intercambiadas"
+      inactive_users: Usuarios inactivos (Top 20)
+      last_movement: Útimo intercambio
+      no_movements: Sin intercambios 
 
   stats:
     min_balance:
