@@ -152,6 +152,7 @@ es:
       days_without_swaps: Días sin intercambios
       demographics: Datos demográficos
       by_ages: Por edades
+      by_gender: Por género
 
   stats:
     min_balance:

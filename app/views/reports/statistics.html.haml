@@ -43,7 +43,7 @@
         %tr
           %td= mem.member_uid
           %td= link_to mem.user.username, mem.user
-          %td= (DateTime.now.to_date - mem.account.updated_at.to_date).to_i
+          %td= mem.days_without_swaps
           %td= (mem.account.balance.zero?)? t(".no_movements") : l(mem.account.updated_at, format: :short)
 
 .panel.panel-default
@@ -54,26 +54,25 @@
     - age = 0
     - @date = { 'Desconocida' => 0, '-17' => 0, '18-24' =>  0, '25-34' => 0, '35-44' => 0, '45-54' => 0, '55-64' => 0, '65+' => 0 }
     - @members.each do |m|
-      - age = (m.user.date_of_birth.present?)? age(m.user.date_of_birth) : -1
+      - age = (m.user.date_of_birth.present?) ? age(m.user.date_of_birth) : -1
       - case age
-        - when 0 .. 17 
-          - @date['-17']+= 1
-        - when 18 .. 24
-          - @date['18-24']+= 1
-        - when 25 .. 34 
-          - @date['25-34']+= 1 
-        - when 35 .. 44
-          - @date['35-44']+= 1
-        - when 45 .. 54 
-          - @date['45-54']+= 1
-        - when 55 .. 64
-          - @date['55-64']+= 1
-        - when 65 .. 100
-          - @date['65+']+= 1
-        - else
-          - @date['Desconocida']+= 1
+      - when 0..17 then @date['-17'] += 1
+      - when 18..24 then @date['18-24'] += 1
+      - when 25..34 then @date['25-34'] += 1 
+      - when 35..44 then @date['35-44'] += 1
+      - when 45..54 then @date['45-54'] += 1
+      - when 55..64 then @date['55-64'] += 1
+      - when 65..100 then @date['65+'] += 1
+      - else @date['Desconocida'] += 1
     #pie
-    
+    - @gender = { 'Male' => 0, 'Female' => 0, 'Desconocido' => 0 } 
+    - @members.each do |m|
+      - case m.user.gender
+      - when "male" then @gender['Male'] += 1
+      - when "female" then @gender['Female'] += 1
+      - else @gender['Desconocido'] += 1
+    #pie2
+
 :javascript
   window.onload = function () {
     //globales
@@ -121,10 +120,10 @@
         }, {
         name: "#{t ".total_hours"}",
         data: #{@hours_swaps_months.to_json}
-    
-        }]
-      });
-    //demograficos
+      }]
+    });
+    // Demograficos
+    // Por edades
     var keys1 =  #{@date.keys.to_json};
     var values1 = #{@date.values.to_json};
     var i = 0;
@@ -163,5 +162,44 @@
         data: ages
       }]
     });
+    // Por género
+    var keys2 =  #{@gender.keys.to_json};
+    var values2 = #{@gender.values.to_json};
+    i = 0;
+    var genders = [];
+    for(i in keys2){
+      genders[i] = [keys2[i], values2[i]]
+      i++;
+    }
+    $('#pie2').highcharts({
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false
+      },
+      title: {
+        text: "#{t '.by_gender'}"
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            color: '#000000',
+            connectorColor: '#000000',
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+          }
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: 'Nº personas',
+        data: genders
+      }]
+    }); 
   }
 
