@@ -14,12 +14,12 @@
           = t "global.edit"
 
       - if superadmin? || admin?
-        %a.action{href: member_path(@memberships[user.id]), :data => {:method => :delete}}
+        %a.action{href: member_path(@memberships[user.id]), :data => {:method => :delete, :confirm => t('.cancel_warning', :user => user.username)}}
           %span.glyphicon.glyphicon-ban-circle
           = t "global.cancel_membership"
 
         - unless user == current_user
-          %a.action{href: toggle_manager_member_path(@memberships[user.id]), :data => {:method => :patch}}
+          %a.action{href: toggle_manager_member_path(@memberships[user.id]), :data => {:method => :patch, :confirm => (@memberships[user.id].manager)? t('.demote_warning', :user => user.username) : t('.promote_warning', :user => user.username)}}
             - if @memberships[user.id].manager
               %span.glyphicon.glyphicon-arrow-down
               = t "global.demote"
