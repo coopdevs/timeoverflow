@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   GENDERS = %w[male female]
 
   scope :by_params, ->(sort_direction) { reorder(sort_direction) }
-  scope :by_balance, ->(direction) { includes(:accounts).reorder("accounts.balance #{direction || 'ASC'}") }
+  scope :by_balance, ->(org, direction) { joins(members: [:account, :organization]).where('organizations.id = ?', org).reorder("accounts.balance #{direction || 'ASC'}") }
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
