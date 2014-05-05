@@ -33,8 +33,8 @@ es:
 
     attributes:
       common: &common_attributes
-        created_at: Creado
-        updated_at: Actualizado
+        created_at: 'Creado:'
+        updated_at: 'Actualizado:'
       user:
         <<: *common_attributes
         username: Nombre
@@ -179,6 +179,15 @@ es:
     search: Buscar
     demote: Degradar
     promote: Promover
+    information: Información
+    member_count: 'Número de usuarios:'
+    balance: 'Balance:'
+    movements: Movimientos
+    date: Fecha
+    source_destination: 'Origen/Destino'
+    announcements: Anuncio
+    reason: Razón
+    amount: Cantidad
 
   active_admin:
     comments:

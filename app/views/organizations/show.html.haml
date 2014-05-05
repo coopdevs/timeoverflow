@@ -1,31 +1,59 @@
 %h1
   = @organization.name
+.row
+  .col-sm-4
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title= t "global.information"
+      .panel-body
+        %p
+          %strong= Organization.human_attribute_name("created_at")
+          = l(@organization.created_at, format: :short)
+          %br
+          %strong= Organization.human_attribute_name("updated_at")
+          = l(@organization.updated_at, format: :short)
+          %br
+          %strong= t "global.member_count"
+          = @organization.members.count
+          %br
+          %strong= t "global.balance"
+          = seconds_to_hm(@organization.account.try(:balance) || mdash)  
+  .col-sm-8
+    %ul.nav.nav-pills.pull-right
+      %li
+        %a{href: organizations_path}
+          %span.glyphicon.glyphicon-hand-left
+          = t 'global.back'
+      - if admin?
+        %li
+          %a{href: edit_organization_path(@organization)}
+            %span.glyphicon.glyphicon-pencil
+            = t "global.edit"
+      - if superadmin?
+        %li
+          %a{href: organization_path(@organization), data: {method: :DELETE, confirm: t("are_you_sure") }}
+            %span.glyphicon.glyphicon-trash
+            = t "global.delete"
+      %li
+        %a{href: give_time_organization_path(@organization)}
+          %span.glyphicon.glyphicon-time
+          = t "global.give_time"
 
-%ul.nav.nav-pills
-  %li
-    %a{href: organizations_path}
-      %span.glyphicon.glyphicon-hand-left
-      = t 'global.back'
-  - if admin?
-    %li
-      %a{href: edit_organization_path(@organization)}
-        %span.glyphicon.glyphicon-pencil
-        = t "global.edit"
-  - if superadmin?
-    %li
-      %a{href: organization_path(@organization), data: {method: :DELETE, confirm: t("are_you_sure") }}
-        %span.glyphicon.glyphicon-trash
-        = t "global.delete"
-  %li
-    %a{href: give_time_organization_path(@organization)}
-      %span.glyphicon.glyphicon-time
-      = t "global.give_time"
-
-
-%dl
-  %dt= Organization.human_attribute_name("created_at")
-  %dd= l @organization.created_at
-  %dt= Organization.human_attribute_name("updated_at")
-  %dd= l @organization.updated_at
-  %dt= Organization.human_attribute_name("reg_number_seq")
-  %dd= @organization.reg_number_seq
+%h3
+  = t "global.movements"
+.transactions
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th= t "global.date"
+        %th= t "global.source_destination"
+        %th= t "global.announcements"
+        %th= t "global.reason"
+        %th= t "global.amount"
+    - @organization.account.movements.order("created_at DESC").limit(10).each do |mv|
+      %tr
+        %td= l mv.created_at, format: :short
+        %td= mv.other_side.account
+        %td= mv.transfer.post
+        %td= mv.transfer.reason
+        %td= seconds_to_hm(mv.amount)

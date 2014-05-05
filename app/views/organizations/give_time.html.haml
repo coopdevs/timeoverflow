@@ -6,13 +6,16 @@
   %h3= @offer
 
 = simple_form_for @transfer do |f|
-  = f.input :amount, as: :integer, input_html: {step: 15.minutes, type: :time, min: 0, max: 20.hours}
-  = f.input :reason
-  = f.input :destination, as: :hidden
-  - if admin?
-    = f.input :source, collection: @sources
-  - if @offer
-    = f.input :post, as: :hidden
+  .form-inputs
+    = f.input :hours, as: :integer, input_html: { min: 0, max: 20, "data-rule-either-hours-minutes-informed" => "true", "data-rule-range" => "[0,20]"}
+    = f.input :minutes, as: :integer, input_html: { min: 0, max: 59, step: 15, "data-rule-either-hours-minutes-informed" => "true", "data-rule-range" => "[0,59]"}
+    = f.input :amount, as: :hidden
+    = f.input :reason
+    = f.input :destination, as: :hidden
+    - if admin?
+      = f.input :source, collection: @sources
+    - if @offer
+      = f.input :post, as: :hidden
 
-
-  = f.button :submit
+  .form-actions
+    = f.button :submit
