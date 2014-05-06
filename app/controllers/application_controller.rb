@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :username
   end
 
+  def after_sign_in_path_for(resource)
+      users_path
+  end
+
 
   private
 
