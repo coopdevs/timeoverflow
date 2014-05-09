@@ -23,12 +23,12 @@
     %tr
     %tr
       %th
-      %th ID
-      %th= User.human_attribute_name(:username)
-      %th= User.human_attribute_name(:email)
+      %th= sortable 'member_uid', 'ID'
+      %th= sortable "username", User.human_attribute_name(:username)
+      %th= sortable "email", User.human_attribute_name(:email)
       %th= User.human_attribute_name(:phone)
       %th= User.human_attribute_name(:alt_phone)
-      %th= Account.human_attribute_name(:balance)
+      %th= sortable "balance", Account.human_attribute_name(:balance) 
 
       %th
         %span.glyphicon.glyphicon-hand-down
