@@ -111,8 +111,7 @@ es:
     user_rows:
       activate: Activar
       deactivate: Desactivar
-      promote_warning: "Va a dar privilegios de administrador al usuario %{user}"
-      demote_warning: "Va a quitar privilegios de administrador al usuario %{user}"
+      manage_warning: "Va a cambiar los privilegios del usuario %{user}"
       cancel_warning: "Va a eliminar del banco al usuario %{user}"  
 
   offers:

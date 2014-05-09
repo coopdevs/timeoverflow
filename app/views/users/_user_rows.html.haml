@@ -1,37 +1,38 @@
-- users.each do |user|
-  %tr
-    %td= image_tag avatar_url(user), height: "32px", width: "32px"
-    %td= @memberships[user.id].member_uid
-    %td= link_to user, user
-    %td= mail_to(user.email)
-    %td= user.phone
-    %td= user.alt_phone
-    %td= seconds_to_hm @memberships[user.id].account_balance
-    %td.hover-actions
-      - if superadmin? || admin? || user == current_user
-        %a.action{href: edit_user_path(user)}
-          %span.glyphicon.glyphicon-pencil
-          = t "global.edit"
+%tr{ "ng-repeat" => "user in users | orderBy:sort | filter:filterTerm" }
+  %td
+    %img{ "ng-src" => "{{user.avatar}}", height: "32px", width: "32px" }
+  %td {{user.member_id}}
+  %td
+    %a{ "ng-href" => "{{user.url}}" }
+      {{user.username}}
+  %td 
+    %a{ "ng-href" => "mailto:{{user.email}}" }
+      {{user.email}}
+  %td {{user.phone}}
+  %td {{user.alt_phone}}
+  %td {{user.balance | timeBalance}} 
+  %td.hover-actions
+    %a.action{ "ng-if" => "user.edit_link", "ng-href" => "{{user.edit_link}}"}
+      %span.glyphicon.glyphicon-pencil
+      = t "global.edit"
 
-      - if superadmin? || admin?
-        %a.action{href: member_path(@memberships[user.id]), :data => {:method => :delete, :confirm => t('.cancel_warning', :user => user.username)}}
-          %span.glyphicon.glyphicon-ban-circle
-          = t "global.cancel_membership"
+      %a.action{ "ng-if" => "user.cancel_link", "ng-href" => "{{user.cancel_link}}", :data => {:method => :delete, :confirm => t('.cancel_warning', :user => "{{user.username}}")}}
+        %span.glyphicon.glyphicon-ban-circle
+        = t "global.cancel_membership"
 
-        - unless user == current_user
-          %a.action{href: toggle_manager_member_path(@memberships[user.id]), :data => {:method => :patch, :confirm => (@memberships[user.id].manager)? t('.demote_warning', :user => user.username) : t('.promote_warning', :user => user.username)}}
-            - if @memberships[user.id].manager
-              %span.glyphicon.glyphicon-arrow-down
-              = t "global.demote"
-            - else
-              %span.glyphicon.glyphicon-arrow-up
-              = t "global.promote"
+      %a.action{ "ng-if" => "user.manage_link", "ng-href" => "{{user.manage_link}}", :data => {:method => :patch, :confirm => t('.manage_warning', :user => "{{user.username}}")} }
+        %span{ "ng-if" => "user.manager" }
+          .glyphicon.glyphicon-arrow-down
+          = t "global.demote" 
+        %span{ "ng-if" => "!user.manager" }
+          .glyphicon.glyphicon-arrow-up
+          = t "global.promote"
 
-      - if superadmin?
-        %a.action{href: user_toggle_active_path(user), :data => {:method => :put}}
-          - if user.active?
-            %span.glyphicon.glyphicon-remove
-            = t ".deactivate"
-          - else
-            %span.glyphicon.glyphicon-ok
-            = t ".activate"
+    %a.action{ "ng-if" => "user.activate_link", "ng-href" => "{{user.activate_link}}", :data => {:method => :put}}
+      %span{ "ng-if" => "user.active" }
+        .glyphicon.glyphicon-remove
+        = t ".deactivate"
+      %span{ "ng-if" => "!user.active" }
+        .glyphicon.glyphicon-ok
+        = t ".activate"
+

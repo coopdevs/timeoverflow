@@ -6,10 +6,8 @@
       = params[:q]
 
 .navbar
-  %form.navbar-form.navbar-left{action: users_path, role: "search", method: "get"}
-    .form-group
-      %input.form-control{type: "text", placeholder: t("global.search"), name: "q", value: params[:q]}
-    %button.btn.btn-default{type: "submit"}= t("global.search")
+  %form.navbar-form.navbar-left
+    %input.form-control{type: "text", placeholder: t("global.search"), "ng-model" => "filterTerm"}
 
   %ul.nav.navbar-nav.pull-right
     - if admin?
@@ -23,12 +21,28 @@
     %tr
     %tr
       %th
-      %th ID
-      %th= User.human_attribute_name(:username)
-      %th= User.human_attribute_name(:email)
+      %th 
+        %a{ "ng-click" => "sortBy('id')" }
+          ID
+          %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-id'" }
+          %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'id'" }
+      %th
+        %a{ "ng-click" => "sortBy('username')" }
+          = User.human_attribute_name(:username)
+          %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-username'" }
+          %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'username'" }
+      %th
+        %a{ "ng-click" => "sortBy('email')" }
+          = User.human_attribute_name(:email)
+          %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-email'" }
+          %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'email'" }
       %th= User.human_attribute_name(:phone)
       %th= User.human_attribute_name(:alt_phone)
-      %th= Account.human_attribute_name(:balance)
+      %th
+        %a{ "ng-click" => "sortBy('balance')" }
+          = Account.human_attribute_name(:balance)
+          %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-balance'" }
+          %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'balance'" }
 
       %th
         %span.glyphicon.glyphicon-hand-down
@@ -36,7 +50,28 @@
   %tbody
     = render partial: "user_rows", locals: {users: @users}
 
-  %tfoot
-    %tr
-      %td{colspan: "10"}
-        = link_to_next_page @users, t('.more'), remote: true, class: "btn btn-default", params: params
+  /%tfoot
+  /  %tr
+  /    %td{colspan: "10"}
+  /      = link_to_next_page @users, t('.more'), remote: true, class: "btn btn-default", params: params
+
+:javascript
+  angular.module("timeoverflow").run(function ($rootScope) {
+    $rootScope.users = #{ users_as_json };
+    $rootScope.sortBy = function(field){
+      $rootScope.sort = ($rootScope.sort == field ? ('-' + field): field);
+    }
+    $rootScope.filterTerm = ''
+  })
+  angular.module('timeoverflow').filter('timeBalance', function () {
+    return function (seconds) {
+      if(seconds != 0){
+        var minutes = Math.abs(seconds)/60;
+        var hours = (minutes/60) >> 0;
+        minutes%= 60;
+        return (seconds<0)? '-' + hours + ':' + minutes : hours + ':' + minutes
+      }else{
+        return "—";
+      }
+    };
+  })
