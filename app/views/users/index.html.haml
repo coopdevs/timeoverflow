@@ -8,7 +8,6 @@
 .navbar
   %form.navbar-form.navbar-left
     %input.form-control{type: "text", placeholder: t("global.search"), "ng-model" => "filterTerm"}
-
   %ul.nav.navbar-nav.pull-right
     - if admin?
       %li
@@ -50,18 +49,27 @@
   %tbody
     = render partial: "user_rows", locals: {users: @users}
 
-  /%tfoot
-  /  %tr
-  /    %td{colspan: "10"}
-  /      = link_to_next_page @users, t('.more'), remote: true, class: "btn btn-default", params: params
 
 :javascript
-  angular.module("timeoverflow").run(function ($rootScope) {
+  angular.module("timeoverflow").run(function ($rootScope, $location) {
     $rootScope.users = #{ users_as_json };
     $rootScope.sortBy = function(field){
       $rootScope.sort = ($rootScope.sort == field ? ('-' + field): field);
     }
-    $rootScope.filterTerm = ''
+    $rootScope.filterTerm = '';
+    $rootScope.$location = $location;
+    function locationDelegate(prop) {
+      Object.defineProperty($rootScope, prop, {
+        get: function () { return $location.search()[prop]; },
+        set: function (val) {
+          if (val) $location.search(prop, val);
+          else $location.search(prop, null);
+        }
+      });
+    }
+
+    locationDelegate('filterTerm');
+    locationDelegate('sort');
   })
   angular.module('timeoverflow').filter('timeBalance', function () {
     return function (seconds) {
