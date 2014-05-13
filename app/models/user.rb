@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   GENDERS = %w[male female]
 
+  default_scope ->{ order('users.id ASC') }
+
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   # validates :gender, presence: true, inclusion: {in: GENDERS}
