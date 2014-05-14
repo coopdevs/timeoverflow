@@ -4,6 +4,34 @@
   .col-sm-4
     .panel.panel-default
       .panel-heading
+        %h3.panel-title= t ".contact_information"
+      .panel-body
+        %p
+          %strong= Organization.human_attribute_name("email")
+          = @organization.email
+          %br
+          %strong= Organization.human_attribute_name("phone")
+          = @organization.phone
+          %br
+          %strong Web
+          = @organization.web
+          %br
+          %strong= Organization.human_attribute_name("public_opening_times")
+          %br
+          = @organization.public_opening_times
+          %br
+          %strong= Organization.human_attribute_name("address")
+          = @organization.address
+          %br
+          %strong= Organization.human_attribute_name("neighborhood")
+          = @organization.neighborhood
+          %br
+          %strong= Organization.human_attribute_name("city")
+          = @organization.city
+
+  .col-sm-3
+    .panel.panel-default
+      .panel-heading
         %h3.panel-title= t "global.information"
       .panel-body
         %p
@@ -18,12 +46,13 @@
           %br
           %strong= t "global.balance"
           = seconds_to_hm(@organization.account.try(:balance) || mdash)  
-  .col-sm-8
+  .col-sm-5
     %ul.nav.nav-pills.pull-right
-      %li
-        %a{href: organizations_path}
-          %span.glyphicon.glyphicon-hand-left
-          = t 'global.back'
+      - if superadmin?
+        %li
+          %a{href: organizations_path}
+            %span.glyphicon.glyphicon-hand-left
+            = t 'global.back'
       - if admin?
         %li
           %a{href: edit_organization_path(@organization)}

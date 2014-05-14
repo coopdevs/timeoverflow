@@ -33,8 +33,8 @@ es:
 
     attributes:
       common: &common_attributes
-        created_at: 'Creado:'
-        updated_at: 'Actualizado:'
+        created_at: Creado
+        updated_at: Actualizado
       user:
         <<: *common_attributes
         username: Nombre
@@ -56,6 +56,13 @@ es:
         name: Nombre
         reg_number_seq: Número de secuencia de usuario
         theme: Tema visual
+        email: Correo
+        phone: Teléfono
+        public_opening_times: Horario de atención al público
+        description: Descripción
+        address: Dirección
+        neighborhood: Barrio
+        city: Ciudad
       category:
         <<: *common_attributes
         name: Nombre
@@ -152,6 +159,8 @@ es:
       member_count: Número de usuarios
     new:
       new: Nuevo banco
+    show:
+      contact_information: Información de contacto
 
   transfers:
     computation:

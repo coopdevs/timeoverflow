@@ -60,7 +60,7 @@ class OrganizationsController < ApplicationController
 
   private
   def organization_params
-    params[:organization].permit(*%w"name theme")
+    params[:organization].permit(*%w"name theme email phone web public_opening_times description address neighborhood city domain")
   end
 
 
