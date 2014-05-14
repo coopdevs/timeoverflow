@@ -176,8 +176,8 @@ es:
     filter: Filtro
     all: Todo
     search: Buscar
-    demote: Degradar
-    promote: Promover
+    demote: Convertir en usuario normal
+    promote: Convertir en administrador
 
   active_admin:
     comments:
