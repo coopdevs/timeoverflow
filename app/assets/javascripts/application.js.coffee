@@ -16,8 +16,11 @@
 #= require datepicker
 #= require give_time
 #  require_tree .
+#= require ui-bootstrap-tpls-0.11.0
+#= require_tree ./modules
 
-angular.module "timeoverflow", []
+
+angular.module "timeoverflow", ["ng-rails-csrf", 'ui.bootstrap']
 
 $(document).on 'click', 'a[data-popup]', (event) ->
   window.open($(this).attr('href'), 'popup', 'width=600,height=600')
