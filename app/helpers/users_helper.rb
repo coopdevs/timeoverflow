@@ -17,8 +17,8 @@ module UsersHelper
       cancel_link: (superadmin? || admin?)? member_path(@memberships[user.id]) : "",
       manage_link: ((superadmin? || admin?) && user != current_user)? toggle_manager_member_path(@memberships[user.id]) : "",
       manager: @memberships[user.id].manager ||= false,
-      activate_link: (superadmin?)? user_toggle_active_path(user) : "",
-      active: user.active?
+      activate_link: (superadmin? || admin?)? toggle_active_member_path(@memberships[user.id]) : "",
+      active: @memberships[user.id].active?
     }
     end.to_json.html_safe
   end

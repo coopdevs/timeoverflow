@@ -14,4 +14,10 @@ class MembersController < ApplicationController
     redirect_to :back
   end
 
+  def toggle_active
+    current_organization.members.find(params[:id]).toggle(:active).save!
+    
+    redirect_to :back
+  end
+
 end

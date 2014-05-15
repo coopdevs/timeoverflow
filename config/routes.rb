@@ -31,6 +31,7 @@ Timeoverflow::Application.routes.draw do
   resources :members, only: [:destroy] do
     member do
       patch :toggle_manager
+      patch :toggle_active
     end
   end
 

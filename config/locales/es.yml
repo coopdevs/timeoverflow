@@ -112,7 +112,8 @@ es:
       activate: Activar
       deactivate: Desactivar
       manage_warning: "Va a cambiar los privilegios del usuario %{user}"
-      cancel_warning: "Va a eliminar del banco al usuario %{user}"  
+      cancel_warning: "Va a eliminar del banco al usuario %{user}" 
+      active_warning: "Va a cambiar el estado de la cuenta del usuario %{user}" 
 
   offers:
     index:
