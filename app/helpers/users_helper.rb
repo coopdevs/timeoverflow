@@ -1,6 +1,7 @@
 module UsersHelper
 
   def users_as_json
+    @users = (admin? || superadmin?)? @users : @users.actives
     @users.map do |user|
     {
       id: user.id,

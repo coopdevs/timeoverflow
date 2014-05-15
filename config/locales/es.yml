@@ -103,6 +103,7 @@ es:
       data: Datos del usuario
       categories: Servicios Ofrecidos
       account: Últimos movimientos
+      inactive: "(Inactivo)"
     give_time:
       give_time: Dar Tiempo a
     form:

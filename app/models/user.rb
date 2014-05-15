@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
   default_scope ->{ order('users.id ASC') }
 
+  scope :actives, -> { where({ members: { active: true } }) }
+
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   # validates :gender, presence: true, inclusion: {in: GENDERS}
@@ -55,5 +57,9 @@ class User < ActiveRecord::Base
       end
     end
     member
+  end
+
+  def active?(organization)
+    members.where(organization: organization, active: true).exists?
   end
 end

@@ -3,6 +3,7 @@
     %img{ "ng-src" => "{{user.avatar}}", height: "32px", width: "32px" }
   %td {{user.member_id}}
   %td
+    %span.glyphicon.glyphicon-time{ "ng-if" => "!user.active" }
     %a{ "ng-href" => "{{user.url}}" }
       {{user.username}}
   %td 
