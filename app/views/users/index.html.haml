@@ -49,9 +49,15 @@
   %tbody
     = render partial: "user_rows", locals: {users: @users}
 
+%script{type: "text/ng-template", id: "confirm_promote.html"}
+  .modal-body= t('.manage_warning_angular')
+  .modal-footer
+    %button.btn.btn-primary{"ng-click" => "$close(true)"} OK
+    %button.btn.btn-warning{"ng-click" => "$dismiss()"} NO
+
 
 :javascript
-  angular.module("timeoverflow").run(function ($rootScope, $location) {
+  angular.module("timeoverflow").run(function ($rootScope, $location, $http, $modal) {
     $rootScope.users = #{ users_as_json };
     $rootScope.sortBy = function(field){
       $rootScope.sort = ($rootScope.sort == field ? ('-' + field): field);
@@ -70,7 +76,20 @@
 
     locationDelegate('filterTerm');
     locationDelegate('sort');
+
+    $rootScope.promote = function (user) {
+      $modal.open({
+        templateUrl: 'confirm_promote.html',
+        size: 'sm',
+        scope: { user: user.username }
+      }).result.then(function () {
+        $http.put(user.manage_link);
+      }).then(function () {
+        user.manager = !user.manager;
+      })
+    }
   })
+
   angular.module('timeoverflow').filter('timeBalance', function () {
     return function (seconds) {
       if(seconds != 0){
