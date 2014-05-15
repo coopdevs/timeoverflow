@@ -21,10 +21,10 @@
         %span.glyphicon.glyphicon-ban-circle
         = t "global.cancel_membership"
 
-      %a.action{ "ng-if" => "user.manage_link", "ng-href" => "{{user.manage_link}}", :data => {:method => :patch, :confirm => t('.manage_warning', :user => "{{user.username}}")} }
+      %a.action{ href: "", "ng-if" => "user.manage_link", "ng-click" => "promote(user)"}
         %span{ "ng-if" => "user.manager" }
           .glyphicon.glyphicon-arrow-down
-          = t "global.demote" 
+          = t "global.demote"
         %span{ "ng-if" => "!user.manager" }
           .glyphicon.glyphicon-arrow-up
           = t "global.promote"
