@@ -1,6 +1,8 @@
 %div{"ng-controller" => "UserListCtrl"}
   %h1
     = User.model_name.human.pluralize
+    &mdash;
+    = link_to current_organization.name, organization_path(current_organization)
     - if params[:q].present?
       %small
         %span.glyphicon.glyphicon-search
@@ -67,5 +69,3 @@
   angular.module("timeoverflow").run(function ($rootScope, $location, $http, $modal) {
     $rootScope.users = #{ users_as_json };
   });
-
-

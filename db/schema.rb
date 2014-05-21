@@ -96,6 +96,15 @@ ActiveRecord::Schema.define(version: 20140514225527) do
     t.datetime "updated_at"
     t.integer  "reg_number_seq"
     t.string   "theme"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "web"
+    t.text     "public_opening_times"
+    t.text     "description"
+    t.text     "address"
+    t.string   "neighborhood"
+    t.string   "city"
+    t.string   "domain"
   end
 
   create_table "posts", force: true do |t|

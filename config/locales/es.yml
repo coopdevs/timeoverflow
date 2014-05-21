@@ -56,6 +56,13 @@ es:
         name: Nombre
         reg_number_seq: Número de secuencia de usuario
         theme: Tema visual
+        email: Correo
+        phone: Teléfono
+        public_opening_times: Horario de atención al público
+        description: Descripción
+        address: Dirección
+        neighborhood: Barrio
+        city: Ciudad
       category:
         <<: *common_attributes
         name: Nombre
@@ -156,6 +163,8 @@ es:
       member_count: Número de usuarios
     new:
       new: Nuevo banco
+    show:
+      contact_information: Información de contacto
 
   transfers:
     computation:
@@ -181,6 +190,15 @@ es:
     filter: Filtro
     all: Todo
     search: Buscar
+    information: Información
+    member_count: 'Número de usuarios:'
+    balance: 'Balance:'
+    movements: Movimientos
+    date: Fecha
+    source_destination: 'Origen/Destino'
+    announcements: Anuncio
+    reason: Razón
+    amount: Cantidad
     demote: Convertir en usuario normal
     promote: Convertir en administrador
 
