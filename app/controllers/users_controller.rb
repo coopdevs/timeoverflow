@@ -8,8 +8,6 @@ class UsersController < ApplicationController
 
   def index
     @users = scoped_users
-    @users = @users.fuzzy_search(params[:q]) if params[:q].present?
-    @users = @users.page(params[:page]).per(10)
     @memberships = current_organization.members.where(user_id: @users.map(&:id)).includes(:account).each_with_object({}) do |mem, ob|
       ob[mem.user_id] = mem
     end

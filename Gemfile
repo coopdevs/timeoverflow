@@ -19,6 +19,7 @@ gem 'dalli'
 gem 'sass-rails'
 # gem 'compass-rails'
 gem 'coffee-rails'
+gem 'ngannotate-rails'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
@@ -47,7 +48,7 @@ gem "paranoia"
 gem "rest-client"
 
 gem 'memcachier'
-gem 'newrelic_rpm'
+gem 'rollbar'
 
 gem "rails-erd", group: :development
 

@@ -33,7 +33,7 @@
         = t "helpers.submit.create", model: Inquiry.model_name.human
 
 .inquiries
-  = render :partial => 'shared/posts', :locals => { :posts => @inquiries }
+  = render :partial => 'shared/posts', :locals => { :posts => @inquiries.actives }
 
 = link_to_next_page @inquiries, t('.more'), remote: true, params: params
 
