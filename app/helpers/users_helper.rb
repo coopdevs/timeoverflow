@@ -3,7 +3,7 @@ module UsersHelper
   def users_as_json
     @users = (admin? || superadmin?)? @users : @users.actives
     @users.map do |user|
-      membership = membership
+      membership = @memberships[user.id]
       {
         id: user.id,
         avatar: avatar_url(user),
