@@ -47,7 +47,7 @@ gem "paranoia"
 gem "rest-client"
 
 gem 'memcachier'
-gem 'newrelic_rpm'
+gem 'rollbar'
 
 gem "rails-erd", group: :development
 

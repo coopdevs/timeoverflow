@@ -136,7 +136,6 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.2)
-    newrelic_rpm (3.6.7.159)
     orm_adapter (0.5.0)
     paranoia (2.0.0)
       activerecord (~> 4.0)
@@ -186,6 +185,8 @@ GEM
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rollbar (0.12.18)
+      multi_json (~> 1.3)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -266,7 +267,6 @@ DEPENDENCIES
   jquery-rails
   kaminari
   memcachier
-  newrelic_rpm
   paranoia
   pg
   pundit
@@ -277,6 +277,7 @@ DEPENDENCIES
   rake
   rdiscount
   rest-client
+  rollbar
   rspec-rails
   sass-rails
   shelly-dependencies
