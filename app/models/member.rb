@@ -8,6 +8,8 @@ class Member < ActiveRecord::Base
   after_create :create_account
   before_validation :assign_registration_number, :on => :create
 
+  scope :by_month, ->(month) { where({ created_at: month.beginning_of_month..month.end_of_month})}
+
   validates :organization_id, presence: true
   validates :member_uid,
     presence: true,
@@ -21,4 +23,7 @@ class Member < ActiveRecord::Base
     self.member_uid ||= organization.next_reg_number_seq
   end
 
+  def days_without_swaps
+    (DateTime.now.to_date - account.updated_at.to_date).to_i
+  end
 end

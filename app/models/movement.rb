@@ -14,4 +14,6 @@ class Movement < ActiveRecord::Base
   end
 
   has_one :other_side, (->(self_)  { where ["NOT movements.id = #{self_.id}"] }), through: :transfer, source: :movements
+
+  scope :by_month, ->(month) { where({ created_at: month.beginning_of_month..month.end_of_month})}
 end
