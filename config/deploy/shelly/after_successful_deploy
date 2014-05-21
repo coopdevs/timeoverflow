@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require 'net/http'
+require 'uri'
+require 'dotenv'
+
+Dotenv.load(".env", ".env.production")
+
+def notify_rollbar
+  data = {
+    access_token: ENV['ROLLBAR_ACCESS_TOKEN'],
+    environment: ENV['RAILS_ENV'],
+    revision: ENV['DEPLOYED_REVISION'],
+    local_username: ENV['DEPLOY_AUTHOR']
+  }
+
+  uri = URI('https://api.rollbar.com/api/1/deploy/')
+
+  Net::HTTP.post_form uri, data
+end
+
+notify_rollbar

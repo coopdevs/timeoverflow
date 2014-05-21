@@ -56,6 +56,13 @@ es:
         name: Nombre
         reg_number_seq: Número de secuencia de usuario
         theme: Tema visual
+        email: Correo
+        phone: Teléfono
+        public_opening_times: Horario de atención al público
+        description: Descripción
+        address: Dirección
+        neighborhood: Barrio
+        city: Ciudad
       category:
         <<: *common_attributes
         name: Nombre
@@ -95,6 +102,9 @@ es:
 
     index:
       create: Crear nuevo usuario
+      manage_warning_angular: "Va a cambiar los privilegios del usuario {{username}}"
+      cancel_warning_angular: "Va a eliminar del banco al usuario {{username}}"
+      active_warning_angular: "Va a cambiar el estado de la cuenta del usuario {{username}}"
     new:
       new_user: Nuevo usuario
     show:
@@ -104,6 +114,7 @@ es:
       data: Datos del usuario
       categories: Servicios Ofrecidos
       account: Últimos movimientos
+      inactive: "(Inactivo)"
     give_time:
       give_time: Dar Tiempo a
     form:
@@ -112,6 +123,9 @@ es:
     user_rows:
       activate: Activar
       deactivate: Desactivar
+      manage_warning: "Va a cambiar los privilegios del usuario %{user}"
+      cancel_warning: "Va a eliminar del banco al usuario %{user}"
+      active_warning: "Va a cambiar el estado de la cuenta del usuario %{user}"
 
   offers:
     index:
@@ -162,6 +176,8 @@ es:
       member_count: Número de usuarios
     new:
       new: Nuevo banco
+    show:
+      contact_information: Información de contacto
 
   transfers:
     computation:
@@ -181,12 +197,23 @@ es:
     delete: Borrar
     save: Guardar
     add_new: Crear nuevo
-    cancel_membership: Cancelar afiliación
+    cancel_membership: Borrar definitivamente
     back: Atrás
     give_time: Transferir tiempo
     filter: Filtro
     all: Todo
     search: Buscar
+    information: Información
+    member_count: 'Número de usuarios:'
+    balance: 'Balance:'
+    movements: Movimientos
+    date: Fecha
+    source_destination: 'Origen/Destino'
+    announcements: Anuncio
+    reason: Razón
+    amount: Cantidad
+    demote: Convertir en usuario normal
+    promote: Convertir en administrador
 
   active_admin:
     comments:

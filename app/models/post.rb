@@ -18,7 +18,8 @@ class Post < ActiveRecord::Base
   default_scope ->{ order('posts.updated_at DESC') }
 
   scope :by_category, ->(cat) { where(category_id: cat) if cat }
-
+  scope :actives, -> { select{ |p| p.organization.members.find_by_member_uid(p.member_id).active == true } }
+  
   validates :user, presence: true
 
   def to_s
