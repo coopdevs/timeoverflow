@@ -11,25 +11,25 @@
       {{user.email}}
   %td {{user.phone}}
   %td {{user.alt_phone}}
-  %td {{user.balance | timeBalance}} 
+  %td {{user.balance | timeBalance}}
   %td.hover-actions
     %a.action{ "ng-if" => "user.edit_link", "ng-href" => "{{user.edit_link}}"}
       %span.glyphicon.glyphicon-pencil
       = t "global.edit"
 
-      %a.action{ "ng-if" => "user.cancel_link", "ng-href" => "{{user.cancel_link}}", :data => {:method => :delete, :confirm => t('.cancel_warning', :user => "{{user.username}}")}}
-        %span.glyphicon.glyphicon-ban-circle
-        = t "global.cancel_membership"
+    %a.action{ "ng-if" => "user.cancel_link && !user.active", "ng-href" => "{{user.cancel_link}}", :data => {:method => :delete, :confirm => t('.cancel_warning', :user => "{{user.username}}")}}
+      %span.glyphicon.glyphicon-ban-circle
+      = t "global.cancel_membership"
 
-      %a.action{ href: "", "ng-if" => "user.manage_link", "ng-click" => "promote(user)"}
-        %span{ "ng-if" => "user.manager" }
-          .glyphicon.glyphicon-arrow-down
-          = t "global.demote"
-        %span{ "ng-if" => "!user.manager" }
-          .glyphicon.glyphicon-arrow-up
-          = t "global.promote"
+    %a.action{ href: "", "ng-if" => "user.toggle_manager_link && user.active", "ng-click" => "toggle_manager(user)"}
+      %span{ "ng-if" => "user.manager" }
+        .glyphicon.glyphicon-arrow-down
+        = t "global.demote"
+      %span{ "ng-if" => "!user.manager" }
+        .glyphicon.glyphicon-arrow-up
+        = t "global.promote"
 
-    %a.action{ "ng-if" => "user.activate_link", "ng-href" => "{{user.activate_link}}", :data => {:method => :patch, :confirm => t('.active_warning', :user => "{{user.username}}")}}
+    %a.action{  href: "", "ng-if" => "user.toggle_active_link", "ng-click" => "toggle_active(user)"}
       %span{ "ng-if" => "user.active" }
         .glyphicon.glyphicon-remove
         = t ".deactivate"
