@@ -1,11 +1,11 @@
 angular.module('timeoverflow').controller 'UserListCtrl', ($scope, $modal, $http, $location) ->
 
   $scope.sortBy = (field) ->
-    $scope.sort = if $scope.sort == field then '-#{field}' else field
+    $scope.sort = if $scope.sort == field then "-#{field}" else field
   $scope.filterTerm = ''
   $scope.$location = $location
 
-  for prop in ['filterTerm', 'sort']
+  ['filterTerm', 'sort'].map (prop) ->
     Object.defineProperty($scope, prop,
       get: -> $location.search()[prop]
       set: (val) -> $location.search(prop, val || null)
