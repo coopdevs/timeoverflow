@@ -1,2 +1,2 @@
-$('.inquiries').append('#{escape_javascript(render partial: "shared/posts", :locals => { :posts => @inquiries })}');
-$('.inquiries ~ a[rel=next]').replaceWith('#{link_to_next_page @inquiries, t('.more'), remote: true, params: params}');
+$('.inquiries').append('#{escape_javascript(render partial: "shared/posts", :locals => { :posts => @inquiries.actives })}');
+$('.inquiries ~ a[rel=next]').replaceWith('#{link_to_next_page @inquiries.actives, t('.more'), remote: true, params: params}');

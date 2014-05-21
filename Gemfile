@@ -19,6 +19,7 @@ gem 'dalli'
 gem 'sass-rails'
 # gem 'compass-rails'
 gem 'coffee-rails'
+gem 'ngannotate-rails'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'

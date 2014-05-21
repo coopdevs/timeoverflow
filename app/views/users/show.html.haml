@@ -1,4 +1,7 @@
 %h1
+  %small
+    - unless  @user.active?(current_organization)
+      = t ".inactive"
   = @user.username
   %small
     = @user.email
