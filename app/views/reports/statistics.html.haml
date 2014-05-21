@@ -9,7 +9,7 @@
       %li
         = t ".users_reg"
         .badge
-          = @members.count  
+          = @members.count
       %li
         = t ".num_swaps"
         .badge
@@ -35,7 +35,7 @@
         %tr
           %th ID
           %th= User.human_attribute_name(:username)
-          %th= t ".days_without_swaps" 
+          %th= t ".days_without_swaps"
           %th= t ".last_movement"
       %tbody
       / Por días sin movimientos
@@ -44,7 +44,7 @@
           %td= mem.member_uid
           %td= link_to mem.user.username, mem.user
           %td= (DateTime.now.to_date - mem.account.updated_at.to_date).to_i
-          %td= (mem.account.balance.zero?)? t(".no_movements") : l(mem.account.updated_at, format: :short)
+          %td= (mem.account.balance.blank? || mem.account.balance.zero?) ? t(".no_movements") : l(mem.account.updated_at, format: :short)
 
 .panel.panel-default
   .panel-heading
@@ -56,15 +56,15 @@
     - @members.each do |m|
       - age = (m.user.date_of_birth.present?)? age(m.user.date_of_birth) : -1
       - case age
-        - when 0 .. 17 
+        - when 0 .. 17
           - @date['-17']+= 1
         - when 18 .. 24
           - @date['18-24']+= 1
-        - when 25 .. 34 
-          - @date['25-34']+= 1 
+        - when 25 .. 34
+          - @date['25-34']+= 1
         - when 35 .. 44
           - @date['35-44']+= 1
-        - when 45 .. 54 
+        - when 45 .. 54
           - @date['45-54']+= 1
         - when 55 .. 64
           - @date['55-64']+= 1
@@ -73,7 +73,7 @@
         - else
           - @date['Desconocida']+= 1
     #pie
-    
+
 :javascript
   window.onload = function () {
     //globales
@@ -113,15 +113,15 @@
       series: [{
         name: "#{t '.users_reg'}",
         data: #{@user_reg_months.to_json}
-    
+
         }, {
         name: "#{t ".num_swaps"}",
         data: #{@num_swaps_months.to_json}
-    
+
         }, {
         name: "#{t ".total_hours"}",
         data: #{@hours_swaps_months.to_json}
-    
+
         }]
       });
     //demograficos
