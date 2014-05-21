@@ -18,6 +18,7 @@
 #  require_tree .
 #= require ui-bootstrap-tpls-0.11.0
 #= require_tree ./modules
+#= require_tree ./app
 
 
 angular.module "timeoverflow", ["ng-rails-csrf", 'ui.bootstrap']
