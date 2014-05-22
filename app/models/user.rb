@@ -33,9 +33,12 @@ class User < ActiveRecord::Base
   has_many :offers
   has_many :inquiries
 
+  def as_member_of(organization)
+    organization && members.find_by(organization: organization)
+  end
 
   def admins?(organization)
-    members.where(organization: organization, manager: true).exists?
+    organization && !!(as_member_of(organization).try :manager)
   end
 
   alias :manages? :admins?
@@ -51,15 +54,12 @@ class User < ActiveRecord::Base
   end
 
   def add_to_organization organization
-    unless members.where(organization: organization).exists?
-      member = members.create(organization: organization) do |member|
-        member.entry_date = DateTime.now.utc
-      end
+    organization && members.find_or_create_by(organization: organization) do |member|
+      member.entry_date = DateTime.now.utc
     end
-    member
   end
 
   def active?(organization)
-    members.where(organization: organization, active: true).exists?
+    organization && !!(as_member_of(organization).try :active)
   end
 end
