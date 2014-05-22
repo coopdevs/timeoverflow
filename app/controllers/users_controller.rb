@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = scoped_users.find(params[:id])
+    @user = current_user if current_user.id == params[:id].to_i
+    @user ||= scoped_users.find(params[:id])
   end
 
   def new
@@ -22,7 +23,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = scoped_users.find(params[:id])
+    @user = current_user if current_user.id == params[:id].to_i
+    @user ||= scoped_users.find(params[:id])
   end
 
   def create
@@ -48,7 +50,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = scoped_users.find(params[:id])
+    @user = current_user if current_user.id == params[:id].to_i
+    @user ||= scoped_users.find(params[:id])
     if @user.update_attributes(user_params)
       respond_with @user, location: @user
     else
