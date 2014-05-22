@@ -10,7 +10,7 @@ ActiveAdmin.register User do
     column :organizations do |u|
       u.organizations.map(&:to_s).join(", ")
     end
-    default_actions
+    actions
   end
 
   filter :organizations

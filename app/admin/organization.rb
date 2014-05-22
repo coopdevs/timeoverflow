@@ -6,7 +6,7 @@ ActiveAdmin.register Organization do
     column :updated_at
     # column :email
     # column :domain
-    default_actions
+    actions
   end
 
   form do |f|

@@ -9,7 +9,7 @@ ActiveAdmin.register Offer do
     column :user
     column :category
     column :tag_list
-    default_actions
+    actions
   end
 
   form do |f|

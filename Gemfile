@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '>= 4.0.0'
+gem 'rails', '~> 4.1'
 gem 'rails-i18n'
 gem 'rails_12factor'
 gem "rdiscount"
@@ -18,7 +18,7 @@ gem 'hstore_translate'
 
 gem 'dalli'
 
-gem 'sass-rails'
+gem 'sass-rails', github: 'rails/sass-rails'
 # gem 'compass-rails'
 gem 'coffee-rails'
 gem 'ngannotate-rails'
@@ -41,7 +41,7 @@ gem 'textacular', "~> 3.0", require: 'textacular/rails'
 gem "haml-rails"
 gem 'turbolinks'
 
-gem "simple_form", "~> 3.0.0"
+gem "simple_form", ">= 3.0.0"
 
 gem "awesome_print"
 gem "jbuilder"

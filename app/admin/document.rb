@@ -7,7 +7,7 @@ ActiveAdmin.register Document do
     column :documentable
     column :label
     column :title
-    default_actions
+    actions
   end
 
   show do |t|

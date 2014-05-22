@@ -4,7 +4,7 @@ ActiveAdmin.register Category do
     selectable_column
     id_column
     column :name, sortable: false
-    default_actions
+    actions
   end
 
   form do |f|
