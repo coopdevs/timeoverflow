@@ -42,12 +42,8 @@ Timeoverflow::Application.routes.draw do
     end
   end
 
-
-  root to: "application#index"
-
   resource :terms, only: [:show] do
     post :accept
   end
-
 
 end

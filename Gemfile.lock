@@ -109,6 +109,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashr (0.0.22)
+    high_voltage (2.1.0)
     hike (1.2.3)
     hstore_translate (0.0.12)
       activerecord (>= 3.1.0)
@@ -263,6 +264,7 @@ DEPENDENCIES
   foreman
   haml-rails
   has_scope
+  high_voltage (~> 2.1.0)
   hstore_translate
   inherited_resources
   jbuilder

@@ -5,6 +5,8 @@ gem 'rails-i18n'
 gem 'rails_12factor'
 gem "rdiscount"
 
+gem 'high_voltage', '~> 2.1.0'
+
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'has_scope'
