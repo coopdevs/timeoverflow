@@ -2,5 +2,5 @@ $ ->
   $("input.datepicker").each (i) ->
     $(this).datepicker
       altFormat: "yy-mm-dd"
-      dateFormat: "mm/dd/yy"
+      dateFormat: "dd/mm/yy"
       altField: $(this).next()
