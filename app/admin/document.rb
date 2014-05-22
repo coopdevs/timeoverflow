@@ -1,5 +1,5 @@
 ActiveAdmin.register Document do
-  permit_params :title, :content, :documentable_id, :documentable_type, :label
+  permit_params *Document.attribute_names
 
   index do |t|
     selectable_column

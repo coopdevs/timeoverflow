@@ -20,11 +20,11 @@ ActiveAdmin.register Category do
       row :updated_at
       row :name_translations do
         cat.disable_fallback
-        content_tag :dl do
+        content_tag :div do
           I18n.available_locales.map do |loc|
             next unless cat.send("name_#{loc}")
-            content_tag(:dt, loc) +
-            content_tag(:dd, cat.send("name_#{loc}"))
+            content_tag(:strong, "#{loc}: ") +
+            content_tag(:span, cat.send("name_#{loc}"))
           end.compact.sum
         end
       end
@@ -32,10 +32,6 @@ ActiveAdmin.register Category do
     active_admin_comments
   end
 
-  controller do
-    def permitted_params
-      params.permit!
-    end
-  end
+  permit_params :name
 
 end

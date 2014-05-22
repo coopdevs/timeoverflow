@@ -13,12 +13,6 @@ class Post < ActiveRecord::Base
 
   has_many :user_members, class_name: "Member", through: :user, source: :members
 
-  has_and_belongs_to_many :joined_users,
-    class_name: "User",
-    join_table: "user_joined_post",
-    foreign_key: "post_id",
-    association_foreign_key: "user_id"
-
   default_scope ->{ order('posts.updated_at DESC') }
 
   scope :by_category, ->(cat) { where(category_id: cat) if cat }

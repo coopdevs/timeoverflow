@@ -57,9 +57,5 @@ ActiveAdmin.register User do
     end
   end
 
-  controller do
-    def permitted_params
-      params.permit!
-    end
-  end
+  permit_params *User.attribute_names, members_attributes: Member.attribute_names
 end
