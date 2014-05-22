@@ -14,9 +14,6 @@ class ApplicationController < ActionController::Base
   MissingTOSAcceptance = Class.new(Exception)
   OutadedTOSAcceptance = Class.new(Exception)
 
-  def index
-  end
-
   before_filter :set_locale
 
   def set_locale
