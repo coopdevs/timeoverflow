@@ -82,3 +82,8 @@ ul.statistics li{
 #chart{
   clear: both;
 }
+
+// if not navbar hidden datepicker in small windows
+.ui-datepicker{
+  z-index: 1000 !important;
+}

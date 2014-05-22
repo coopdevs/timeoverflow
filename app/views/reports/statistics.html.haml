@@ -20,8 +20,8 @@
           = seconds_to_hm @total_hours
     %form.navbar-form.navbar-right
       .form-group
-        %input.form-control{type: "date", placeholder: "mm/aaaa inicial", name: "ini", value: params[:ini]}
-        %input.form-control{type: "date", placeholder: "mm/aaaa final", name: "fin", value: params[:fin]}
+        %input.form-control{class: "datepicker", placeholder: "mm/aaaa inicial", name: "ini", value: params[:ini]}
+        %input.form-control{class: "datepicker", placeholder: "mm/aaaa final", name: "fin", value: params[:fin]}
         %button.btn.btn-default{type: "submit"}= "Mostrar"
     #chart
 
