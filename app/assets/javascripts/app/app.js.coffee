@@ -31,6 +31,12 @@ angular.module('timeoverflow').controller 'UserListCtrl', ($scope, $modal, $http
     .then(-> $http.put(user.toggle_active_link))
     .then(-> user.active = !user.active)
 
+# override this in a view where the organizations are needed
+angular.module('timeoverflow').value 'Organizations', []
+
+angular.module('timeoverflow').controller 'OrganizationListCtrl', ($scope, Organizations) ->
+  $scope.organizations = Organizations
+
 
 angular.module('timeoverflow').filter 'timeBalance', ->
   (seconds) ->

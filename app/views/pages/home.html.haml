@@ -2,6 +2,8 @@
   TimeOverflow - Gestión on-line de Bancos de Tiempo
 
 .container-inner
+  - if current_user and !current_organization
+    = render 'organization_list'
   .row
     .col-sm-6
       .text-center

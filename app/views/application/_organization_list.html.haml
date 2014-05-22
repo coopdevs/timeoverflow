@@ -1,0 +1,29 @@
+:javascript
+  angular.module('timeoverflow').value('Organizations', #{ raw Organization.all.to_json(only: [:name, :email, :phone, :public_opening_times, :city, :neighborhood]) });
+
+
+.jumbotron{"ng-controller" => "OrganizationListCtrl"}
+  %p.lead
+    Bienvenido en TimeOverflow,
+    = current_user.to_s
+    %br/
+    No eres miembro de ningún banco de tiempo, para usar la plataforma tendrás que ponerte en contacto
+    con uno de los bancos de tiempo que están integrados en la plataforma:
+
+  %table.table
+    %thead
+      %tr
+        %th Banco de tiempo
+        %th e-mail
+        %th Teléfono
+        %th Horario de atención
+        %th Ciudad
+        %th Barrio
+    %tbody
+      %tr{"ng-repeat" => "org in organizations"}
+        %td {{ org.name }}
+        %td {{ org.email }}
+        %td {{ org.phone }}
+        %td {{ org.public_opening_times }}
+        %td {{ org.city }}
+        %td {{ org.neighborhood }}
