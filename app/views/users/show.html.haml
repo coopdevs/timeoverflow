@@ -35,7 +35,7 @@
 
 
     %dl.dl-horizontal
-      - if @user.date_of_birth.present?
+      - if @user.date_of_birth.present? && admin?
         %dt= User.human_attribute_name(:date_of_birth)
         %dd= l @user.date_of_birth
       - phones = [@user.phone, @user.alt_phone].map(&:presence).compact
