@@ -1,78 +1,79 @@
-%h1
-  = t ".statistics"
-.panel.panel-default
-  .panel-heading
-    .panel-title
-      = t ".global_activity"
-  .panel-body
-    %ul.nav.nav-pills.statistics
-      %li
-        = t ".users_reg"
-        .badge
-          = @members.count
-      %li
-        = t ".num_swaps"
-        .badge
-          = @num_swaps
-      %li
-        = t ".total_hours"
-        .badge
-          = seconds_to_hm @total_hours
-    %form.navbar-form.navbar-right
-      .form-group
-        %input.form-control{type: "date", placeholder: "mm/aaaa inicial", name: "ini", value: params[:ini]}
-        %input.form-control{type: "date", placeholder: "mm/aaaa final", name: "fin", value: params[:fin]}
-        %button.btn.btn-default{type: "submit"}= "Mostrar"
-    #chart
+%div{"ng-controller" => ""}  
+  %h1
+    = t ".statistics"
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        = t ".global_activity"
+    .panel-body
+      %ul.nav.nav-pills.statistics
+        %li
+          = t ".users_reg"
+          .badge
+            = @members.count
+        %li
+          = t ".num_swaps"
+          .badge
+            = @num_swaps
+        %li
+          = t ".total_hours"
+          .badge
+            = seconds_to_hm @total_hours
+      %form.navbar-form.navbar-right
+        .form-group
+          %input.form-control{id: "datepicker_from", placeholder: "mm/aaaa inicial", name: "ini", value: params[:ini]}
+          %input.form-control{id: "datepicker_to", placeholder: "mm/aaaa final", name: "fin", value: params[:fin]}
+          %button.btn.btn-default{type: "submit"}= "Mostrar"
+      #chart
 
-.panel.panel-default
-  .panel-heading
-    .panel-title
-      = t ".inactive_users"
-  .panel-body
-    %table.table.table-hover.table-condensed
-      %thead
-        %tr
-          %th ID
-          %th= User.human_attribute_name(:username)
-          %th= t ".days_without_swaps"
-          %th= t ".last_movement"
-      %tbody
-      / Por días sin movimientos
-      - @members.includes(:account).sort_by(&:days_without_swaps).reverse.map{|a| a unless a.days_without_swaps.zero?}.compact.each do |mem|
-        %tr
-          %td= mem.member_uid
-          %td= link_to mem.user.username, mem.user
-          %td= (DateTime.now.to_date - mem.account.updated_at.to_date).to_i
-          %td= (mem.account.balance.blank? || mem.account.balance.zero?) ? t(".no_movements") : l(mem.account.updated_at, format: :short)
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        = t ".inactive_users"
+    .panel-body
+      %table.table.table-hover.table-condensed
+        %thead
+          %tr
+            %th ID
+            %th= User.human_attribute_name(:username)
+            %th= t ".days_without_swaps"
+            %th= t ".last_movement"
+        %tbody
+        / Por días sin movimientos
+        - @members.includes(:account).sort_by(&:days_without_swaps).reverse.map{|a| a unless a.days_without_swaps.zero?}.compact.each do |mem|
+          %tr
+            %td= mem.member_uid
+            %td= link_to mem.user.username, mem.user
+            %td= (DateTime.now.to_date - mem.account.updated_at.to_date).to_i
+            %td= (mem.account.balance.blank? || mem.account.balance.zero?) ? t(".no_movements") : l(mem.account.updated_at, format: :short)
 
-.panel.panel-default
-  .panel-heading
-    .panel-title
-      = t ".demographics"
-  .panel-body
-    - age = 0
-    - @date = { 'Desconocida' => 0, '-17' => 0, '18-24' =>  0, '25-34' => 0, '35-44' => 0, '45-54' => 0, '55-64' => 0, '65+' => 0 }
-    - @members.each do |m|
-      - age = (m.user.date_of_birth.present?)? age(m.user.date_of_birth) : -1
-      - case age
-        - when 0 .. 17
-          - @date['-17']+= 1
-        - when 18 .. 24
-          - @date['18-24']+= 1
-        - when 25 .. 34
-          - @date['25-34']+= 1
-        - when 35 .. 44
-          - @date['35-44']+= 1
-        - when 45 .. 54
-          - @date['45-54']+= 1
-        - when 55 .. 64
-          - @date['55-64']+= 1
-        - when 65 .. 100
-          - @date['65+']+= 1
-        - else
-          - @date['Desconocida']+= 1
-    #pie
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        = t ".demographics"
+    .panel-body
+      - age = 0
+      - @date = { 'Desconocida' => 0, '-17' => 0, '18-24' =>  0, '25-34' => 0, '35-44' => 0, '45-54' => 0, '55-64' => 0, '65+' => 0 }
+      - @members.each do |m|
+        - age = (m.user.date_of_birth.present?)? age(m.user.date_of_birth) : -1
+        - case age
+          - when 0 .. 17
+            - @date['-17']+= 1
+          - when 18 .. 24
+            - @date['18-24']+= 1
+          - when 25 .. 34
+            - @date['25-34']+= 1
+          - when 35 .. 44
+            - @date['35-44']+= 1
+          - when 45 .. 54
+            - @date['45-54']+= 1
+          - when 55 .. 64
+            - @date['55-64']+= 1
+          - when 65 .. 100
+            - @date['65+']+= 1
+          - else
+            - @date['Desconocida']+= 1
+      #pie
 
 :javascript
   window.onload = function () {

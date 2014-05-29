@@ -23,12 +23,13 @@ class ReportsController < ApplicationController
     @num_swaps = (num_movements + current_organization.account.movements.count)/2
     # intercambios con el banco
     @total_hours += current_organization.account.movements.map{ |a| (a.amount > 0)? a.amount : 0 }.inject(0,:+)
-    # periodo a mostrar actividades globales
-    ini, fin = params[:ini], params[:fin]
+    # periodo a mostrar actividades globales, por defecto 6 meses
+    ini = params[:ini]? params[:ini].to_date : DateTime.now.to_date - 5.month
+    fin = params[:fin]? params[:fin].to_date : DateTime.now.to_date
     if ini.present?
       # calculo numero de meses
-      num_months = (fin.to_date.year * 12 + fin.to_date.month) - (ini.to_date.year * 12 + ini.to_date.month) + 1
-      date = ini.to_date
+      num_months = (fin.year * 12 + fin.month) - (ini.year * 12 + ini.month) + 1
+      date = ini
       # vector para los meses de la gráfica ["Enero", "Febrero",...]
       @months_names = []
       # y vectores con los datos para la gráfica
