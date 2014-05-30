@@ -59,15 +59,15 @@ Timeoverflow::Application.configure do
     protocol: (ENV["MAIL_LINK_PROTO"] || "https")
   }
 
-  # config.action_mailer.smtp_settings = {
-  #   address: ENV['SMTP_ADRESS'],
-  #   port: ENV['SMTP_PORT'],
-  #   domain: ENV['SMTP_DOMAIN'],
-  #   user_name: ENV['SMTP_USER'],
-  #   password: ENV['SMTP_PASSWORD'],
-  #   authentication: :plain,
-  #   enable_starttls_auto: true
-  # }
+  smtp_env = Hash[ENV.map do |k,v|
+    if /^SMTP_(.*)$/ === k
+      [$1.downcase.to_sym, YAML.load(v)]
+    end
+  end.compact]
+
+  if smtp_env.present?
+    config.action_mailer.smtp_settings = smtp_env
+  end
 
   # Enable threaded mode
   # config.threadsafe!
