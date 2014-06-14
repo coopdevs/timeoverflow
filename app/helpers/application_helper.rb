@@ -4,9 +4,19 @@ module ApplicationHelper
 
   # froom http://railscasts.com/episodes/244-gravatar?language=en&view=asciicast
   def avatar_url(user, size=32)
-    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+    gravatar_id = gravatar_digest user
     gravatar_options = Hash[s: size, d: 'identicon']
     "http://gravatar.com/avatar/#{gravatar_id}.png?#{Rack::Utils.build_query(gravatar_options)}"
+  end
+
+  def gravatar_link user
+    "http://gravatar.com/#{gravatar_digest(user)}"
+  end
+  
+  def gravatar_digest user
+    email = user.gravatar_email.blank? ? user.email : user.gravatar_email
+    gravatar_id = Digest::MD5::hexdigest email.downcase
+    gravatar_id
   end
 
 
