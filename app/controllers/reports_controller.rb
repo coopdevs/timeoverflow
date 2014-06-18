@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   before_filter :authenticate_user!
 
-  layout "report", except: :statistics
+  layout "report", except: [:statistics_global_activity, :statistics_inactive_users, :statistics_demographics]
 
   def user_list
     @members = current_organization.members.includes(:user).order("members.member_uid")
@@ -12,7 +12,7 @@ class ReportsController < ApplicationController
     @posts = current_organization.posts.where(type: @post_type).group_by(&:category).to_a.sort_by {|c, p| c.try(:name) || ""}
   end
 
-  def statistics
+  def statistics_global_activity
     @members = current_organization.members
     @total_hours = num_movements = 0
     @members.each do |m|
@@ -50,14 +50,22 @@ class ReportsController < ApplicationController
         # horas intercambiadas
         sum_hours = 0
         swaps_members.flatten.each do |s|
-          sum_hours += (s.amount > 0)? s.amount : 0 
+          sum_hours += (s.amount > 0)? s.amount : 0
         end
         sum_hours += swaps_organization.map{ |a| (a.amount > 0)? a.amount : 0 }.inject(0,:+)
         sum_hours = sum_hours / 3600.0 if sum_hours > 0
         @hours_swaps_months.push(sum_hours)
         date = date.next_month
-      }   
+      }
     end
+  end
+
+  def statistics_inactive_users
+    @members = current_organization.members
+  end
+
+  def statistics_demographics
+    @members = current_organization.members
   end
 end
 
