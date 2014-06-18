@@ -14,9 +14,6 @@ class ApplicationController < ActionController::Base
   MissingTOSAcceptance = Class.new(Exception)
   OutadedTOSAcceptance = Class.new(Exception)
 
-  def index
-  end
-
   before_filter :set_locale
 
   def set_locale
@@ -38,6 +35,18 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username
+  end
+
+  def after_sign_in_path_for(user)
+    if user.members.present?
+      if user.members.any? &:manager
+        users_path
+      else
+        offers_path
+      end
+    else
+      page_path('home')
+    end
   end
 
 

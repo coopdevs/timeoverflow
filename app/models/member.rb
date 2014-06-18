@@ -9,6 +9,7 @@ class Member < ActiveRecord::Base
   before_validation :assign_registration_number, :on => :create
 
   scope :by_month, ->(month) { where({ created_at: month.beginning_of_month..month.end_of_month})}
+  scope :active, -> { where active: true }
 
   validates :organization_id, presence: true
   validates :member_uid,

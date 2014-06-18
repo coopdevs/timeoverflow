@@ -10,7 +10,7 @@ ActiveAdmin.register User do
     column :organizations do |u|
       u.organizations.map(&:to_s).join(", ")
     end
-    default_actions
+    actions
   end
 
   filter :organizations
@@ -57,9 +57,5 @@ ActiveAdmin.register User do
     end
   end
 
-  controller do
-    def permitted_params
-      params.permit!
-    end
-  end
+  permit_params *User.attribute_names, members_attributes: Member.attribute_names
 end

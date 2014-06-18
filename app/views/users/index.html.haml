@@ -1,42 +1,71 @@
-%h1
-  = User.model_name.human.pluralize
-  - if params[:q].present?
-    %small
-      %span.glyphicon.glyphicon-search
-      = params[:q]
+%div{"ng-controller" => "UserListCtrl"}
+  %h1
+    = User.model_name.human.pluralize
+    &mdash;
+    = link_to current_organization.name, organization_path(current_organization)
+    - if params[:q].present?
+      %small
+        %span.glyphicon.glyphicon-search
+        = params[:q]
 
-.navbar
-  %form.navbar-form.navbar-left{action: users_path, role: "search", method: "get"}
-    .form-group
-      %input.form-control{type: "text", placeholder: t("global.search"), name: "q", value: params[:q]}
-    %button.btn.btn-default{type: "submit"}= t("global.search")
+  .navbar
+    %form.navbar-form.navbar-left
+      %input.form-control{type: "text", placeholder: t("global.search"), "ng-model" => "filterTerm"}
+    %ul.nav.navbar-nav.pull-right
+      - if admin?
+        %li
+          %a{href: new_user_path}
+            %span.glyphicon.glyphicon-plus
+            = t "helpers.submit.create", model: User.model_name.human
 
-  %ul.nav.navbar-nav.pull-right
-    - if admin?
-      %li
-        %a{href: new_user_path}
-          %span.glyphicon.glyphicon-plus
-          = t "helpers.submit.create", model: User.model_name.human
+  %table.table.table-hover.table-condensed.users
+    %thead
+      %tr
+      %tr
+        %th
+        %th 
+          %a{ "ng-click" => "sortBy('id')" }
+            ID
+            %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-id'" }
+            %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'id'" }
+        %th
+          %a{ "ng-click" => "sortBy('username')" }
+            = User.human_attribute_name(:username)
+            %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-username'" }
+            %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'username'" }
+        %th
+          %a{ "ng-click" => "sortBy('email')" }
+            = User.human_attribute_name(:email)
+            %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-email'" }
+            %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'email'" }
+        %th= User.human_attribute_name(:phone)
+        %th= User.human_attribute_name(:alt_phone)
+        %th
+          %a{ "ng-click" => "sortBy('balance')" }
+            = Account.human_attribute_name(:balance)
+            %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-balance'" }
+            %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'balance'" }
 
-%table.table.table-hover.table-condensed.users
-  %thead
-    %tr
-    %tr
-      %th
-      %th ID
-      %th= User.human_attribute_name(:username)
-      %th= User.human_attribute_name(:email)
-      %th= User.human_attribute_name(:phone)
-      %th= User.human_attribute_name(:alt_phone)
-      %th= Account.human_attribute_name(:balance)
+        %th
+          %span.glyphicon.glyphicon-hand-down
+          Acciones
+    %tbody
+      = render partial: "user_rows", locals: {users: @users}
 
-      %th
-        %span.glyphicon.glyphicon-hand-down
-        Acciones
-  %tbody
-    = render partial: "user_rows", locals: {users: @users}
+%script{type: "text/ng-template", id: "confirm_toggle_manager.html"}
+  .modal-body= t('.manage_warning_angular')
+  .modal-footer
+    %button.btn.btn-primary{"ng-click" => "$close(true)"} OK
+    %button.btn.btn-warning{"ng-click" => "$dismiss()"} NO
 
-  %tfoot
-    %tr
-      %td{colspan: "10"}
-        = link_to_next_page @users, t('.more'), remote: true, class: "btn btn-default", params: params
+%script{type: "text/ng-template", id: "confirm_toggle_active.html"}
+  .modal-body= t('.active_warning_angular')
+  .modal-footer
+    %button.btn.btn-primary{"ng-click" => "$close(true)"} OK
+    %button.btn.btn-warning{"ng-click" => "$dismiss()"} NO
+
+
+:javascript
+  angular.module("timeoverflow").run(function ($rootScope, $location, $http, $modal) {
+    $rootScope.users = #{ users_as_json };
+  });

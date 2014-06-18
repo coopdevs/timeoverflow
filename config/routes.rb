@@ -20,9 +20,7 @@ Timeoverflow::Application.routes.draw do
 
   resources :organizations, concerns: :accountable
 
-  resources :users, concerns: :accountable, except: :destroy, :path => "members" do
-    put :toggle_active
-  end
+  resources :users, concerns: :accountable, except: :destroy, :path => "members"
 
   resources :transfers, only: [:create]
 
@@ -30,7 +28,8 @@ Timeoverflow::Application.routes.draw do
 
   resources :members, only: [:destroy] do
     member do
-      patch :toggle_manager
+      put :toggle_manager
+      put :toggle_active
     end
   end
 
@@ -43,12 +42,8 @@ Timeoverflow::Application.routes.draw do
     end
   end
 
-
-  root to: "application#index"
-
   resource :terms, only: [:show] do
     post :accept
   end
-
 
 end
