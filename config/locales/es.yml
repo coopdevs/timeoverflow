@@ -95,6 +95,9 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
+      global_activity: "Actividad global"
+      inactive_users: Usuarios inactivos
+      demographics: Datos demográficos
 
   # views/users/index...
 
@@ -154,16 +157,17 @@ es:
       title: Servicios ofrecidos
     user_list:
       title: Listado usuarios
-    statistics:
-      statistics: Estadísticas
+    statistics_global_activity:
       global_activity: "Actividad global"
       users_reg: " Altas de usuario"
       num_swaps: " Intercambios"
       total_hours: " Horas intercambiadas"
+    statistics_inactive_users:
       inactive_users: Usuarios inactivos
       last_movement: Útimo intercambio
       no_movements: Sin intercambios
       days_without_swaps: Días sin intercambios
+    statistics_demographics:
       demographics: Datos demográficos
       by_ages: Por edades
       by_gender: Por género
@@ -215,6 +219,7 @@ es:
     amount: Cantidad
     demote: Convertir en usuario normal
     promote: Convertir en administrador
+    statistics: Estadísticas
 
   active_admin:
     comments:

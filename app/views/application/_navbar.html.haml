@@ -30,10 +30,24 @@
                 %a{href: "/report/inquiry_list", data: {popup: true}}
                   %span.glyphicon.glyphicon-list-alt
                   = Inquiry.model_name.human(count: :many)
-          %li{class: current_page?('/report/statistics') && "active"}
-            %a{href: '/report/statistics'}
-              %span.glyphicon.glyphicon-stats
+          %li.dropdown
+            %a.dropdown-toggle{:href => "#", data: {toggle: :dropdown}}
+              = glyph("stats")
               = t ".statistics"
+              %b.caret
+            %ul.dropdown-menu{role: :menu}
+              %li
+                %a{href: "/report/statistics_global_activity"}
+                  %span.glyphicon.glyphicon-stats
+                  = t ".global_activity"
+              %li
+                %a{href: "/report/statistics_inactive_users"}
+                  %span.glyphicon.glyphicon-stats
+                  = t ".inactive_users"
+              %li
+                %a{href: "/report/statistics_demographics"}
+                  %span.glyphicon.glyphicon-stats
+                  = t ".demographics"
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user
