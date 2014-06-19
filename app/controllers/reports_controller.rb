@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   before_filter :authenticate_user!
 
-  layout "report", except: [:statistics_global_activity, :statistics_inactive_users, :statistics_demographics, :statistics_last_login]
+  layout "report", except: [:statistics_global_activity, :statistics_inactive_users, :statistics_demographics, :statistics_last_login, :statistics_without_offers]
 
   def user_list
     @members = current_organization.members.includes(:user).order("members.member_uid")
@@ -69,7 +69,8 @@ class ReportsController < ApplicationController
   end
 
   def statistics_last_login
-    @members = current_organization.members.sort_by{|m| m.user.last_sign_in_at.present? ? m.user.last_sign_in_at.to_date : DateTime.now.to_date - 20.years}
+    @members = current_organization.members.sort_by{|m| m.user.current_sign_in_at.present? ? m.user.current_sign_in_at.to_date : DateTime.now.to_date - 20.years}
   end
+
 end
 
