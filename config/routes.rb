@@ -41,6 +41,7 @@ Timeoverflow::Application.routes.draw do
       get "statistics_global_activity"
       get "statistics_inactive_users"
       get "statistics_demographics"
+      get "statistics_last_login"
     end
   end
 

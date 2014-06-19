@@ -51,6 +51,7 @@ es:
         alt_phone: Teléfono alternativo
         admin: Administrador de organización
         superadmin: Administrador de sistema
+        last_sign_in_at: Fecha último login
       organization:
         <<: *common_attributes
         name: Nombre
@@ -98,6 +99,7 @@ es:
       global_activity: "Actividad global"
       inactive_users: Usuarios inactivos
       demographics: Datos demográficos
+      last_login: Último login
 
   # views/users/index...
 
@@ -171,6 +173,9 @@ es:
       demographics: Datos demográficos
       by_ages: Por edades
       by_gender: Por género
+    statistics_last_login:
+      last_login: Último login
+      never_login: Nunca logueado
 
   stats:
     min_balance:
