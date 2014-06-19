@@ -72,5 +72,8 @@ class ReportsController < ApplicationController
     @members = current_organization.members.sort_by{|m| m.user.current_sign_in_at.present? ? m.user.current_sign_in_at.to_date : DateTime.now.to_date - 20.years}
   end
 
+  def statistics_without_offers
+    @members = current_organization.members
+  end
 end
 

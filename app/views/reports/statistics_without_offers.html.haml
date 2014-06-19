@@ -1,0 +1,14 @@
+%h1= t("global.statistics") + ": " + t(".without_offers")
+.panel.panel-default
+  .panel-body
+    %table.table.table-hover.table-condensed
+      %thead
+        %tr
+          %th ID
+          %th= User.human_attribute_name(:username)
+      %tbody
+      - @members.each do |mem|
+        - if mem.offers.blank?
+          %tr
+            %td= mem.member_uid
+            %td= link_to mem.user.username, mem.user

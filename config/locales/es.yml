@@ -100,6 +100,7 @@ es:
       inactive_users: Usuarios inactivos
       demographics: Datos demográficos
       last_login: Último login
+      without_offers: Sin ofertas publicadas
 
   # views/users/index...
 
@@ -176,6 +177,8 @@ es:
     statistics_last_login:
       last_login: Último login
       never_login: Nunca logueado
+    statistics_without_offers:
+      without_offers: Sin ofertas
 
   stats:
     min_balance:
