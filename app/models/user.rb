@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     :rememberable,
     :confirmable,
     :lockable,
+    :trackable
   ]
 
   extend Searchable :username, :email, :phone, :alt_phone
