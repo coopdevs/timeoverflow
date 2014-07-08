@@ -59,6 +59,9 @@
             %td= link_to post, post
             %td= time_ago_in_words post.updated_at
             %td= post.description
+            %td
+              %a{href: give_time_user_path(@user, offer: post.id), title: t("global.give_time")}
+                %span.glyphicon.glyphicon-time
 
   .col-sm-6.inquiries
     .panel.panel-default
