@@ -13,6 +13,9 @@ class Post < ActiveRecord::Base
 
   has_many :user_members, class_name: "Member", through: :user, source: :members
 
+  has_many :transfers
+  has_many :movements, through: :transfers
+
   default_scope ->{ order('posts.updated_at DESC') }
 
   scope :by_category, ->(cat) { where(category_id: cat) if cat }

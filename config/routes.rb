@@ -43,6 +43,7 @@ Timeoverflow::Application.routes.draw do
       get "statistics_demographics"
       get "statistics_last_login"
       get "statistics_without_offers"
+      get "statistics_type_swaps"
     end
   end
 

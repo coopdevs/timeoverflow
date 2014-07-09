@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   before_filter :authenticate_user!
 
-  layout "report", except: [:statistics_global_activity, :statistics_inactive_users, :statistics_demographics, :statistics_last_login, :statistics_without_offers]
+  layout "report", except: [:statistics_global_activity, :statistics_inactive_users, :statistics_demographics, :statistics_last_login, :statistics_without_offers, :statistics_type_swaps]
 
   def user_list
     @members = current_organization.members.includes(:user).order("members.member_uid")
@@ -75,5 +75,34 @@ class ReportsController < ApplicationController
   def statistics_without_offers
     @members = current_organization.members
   end
-end
 
+  def statistics_type_swaps
+    offers = current_organization.offers
+    @offers_by_tag = {}
+    time, swaps = 0, 0
+
+    offers.each do |offer|
+      offer.tags.size.times do |index|
+        category = offer.category.name
+        swaps = offer.transfers.count
+        time = offer.movements.map{|m| (m.amount > 0)? m.amount : 0 }.inject(0,:+)
+
+        hash_values = @offers_by_tag["#{offer.tags[index]}"]
+        if hash_values.blank?
+          hash_values = {category: category, swaps: swaps, time: time}
+        else
+          if hash_values[:category] == offer.category.name
+            hash_values[:swaps] += offer.transfers.count
+            hash_values[:time] += offer.movements.map{|m| (m.amount > 0)? m.amount : 0 }.inject(0,:+)
+          else
+            hash_values.merge!({category: category, swaps: swaps, time: time})
+          end
+        end
+        @offers_by_tag["#{offer.tags[index]}"] = hash_values
+      end
+    end
+    total_swaps = @offers_by_tag.map{|k,v| v[:swaps]}.inject(0.0,:+)
+    @offers_by_tag = @offers_by_tag.each{|k,v| v[:percent] = v[:swaps]/total_swaps*100}.sort_by{|k,v| v[:percent]}
+  end
+
+end

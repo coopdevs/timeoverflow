@@ -1,0 +1,19 @@
+%h1= t("global.statistics") + ": " + t(".type_of_swaps")
+.panel.panel-default
+  .panel-body
+    %table.table.table-hover.table-condensed
+      %thead
+        %tr
+          %th %
+          %th
+            = "#{Category.model_name.human} -> #{Offer.human_attribute_name(:tag_list)}"
+          %th= t "reports.statistics_global_activity.total_hours"
+          %th= t "reports.statistics_global_activity.num_swaps"
+
+      %tbody
+      - @offers_by_tag.each do |tag, values|
+        %tr
+          %td= number_to_percentage(values[:percent], precision: 2)
+          %td= "#{values[:category]} -> #{tag}"
+          %td= seconds_to_hm(values[:time] || mdash)
+          %td= values[:swaps]
