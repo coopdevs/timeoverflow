@@ -102,7 +102,7 @@ class ReportsController < ApplicationController
       end
     end
     total_swaps = @offers_by_tag.map{|k,v| v[:swaps]}.inject(0.0,:+)
-    @offers_by_tag = @offers_by_tag.each{|k,v| v[:percent] = v[:swaps]/total_swaps*100}.sort_by{|k,v| v[:percent]}
+    @offers_by_tag = @offers_by_tag.each{|k,v| v[:percent] = v[:swaps]/total_swaps*100}.sort_by{|k,v| v[:percent]}.reverse
   end
 
 end
