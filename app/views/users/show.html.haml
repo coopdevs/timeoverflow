@@ -13,7 +13,8 @@
     = image_tag avatar_url(@user, 160)
 
   .col-sm-10
-    %p= @user.description
+    :markdown
+      #{@user.description}
 
     %ul.nav.nav-pills.pull-right
       - if @user == current_user
@@ -21,7 +22,7 @@
           %a{href: edit_user_path(@user)}
             %span.glyphicon.glyphicon-pencil
             = t "global.edit"
-      - else 
+      - else
         %li
           %a
             %span.glyphicon.glyphicon-envelope
