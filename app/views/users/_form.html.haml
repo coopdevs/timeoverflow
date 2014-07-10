@@ -17,6 +17,7 @@
 
       = f.input :phone
       = f.input :alt_phone
+      = f.input :date_of_birth, start_year: Date.today.year - 90, end_year: Date.today.year - 12, include_blank: :true
 
       = f.input :description, as: 'text'
 
