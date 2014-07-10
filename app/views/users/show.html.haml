@@ -13,7 +13,8 @@
     = image_tag avatar_url(@user, 160)
 
   .col-sm-10
-    %p= @user.description
+    :markdown
+      #{@user.description}
 
     %ul.nav.nav-pills.pull-right
       - if @user == current_user
@@ -21,7 +22,7 @@
           %a{href: edit_user_path(@user)}
             %span.glyphicon.glyphicon-pencil
             = t "global.edit"
-      - else 
+      - else
         %li
           %a
             %span.glyphicon.glyphicon-envelope
@@ -59,6 +60,9 @@
             %td= link_to post, post
             %td= time_ago_in_words post.updated_at
             %td= post.description
+            %td
+              %a{href: give_time_user_path(@user, offer: post.id), title: t("global.give_time")}
+                %span.glyphicon.glyphicon-time
 
   .col-sm-6.inquiries
     .panel.panel-default
