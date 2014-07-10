@@ -18,6 +18,8 @@
       = f.input :phone
       = f.input :alt_phone
 
+      = f.input :description, as: 'text'
+
       / = f.association :categories, label_method: :fqn, input_html: {style: 'width: 100%'}
 
     .form-actions
