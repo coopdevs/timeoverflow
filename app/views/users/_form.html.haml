@@ -9,6 +9,10 @@
       - else
         = f.input :email
 
+      - if request['action'] == 'edit'
+        = link_to image_tag(avatar_url(@user, 50), alt: 'Modificar perfil'), gravatar_link(@user), target: '_blank'
+        = f.input :gravatar_email, placeholder: 'Puedes enlazar tu gravatar desde este email alternativo.'
+      
       / - if current_user.try :superadmin?
       /   = f.association :organization, include_blank: false
       /   = f.input :superadmin, :as => :boolean, :label => false, :inline_label => true
