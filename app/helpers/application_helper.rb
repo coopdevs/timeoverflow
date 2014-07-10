@@ -39,11 +39,4 @@ module ApplicationHelper
     document_path(Document.terms_and_conditions || 0, modal: true)
   end
 
-  def age date_of_birth
-    now = DateTime.now
-    age = now.year - date_of_birth.year
-    age -= 1 if((now.month < date_of_birth.month) || (now.month == date_of_birth.month && now.day < date_of_birth.day))
-    age
-  end
-
 end

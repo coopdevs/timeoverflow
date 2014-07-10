@@ -17,15 +17,15 @@ class ReportsController < ApplicationController
     @total_hours = num_movements = 0
     @members.each do |m|
       num_movements += m.account.movements.count
-      @total_hours += m.account.movements.map{ |a| (a.amount > 0)? a.amount : 0 }.inject(0,:+)
+      @total_hours += m.account.movements.map{ |a| (a.amount > 0) ? a.amount : 0 }.inject(0,:+)
     end
     # cada intercambio implica dos movimientos
     @num_swaps = (num_movements + current_organization.account.movements.count)/2
     # intercambios con el banco
     @total_hours += current_organization.account.movements.map{ |a| (a.amount > 0)? a.amount : 0 }.inject(0,:+)
     # periodo a mostrar actividades globales, por defecto 6 meses
-    ini = params[:ini]? params[:ini].to_date : DateTime.now.to_date - 5.month
-    fin = params[:fin]? params[:fin].to_date : DateTime.now.to_date
+    ini = params[:ini].presence.try(:to_date) || DateTime.now.to_date - 5.month
+    fin = params[:fin].presence.try(:to_date) || DateTime.now.to_date
     if ini.present?
       # calculo numero de meses
       num_months = (fin.year * 12 + fin.month) - (ini.year * 12 + ini.month) + 1
@@ -66,10 +66,33 @@ class ReportsController < ApplicationController
 
   def statistics_demographics
     @members = current_organization.members
+
+    @age_groups = @members.group_by { |member|
+      case (age(member.user.date_of_birth.presence) rescue nil)
+      when 0..17 then ' -17'
+      when 18..24 then '18-24'
+      when 25..34 then '25-34'
+      when 35..44 then '35-44'
+      when 45..54 then '45-54'
+      when 55..64 then '55-64'
+      when 65..100 then '65+'
+      else 'Desconocida'
+      end
+    }
+    @age_counts = Hash[@age_groups.map { |name, group| [name, group.size] }]
+
+    @gender_groups = @members.group_by { |member|
+      case member.user.gender
+      when 'male' then 'Male'
+      when 'female' then 'Female'
+      else 'Desconocido'
+      end
+    }
+    @gender_counts = Hash[@gender_groups.map { |name, group| [name, group.size] }]
   end
 
   def statistics_last_login
-    @members = current_organization.members.sort_by{|m| m.user.current_sign_in_at.present? ? m.user.current_sign_in_at.to_date : DateTime.now.to_date - 20.years}
+    @members = current_organization.members.joins(:user).order('users.current_sign_in_at DESC NULLS FIRST')
   end
 
   def statistics_without_offers
@@ -103,6 +126,15 @@ class ReportsController < ApplicationController
     end
     total_swaps = @offers_by_tag.map{|k,v| v[:swaps]}.inject(0.0,:+)
     @offers_by_tag = @offers_by_tag.each{|k,v| v[:percent] = v[:swaps]/total_swaps*100}.sort_by{|k,v| v[:percent]}.reverse
+  end
+
+  protected
+
+  def age date_of_birth
+    now = DateTime.now
+    age = now.year - date_of_birth.year
+    age -= 1 if((now.month < date_of_birth.month) || (now.month == date_of_birth.month && now.day < date_of_birth.day))
+    age
   end
 
 end
