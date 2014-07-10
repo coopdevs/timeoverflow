@@ -1,6 +1,6 @@
 %h1
-  = link_to @user
   %small= t ".give_time"
+  = link_to @user
 
 - if @offer
   %h3= @offer
@@ -16,6 +16,7 @@
       = f.input :source, collection: @sources
     - if @offer
       = f.input :post, readonly: true
+      = f.input :post_id, as: :hidden
 
   .form-actions
     = f.button :submit
