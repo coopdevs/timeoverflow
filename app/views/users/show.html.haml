@@ -21,11 +21,11 @@
           %a{href: edit_user_path(@user)}
             %span.glyphicon.glyphicon-pencil
             = t "global.edit"
-      - else 
-        %li
-          %a
-            %span.glyphicon.glyphicon-envelope
-            = t "send message"
+      /- else 
+      /  %li
+      /    %a
+      /      %span.glyphicon.glyphicon-envelope
+      /      = t "send message"
       - if admin? || @user != current_user
         %li
           %a{href: give_time_user_path(@user)}
