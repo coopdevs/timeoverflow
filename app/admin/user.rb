@@ -3,7 +3,7 @@
 ActiveAdmin.register User do
   index do
     column do |user|
-      link_to image_tag(avatar_url(user, 24)), admin_user_path(user)
+      link_to image_tag(user.avatar_url(24)), admin_user_path(user)
     end
     column :username
     column :email
@@ -41,7 +41,7 @@ ActiveAdmin.register User do
       end
       column do
         panel "Avatar" do
-          image_tag avatar_url(u, 160)
+          image_tag u.avatar_url(160)
         end
         panel "Memberships" do
           table_for user.members do

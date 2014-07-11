@@ -62,4 +62,25 @@ class User < ActiveRecord::Base
   def active?(organization)
     organization && !!(as_member_of(organization).try :active)
   end
+
+  # Gravatar helpers
+  # froom http://railscasts.com/episodes/244-gravatar?language=en&view=asciicast
+  def avatar_url(size=32)
+    gravatar_id = gravatar_digest
+    gravatar_options = Hash[s: size, d: 'identicon']
+    "http://gravatar.com/avatar/#{gravatar_id}.png?#{Rack::Utils.build_query(gravatar_options)}"
+  end
+
+  def gravatar_link
+    "http://es.gravatar.com/site/check/#{gravatar_email}"
+  end
+
+  def gravatar_digest
+    gravatar_id = Digest::MD5::hexdigest gravatar_email.downcase
+    gravatar_id
+  end
+
+  def gravatar_email
+    attributes['gravatar_email'].blank? ? email : attributes['gravatar_email']
+  end
 end

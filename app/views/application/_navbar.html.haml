@@ -39,7 +39,7 @@
       - if current_user
         %li.dropdown
           %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
-            = image_tag avatar_url(current_user), style: "margin: -8px auto"
+            = image_tag current_user.avatar_url, style: "margin: -8px auto"
             = current_user.email
             %b.caret
           %ul.dropdown-menu{role: :menu}

@@ -10,7 +10,7 @@
 
 .row
   .col-sm-2
-    = image_tag avatar_url(@user, 160)
+    = image_tag @user.avatar_url(160)
 
   .col-sm-10
     %p= @user.description

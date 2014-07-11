@@ -10,7 +10,7 @@
         = f.input :email
 
       - if request['action'] == 'edit'
-        = link_to image_tag(avatar_url(@user, 50), alt: 'Modificar perfil'), gravatar_link(@user), target: '_blank'
+        = link_to image_tag(@user.avatar_url(50), alt: 'Modificar perfil'), @user.gravatar_link, target: '_blank'
         = f.input :gravatar_email, placeholder: 'Puedes enlazar tu gravatar desde este email alternativo.'
       
       / - if current_user.try :superadmin?

@@ -6,7 +6,7 @@ module UsersHelper
       membership = @memberships[user.id]
       {
         id: user.id,
-        avatar: avatar_url(user),
+        avatar: user.avatar_url,
         member_id: membership.member_uid,
         username: user.username,
         email: user.email,
