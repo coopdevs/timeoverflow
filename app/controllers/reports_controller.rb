@@ -100,32 +100,31 @@ class ReportsController < ApplicationController
   end
 
   def statistics_type_swaps
-    offers = current_organization.offers
-    @offers_by_tag = {}
-    time, swaps = 0, 0
-
-    offers.each do |offer|
-      offer.tags.size.times do |index|
-        category = offer.category.name
-        swaps = offer.transfers.count
-        time = offer.movements.map{|m| (m.amount > 0)? m.amount : 0 }.inject(0,:+)
-
-        hash_values = @offers_by_tag["#{offer.tags[index]}"]
-        if hash_values.blank?
-          hash_values = {category: category, swaps: swaps, time: time}
-        else
-          if hash_values[:category] == offer.category.name
-            hash_values[:swaps] += offer.transfers.count
-            hash_values[:time] += offer.movements.map{|m| (m.amount > 0)? m.amount : 0 }.inject(0,:+)
-          else
-            hash_values.merge!({category: category, swaps: swaps, time: time})
-          end
-        end
-        @offers_by_tag["#{offer.tags[index]}"] = hash_values
+    offers = current_organization.posts.where(type: 'Offer').joins(:transfers, :transfers => :movements).select('posts.tags, posts.category_id, SUM(movements.amount) as sum_of_transfers, COUNT(transfers.id) as count_of_transfers').where('movements.amount > 0').group('posts.tags, posts.category_id, posts.updated_at')
+    total = 0.0
+    offers_array = offers.map { |offer|
+      offer.tags.map { |tag|
+        total += offer.count_of_transfers
+        [offer.category.name, tag, offer.sum_of_transfers, offer.count_of_transfers]
+      }
+    }.flatten(1)
+    # ["Clases", "clases", 11700, 2], ["Clases", "clases", 1320, 1], ...]
+    # added %
+    offers_array = offers_array.map{|a| a.push(a.last/total)}
+    offers_array = offers_array.group_by{|a,b| [a,b]}
+    # {["Clases", "clases"]=>[["Clases", "clases", 11700, 2, 0.2], ["Clases", "clases", 1320, 1, 0.1]],,...}
+    @offers = []
+    offers_array.each do |cat_tag, values|
+      sum_of_transfers, count_of_transfers, percent = 0, 0, 0
+      values.each do |value|
+        sum_of_transfers += value[2]
+        count_of_transfers += value[3]
+        percent += value[4]
       end
+      @offers.push([cat_tag, sum_of_transfers, count_of_transfers, percent].flatten)
     end
-    total_swaps = @offers_by_tag.map{|k,v| v[:swaps]}.inject(0.0,:+)
-    @offers_by_tag = @offers_by_tag.each{|k,v| v[:percent] = v[:swaps]/total_swaps*100}.sort_by{|k,v| v[:percent]}.reverse
+    # [["Clases", "clases", 13020, 3, 0.30], ["Domestic", "coche", 2220, 1, 0.1],...]
+    @offers = @offers.sort_by{|a| a.last}.reverse
   end
 
   protected
