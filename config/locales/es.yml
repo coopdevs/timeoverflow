@@ -96,6 +96,8 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
+      offers_dashboard: Ofertas por categoria
+      offers_list: Ofertas (todas)
 
   # views/users/index...
 
