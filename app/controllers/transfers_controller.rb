@@ -15,6 +15,6 @@ class TransfersController < ApplicationController
     # ap @source
     # ap Account.find(transfer_params[:destination])
     Transfer.create(transfer_params.merge source: @source)
-    redirect_to current_user
+    redirect_to user_path(Account.find(transfer_params[:destination]))
   end
 end
