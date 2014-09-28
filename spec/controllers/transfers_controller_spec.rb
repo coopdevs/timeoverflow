@@ -46,17 +46,12 @@ describe TransfersController, :type => :controller do
           }.to change { member_taker.account.balance.to_i }.by 5
 
         end
-      end
 
-      context "redirection with a regular user logged" do
-          subject { post 'create', transfer: { source: member_giver.account.id , destination: member_taker.account.id, amount: 5} }
+        it "redirects to destination" do
+          login(member_giver.user)
 
-          it "redirects to destination" do
-
-            login(member_giver.user)
-
-            expect(subject).to redirect_to(member_taker.user)
-          end
+          expect(subject).to redirect_to(member_taker.user)
+        end
       end
 
       context "with a regular user logged" do
