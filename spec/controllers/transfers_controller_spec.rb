@@ -1,6 +1,11 @@
 require 'spec_helper'
 
-describe TransfersController do
+# Starting rspec-rails 3.0.0 that gem does no longer infer the type of
+# test by looking at name and you have to specify in metadata as e.g ",:type => controller"
+# Not doing that leads to all tests failing stating "login" method could not be found
+# See http://stackoverflow.com/questions/25144919/manually-label-spec-types-via-metadata
+
+describe TransfersController, :type => :controller do
   let (:test_organization) { Fabricate(:organization)}
   let (:member_admin) { Fabricate(:member, organization: test_organization, manager: true)}
   let (:member_giver) { Fabricate(:member, organization: test_organization) }
@@ -43,6 +48,17 @@ describe TransfersController do
         end
       end
 
+      context "redirection with a regular user logged" do
+          subject { post 'create', transfer: { source: member_giver.account.id , destination: member_taker.account.id, amount: 5} }
+
+          it "redirects to destination" do
+
+            login(member_giver.user)
+
+            expect(subject).to redirect_to(member_taker.user)
+          end
+      end
+
       context "with a regular user logged" do
         subject { post 'create', transfer: {destination: member_taker.account.id, amount: 5} }
 
@@ -77,6 +93,7 @@ describe TransfersController do
 
         end
       end
+
     end
 
     # context "with valid params" do
