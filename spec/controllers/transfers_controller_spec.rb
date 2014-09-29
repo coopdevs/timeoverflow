@@ -68,6 +68,10 @@ describe TransfersController do
             member_taker.reload
           }.to change { member_taker.account.balance.to_i }.by 5
         end
+
+        it "redirects to destination" do
+          expect(subject).to redirect_to(member_taker)
+        end
       end
     end
 
