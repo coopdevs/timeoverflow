@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 708e59018cdec2a078a173da0dbc0b732b3a9399
+  revision: 8299dee5bd08c78cea7d216382dfc183fef60934
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -14,16 +14,6 @@ GIT
       rails (>= 3.2, < 4.2)
       ransack (~> 1.3)
       sass-rails
-
-GIT
-  remote: git://github.com/rails/sass-rails.git
-  revision: 423178729e7b84addcee78b33891644b1fc1705b
-  specs:
-    sass-rails (5.0.0.beta1)
-      railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2)
-      sprockets (~> 2.12)
-      sprockets-rails (>= 2.0, < 4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -59,10 +49,9 @@ GEM
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
     bcrypt (3.1.7)
-    better_errors (2.0.0)
+    better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bourbon (4.0.2)
@@ -79,10 +68,10 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     daemons (1.1.9)
-    dalli (2.7.2)
-    database_cleaner (1.3.0)
+    dalli (2.6.4)
+    database_cleaner (1.2.0)
     debug_inspector (0.0.2)
-    devise (3.3.0)
+    devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -91,20 +80,18 @@ GEM
     devise_browserid_authenticatable (1.3.2)
       devise (>= 2.1)
     diff-lcs (1.2.5)
-    dotenv (0.11.1)
-      dotenv-deployment (~> 0.0.2)
-    dotenv-deployment (0.0.2)
-    dotenv-rails (0.11.1)
-      dotenv (= 0.11.1)
+    dotenv (0.9.0)
+    dotenv-rails (0.9.0)
+      dotenv (= 0.9.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
-    fabrication (2.11.3)
-    faker (1.4.3)
+    fabrication (2.9.8)
+    faker (1.2.0)
       i18n (~> 0.5)
-    foreman (0.75.0)
-      dotenv (~> 0.11.1)
-      thor (~> 0.19.1)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
     formtastic (3.0.0)
       actionpack (>= 3.2.13)
     haml (4.0.5)
@@ -117,17 +104,18 @@ GEM
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hashr (0.0.22)
     high_voltage (2.1.0)
     hike (1.2.3)
-    hstore_translate (1.0.0)
+    hstore_translate (0.0.14)
       activerecord (>= 3.1.0)
     i18n (0.6.11)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
-    jbuilder (2.1.3)
-      activesupport (>= 3.0.0, < 5)
-      multi_json (~> 1.2)
+    jbuilder (1.5.3)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -140,11 +128,10 @@ GEM
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     memcachier (0.0.2)
-    mime-types (2.3)
+    mime-types (1.25.1)
     minitest (5.4.2)
     multi_json (1.10.1)
-    netrc (0.7.7)
-    ngannotate-rails (0.10.1)
+    ngannotate-rails (0.9.11)
       execjs
       rails (>= 3.1)
     orm_adapter (0.5.0)
@@ -153,7 +140,7 @@ GEM
     pg (0.17.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
-    pundit (0.3.0)
+    pundit (0.2.3)
       activesupport (>= 3.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -194,12 +181,14 @@ GEM
       i18n
       polyamorous (~> 1.1)
     rdiscount (2.1.7.1)
+    rdoc (4.1.2)
+      json (~> 1.4)
     responders (1.0.0)
       railties (>= 3.2, < 5)
-    rest-client (1.7.2)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
-    rollbar (1.0.1)
+    rest-client (1.6.8)
+      mime-types (~> 1.16)
+      rdoc (>= 2.4.2)
+    rollbar (0.12.20)
       multi_json (~> 1.3)
     rspec-core (3.1.4)
       rspec-support (~> 3.1.0)
@@ -219,6 +208,10 @@ GEM
     rspec-support (3.1.1)
     ruby-graphviz (1.0.9)
     sass (3.4.5)
+    sass-rails (4.0.1)
+      railties (>= 4.0.0, < 5.0)
+      sass (>= 3.1.10)
+      sprockets-rails (~> 2.0.0)
     shelly-dependencies (0.2.4)
       rake
       thin
@@ -230,7 +223,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.1.4)
+    sprockets-rails (2.0.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
@@ -243,9 +236,9 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    travis-lint (2.0.0)
-      json
-    turbolinks (2.3.0)
+    travis-lint (1.7.0)
+      hashr (~> 0.0.22)
+    turbolinks (1.3.1)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -259,45 +252,46 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin!
-  awesome_print
-  better_errors
-  binding_of_caller
-  coffee-rails
-  dalli
-  database_cleaner
-  devise_browserid_authenticatable
-  dotenv-rails
-  fabrication
-  faker
-  foreman
-  haml-rails
-  has_scope
+  activeadmin (= 1.0.0.pre)!
+  awesome_print (~> 1.2.0)
+  better_errors (~> 1.0.1)
+  binding_of_caller (~> 0.7.2)
+  coffee-rails (~> 4.0.1)
+  dalli (~> 2.6.4)
+  database_cleaner (~> 1.2.0)
+  devise (= 3.2.4)
+  devise_browserid_authenticatable (~> 1.3.2)
+  dotenv-rails (~> 0.9.0)
+  fabrication (~> 2.9.1)
+  faker (~> 1.2.0)
+  foreman (~> 0.63.0)
+  haml-rails (~> 0.5.3)
+  has_scope (= 0.6.0.rc)
   high_voltage (~> 2.1.0)
-  hstore_translate
-  inherited_resources
-  jbuilder
-  jquery-rails
-  kaminari
-  memcachier
-  ngannotate-rails
-  paranoia
-  pg
-  pundit
+  hstore_translate (~> 0.0.12)
+  inherited_resources (~> 1.3)
+  jbuilder (~> 1.5.1)
+  jquery-rails (~> 3.1.0)
+  kaminari (~> 0.15)
+  memcachier (~> 0.0.2)
+  ngannotate-rails (~> 0.9.2)
+  paranoia (~> 2.0.0)
+  pg (~> 0.17.0)
+  pundit (~> 0.2.1)
   rails (~> 4.1)
-  rails-erd
-  rails-i18n
-  rails_12factor
-  rake
-  rdiscount
-  rest-client
-  rollbar
-  rspec-rails
-  sass-rails!
-  shelly-dependencies
+  rails-erd (~> 1.1.0)
+  rails-i18n (~> 4.0.2)
+  rails_12factor (~> 0.0.2)
+  rake (~> 10.3.2)
+  rdiscount (~> 2.1.7)
+  rest-client (~> 1.6.7)
+  rollbar (~> 0.12.18)
+  rspec-rails (~> 3.1.0)
+  sass-rails (= 4.0.1)
+  shelly-dependencies (~> 0.2.3)
   simple_form (>= 3.0.0)
   textacular (~> 3.0)
   thin
-  travis-lint
-  turbolinks
+  travis-lint (~> 1.7.0)
+  turbolinks (~> 1.3.0)
   uglifier (>= 1.0.3)
