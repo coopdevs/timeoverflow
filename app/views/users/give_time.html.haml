@@ -13,10 +13,20 @@
     = f.input :reason
     = f.input :destination, as: :hidden
     - if admin?
-      = f.input :source, collection: @sources
+      .form-group
+        = f.label :source
+        = f.select :source, options_for_select(@sources.sort_by!(&:accountable_type).sort_by(&:accountable_id).map{ |a| ["#{a.accountable_id} #{a.accountable_type} #{a.accountable.to_s}", a.id]}), { include_blank: true }, { id: "select2-time", class: "form-control" }
     - if @offer
       = f.input :post, readonly: true
       = f.input :post_id, as: :hidden
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btn btn-default", style: "margin-bottom: 20px;"
+
+:javascript
+  $("#select2-time").select2({
+    placeholder: " ",
+    formatNoMatches: function() {
+        return 'Usuario no encontrado.';
+    }
+  })
