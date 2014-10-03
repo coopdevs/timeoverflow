@@ -87,8 +87,6 @@ ca:
       users: Usuaris
       categories: Serveis
       organizations: Bancs de Temps
-      offers_dashboard: Ofertes per categoria
-      offers_list: Ofertes (totes)
 
   # views/users/index...
 
