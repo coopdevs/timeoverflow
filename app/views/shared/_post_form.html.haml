@@ -2,7 +2,7 @@
   = f.input :title
   = f.input :description
   = f.association :category
-  = f.input :tag_list, as: :string
+  = f.input :tag_list, as: :string, placeholder: 'search tag', input_html: { class: 'typeahead', autocomplete: 'on' }
 
   - if current_user.manages? current_organization
     = f.association :user, collection: current_organization.users
@@ -11,4 +11,3 @@
 
 :javascript
   $("#offer_tag_list").tagsManager();
-
