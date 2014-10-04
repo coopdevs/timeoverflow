@@ -14,7 +14,7 @@ class PostsController < InheritedResources::Base
   def collection
     get_collection_ivar || begin
       c = end_of_association_chain
-      set_collection_ivar(c.page(params[:page]).per(5))
+      set_collection_ivar(c.page(params[:page]).per(25))
     end
   end
 
