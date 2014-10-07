@@ -19,9 +19,6 @@
 #= require ui-bootstrap-tpls-0.11.0
 #= require_tree ./modules
 #= require_tree ./app
-#= require typeahead.bundle-0.10.5
-#= require transfer
-
 
 angular.module "timeoverflow", ["ng-rails-csrf", 'ui.bootstrap']
 
