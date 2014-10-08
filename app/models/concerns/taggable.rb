@@ -3,6 +3,7 @@ module Taggable
 
   included do
     scope :tagged_with, ->(tag){ where("? = ANY (tags)", tag) }
+    scope :tagged_like, ->(tag_pat){ where("tags LIKE ?", "%#{tag_pat}%")}
   end
 
   def tag_list
@@ -26,6 +27,7 @@ module Taggable
     def tag_cloud
       Hash[all_tags.group_by(&:to_s).values.map {|v| [v.first, v.size]}.sort]
     end
+
 
   end
 
