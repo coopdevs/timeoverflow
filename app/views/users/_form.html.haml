@@ -4,10 +4,10 @@
 
       = f.input :username
 
-      - if @user.id
-        = f.input :email, :readonly => true
-      - else
+      - if admin?
         = f.input :email
+      - else
+        = f.input :email, :readonly => true
 
       / - if current_user.try :superadmin?
       /   = f.association :organization, include_blank: false
