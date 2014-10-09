@@ -3,7 +3,6 @@ module Taggable
 
   included do
     scope :tagged_with, ->(tag){ where("? = ANY (tags)", tag) }
-    scope :tagged_like, ->(tag_pat){ where("tags LIKE ?", "%#{tag_pat}%")}
   end
 
   def tag_list
@@ -28,6 +27,11 @@ module Taggable
       Hash[all_tags.group_by(&:to_s).values.map {|v| [v.first, v.size]}.sort]
     end
 
+    def find_like_tag(pattern)
+
+       all_tags.select{|t| t=~ /#{pattern}/}
+
+    end
 
   end
 

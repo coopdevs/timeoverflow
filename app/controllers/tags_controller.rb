@@ -3,8 +3,7 @@ class TagsController < ApplicationController
 
   def index
 
-    #@all_tags = (Post::all_tags.where("tag like ?","%#{params[:term]}%") || [])
-    @all_tags = Post::tagged_like(params[:term])
+    @all_tags = Post::find_like_tag(params[:term])
     respond_with @all_tags
 
   end
