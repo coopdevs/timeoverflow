@@ -96,7 +96,9 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
-
+    tips:
+      entertag: Entre etiquetas separadas por comas
+      
   # views/users/index...
 
   users:

@@ -31,7 +31,7 @@
   = f.input :description
   = f.association :category
 
-  = f.input :tag_list, as: :string, placeholder: 'search tag', input_html: { class: "form-control", "ng-controller" => "TypeaheadCtrl", "ng-model" => "asyncSelected", "typeahead" => "tag for tag in getTags($viewValue) | filter:$viewValue | limitTo:8" , "typeahead-loading" => "loadingTags"}
+  = f.input :tag_list, as: :string, :placeholder => t('application.tips.entertag'), input_html: { class: "form-control", "ng-controller" => "TypeaheadCtrl", "ng-model" => "asyncSelected", "typeahead" => "tag for tag in getTags($viewValue) | filter:$viewValue | limitTo:8" , "typeahead-loading" => "loadingTags"}
   %i{"ng-show" => "loadingTags", :class => "glyphicon glyphicon-refresh"}
 
   - if current_user.manages? current_organization
