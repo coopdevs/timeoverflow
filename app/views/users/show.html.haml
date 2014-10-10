@@ -58,7 +58,6 @@
         - @user.offers.each do |post|
           %tr
             %td= link_to post, post
-            %td= time_ago_in_words post.updated_at
             %td= post.description
             %td
               %a{href: give_time_user_path(@user, offer: post.id), title: t("global.give_time")}
@@ -73,7 +72,6 @@
         - @user.inquiries.each do |post|
           %tr
             %td= link_to post, post
-            %td= time_ago_in_words post.updated_at
             %td= post.description
 
 %h2
