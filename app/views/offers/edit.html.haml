@@ -4,3 +4,7 @@
     = t ".edit"
 
 = render partial: 'shared/post_form', locals: {post: @offer}
+
+:javascript
+  $("#offer_tag_list").tagsManager();
+  

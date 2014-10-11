@@ -29,7 +29,7 @@ module Taggable
 
     def find_like_tag(pattern)
 
-       all_tags.select{|t| t=~ /#{pattern}/}
+       all_tags.uniq.select{|t| t=~ /#{pattern}/}
 
     end
 
