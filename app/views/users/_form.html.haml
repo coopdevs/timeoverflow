@@ -6,6 +6,8 @@
 
       - if admin?
         = f.input :email
+        - if @user.unconfirmed_email.present?
+          = f.input :unconfirmed_email, readonly: true
       - else
         = f.input :email, :readonly => true
 

@@ -4,7 +4,7 @@
       = t ".inactive"
   = @user.username
   %small
-    = @user.email
+    = @user.unconfirmed_email || @user.email
     - if @user.superadmin?
       %span.label.label-important= t ".superadmin"
 
