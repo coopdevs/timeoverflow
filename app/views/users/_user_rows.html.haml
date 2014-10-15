@@ -6,10 +6,10 @@
     %span.glyphicon.glyphicon-time{ "ng-if" => "!user.active" }
     %a{ "ng-href" => "{{user.url}}" }
       {{user.username}}
-  %td 
+  %td
     %a{ "ng-href" => "mailto:{{user.email}}", ng_if: "!user.unconfirmed_email"}
       {{user.email}}
-    %a{ng_href: "mailto:{{user.unconfirmed_email}}", ng_if: "user.unconfirmed_email", style: "color: orange"}
+    %a{ng_href: "mailto:{{user.unconfirmed_email}}", ng_if: "user.unconfirmed_email"}
       {{user.unconfirmed_email}}
   %td {{user.phone}}
   %td {{user.alt_phone}}
