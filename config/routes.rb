@@ -1,4 +1,6 @@
 Timeoverflow::Application.routes.draw do
+  get 'tags/index'
+
   devise_for :users
 
   ActiveAdmin.routes(self)
@@ -45,5 +47,7 @@ Timeoverflow::Application.routes.draw do
   resource :terms, only: [:show] do
     post :accept
   end
+
+  resource :tags, only: [:index]
 
 end

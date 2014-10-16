@@ -1,14 +1,39 @@
+:javascript
+  angular.module('timeoverflow').controller('TagTypeaheadCtrl',
+  function($scope, $http) {
+
+  $scope.selected = undefined;
+
+  // Any function returning a promise object can be used to load values asynchronously
+  $scope.getTags = function(val) {
+
+    return $http.get('/tags/index', {
+      params: {
+        term: val
+      }
+    }).then(function(res){
+
+            var tags = [];
+
+            angular.forEach(res.data, function(item){
+                tags.push(item);
+            });
+
+            return tags;
+
+        });
+    };
+  });
+
 = simple_form_for(post) do |f|
   = f.input :title
   = f.input :description
   = f.association :category
-  = f.input :tag_list, as: :string
+
+  = f.input :tag_list, as: :string, :placeholder => t('application.tips.entertag'), input_html: { class: "form-control", "ng-controller" => "TagTypeaheadCtrl", "ng-model" => "asyncSelected", "typeahead" => "tag for tag in getTags($viewValue) | filter:$viewValue | limitTo:8" , "typeahead-loading" => "loadingTags"}
+  %i{"ng-show" => "loadingTags", :class => "glyphicon glyphicon-refresh"}
 
   - if current_user.manages? current_organization
     = f.association :user, collection: current_organization.users
     = f.hidden_field :publisher_id, value: current_user.id
   = f.button :submit
-
-:javascript
-  $("#offer_tag_list").tagsManager();
-
