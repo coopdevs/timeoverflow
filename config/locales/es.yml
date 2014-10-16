@@ -140,6 +140,8 @@ es:
       by_tag: Por etiqueta
     show:
       offered_by: "Ofertantes"
+    new:
+      submit: Crear oferta
 
   inquiries:
     index:
