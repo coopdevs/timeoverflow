@@ -52,6 +52,7 @@ es:
         admin: Administrador de organización
         superadmin: Administrador de sistema
         description: Descripción
+        unconfirmed_email: Correo sin confirmar
       organization:
         <<: *common_attributes
         name: Nombre
