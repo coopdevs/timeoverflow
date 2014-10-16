@@ -12,7 +12,11 @@ Timeoverflow::Application.routes.draw do
     end
   end
 
-  resources :offers, concerns: :joinable
+  resources :offers, concerns: :joinable do
+    collection do
+      get :dashboard
+    end 
+  end
   resources :inquiries, concerns: :joinable
 
 
