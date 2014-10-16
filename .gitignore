@@ -35,3 +35,5 @@ pickle-email-*.html
 .env
 .DS_Store
 .idea/
+sgemset
+

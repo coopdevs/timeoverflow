@@ -20,7 +20,6 @@
 #= require_tree ./modules
 #= require_tree ./app
 
-
 angular.module "timeoverflow", ["ng-rails-csrf", 'ui.bootstrap']
 
 $(document).on 'click', 'a[data-popup]', (event) ->
@@ -44,4 +43,3 @@ $(document).on "click", ".leave-post", (event) ->
   id = $(event.target).closest("li.post").attr("data-post-id")
   userId = $(event.target).closest("li.post").attr("data-user-id")
   $.ajax("/user/#{userId}/joined/#{id}", type: "DELETE")
-

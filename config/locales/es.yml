@@ -52,6 +52,7 @@ es:
         admin: Administrador de organización
         superadmin: Administrador de sistema
         description: Descripción
+        unconfirmed_email: Correo sin confirmar
       organization:
         <<: *common_attributes
         name: Nombre
@@ -96,7 +97,9 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
-
+    tips:
+      entertag: Entre etiquetas separadas por comas
+      
   # views/users/index...
 
   users:

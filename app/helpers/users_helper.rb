@@ -10,6 +10,7 @@ module UsersHelper
         member_id: membership.member_uid,
         username: user.username,
         email: user.email,
+        unconfirmed_email: user.unconfirmed_email,
         phone: user.phone,
         alt_phone: user.alt_phone,
         balance: membership.account_balance.to_i,

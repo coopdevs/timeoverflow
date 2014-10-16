@@ -4,13 +4,17 @@
       = t ".inactive"
   = @user.username
   %small
-    = @user.email
+    = @user.unconfirmed_email || @user.email
     - if @user.superadmin?
       %span.label.label-important= t ".superadmin"
 
 .row
   .col-sm-2
-    = image_tag avatar_url(@user, 160)
+    - if @user == current_user
+      %a{href: "https://www.gravatar.com", target: "_blank"}
+        = image_tag avatar_url(@user, 160)
+    - else
+      = image_tag avatar_url(@user, 160)
 
   .col-sm-10
     :markdown
