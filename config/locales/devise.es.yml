@@ -1,16 +1,6 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
 es:
-
-  devise:
-    shared:
-      sign_in: "Entrar"
-      sign_up: "Registrarse"
-      forgot_your_password: "No recuerdo mi contraseña"
-      didnt_receive_confirmation_instructions: "Volver a enviar mail de confirmación"
-      didnt_receive_unlock_instructions: "Enviar mail de desbloqueo"
-      sign_in_with: "Entrar con %{provider}"
-
   devise:
     confirmations:
       confirmed: "Tu cuenta ha sido confirmada con éxito."
