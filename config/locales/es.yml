@@ -99,7 +99,7 @@ es:
       statistics: Estadísticas
     tips:
       entertag: Entre etiquetas separadas por comas
-      
+
   # views/users/index...
 
   users:
@@ -228,5 +228,6 @@ es:
 
   layouts:
     application:
+      login: Entrar
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
