@@ -2,6 +2,14 @@
 
 es:
   devise:
+    shared:
+      links:
+        sign_in: "Entrar"
+        sign_up: "Registrarse"
+        forgot_your_password: "No recuerdo mi contraseña"
+        didnt_receive_confirmation_instructions: "Volver a enviar mail de confirmación"
+        didnt_receive_unlock_instructions: "Enviar mail de desbloqueo"
+        sign_in_with: "Entrar con %{provider}"
     confirmations:
       confirmed: "Tu cuenta ha sido confirmada con éxito."
       confirmed_and_signed_in: "Tu cuenta ha sido confirmada con éxito. Ahora estás registrado."
@@ -44,6 +52,8 @@ es:
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
+      new:
+        remember_me: "Recordarme"
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
