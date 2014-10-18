@@ -1,5 +1,9 @@
 Timeoverflow::Application.routes.draw do
-  # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  get 'tags/index'
+
+  devise_for :users
+
+  ActiveAdmin.routes(self)
 
   concern :joinable do
     member do
@@ -8,7 +12,11 @@ Timeoverflow::Application.routes.draw do
     end
   end
 
-  resources :offers, concerns: :joinable
+  resources :offers, concerns: :joinable do
+    collection do
+      get :dashboard
+    end 
+  end
   resources :inquiries, concerns: :joinable
 
 
@@ -18,22 +26,32 @@ Timeoverflow::Application.routes.draw do
 
   resources :organizations, concerns: :accountable
 
-  resources :users, concerns: :accountable
+  resources :users, concerns: :accountable, except: :destroy, :path => "members"
 
   resources :transfers, only: [:create]
 
-  match '/login',  to: 'sessions#create', via: :post
-  match '/logout', to: 'sessions#destroy', via: :post
+  resources :documents
 
+  resources :members, only: [:destroy] do
+    member do
+      put :toggle_manager
+      put :toggle_active
+    end
+  end
 
   resource "report" do
     collection do
       get "user_list"
-      get "cat_with_users"
+      get "offer_list" => :post_list, type: "offer"
+      get "inquiry_list" => :post_list, type: "inquiry"
+      get "statistics"
     end
   end
 
+  resource :terms, only: [:show] do
+    post :accept
+  end
 
-  root to: "application#index"
+  resource :tags, only: [:index]
 
 end

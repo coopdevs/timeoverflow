@@ -1,61 +1,65 @@
-require 'persona'
+require 'textacular/searchable'
 
 class User < ActiveRecord::Base
 
-  acts_as_paranoid
-  acts_as_taggable_on :skills, :needs rescue nil
-   # HACK: there is a known issue that acts_as_taggable breaks asset precompilation on Heroku.
+  devise *[
+    :database_authenticatable,
+    :registerable,
+    :recoverable,
+    :rememberable,
+    :confirmable,
+    :lockable,
+  ]
 
-  attr_readonly :registration_number
+  extend Searchable :username, :email, :phone, :alt_phone
 
+  GENDERS = %w[male female]
+
+  default_scope ->{ order('users.id ASC') }
+
+  scope :actives, -> { where({ members: { active: true } }) }
+
+  validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :gender, presence: true, inclusion: {:in => %w[male female]}
-  validates :organization_id, presence: true
-  validates :identity_document, presence: true, uniqueness: { scope: :organization_id }
-  validates :registration_number, uniqueness: { scope: :organization_id }
+  # validates :gender, presence: true, inclusion: {in: GENDERS}
 
-  before_create :assign_registration_number
-
-  has_one :account, as: :accountable
-  after_create :create_account
+  has_many :members
+  accepts_nested_attributes_for :members
+  has_many :organizations, through: :members
+  has_many :accounts, through: :members
+  has_many :movements, through: :accounts
 
   has_many :posts
   has_many :offers
   has_many :inquiries
 
-  has_and_belongs_to_many :joined_posts,
-    class_name: "Post",
-    join_table: "user_joined_post",
-    foreign_key: "user_id",
-    association_foreign_key: "post_id" do
-      def offers
-        where type: "Offer"
-      end
-      def inquiries
-        where type: "Inquiry"
-      end
-    end
-
-
-  def self.authenticate_with_persona(assertion)
-    Persona.authenticate(assertion)
+  def as_member_of(organization)
+    organization && members.find_by(organization: organization)
   end
 
-  def assign_registration_number
-    self.registration_number ||= organization.next_reg_number_seq
+  def admins?(organization)
+    organization && !!(as_member_of(organization).try :manager)
   end
 
-  def admin?
-    admin or superadmin
-  end
+  alias :manages? :admins?
 
   def superadmin?
-    superadmin
+    ADMINS.include? email
   end
 
-  belongs_to :organization
+  alias :superuser? :superadmin?
 
   def to_s
-    "#{registration_number} - #{username}"
+    "#{username}"
+  end
+
+  def add_to_organization organization
+    organization && members.find_or_create_by(organization: organization) do |member|
+      member.entry_date = DateTime.now.utc
+    end
+  end
+
+  def active?(organization)
+    organization && !!(as_member_of(organization).try :active)
   end
 end

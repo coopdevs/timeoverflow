@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130703234042) do
+ActiveRecord::Schema.define(version: 20140514225527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+  enable_extension "pg_trgm"
 
   create_table "accounts", force: true do |t|
     t.integer  "accountable_id"
     t.string   "accountable_type"
-    t.integer  "balance"
+    t.integer  "balance",             default: 0
     t.integer  "max_allowed_balance"
     t.integer  "min_allowed_balance"
     t.boolean  "flagged"
@@ -29,11 +31,53 @@ ActiveRecord::Schema.define(version: 20130703234042) do
 
   add_index "accounts", ["accountable_id", "accountable_type"], name: "index_accounts_on_accountable_id_and_accountable_type", using: :btree
 
-  create_table "categories", force: true do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "name"
+  create_table "active_admin_comments", force: true do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.hstore   "name_translations"
+  end
+
+  create_table "documents", force: true do |t|
+    t.integer  "documentable_id"
+    t.string   "documentable_type"
+    t.text     "title"
+    t.text     "content"
+    t.string   "label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "documents", ["documentable_id", "documentable_type"], name: "index_documents_on_documentable_id_and_documentable_type", using: :btree
+  add_index "documents", ["label"], name: "index_documents_on_label", using: :btree
+
+  create_table "members", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.boolean  "manager"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "entry_date"
+    t.integer  "member_uid"
+    t.boolean  "active",          default: true
+  end
+
+  add_index "members", ["organization_id"], name: "index_members_on_organization_id", using: :btree
+  add_index "members", ["user_id"], name: "index_members_on_user_id", using: :btree
 
   create_table "movements", force: true do |t|
     t.integer  "account_id"
@@ -48,9 +92,19 @@ ActiveRecord::Schema.define(version: 20130703234042) do
 
   create_table "organizations", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "reg_number_seq"
+    t.string   "theme"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "web"
+    t.text     "public_opening_times"
+    t.text     "description"
+    t.text     "address"
+    t.string   "neighborhood"
+    t.string   "city"
+    t.string   "domain"
   end
 
   create_table "posts", force: true do |t|
@@ -64,29 +118,18 @@ ActiveRecord::Schema.define(version: 20130703234042) do
     t.boolean  "permanent"
     t.boolean  "joinable"
     t.boolean  "global"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "tags",            array: true
+    t.integer  "publisher_id"
+    t.integer  "organization_id"
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
+  add_index "posts", ["organization_id"], name: "index_posts_on_organization_id", using: :btree
+  add_index "posts", ["publisher_id"], name: "index_posts_on_publisher_id", using: :btree
+  add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
-
-  create_table "taggings", force: true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context",       limit: 128
-    t.datetime "created_at"
-  end
-
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
-
-  create_table "tags", force: true do |t|
-    t.string "name"
-  end
 
   create_table "transfers", force: true do |t|
     t.integer  "post_id"
@@ -105,27 +148,39 @@ ActiveRecord::Schema.define(version: 20130703234042) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",            null: false
-    t.string   "email",               null: false
+    t.string   "username",                              null: false
+    t.string   "email",                                 null: false
     t.string   "password_digest"
     t.date     "date_of_birth"
     t.string   "identity_document"
-    t.string   "member_code"
-    t.integer  "organization_id"
     t.string   "phone"
     t.string   "alt_phone"
     t.text     "address"
-    t.date     "registration_date"
-    t.integer  "registration_number"
-    t.boolean  "admin"
-    t.boolean  "superadmin"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "deleted_at"
     t.string   "gender"
+    t.text     "description"
+    t.boolean  "active",                 default: true
+    t.datetime "terms_accepted_at"
+    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        default: 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["organization_id"], name: "index_users_on_organization_id", using: :btree
 
 end

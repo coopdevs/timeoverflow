@@ -1,0 +1,1 @@
+class OfferPolicy < PostPolicy; end

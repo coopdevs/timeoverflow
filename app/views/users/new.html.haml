@@ -1,16 +1,3 @@
-- content_for :breadcrumb do
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li
-    = link_to users_path do
-      %i.icon-user
-      = t "application.nav.users"
-    %span.divider •
-  %li.active= t '.new'
-
-- content_for :title do
-  = t ".new_user"
+%h1= t ".new_user"
 
 = render "form"

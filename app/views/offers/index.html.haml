@@ -1,82 +1,43 @@
-- content_for :breadcrumb do
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li.active
-    %i.icon-hand-up
-    = Offer.model_name.human(count: :many)
-
-- content_for :title do
+%h1
+  - @category = Category.where(id: params[:cat]).first
   = Offer.model_name.human(count: :many)
+  - if @category.present?
+    %small
+      = glyph(Category)
+      = @category.name
+  - if params[:q].present?
+    %small
+      = glyph(:search)
+      = params[:q]
 
 
-%ul.nav.nav-pills
-  %li
-  %a{href: new_offer_path}
-    %i.icon-plus
-    = t '.new_offer'
+.navbar
+  %form.navbar-form.navbar-left{action: offers_path, role: "search", method: "get"}
+    .form-group
+      %input.form-control{type: "text", placeholder: t("global.search"), name: "q", value: params[:q]}
+    %button.btn.btn-default{type: "submit"}= t("global.search")
 
-- if @category.present?
-  = link_to offers_path(params.merge(:cat => nil)), :class => ["label", "label-success"] do
-    %i.icon-folder-open-alt
-    = @category.name
-    ×
-- if @tag_list.present?
+  %ul.nav.navbar-nav
+    %li.dropdown
+      %a.dropdown-toggle{href: "#", "data-toggle" => "dropdown"}
+        = @category ? @category.name : Category.model_name.human
+        %span.caret
+      %ul.dropdown-menu{role: "menu"}
+        %li= link_to "× #{t("global.all")}", dashboard_offers_path
+        - Category.all.each do |c|
+          - next if c == @category
+          %li= link_to c.name, offers_path(cat: c.id)
 
-  - @tag_list.each do |tag|
-    = link_to offers_path(params.merge(:tag => (@tag_list.dup.remove tag).to_s.presence)), :class => ["label"] do
-      %i.icon-tag
-      = tag
-      ×
-.accordion
-  .accordion-group
-    .accordion-heading
-      %a.accordion-toggle{href: "#filterPanel", data: {toggle: "collapse"}}
-        %i.icon-filter
-        = t ".filter"
+  %ul.nav.navbar-nav.pull-right
+    %li
+      %a{href: new_offer_path}
+        %span.glyphicon.glyphicon-plus
+        = t "helpers.submit.create", model: Offer.model_name.human
 
-    .accordion-body.collapse#filterPanel{class: ("in" if @tag_list.present? or @category.present?)}
-      .accordion-inner
-        .row-fluid
+.offers
+  = render :partial => 'shared/posts', :locals => { :posts => @offers.actives }
 
-          .span4
-            %h5
-              %i.icon-folder-open-alt
-              = t ".by_category"
-            - Category.all.each do |cat|
-              = link_to cat.name, offers_path(params.merge(:cat => (cat.id unless cat == @category))), :class => ["btn", "btn-small", (cat == @category ? "btn-info" : "btn-link")]
-
-          .span4
-            %h5
-              %i.icon-tag
-              = t ".by_tag"
-            - tag_cloud(@tag_cloud, %w(css1 css2 css3 css4)) do |tag, css_class|
-              - if @tag_list.try :include?, tag.name
-                = link_to tag.name, offers_path(params.merge(:tag => (@tag_list.dup.remove tag.name).to_s.presence)), :class => ["btn", "btn-small", "btn-inverse"]
-              - else
-                = link_to tag.name, offers_path(params.merge(:tag => (@tag_list.dup.add tag.name).to_s)), :class => ["btn", "btn-small", "btn-link"]
+= link_to_next_page @offers, t('.more'), remote: true, params: params
 
 
-%ul
-
-  - @offers.each do |offer|
-    %li.offer
-      %h3
-        = link_to offer.title, offer
-        %small= offer.category
-        %div.tags.pull-right
-          - offer.tags.each do |tag|
-
-            %span.label
-              %i.icon-tag
-              = tag
-      %p= offer.description
-      %p= t ".offered_by", size: offer.joined_users.size
-      %dl
-
-        - [:end_on, :global, :joinable, :permanent, :start_on].each do |m|
-          - if offer.send(m).present?
-            %dt= m
-            %dd= offer.send m
 

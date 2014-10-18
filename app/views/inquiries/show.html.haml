@@ -1,40 +1,13 @@
-%h1
-  = @inquiry.title
-  %small= @inquiry.category
-  %div.tags.pull-right
-    - @inquiry.tags.each do |tag|
-
-      %span.label
-        %i.icon-tag
-        = tag
-%p= @inquiry.description
+= render "shared/post", post: @inquiry
 
 %p.actions
-  - if @inquiry.joined_users.include? current_user
-    = link_to t(".leave"), leave_inquiry_path(@inquiry), data: {method: :POST}
-  - else
-    = link_to t(".join"), join_inquiry_path(@inquiry), data: {method: :POST}
 
   - if admin? or @inquiry.user == current_user
-    = link_to t(".edit"), edit_inquiry_path(@inquiry)
-    = link_to t(".delete"), @inquiry, data: {method: :DELETE, confirm: "sure?" }
+    = link_to edit_inquiry_path(@inquiry), class: "btn btn-warning" do
+      = glyph :pencil
+      = t ".edit"
 
-%p
-  = t '.created_by'
-  = link_to "#{@inquiry.user.username} (#{@inquiry.user.registration_number})", @inquiry.user
-
-%dl
-
-  - [:global, :joinable, :permanent, :start_on, :end_on].each do |m|
-    - if @inquiry.send(m).present?
-      %dt= m
-      %dd= @inquiry.send m
-
-
-
-%h3= t '.asked_by'
-%p
-  - @inquiry.joined_users.each_with_index do |u, i|
-    = precede(i.zero? ? "" : " — ") do
-      = link_to("#{u.username} (#{u.registration_number})", u)
+    = link_to @inquiry, data: {method: :DELETE, confirm: "sure?" }, :class => "btn btn-danger" do
+      = glyph :trash
+      = t ".delete"
 

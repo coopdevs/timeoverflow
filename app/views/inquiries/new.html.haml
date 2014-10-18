@@ -1,1 +1,7 @@
-= render 'form'
+%h1= t "helpers.submit.create", model: @inquiry.class.model_name.human
+
+= render partial: 'shared/post_form', locals: { post: @inquiry }
+
+:javascript
+  $("#inquiry_tag_list").tagsManager();
+  

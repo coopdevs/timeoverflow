@@ -1,0 +1,2 @@
+$('.offers').append('#{escape_javascript(render partial: "shared/posts", :locals => { :posts => @offers.actives })}');
+$('.offers ~ a[rel=next]').replaceWith('#{link_to_next_page @offers.actives, t('.more'), remote: true, params: params}');

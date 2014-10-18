@@ -1,14 +1,21 @@
 class Organization < ActiveRecord::Base
-  has_many :users
   validates_uniqueness_of :name
+  has_many :members
+  has_many :users, -> { order "members.created_at DESC" }, through: :members
 
   has_one :account, as: :accountable
   after_create :create_account
 
-  has_many :user_accounts, through: :users, source: :account
+  has_many :member_accounts, through: :members, source: :account
 
-  has_many :offers, through: :users
-  has_many :inquiries, through: :users
+  has_many :posts
+  has_many :offers
+  has_many :inquiries
+
+  has_many :documents, as: :documentable
+
+  BOOTSWATCH_THEMES = %w[amelia cerulean cosmo cyborg flatly journal readable simplex slate spacelab united]
+  # validates :theme, allow_nil: true, inclusion: {in: BOOTSWATCH_THEMES}
 
   scope :matching, ->(str) {
     where(Organization.arel_table[:name].matches("%#{str}%"))
@@ -19,7 +26,7 @@ class Organization < ActiveRecord::Base
   end
 
   def ensure_reg_number_seq!
-    update_column(:reg_number_seq, users.with_deleted.maximum(:registration_number))
+    update_column(:reg_number_seq, members.maximum(:member_uid))
   end
 
   def ensure_reg_number_seq

@@ -1,181 +1,306 @@
 GIT
-  remote: git://github.com/irfn/seed-fu.git
-  revision: feb70cf0c0b4f20b09d03335a2d9792544876f31
+  remote: git://github.com/gregbell/active_admin.git
+  revision: b5ce6af4e5538010ff02387be04c2d60b6b62127
   specs:
-    seed-fu (2.3.1)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
+    activeadmin (1.0.0.pre)
+      arbre (~> 1.0)
+      bourbon
+      coffee-rails
+      formtastic (~> 2.3.0.rc3)
+      inherited_resources (~> 1.3)
+      jquery-rails
+      jquery-ui-rails
+      kaminari (~> 0.15)
+      rails (>= 3.2, < 4.2)
+      ransack (~> 1.0)
+      sass-rails
 
 GIT
-  remote: git://github.com/rails/coffee-rails.git
-  revision: c812f4da1f5adc226ef834b57c2498467761cb2c
+  remote: git://github.com/rails/sass-rails.git
+  revision: 3a9e47db7d769221157c82229fc1bade55b580f0
   specs:
-    coffee-rails (4.0.0)
-      coffee-script (>= 2.2.0)
+    sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
+      sass (~> 3.2)
+      sprockets (~> 2.12)
+      sprockets-rails (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.0.0)
-      actionpack (= 4.0.0)
-      mail (~> 2.5.3)
-    actionpack (4.0.0)
-      activesupport (= 4.0.0)
-      builder (~> 3.1.0)
-      erubis (~> 2.7.0)
+    actionmailer (4.1.1)
+      actionpack (= 4.1.1)
+      actionview (= 4.1.1)
+      mail (~> 2.5.4)
+    actionpack (4.1.1)
+      actionview (= 4.1.1)
+      activesupport (= 4.1.1)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activemodel (4.0.0)
-      activesupport (= 4.0.0)
-      builder (~> 3.1.0)
-    activerecord (4.0.0)
-      activemodel (= 4.0.0)
-      activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.0.0)
-      arel (~> 4.0.0)
-    activerecord-deprecated_finders (1.0.3)
-    activesupport (4.0.0)
-      i18n (~> 0.6, >= 0.6.4)
-      minitest (~> 4.2)
-      multi_json (~> 1.3)
+    actionview (4.1.1)
+      activesupport (= 4.1.1)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+    activemodel (4.1.1)
+      activesupport (= 4.1.1)
+      builder (~> 3.1)
+    activerecord (4.1.1)
+      activemodel (= 4.1.1)
+      activesupport (= 4.1.1)
+      arel (~> 5.0.0)
+    activerecord-postgres-hstore (0.7.6)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
+    activesupport (4.1.1)
+      i18n (~> 0.6, >= 0.6.9)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
       thread_safe (~> 0.1)
-      tzinfo (~> 0.3.37)
-    acts-as-taggable-on (2.4.1)
-      rails (>= 3, < 5)
-    arel (4.0.0)
-    atomic (1.1.10)
-    awesome_print (1.1.0)
-    builder (3.1.4)
+      tzinfo (~> 1.1)
+    arbre (1.0.1)
+      activesupport (>= 3.0.0)
+    arel (5.0.1.20140414130214)
+    awesome_print (1.2.0)
+    bcrypt (3.1.7)
+    better_errors (1.0.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
+    bourbon (4.0.2)
+      sass (~> 3.3)
+      thor
+    builder (3.2.2)
     choice (0.1.6)
+    coderay (1.1.0)
+    coffee-rails (4.0.1)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.3)
+    coffee-script-source (1.7.0)
+    daemons (1.1.9)
     dalli (2.6.4)
-    dotenv (0.8.0)
+    database_cleaner (1.2.0)
+    debug_inspector (0.0.2)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    devise_browserid_authenticatable (1.3.2)
+      devise (>= 2.1)
+    diff-lcs (1.2.5)
+    dotenv (0.9.0)
+    dotenv-rails (0.9.0)
+      dotenv (= 0.9.0)
     erubis (2.7.0)
-    execjs (1.4.0)
-      multi_json (~> 1.0)
+    eventmachine (1.0.3)
+    execjs (2.0.2)
+    fabrication (2.9.1)
+    faker (1.2.0)
+      i18n (~> 0.5)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
-    haml (4.0.3)
+    formtastic (2.3.0.rc3)
+      actionpack (>= 3.0)
+    haml (4.0.5)
       tilt
-    haml-rails (0.4)
-      actionpack (>= 3.1, < 4.1)
-      activesupport (>= 3.1, < 4.1)
-      haml (>= 3.1, < 4.1)
-      railties (>= 3.1, < 4.1)
+    haml-rails (0.5.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (>= 4.0.1)
+    has_scope (0.6.0.rc)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
+    hashr (0.0.22)
+    high_voltage (2.1.0)
     hike (1.2.3)
-    i18n (0.6.4)
-    jbuilder (1.4.2)
+    hstore_translate (0.0.12)
+      activerecord (>= 3.1.0)
+      activerecord-postgres-hstore (~> 0.7.0)
+      pg
+    i18n (0.6.9)
+    inherited_resources (1.4.1)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0.0.rc)
+    jbuilder (1.5.1)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    jquery-rails (3.0.4)
+    jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.2.1)
+      railties (>= 3.2.16)
+    json (1.8.1)
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     memcachier (0.0.2)
-    mime-types (1.23)
-    minitest (4.7.5)
-    multi_json (1.7.7)
-    newrelic_rpm (3.6.5.130)
+    mime-types (1.25.1)
+    minitest (5.3.4)
+    multi_json (1.10.1)
+    ngannotate-rails (0.9.2)
+      rails (>= 3.1)
+    orm_adapter (0.5.0)
     paranoia (2.0.0)
       activerecord (~> 4.0)
-    pg (0.15.1)
-    polyglot (0.3.3)
-    puma (2.3.2)
-      rack (>= 1.1, < 2.0)
+    pg (0.17.0)
+    pg-hstore (1.2.0)
+    polyamorous (1.0.0)
+      activerecord (>= 3.0)
+    polyglot (0.3.4)
+    pundit (0.2.1)
+      activesupport (>= 3.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.0.0)
-      actionmailer (= 4.0.0)
-      actionpack (= 4.0.0)
-      activerecord (= 4.0.0)
-      activesupport (= 4.0.0)
+    rails (4.1.1)
+      actionmailer (= 4.1.1)
+      actionpack (= 4.1.1)
+      actionview (= 4.1.1)
+      activemodel (= 4.1.1)
+      activerecord (= 4.1.1)
+      activesupport (= 4.1.1)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.0.0)
-      sprockets-rails (~> 2.0.0)
+      railties (= 4.1.1)
+      sprockets-rails (~> 2.0)
     rails-erd (1.1.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       choice (~> 0.1.6)
       ruby-graphviz (~> 1.0.4)
-    rails-i18n (0.7.4)
-      i18n (~> 0.5)
+    rails-i18n (4.0.2)
+      i18n (~> 0.6)
+      rails (>= 4.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.1)
-    rails_stdout_logging (0.0.1)
-    railties (4.0.0)
-      actionpack (= 4.0.0)
-      activesupport (= 4.0.0)
+    rails_stdout_logging (0.0.3)
+    railties (4.1.1)
+      actionpack (= 4.1.1)
+      activesupport (= 4.1.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.1.0)
+    rake (10.3.2)
+    ransack (1.2.3)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.0.0)
+    rdiscount (2.1.7)
+    responders (1.0.0)
+      railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rollbar (0.12.18)
+      multi_json (~> 1.3)
+    rspec-core (2.14.8)
+    rspec-expectations (2.14.5)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.6)
+    rspec-rails (2.14.2)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
     ruby-graphviz (1.0.9)
-    sass (3.2.9)
-    sass-rails (4.0.0)
-      railties (>= 4.0.0.beta, < 5.0)
-      sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0)
-    simple_form (3.0.0.rc)
-      actionpack (>= 4.0.0.rc1, < 4.1)
-      activemodel (>= 4.0.0.rc1, < 4.1)
-    sprockets (2.10.0)
+    sass (3.3.7)
+    shelly-dependencies (0.2.3)
+      rake
+      thin
+    simple_form (3.0.2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+    sprockets (2.12.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0)
+    sprockets-rails (2.0.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    thor (0.18.1)
-    thread_safe (0.1.0)
-      atomic
+    textacular (3.2.0)
+      activerecord (>= 3.0, < 4.2)
+    thin (1.6.2)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
+    thor (0.19.1)
+    thread_safe (0.3.3)
     tilt (1.4.1)
-    treetop (1.4.14)
+    travis-lint (1.7.0)
+      hashr (~> 0.0.22)
+    treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     turbolinks (1.3.0)
       coffee-rails
-    tzinfo (0.3.37)
-    uglifier (2.1.2)
+    tzinfo (1.1.0)
+      thread_safe (~> 0.1)
+    uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts-as-taggable-on
+  activeadmin!
   awesome_print
-  coffee-rails!
+  better_errors
+  binding_of_caller
+  coffee-rails
   dalli
+  database_cleaner
+  devise_browserid_authenticatable
+  dotenv-rails
+  fabrication
+  faker
   foreman
   haml-rails
+  has_scope
+  high_voltage (~> 2.1.0)
+  hstore_translate
+  inherited_resources
   jbuilder
   jquery-rails
+  kaminari
   memcachier
-  newrelic_rpm
+  ngannotate-rails
   paranoia
   pg
-  puma
-  rails (>= 4.0.0)
+  pundit
+  rails (~> 4.1)
   rails-erd
   rails-i18n
   rails_12factor
+  rake
+  rdiscount
   rest-client
-  sass-rails
-  seed-fu!
-  simple_form (~> 3.0.0.rc)
+  rollbar
+  rspec-rails (~> 2.14)
+  sass-rails!
+  shelly-dependencies
+  simple_form (>= 3.0.0)
+  textacular (~> 3.0)
+  thin
+  travis-lint
   turbolinks
   uglifier (>= 1.0.3)

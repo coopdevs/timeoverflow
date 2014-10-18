@@ -55,7 +55,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = 'btn'
+  config.button_class = 'btn btn-default'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -99,7 +99,7 @@ SimpleForm.setup do |config|
 
   # You can define the class to use on all forms. Default is simple_form.
   # config.form_class = :simple_form
-  config.form_class = 'simple_form form-horizontal'
+  # config.form_class = 'simple_form form-horizontal'
 
   # You can define which elements should obtain additional classes
   # config.generate_additional_classes_for = [:wrapper, :label, :input]
@@ -140,4 +140,6 @@ SimpleForm.setup do |config|
 
   # Cache SimpleForm inputs discovery
   # config.cache_discovery = !Rails.env.development?
+
+  config.input_class = "form-control"
 end

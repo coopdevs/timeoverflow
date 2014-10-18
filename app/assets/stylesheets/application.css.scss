@@ -9,21 +9,28 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require datatables_bs_fix
- *= jquery.dataTables
  */
 
-%li.post {
+.post {
   border-top: solid black 1px;
   list-style: none;
+  h3 small span.offerer:not(:last-of-type):after {
+    content: ",";
+  }
 }
-
-li.offer, li.inquiry {
-  @extend %li.post;
+.offers {
+  h4 {
+    font-weight: bold;
+    margin-top: 20px;
+  }
 }
 
 #side-nav .well {
   padding: 15px;
+}
+
+#footer {
+  font-size: 10px;
 }
 
 @media screen {
@@ -42,4 +49,47 @@ li.offer, li.inquiry {
   body {
     padding-top: 0px;
   }
+  .table {
+    border-collapse: collapse;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+
+}
+
+body {
+  // padding-top: 60px;
+  padding-bottom: 40px;
+  // background-image: image-url('light_wool.png');
+}
+nav.navbar-static-top.navbar-inverse {
+  // background-image: image-url('denim.png');
+  // height: 40px;
+  // color: white;
+}
+.container-inner{
+  // background-image: image-url('furley_bg.png');
+  // padding: 0 20px;
+}
+
+.error {
+  color: red;
+}
+
+// statistics view
+ul.statistics li{
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+#chart{
+  clear: both;
+}
+
+.pagination {
+  width: 100%;
+  text-align: center;
 }

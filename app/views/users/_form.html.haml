@@ -3,19 +3,25 @@
     .form-inputs
 
       = f.input :username
-      = f.input :email
-      - if current_user.try :superadmin?
-        = f.association :organization, include_blank: false
-        = f.input :superadmin, hint: t(".superadmin_warning")
-      - if current_user.try :admin?
-        = f.input :admin, hint: t(".admin_warning")
 
-      = f.input :registration_date, as: :string, input_html: {type: :date}
-      = f.input :date_of_birth, as: :string, input_html: {type: :date}
-      = f.input :gender, collection: [:male, :female], required: true
-      = f.input :identity_document
+      - if admin?
+        = f.input :email
+        - if @user.unconfirmed_email.present?
+          = f.input :unconfirmed_email, readonly: true
+      - else
+        = f.input :email, :readonly => true
+
+      / - if current_user.try :superadmin?
+      /   = f.association :organization, include_blank: false
+      /   = f.input :superadmin, :as => :boolean, :label => false, :inline_label => true
+      / - if current_user.try :admin?
+      /   = f.input :admin, :as => :boolean, :label => false, :inline_label => true, hint: t(".admin_warning")
+
       = f.input :phone
       = f.input :alt_phone
+      = f.input :date_of_birth, start_year: Date.today.year - 90, end_year: Date.today.year - 12, include_blank: :true
+
+      = f.input :description, as: 'text'
 
       / = f.association :categories, label_method: :fqn, input_html: {style: 'width: 100%'}
 

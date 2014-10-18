@@ -1,16 +1,19 @@
 es:
-
   # NOMBRES DE LAS COSAS
   activerecord:
 
     models:
       # Para usar:
       # User.model_name.human
-      user: Usuario
+      user:
+        one: Usuario
+        other: Usuarios
       organization:
         one: Banco de Tiempo
         other: Bancos de Tiempo
-      category: Servicio
+      category:
+        one: Categoría
+        other: Categorías
       offer:
         one: Oferta
         other: Ofertas
@@ -20,12 +23,19 @@ es:
       transfer:
         one: Transferencia
         other: Transferencias
-      post: 
+      post:
         one: Anuncio
         other: Anuncios
+      comment:
+        one: Comentario
+        other: Comentarios
 
     attributes:
+      common: &common_attributes
+        created_at: Creado
+        updated_at: Actualizado
       user:
+        <<: *common_attributes
         username: Nombre
         organization:
         one: Banco de Tiempo
@@ -40,16 +50,32 @@ es:
         alt_phone: Teléfono alternativo
         admin: Administrador de organización
         superadmin: Administrador de sistema
+        description: Descripción
+        unconfirmed_email: Correo sin confirmar
       organization:
+        <<: *common_attributes
         name: Nombre
+        reg_number_seq: Número de secuencia de usuario
+        theme: Tema visual
+        email: Correo
+        phone: Teléfono
+        public_opening_times: Horario de atención al público
+        description: Descripción
+        address: Dirección
+        neighborhood: Barrio
+        city: Ciudad
       category:
+        <<: *common_attributes
         name: Nombre
         parent: Categoría padre
+        name_translations: Nombre (traducciones)
       transfer:
+        <<: *common_attributes
         amount: Cantidad
         reason: Comentarios
         source: Origen
       post:
+        <<: *common_attributes
         title: Título
         description: Descripción
         category: Categoria
@@ -59,17 +85,19 @@ es:
         start_on: Empieza el
         end_on: Termina el
 
-
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
-    nav:
+    navbar:
       administration: Administración
       reports: Informes
       stats: Estadísticas
       users: Usuarios
       categories: Servicios
       organizations: Organizaciones
+      statistics: Estadísticas
+    tips:
+      entertag: Entre etiquetas separadas por comas
 
   # views/users/index...
 
@@ -77,6 +105,9 @@ es:
 
     index:
       create: Crear nuevo usuario
+      manage_warning_angular: "Va a cambiar los privilegios del usuario {{username}}"
+      cancel_warning_angular: "Va a eliminar del banco al usuario {{username}}"
+      active_warning_angular: "Va a cambiar el estado de la cuenta del usuario {{username}}"
     new:
       new_user: Nuevo usuario
     show:
@@ -86,11 +117,18 @@ es:
       data: Datos del usuario
       categories: Servicios Ofrecidos
       account: Últimos movimientos
+      inactive: "(Inactivo)"
     give_time:
       give_time: Dar Tiempo a
     form:
       superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
       admin_warning: Atención!!! Estás dando poderes a este usuario!!
+    user_rows:
+      activate: Activar
+      deactivate: Desactivar
+      manage_warning: "Va a cambiar los privilegios del usuario %{user}"
+      cancel_warning: "Va a eliminar del banco al usuario %{user}"
+      active_warning: "Va a cambiar el estado de la cuenta del usuario %{user}"
 
   offers:
     index:
@@ -101,6 +139,8 @@ es:
       by_tag: Por etiqueta
     show:
       offered_by: "Ofertantes"
+    new:
+      submit: Crear oferta
 
   inquiries:
     index:
@@ -119,21 +159,74 @@ es:
       title: Servicios ofrecidos
     user_list:
       title: Listado usuarios
+    statistics:
+      statistics: Estadísticas
+      global_activity: "Actividad global"
+      users_reg: " Altas de usuario"
+      num_swaps: " Intercambios"
+      total_hours: " Horas intercambiadas"
+      inactive_users: Usuarios inactivos
+      last_movement: Útimo intercambio
+      no_movements: Sin intercambios
+      days_without_swaps: Días sin intercambios
+      demographics: Datos demográficos
+      by_ages: Por edades
 
   stats:
-    min_balance: 
+    min_balance:
       title: Usuarios Saldo Mínimo
 
   organizations:
     index:
       member_count: Número de usuarios
+    new:
+      new: Nuevo banco
+    show:
+      contact_information: Información de contacto
+
+  transfers:
+    computation:
+      joiner: " y "
+      hour:
+        one: ! '%{count} hora'
+        other: ! '%{count} horas'
+      minute:
+        one: ! '%{count} minuto'
+        other: ! '%{count} minutos'
 
   global:
     table:
-      actions: Acciones  
+      actions: Acciones
     show: Mostrar
     edit: Modificar
     delete: Borrar
     save: Guardar
     add_new: Crear nuevo
+    cancel_membership: Borrar definitivamente
+    back: Atrás
+    give_time: Transferir tiempo
+    filter: Filtro
+    all: Todo
+    search: Buscar
+    information: Información
+    member_count: 'Número de usuarios:'
+    balance: 'Balance:'
+    movements: Movimientos
+    date: Fecha
+    source_destination: 'Origen/Destino'
+    announcements: Anuncio
+    reason: Razón
+    amount: Cantidad
+    demote: Convertir en usuario normal
+    promote: Convertir en administrador
 
+  active_admin:
+    comments:
+      resource_type: Tipo de recurso
+      author_type: Tipo de autor
+
+  layouts:
+    application:
+      login: Entrar
+      edit_profile: Modificar mi perfil
+      edit_org: "Modificar %{organization}"

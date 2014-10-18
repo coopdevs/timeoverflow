@@ -13,6 +13,10 @@ class OrganizationsController < ApplicationController
   end
 
 
+  def new
+    @organization = Organization.new
+  end
+
   def index
     @organizations = @organizations.matching(params[:q]) if params[:q].present?
     respond_with @organizations
@@ -45,18 +49,18 @@ class OrganizationsController < ApplicationController
 
   def give_time
     @destination = @organization.account.id
-    @source = current_user.account.id
+    @source = current_user.members.find_by(organization: @organization).account.id
     @offer = current_organization.offers.find(params[:offer]) if params[:offer].present?
     @transfer = Transfer.new(source: @source, destination: @destination)
     if admin?
-      @sources = [current_organization.account] + current_organization.user_accounts
+      @sources = [current_organization.account] + current_organization.member_accounts
     end
   end
 
 
   private
   def organization_params
-    params[:organization].permit(*%w"name").tap(&method(:ap))
+    params[:organization].permit(*%w"name theme email phone web public_opening_times description address neighborhood city domain")
   end
 
 

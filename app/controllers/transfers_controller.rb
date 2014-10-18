@@ -1,16 +1,17 @@
 class TransfersController < ApplicationController
   def create
-    if admin?
-      transfer_params = params.require(:transfer).permit(:source, :destination, :amount)
-      @source = Account.find(transfer_params[:source])
+    @source = if admin?
+      Account.find(transfer_params[:source])
     else
-      transfer_params = params.require(:transfer).permit(:destination, :amount)
-      @source = current_user.account
+      current_user.members.find_by(organization: current_organization).account
     end
-    ap transfer_params
-    ap @source
-    ap Account.find(transfer_params[:destination])
     Transfer.create(transfer_params.merge source: @source)
-    redirect_to current_user
+    redirect_to Account.find(transfer_params[:destination]).accountable.user
   end
+
+  private
+
+    def transfer_params
+      params.require(:transfer).permit(*[:destination, :amount, :reason, :post_id, (:source if admin?)].compact)
+    end
 end

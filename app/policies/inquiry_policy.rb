@@ -1,0 +1,2 @@
+class InquiryPolicy < PostPolicy
+end

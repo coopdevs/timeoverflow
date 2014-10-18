@@ -1,0 +1,19 @@
+.row
+  %table.table.table-condensed.table-bordered
+    %colgroup
+      %col.col-sm-9
+      %col.col-sm-3
+    %thead
+      %tr
+        %th= @post_type.model_name.human
+        %th= User.model_name.human
+    %tbody
+      - @posts.each do |cat, ps|
+        %tr.success
+          %td{colspan: 2}
+            %h4= cat || raw("&mdash;")
+        - ps.each do |post|
+          %tr
+            %td
+              %strong= post.title
+            %td= "#{post.user} (#{post.member_id})"

@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  post_id: 
-  reason: MyText
-
-two:
-  post_id: 
-  reason: MyText

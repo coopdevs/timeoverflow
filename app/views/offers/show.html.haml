@@ -1,71 +1,19 @@
-- content_for :breadcrumb do
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li
-    = link_to offers_path do
-      %i.icon-hand-up
-      = t "application.nav.offers"
-    %span.divider •
-  - if defined?(action)
-    %li
-      = link_to @offer.title, @offer
-      %span.divider •
-    %li.active= t action
-  - else
-    %li.active= @offer.title
+= render "shared/post", post: @offer
 
-- content_for :title do
-  = @offer.title
-
-- content_for :subtitle do
-  = @offer.class.model_name.human
-
-.row
-  .span12
-    %span.label
-      %i.icon-folder-open-alt
-      = @offer.category
-
-    - @offer.tags.each do |tag|
-
-      %span.label
-        %i.icon-tag
-        = tag
-%p= @offer.description
 
 %p.actions
-  - if @offer.joined_users.include? current_user
-    = link_to t(".leave"), leave_offer_path(@offer), data: {method: :POST}
-  - else
-    = link_to t(".join"), join_offer_path(@offer), data: {method: :POST}
-
   - if admin? or @offer.user == current_user
-    = link_to t(".edit"), edit_offer_path(@offer)
+    = link_to edit_offer_path(@offer), class: "btn btn-warning" do
+      = glyph :pencil
+      = t ".edit"
 
-    - if @offer.joined_users.empty? or @offer.joined_users == [current_user]
-      = link_to t(".delete"), @offer, data: {method: :DELETE, confirm: "sure?" }
-
-%p
-  = t '.created_by'
-  = link_to "#{@offer.user.username} (#{@offer.user.registration_number})", @offer.user
-
-%dl
-
-  - [:global, :joinable, :permanent, :start_on, :end_on].each do |m|
-    - if @offer.send(m).present?
-      %dt= m
-      %dd= @offer.send m
+    = link_to @offer, data: {method: :DELETE, confirm: "sure?" }, :class => "btn btn-danger" do
+      = glyph :trash
+      = t ".delete"
+  - else
+    = link_to(give_time_user_path(@offer.user, offer: @offer.id), {:class => "btn btn-success"}) do
+      = glyph(:time)
+      = t "global.give_time"
 
 
-
-%h3= t '.offered_by'
-%p
-  - @offer.joined_users.each_with_index do |u, i|
-    = precede(i.zero? ? "" : " — ") do
-      = link_to("#{u.username} (#{u.registration_number})", u)
-      = link_to(give_time_user_path(u, offer: @offer.id), {:class => "btn btn-success btn-mini"}) do
-        %i.icon-time
-        = t ".give_time"
 

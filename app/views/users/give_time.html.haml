@@ -1,39 +1,32 @@
-- content_for :breadcrumb do
-  %li
-    = link_to root_path do
-      %i.icon-home
-    %span.divider •
-  %li
-    = link_to users_path do
-      %i.icon-user
-      = t "application.nav.users"
-    %span.divider •
-  %li
-    = link_to @user, @user
-    %span.divider •
-  %li.active= t ".give_time"
-
-- content_for :title do
-  = @user
-
-- content_for :subtitle do
-  = t ".give_time"
+%h1
+  %small= t ".give_time"
+  = link_to @user, user_path(@user)
 
 - if @offer
   %h3= @offer
 
-
 = simple_form_for @transfer do |f|
   .form-inputs
-    = f.input :amount
+    = f.input :hours, as: :integer, input_html: { min: 0, max: 20, "data-rule-either-hours-minutes-informed" => "true", "data-rule-range" => "[0,20]"}
+    = f.input :minutes, as: :integer, input_html: { min: 0, max: 59, step: 15, "data-rule-either-hours-minutes-informed" => "true", "data-rule-range" => "[0,59]"}
+    = f.input :amount, as: :hidden
     = f.input :reason
     = f.input :destination, as: :hidden
     - if admin?
-      = f.input :source, collection: @sources
+      .form-group
+        = f.label :source
+        = f.select :source, options_for_select(@sources.sort_by!(&:accountable_type).sort_by(&:accountable_id).map{ |a| ["#{a.accountable_id} #{a.accountable_type} #{a.accountable.to_s}", a.id]}), { include_blank: true }, { id: "select2-time", class: "form-control" }
     - if @offer
       = f.input :post, readonly: true
-
-
+      = f.input :post_id, as: :hidden
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btn btn-default", style: "margin-bottom: 20px;"
+
+:javascript
+  $("#select2-time").select2({
+    placeholder: " ",
+    formatNoMatches: function() {
+        return 'Usuario no encontrado.';
+    }
+  })

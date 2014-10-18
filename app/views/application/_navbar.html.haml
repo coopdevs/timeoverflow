@@ -1,0 +1,71 @@
+%nav.navbar.navbar-static-top.navbar-inverse{role: :navigation}
+  .container
+    .navbar-header
+      %a.navbar-brand(href="/") TimeOverflow
+
+    %ul.nav.navbar-nav
+      - if current_user and current_organization
+        - [User, Offer, Inquiry].each do |item|
+          - path = item == Offer ? dashboard_offers_path : send("#{item.to_s.downcase.pluralize}_path")
+          %li{class: current_page?(path) && "active"}
+            %a{href: path}
+              = glyph(item)
+              = item.model_name.human(count: :many)
+
+        - if current_user.manages? current_organization
+          %li.dropdown
+            %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+              = glyph("paperclip")
+              = t ".reports"
+              %b.caret
+            %ul.dropdown-menu{role: :menu}
+              %li
+                %a{href: "/report/user_list", data: {popup: true}}
+                  %span.glyphicon.glyphicon-list-alt
+                  = User.model_name.human(count: :many)
+              %li
+                %a{href: "/report/offer_list", data: {popup: true}}
+                  %span.glyphicon.glyphicon-list-alt
+                  = Offer.model_name.human(count: :many)
+              %li
+                %a{href: "/report/inquiry_list", data: {popup: true}}
+                  %span.glyphicon.glyphicon-list-alt
+                  = Inquiry.model_name.human(count: :many)
+          %li{class: current_page?('/report/statistics') && "active"}
+            %a{href: '/report/statistics'}
+              %span.glyphicon.glyphicon-stats
+              = t ".statistics"
+
+    %ul.nav.navbar-nav.navbar-right
+      - if current_user
+        %li.dropdown
+          %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+            = image_tag avatar_url(current_user), style: "margin: -8px auto"
+            = current_user.email
+            %b.caret
+          %ul.dropdown-menu{role: :menu}
+            - if superadmin?
+              %li{role: :presentation}
+                = link_to admin_root_path do
+                  = glyph(:cog)
+                  Admin
+
+            %li{role: :presentation}
+              = link_to destroy_user_session_path, method: :delete  do
+                = glyph("log-out")
+                = t "Log out"
+            %li.divider{role: :presentation}
+            %li{role: :presentation}
+              = link_to current_user do
+                = glyph(:user)
+                = t "layouts.application.edit_profile"
+            - current_user.members.where(manager: true).each do |m|
+              %li{role: :presentation}
+                = link_to m.organization do
+                  = glyph(:pencil)
+                  = t "layouts.application.edit_org", organization: m.organization
+
+      - else
+        %li
+          %a{href: new_user_session_path}
+            = t "layouts.application.login"

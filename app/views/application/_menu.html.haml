@@ -3,21 +3,21 @@
   - if current_user
     %li.dropdown
       %a.dropdown-toggle{href: true, data: {toggle: "dropdown"}}
-        %i.icon-user
+        %span.glyphicon.glyphicon-user
         = current_user.email
         %b.caret
       %ul.dropdown-menu
         %li
           %a.disabled
-            %i.icon-wrench
+            %span.glyphicon.glyphicon-wrench
             = t "menu.preferences"
     %li
       %a#signout{href: true}
-        %i.icon-signout
+        %span.glyphicon.glyphicon-signout
         Sign out
 
   - else
     %li
       %a#signin{href: true}
-        %i.icon-signin
+        %span.glyphicon.glyphicon-signin
         Sign in

@@ -1,6 +1,7 @@
 TimeOverflow
 ============
 
+[![Build Status](https://travis-ci.org/coopdevs/timeoverflow.png)](https://travis-ci.org/coopdevs/timeoverflow)
 [![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow.png)](https://codeclimate.com/github/timeoverflow/timeoverflow)
 
 Sistema de Banco de Tiempo. 
@@ -46,6 +47,27 @@ License
 =======
 
 This project is in the public domain.
+
+Wireframes
+=======
+
+https://moqups.com/sseerrggii/JIu1Z1eD/
+
+
+
+
+Notas para desarrollo
+=====================
+Únete al equipo de colaboradores!! Gestionamos las tareas en Redbooth.com https://redbooth.com/public/timeoverflow
+
+Si quieres probar la plataforma en local, necesitas Postgres y cuidado que los ficheros
+son UTF-8.
+
+Hay que añadir
+
+export RUBYOPT=-Ku
+
+a tu fichero .bashrc o .zshrc
 
 
 
