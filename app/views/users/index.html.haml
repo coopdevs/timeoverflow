@@ -23,7 +23,7 @@
       %tr
       %tr
         %th
-        %th 
+        %th
           %a{ "ng-click" => "sortBy('id')" }
             ID
             %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-id'" }
@@ -48,7 +48,7 @@
 
         %th
           %span.glyphicon.glyphicon-hand-down
-          Acciones
+          =t(".actions")
     %tbody
       = render partial: "user_rows", locals: {users: @users}
 
