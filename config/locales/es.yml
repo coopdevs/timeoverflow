@@ -111,6 +111,7 @@ es:
       manage_warning_angular: "Va a cambiar los privilegios del usuario {{username}}"
       cancel_warning_angular: "Va a eliminar del banco al usuario {{username}}"
       active_warning_angular: "Va a cambiar el estado de la cuenta del usuario {{username}}"
+      actions: Acciones
     new:
       new_user: Nuevo usuario
     show:
