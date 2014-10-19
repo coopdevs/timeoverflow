@@ -35,6 +35,16 @@
             %a{href: '/report/statistics'}
               %span.glyphicon.glyphicon-stats
               = t ".statistics"
+          %li.dropdown
+            %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+              = glyph("wrench")
+              = t ".admin"
+              %b.caret
+            %ul.dropdown-menu{role: :menu}
+              %li
+                %a{href: "/tags/index", data: {popup: true}}
+                  %span.glyphicon.glyphicon-tags
+                  =t ".tags"
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user

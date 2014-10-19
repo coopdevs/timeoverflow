@@ -88,6 +88,7 @@ es:
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
+    terms_conditions: términos del servicio
     navbar:
       administration: Administración
       reports: Informes
@@ -96,6 +97,8 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
+      admin: Administrar
+      tags: Etiquetas
     tips:
       entertag: Entre etiquetas separadas por comas
 
