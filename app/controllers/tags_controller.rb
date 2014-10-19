@@ -7,4 +7,10 @@ class TagsController < ApplicationController
     respond_with @all_tags
 
   end
+
+  def alpha_grouped_index
+
+    @alpha_tags = Post::alphabetical_grouped_tags
+    respond_with @alpha_tags
+  end
 end
