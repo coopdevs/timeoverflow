@@ -44,7 +44,7 @@
   - if current_user.manages? current_organization
     .form-group
       = f.label :user, class: "control-label"
-      = f.select :user_id, options_for_select(current_organization.members.order("members.member_uid").map{ |mem| ["#{mem.member_uid} #{mem.user.to_s}", mem.user_id] }, selected: post.user.id || current_user.id), {}, { id: "select2", class: "form-control", required: true }
+      = f.select :user_id, options_for_select(current_organization.members.active.order("members.member_uid").map{ |mem| ["#{mem.member_uid} #{mem.user.to_s}", mem.user_id] }, selected: post.user.id || current_user.id), {}, { id: "select2", class: "form-control", required: true }
     = f.hidden_field :publisher_id, value: current_user.id
 
   = f.button t("offers.new.submit"), class: "btn btn-default", style: "margin-bottom: 20px;"

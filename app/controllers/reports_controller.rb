@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   layout "report", except: :statistics
 
   def user_list
-    @members = current_organization.members.includes(:user).order("members.member_uid")
+    @members = current_organization.members.active.includes(:user).order("members.member_uid")
   end
 
   def post_list
