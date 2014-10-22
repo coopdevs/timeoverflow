@@ -15,7 +15,7 @@
     - if admin?
       .form-group
         = f.label :source
-        = f.select :source, options_for_select(@sources.sort_by{ |source| [source.accountable_type, source.accountable_id]}.map{ |a| ["#{a.accountable_id} #{a.accountable_type} #{a.accountable.to_s}", a.id]}, selected: current_user.member(current_organization).account.id), {}, { id: "select2-time", class: "form-control" }
+        = f.select :source, options_for_select(@sources.sort_by{ |source| [source.accountable_type, source.accountable_id]}.map{ |a| ["#{a.accountable_type == "Member" ? a.accountable.member_uid : a.accountable_id} #{a.accountable_type} #{a.accountable.to_s}", a.id]}, selected: current_user.member(current_organization).account.id), {}, { id: "select2-time", class: "form-control" }
     - if @offer
       = f.input :post, readonly: true
       = f.input :post_id, as: :hidden
