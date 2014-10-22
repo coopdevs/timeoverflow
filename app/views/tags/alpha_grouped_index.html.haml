@@ -1,9 +1,12 @@
 %h1 Alpha Group Tags#index
 
 
-- @alpha_tags.each do |l,tag|
-    %h5
-    = l
-    = tag[0]
-    = tag[1]
-    %span.glyphicon.glyphicon-tag
+.container_fluid
+  - @alpha_tags.each_slice(3) do |gr|
+    .row
+      = gr.each do |k,v|
+        .col-xs-6.col-md-4
+          %h5
+          = k
+          = v
+          %span.glyphicon.glyphicon-tag
