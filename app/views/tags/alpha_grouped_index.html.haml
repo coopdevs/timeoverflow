@@ -1,12 +1,16 @@
-%h1 Alpha Group Tags#index
+%h1
+  =t(".maintitle")
 
 
 .container_fluid
-  - @alpha_tags.each_slice(3) do |gr|
+  - @alpha_tags.each_slice(4) do |gr|
     .row
-      = gr.each do |k,v|
-        .col-xs-6.col-md-4
-          %h5
-          = k
-          = v
-          %span.glyphicon.glyphicon-tag
+      - gr.each do |k,v|
+        .col-xs-3.col-md-2
+          %h2
+            =k
+          - v.each do |l,a|
+            %p
+              =l
+              %span.glyphicon.glyphicon-tag
+              =" (#{a})"

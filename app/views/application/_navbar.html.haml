@@ -45,6 +45,12 @@
                 %a{href: "/tags/alpha_grouped_index" }
                   %span.glyphicon.glyphicon-tags
                   =t ".tags"
+        - else
+          - path = alpha_grouped_index_tags_path
+          %li{class: current_page?(path) && "active"}
+            %a{href: path}
+              = glyph("tags")
+              = t ".tags"
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user
