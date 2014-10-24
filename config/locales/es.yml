@@ -134,6 +134,10 @@ es:
       cancel_warning: "Va a eliminar del banco al usuario %{user}"
       active_warning: "Va a cambiar el estado de la cuenta del usuario %{user}"
 
+  tags:
+    alpha_grouped_index:
+      maintitle: "Etiquetas Disponibles"
+
   offers:
     index:
       offered_by: "Ofrecido por %{size} personas"
