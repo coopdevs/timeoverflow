@@ -4,7 +4,7 @@ describe InquiriesController do
   let (:test_organization) { Fabricate(:organization)}
   let (:member) { Fabricate(:member, organization: test_organization)}
   let (:another_member) { Fabricate(:member, organization: test_organization)}
-  let! (:inquiry) { Fabricate(:inquiry, user: member.user)}
+  let! (:inquiry) { Fabricate(:inquiry, user: member.user, organization: test_organization)}
 
   describe "GET #index" do
     context "with a logged user" do
