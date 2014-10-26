@@ -42,11 +42,11 @@
               %b.caret
             %ul.dropdown-menu{role: :menu}
               %li
-                %a{href: "/tags/alpha_grouped_index" }
+                %a{href: "/tags/alpha_grouped_index?post_type=all" }
                   %span.glyphicon.glyphicon-tags
                   =t ".tags"
         - else
-          - path = alpha_grouped_index_tags_path
+          - path = alpha_grouped_index_tags_path(post_type: "offer")
           %li{class: current_page?(path) && "active"}
             %a{href: path}
               = glyph("tags")

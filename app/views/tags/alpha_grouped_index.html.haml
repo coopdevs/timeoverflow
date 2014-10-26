@@ -1,16 +1,13 @@
 %h1
   =t(".maintitle")
+  = form_tag "/", method: :post do
+    .btn-group{"data-toggle" => "buttons"}
+      %label.btn.btn-primary.active
+        = radio_button_tag :switch_offer, :value => 'offer', :checked => true
+        = Offer.model_name.human(count: :many)
+      %label.btn.btn-primary
+        = radio_button_tag :switch_inquiry, :value => 'inquiry'
+        = Inquiry.model_name.human(count: :many)
 
-
-.container_fluid
-  - @alpha_tags.each_slice(6) do |gr|
-    .row
-      - gr.each do |k,v|
-        .col-xs-3.col-md-2
-          %h2.bg-info.text-center
-            =k
-          - v.each do |l,a|
-            %p
-              =l
-              %span.glyphicon.glyphicon-tag
-              =" (#{a})"
+.alpha_tag_list
+  = render :partial => 'grouped_index', :locals => { :alpha_tags => @alpha_tags }
