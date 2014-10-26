@@ -30,4 +30,5 @@ class TagsController < ApplicationController
     params[:tags].permit(*%w"post_type")
   end
 
+
 end

@@ -47,6 +47,7 @@
                   =t ".tags"
         - else
           - path = alpha_grouped_index_tags_path(post_type: "offer")
+
           %li{class: current_page?(path) && "active"}
             %a{href: path}
               = glyph("tags")
