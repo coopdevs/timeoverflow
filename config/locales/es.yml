@@ -1,5 +1,4 @@
 es:
-
   # NOMBRES DE LAS COSAS
   activerecord:
 
@@ -52,6 +51,8 @@ es:
         admin: Administrador de organización
         superadmin: Administrador de sistema
         last_sign_in_at: Fecha último login
+        description: Descripción
+        unconfirmed_email: Correo sin confirmar
       organization:
         <<: *common_attributes
         name: Nombre
@@ -102,6 +103,8 @@ es:
       last_login: Último login
       without_offers: Sin ofertas publicadas
       type_of_swaps: Tipos de intecambios
+    tips:
+      entertag: Entre etiquetas separadas por comas
 
   # views/users/index...
 
@@ -143,6 +146,8 @@ es:
       by_tag: Por etiqueta
     show:
       offered_by: "Ofertantes"
+    new:
+      submit: Crear oferta
 
   inquiries:
     index:
@@ -194,6 +199,8 @@ es:
       new: Nuevo banco
     show:
       contact_information: Información de contacto
+    give_time:
+      give_time: Dar Tiempo a
 
   transfers:
     computation:
@@ -239,5 +246,6 @@ es:
 
   layouts:
     application:
+      login: Entrar
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"

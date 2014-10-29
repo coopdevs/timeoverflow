@@ -36,8 +36,9 @@ class UsersController < ApplicationController
       end
     else
       # New User
-      @user = User.create!(user_params)
-      @user.touch :confirmed_at # auto-confirm
+      @user = User.new(user_params)
+      @user.skip_confirmation! #auto-confirm, not sending confirmation email
+      @user.save!
     end
 
     if @user.persisted?
@@ -66,7 +67,7 @@ class UsersController < ApplicationController
     @offer = current_organization.offers.find(params[:offer]) if params[:offer].present?
     @transfer = Transfer.new(source: @source, destination: @destination, post: @offer)
     if admin?
-      @sources = [current_organization.account] + current_organization.member_accounts
+      @sources = [current_organization.account] + current_organization.member_accounts.where("members.active is true")
     end
   end
 
@@ -87,7 +88,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    fields_to_permit = %w"gender username email date_of_birth phone alt_phone active"
+    fields_to_permit = %w"gender username email date_of_birth phone alt_phone active description"
     fields_to_permit += %w"admin registration_number registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
     # params[:user].permit(*fields_to_permit).tap &method(:ap)

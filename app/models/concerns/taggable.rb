@@ -27,6 +27,12 @@ module Taggable
       Hash[all_tags.group_by(&:to_s).values.map {|v| [v.first, v.size]}.sort]
     end
 
+    def find_like_tag(pattern)
+
+       all_tags.uniq.select{|t| t=~ /#{pattern}/}
+
+    end
+
   end
 
 end

@@ -63,4 +63,8 @@ class User < ActiveRecord::Base
   def active?(organization)
     organization && !!(as_member_of(organization).try :active)
   end
+
+  def member(organization)
+    members.where(organization_id: organization).first
+  end
 end

@@ -1,6 +1,6 @@
 %h1
-  = link_to @user
   %small= t ".give_time"
+  = link_to @user, user_path(@user)
 
 - if @offer
   %h3= @offer
@@ -13,9 +13,19 @@
     = f.input :reason
     = f.input :destination, as: :hidden
     - if admin?
-      = f.input :source, collection: @sources
+      .form-group
+        = f.label :source
+        = f.select :source, options_for_select(@sources.sort_by{ |source| [source.accountable_type, source.accountable_id]}.map{ |a| ["#{a.accountable_type == "Member" ? a.accountable.member_uid : a.accountable_id} #{a.accountable_type} #{a.accountable.to_s}", a.id]}, selected: current_user.member(current_organization).account.id), {}, { id: "select2-time", class: "form-control" }
     - if @offer
       = f.input :post, readonly: true
+      = f.input :post_id, as: :hidden
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btn btn-default", style: "margin-bottom: 20px;"
+
+:javascript
+  $("#select2-time").select2({
+    formatNoMatches: function() {
+        return 'Usuario no encontrado.';
+    }
+  })

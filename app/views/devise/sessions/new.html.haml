@@ -4,7 +4,8 @@
   .col-sm-8
     .panel.panel-primary
       .panel-heading
-        %h2.panel-title Sign in
+        %h2.panel-title
+          =t("layouts.application.login")
 
       .panel-body
         = form_for resource, url: session_path(resource_name) do |f|
@@ -19,6 +20,6 @@
               .checkbox
                 = f.label :remember_me do
                   = f.check_box :remember_me
-                  Remember me
+                  = t(".remember_me")
           .form-group
             = f.submit "Sign in", class: "btn btn-primary"

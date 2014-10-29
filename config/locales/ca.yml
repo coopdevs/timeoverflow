@@ -149,6 +149,8 @@ ca:
       member_count: Número de usuaris
     new:
       new: Nou banc
+    give_time:
+      give_time: Donar Temps a
 
   transfers:
     computation:

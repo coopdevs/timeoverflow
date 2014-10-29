@@ -4,16 +4,21 @@
       = t ".inactive"
   = @user.username
   %small
-    = @user.email
+    = @user.unconfirmed_email || @user.email
     - if @user.superadmin?
       %span.label.label-important= t ".superadmin"
 
 .row
   .col-sm-2
-    = image_tag avatar_url(@user, 160)
+    - if @user == current_user
+      %a{href: "https://www.gravatar.com", target: "_blank"}
+        = image_tag avatar_url(@user, 160)
+    - else
+      = image_tag avatar_url(@user, 160)
 
   .col-sm-10
-    %p= @user.description
+    :markdown
+      #{@user.description}
 
     %ul.nav.nav-pills.pull-right
       - if @user == current_user
@@ -21,7 +26,7 @@
           %a{href: edit_user_path(@user)}
             %span.glyphicon.glyphicon-pencil
             = t "global.edit"
-      - else 
+      - else
         %li
           %a
             %span.glyphicon.glyphicon-envelope
@@ -35,7 +40,7 @@
 
 
     %dl.dl-horizontal
-      - if @user.date_of_birth.present?
+      - if @user.date_of_birth.present? && admin?
         %dt= User.human_attribute_name(:date_of_birth)
         %dd= l @user.date_of_birth
       - phones = [@user.phone, @user.alt_phone].map(&:presence).compact
@@ -57,8 +62,10 @@
         - @user.offers.each do |post|
           %tr
             %td= link_to post, post
-            %td= time_ago_in_words post.updated_at
             %td= post.description
+            %td
+              %a{href: give_time_user_path(@user, offer: post.id), title: t("global.give_time")}
+                %span.glyphicon.glyphicon-time
 
   .col-sm-6.inquiries
     .panel.panel-default
@@ -69,7 +76,6 @@
         - @user.inquiries.each do |post|
           %tr
             %td= link_to post, post
-            %td= time_ago_in_words post.updated_at
             %td= post.description
 
 %h2

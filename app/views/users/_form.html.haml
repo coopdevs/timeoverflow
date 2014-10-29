@@ -4,10 +4,12 @@
 
       = f.input :username
 
-      - if @user.id
-        = f.input :email, :readonly => true
-      - else
+      - if admin?
         = f.input :email
+        - if @user.unconfirmed_email.present?
+          = f.input :unconfirmed_email, readonly: true
+      - else
+        = f.input :email, :readonly => true
 
       / - if current_user.try :superadmin?
       /   = f.association :organization, include_blank: false
@@ -17,6 +19,9 @@
 
       = f.input :phone
       = f.input :alt_phone
+      = f.input :date_of_birth, start_year: Date.today.year - 90, end_year: Date.today.year - 12, include_blank: :true
+
+      = f.input :description, as: 'text'
 
       / = f.association :categories, label_method: :fqn, input_html: {style: 'width: 100%'}
 

@@ -18,6 +18,12 @@
     content: ",";
   }
 }
+.offers {
+  h4 {
+    font-weight: bold;
+    margin-top: 20px;
+  }
+}
 
 #side-nav .well {
   padding: 15px;
@@ -81,6 +87,11 @@ ul.statistics li{
 
 #chart{
   clear: both;
+}
+
+.pagination {
+  width: 100%;
+  text-align: center;
 }
 
 // if not navbar hidden datepicker in small windows
