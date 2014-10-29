@@ -27,7 +27,7 @@ class StatisticsController < ApplicationController
       @hours_swaps_months = []
       # valores por cada mes
       num_months.times{
-        @months_names.push(date.strftime("%B"))
+        @months_names.push(l(date, format: "%B %Y"))
         @user_reg_months.push(@members.by_month(date).count)
         # movimientos de los miembros en dicho mes
         swaps_members = @members.map{|a| a.account.movements.by_month(date)}
@@ -65,16 +65,16 @@ class StatisticsController < ApplicationController
       when 45..54 then '45-54'
       when 55..64 then '55-64'
       when 65..100 then '65+'
-      else 'Desconocida'
+      else t("statistics.statistics_demographics.unknown")
       end
     }
     @age_counts = Hash[@age_groups.map { |name, group| [name, group.size] }]
 
     @gender_groups = @members.group_by { |member|
       case member.user.gender
-      when 'male' then 'Male'
-      when 'female' then 'Female'
-      else 'Desconocido'
+      when 'male' then t("statistics.statistics_demographics.male")
+      when 'female' then t("statistics.statistics_demographics.female")
+      else t("statistics.statistics_demographics.unknown")
       end
     }
     @gender_counts = Hash[@gender_groups.map { |name, group| [name, group.size] }]

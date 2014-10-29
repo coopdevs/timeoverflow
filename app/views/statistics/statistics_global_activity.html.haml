@@ -1,26 +1,25 @@
-%div{"ng-controller" => ""}
-  %h1= t("global.statistics") + ": " + t(".global_activity")
-  .panel.panel-default
-    .panel-body
-      %ul.nav.nav-pills.statistics
-        %li
-          = t ".users_reg"
-          .badge
-            = @members.count
-        %li
-          = t ".num_swaps"
-          .badge
-            = @num_swaps
-        %li
-        = t ".total_hours"
+%h1= t("global.statistics") + ": " + t(".global_activity")
+.panel.panel-default
+  .panel-body
+    %ul.nav.nav-pills.statistics
+      %li
+        = t ".users_reg"
         .badge
-          = seconds_to_hm @total_hours
-    %form.navbar-form.navbar-right
-      .form-group
-        %input.form-control{id: "datepicker_from", placeholder: "mm/aaaa inicial", name: "ini", value: params[:ini]}
-        %input.form-control{id: "datepicker_to", placeholder: "mm/aaaa final", name: "fin", value: params[:fin]}
-        %button.btn.btn-default{type: :submit}= "Mostrar"
-    #chart
+          = @members.count
+      %li
+        = t ".num_swaps"
+        .badge
+          = @num_swaps
+      %li
+      = t ".total_hours"
+      .badge
+        = seconds_to_hm @total_hours
+  %form.navbar-form.navbar-right
+    .form-group
+      %input.form-control{id: "datepicker_from", placeholder: "mm/aaaa inicial", name: "ini", value: params[:ini]}
+      %input.form-control{id: "datepicker_to", placeholder: "mm/aaaa final", name: "fin", value: params[:fin]}
+      %button.btn.btn-default{type: :submit}= "Mostrar"
+  #chart
 
 :javascript
   window.onload = function () {

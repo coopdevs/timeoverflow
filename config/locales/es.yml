@@ -181,6 +181,9 @@ es:
       demographics: Datos demográficos
       by_ages: Por edades
       by_gender: Por género
+      male: Hombre
+      female: Mujer
+      unknown: Desconocido
     statistics_last_login:
       last_login: Último login
       never_login: Nunca logueado
