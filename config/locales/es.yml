@@ -166,6 +166,7 @@ es:
       title: Servicios ofrecidos
     user_list:
       title: Listado usuarios
+  statistics:
     statistics_global_activity:
       global_activity: "Actividad global"
       users_reg: " Altas de usuario"
