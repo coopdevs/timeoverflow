@@ -183,6 +183,8 @@ es:
       new: Nuevo banco
     show:
       contact_information: Información de contacto
+    give_time:
+      give_time: Dar Tiempo a
 
   transfers:
     computation:

@@ -6,7 +6,7 @@ class TransfersController < ApplicationController
       current_user.members.find_by(organization: current_organization).account
     end
     Transfer.create(transfer_params.merge source: @source)
-    redirect_to Account.find(transfer_params[:destination]).accountable.user
+    redirect_to Account.find(transfer_params[:destination]).accountable
   end
 
   private
