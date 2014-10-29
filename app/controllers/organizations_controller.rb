@@ -53,7 +53,7 @@ class OrganizationsController < ApplicationController
     @offer = current_organization.offers.find(params[:offer]) if params[:offer].present?
     @transfer = Transfer.new(source: @source, destination: @destination)
     if admin?
-      @sources = [current_organization.account] + current_organization.member_accounts
+      @sources = [current_organization.account] + current_organization.member_accounts.where("members.active is true")
     end
   end
 

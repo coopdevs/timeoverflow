@@ -6,7 +6,8 @@ class TransfersController < ApplicationController
       current_user.members.find_by(organization: current_organization).account
     end
     Transfer.create(transfer_params.merge source: @source)
-    redirect_to Account.find(transfer_params[:destination]).accountable
+    account = Account.find(transfer_params[:destination])
+    redirect_to account.accountable_type == "Organization" ? account.accountable : account.accountable.user
   end
 
   private
