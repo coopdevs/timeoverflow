@@ -11,7 +11,7 @@ class TagsController < ApplicationController
   def alpha_grouped_index
 
     #params = tags_params(params)
-    post_type = params[:post_type]
+    post_type = params[:post_type] || "offer"
 
     case post_type
     when "offer"
