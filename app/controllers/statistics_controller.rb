@@ -81,7 +81,7 @@ class StatisticsController < ApplicationController
   end
 
   def statistics_last_login
-    @members = current_organization.members.joins(:user).order('users.current_sign_in_at DESC NULLS FIRST')
+    @members = current_organization.members.joins(:user).order('users.current_sign_in_at ASC NULLS FIRST')
   end
 
   def statistics_without_offers
