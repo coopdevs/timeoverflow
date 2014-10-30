@@ -6,6 +6,8 @@ TimeOverflow
 
 Sistema de Banco de Tiempo. 
 
+Mira la nueva página de TimeOverflow: <http://coopdevs.github.io/timeoverflow/>
+
 TimeOverflow es un software desarrollado de manera altruista para ofrecer un sistema que facilite la interacción 
 de los miembros y la gestión de los Bancos de Tiempo. El modelo sobre el que se trabaja está guiado por las necesidades de los Bancos de Tiempo 
 que hacen uso de él y está preparado para poder albergar varios Bancos de Tiempo en una sola instalación, para ello cuenta
@@ -60,14 +62,7 @@ Notas para desarrollo
 =====================
 Únete al equipo de colaboradores!! Gestionamos las tareas en Redbooth.com https://redbooth.com/public/timeoverflow
 
-Si quieres probar la plataforma en local, necesitas Postgres y cuidado que los ficheros
-son UTF-8.
-
-Hay que añadir
-
-export RUBYOPT=-Ku
-
-a tu fichero .bashrc o .zshrc
+Si quieres probar la plataforma en local, necesitas PostgreSQL y ruby en sus últimas versiones.
 
 
 
