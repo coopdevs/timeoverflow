@@ -23,28 +23,28 @@
       %tr
       %tr
         %th
-        %th 
-          %a{ "ng-click" => "sortBy('id')" }
+        %th
+          %a{ href: "", ng_click: "sortBy('member_id')" }
             ID
-            %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-id'" }
-            %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'id'" }
+            %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-member_id'" }
+            %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'member_id'" }
         %th
-          %a{ "ng-click" => "sortBy('username')" }
+          %a{ href: "", ng_click: "sortBy('username')" }
             = User.human_attribute_name(:username)
-            %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-username'" }
-            %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'username'" }
+            %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-username'" }
+            %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'username'" }
         %th
-          %a{ "ng-click" => "sortBy('email')" }
+          %a{ href: "", ng_click: "sortBy('email')" }
             = User.human_attribute_name(:email)
-            %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-email'" }
-            %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'email'" }
+            %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-email'" }
+            %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'email'" }
         %th= User.human_attribute_name(:phone)
         %th= User.human_attribute_name(:alt_phone)
         %th
-          %a{ "ng-click" => "sortBy('balance')" }
+          %a{ href: "", ng_click: "sortBy('balance')" }
             = Account.human_attribute_name(:balance)
-            %span.glyphicon.glyphicon-chevron-down{ "ng-if" => "sort == '-balance'" }
-            %span.glyphicon.glyphicon-chevron-up{ "ng-if" => "sort == 'balance'" }
+            %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-balance'" }
+            %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'balance'" }
 
         %th
           %span.glyphicon.glyphicon-hand-down
