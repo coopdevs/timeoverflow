@@ -10,8 +10,8 @@ class TagsController < ApplicationController
 
   def alpha_grouped_index
 
-    #params = tags_params(params)
-    post_type = params[:post_type] || "offer"
+    permitted = tags_params(params)
+    post_type = permitted[:post_type] || "offer"
 
     case post_type
     when "offer"
@@ -36,8 +36,8 @@ class TagsController < ApplicationController
   end
 
   private
-  def tags_params
-    params[:tags].permit(*%w"post_type")
+  def tags_params(params)
+    params.permit(:post_type)
   end
 
 end
