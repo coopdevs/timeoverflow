@@ -43,8 +43,9 @@ class TagsController < ApplicationController
     tagname = permitted[:tagname] || ""
 
     @offers_tagged=Offer::tagged_with(tagname)
-    @inquiries_tagged=Inquiries::tagged_with(tagname)
-    render :partial => 'tagged_index', :locals => { :offers_tagged => @offers_tagged,:inquiries_tagged => @inquiries_tagged }
+    @inquiries_tagged=Inquiry::tagged_with(tagname)
+    #render :partial => 'tagged_index', :locals => { :offers_tagged => @offers_tagged,:inquiries_tagged => @inquiries_tagged }
+    respond_with @offers_tagged,@inquiries_tagged
   end
 
 

@@ -1,10 +1,12 @@
-.offer_tagged_list.container_fluid
+.container_fluid
   .row
     %h5
       = Offer.model_name.human(count: :many)
-      = render partial: 'offers_tagged_index', locals: {:offers_tagged => @offers_tagged }
-.inquiries_tagged_list.container_fluid
+      .offers_tagged_list
+        = render partial: 'offers_tagged_index', locals: {:offers_tagged => @offers_tagged }
+.container_fluid
   .row
     %h5
       = Inquiry.model_name.human(count: :many)
-      = render partial: 'inquiries_tagged_index', locals: {:inquiries_tagged => @inquiries_tagged }
+      .inquiries_tagged_list
+        = render partial: 'inquiries_tagged_index', locals: {:inquiries_tagged => @inquiries_tagged }

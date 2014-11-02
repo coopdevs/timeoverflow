@@ -10,7 +10,7 @@
               .badge
                 ="#{count}"
               - path = posts_with_tags_path(tagname: tag)
-              %a{href: path, remote: true}
+              = link_to path, {remote: true, format: :js}  do
                 - gtag=(count==1) ? "tag" : "tags"
                 = glyph(gtag)
                 = tag
