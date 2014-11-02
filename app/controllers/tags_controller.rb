@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  respond_to :json, :html, :js
+  respond_to :json, :html
 
   def index
 
@@ -25,13 +25,19 @@ class TagsController < ApplicationController
     respond_with @alpha_tags
   end
 
+  def inquiries
+    @alpha_tags = Inquiry::alphabetical_grouped_tags
+    render :partial => 'grouped_index', :locals => { :alpha_tags => @alpha_tags }
+  end
+
+  def offers
+    @alpha_tags = Offer::alphabetical_grouped_tags
+    render :partial => 'grouped_index', :locals => { :alpha_tags => @alpha_tags }
+  end
+
   private
   def tags_params
     params[:tags].permit(*%w"post_type")
   end
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 17edb46f3645b8cc3e39ee5ed03234a34a166124
 end

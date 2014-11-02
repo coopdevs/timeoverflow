@@ -55,6 +55,8 @@ Timeoverflow::Application.routes.draw do
   resource :tags, only: [:index] do
     collection do
       get "alpha_grouped_index"
+      get "inquiries"
+      get "offers"
     end
   end
 

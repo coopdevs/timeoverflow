@@ -1,14 +1,13 @@
 %h1
   =t(".maintitle")
-  = form_tag "/tags/alpha_grouped_index?post_type=inquiry", remote: true do
+  =form_tag '/tags/alpha_grouped_index', method: :get do
     .btn-group{"data-toggle" => "buttons"}
-      %label.btn.btn-primary.active
-        = radio_button_tag 'switch_offer','offer', :checked => true,:onclick => "this.form.submit();"
+      %label.btn.btn-primary.active.switch_offer
+        = radio_button_tag 'switch_offer', value: 'offer', :checked => true
         = Offer.model_name.human(count: :many)
-      %label.btn.btn-primary
-        = radio_button_tag 'switch_inquiry','inquiry',:onclick => "this.form.submit();"
+      %label.btn.btn-primary.switch_inquiry
+        = radio_button_tag 'switch_inquiry', value: 'inquiry'
         = Inquiry.model_name.human(count: :many)
-      = submit_tag 'submit'
 
 .alpha_tag_list
   = render :partial => 'grouped_index', :locals => { :alpha_tags => @alpha_tags }
