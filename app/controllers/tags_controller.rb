@@ -30,4 +30,8 @@ class TagsController < ApplicationController
     params[:tags].permit(*%w"post_type")
   end
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 17edb46f3645b8cc3e39ee5ed03234a34a166124
 end
