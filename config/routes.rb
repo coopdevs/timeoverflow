@@ -57,6 +57,7 @@ Timeoverflow::Application.routes.draw do
       get "alpha_grouped_index"
       get "inquiries"
       get "offers"
+      get "posts_with"
     end
   end
 

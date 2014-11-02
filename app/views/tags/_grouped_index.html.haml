@@ -9,7 +9,8 @@
             %p
               .badge
                 ="#{count}"
-              %a{href: offers_path, remote: true}
+              - path = posts_with_tags_path(tagname: tag)
+              %a{href: path, remote: true}
                 - gtag=(count==1) ? "tag" : "tags"
                 = glyph(gtag)
                 = tag
