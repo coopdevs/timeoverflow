@@ -5,12 +5,13 @@
         .col-xs-2.col-md-2
           %h2.bg-info.text-center
             =k
+          - v=v.sort_by { |k,v| v }.reverse
           - v.each do |tag,count|
             %p
               .badge
                 ="#{count}"
-              - path = posts_with_tags_path(tagname: tag)
-              = link_to path, {remote: true, format: :js}  do
+              - path = (@current_post_type.eql?("offers"))?offers_path(tag: tag):inquiries_path(tag: tag)
+              = link_to path do
                 - gtag=(count==1) ? "tag" : "tags"
                 = glyph(gtag)
                 = tag

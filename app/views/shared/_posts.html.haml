@@ -10,5 +10,7 @@
           = post.category
         - (post.tags || []).each do |tag|
           %span.glyphicon.glyphicon-tag
-          = tag
+          - path = (post.type.eql?("Offer"))?offers_path(tag: tag):inquiries_path(tag: tag)
+          =link_to path do
+            = tag
     %p= post.description

@@ -19,21 +19,26 @@ class TagsController < ApplicationController
     case post_type
     when "offer"
       @alpha_tags = Offer::alphabetical_grouped_tags
+      @current_post_type="offers"
     when "inquiry"
       @alpha_tags = Inquiry::alphabetical_grouped_tags
+      @current_post_type="inquiries"
     when "all"
       @alpha_tags = Post::alphabetical_grouped_tags
+      @current_post_type="all"
     end
 
     respond_with @alpha_tags
   end
 
   def inquiries
+    @current_post_type="inquiries"
     @alpha_tags = Inquiry::alphabetical_grouped_tags
     render :partial => 'grouped_index', :locals => { :alpha_tags => @alpha_tags }
   end
 
   def offers
+    @current_post_type="offers"
     @alpha_tags = Offer::alphabetical_grouped_tags
     render :partial => 'grouped_index', :locals => { :alpha_tags => @alpha_tags }
   end

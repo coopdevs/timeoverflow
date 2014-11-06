@@ -3,6 +3,7 @@ module Taggable
 
   included do
     scope :tagged_with, ->(tag){ where("? = ANY (tags)", tag) }
+    scope :tagged_with_rank, ->(tag){ select("*,1 as rank").where("? = ANY (tags)", tag) }
   end
 
   def tag_list
