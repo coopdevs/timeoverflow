@@ -9,7 +9,6 @@ class PostsController < InheritedResources::Base
     authorize resource
   end
 
-
   protected
 
   def collection
