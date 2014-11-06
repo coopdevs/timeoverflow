@@ -27,6 +27,8 @@ class Post < ActiveRecord::Base
     with_member.merge(Member.active)
   }
 
+  scope :by_organization, ->(organization_id) { where(organization_id: organization_id) }
+
   validates :user, presence: true
 
   def to_s
