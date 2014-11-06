@@ -15,7 +15,7 @@ Timeoverflow::Application.routes.draw do
   resources :offers, concerns: :joinable do
     collection do
       get :dashboard
-    end 
+    end
   end
   resources :inquiries, concerns: :joinable
 
@@ -52,6 +52,13 @@ Timeoverflow::Application.routes.draw do
     post :accept
   end
 
-  resource :tags, only: [:index]
+  resource :tags, only: [:index] do
+    collection do
+      get "alpha_grouped_index"
+      get "inquiries"
+      get "offers"
+      get "posts_with"
+    end
+  end
 
 end

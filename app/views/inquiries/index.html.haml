@@ -1,14 +1,7 @@
 %h1
   - @category = Category.where(id: params[:cat]).first
   = Inquiry.model_name.human(count: :many)
-  - if @category.present?
-    %small
-      %span.glyphicon.glyphicon-folder-open
-      = @category.name
-  - if params[:q].present?
-    %small
-      %span.glyphicon.glyphicon-search
-      = params[:q]
+  = render("/shared/show_filter_hint.html.haml")
 
 .navbar
   %form.navbar-form.navbar-left{action: inquiries_path, role: "search", method: "get"}

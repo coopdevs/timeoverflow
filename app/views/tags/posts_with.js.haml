@@ -1,0 +1,2 @@
+$('.offers_tagged_list').html('#{escape_javascript(render partial: 'offers_tagged_index', locals: {:offers_tagged => @offers_tagged.actives })}');
+$('.inquiries_tagged_list').html('#{escape_javascript(render partial: 'inquiries_tagged_index', locals: {:inquiries_tagged => @inquiries_tagged.actives })}');
