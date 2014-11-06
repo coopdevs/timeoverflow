@@ -13,7 +13,9 @@
           - post.tags.each do |tag|
             %span.badge.badge-info
               = glyph(:tag)
-              = tag
+              - path = (post.type.eql?("Offer"))?offers_path(tag: tag):inquiries_path(tag: tag)
+              =link_to path do
+                = tag
           %br
         = t '.created_by'
         = link_to post.user, post.user, title: post.user.email
@@ -26,5 +28,3 @@
 
 
     %p.lead= post.description
-
-
