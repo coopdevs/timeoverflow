@@ -7,7 +7,11 @@ angular.module('timeoverflow').controller 'UserListCtrl', ($scope, $modal, $http
 
   ['filterTerm', 'sort'].map (prop) ->
     Object.defineProperty($scope, prop,
-      get: -> $location.search()[prop]
+      get: ->
+        if prop == 'sort' and $location.search()[prop] == undefined
+          'member_id'
+        else
+          $location.search()[prop]
       set: (val) -> $location.search(prop, val || null)
     )
 
