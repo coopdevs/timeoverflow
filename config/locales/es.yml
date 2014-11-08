@@ -88,6 +88,7 @@ es:
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
+    terms_conditions: términos del servicio
     navbar:
       administration: Administración
       reports: Informes
@@ -96,6 +97,8 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
+      admin: Administrar
+      tags: Etiquetas
     tips:
       entertag: Entre etiquetas separadas por comas
 
@@ -108,6 +111,7 @@ es:
       manage_warning_angular: "Va a cambiar los privilegios del usuario {{username}}"
       cancel_warning_angular: "Va a eliminar del banco al usuario {{username}}"
       active_warning_angular: "Va a cambiar el estado de la cuenta del usuario {{username}}"
+      actions: Acciones
     new:
       new_user: Nuevo usuario
     show:
@@ -129,6 +133,10 @@ es:
       manage_warning: "Va a cambiar los privilegios del usuario %{user}"
       cancel_warning: "Va a eliminar del banco al usuario %{user}"
       active_warning: "Va a cambiar el estado de la cuenta del usuario %{user}"
+
+  tags:
+    alpha_grouped_index:
+      maintitle: "Etiquetas Disponibles"
 
   offers:
     index:

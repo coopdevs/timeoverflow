@@ -2,7 +2,8 @@ class PostsController <  ApplicationController # InheritedResources::Base
   respond_to :html, :js
 
   has_scope :by_category, as: :cat
-  has_scope :fuzzy_search, as: :q
+  has_scope :fuzzy_and_tags, as: :q
+  has_scope :tagged_with, as: :tag
   has_scope :organization, default: nil, :allow_blank => true do |controller, scope, value|
     scope.by_organization(controller.current_user.try(:organizations).try(:first).id) # TODO: usar controller.current_organization.id
   end 
