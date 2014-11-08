@@ -10,7 +10,7 @@
             %p
               .badge
                 ="#{count}"
-              - path = (@current_post_type.eql?("offers"))?offers_path(tag: tag):inquiries_path(tag: tag)
+              - path = get_index_path(@current_post_type,tag: tag)
               = link_to path do
                 - gtag=(count==1) ? "tag" : "tags"
                 = glyph(gtag)
