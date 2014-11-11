@@ -65,12 +65,12 @@
               %li{role: :presentation}
                 = link_to admin_root_path do
                   = glyph(:cog)
-                  Admin
+                  = t ".adminshort"
 
             %li{role: :presentation}
               = link_to destroy_user_session_path, method: :delete  do
                 = glyph("log-out")
-                = t "Log out"
+                = t ".sign_out"
             %li.divider{role: :presentation}
             %li{role: :presentation}
               = link_to current_user do

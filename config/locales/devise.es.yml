@@ -43,6 +43,8 @@ es:
       send_paranoid_instructions: "Si tu correo existe en nuestra base de datos, recibirás un enlace pare la recuperación de la contraseña en tu correo en unos minutos."
       updated: "Tu contraseña se ha cambiado. Estás conectado(a)."
       updated_not_active: "Cambio de constraseña realizado."
+      edit:
+        change_password: Cambiar contraseña
       new:
         forgot_question: "¿Has olvidado tu contraseña?"
         send_instructions: "Envíame las instruciones"
