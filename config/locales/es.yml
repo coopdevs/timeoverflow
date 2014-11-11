@@ -153,6 +153,8 @@ es:
   inquiries:
     index:
       new_inquiry: Nueva demanda
+    new:
+      submit: Crear demanda
 
   categories:
     index:

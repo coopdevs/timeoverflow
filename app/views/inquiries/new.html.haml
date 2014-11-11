@@ -1,7 +1,6 @@
 %h1= t "helpers.submit.create", model: @inquiry.class.model_name.human
 
-= render partial: 'shared/post_form', locals: { post: @inquiry }
+= render partial: 'shared/post_form', locals: { post: @inquiry , label_button: t(".submit")}
 
 :javascript
   $("#inquiry_tag_list").tagsManager();
-  
