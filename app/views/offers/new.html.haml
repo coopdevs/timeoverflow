@@ -1,6 +1,6 @@
 %h1= t "helpers.submit.create", model: @offer.class.model_name.human
 
-= render partial: 'shared/post_form', locals: {post: @offer}
+= render partial: 'shared/post_form', locals: {post: @offer, label_button: t(".submit") }
 
 :javascript
   $("#offer_tag_list").tagsManager();

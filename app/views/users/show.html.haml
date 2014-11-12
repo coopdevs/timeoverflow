@@ -79,7 +79,7 @@
             %td= post.description
 
 %h2
-  Cuentas
+  =t(".accounts")
 .row
   - @user.members.each do |member|
     .col-sm-4
@@ -91,27 +91,35 @@
             %p.danger
               ADMIN
           %p
-            %strong Alta:
+            %strong
+              = t(".created_at")
             = member.entry_date ? l(member.entry_date, format: :short) : mdash
             %br
-            %strong Nº Usuario:
+            %strong
+              = t(".user_no")
             = member.member_uid || mdash
             %br
-            %strong Balance:
+            %strong
+              = t(".balance")
             = seconds_to_hm(member.account.try(:balance) || mdash)
 
 
 %h3
-  Movimientos
+  =t(".movements")
 .transactions
   %table.table.table-condensed
     %thead
       %tr
-        %th Fecha
-        %th Origen/Destino
-        %th Anuncio
-        %th Razón
-        %th Cantidad
+        %th
+          =t(".date")
+        %th
+          =t(".from_to")
+        %th
+          =t(".post")
+        %th
+          =t(".reason")
+        %th
+          =t(".quantity")
     - @user.movements.order("created_at DESC").limit(10).each do |mv|
       %tr
         %td= l mv.created_at, format: :short
