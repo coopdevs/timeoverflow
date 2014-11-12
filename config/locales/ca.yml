@@ -237,6 +237,7 @@ ca:
       minute:
         one: ! '%{count} minut'
         other: ! '%{count} minuts'
+
   global:
     table:
       actions: Accions
@@ -252,7 +253,7 @@ ca:
     all: Tot
     search: Cercar
     information: Informació
-    member_count: 'Nombre d'usuarios:'
+    member_count: "Nombre d'usuarios:"
     balance: 'Balanç:'
     movements: Moviments
     date: Data
