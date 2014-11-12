@@ -1,0 +1,95 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+ca:
+  devise:
+    shared:
+      links:
+        sign_in: "Entrar"
+        sign_up: "Registrar-se"
+        forgot_your_password: "No recordo la meva contrasenya"
+        didnt_receive_confirmation_instructions: "Tornar a enviar correu de confirmació"
+        didnt_receive_unlock_instructions: "Enviar correu de desbloqueig"
+        sign_in_with: "Entrar amb %{provider}"
+    confirmations:
+      confirmed: "El teu compte ha estat confirmat amb èxit."
+      confirmed_and_signed_in: "El teu compte ha estat confirmat amb èxit. Ara estàs registrat."
+      send_instructions: "Rebràs un correu amb les instruccions de com confirmar el teu compte en uns minuts."
+      send_paranoid_instructions: "Si la teva adreça de correu existeix a la nostra base de dades, rebràs un correu amb les instruccions de com confirmar el teu compte en uns minuts."
+      new:
+        resend_instructions: "Reenviar instruccions de confirmació"
+    failure:
+      already_authenticated: "Ja estàs registrat."
+      inactive: "El teu compte no ha estat activat."
+      invalid: "Correu o clau invàlida."
+      invalid_token: "Token de autentificació invàlid."
+      locked: "El teu compte ha estat bloquejat."
+      not_found_in_database: "Correu o clau invàlida."
+      timeout: "La teva sessió ha caducat. Si us plau, torna a entrar per continuar."
+      unauthenticated: "Has que entrar per continuar."
+      unconfirmed: "Has de confiramar el teu compte abans de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instruccions de confirmació del compte"
+      reset_password_instructions:
+        subject: "Instruccions per a reestablir la teva clau"
+      unlock_instructions:
+        subject: "Instruccions de desbloqueig del compte"
+    omniauth_callbacks:
+      failure: "No s'ha pogut autentificar desde %{kind} perque \"%{reason}\"."
+      success: "Autentificació realitzada desde el compte %{kind} ."
+    passwords:
+      no_token: "No puedes acceder a esta página si no vienes de un correo para reestablecer la contraseña. Si vienes de un correo para reestablecer la contraseña, asegurate que has utilizado la URL completa."
+      send_instructions: "Recibirás un correo con instrucciones de como reestablecer tu contraseña en unos minutos."
+      send_paranoid_instructions: "Si tu correo existe en nuestra base de datos, recibirás un enlace pare la recuperación de la contraseña en tu correo en unos minutos."
+      updated: "Tu contraseña se ha cambiado. Estás conectado(a)."
+      updated_not_active: "Cambio de constraseña realizado."
+      edit:
+        change_password: Cambiar contraseña
+      new:
+        forgot_question: "¿Has olvidado tu contraseña?"
+        send_instructions: "Envíame las instruciones"
+    registrations:
+      destroyed: "Adiós! Tu cuenta se ha cancelado. Esperamos verte pronto de nuevo."
+      signed_up: "Bienvenido(a)!  Registrado realizado."
+      signed_up_but_inactive: "Tu registro se ha realizado. Sin embargo, no puedes entrar porque tu cuenta no se ha activado todavía"
+      signed_up_but_locked: "Tu registro se ha realizado. Sin embargo, no puedes entrar porque tu cuenta está bloqueada."
+      signed_up_but_unconfirmed: "Se ha enviado un mensaje de confirmación a tu dirección de correo. Por favor, abre el enlace para activar tu cuenta."
+      update_needs_confirmation: "Actualización de cuenta realizada, pero necesitamos verificar tu dirección de correo. Por favor, comprueba tu correo y utiliza el enlace para confirmar tu nueva dirección de correo."
+      updated: "Actualización de cuenta realizada."
+      new:
+        sign_up: "Registro"
+        sign_me_up: "Regístrame"
+        password: "Contraseña"
+        password_confirmation: "Confirma la contraseña"
+      edit:
+        edit_user: "Editar Usuario"
+        update: "Actualizar"
+        password: "Contraseña"
+        password_confirmation: "Confirma la contraseña"
+        current_password: "Contraseña actual"
+        help_password: "déjalo en blanco si no quieres cambiarla"
+        help_current_password: "necesitamos tu contraseña actual para confirmar tus cambios"
+        unhappy: "¿Descontento?"
+        cancel_account: "Cancelar mi cuenta"
+    sessions:
+      signed_in: "Conexión realizada."
+      signed_out: "Desconexión realizada."
+      new:
+        sign_in: "Entrar"
+        remember_me: "Recordarme"
+    unlocks:
+      send_instructions: "Recibirás un correo con instrucciones de como desbloquear tu cuenta en unos minutos."
+      send_paranoid_instructions: "Si tu cuenta existe, recibirás un correo con instrucciones de como desbloquearla en unos minutos."
+      unlocked: "Tu cuenta ha sido desbloqueada. Por favor, entra para continuar."
+      new:
+        resend_instructions: "Reenviar instrucciones de desbloqueo"
+  errors:
+    messages:
+      already_confirmed: "ya fue confirmado, por favor prueba a entrar"
+      confirmation_period_expired: "necesita confirmarse en %{period}, por favor, solicita uno nuevo"
+      expired: "ha caducado, solicita uno nuevo"
+      not_found: "no se ha encontrado"
+      not_locked: "no se bloqueó"
+      not_saved:
+        one: "1 error impide que este %{resource} se guarde:"
+        other: "%{count} errores impiden que este %{resource} se guarde:"
