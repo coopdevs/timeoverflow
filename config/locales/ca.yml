@@ -1,5 +1,4 @@
 ca:
-
   # NOMBRES DE LAS COSAS
   activerecord:
 
@@ -51,11 +50,20 @@ ca:
         alt_phone: Telèfon alternatiu
         admin: Administrador del Banc de Temps
         superadmin: SuperAdministrador del Sistema
+        description: Descripció
+        unconfirmed_email: Correu sense confirmar
       organization:
         <<: *common_attributes
         name: Nom
         reg_number_seq: Nombre de seqüència d'usuari
         theme: Tema visual
+        email: Correu
+        phone: Telèfon
+        public_opening_times: Horari d'atenció al públic
+        description: Descripció
+        address: Direcció
+        neighborhood: Barri
+        city: Ciutat
       category:
         <<: *common_attributes
         name: Nom
@@ -80,51 +88,101 @@ ca:
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
-    nav:
+    terms_conditions: Termes del servei
+    navbar:
       administration: Administració
       reports: Informes
       stats: Estadístiques
       users: Usuaris
       categories: Serveis
-      organizations: Bancs de Temps
-
+      organizations: Organitzacions
+      statistics: Estadístiques
+      admin: Administrar
+      adminshort: Admin
+      tags: Etiquetes
+      sign_out: Desconnectar
+    menu:
+      sign_in: Entrar
+      sing_out: Desconnectar
+    organization_list:
+      welcome: Benvingut a Timeoverflow %{user}.
+      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de possar-te en contcat amb un dels Bancs de Temps del sistema
+      time_bank: Banc de Temps
+      email: Correu
+      phone: Telèfon
+      public_opening_times: Horari d'atenció al públic
+      description: Descripció
+      address: Direcció
+      neighborhood: Barri
+      city: Ciutat
+    tips:
+      entertag: Introdueix etiquetes separadas per comes
+      user_not_found: "Usuari no trobat."
   # views/users/index...
 
   users:
 
     index:
-      create: Crear nou Usuari
+      create: Crear nou usuari
+      manage_warning_angular: "Vas a canviar els permisos de l'usuari {{username}}"
+      cancel_warning_angular: "Vas a eliminar del banc a l'usuari {{username}}"
+      active_warning_angular: "Vas a canviar l'estat del compte de l'usuari {{username}}"
+      actions: Accions
     new:
       new_user: Nou usuari
     show:
       phone:
         one: Telèfon
         other: Telèfons
-      data: Dades del Usuari
-      categories: Serveis Oferts
+      data: Dades de l'usuari
+      categories: Serveis Ofertats
       account: Darrers moviments
+      inactive: "(Inactiu)"
+      accounts: Comptes
+      created_at: "Alta:"
+      user_no: "Nº Usuari:"
+      balance: "Balanç:"
+      movements: "Moviments"
+      date: Data
+      from_to: Origen/Destí
+      post: Anunci
+      reason: Raó
+      quantity: Quantitat
+
     give_time:
       give_time: Donar Temps a
     form:
-      superadmin_warning: Compte!!! Estás donant poders de SuperAdministrador a aquest usuari
-      admin_warning: Compte!!! Estás donant poders d'Administrador del Banc de Temps a aquest usuari
+      superadmin_warning: Atenció!!! Estàs atorgant PODERS DIVINS a aquest usuari!!
+      admin_warning: Atenció!!! Estàs atorgant poders a aquest usuari!!
     user_rows:
       activate: Activar
       deactivate: Desactivar
+      manage_warning: "Vas a canviar els privilegis de l'usuari %{user}"
+      cancel_warning: "Vas a eliminar del banc a l'usuari %{user}"
+      active_warning: "Vas a canviar l'estat del compte de l'usuari %{user}"
 
+  tags:
+    alpha_grouped_index:
+      maintitle: "Etiquetes Disponibles"
+  terms:
+    accept: Acceptar
   offers:
     index:
-      offered_by: Ofertat per %{size} persones
-      new_offer: Nova oferta
-      filter: Filtra
+      offered_by: "Ofertat per %{size} persones"
+      new_offer: "Nova oferta"
+      filter: Filtrar
       by_category: Per categoria
       by_tag: Per etiqueta
     show:
-      offered_by: Ofertants
+      offered_by: "Oferents"
+    new:
+      submit: Crear oferta
 
   inquiries:
     index:
       new_inquiry: Nova demanda
+    new:
+      submit: Crear demanda
 
   categories:
     index:
@@ -136,9 +194,25 @@ ca:
 
   reports:
     cat_with_users:
-      title: Servicios ofrecidos
+      title: Serveis ofertats
     user_list:
-      title: Listado usuarios
+      title: Llistat d'usuaris
+    statistics:
+      statistics: Estadístiques
+      bank_activity: "Activitat del banc"
+      per_month: "Per mesos"
+      global_activity: "Activitat global"
+      users_reg: "Altes d'usuari"
+      num_swaps: "Intercanvis"
+      total_hours: "Hores intercanviades"
+      inactive_users: usuaris inactius
+      last_movement: Darrer intercanvi
+      no_movements: Sense intercanvis
+      days_without_swaps: Dies sense intercanvis
+      demographics: Dades demogràfiques
+      by_ages: Por edats
+      num_people: "Nombre de Persones"
+      unknown: Desconegut
 
   stats:
     min_balance:
@@ -146,9 +220,11 @@ ca:
 
   organizations:
     index:
-      member_count: Número de usuaris
+      member_count: Nombre d'usuaris
     new:
       new: Nou banc
+    show:
+      contact_information: Informació de contacte
     give_time:
       give_time: Donar Temps a
 
@@ -161,28 +237,41 @@ ca:
       minute:
         one: ! '%{count} minut'
         other: ! '%{count} minuts'
-
   global:
     table:
       actions: Accions
     show: Mostrar
     edit: Modificar
-    delete: Borrar
-    save: Guardar
+    delete: Esborrar
+    save: Desar
     add_new: Crear nou
-    cancel_membership: Cancel·lar afiliació
-    back: Enrere
+    cancel_membership: Esborrar definitivament
+    back: Enrrere
     give_time: Transferir temps
     filter: Filtre
     all: Tot
     search: Cercar
+    information: Informació
+    member_count: 'Nombre d'usuarios:'
+    balance: 'Balanç:'
+    movements: Moviments
+    date: Data
+    source_destination: 'Origen/Destí'
+    announcements: Anunci
+    reason: Raó
+    amount: Quantitat
+    demote: Convertir en usuari normal
+    promote: Convertir en administrador
 
   active_admin:
     comments:
       resource_type: Tipus de recurs
-      author_type: "Tipus d'autor"
+      author_type: Tipus d'autor
 
   layouts:
     application:
-      edit_profile: Modificar el meu perfil
+      login: Entrar
+      edit_profile: Modificarb perfil
       edit_org: "Modificar %{organization}"
+    report:
+      report_title: "INFORME"
