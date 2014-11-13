@@ -25,7 +25,7 @@ ca:
       locked: "El teu compte ha estat bloquejat."
       not_found_in_database: "Correu o clau invàlida."
       timeout: "La teva sessió ha caducat. Si us plau, torna a entrar per continuar."
-      unauthenticated: "Has que entrar per continuar."
+      unauthenticated: "Has de entrar per continuar."
       unconfirmed: "Has de confiramar el teu compte abans de continuar."
     mailer:
       confirmation_instructions:
@@ -35,7 +35,7 @@ ca:
       unlock_instructions:
         subject: "Instruccions de desbloqueig del compte"
     omniauth_callbacks:
-      failure: "No s'ha pogut autentificar desde %{kind} perque \"%{reason}\"."
+      failure: "No s'ha pogut autentificar desde %{kind} perquè \"%{reason}\"."
       success: "Autentificació realitzada desde el compte %{kind} ."
     passwords:
       no_token: "No pots accedir a aquesta pàgina si no vens d'un correu per restablir la contrasenya. Si vens d'un correu per a restablir la contrasenya, assegurat que has utilitzat la URL completa."
@@ -92,4 +92,4 @@ ca:
       not_locked: "no es va bloquejar"
       not_saved:
         one: "1 error impedeix que aquest %{resource} es desi:"
-        other: "%{count} errors impedeix que aquest %{resource} es desi:"
+        other: "%{count} errors impedeixen que aquest %{resource} es desi:"
