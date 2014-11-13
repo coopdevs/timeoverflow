@@ -21,13 +21,13 @@ ca:
         one: Demanda
         other: Demandes
       transfer:
-        one: Transferencia
+        one: Transferència
         other: Transferències
       post:
-        one: Anuncio
-        other: Anuncios
+        one: Anunci
+        other: Anuncis
       comment:
-        one: Comentario
+        one: Comentari
         other: Comentaris
 
     attributes:
@@ -41,7 +41,7 @@ ca:
         one: Banc de Temps
         other: Bancs de Temps
         email: Correu
-        registration_date: Data de alta
+        registration_date: Data d'alta
         gender: Gènere
         registration_number: Codi d'usuari
         date_of_birth: Data de naixement
@@ -68,7 +68,7 @@ ca:
         <<: *common_attributes
         name: Nom
         parent: Categoria pare
-        name_translations: Nom (traducciones)
+        name_translations: Nom (traduccions)
       transfer:
         <<: *common_attributes
         amount: Quantitat
@@ -82,8 +82,8 @@ ca:
         tag_list: Etiquetes
         joinable: Es poden afegir altres
         permanent: Permanent
-        start_on: Comença el
-        end_on: Finalitza el
+        start_on: Comença al
+        end_on: Finalitza al
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
@@ -106,7 +106,7 @@ ca:
       sing_out: Desconnectar
     organization_list:
       welcome: Benvingut a Timeoverflow %{user}.
-      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de possar-te en contcat amb un dels Bancs de Temps del sistema
+      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de possar-te en contacte amb un dels Bancs de Temps del sistema
       time_bank: Banc de Temps
       email: Correu
       phone: Telèfon
@@ -116,7 +116,7 @@ ca:
       neighborhood: Barri
       city: Ciutat
     tips:
-      entertag: Introdueix etiquetes separadas per comes
+      entertag: Introdueix etiquetes separades per comes
       user_not_found: "Usuari no trobat."
   # views/users/index...
 
@@ -210,7 +210,7 @@ ca:
       no_movements: Sense intercanvis
       days_without_swaps: Dies sense intercanvis
       demographics: Dades demogràfiques
-      by_ages: Por edats
+      by_ages: Per edats
       num_people: "Nombre de Persones"
       unknown: Desconegut
 
@@ -247,13 +247,13 @@ ca:
     save: Desar
     add_new: Crear nou
     cancel_membership: Esborrar definitivament
-    back: Enrrere
+    back: Enrere
     give_time: Transferir temps
     filter: Filtre
     all: Tot
     search: Cercar
     information: Informació
-    member_count: "Nombre d'usuarios:"
+    member_count: "Nombre d'usuaris:"
     balance: 'Balanç:'
     movements: Moviments
     date: Data
@@ -272,7 +272,7 @@ ca:
   layouts:
     application:
       login: Entrar
-      edit_profile: Modificarb perfil
+      edit_profile: Modificar perfil
       edit_org: "Modificar %{organization}"
     report:
       report_title: "INFORME"
