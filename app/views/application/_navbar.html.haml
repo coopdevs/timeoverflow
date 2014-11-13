@@ -81,8 +81,20 @@
                 = link_to m.organization do
                   = glyph(:pencil)
                   = t "layouts.application.edit_org", organization: m.organization
-
       - else
         %li
           %a{href: new_user_session_path}
             = t "layouts.application.login"
+
+      %li.divider{role: :presentation}
+      %li{role: :presentation}
+        = link_to page_path('home') do
+          = image_tag("blank.png",{class: "flag flag-es", alt: "Español"})
+
+      %li{role: :presentation}
+        = link_to page_path('home_ca') do
+          = image_tag("blank.png",{class: "flag flag-catalonia", alt: "Català"})
+
+      %li{role: :presentation}
+        = link_to page_path('home_en') do
+          = image_tag("blank.png",{class: "flag flag-gb", alt: "English"})
