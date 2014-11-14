@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     if @user.persisted?
       @user.add_to_organization current_organization
 
-      redirect_to @user
+      redirect_to users_path
     else
       redirect_to :action => "new"
     end
