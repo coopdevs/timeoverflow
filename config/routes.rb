@@ -1,5 +1,6 @@
 Timeoverflow::Application.routes.draw do
   get 'global/switch_lang'
+  get 'global/go_home'
   get 'tags/index'
 
   devise_for :users

@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
     if params[:locale]
       session[:locale] = params[:locale]
     end
-    I18n.locale = session[:locale] || I18n.default_locale
+    # we look first at session then at default client locale and ultimately at default locale in rails
+    I18n.locale = session[:locale] || extract_locale_from_accept_language_header || I18n.default_locale
     true
   end
 
@@ -78,5 +79,11 @@ class ApplicationController < ActionController::Base
 
   def authenticate_superuser!
     superuser? || redirect_to(root_path)
+  end
+
+  # To get locate from client supplied information
+  # see http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-client-supplied-information
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
   end
 end

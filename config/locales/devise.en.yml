@@ -2,6 +2,14 @@
 
 en:
   devise:
+    shared:
+      links:
+        sign_in: "Login"
+        sign_up: "Register"
+        forgot_your_password: "I do not remember my password"
+        didnt_receive_confirmation_instructions: "Resend confirmation email"
+        didnt_receive_unlock_instructions: "Receive unlock instructions"
+        sign_in_with: "Login with %{provider}"
     confirmations:
       confirmed: "Your account was successfully confirmed."
       confirmed_and_signed_in: "Your account was successfully confirmed. You are now signed in."
@@ -44,6 +52,9 @@ en:
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
+      new:
+        sign_in: "Login"
+        remember_me: "Remember me"
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
