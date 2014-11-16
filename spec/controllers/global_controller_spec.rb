@@ -11,7 +11,7 @@ describe GlobalController do
         # context
         ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('es')
 
-        #response.should be_success
+        #response.should redirect to home spanish
         subject.should redirect_to('/home')
       end
 
@@ -21,7 +21,7 @@ describe GlobalController do
       # context
       ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('ca')
 
-      #response.should be_success
+      #response.should redirect to home catalan
       subject.should redirect_to('/home_ca')
     end
 
@@ -31,7 +31,7 @@ describe GlobalController do
         # context
         ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('en')
 
-        #response.should be_success
+        #response.should redirect to home english
         subject.should redirect_to('/home_en')
       end
 
@@ -41,7 +41,7 @@ describe GlobalController do
         # context
         ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('fr')
 
-        #response.should be_success
+        #response.should redirect to default home (spanish)
         subject.should redirect_to('/home')
       end
   end
@@ -50,11 +50,7 @@ describe GlobalController do
     subject { get 'switch_lang', {:locale => 'en'} }
 
     it "redirects to english home" do
-       # We stub the method that extracts browsers language info and force to return expected value for
-       # context
-       #ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header)
-
-       #response.should be_success
+       #response.should redirect to home_en
        subject.should redirect_to('/home_en')
     end
   end
@@ -63,11 +59,7 @@ describe GlobalController do
     subject { get 'switch_lang', {:locale =>  'es'} }
 
     it "redirects to spanish home" do
-        # We stub the method that extracts browsers language info and force to return expected value for
-        # context
-        #ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header)
-
-        #response.should be_success
+        #response.should redirect to home (spanish)
         subject.should redirect_to('/home')
     end
   end
@@ -75,13 +67,9 @@ describe GlobalController do
   context "User not logged and GET 'switch_lang' by selection in navbar in catalan" do
     subject { get 'switch_lang', {:locale => 'ca'} }
     it "redirects to catalan home" do
-        # We stub the method that extracts browsers language info and force to return expected value for
-        # context
-        #ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header)
-
-        #response.should be_success
+        #response.should redirect to home_ca
         subject.should redirect_to('/home_ca')
     end
   end
-  
+
 end
