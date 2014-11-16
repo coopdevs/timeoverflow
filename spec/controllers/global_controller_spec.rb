@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe GlobalController do
+  include_context "stub browser locale"
+  before { set_browser_locale('it') }
+
   describe "User not logged and GET 'switch_lang' using browser's locale" do
     subject { get 'switch_lang' }
 
@@ -8,7 +11,7 @@ describe GlobalController do
       it "redirects to spanish home" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
-        ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('es')
+        set_browser_locale('es')
 
         #response.should redirect to home spanish
         subject.should redirect_to('/home')
@@ -19,7 +22,7 @@ describe GlobalController do
       it "redirects to spanish home" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
-        ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('ca')
+        set_browser_locale('ca')
 
         #response.should redirect to home catalan
         subject.should redirect_to('/home_ca')
@@ -30,7 +33,7 @@ describe GlobalController do
       it "redirects to spanish home" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
-        ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('en')
+        set_browser_locale('en')
 
         #response.should redirect to home english
         subject.should redirect_to('/home_en')
@@ -41,7 +44,8 @@ describe GlobalController do
       it "redirects to spanish default home" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
-        ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('fr')
+        # We stub to an invalid locale to check it redirects to the right default one
+        set_browser_locale('fr')
 
         #response.should redirect to default home (spanish)
         subject.should redirect_to('/home')
@@ -89,7 +93,7 @@ describe GlobalController do
       it "redirects to spanish offers page" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
-        ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('es')
+        set_browser_locale('es')
 
         login(member.user)
         visit offers_path
@@ -104,7 +108,7 @@ describe GlobalController do
       it "redirects to catalan offers page" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
-        ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('ca')
+        set_browser_locale('ca')
 
         login(member.user)
         visit offers_path
@@ -119,7 +123,7 @@ describe GlobalController do
       it "redirects to catalan offers page" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
-        ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('en')
+        set_browser_locale('en')
 
         login(member.user)
         visit offers_path
@@ -131,62 +135,52 @@ describe GlobalController do
     end
   end
 
-#
-# Now with user logged in having selected language
-#
+  #
+  # Now with user logged in having selected language
+  #
 
-describe "User logged and GET 'switch_lang' using browser's locale" do
+  describe "User logged and GET 'switch_lang' using browser's locale" do
 
-  let! (:test_organization) { Fabricate(:organization)}
-  let! (:member) { Fabricate(:member, organization: test_organization) }
+    let! (:test_organization) { Fabricate(:organization)}
+    let! (:member) { Fabricate(:member, organization: test_organization) }
 
-  context 'browser in spanish' do
-    it "redirects to spanish offers page" do
-      # We stub the method that extracts browsers language info and force to return expected value for
-      # context
-      ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('it')
+    context 'user clicks in Spanish flag' do
+      it "redirects to spanish offers page" do
+        
+        visit '/'
+        click_link 'es_flag'
+        login(member.user)
+        visit offers_path
 
-      visit '/'
-      click_link 'es_flag'
-      login(member.user)
-      visit offers_path
+        current_path.should == "/offers"
+        page.body.should include('Ofertas')
+      end
+    end
 
-      current_path.should == "/offers"
-      page.body.should include('Ofertas')
+    context 'user clicks in English flag' do
+      it "redirects to catalan offers page" do
+
+        visit '/'
+        click_link 'en_flag'
+        login(member.user)
+        visit offers_path
+
+        current_path.should == "/offers"
+        page.body.should include('Offers')
+      end
+    end
+
+    context 'user clicks in catalan flag' do
+      it "redirects to catalan offers page" do
+
+        visit '/'
+        click_link 'ca_flag'
+        login(member.user)
+        visit offers_path
+
+        current_path.should == "/offers"
+        page.body.should include('Ofertes')
+      end
     end
   end
-
-  context 'browser in catalan' do
-    it "redirects to catalan offers page" do
-      # We stub the method that extracts browsers language info and force to return expected value for
-      # context
-      ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('it')
-      visit '/'
-      click_link 'en_flag'
-      login(member.user)
-      visit offers_path
-
-      current_path.should == "/offers"
-      page.body.should include('Offers')
-    end
-  end
-
-  context 'browser in catalan' do
-    it "redirects to catalan offers page" do
-      # We stub the method that extracts browsers language info and force to return expected value for
-      # context
-      ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return('it')
-      visit '/'
-      click_link 'ca_flag'
-      login(member.user)
-      visit offers_path
-
-      current_path.should == "/offers"
-      page.body.should include('Ofertes')
-    end
-  end
-end
-
-
-
 end

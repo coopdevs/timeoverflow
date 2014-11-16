@@ -69,3 +69,9 @@ RSpec.configure do |config|
   # Controllers must render the content of the view
   config.render_views
 end
+
+RSpec.shared_context 'stub browser locale' do
+  def set_browser_locale(locale)
+    ApplicationController.any_instance.stub(:extract_locale_from_accept_language_header).and_return(locale)
+  end
+end
