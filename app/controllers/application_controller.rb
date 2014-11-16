@@ -19,14 +19,15 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     if params[:locale]
-      session[:locale] = params[:locale]
+      locale=params[:locale]
+      session[:locale] = locale
     else
-      l=extract_locale_from_accept_language_header
-      # we check that provided locale from browser is in our supported list of languages
-      # if not, we use the default from rails conf
-      session[:locale] = @supported_langs.include?(l)? l: I18n.default_locale.to_s
+      locale=extract_locale_from_accept_language_header
     end
 
+    # we check that provided locale from browser is in our supported list of languages
+    # if not, we use the default from rails conf
+    session[:locale] ||= @supported_langs.include?(locale)? locale: I18n.default_locale.to_s
     I18n.locale = session[:locale]
     true
   end
