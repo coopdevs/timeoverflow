@@ -22,4 +22,5 @@ class GlobalController < ApplicationController
     redirect_to page_path(url)
   end
 
+
 end
