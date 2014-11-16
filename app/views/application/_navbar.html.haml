@@ -88,13 +88,13 @@
 
       %li.divider{role: :presentation}
       %li{role: :presentation}
-        = link_to "/global/switch_lang?locale=es" do
+        = link_to "/global/switch_lang?locale=es", id: 'es_flag'  do
           = image_tag("blank.png",{class: "flag flag-es", alt: "Español"})
 
       %li{role: :presentation}
-        = link_to "/global/switch_lang?locale=ca" do
+        = link_to "/global/switch_lang?locale=ca", id: 'ca_flag' do
           = image_tag("blank.png",{class: "flag flag-catalonia", alt: "Català"})
 
       %li{role: :presentation}
-        = link_to "/global/switch_lang?locale=en" do
+        = link_to "/global/switch_lang?locale=en", id: 'en_flag' do
           = image_tag("blank.png",{class: "flag flag-gb", alt: "English"})
