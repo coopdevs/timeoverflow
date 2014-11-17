@@ -12,11 +12,11 @@ class CsvDb
         user = User.new(username: row[2..4].join(" "), date_of_birth: row[6], email: row[9], phone: row[7], alt_phone: row[8], gender: User::GENDERS[row[5].to_i - 1])
         if user.save
           member = organization.members.create(member_uid: row[0], entry_date: row[1], user_id: user.id)
-          organization.update(reg_number_seq: (organization.reg_number_seq + 1 || 1)) if member
         else
           errors.push({ member_id: row[0], email: row[9], errors: user.errors.full_messages })
         end
       end
+      organization.update(reg_number_seq: (organization.members.maximum(:member_uid)))
       errors
     end
   end
