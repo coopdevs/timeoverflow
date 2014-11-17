@@ -270,7 +270,7 @@ es:
       author_type: Tipo de autor
     users:
       upload_csv: Fichero
-      organization: Organización
+      organization: Banco de tiempo
       upload_from_csv: Importar CSV
 
   layouts:
