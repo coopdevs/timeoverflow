@@ -5,6 +5,8 @@ describe InquiriesController do
   let (:member) { Fabricate(:member, organization: test_organization)}
   let (:another_member) { Fabricate(:member, organization: test_organization)}
   let! (:inquiry) { Fabricate(:inquiry, user: member.user, organization: test_organization)}
+  include_context "stub browser locale"
+  before { set_browser_locale('ca') }
 
   describe "GET #index" do
     context "with a logged user" do

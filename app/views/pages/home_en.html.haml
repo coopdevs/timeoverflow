@@ -1,0 +1,66 @@
+= content_for :window_title do
+  TimeOverflow - Time Bank on-line management
+
+.container-inner
+  - if current_user and !current_organization
+    = render 'organization_list'
+  .row
+    .col-sm-6
+      .text-center
+        %h1 TimeOverflow
+        = image_tag "sand-clock.png", width: 50
+        %h2 The software designed by and for Time Banks
+        %em TimeOverflow is open source, free and collaborative
+
+      .text-left{style: "margin-top: 40px;"}
+        :markdown
+          Features of **TimeOverflow**:
+
+          * Time Bank management with administration roles
+            * Creation/deletion/updates of bank members
+            * Posting of offers and inquiries
+            * Enter checks and manage accounting
+          * Social network and online banking accessible by members
+            * Members of a Time Bank can access the system and connect with other members
+            * Posting of offers and inquiries
+            * Pay hours to other members
+
+      %h2 Are you a Time Bank?
+      .text-center
+        %a.btn.btn-primary.btn-large{href: "http://adbdt.org/contacta/", style:"font-size:30px;margin-top:20px;"}
+          Request access to TimeOverflow
+      .text-center
+        %p
+          %em (We will contact you to start it up or make you a demonstration)
+
+    .col-sm-6
+      .text-center
+        %h2 Already a member of a Time Bank that uses TimeOverflow?
+        %a.btn.btn-primary.btn-large{href: new_user_session_path, style:"font-size:30px;margin-top:20px;"}
+          Click here
+
+      %p
+        :markdown
+          If you are a person interested in participating in a Time Bank,
+          find your closest Time Bank at
+          [bdtonline.org](http://www.bdtonline.org "Bancos de Tiempo").
+
+      = image_tag "oferta.png", class: "img-responsive center-block"
+
+      %h2 Internet enhances Time Banks activity
+      :markdown
+        TimeOveflow is specially designed **for and by Time Banks**
+        that physically exist ([see map](http://www.bdtonline.org "Bancos de Tiempo")),
+        and its purpose is to boost them thanks to Internet.
+
+        Thanks to the joint job of [CoopDevs](https://github.com/coopdevs)
+        and [ADBdT](http://adbdt.org "Association for the Development of Time Banks")
+        today que can offer the software **TimeOverflow** to all Time Banks
+        that want it, open and for free.
+
+        The source code of TimeOverflow is available based on an open source
+        license and you can download it at [https://github.com/coopdevs/timeoverflow](https://github.com/coopdevs/timeoverflow)
+
+      .text-center
+        = link_to "https://github.com/coopdevs/timeoverflow", title: "TimeOverflow Github" do
+          = image_tag("github.png", alt: "Github logo", height: 30)
