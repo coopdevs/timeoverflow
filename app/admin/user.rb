@@ -11,11 +11,12 @@ ActiveAdmin.register User do
 
   collection_action :import_csv, :method => :post do
     errors = CsvDb.convert_save(params[:dump][:organization_id], params[:dump][:file])
-    flash[:error] = errors.join("<br/>").html_safe if errors
+    flash[:error] = errors.join("<br/>").html_safe if errors.present?
     redirect_to :action => :index
   end
 
   index do
+    # selectable_column
     column do |user|
       link_to image_tag(avatar_url(user, 24)), admin_user_path(user)
     end
