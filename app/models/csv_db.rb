@@ -16,7 +16,7 @@ class CsvDb
           errors.push({ member_id: row[0], email: row[9], errors: user.errors.full_messages })
         end
       end
-      organization.update(reg_number_seq: (organization.members.maximum(:member_uid)))
+      organization.ensure_reg_number_seq!
       errors
     end
   end
