@@ -1,4 +1,4 @@
-%tr{ "ng-repeat" => "user in users | orderBy:sort | filter:filterTerm" }
+%tr{ "ng-repeat" => "user in users | orderBy:sort | filter:filterTerm", "ng-class" => "{'bg-danger': !user.active}" }
   %td
     %img{ "ng-src" => "{{user.avatar}}", height: "32px", width: "32px" }
   %td {{user.member_id}}
@@ -38,4 +38,3 @@
       %span{ "ng-if" => "!user.active" }
         .glyphicon.glyphicon-ok
         = t ".activate"
-

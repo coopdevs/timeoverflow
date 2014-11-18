@@ -4,21 +4,25 @@
 
 .jumbotron{"ng-controller" => "OrganizationListCtrl"}
   %p.lead
-    Bienvenido en TimeOverflow,
-    = current_user.to_s
+    = t(".welcome", user: current_user.to_s)
     %br/
-    No eres miembro de ningún banco de tiempo, para usar la plataforma tendrás que ponerte en contacto
-    con uno de los bancos de tiempo que están integrados en la plataforma:
+    = t(".not_member")
 
   %table.table
     %thead
       %tr
-        %th Banco de tiempo
-        %th e-mail
-        %th Teléfono
-        %th Horario de atención
-        %th Ciudad
-        %th Barrio
+        %th
+          =t(".time_bank")
+        %th
+          =t(".email")
+        %th
+          =t(".phone")
+        %th
+          =t(".public_opening_times")
+        %th
+          =t(".city")
+        %th
+          =t(".neighborhood")
     %tbody
       %tr{"ng-repeat" => "org in organizations"}
         %td {{ org.name }}

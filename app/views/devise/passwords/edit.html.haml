@@ -4,13 +4,11 @@
   .col-sm-8
     .panel.panel-primary
       .panel-heading
-        %h2.panel-title Change your password
+        %h2.panel-title
+          =t(".change_password")
 
       .panel-body
-        - if resource.errors.any?
-          .alert.alert-danger
-            - resource.errors.full_messages.each do |msg|
-              %p= msg
+        = devise_error_messages!
         = form_for resource, url: password_path(resource_name), html: { method: :put } do |f|
           = f.hidden_field :reset_password_token
           .form-group

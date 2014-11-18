@@ -7,8 +7,12 @@
       %small
         - if post.category
           %span.glyphicon.glyphicon-folder-open
-          = post.category
+          - path = get_index_path(post,cat: post.category)
+          =link_to path do
+            = post.category
         - (post.tags || []).each do |tag|
           %span.glyphicon.glyphicon-tag
-          = tag
+          - path = get_index_path(post,tag: tag)
+          =link_to path do
+            = tag
     %p= post.description

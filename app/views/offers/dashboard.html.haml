@@ -1,13 +1,6 @@
 %h1
   = Offer.model_name.human(count: :many)
-  - if @category.present?
-    %small
-      = glyph(Category)
-      = @category.name
-  - if params[:q].present?
-    %small
-      = glyph(:search)
-      = params[:q]
+  = render("/shared/show_filter_hint.html.haml")
 
 
 .navbar
@@ -39,6 +32,3 @@
     = render :partial => 'shared/posts', :locals => { :posts => offs.actives }
 
   = link_to t('.more'), offers_path(cat: cat.id)
-
-
-

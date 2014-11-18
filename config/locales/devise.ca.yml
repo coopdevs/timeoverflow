@@ -1,0 +1,95 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+ca:
+  devise:
+    shared:
+      links:
+        sign_in: "Entrar"
+        sign_up: "Registrar-se"
+        forgot_your_password: "No recordo la meva contrasenya"
+        didnt_receive_confirmation_instructions: "Tornar a enviar correu de confirmació"
+        didnt_receive_unlock_instructions: "Enviar correu de desbloqueig"
+        sign_in_with: "Entrar amb %{provider}"
+    confirmations:
+      confirmed: "El teu compte ha estat confirmat amb èxit."
+      confirmed_and_signed_in: "El teu compte ha estat confirmat amb èxit. Ara estàs registrat."
+      send_instructions: "Rebràs un correu amb les instruccions de com confirmar el teu compte en uns minuts."
+      send_paranoid_instructions: "Si la teva adreça de correu existeix a la nostra base de dades, rebràs un correu amb les instruccions de com confirmar el teu compte en uns minuts."
+      new:
+        resend_instructions: "Reenviar instruccions de confirmació"
+    failure:
+      already_authenticated: "Ja estàs registrat."
+      inactive: "El teu compte no ha estat activat."
+      invalid: "Correu o clau invàlida."
+      invalid_token: "Token de autentificació invàlid."
+      locked: "El teu compte ha estat bloquejat."
+      not_found_in_database: "Correu o clau invàlida."
+      timeout: "La teva sessió ha caducat. Si us plau, torna a entrar per continuar."
+      unauthenticated: "Has de entrar per continuar."
+      unconfirmed: "Has de confiramar el teu compte abans de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instruccions de confirmació del compte"
+      reset_password_instructions:
+        subject: "Instruccions per a reestablir la teva clau"
+      unlock_instructions:
+        subject: "Instruccions de desbloqueig del compte"
+    omniauth_callbacks:
+      failure: "No s'ha pogut autentificar desde %{kind} perquè \"%{reason}\"."
+      success: "Autentificació realitzada desde el compte %{kind} ."
+    passwords:
+      no_token: "No pots accedir a aquesta pàgina si no vens d'un correu per restablir la contrasenya. Si vens d'un correu per a restablir la contrasenya, assegurat que has utilitzat la URL completa."
+      send_instructions: "Rebràs un correu amb instruccions de com restablir la contrasenya en uns minuts."
+      send_paranoid_instructions: "Si el teu correu existeix a la nostra base de dades, rebràs un enllaç al teu correu per recuperar la contrasenya en uns minuts."
+      updated: "La teva contrasenya ha estat canviada. Estàs connectat."
+      updated_not_active: "Canvi de contrasenya realitzat."
+      edit:
+        change_password: Canviar contrasenya
+      new:
+        forgot_question: "Has oblidat la contrasenya?"
+        send_instructions: "Envia'm les instruccions"
+    registrations:
+      destroyed: "El teu compte ha estat cancel·lat. Fins aviat!"
+      signed_up: "Benvingut!  Registre realitzat."
+      signed_up_but_inactive: "Registre realitzat. No pots accedir perquè el teu compte no està activat"
+      signed_up_but_locked: "Registre realitzat. No pots accedir perquè el teu compte està bloquejat"
+      signed_up_but_unconfirmed: "S'ha enviat un correu de confirmació, si us plau, entra al teu correu i segueix les instruccions"
+      update_needs_confirmation: "S'ha actualitzat el teu compte, però necessitem verificar la teva adreça de correu. Si us plau, entra al teu correu i segueix les instruccions."
+      updated: "Compte actualitzat."
+      new:
+        sign_up: "Registre"
+        sign_me_up: "Registra'm"
+        password: "Contrasenya"
+        password_confirmation: "Confirma la contrasenya"
+      edit:
+        edit_user: "Editar Usuari"
+        update: "Actualitzar"
+        password: "Contrasenya"
+        password_confirmation: "Confirma la contrasenya"
+        current_password: "Contrasenya actual"
+        help_password: "deixa-ho en blanc si no vols canviar-la"
+        help_current_password: "necessitem la contrasenya actual per confirmar els canvis"
+        unhappy: "Descontent?"
+        cancel_account: "Cancel·lar el meu compte"
+    sessions:
+      signed_in: "Connexió realitzada."
+      signed_out: "Desconnexió realitzada."
+      new:
+        sign_in: "Entrar"
+        remember_me: "Recorda'm"
+    unlocks:
+      send_instructions: "Rebràs un correu amb instruccions de com desbloquejar el teu compte en uns minuts."
+      send_paranoid_instructions: "Si el teu compte existeix, rebràs un correu amb instruccions de com desbloquejar el teu compte en uns minuts."
+      unlocked: "El teu compte ha estat desbloquejat. Si us plau, entra per continuar."
+      new:
+        resend_instructions: "Reenviar instruccions de desbloqueig"
+  errors:
+    messages:
+      already_confirmed: "ja has estat confirmat, prova a entrar"
+      confirmation_period_expired: "necessita confirmar-se en %{period}, si us plau, sol·licita-la de nou"
+      expired: "ha caducat, sol·licita-ho de nou"
+      not_found: "no s'ha trobat"
+      not_locked: "no es va bloquejar"
+      not_saved:
+        one: "1 error impedeix que aquest %{resource} es desi:"
+        other: "%{count} errors impedeixen que aquest %{resource} es desi:"

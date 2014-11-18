@@ -88,6 +88,7 @@ es:
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
+    terms_conditions: términos del servicio
     navbar:
       administration: Administración
       reports: Informes
@@ -96,9 +97,27 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
+      admin: Administrar
+      adminshort: Admin
+      tags: Etiquetas
+      sign_out: Desconectar
+    menu:
+      sign_in: Entrar
+      sing_out: Desconectar
+    organization_list:
+      welcome: Bienvenido a Timeoverflow %{user}.
+      not_member: No eres miembro de ningún banco de tiempo, para usar la plataforma tendrás que ponerte en contacto con uno de los bancos de tiempo que están integrados en la plataforma
+      time_bank: Banco de tiempo
+      email: Correo
+      phone: Teléfono
+      public_opening_times: Horario de atención al público
+      description: Descripción
+      address: Dirección
+      neighborhood: Barrio
+      city: Ciudad
     tips:
       entertag: Entre etiquetas separadas por comas
-
+      user_not_found: "Usuario no encontrado."
   # views/users/index...
 
   users:
@@ -108,6 +127,7 @@ es:
       manage_warning_angular: "Va a cambiar los privilegios del usuario {{username}}"
       cancel_warning_angular: "Va a eliminar del banco al usuario {{username}}"
       active_warning_angular: "Va a cambiar el estado de la cuenta del usuario {{username}}"
+      actions: Acciones
     new:
       new_user: Nuevo usuario
     show:
@@ -118,6 +138,17 @@ es:
       categories: Servicios Ofrecidos
       account: Últimos movimientos
       inactive: "(Inactivo)"
+      accounts: Cuentas
+      created_at: "Alta:"
+      user_no: "Nº Usuario:"
+      balance: "Balance:"
+      movements: "Movimientos"
+      date: Fecha
+      from_to: Origen/Destino
+      post: Anuncio
+      reason: Razón
+      quantity: Cantidad
+
     give_time:
       give_time: Dar Tiempo a
     form:
@@ -130,6 +161,11 @@ es:
       cancel_warning: "Va a eliminar del banco al usuario %{user}"
       active_warning: "Va a cambiar el estado de la cuenta del usuario %{user}"
 
+  tags:
+    alpha_grouped_index:
+      maintitle: "Etiquetas Disponibles"
+  terms:
+    accept: Aceptar
   offers:
     index:
       offered_by: "Ofrecido por %{size} personas"
@@ -145,6 +181,8 @@ es:
   inquiries:
     index:
       new_inquiry: Nueva demanda
+    new:
+      submit: Crear demanda
 
   categories:
     index:
@@ -161,6 +199,8 @@ es:
       title: Listado usuarios
     statistics:
       statistics: Estadísticas
+      bank_activity: "Actividad del banco"
+      per_month: "Por meses"
       global_activity: "Actividad global"
       users_reg: " Altas de usuario"
       num_swaps: " Intercambios"
@@ -171,6 +211,8 @@ es:
       days_without_swaps: Días sin intercambios
       demographics: Datos demográficos
       by_ages: Por edades
+      num_people: "Nº de Personas"
+      unknown: Desconocida
 
   stats:
     min_balance:
@@ -226,9 +268,15 @@ es:
     comments:
       resource_type: Tipo de recurso
       author_type: Tipo de autor
+    users:
+      upload_csv: Fichero
+      organization: Banco de tiempo
+      upload_from_csv: Importar CSV
 
   layouts:
     application:
       login: Entrar
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
+    report:
+      report_title: "INFORME"

@@ -3,6 +3,7 @@ module Taggable
 
   included do
     scope :tagged_with, ->(tag){ where("? = ANY (tags)", tag) }
+    scope :tagged_with_rank, ->(tag){ select("*,1 as rank").where("? = ANY (tags)", tag) }
   end
 
   def tag_list
@@ -33,6 +34,10 @@ module Taggable
 
     end
 
+    def alphabetical_grouped_tags
+
+       tag_cloud.group_by{ |l| l[0][0].capitalize }
+    end
   end
 
 end

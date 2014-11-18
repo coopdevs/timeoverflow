@@ -1,7 +1,22 @@
 # coding: utf-8
 
 ActiveAdmin.register User do
+  action_item :only => :index do
+    link_to I18n.t("active_admin.users.upload_from_csv"), :action => 'upload_csv'
+  end
+
+  collection_action :upload_csv do
+    render "admin/csv/upload_csv"
+  end
+
+  collection_action :import_csv, :method => :post do
+    errors = CsvDb.convert_save(params[:dump][:organization_id], params[:dump][:file])
+    flash[:error] = errors.join("<br/>").html_safe if errors.present?
+    redirect_to :action => :index
+  end
+
   index do
+    # selectable_column
     column do |user|
       link_to image_tag(avatar_url(user, 24)), admin_user_path(user)
     end
