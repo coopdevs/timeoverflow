@@ -98,14 +98,12 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
-<<<<<<< HEAD
       global_activity: "Actividad global"
       inactive_users: Usuarios inactivos
       demographics: Datos demográficos
       last_login: Último login
       without_offers: Sin ofertas publicadas
       type_of_swaps: Tipos de intecambios
-=======
       admin: Administrar
       adminshort: Admin
       tags: Etiquetas
@@ -124,7 +122,6 @@ es:
       address: Dirección
       neighborhood: Barrio
       city: Ciudad
->>>>>>> master
     tips:
       entertag: Entre etiquetas separadas por comas
       user_not_found: "Usuario no encontrado."
@@ -207,15 +204,13 @@ es:
       title: Servicios ofrecidos
     user_list:
       title: Listado usuarios
-<<<<<<< HEAD
+
   statistics:
-    statistics_global_activity:
-=======
     statistics:
       statistics: Estadísticas
       bank_activity: "Actividad del banco"
       per_month: "Por meses"
->>>>>>> master
+    statistics_global_activity:
       global_activity: "Actividad global"
       users_reg: " Altas de usuario"
       num_swaps: " Intercambios"
@@ -228,7 +223,6 @@ es:
     statistics_demographics:
       demographics: Datos demográficos
       by_ages: Por edades
-<<<<<<< HEAD
       by_gender: Por género
       male: Hombre
       female: Mujer
@@ -240,10 +234,6 @@ es:
       without_offers: Sin ofertas
     statistics_type_swaps:
       type_of_swaps: Tipos de intercambios
-=======
-      num_people: "Nº de Personas"
-      unknown: Desconocida
->>>>>>> master
 
   stats:
     min_balance:
