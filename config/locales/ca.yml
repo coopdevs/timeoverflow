@@ -268,6 +268,10 @@ ca:
     comments:
       resource_type: Tipus de recurs
       author_type: Tipus d'autor
+    users:
+      upload_csv: Fichero
+      organization: Banco de tiempo
+      upload_from_csv: Importar CSV
 
   layouts:
     application:
