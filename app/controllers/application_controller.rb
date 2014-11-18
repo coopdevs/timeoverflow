@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :setup_vars
 
   include Pundit
   protect_from_forgery
@@ -18,9 +19,16 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     if params[:locale]
-      session[:locale] = params[:locale]
+      locale=params[:locale]
+      session[:locale] = locale
+    else
+      locale=extract_locale_from_accept_language_header
     end
-    I18n.locale = session[:locale] || I18n.default_locale
+
+    # we check that provided locale from browser is in our supported list of languages
+    # if not, we use the default from rails conf
+    session[:locale] ||= @supported_langs.include?(locale)? locale: I18n.default_locale.to_s
+    I18n.locale = session[:locale]
     true
   end
 
@@ -49,6 +57,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def setup_vars
+    @supported_langs=%w(es ca en)
+  end
 
   private
 
@@ -78,5 +89,11 @@ class ApplicationController < ActionController::Base
 
   def authenticate_superuser!
     superuser? || redirect_to(root_path)
+  end
+
+  # To get locate from client supplied information
+  # see http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-client-supplied-information
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
   end
 end

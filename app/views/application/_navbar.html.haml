@@ -1,7 +1,7 @@
 %nav.navbar.navbar-static-top.navbar-inverse{role: :navigation}
   .container
     .navbar-header
-      %a.navbar-brand(href="/") TimeOverflow
+      %a.navbar-brand(href="/global/go_home") TimeOverflow
 
     %ul.nav.navbar-nav
       - if current_user and current_organization
@@ -61,6 +61,23 @@
                 %a{:href => "/statistics/statistics_type_swaps"}
                   %span.glyphicon.glyphicon-stats
                   = t ".type_of_swaps"
+		 %li.dropdown
+            %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+              = glyph("wrench")
+              = t ".admin"
+              %b.caret
+            %ul.dropdown-menu{role: :menu}
+              %li
+                - path = alpha_grouped_index_tags_path(post_type: "offer")
+                %a{href: path }
+                  = glyph("tags")
+                  = t ".tags"
+        - else
+          - path = alpha_grouped_index_tags_path(post_type: "offer")
+          %li{class: current_page?(path) && "active"}
+            %a{href: path}
+              = glyph("tags")
+              = t ".tags"
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user
@@ -74,12 +91,12 @@
               %li{role: :presentation}
                 = link_to admin_root_path do
                   = glyph(:cog)
-                  Admin
+                  = t ".adminshort"
 
             %li{role: :presentation}
               = link_to destroy_user_session_path, method: :delete  do
                 = glyph("log-out")
-                = t "Log out"
+                = t ".sign_out"
             %li.divider{role: :presentation}
             %li{role: :presentation}
               = link_to current_user do
@@ -90,8 +107,20 @@
                 = link_to m.organization do
                   = glyph(:pencil)
                   = t "layouts.application.edit_org", organization: m.organization
-
       - else
         %li
           %a{href: new_user_session_path}
             = t "layouts.application.login"
+
+      %li.divider{role: :presentation}
+      %li{role: :presentation}
+        = link_to "/global/switch_lang?locale=es", id: 'es_flag'  do
+          = image_tag("blank.png",{class: "flag flag-es", alt: "Español"})
+
+      %li{role: :presentation}
+        = link_to "/global/switch_lang?locale=ca", id: 'ca_flag' do
+          = image_tag("blank.png",{class: "flag flag-catalonia", alt: "Català"})
+
+      %li{role: :presentation}
+        = link_to "/global/switch_lang?locale=en", id: 'en_flag' do
+          = image_tag("blank.png",{class: "flag flag-gb", alt: "English"})

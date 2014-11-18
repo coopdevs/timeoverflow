@@ -30,6 +30,17 @@ class Post < ActiveRecord::Base
     with_member.merge(Member.active)
   }
 
+#  scope :fuzzy_and_tags2, ->(s){ where("posts.title like ? OR posts.description like ? OR ? = ANY (tags)", "%#{s}%","%#{s}%",s) }
+  scope :fuzzy_and_tags, ->(s){ from("
+    (
+      (
+        #{Post.fuzzy_search(s).to_sql}
+      ) union(
+        #{Post.tagged_with_rank(s).to_sql}
+      )
+    ) #{Post.table_name}") }
+
+
   validates :user, presence: true
 
   def to_s

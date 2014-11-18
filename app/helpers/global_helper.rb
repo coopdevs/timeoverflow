@@ -1,0 +1,2 @@
+module GlobalHelper
+end

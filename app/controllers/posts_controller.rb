@@ -2,12 +2,12 @@ class PostsController < InheritedResources::Base
   respond_to :html, :js
 
   has_scope :by_category, as: :cat
-  has_scope :fuzzy_search, as: :q
+  has_scope :fuzzy_and_tags, as: :q
+  has_scope :tagged_with, as: :tag
 
   before_action only: %i[update destroy] do
     authorize resource
   end
-
 
   protected
 

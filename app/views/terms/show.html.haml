@@ -5,5 +5,5 @@
   #{@document.content}
 
 = form_tag accept_terms_path, method: :post do
-  %button.btn{type: :submit} Accept
-
+  %button.btn{type: :submit}
+    =t(".accept")

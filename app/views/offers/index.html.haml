@@ -1,15 +1,7 @@
 %h1
   - @category = Category.where(id: params[:cat]).first
   = Offer.model_name.human(count: :many)
-  - if @category.present?
-    %small
-      = glyph(Category)
-      = @category.name
-  - if params[:q].present?
-    %small
-      = glyph(:search)
-      = params[:q]
-
+  = render("/shared/show_filter_hint.html.haml")
 
 .navbar
   %form.navbar-form.navbar-left{action: offers_path, role: "search", method: "get"}
@@ -38,6 +30,3 @@
   = render :partial => 'shared/posts', :locals => { :posts => @offers.actives }
 
 = link_to_next_page @offers, t('.more'), remote: true, params: params
-
-
-

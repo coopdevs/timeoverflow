@@ -1,0 +1,5 @@
+<p>Benvingut <%= @email %>!</p>
+
+<p>Confirma el teu compte fent clic en el següent enllaç:</p>
+
+<p><%= link_to 'Confirmar compte', confirmation_url(@resource, :confirmation_token => @token) %></p>

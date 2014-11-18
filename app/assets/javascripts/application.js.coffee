@@ -15,6 +15,7 @@
 # require turbolinks
 #= require datepicker
 #= require give_time
+#= require tags
 #  require_tree .
 #= require ui-bootstrap-tpls-0.11.0
 #= require_tree ./modules
