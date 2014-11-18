@@ -35,7 +35,7 @@
     = f.text_area :description, rows: "10", class: "form-control"
   .form-group
     = f.label :category
-    = f.select :category_id, Category.all.map{ |cat| [cat.name, cat.id] }, { include_blank: true }, { class: "form-control" }
+    = f.select :category_id, Category.all.sort_by{ |a| a.name.downcase }.map{ |cat| [cat.name, cat.id] }, { include_blank: true }, { class: "form-control" }
   .form-group
     = f.label :tag_list
     = f.text_field :tag_list, :placeholder => t('application.tips.entertag'), class: "form-control", "ng-controller" => "TagTypeaheadCtrl", "ng-model" => "asyncSelected", "typeahead" => "tag for tag in getTags($viewValue) | filter:$viewValue | limitTo:8" , "typeahead-loading" => "loadingTags"
