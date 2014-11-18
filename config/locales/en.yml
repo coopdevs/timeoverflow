@@ -97,6 +97,12 @@ en:
       categories: Services
       organizations: Organizations
       statistics: Statistics
+      global_activity: "Global activity"
+      inactive_users: "Inactive users"
+      demographics: Demographics data
+      last_login: Last login
+      without_offers: Without offers
+      type_of_swaps: Type of transactions
       admin: Manage
       adminshort: Admin
       tags: Tags
@@ -213,6 +219,36 @@ en:
       by_ages: Per ages
       num_people: "# of people"
       unknown: Unknown
+
+  statistics:
+    statistics:
+      statistics: Statistics
+      bank_activity: "Bank Activity"
+      per_month: "By Month"
+    statistics_global_activity:
+      global_activity: "Global Activity"
+      users_reg: " Registered users"
+      num_swaps: " Transactions"
+      total_hours: " Hours transfered"
+    statistics_inactive_users:
+      inactive_users: Inactive users
+      last_movement: Last transaction
+      no_movements: Without transactions
+      days_without_swaps: Days without transactions
+    statistics_demographics:
+      demographics: Demographics data
+      by_ages: By ages
+      by_gender: By gender
+      male: Male
+      female: Female
+      unknown: Unknown
+    statistics_last_login:
+      last_login: Last login
+      never_login: Never login
+    statistics_without_offers:
+      without_offers: Without offers
+    statistics_type_swaps:
+      type_of_swaps: Type of transactions
 
   stats:
     min_balance:

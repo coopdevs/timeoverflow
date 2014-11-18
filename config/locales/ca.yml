@@ -97,6 +97,12 @@ ca:
       categories: Serveis
       organizations: Organitzacions
       statistics: Estadístiques
+      global_activity: "Activitat global"
+      inactive_users: Usuaris inactius
+      demographics: Dades demogràfiques
+      last_login: Último login
+      without_offers: Sin ofertas publicadas
+      type_of_swaps: Tipos de intecambios
       admin: Administrar
       adminshort: Admin
       tags: Etiquetes
@@ -197,22 +203,36 @@ ca:
       title: Serveis ofertats
     user_list:
       title: Llistat d'usuaris
+
+  statistics:
     statistics:
       statistics: Estadístiques
       bank_activity: "Activitat del banc"
       per_month: "Per mesos"
+    statistics_global_activity:
       global_activity: "Activitat global"
-      users_reg: "Altes d'usuari"
-      num_swaps: "Intercanvis"
-      total_hours: "Hores intercanviades"
-      inactive_users: usuaris inactius
+      users_reg: " Altes d'usuari"
+      num_swaps: " Intercanvis"
+      total_hours: " Hores intercanviades"
+    statistics_inactive_users:
+      inactive_users: Usuaris inactius
       last_movement: Darrer intercanvi
       no_movements: Sense intercanvis
       days_without_swaps: Dies sense intercanvis
+    statistics_demographics:
       demographics: Dades demogràfiques
       by_ages: Per edats
-      num_people: "Nombre de Persones"
+      by_gender: Por género
+      male: Hombre
+      female: Mujer
       unknown: Desconegut
+    statistics_last_login:
+      last_login: Último login
+      never_login: Nunca logueado
+    statistics_without_offers:
+      without_offers: Sin ofertas
+    statistics_type_swaps:
+      type_of_swaps: Tipos de intercambios
 
   stats:
     min_balance:
