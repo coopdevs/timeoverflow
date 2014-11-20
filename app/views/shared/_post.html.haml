@@ -19,8 +19,9 @@
               =link_to path do
                 = tag
           %br
-        = t '.created_by'
-        = link_to post.user, post.user, title: post.user.email
+        -if current_user and current_organization
+          = t '.created_by'
+          = link_to post.user, post.user, title: post.user.email
         %br
         = t '.created_at'
         = l post.created_at.to_date, format: :short
