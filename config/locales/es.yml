@@ -50,6 +50,7 @@ es:
         alt_phone: Teléfono alternativo
         admin: Administrador de organización
         superadmin: Administrador de sistema
+        last_sign_in_at: Fecha último login
         description: Descripción
         unconfirmed_email: Correo sin confirmar
       organization:
@@ -97,6 +98,12 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
+      global_activity: "Actividad global"
+      inactive_users: Usuarios inactivos
+      demographics: Datos demográficos
+      last_login: Último login
+      without_offers: Sin ofertas publicadas
+      type_of_swaps: Tipos de intecambios
       admin: Administrar
       adminshort: Admin
       tags: Etiquetas
@@ -197,22 +204,37 @@ es:
       title: Servicios ofrecidos
     user_list:
       title: Listado usuarios
-    statistics:
-      statistics: Estadísticas
+
+  statistics:
+    statistics_global_activity:
       bank_activity: "Actividad del banco"
       per_month: "Por meses"
       global_activity: "Actividad global"
       users_reg: " Altas de usuario"
       num_swaps: " Intercambios"
       total_hours: " Horas intercambiadas"
+      show: Mostrar
+      ini_date: "mm/aaaa inicial"
+      end_date: "mm/aaaa final"
+    statistics_inactive_users:
       inactive_users: Usuarios inactivos
       last_movement: Útimo intercambio
       no_movements: Sin intercambios
       days_without_swaps: Días sin intercambios
+    statistics_demographics:
       demographics: Datos demográficos
       by_ages: Por edades
-      num_people: "Nº de Personas"
-      unknown: Desconocida
+      by_gender: Por género
+      male: Hombre
+      female: Mujer
+      unknown: Desconocido
+    statistics_last_login:
+      last_login: Último login
+      never_login: Nunca logueado
+    statistics_without_offers:
+      without_offers: Sin ofertas
+    statistics_type_swaps:
+      type_of_swaps: Tipos de intercambios
 
   stats:
     min_balance:
@@ -263,6 +285,7 @@ es:
     amount: Cantidad
     demote: Convertir en usuario normal
     promote: Convertir en administrador
+    statistics: Estadísticas
 
   active_admin:
     comments:

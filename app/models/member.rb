@@ -27,4 +27,8 @@ class Member < ActiveRecord::Base
   def days_without_swaps
     (DateTime.now.to_date - account.updated_at.to_date).to_i
   end
+
+  def offers
+    Post.where(organization: self.organization, user: self.user, type: "Offer")
+  end
 end
