@@ -184,13 +184,16 @@ ca:
       offered_by: "Oferents"
     new:
       submit: Crear oferta
+    edit:
+      submit: Canviar oferta
 
   inquiries:
     index:
       new_inquiry: Nova demanda
     new:
       submit: Crear demanda
-
+    edit:
+      submit: Canviar demanda
   categories:
     index:
       all: Totes

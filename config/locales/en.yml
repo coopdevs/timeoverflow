@@ -184,12 +184,16 @@ en:
       offered_by: "Offered by"
     new:
       submit: Create offer
+    edit:
+      submit: Update Offer
 
   inquiries:
     index:
       new_inquiry: New inquiry
     new:
       submit: Create inquiry
+    edit:
+      submit: Update inquiry
 
   categories:
     index:

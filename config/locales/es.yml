@@ -184,12 +184,16 @@ es:
       offered_by: "Ofertantes"
     new:
       submit: Crear oferta
+    edit:
+      submit: Cambiar Oferta
 
   inquiries:
     index:
       new_inquiry: Nueva demanda
     new:
       submit: Crear demanda
+    edit:
+      submit: Cambiar demanda
 
   categories:
     index:

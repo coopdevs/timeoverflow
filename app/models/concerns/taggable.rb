@@ -17,7 +17,7 @@ module Taggable
   module ClassMethods
 
     def all_tags
-      pluck(:tags).flatten.compact
+      pluck(:tags).flatten.compact.reject(&:empty?)
     end
 
     def tag_list
