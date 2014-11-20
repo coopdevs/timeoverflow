@@ -19,6 +19,7 @@ class Post < ActiveRecord::Base
   default_scope ->{ order('posts.updated_at DESC') }
 
   scope :by_category, ->(cat) { where(category_id: cat) if cat }
+  scope :by_organization, ->(org) { where(organization_id: org) }
 
   scope :with_member, -> {
     joins(:organization, :user_members).
@@ -30,7 +31,6 @@ class Post < ActiveRecord::Base
     with_member.merge(Member.active)
   }
 
-#  scope :fuzzy_and_tags2, ->(s){ where("posts.title like ? OR posts.description like ? OR ? = ANY (tags)", "%#{s}%","%#{s}%",s) }
   scope :fuzzy_and_tags, ->(s){ from("
     (
       (
@@ -39,7 +39,6 @@ class Post < ActiveRecord::Base
         #{Post.tagged_with_rank(s).to_sql}
       )
     ) #{Post.table_name}") }
-
 
   validates :user, presence: true
 
@@ -53,6 +52,17 @@ class Post < ActiveRecord::Base
   # To ensure the presence of the attribute, use the `with_member` scope
   def member_id
     read_attribute(:member_id) if has_attribute?(:member_id)
+  end
+
+  # Trying to override all_tags with tags for current organization
+  module ClassMethods
+    def self.included base
+      base.instance_eval do
+        def all_tags
+          pluck(:tags).by_organization(current_organization).flatten.compact.reject(&:empty?)
+        end
+      end
+    end
   end
 
 end
