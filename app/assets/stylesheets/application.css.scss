@@ -124,3 +124,8 @@ ul.statistics li{
     color: #468847;
     text-align: left;
 }
+
+// if not navbar hidden datepicker in small windows
+.ui-datepicker{
+  z-index: 1000 !important;
+}

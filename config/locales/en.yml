@@ -50,6 +50,7 @@ en:
         alt_phone: Alternative Phone
         admin: Organization Administrator
         superadmin: System Administrator
+        last_sign_in_at: Last login
         description: Description
         unconfirmed_email: Unconfirmed Email
       organization:
@@ -97,6 +98,12 @@ en:
       categories: Services
       organizations: Organizations
       statistics: Statistics
+      global_activity: "Global activity"
+      inactive_users: "Inactive users"
+      demographics: Demographics data
+      last_login: Last login
+      without_offers: Without offers
+      type_of_swaps: Type of transactions
       admin: Manage
       adminshort: Admin
       tags: Tags
@@ -214,6 +221,37 @@ en:
       num_people: "# of people"
       unknown: Unknown
 
+  statistics:
+    statistics_global_activity:
+      bank_activity: "Bank Activity"
+      per_month: "By Month"
+      global_activity: "Global Activity"
+      users_reg: " Registered users"
+      num_swaps: " Transactions"
+      total_hours: " Hours transfered"
+      show: Show
+      ini_date: "ini mm/yyyy"
+      end_date: "end mm/yyyy"
+    statistics_inactive_users:
+      inactive_users: Inactive users
+      last_movement: Last transaction
+      no_movements: Without transactions
+      days_without_swaps: Days without transactions
+    statistics_demographics:
+      demographics: Demographics data
+      by_ages: By ages
+      by_gender: By gender
+      male: Male
+      female: Female
+      unknown: Unknown
+    statistics_last_login:
+      last_login: Last login
+      never_login: Never login
+    statistics_without_offers:
+      without_offers: Without offers
+    statistics_type_swaps:
+      type_of_swaps: Type of transactions
+
   stats:
     min_balance:
       title: Users Minimum Balance
@@ -263,6 +301,7 @@ en:
     amount: Quantity
     demote: Demote to normal user
     promote: Promote to administrator
+    statistics: Statistics
 
   active_admin:
     comments:
