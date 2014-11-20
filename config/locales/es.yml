@@ -206,15 +206,16 @@ es:
       title: Listado usuarios
 
   statistics:
-    statistics:
-      statistics: Estadísticas
+    statistics_global_activity:
       bank_activity: "Actividad del banco"
       per_month: "Por meses"
-    statistics_global_activity:
       global_activity: "Actividad global"
       users_reg: " Altas de usuario"
       num_swaps: " Intercambios"
       total_hours: " Horas intercambiadas"
+      show: Mostrar
+      ini_date: "mm/aaaa inicial"
+      end_date: "mm/aaaa final"
     statistics_inactive_users:
       inactive_users: Usuarios inactivos
       last_movement: Útimo intercambio

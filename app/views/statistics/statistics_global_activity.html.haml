@@ -1,25 +1,26 @@
 %h1= t("global.statistics") + ": " + t(".global_activity")
-.panel.panel-default
-  .panel-body
-    %ul.nav.nav-pills.statistics
-      %li
-        = t ".users_reg"
+%div{ ng_controller: "" }
+  .panel.panel-default
+    .panel-body
+      %ul.nav.nav-pills.statistics
+        %li
+          = t ".users_reg"
+          .badge
+            = @members.count
+        %li
+          = t ".num_swaps"
+          .badge
+            = @num_swaps
+        %li
+        = t ".total_hours"
         .badge
-          = @members.count
-      %li
-        = t ".num_swaps"
-        .badge
-          = @num_swaps
-      %li
-      = t ".total_hours"
-      .badge
-        = seconds_to_hm @total_hours
-  %form.navbar-form.navbar-right
-    .form-group
-      %input.form-control{id: "datepicker_from", placeholder: "mm/aaaa inicial", name: "ini", value: params[:ini]}
-      %input.form-control{id: "datepicker_to", placeholder: "mm/aaaa final", name: "fin", value: params[:fin]}
-      %button.btn.btn-default{type: :submit}= "Mostrar"
-  #chart
+          = seconds_to_hm @total_hours
+    %form.navbar-form.navbar-right
+      .form-group
+        %input.form-control{id: "datepicker_from", placeholder: t(".ini_date"), name: "ini", value: params[:ini]}
+        %input.form-control{id: "datepicker_to", placeholder: t(".end_date"), name: "fin", value: params[:fin]}
+        %button.btn.btn-default{type: :submit}= t(".show")
+    #chart
 
 :javascript
   window.onload = function () {
@@ -29,10 +30,10 @@
         type: 'column'
       },
       title: {
-        text: 'Actividad del banco'
+        text: "#{t '.bank_activity'}"
       },
       subtitle: {
-        text: 'Por meses'
+        text: "#{t '.per_month'}"
       },
       xAxis: {
         categories: #{@months_names.to_json}

@@ -50,6 +50,7 @@ en:
         alt_phone: Alternative Phone
         admin: Organization Administrator
         superadmin: System Administrator
+        last_sign_in_at: Last login
         description: Description
         unconfirmed_email: Unconfirmed Email
       organization:
@@ -221,15 +222,16 @@ en:
       unknown: Unknown
 
   statistics:
-    statistics:
-      statistics: Statistics
+    statistics_global_activity:
       bank_activity: "Bank Activity"
       per_month: "By Month"
-    statistics_global_activity:
       global_activity: "Global Activity"
       users_reg: " Registered users"
       num_swaps: " Transactions"
       total_hours: " Hours transfered"
+      show: Show
+      ini_date: "ini mm/yyyy"
+      end_date: "end mm/yyyy"
     statistics_inactive_users:
       inactive_users: Inactive users
       last_movement: Last transaction
@@ -299,6 +301,7 @@ en:
     amount: Quantity
     demote: Demote to normal user
     promote: Promote to administrator
+    statistics: Statistics
 
   active_admin:
     comments:

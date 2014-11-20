@@ -50,6 +50,7 @@ ca:
         alt_phone: Telèfon alternatiu
         admin: Administrador del Banc de Temps
         superadmin: SuperAdministrador del Sistema
+        last_sign_in_at: Fecha último login
         description: Descripció
         unconfirmed_email: Correu sense confirmar
       organization:
@@ -205,15 +206,16 @@ ca:
       title: Llistat d'usuaris
 
   statistics:
-    statistics:
-      statistics: Estadístiques
+    statistics_global_activity:
       bank_activity: "Activitat del banc"
       per_month: "Per mesos"
-    statistics_global_activity:
       global_activity: "Activitat global"
       users_reg: " Altes d'usuari"
       num_swaps: " Intercanvis"
       total_hours: " Hores intercanviades"
+      show: Mostrar
+      ini_date: "mm/aaaa inicial"
+      end_date: "mm/aaaa final"
     statistics_inactive_users:
       inactive_users: Usuaris inactius
       last_movement: Darrer intercanvi
@@ -283,6 +285,7 @@ ca:
     amount: Quantitat
     demote: Convertir en usuari normal
     promote: Convertir en administrador
+    statistics: Estadístiques
 
   active_admin:
     comments:
