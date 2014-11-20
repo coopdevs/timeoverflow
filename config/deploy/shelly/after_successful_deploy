@@ -1,1 +1,1 @@
-rake rollbar:deploy
+# rake rollbar:deploy
