@@ -75,6 +75,7 @@ class ApplicationController < ActionController::Base
 
   def current_organization
     @current_organization ||= current_user.try(:organizations).try(:first)
+    Post.current_organization = @current_organization
   end
 
   def admin?
@@ -94,6 +95,12 @@ class ApplicationController < ActionController::Base
   # To get locate from client supplied information
   # see http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-client-supplied-information
   def extract_locale_from_accept_language_header
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    hal=request.env['HTTP_ACCEPT_LANGUAGE']
+
+    if hal
+      hal.scan(/^[a-z]{2}/).first
+    else
+      I18n.default_locale.to_s
+    end
   end
 end

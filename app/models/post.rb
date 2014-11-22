@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   extend Searchable :title, :description
 
   attr_reader :member_id
+  cattr_accessor :current_organization
 
   belongs_to :category
   belongs_to :user
@@ -19,7 +20,7 @@ class Post < ActiveRecord::Base
   default_scope ->{ order('posts.updated_at DESC') }
 
   scope :by_category, ->(cat) { where(category_id: cat) if cat }
-  scope :by_organization, ->(org) { where(organization_id: org) }
+  scope :by_organization, ->(org) { where(organization_id: org) if org }
 
   scope :with_member, -> {
     joins(:organization, :user_members).
@@ -54,15 +55,12 @@ class Post < ActiveRecord::Base
     read_attribute(:member_id) if has_attribute?(:member_id)
   end
 
-  # Trying to override all_tags with tags for current organization
-  module ClassMethods
-    def self.included base
-      base.instance_eval do
-        def all_tags
-          pluck(:tags).by_organization(current_organization).flatten.compact.reject(&:empty?)
-        end
-      end
-    end
+  # Taggable checks if this class method exists and then use it or pluck(:tags otherwise)
+  def self.get_tags
+    posts = select(:tags).by_organization(current_organization)
+    t = []
+    posts.each { |p| t << p.tags }
+    t
   end
 
 end
