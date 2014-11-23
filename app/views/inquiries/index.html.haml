@@ -20,6 +20,7 @@
           - next if c == @category
           %li= link_to c.name, inquiries_path(cat: c.id)
 
+- if current_user and current_organization and !params[:org]
   %ul.nav.navbar-nav.pull-right
     %li
       %a{href: new_inquiry_path}

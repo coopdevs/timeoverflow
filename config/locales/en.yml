@@ -108,6 +108,8 @@ en:
       adminshort: Admin
       tags: Tags
       sign_out: Logout
+      offer_public_link: Offers public link
+      inquiry_public_link: Inquiries public link      
     menu:
       sign_in: Login
       sing_out: Logout
