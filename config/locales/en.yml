@@ -109,7 +109,7 @@ en:
       tags: Tags
       sign_out: Logout
       offer_public_link: Offers public link
-      inquiry_public_link: Inquiries public link      
+      inquiry_public_link: Inquiries public link
     menu:
       sign_in: Login
       sing_out: Logout
@@ -250,6 +250,7 @@ en:
       male: Male
       female: Female
       unknown: Unknown
+      num_people: "# of people"
     statistics_last_login:
       last_login: Last login
       never_login: Never login

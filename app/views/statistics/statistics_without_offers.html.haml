@@ -8,7 +8,7 @@
           %th= User.human_attribute_name(:username)
       %tbody
       - @members.each do |mem|
-        - if mem.offers.blank?
+        - if mem.offers.blank? and mem.user
           %tr
             %td= mem.member_uid
             %td= link_to mem.user.username, mem.user
