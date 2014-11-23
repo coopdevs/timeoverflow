@@ -71,10 +71,12 @@ class StatisticsController < ApplicationController
     @age_counts = Hash[@age_groups.map { |name, group| [name, group.size] }]
 
     @gender_groups = @members.group_by { |member|
-      case member.user.gender
-      when 'male' then t("statistics.statistics_demographics.male")
-      when 'female' then t("statistics.statistics_demographics.female")
-      else t("statistics.statistics_demographics.unknown")
+      if member.user
+        case member.user.gender
+          when 'male' then t("statistics.statistics_demographics.male")
+          when 'female' then t("statistics.statistics_demographics.female")
+          else t("statistics.statistics_demographics.unknown")
+        end
       end
     }
     @gender_counts = Hash[@gender_groups.map { |name, group| [name, group.size] }]

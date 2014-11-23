@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def create
     if @user = User.find_by_email(user_params[:email])
-      if !@user.active?
+      if !@user.active?(current_organization)
         # Deactivated user is registered again (overwrite new attributes)
         @user.attributes = user_params.merge(:active => true)
         @user.save!

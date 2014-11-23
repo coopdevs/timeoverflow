@@ -8,10 +8,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Create two organizations
 Organization.find_or_create_by(id: 1) do |org|
   org.name = "TimeOverflow"
 end
 
+Organization.find_or_create_by(id: 2) do |org|
+  org.name = "TimeOverflow2"
+end
+
+# Create users for 1st organization
 User.find_or_create_by(email: "admin@example.com") do |user|
   user.terms_accepted_at = DateTime.now.utc
   user.confirmed_at = DateTime.now.utc
@@ -27,6 +33,54 @@ User.find_by(email: "admin@example.com").members.find_or_create_by(organization_
   member.entry_date = DateTime.now.utc
 end
 
+User.find_or_create_by(email: "user@example.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
+  user.confirmed_at = DateTime.now.utc
+  user.password = "1234test"
+  user.password_confirmation = "1234test"
+  user.username = "user"
+  user.gender = "female"
+  user.identity_document = "X1111111X"
+end
+
+User.find_by(email: "user@example.com").members.find_or_create_by(organization_id: 1) do |member|
+  member.manager = false
+  member.entry_date = DateTime.now.utc
+end
+
+
+# Create users for 2nd organization
+User.find_or_create_by(email: "admin2@example.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
+  user.confirmed_at = DateTime.now.utc
+  user.password = "1234test"
+  user.password_confirmation = "1234test"
+  user.username = "admin2"
+  user.gender = "male"
+  user.identity_document = "X0000000X"
+end
+
+User.find_by(email: "admin2@example.com").members.find_or_create_by(organization_id: 2) do |member|
+  member.manager = true
+  member.entry_date = DateTime.now.utc
+end
+
+User.find_or_create_by(email: "user2@example.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
+  user.confirmed_at = DateTime.now.utc
+  user.password = "1234test"
+  user.password_confirmation = "1234test"
+  user.username = "user2"
+  user.gender = "female"
+  user.identity_document = "X1111111X"
+end
+
+User.find_by(email: "user2@example.com").members.find_or_create_by(organization_id: 2) do |member|
+  member.manager = false
+  member.entry_date = DateTime.now.utc
+end
+
+# Create categories
 unless Category.exists?
   Category.connection.execute "ALTER SEQUENCE categories_id_seq RESTART;"
   [
@@ -38,7 +92,7 @@ unless Category.exists?
   end
 end
 
-
+# Create dummy terms and conditions
 Document.find_or_create_by(label: "t&c") do |doc|
   doc.title = "Terms and Conditions"
   doc.content = "blah blah blah"
