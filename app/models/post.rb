@@ -56,8 +56,9 @@ class Post < ActiveRecord::Base
   end
 
   # Taggable checks if this class method exists and then use it or pluck(:tags otherwise)
+  # In this case we want tags for active posts and only for current organization
   def self.get_tags
-    posts = select(:tags).by_organization(current_organization)
+    posts = select(:tags).by_organization(current_organization).actives
     t = []
     posts.each { |p| t << p.tags }
     t

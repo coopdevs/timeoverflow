@@ -10,25 +10,29 @@ class TagsController < ApplicationController
 
   def alpha_grouped_index
 
+
     permitted = tags_params(params)
-    post_type = permitted[:post_type] || "offer"
+    @current_post_type = permitted[:post_type] || "offer"
 
     @offers_tagged=[]
     @inquiries_tagged=[]
-
-    case post_type
+    
+    case @current_post_type
     when "offer"
       @alpha_tags = Offer::alphabetical_grouped_tags
-      @current_post_type="offers"
     when "inquiry"
       @alpha_tags = Inquiry::alphabetical_grouped_tags
-      @current_post_type="inquiries"
     when "all"
       @alpha_tags = Post::alphabetical_grouped_tags
-      @current_post_type="all"
     end
 
-    respond_with @alpha_tags
+    # If Post is not aware of current organization redirect to users_path
+    # otherwise respond with alphabetical tags gathered
+    if not Post.current_organization
+      redirect_to users_path
+    else
+      respond_with @alpha_tags
+    end
   end
 
   def inquiries

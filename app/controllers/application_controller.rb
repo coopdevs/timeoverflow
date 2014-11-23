@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
 
   def current_organization
     @current_organization ||= current_user.try(:organizations).try(:first)
-    Post.current_organization = @current_organization
+    Post.current_organization ||= @current_organization
   end
 
   def admin?
