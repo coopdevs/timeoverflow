@@ -85,6 +85,8 @@ ca:
         permanent: Permanent
         start_on: Comença al
         end_on: Finalitza al
+      account:
+        balance: Banlanç
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 

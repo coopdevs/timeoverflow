@@ -85,6 +85,8 @@ es:
         permanent: Permanente
         start_on: Empieza el
         end_on: Termina el
+      account:
+        balance: Banlance
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
