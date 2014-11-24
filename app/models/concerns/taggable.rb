@@ -35,8 +35,7 @@ module Taggable
     end
 
     def alphabetical_grouped_tags
-
-        tag_cloud.group_by{ |l| l[0][0].capitalize }
+      tag_cloud.group_by{ |l| l[0][0].capitalize }
     end
   end
 
