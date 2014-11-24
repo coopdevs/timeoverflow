@@ -4,6 +4,7 @@ class Member < ActiveRecord::Base
 
   has_one :account, as: :accountable
   delegate :balance, to: :account, prefix: true, allow_nil: true
+  delegate :gender, to: :user, prefix: true, allow_nil: true
 
   after_create :create_account
   before_validation :assign_registration_number, :on => :create

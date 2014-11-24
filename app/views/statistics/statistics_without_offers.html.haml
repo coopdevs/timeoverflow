@@ -7,7 +7,7 @@
           %th ID
           %th= User.human_attribute_name(:username)
       %tbody
-      - @members.each do |mem|
+      - @members.reject { |m| m.user_id }.each do |mem|
         - if mem.offers.blank?
           %tr
             %td= mem.member_uid
