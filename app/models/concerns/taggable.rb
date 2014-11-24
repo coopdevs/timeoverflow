@@ -6,14 +6,12 @@ module Taggable
   extend ActiveSupport::Concern
 
   included do
-    scope :tagged_with, ->(tag) { where('? = ANY (tags)', tag) }
-    scope :tagged_with_rank, lambda { |tag|
-      select('*,1 as rank').where('? = ANY (tags)', tag)
-    }
+    scope :tagged_with, ->(tag) { where("? = ANY (tags)", tag) }
+    scope :tagged_with_rank, ->(tag) { select("*,1 as rank").tagged_with(tag) }
   end
 
   def tag_list
-    tags && tags.join(', ')
+    tags && tags.join(", ")
   end
 
   def tag_list=(tag_list)
