@@ -17,7 +17,7 @@ module Taggable
   module ClassMethods
 
     def all_tags
-      pluck(:tags).flatten.compact
+      pluck(:tags).flatten.compact.reject(&:empty?)
     end
 
     def tag_list
@@ -36,7 +36,7 @@ module Taggable
 
     def alphabetical_grouped_tags
 
-       tag_cloud.group_by{ |l| l[0][0].capitalize }
+        tag_cloud.group_by{ |l| l[0][0].capitalize }
     end
   end
 
