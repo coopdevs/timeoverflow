@@ -248,6 +248,7 @@ en:
       male: Male
       female: Female
       unknown: Unknown
+      num_people: "# of people"
     statistics_last_login:
       last_login: Last login
       never_login: Never login

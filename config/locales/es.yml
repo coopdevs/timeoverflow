@@ -232,6 +232,7 @@ es:
       male: Hombre
       female: Mujer
       unknown: Desconocido
+      num_people: Nº personas
     statistics_last_login:
       last_login: Último login
       never_login: Nunca logueado
