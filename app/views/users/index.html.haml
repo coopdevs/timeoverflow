@@ -24,7 +24,7 @@
       %tr
         %th
         %th
-          %a{ "ng-click" => "sortBy('id')" }
+          %a{ href: "", ng_click: "sortBy('member_id')" }
             ID
             %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-member_id'" }
             %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'member_id'" }
