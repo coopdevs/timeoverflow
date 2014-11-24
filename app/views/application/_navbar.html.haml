@@ -73,17 +73,17 @@
                   = glyph("tags")
                   = t ".tags"
               %li
-                 - path = offers_path(org: current_organization)
-                 %a{href: path }
-                   = glyph("link")
-                   = glyph("eye-open")
-                   = t ".offer_public_link"
-               %li
-                 - path = inquiries_path(org: current_organization)
-                 %a{href: path }
-                   = glyph("link")
-                   = glyph("eye-open")
-                   = t ".inquiry_public_link"
+                - path = offers_path(org: current_organization)
+                %a{href: path }
+                  = glyph("link")
+                  = glyph("eye-open")
+                  = t ".offer_public_link"
+              %li
+                - path = inquiries_path(org: current_organization)
+                %a{href: path }
+                  = glyph("link")
+                  = glyph("eye-open")
+                  = t ".inquiry_public_link"
         - else
           - path = alpha_grouped_index_tags_path(post_type: "offer")
           %li{class: current_page?(path) && "active"}

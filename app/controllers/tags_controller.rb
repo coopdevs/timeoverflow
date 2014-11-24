@@ -21,7 +21,7 @@ class TagsController < ApplicationController
                   when "inquiry" then Inquiry
                   when "all" then Post
                   end.by_organization(current_organization).
-                  active.
+                  actives.
                   alphabetical_grouped_tags
 
     respond_with @alpha_tags
