@@ -20,11 +20,12 @@
           - next if c == @category
           %li= link_to c.name, inquiries_path(cat: c.id)
 
-  %ul.nav.navbar-nav.pull-right
-    %li
-      %a{href: new_inquiry_path}
-        %span.glyphicon.glyphicon-plus
-        = t "helpers.submit.create", model: Inquiry.model_name.human
+  - if current_user and current_organization and !params[:org]
+    %ul.nav.navbar-nav.pull-right
+      %li
+        %a{href: new_inquiry_path}
+          %span.glyphicon.glyphicon-plus
+          = t "helpers.submit.create", model: Inquiry.model_name.human
 
 .inquiries
   = render :partial => 'shared/posts', :locals => { :posts => @inquiries.actives }

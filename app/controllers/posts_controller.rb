@@ -4,6 +4,7 @@ class PostsController < InheritedResources::Base
   has_scope :by_category, as: :cat
   has_scope :fuzzy_and_tags, as: :q
   has_scope :tagged_with, as: :tag
+  has_scope :by_organization, as: :org
 
   before_action only: %i[update destroy] do
     authorize resource

@@ -110,6 +110,8 @@ ca:
       adminshort: Admin
       tags: Etiquetes
       sign_out: Desconnectar
+      offer_public_link: Enllaç públic a ofertes
+      inquiry_public_link: Enllaç públic a demandes
     menu:
       sign_in: Entrar
       sing_out: Desconnectar
