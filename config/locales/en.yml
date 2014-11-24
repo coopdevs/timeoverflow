@@ -108,6 +108,8 @@ en:
       adminshort: Admin
       tags: Tags
       sign_out: Logout
+      offer_public_link: Offers public link
+      inquiry_public_link: Inquiries public link
     menu:
       sign_in: Login
       sing_out: Logout
@@ -184,13 +186,15 @@ en:
       offered_by: "Offered by"
     new:
       submit: Create offer
-
+    edit:
+      submit: Change offer
   inquiries:
     index:
       new_inquiry: New inquiry
     new:
       submit: Create inquiry
-
+    edit:
+      submit: Change inquiry
   categories:
     index:
       all: All
