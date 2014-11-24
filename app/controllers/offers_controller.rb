@@ -1,11 +1,19 @@
+# Managems of offer-type posts
+#
 class OffersController < PostsController
+  before_action :ensure_organization, only: :dashboard
 
   def dashboard
-    @offers = Hash.new
-    Category.all.sort_by{ |a| a.name.downcase }.each do |category|
-      offers_by_category = current_organization.offers.merge(category.posts).limit(5)
-      @offers[category] = offers_by_category if offers_by_category.any?
+    @offers = Category.all.sort_by { |a| a.name.downcase }.
+              each_with_object({}) do |category, offers|
+      list = current_organization.offers.merge(category.posts).limit(5)
+      offers[category] = list if list.present?
     end
   end
 
+  private
+
+  def ensure_organization
+    redirect_to(offers_path) unless current_organization
+  end
 end
