@@ -6,9 +6,9 @@ module PostsHelper
 
      case
      when klass == String
-       post.eql?("offer")?offers_path(hparams):inquiries_path(hparams)
+       post.eql?("offers") ? offers_path(hparams) : inquiries_path(hparams)
      else
-       post.type.eql?("Offer")?offers_path(hparams):inquiries_path(hparams)
+       post.type.eql?("Offer") ? offers_path(hparams) : inquiries_path(hparams)
      end
 
   end
