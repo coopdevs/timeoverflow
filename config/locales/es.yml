@@ -108,6 +108,8 @@ es:
       adminshort: Admin
       tags: Etiquetas
       sign_out: Desconectar
+      offer_public_link: Enlace público a ofertas
+      inquiry_public_link: Enlace público a demandas
     menu:
       sign_in: Entrar
       sing_out: Desconectar
