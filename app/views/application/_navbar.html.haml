@@ -5,7 +5,7 @@
 
     %ul.nav.navbar-nav
       - if current_user and current_organization
-        - [User,Offer,Inquiry].each do |item|
+        - [User, Offer, Inquiry].each do |item|
           - path = item == Offer ? dashboard_offers_path : send("#{item.to_s.downcase.pluralize}_path")
           %li{class: current_page?(path) && "active"}
             %a{href: path}
@@ -78,13 +78,6 @@
             %a{href: path}
               = glyph("tags")
               = t ".tags"
-      - else
-        - [Offer, Inquiry].each do |item|
-          - path = item == Offer ? dashboard_offers_path : send("#{item.to_s.downcase.pluralize}_path")
-          %li{class: current_page?(path) && "active"}
-            %a{href: path}
-              = glyph(item)
-              = item.model_name.human(count: :many)
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user
