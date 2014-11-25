@@ -12,6 +12,10 @@ Organization.find_or_create_by(id: 1) do |org|
   org.name = "TimeOverflow"
 end
 
+Organization.find_or_create_by(id: 2) do |org|
+  org.name = "TimeOverflow 2"
+end
+
 User.find_or_create_by(email: "admin@example.com") do |user|
   user.terms_accepted_at = DateTime.now.utc
   user.confirmed_at = DateTime.now.utc
@@ -22,8 +26,54 @@ User.find_or_create_by(email: "admin@example.com") do |user|
   user.identity_document = "X0000000X"
 end
 
+User.find_or_create_by(email: "user@example.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
+  user.confirmed_at = DateTime.now.utc
+  user.password = "1234test"
+  user.password_confirmation = "1234test"
+  user.username = "admin"
+  user.gender = "male"
+  user.identity_document = "X0000000X"
+end
+
+User.find_or_create_by(email: "admin2@example.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
+  user.confirmed_at = DateTime.now.utc
+  user.password = "1234test"
+  user.password_confirmation = "1234test"
+  user.username = "admin"
+  user.gender = "male"
+  user.identity_document = "X1111111X"
+end
+
+User.find_or_create_by(email: "user2@example.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
+  user.confirmed_at = DateTime.now.utc
+  user.password = "1234test"
+  user.password_confirmation = "1234test"
+  user.username = "admin"
+  user.gender = "male"
+  user.identity_document = "X1111111X"
+end
+
+
 User.find_by(email: "admin@example.com").members.find_or_create_by(organization_id: 1) do |member|
   member.manager = true
+  member.entry_date = DateTime.now.utc
+end
+
+User.find_by(email: "user@example.com").members.find_or_create_by(organization_id: 1) do |member|
+  member.manager = false
+  member.entry_date = DateTime.now.utc
+end
+
+User.find_by(email: "admin2@example.com").members.find_or_create_by(organization_id: 2) do |member|
+  member.manager = true
+  member.entry_date = DateTime.now.utc
+end
+
+User.find_by(email: "user2@example.com").members.find_or_create_by(organization_id: 2) do |member|
+  member.manager = false
   member.entry_date = DateTime.now.utc
 end
 

@@ -10,7 +10,7 @@
           %th= t ".last_movement"
       %tbody
       / Por días sin movimientos
-      - @members.includes(:account).sort_by(&:days_without_swaps).reverse.map{|a| a unless a.days_without_swaps.zero?}.compact.each do |mem|
+      - @members.includes(:account).reject { |m| m.user_id }.sort_by(&:days_without_swaps).reverse.map{|a| a unless a.days_without_swaps.zero?}.compact.each do |mem|
         %tr
           %td= mem.member_uid
           %td= link_to mem.user.username, mem.user

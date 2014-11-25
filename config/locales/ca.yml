@@ -50,7 +50,7 @@ ca:
         alt_phone: Telèfon alternatiu
         admin: Administrador del Banc de Temps
         superadmin: SuperAdministrador del Sistema
-        last_sign_in_at: Fecha último login
+        last_sign_in_at: Data darrera connexió
         description: Descripció
         unconfirmed_email: Correu sense confirmar
       organization:
@@ -85,6 +85,8 @@ ca:
         permanent: Permanent
         start_on: Comença al
         end_on: Finalitza al
+      account:
+        balance: Balanç
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
@@ -101,19 +103,21 @@ ca:
       global_activity: "Activitat global"
       inactive_users: Usuaris inactius
       demographics: Dades demogràfiques
-      last_login: Último login
-      without_offers: Sin ofertas publicadas
-      type_of_swaps: Tipos de intecambios
+      last_login: Darrera connexió
+      without_offers: Sense ofertes publicades
+      type_of_swaps: Tipus d'intecanvis
       admin: Administrar
       adminshort: Admin
       tags: Etiquetes
       sign_out: Desconnectar
+      offer_public_link: Enllaç públic a ofertes
+      inquiry_public_link: Enllaç públic a demandes
     menu:
       sign_in: Entrar
       sing_out: Desconnectar
     organization_list:
       welcome: Benvingut a Timeoverflow %{user}.
-      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de possar-te en contacte amb un dels Bancs de Temps del sistema
+      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de posar-te en contacte amb un dels Bancs de Temps del sistema
       time_bank: Banc de Temps
       email: Correu
       phone: Telèfon
@@ -147,7 +151,7 @@ ca:
       inactive: "(Inactiu)"
       accounts: Comptes
       created_at: "Alta:"
-      user_no: "Nº Usuari:"
+      user_no: "núm. Usuari:"
       balance: "Balanç:"
       movements: "Moviments"
       date: Data
@@ -184,16 +188,13 @@ ca:
       offered_by: "Oferents"
     new:
       submit: Crear oferta
-    edit:
-      submit: Canviar oferta
 
   inquiries:
     index:
       new_inquiry: Nova demanda
     new:
       submit: Crear demanda
-    edit:
-      submit: Canviar demanda
+
   categories:
     index:
       all: Totes
@@ -227,17 +228,18 @@ ca:
     statistics_demographics:
       demographics: Dades demogràfiques
       by_ages: Per edats
-      by_gender: Por género
-      male: Hombre
-      female: Mujer
+      by_gender: Per gènere
+      male: Home
+      female: Dona
       unknown: Desconegut
+      num_people: núm. persones
     statistics_last_login:
-      last_login: Último login
-      never_login: Nunca logueado
+      last_login: Darrera connexió
+      never_login: Mai connectat
     statistics_without_offers:
-      without_offers: Sin ofertas
+      without_offers: Sense ofertas
     statistics_type_swaps:
-      type_of_swaps: Tipos de intercambios
+      type_of_swaps: "Tipus d'intercanvis"
 
   stats:
     min_balance:
@@ -295,8 +297,8 @@ ca:
       resource_type: Tipus de recurs
       author_type: Tipus d'autor
     users:
-      upload_csv: Fichero
-      organization: Banco de tiempo
+      upload_csv: Fitxer
+      organization: Banc de temps
       upload_from_csv: Importar CSV
 
   layouts:

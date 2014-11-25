@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     if params[:locale]
-      locale=params[:locale]
+      locale = params[:locale]
       session[:locale] = locale
     else
-      locale=extract_locale_from_accept_language_header
+      locale = extract_locale_from_accept_language_header rescue nil
     end
 
     # we check that provided locale from browser is in our supported list of languages
@@ -93,6 +93,8 @@ class ApplicationController < ActionController::Base
 
   # To get locate from client supplied information
   # see http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-client-supplied-information
+  #
+  # TODO: Use  Rack::Locale  from  https://github.com/rack/rack-contrib
   def extract_locale_from_accept_language_header
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
   end
