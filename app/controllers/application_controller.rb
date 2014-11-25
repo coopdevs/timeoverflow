@@ -91,6 +91,10 @@ class ApplicationController < ActionController::Base
     superuser? || redirect_to(root_path)
   end
 
+  def authorize_admin!
+    admin? || superuser? || redirect_to(root_path)
+  end
+
   # To get locate from client supplied information
   # see http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-client-supplied-information
   #

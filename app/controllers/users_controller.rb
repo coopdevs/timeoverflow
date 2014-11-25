@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :authorize_admin!, only: [:create,:new,:toggle_active]
+
   respond_to :html, :js
 
   def scoped_users

@@ -3,8 +3,10 @@ require 'spec_helper'
 describe UsersController do
   let (:test_organization) { Fabricate(:organization)}
   let (:member_admin) { Fabricate(:member, organization: test_organization, manager: true)}
-  let (:member) { Fabricate(:member, organization: test_organization)}
+  let (:member) { Fabricate(:member, organization: test_organization, manager: false)}
+  let (:another_member) {Fabricate(:member, organization: test_organization, manager: false)}
   let! (:user) { member.user }
+  let! (:another_user) { another_member.user }
   let! (:admin_user) { member_admin.user}
   include_context "stub browser locale"
   before { set_browser_locale('ca') }
@@ -15,7 +17,7 @@ describe UsersController do
         login(member.user)
 
         get 'index'
-        expect(assigns(:users)).to eq([user,admin_user])
+        expect(assigns(:users)).to eq([user,another_user,admin_user])
       end
     end
     context "with an admin logged user" do
@@ -23,7 +25,7 @@ describe UsersController do
         login(member_admin.user)
 
         get 'index'
-        expect(assigns(:users)).to eq([user,admin_user])
+        expect(assigns(:users)).to eq([user,another_user,admin_user])
       end
     end
   end
@@ -56,11 +58,8 @@ describe UsersController do
 
       context "with a normal logged user" do
         it "does not create a new user" do
-          login(member.user)
+          login(user)
 
-          # TODO:
-          # Expect exception...
-          #
           expect {
             post 'create', user: Fabricate.to_params(:user)
           }.to change(User,:count).by(0)
@@ -87,29 +86,38 @@ describe UsersController do
       context "with a logged" do
 
         context "normal user" do
-          it "located the requested @user" do
+          it "locates the requested @user" do
             login(member.user)
 
             put 'update', id: user.id, user: Fabricate.to_params(:user)
             expect(assigns(:user)).to eq(user)
           end
 
-          #
-          # TODO RAISE EXCEPTION
-          #
-          it "changes @user's attributes" do
+          it "changes @user's own attributes" do
             login(member.user)
 
             put 'update', id: user.id, user: Fabricate.to_params(:user, username: user.username, email: user.email, phone:'1234', alt_phone: "4321")
 
             user.reload
-            expect(user.phone).not_to eq("1234")
-            expect(user.alt_phone).not_to eq("4321")
+            expect(user.phone).to eq("1234")
+            expect(user.alt_phone).to eq("4321")
           end
+
+          it "cannot change another user's attributes" do
+            login(member.user)
+
+            put 'update', id: another_user.id, user: Fabricate.to_params(:user, username: another_user.username, email: another_user.email, phone:'5678', alt_phone: "8765")
+
+            user.reload
+            expect(user.phone).not_to eq("5678")
+            expect(user.alt_phone).not_to eq("8765")
+          end
+
+
         end
 
         context "admin user" do
-          it "located the requested @user" do
+          it "locates the requested @user" do
             login(member_admin.user)
 
             put 'update', id: user.id, user: Fabricate.to_params(:user)
