@@ -14,7 +14,7 @@ class TagsController < ApplicationController
     @offers_tagged = []
     @inquiries_tagged = []
 
-    redirect_to users_path and return unless current_organization
+    redirect_to users_path && return unless current_organization
 
     @alpha_tags = case @current_post_type
                   when "offer" then Offer
