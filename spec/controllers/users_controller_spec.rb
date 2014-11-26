@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe UsersController do
-  let (:test_organization) { Fabricate(:organization)}
-  let (:member_admin) { Fabricate(:member, organization: test_organization, manager: true)}
-  let (:member) { Fabricate(:member, organization: test_organization, manager: false)}
-  let (:another_member) {Fabricate(:member, organization: test_organization, manager: false)}
+  let (:test_organization) { Fabricate(:organization) }
+  let (:member_admin) {
+    Fabricate(:member, organization: test_organization, manager: true) }
+  let (:member) {
+    Fabricate(:member, organization: test_organization, manager: false) }
+  let (:another_member) {
+    Fabricate(:member, organization: test_organization, manager: false) }
   let! (:user) { member.user }
   let! (:another_user) { another_member.user }
   let! (:admin_user) { member_admin.user}
@@ -17,7 +20,7 @@ describe UsersController do
         login(member.user)
 
         get 'index'
-        expect(assigns(:users)).to eq([user,another_user,admin_user])
+        expect(assigns(:users)).to eq([user, another_user, admin_user])
       end
     end
     context "with an admin logged user" do
@@ -25,7 +28,7 @@ describe UsersController do
         login(member_admin.user)
 
         get 'index'
-        expect(assigns(:users)).to eq([user,another_user,admin_user])
+        expect(assigns(:users)).to eq([user, another_user, admin_user])
       end
     end
   end
@@ -54,7 +57,7 @@ describe UsersController do
 
   describe "POST #create" do
     context "with valid params" do
-      subject {post 'create', user: Fabricate.to_params(:user)}
+      subject { post 'create', user: Fabricate.to_params(:user) }
 
       context "with a normal logged user" do
         it "does not create a new user" do
@@ -96,7 +99,13 @@ describe UsersController do
           it "changes @user's own attributes" do
             login(member.user)
 
-            put 'update', id: user.id, user: Fabricate.to_params(:user, username: user.username, email: user.email, phone:'1234', alt_phone: "4321")
+            put 'update',
+              id: user.id,
+              user: Fabricate.to_params(
+                :user,
+                username: user.username,
+                email: user.email,
+                phone:'1234', alt_phone: "4321")
 
             user.reload
             expect(user.phone).to eq("1234")
@@ -106,14 +115,18 @@ describe UsersController do
           it "cannot change another user's attributes" do
             login(member.user)
 
-            put 'update', id: another_user.id, user: Fabricate.to_params(:user, username: another_user.username, email: another_user.email, phone:'5678', alt_phone: "8765")
+            put 'update',
+              id: another_user.id,
+              user: Fabricate.to_params(
+                :user,
+                username: another_user.username,
+                email: another_user.email,
+                phone:'5678', alt_phone: "8765")
 
             user.reload
             expect(user.phone).not_to eq("5678")
             expect(user.alt_phone).not_to eq("8765")
           end
-
-
         end
 
         context "admin user" do
@@ -127,7 +140,12 @@ describe UsersController do
           it "changes @user's attributes" do
             login(member_admin.user)
 
-            put 'update', id: user.id, user: Fabricate.to_params(:user, username: user.username, email: user.email, phone:'1234', alt_phone: "4321")
+            put 'update',
+              id: user.id,
+              user: Fabricate.to_params(
+                :user, username: user.username,
+                email: user.email,
+                phone:'1234', alt_phone: "4321")
 
             user.reload
             expect(user.phone).to eq("1234")
@@ -142,7 +160,13 @@ describe UsersController do
         it "does not change @user's attributes" do
           login(member_admin.user)
 
-          put :update, id: user.id, user: Fabricate.to_params(:user, username: nil, email: nil, phone: "1234", alt_phone: "4321")
+          put :update,
+            id: user.id,
+            user: Fabricate.to_params(
+              :user,
+              username: nil,
+              email: nil,
+              phone: "1234", alt_phone: "4321")
 
           expect(user.phone).not_to eq("1234")
           expect(user.alt_phone).not_to eq("4321")
@@ -150,5 +174,4 @@ describe UsersController do
       end
     end
   end
-
 end

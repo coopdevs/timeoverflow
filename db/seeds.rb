@@ -57,37 +57,41 @@ User.find_or_create_by(email: "user2@example.com") do |user|
 end
 
 
-User.find_by(email: "admin@example.com").members.find_or_create_by(organization_id: 1) do |member|
-  member.manager = true
-  member.entry_date = DateTime.now.utc
+User.find_by(email: "admin@example.com").members.
+   find_or_create_by(organization_id: 1) do |member|
+    member.manager = true
+    member.entry_date = DateTime.now.utc
 end
 
-User.find_by(email: "user@example.com").members.find_or_create_by(organization_id: 1) do |member|
-  member.manager = false
-  member.entry_date = DateTime.now.utc
+User.find_by(email: "user@example.com").members.
+  find_or_create_by(organization_id: 1) do |member|
+    member.manager = false
+    member.entry_date = DateTime.now.utc
 end
 
-User.find_by(email: "admin2@example.com").members.find_or_create_by(organization_id: 2) do |member|
-  member.manager = true
-  member.entry_date = DateTime.now.utc
+User.find_by(email: "admin2@example.com").members.
+  find_or_create_by(organization_id: 2) do |member|
+    member.manager = true
+    member.entry_date = DateTime.now.utc
 end
 
-User.find_by(email: "user2@example.com").members.find_or_create_by(organization_id: 2) do |member|
-  member.manager = false
-  member.entry_date = DateTime.now.utc
+User.find_by(email: "user2@example.com").members.
+  find_or_create_by(organization_id: 2) do |member|
+    member.manager = false
+    member.entry_date = DateTime.now.utc
 end
 
 unless Category.exists?
   Category.connection.execute "ALTER SEQUENCE categories_id_seq RESTART;"
   [
-    "Acompañamiento", "Salud", "Domestic", "administrative tasks", "Clases", "Ocio", "consulting", "Otro"
+    "Acompañamiento", "Salud", "Domestic", "administrative tasks",
+    "Clases", "Ocio", "consulting", "Otro"
   ].each do |name|
     unless Category.with_name_translation(name).exists?
       Category.create { |c| c.name = name }
     end
   end
 end
-
 
 Document.find_or_create_by(label: "t&c") do |doc|
   doc.title = "Terms and Conditions"
