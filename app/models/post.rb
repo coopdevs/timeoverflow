@@ -1,4 +1,4 @@
-require 'textacular/searchable'
+require "textacular/searchable"
 
 class Post < ActiveRecord::Base
   include Taggable
@@ -9,37 +9,38 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   belongs_to :organization
-  belongs_to :publisher, :class_name => "User", :foreign_key => "publisher_id"
+  belongs_to :publisher, class_name: "User", foreign_key: "publisher_id"
 
   has_many :user_members, class_name: "Member", through: :user, source: :members
 
   has_many :transfers
   has_many :movements, through: :transfers
 
-  default_scope ->{ order('posts.updated_at DESC') }
+  default_scope -> { order("posts.updated_at DESC") }
 
   scope :by_category, ->(cat) { where(category_id: cat) if cat }
+  scope :by_organization, ->(org) { where(organization_id: org) if org }
 
   scope :with_member, -> {
     joins(:organization, :user_members).
-    where("members.organization_id = posts.organization_id").
-    select("posts.*, members.member_uid as member_id")
+      where("members.organization_id = posts.organization_id").
+      select("posts.*, members.member_uid as member_id")
   }
 
   scope :actives, -> {
     with_member.merge(Member.active)
   }
 
-#  scope :fuzzy_and_tags2, ->(s){ where("posts.title like ? OR posts.description like ? OR ? = ANY (tags)", "%#{s}%","%#{s}%",s) }
-  scope :fuzzy_and_tags, ->(s){ from("
+  scope :fuzzy_and_tags, ->(s) {
+    from("
     (
       (
         #{Post.fuzzy_search(s).to_sql}
       ) union(
         #{Post.tagged_with_rank(s).to_sql}
       )
-    ) #{Post.table_name}") }
-
+    ) #{Post.table_name}")
+  }
 
   validates :user, presence: true
 
@@ -54,5 +55,4 @@ class Post < ActiveRecord::Base
   def member_id
     read_attribute(:member_id) if has_attribute?(:member_id)
   end
-
 end

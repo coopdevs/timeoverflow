@@ -4,6 +4,7 @@ class PostsController < InheritedResources::Base
   has_scope :by_category, as: :cat
   has_scope :fuzzy_and_tags, as: :q
   has_scope :tagged_with, as: :tag
+  has_scope :by_organization, as: :org
 
   before_action only: %i[update destroy] do
     authorize resource
@@ -22,17 +23,22 @@ class PostsController < InheritedResources::Base
     current_organization
   end
 
+  def set_user_id(p)
+    if current_user.manages?(current_organization)
+      p.update publisher_id: current_user.id
+      p.reverse_merge! user_id: current_user.id
+    else
+      p.update user_id: current_user.id
+    end
+  end
+
   def build_resource_params
-    permitted_fields = %i[description end_on global joinable permanent start_on title category_id tag_list user_id publisher_id]
+    permitted_fields = %i[description end_on global joinable permanent start_on
+                          title category_id tag_list user_id publisher_id]
+
     [
-      params.fetch(resource_instance_name, {}).permit(*permitted_fields).tap { |p|
-        if current_user.manages?(current_organization)
-          p.update publisher_id: current_user.id
-          p.reverse_merge! user_id: current_user.id
-        else
-          p.update user_id: current_user.id
-        end
-      }
+      params.fetch(resource_instance_name, {}).
+        permit(*permitted_fields).tap { |p| set_user_id(p) }
     ]
   end
 end
