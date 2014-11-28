@@ -1,9 +1,6 @@
 class GlobalController < ApplicationController
-
   def switch_lang
-    set_locale
-
-    if current_user and current_organization
+    if current_user && current_organization
       redirect_to offers_path
     else
       go_home
@@ -11,16 +8,12 @@ class GlobalController < ApplicationController
   end
 
   def go_home
-    l = session[:locale]
-
-    case l
-    when 'es'
-      url='home'
-    else
-      url='home_'+l
-    end
+    url = case session[:locale].to_s
+          when "es"
+            "home"
+          else
+            "home_#{session[:locale]}"
+          end
     redirect_to page_path(url)
   end
-
-
 end

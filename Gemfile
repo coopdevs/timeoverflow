@@ -18,8 +18,7 @@ gem 'hstore_translate'
 
 gem 'dalli'
 
-gem 'sass-rails', '4.0.5'
-# gem 'compass-rails'
+gem "sass-rails", "4.0.5"
 gem 'coffee-rails'
 gem 'ngannotate-rails'
 gem 'uglifier', '>= 1.0.3'
