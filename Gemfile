@@ -13,12 +13,12 @@ gem 'has_scope'
 gem 'inherited_resources'
 gem 'pundit'
 
-gem 'pg'
+gem 'pg', '0.17.1'
 gem 'hstore_translate'
 
 gem 'dalli'
 
-gem 'sass-rails', github: 'rails/sass-rails'
+gem 'sass-rails', '4.0.5'
 # gem 'compass-rails'
 gem 'coffee-rails'
 gem 'ngannotate-rails'
@@ -27,6 +27,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 
 gem "devise_browserid_authenticatable"
+gem "http_accept_language"
 
 gem 'thin'
 gem 'foreman'
