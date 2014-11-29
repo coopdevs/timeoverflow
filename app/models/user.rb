@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   # validates :gender, presence: true, inclusion: {in: GENDERS}
 
-  has_many :members
+  has_many :members, dependent: :destroy
   accepts_nested_attributes_for :members
   has_many :organizations, through: :members
   has_many :accounts, through: :members
