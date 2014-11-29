@@ -186,7 +186,8 @@ ca:
       offered_by: "Oferents"
     new:
       submit: Crear oferta
-
+    edit:
+      submit: Canviar oferta
   inquiries:
     index:
       new_inquiry: Nova demanda

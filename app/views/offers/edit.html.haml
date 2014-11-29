@@ -3,8 +3,8 @@
   %small
     = t ".edit"
 
-= render partial: 'shared/post_form', locals: {post: @offer}
+= render partial: "shared/post_form", locals: { post: @offer,
+                                                label_button: t(".submit") }
 
 :javascript
   $("#offer_tag_list").tagsManager();
-  
