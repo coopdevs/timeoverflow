@@ -117,7 +117,7 @@ ca:
       sing_out: Desconnectar
     organization_list:
       welcome: Benvingut a Timeoverflow %{user}.
-      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de possar-te en contacte amb un dels Bancs de Temps del sistema
+      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de posar-te en contacte amb un dels Bancs de Temps del sistema
       time_bank: Banc de Temps
       email: Correu
       phone: Telèfon
@@ -151,7 +151,7 @@ ca:
       inactive: "(Inactiu)"
       accounts: Comptes
       created_at: "Alta:"
-      user_no: "Nº Usuari:"
+      user_no: "núm. Usuari:"
       balance: "Balanç:"
       movements: "Moviments"
       date: Data
@@ -188,15 +188,12 @@ ca:
       offered_by: "Oferents"
     new:
       submit: Crear oferta
-    edit:
-      submit: Canviar oferta
+
   inquiries:
     index:
       new_inquiry: Nova demanda
     new:
       submit: Crear demanda
-    edit:
-      submit: Canviar demanda
 
   categories:
     index:
@@ -235,7 +232,7 @@ ca:
       male: Home
       female: Dona
       unknown: Desconegut
-      num_people: Nombre persones
+      num_people: núm. persones
     statistics_last_login:
       last_login: Darrera connexió
       never_login: Mai connectat
@@ -267,7 +264,6 @@ ca:
       minute:
         one: ! '%{count} minut'
         other: ! '%{count} minuts'
-
   global:
     table:
       actions: Accions
