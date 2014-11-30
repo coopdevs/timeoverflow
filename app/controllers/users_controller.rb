@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    authorize User
     @user = scoped_users.build
   end
 
@@ -28,8 +29,9 @@ class UsersController < ApplicationController
   end
 
   def create
+    authorize User
     if @user = User.find_by_email(user_params[:email])
-      if !@user.active?
+      if !@user.active?(current_organization)
         # Deactivated user is registered again (overwrite new attributes)
         @user.attributes = user_params.merge(:active => true)
         @user.save!
@@ -51,8 +53,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user if current_user.id == params[:id].to_i
-    @user ||= scoped_users.find(params[:id])
+    @user = scoped_users.find(params[:id])
+    authorize @user
     if @user.update_attributes(user_params)
       respond_with @user, location: @user
     else

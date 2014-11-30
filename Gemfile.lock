@@ -158,7 +158,7 @@ GEM
     polyamorous (1.0.0)
       activerecord (>= 3.0)
     polyglot (0.3.4)
-    pundit (0.2.1)
+    pundit (0.3.0)
       activesupport (>= 3.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
