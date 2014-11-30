@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   respond_to :json, :html, :js
 
   def index
-    @posts = Post.by_organization(current_organization)
+    @posts = Post.by_organization(current_organization).actives
     @all_tags = @posts.find_like_tag(params[:term])
     respond_with @all_tags
   end
@@ -16,12 +16,8 @@ class TagsController < ApplicationController
 
     redirect_to users_path && return unless current_organization
 
-    @alpha_tags = case @current_post_type
-                  when "offer" then Offer
-                  when "inquiry" then Inquiry
-                  when "all" then Post
-                  end.by_organization(current_organization).actives.
-                  alphabetical_grouped_tags
+    set_alpha_tags(@current_post_type)
+    set_current_post_type(@current_post_type)
 
     respond_with @alpha_tags
   end
@@ -55,5 +51,23 @@ class TagsController < ApplicationController
 
   def tags_params(params)
     params.permit(:post_type, :tagname)
+  end
+
+  def set_alpha_tags(post_type)
+    @alpha_tags = case post_type
+                  when "offer" then Offer
+                  when "inquiry" then Inquiry
+                  when "all" then Post
+                  end.by_organization(current_organization).
+                  actives.
+                  alphabetical_grouped_tags
+  end
+
+  def set_current_post_type(post_type)
+    @current_post_type = case post_type
+                         when "offer" then "offers"
+                         when "inquiry" then "inquiries"
+                         when "all" then "all"
+                         end
   end
 end

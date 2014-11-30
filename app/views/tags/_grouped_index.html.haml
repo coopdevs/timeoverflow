@@ -10,7 +10,7 @@
           - vl.each do |tag, count|
             %p
               .badge
-                = count
+                #{count}
               - path = get_index_path(@current_post_type.pluralize, tag: tag)
               = link_to path do
                 - gtag = (count == 1) ? "tag" : "tags"
