@@ -14,7 +14,7 @@ describe GlobalController do
         set_browser_locale('es')
 
         #response.should redirect to home spanish
-        subject.should redirect_to('/home')
+        subject.should redirect_to('/')
       end
     end
 
@@ -25,7 +25,7 @@ describe GlobalController do
         set_browser_locale('ca')
 
         #response.should redirect to home catalan
-        subject.should redirect_to('/home_ca')
+        subject.should redirect_to('/')
       end
     end
 
