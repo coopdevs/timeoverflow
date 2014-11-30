@@ -26,5 +26,4 @@ class UserPolicy < ApplicationPolicy
       scope
     end
   end
-
 end
