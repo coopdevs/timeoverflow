@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
     redirect_to terms_path
   end
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   protected
 
   def configure_permitted_parameters
@@ -81,5 +83,10 @@ class ApplicationController < ActionController::Base
       I18n.default_locale
     # set in the session (so ppl can override what the browser sends)
     session[:locale] = I18n.locale
+  end
+
+  def user_not_authorized
+    flash[:error] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
   end
 end
