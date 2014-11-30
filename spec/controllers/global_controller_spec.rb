@@ -8,18 +8,17 @@ describe GlobalController do
     subject { get 'switch_lang' }
 
     context 'browser in spanish' do
-      it "redirects to spanish home" do
+      it "does not redirect to spanish home" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
         set_browser_locale('es')
-
         #response.should redirect to home spanish
-        subject.should redirect_to('/home')
+        subject.should_not redirect_to('/home')
       end
     end
 
     context 'browser in catalan' do
-      it "redirects to spanish home" do
+      it "does not redirect to catalan home" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
         set_browser_locale('ca')
@@ -30,7 +29,7 @@ describe GlobalController do
     end
 
     context 'broser in english' do
-      it "redirects to spanish home" do
+      it "does not redirect to english home" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
         set_browser_locale('en')
@@ -119,8 +118,8 @@ describe GlobalController do
       end
     end
 
-    context 'browser in catalan' do
-      it "redirects to catalan offers page" do
+    context 'browser in english' do
+      it "redirects to english offers page" do
         # We stub the method that extracts browsers language info and force to return expected value for
         # context
         set_browser_locale('en')
@@ -146,7 +145,7 @@ describe GlobalController do
 
     context 'user clicks in Spanish flag' do
       it "redirects to spanish offers page" do
-        
+
         visit '/'
         click_link 'es_flag'
         login(member.user)
