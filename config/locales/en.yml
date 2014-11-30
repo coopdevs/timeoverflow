@@ -186,6 +186,8 @@ en:
       offered_by: "Offered by"
     new:
       submit: Create offer
+    edit:
+      submit: Change offer
 
   inquiries:
     index:

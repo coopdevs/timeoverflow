@@ -186,6 +186,8 @@ es:
       offered_by: "Ofertantes"
     new:
       submit: Crear oferta
+    edit:
+      submit: Cambiar oferta
 
   inquiries:
     index:

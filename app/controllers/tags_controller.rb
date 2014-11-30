@@ -9,37 +9,33 @@ class TagsController < ApplicationController
 
   def alpha_grouped_index
     permitted = tags_params(params)
-    post_type = permitted[:post_type] || "offer"
+    @current_post_type = permitted[:post_type] || "offer"
 
     @offers_tagged = []
     @inquiries_tagged = []
 
-    @alpha_tags = case post_type
+    redirect_to users_path && return unless current_organization
+
+    @alpha_tags = case @current_post_type
                   when "offer" then Offer
                   when "inquiry" then Inquiry
                   when "all" then Post
-                  end.by_organization(current_organization).
+                  end.by_organization(current_organization).actives.
                   alphabetical_grouped_tags
-
-    @current_post_type = case post_type
-                         when "offer" then "offers"
-                         when "inquiry" then "inquiries"
-                         when "all" then "all"
-                         end
 
     respond_with @alpha_tags
   end
 
   def inquiries
     @current_post_type = "inquiries"
-    @alpha_tags = Inquiry.by_organization(current_organization).
+    @alpha_tags = Inquiry.by_organization(current_organization).actives.
                   alphabetical_grouped_tags
     render partial: "grouped_index", locals: { alpha_tags: @alpha_tags }
   end
 
   def offers
     @current_post_type = "offers"
-    @alpha_tags = Offer.by_organization(current_organization).
+    @alpha_tags = Offer.by_organization(current_organization).actives.
                   alphabetical_grouped_tags
     render partial: "grouped_index", locals: { alpha_tags: @alpha_tags }
   end
@@ -48,9 +44,9 @@ class TagsController < ApplicationController
     permitted = tags_params(params)
     tagname = permitted[:tagname] || ""
 
-    @offers_tagged = Offer.by_organization(current_organization).
+    @offers_tagged = Offer.by_organization(current_organization).actives.
                      tagged_with(tagname)
-    @inquiries_tagged = Inquiry.by_organization(current_organization).
+    @inquiries_tagged = Inquiry.by_organization(current_organization).actives.
                         tagged_with(tagname)
     respond_with @offers_tagged, @inquiries_tagged
   end
