@@ -56,7 +56,12 @@
   .col-sm-6.offers
     .panel.panel-default
       .panel-heading
-        %h2.panel-title= Offer.model_name.human(count: :many)
+        %h2.panel-title
+          = Offer.model_name.human(count: :many)
+          - if @user == current_user
+            %a.pull-right{href: new_offer_path}
+              %span.glyphicon.glyphicon-plus
+
 
       %table.table.table-condensed.offers
         - @user.offers.each do |post|
@@ -70,7 +75,11 @@
   .col-sm-6.inquiries
     .panel.panel-default
       .panel-heading
-        %h2.panel-title= Inquiry.model_name.human(count: :many)
+        %h2.panel-title
+          = Inquiry.model_name.human(count: :many)
+          - if @user == current_user
+            %a.pull-right{href: new_inquiry_path}
+              %span.glyphicon.glyphicon-plus
 
       %table.table.table-condensed.offers
         - @user.inquiries.each do |post|
