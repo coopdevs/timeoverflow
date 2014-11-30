@@ -21,7 +21,7 @@ ca:
       already_authenticated: "Ja estàs registrat."
       inactive: "El teu compte no ha estat activat."
       invalid: "Correu o clau invàlida."
-      invalid_token: "Token de autentificació invàlid."
+      invalid_token: "Codi d'autentificació invàlid."
       locked: "El teu compte ha estat bloquejat."
       not_found_in_database: "Correu o clau invàlida."
       timeout: "La teva sessió ha caducat. Si us plau, torna a entrar per continuar."

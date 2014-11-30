@@ -85,6 +85,8 @@ es:
         permanent: Permanente
         start_on: Empieza el
         end_on: Termina el
+      account:
+        balance: Balance
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
@@ -194,7 +196,8 @@ es:
       new_inquiry: Nueva demanda
     new:
       submit: Crear demanda
-
+    edit:
+      submit: Cambiar demanda
   categories:
     index:
       all: Todas
@@ -232,6 +235,7 @@ es:
       male: Hombre
       female: Mujer
       unknown: Desconocido
+      num_people: Nº personas
     statistics_last_login:
       last_login: Último login
       never_login: Nunca logueado
