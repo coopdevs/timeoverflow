@@ -87,7 +87,12 @@ ca:
         end_on: Finalitza al
       account:
         balance: Balanç
-
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: Correu invàlid
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:

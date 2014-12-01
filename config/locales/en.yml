@@ -87,7 +87,12 @@ en:
         end_on: Ends on
       account:
         balance: Balance
-
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: Invalid e-mail
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:

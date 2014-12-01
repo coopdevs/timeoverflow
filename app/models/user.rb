@@ -1,7 +1,6 @@
-require 'textacular/searchable'
+require "textacular/searchable"
 
 class User < ActiveRecord::Base
-
   devise *[
     :database_authenticatable,
     # :registerable,
@@ -16,12 +15,18 @@ class User < ActiveRecord::Base
 
   GENDERS = %w[male female]
 
-  default_scope ->{ order('users.id ASC') }
+  default_scope -> { order("users.id ASC") }
 
-  scope :actives, -> { where({ members: { active: true } }) }
+  scope :actives, -> { where(members: { active: true }) }
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+
+  # Allows @domain.com for dummy emails but does not allow pure invalid
+  # emails like 'without email'
+  validates_format_of :email,
+                      with: /\A([^@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+
   # validates :gender, presence: true, inclusion: {in: GENDERS}
 
   has_many :members
@@ -54,8 +59,9 @@ class User < ActiveRecord::Base
     "#{username}"
   end
 
-  def add_to_organization organization
-    organization && members.find_or_create_by(organization: organization) do |member|
+  def add_to_organization(organization)
+    organization && members.
+      find_or_create_by(organization: organization) do |member|
       member.entry_date = DateTime.now.utc
     end
   end
