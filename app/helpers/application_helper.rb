@@ -39,4 +39,17 @@ module ApplicationHelper
     document_path(Document.terms_and_conditions || 0, modal: true)
   end
 
+  def languages_list
+    locales = I18n.available_locales
+
+    locales.map do |locale|
+      content_tag(:li, class: I18n.locale == locale ? :disabled : "") do
+        locale_key = "locales.#{locale}"
+        link_name = t(locale_key, locale: locale)
+        link_name << " (#{t(locale_key)})" if I18n.locale != locale
+
+        link_to link_name, switch_lang_path(locale: locale)
+      end
+    end.join.html_safe
+  end
 end
