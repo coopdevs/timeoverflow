@@ -92,7 +92,7 @@ ca:
         user:
           attributes:
             email:
-              invalid: Correu invàlid
+              invalid: invàlid
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -146,6 +146,8 @@ ca:
       actions: Accions
     new:
       new_user: Nou usuari
+    edit:
+      edit_user: Canviar usuari
     show:
       phone:
         one: Telèfon

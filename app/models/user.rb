@@ -1,6 +1,8 @@
 require "textacular/searchable"
 
 class User < ActiveRecord::Base
+  attr_accessor :empty_email
+
   devise *[
     :database_authenticatable,
     # :registerable,
@@ -25,7 +27,7 @@ class User < ActiveRecord::Base
   # Allows @domain.com for dummy emails but does not allow pure invalid
   # emails like 'without email'
   validates_format_of :email,
-                      with: /\A([^@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+                      with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   # validates :gender, presence: true, inclusion: {in: GENDERS}
 
@@ -72,5 +74,28 @@ class User < ActiveRecord::Base
 
   def member(organization)
     members.where(organization_id: organization).first
+  end
+
+  def set_dummy_email
+    self.email = "user#{id}@example.com"
+    skip_reconfirmation! # auto-reconfirm
+  end
+
+  def setup_and_save_user
+    # check if email is provided or not. If not, flag it and generate
+    # temporary valid email with current time milliseconds
+    # this will be updated to user.id@example.com later on
+    self.empty_email = email.strip.empty?
+    self.email = "user#{DateTime.now.strftime('%Q')}@example.com" if empty_email
+    skip_confirmation! # auto-confirm, not sending confirmation email
+    save
+  end
+
+  def tune_after_persisted(organization)
+    add_to_organization organization
+
+    # If email was empty, udpate again with user.id just generated
+    set_dummy_email if empty_email
+    save
   end
 end

@@ -92,7 +92,7 @@ en:
         user:
           attributes:
             email:
-              invalid: Invalid e-mail
+              invalid: invalid
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -146,6 +146,8 @@ en:
       actions: Actions
     new:
       new_user: New user
+    edit:
+      edit_user: Update user
     show:
       phone:
         one: Phone
