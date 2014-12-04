@@ -8,9 +8,11 @@ class UsersController < ApplicationController
 
   def index
     @users = scoped_users
-    @memberships = current_organization.members.where(user_id: @users.map(&:id)).includes(:account).each_with_object({}) do |mem, ob|
-      ob[mem.user_id] = mem
-    end
+    @memberships = current_organization.members.
+                   where(user_id: @users.map(&:id)).
+                   includes(:account).each_with_object({}) do |mem, ob|
+                     ob[mem.user_id] = mem
+                   end
   end
 
   def show
@@ -30,25 +32,18 @@ class UsersController < ApplicationController
 
   def create
     authorize User
-    if @user = User.find_by_email(user_params[:email])
-      if !@user.active?(current_organization)
-        # Deactivated user is registered again (overwrite new attributes)
-        @user.attributes = user_params.merge(:active => true)
-        @user.save!
-      end
-    else
-      # New User
-      @user = User.new(user_params)
-      @user.skip_confirmation! #auto-confirm, not sending confirmation email
-      @user.save!
-    end
+
+    # New User
+    @user = User.new(user_params)
+    empty_email = @user.email.empty?
+    @user.setup_and_save_user
 
     if @user.persisted?
-      @user.add_to_organization current_organization
-
+      @user.tune_after_persisted(current_organization)
       redirect_to users_path
     else
-      redirect_to :action => "new"
+      @user.email = "" if empty_email
+      render action: "new"
     end
   end
 
@@ -64,12 +59,19 @@ class UsersController < ApplicationController
 
   def give_time
     @user = scoped_users.find(params[:id])
-    @destination = @user.members.find_by(organization: current_organization).account.id
-    @source = current_user.members.find_by(organization: current_organization).account.id
-    @offer = current_organization.offers.find(params[:offer]) if params[:offer].present?
-    @transfer = Transfer.new(source: @source, destination: @destination, post: @offer)
+    @destination = @user.members.
+                   find_by(organization: current_organization).account.id
+    @source = current_user.members.
+              find_by(organization: current_organization).account.id
+    @offer = current_organization.offers.
+             find(params[:offer]) if params[:offer].present?
+    @transfer = Transfer.new(source: @source,
+                             destination: @destination,
+                             post: @offer)
     if admin?
-      @sources = [current_organization.account] + current_organization.member_accounts.where("members.active is true")
+      @sources = [current_organization.account] +
+                 current_organization.
+                 member_accounts.where("members.active is true")
     end
   end
 
@@ -84,17 +86,18 @@ class UsersController < ApplicationController
       # TODO - Inquiries and Offers
     end
 
-    redirect_to :action => "index"
+    redirect_to action: "index"
   end
 
   private
 
   def user_params
-    fields_to_permit = %w"gender username email date_of_birth phone alt_phone active description"
-    fields_to_permit += %w"admin registration_number registration_date" if admin?
+    fields_to_permit = %w"gender username email date_of_birth phone
+                          alt_phone active description"
+    fields_to_permit += %w"admin registration_number
+                           registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
     # params[:user].permit(*fields_to_permit).tap &method(:ap)
     params.require(:user).permit *fields_to_permit
   end
-
 end
