@@ -37,3 +37,6 @@ pickle-email-*.html
 .idea/
 sgemset
 
+# Vagrant images
+.vagrant
+
