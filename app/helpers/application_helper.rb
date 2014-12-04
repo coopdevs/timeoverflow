@@ -47,10 +47,10 @@ module ApplicationHelper
     locales.map do |locale|
       content_tag(:li, class: I18n.locale == locale ? :disabled : "") do
         locale_key = "locales.#{locale}"
-        link_name = t(locale_key, locale: locale)
-        link_name << " (#{t(locale_key)})" if I18n.locale != locale
-
-        link_to link_name, switch_lang_path(locale: locale)
+        link_to switch_lang_path(locale: locale) do
+          concat t(locale_key, locale: locale)
+          concat " (#{t(locale_key)})" unless I18n.locale == locale
+        end
       end
     end.join.html_safe
   end

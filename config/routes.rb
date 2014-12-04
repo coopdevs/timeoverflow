@@ -1,5 +1,5 @@
 Timeoverflow::Application.routes.draw do
-  get 'global/switch_lang', as: :switch_lang
+  get "global/switch_lang", as: :switch_lang
   get 'tags/index'
 
   devise_for :users
