@@ -82,6 +82,31 @@ describe UsersController do
   end
 
   describe "POST #create" do
+    context "with empty email" do
+
+      subject do
+        post "create",
+             user: Fabricate.to_params(:user,
+                                       username: user.username + "2",
+                                       email: "",
+                                       phone: "1234",
+                                       alt_phone: "4321")
+      end
+
+      before { login(admin_user) }
+
+      it "can create a user with empty email and generates dummy email" do
+
+        expect { subject }.to change(User, :count).by(1)
+
+        u = User.find_by(username: user.username + "2")
+        u.valid?
+        u.email.should match(/(user)\d+(@example.com)/)
+        u.errors[:email].count.should == 0
+        subject.should redirect_to("/members")
+      end
+    end
+
     context "with valid params" do
       subject { post "create", user: Fabricate.to_params(:user) }
 
@@ -107,17 +132,27 @@ describe UsersController do
           user.errors[:email].count.should == 0
         end
 
-        # TODO: To complete, now failing
-        it "can create a user with empty email and generates dummy email" do
-          empty_email_user[:email] = ""
-          subject { post "create", user: empty_email_user }
-          empty_email_user.valid?
-          #expect { subject }.to change(User, :count).by(1)
-          #empty_email_user.email.should match(/(user)\d+(@example.com)/)
-          #subject.should redirect_to("/members")
-          empty_email_user.errors[:email].count.should == 0
-          #user.errors[:email].count.should == 0
+        it "cannot create a user with invalid email" do
+          wrong_user[:email] = "sin mail"
+          subject { post "create", user: wrong_user }
+          wrong_user.valid?
+          wrong_user.errors[:email].count.should > 0
         end
+
+        it "cannot create a user with dummy @example.com" do
+          user[:email] = "@example.com"
+          subject { post "create", user: user }
+          user.valid?
+          user.errors[:email].count.should > 0
+        end
+
+        it "cannot create a user with existing e-mail" do
+          user[:email] = another_user[:email]
+          subject { post "create", user: user }
+          user.valid?
+          user.errors[:email].count.should > 0
+        end
+
       end
     end
   end
@@ -201,20 +236,6 @@ describe UsersController do
 
           expect(user.phone).not_to eq("1234")
           expect(user.alt_phone).not_to eq("4321")
-        end
-
-        it "cannot create a user with invalid email" do
-          wrong_user[:email] = "sin mail"
-          subject { post "create", user: wrong_user }
-          wrong_user.valid?
-          wrong_user.errors[:email].count.should > 0
-        end
-
-        it "cannot create a user with dummy @example.com" do
-          user[:email] = "@example.com"
-          subject { post "create", user: user }
-          user.valid?
-          user.errors[:email].count.should > 0
         end
       end
     end

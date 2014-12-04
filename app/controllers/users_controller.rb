@@ -33,16 +33,10 @@ class UsersController < ApplicationController
   def create
     authorize User
 
-    empty_email = false
-
-    if @user = User.find_by_email(user_params[:email])
-      reactivate_user
-    else
-      # New User
-      @user = User.new(user_params)
-      empty_email = @user.email.empty?
-      @user.setup_and_save_user
-    end
+    # New User
+    @user = User.new(user_params)
+    empty_email = @user.email.empty?
+    @user.setup_and_save_user
 
     if @user.persisted?
       @user.tune_after_persisted(current_organization)
@@ -96,14 +90,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def reactivate_user
-    if !@user.active?(current_organization)
-      # Deactivated user is registered again (overwrite new attributes)
-      @user.attributes = user_params.merge(active: true)
-      @user.save!
-    end
-  end
 
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone
