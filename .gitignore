@@ -37,6 +37,5 @@ pickle-email-*.html
 .idea/
 sgemset
 
-# Vagrant images
+# Ignore .vagrant folder with images
 .vagrant
-
