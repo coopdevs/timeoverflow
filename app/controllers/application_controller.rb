@@ -16,20 +16,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
 
-  def set_locale
-    if params[:locale]
-      session[:locale] = params[:locale]
-    end
-    I18n.locale = session[:locale] || I18n.default_locale
-    true
-  end
-
   append_before_filter :check_for_terms_acceptance!, unless: :devise_controller?
 
   rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
     redirect_to terms_path
   end
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protected
 
@@ -45,18 +38,18 @@ class ApplicationController < ActionController::Base
         offers_path
       end
     else
-      page_path('home')
+      page_path("home")
     end
   end
-
 
   private
 
   def check_for_terms_acceptance!
     if user_signed_in?
-      if current_user.terms_accepted_at.nil?
+      accepted = current_user.terms_accepted_at
+      if accepted.nil?
         raise MissingTOSAcceptance
-      elsif current_user.terms_accepted_at < Document.terms_and_conditions.updated_at
+      elsif accepted < Document.terms_and_conditions.updated_at
         raise OutadedTOSAcceptance
       end
     end
@@ -78,5 +71,22 @@ class ApplicationController < ActionController::Base
 
   def authenticate_superuser!
     superuser? || redirect_to(root_path)
+  end
+
+  # To get locate from client supplied information
+  # see http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-client-supplied-information
+  def set_locale
+    # read locale from params, the session or the Accept-Language header
+    I18n.locale = params[:locale] ||
+      session[:locale] ||
+      http_accept_language.compatible_language_from(I18n.available_locales) ||
+      I18n.default_locale
+    # set in the session (so ppl can override what the browser sends)
+    session[:locale] = I18n.locale
+  end
+
+  def user_not_authorized
+    flash[:error] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
   end
 end

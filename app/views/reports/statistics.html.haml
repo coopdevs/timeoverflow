@@ -52,7 +52,7 @@
       = t ".demographics"
   .panel-body
     - age = 0
-    - @date = { 'Desconocida' => 0, '-17' => 0, '18-24' =>  0, '25-34' => 0, '35-44' => 0, '45-54' => 0, '55-64' => 0, '65+' => 0 }
+    - @date = { t('.unknown') => 0, '-17' => 0, '18-24' =>  0, '25-34' => 0, '35-44' => 0, '45-54' => 0, '55-64' => 0, '65+' => 0 }
     - @members.each do |m|
       - age = (m.user.date_of_birth.present?)? age(m.user.date_of_birth) : -1
       - case age
@@ -71,7 +71,7 @@
         - when 65 .. 100
           - @date['65+']+= 1
         - else
-          - @date['Desconocida']+= 1
+          - @date[t(".unknown")]+= 1
     #pie
 
 :javascript
@@ -82,10 +82,10 @@
         type: 'column'
       },
       title: {
-        text: 'Actividad del banco'
+        text: "#{t '.bank_activity'}"
       },
       subtitle: {
-        text: 'Por meses'
+        text: "#{t '.per_month'}"
       },
       xAxis: {
         categories: #{@months_names.to_json}
@@ -159,9 +159,8 @@
       },
       series: [{
         type: 'pie',
-        name: 'Nº personas',
+        name: "#{t '.num_people'}",
         data: ages
       }]
     });
   }
-

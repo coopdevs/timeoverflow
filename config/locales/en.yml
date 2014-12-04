@@ -1,5 +1,329 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  # NOMBRES DE LAS COSAS
+  activerecord:
+
+    models:
+      # Para usar:
+      # User.model_name.human
+      user:
+        one: User
+        other: Users
+      organization:
+        one: Time Bank
+        other: Time Banks
+      category:
+        one: Category
+        other: Categories
+      offer:
+        one: Offer
+        other: Offers
+      inquiry:
+        one: Inquiry
+        other: Inquiries
+      transfer:
+        one: Transfer
+        other: Transfers
+      post:
+        one: Post
+        other: Posts
+      comment:
+        one: Comment
+        other: Comments
+
+    attributes:
+      common: &common_attributes
+        created_at: Created
+        updated_at: Updated
+      user:
+        <<: *common_attributes
+        username: Name
+        organization:
+        one: Time Bank
+        other: Time Banks
+        email: Email
+        registration_date: Registration date
+        gender: Gender
+        registration_number: User code
+        date_of_birth: Date of birth
+        identity_document: Identity Document
+        phone: Phone
+        alt_phone: Alternative Phone
+        admin: Organization Administrator
+        superadmin: System Administrator
+        last_sign_in_at: Last login
+        description: Description
+        unconfirmed_email: Unconfirmed Email
+      organization:
+        <<: *common_attributes
+        name: Name
+        reg_number_seq: User sequence number
+        theme: Theme
+        email: Email
+        phone: Phone
+        public_opening_times: Opening hours
+        description: Description
+        address: Address
+        neighborhood: Neighborhood
+        city: City
+      category:
+        <<: *common_attributes
+        name: Name
+        parent: Parent category
+        name_translations: Name (translations)
+      transfer:
+        <<: *common_attributes
+        amount: Quantity
+        reason: Comments
+        source: Source
+      post:
+        <<: *common_attributes
+        title: Title
+        description: Description
+        category: Category
+        tag_list: Tags
+        joinable: Can join others
+        permanent: Permanent
+        start_on: Start on
+        end_on: Ends on
+      account:
+        balance: Balance
+
+  # ETIQUETAS VARIADAS EN PLANTILLAS
+
+  application:
+    terms_conditions: terms of service
+    navbar:
+      administration: Administration
+      reports: Reports
+      stats: Statistics
+      users: Users
+      categories: Services
+      organizations: Organizations
+      statistics: Statistics
+      global_activity: "Global activity"
+      inactive_users: "Inactive users"
+      demographics: Demographics data
+      last_login: Last login
+      without_offers: Without offers
+      type_of_swaps: Type of transactions
+      admin: Manage
+      adminshort: Admin
+      tags: Tags
+      sign_out: Logout
+      offer_public_link: Offers public link
+      inquiry_public_link: Inquiries public link
+    menu:
+      sign_in: Login
+      sing_out: Logout
+    organization_list:
+      welcome: Welcome to Timeoverflow %{user}.
+      not_member: You do not belong to any time bank at this moment, in order to use this platform you need to keep in touch with one of the time banks that have joint the platform
+      time_bank: Time Bank
+      email: Email
+      phone: Phone
+      public_opening_times: Opening hours
+      description: Description
+      address: Address
+      neighborhood: Neighborhood
+      city: City
+    tips:
+      entertag: Enter tags separated by commas
+      user_not_found: "User not found."
+  # views/users/index...
+
+  users:
+
+    index:
+      create: Create new user
+      manage_warning_angular: "You are going to change privileges for user {{username}}"
+      cancel_warning_angular: "You are going to delete account from the Time Bank for user {{username}}"
+      active_warning_angular: "You are going to change user account status for {{username}}"
+      actions: Actions
+    new:
+      new_user: New user
+    show:
+      phone:
+        one: Phone
+        other: Phones
+      data: User details
+      categories: Offered Services
+      account: Last transactions
+      inactive: "(Inactive)"
+      accounts: Accounts
+      created_at: "Registered:"
+      user_no: "User #:"
+      balance: "Balance:"
+      movements: "Transactions"
+      date: Date
+      from_to: From/To
+      post: Post
+      reason: Reason
+      quantity: Quantity
+
+    give_time:
+      give_time: Give time to
+    form:
+      superadmin_warning: Warning!!! You are giving GOD PRIVILEGES to this user!!
+      admin_warning: Warning!!! You are giving privileges to this user!!
+    user_rows:
+      activate: Activate
+      deactivate: Deactivate
+      manage_warning: "You are going to change privileges for user %{user}"
+      cancel_warning: "You are going to delete account from the Time Bank for user  %{user}"
+      active_warning: "You are going to change user account status for %{user}"
+
+  tags:
+    alpha_grouped_index:
+      maintitle: Available Tags
+  terms:
+    accept: Accept
+  offers:
+    index:
+      offered_by: "Offered by %{size} people"
+      new_offer: "New offer"
+      filter: Filter
+      by_category: By category
+      by_tag: By Tag
+    show:
+      offered_by: "Offered by"
+    new:
+      submit: Create offer
+    edit:
+      submit: Change offer
+
+  inquiries:
+    index:
+      new_inquiry: New inquiry
+    new:
+      submit: Create inquiry
+    edit:
+      submit: Change inquiry
+  categories:
+    index:
+      all: All
+      tree: Main
+      global: Global
+      local: Local
+      add: Add service
+
+  reports:
+    cat_with_users:
+      title: Offered Services
+    user_list:
+      title: User List
+    statistics:
+      statistics: Statistics
+      bank_activity: "Bank Activity"
+      per_month: "Per Month"
+      global_activity: "Global Activity"
+      users_reg: "Registered users"
+      num_swaps: "Transactions"
+      total_hours: "Hours transfered"
+      inactive_users: Inactive users
+      last_movement: Last transaction
+      no_movements: Without transactions
+      days_without_swaps: Days without transactions
+      demographics: Demographic data
+      by_ages: Per ages
+      num_people: "# of people"
+      unknown: Unknown
+
+  statistics:
+    statistics_global_activity:
+      bank_activity: "Bank Activity"
+      per_month: "By Month"
+      global_activity: "Global Activity"
+      users_reg: " Registered users"
+      num_swaps: " Transactions"
+      total_hours: " Hours transfered"
+      show: Show
+      ini_date: "ini mm/yyyy"
+      end_date: "end mm/yyyy"
+    statistics_inactive_users:
+      inactive_users: Inactive users
+      last_movement: Last transaction
+      no_movements: Without transactions
+      days_without_swaps: Days without transactions
+    statistics_demographics:
+      demographics: Demographics data
+      by_ages: By ages
+      by_gender: By gender
+      male: Male
+      female: Female
+      unknown: Unknown
+      num_people: "# of people"
+    statistics_last_login:
+      last_login: Last login
+      never_login: Never login
+    statistics_without_offers:
+      without_offers: Without offers
+    statistics_type_swaps:
+      type_of_swaps: Type of transactions
+
+  stats:
+    min_balance:
+      title: Users Minimum Balance
+
+  organizations:
+    index:
+      member_count: Number of users
+    new:
+      new: New bank
+    show:
+      contact_information: Contact information
+    give_time:
+      give_time: Give time to
+
+  transfers:
+    computation:
+      joiner: " and "
+      hour:
+        one: ! '%{count} hour'
+        other: ! '%{count} hours'
+      minute:
+        one: ! '%{count} minute'
+        other: ! '%{count} minutes'
+
+  global:
+    table:
+      actions: Actions
+    show: Show
+    edit: Update
+    delete: Delete
+    save: Save
+    add_new: Create new
+    cancel_membership: Permanent deletion
+    back: Back
+    give_time: Time transfer
+    filter: Filter
+    all: All
+    search: Search
+    information: Information
+    member_count: 'Number of users:'
+    balance: 'Balance:'
+    movements: Transactions
+    date: Data
+    source_destination: 'From/to'
+    announcements: Post
+    reason: Reason
+    amount: Quantity
+    demote: Demote to normal user
+    promote: Promote to administrator
+    statistics: Statistics
+
+  active_admin:
+    comments:
+      resource_type: Resource type
+      author_type: Author type
+    users:
+      upload_csv: File
+      organization: Time bank
+      upload_from_csv: Upload CSV
+
+  layouts:
+    application:
+      login: Login
+      edit_profile: Update my profile
+      edit_org: "Update %{organization}"
+    report:
+      report_title: "REPORT"

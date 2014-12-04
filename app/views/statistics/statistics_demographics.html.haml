@@ -1,0 +1,75 @@
+%h1= t("global.statistics") + ": " + t(".demographics")
+.panel.panel-default
+  .panel-body
+    #pie
+    #pie2
+
+:javascript
+  window.onload = function () {
+    // Demograficos
+    // Por edades
+    var ages = #{ @age_counts.to_a.to_json };
+    $('#pie').highcharts({
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false
+      },
+      title: {
+        text: "#{t '.by_ages'}"
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            color: '#000000',
+            connectorColor: '#000000',
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+          }
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: '#{t '.num_people'}',
+        data: ages
+      }]
+    });
+    // Por género
+    var genders = #{ @gender_counts.to_a.to_json };
+    $('#pie2').highcharts({
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false
+      },
+      title: {
+        text: "#{t '.by_gender'}"
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            color: '#000000',
+            connectorColor: '#000000',
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+          }
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: '#{t '.num_people'}',
+        data: genders
+      }]
+    });
+  }
+

@@ -1,4 +1,5 @@
 Timeoverflow::Application.routes.draw do
+  get 'global/switch_lang'
   get 'tags/index'
 
   devise_for :users
@@ -44,7 +45,17 @@ Timeoverflow::Application.routes.draw do
       get "user_list"
       get "offer_list" => :post_list, type: "offer"
       get "inquiry_list" => :post_list, type: "inquiry"
-      get "statistics"
+    end
+  end
+
+  resource "statistics" do
+    collection do
+      get "statistics_global_activity"
+      get "statistics_inactive_users"
+      get "statistics_demographics"
+      get "statistics_last_login"
+      get "statistics_without_offers"
+      get "statistics_type_swaps"
     end
   end
 

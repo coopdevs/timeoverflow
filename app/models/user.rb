@@ -4,11 +4,12 @@ class User < ActiveRecord::Base
 
   devise *[
     :database_authenticatable,
-    :registerable,
+    # :registerable,
     :recoverable,
     :rememberable,
     :confirmable,
     :lockable,
+    :trackable
   ]
 
   extend Searchable :username, :email, :phone, :alt_phone

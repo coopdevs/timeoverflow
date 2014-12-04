@@ -15,11 +15,13 @@ es:
       confirmed_and_signed_in: "Tu cuenta ha sido confirmada con éxito. Ahora estás registrado."
       send_instructions: "Recibirás un correo con las instrucciones sobre como confirmar tu cuenta en unos minutos."
       send_paranoid_instructions: "Si tu dirección de correo existe in nuestra base de datos, recibirás un correo con las instrucciones sobre como confirmar tu cuenta en unos minutos."
+      new:
+        resend_instructions: "Reenviar instrucciones de confirmación"
     failure:
       already_authenticated: "Ya estás registrado."
       inactive: "Tu cuenta no ha sido activada."
       invalid: "Correo o clave inválida."
-      invalid_token: "Token de autenticación inválido."
+      invalid_token: "Código de autenticación inválido."
       locked: "Tu cuenta ha sido bloqueada."
       not_found_in_database: "Correo o clave inválida."
       timeout: "Tu sesión ha caducado. Por favor, regístrate nuevamente para continuar."
@@ -41,6 +43,11 @@ es:
       send_paranoid_instructions: "Si tu correo existe en nuestra base de datos, recibirás un enlace pare la recuperación de la contraseña en tu correo en unos minutos."
       updated: "Tu contraseña se ha cambiado. Estás conectado(a)."
       updated_not_active: "Cambio de constraseña realizado."
+      edit:
+        change_password: Cambiar contraseña
+      new:
+        forgot_question: "¿Has olvidado tu contraseña?"
+        send_instructions: "Envíame las instruciones"
     registrations:
       destroyed: "Adiós! Tu cuenta se ha cancelado. Esperamos verte pronto de nuevo."
       signed_up: "Bienvenido(a)!  Registrado realizado."
@@ -49,15 +56,33 @@ es:
       signed_up_but_unconfirmed: "Se ha enviado un mensaje de confirmación a tu dirección de correo. Por favor, abre el enlace para activar tu cuenta."
       update_needs_confirmation: "Actualización de cuenta realizada, pero necesitamos verificar tu dirección de correo. Por favor, comprueba tu correo y utiliza el enlace para confirmar tu nueva dirección de correo."
       updated: "Actualización de cuenta realizada."
+      new:
+        sign_up: "Registro"
+        sign_me_up: "Regístrame"
+        password: "Contraseña"
+        password_confirmation: "Confirma la contraseña"
+      edit:
+        edit_user: "Editar Usuario"
+        update: "Actualizar"
+        password: "Contraseña"
+        password_confirmation: "Confirma la contraseña"
+        current_password: "Contraseña actual"
+        help_password: "déjalo en blanco si no quieres cambiarla"
+        help_current_password: "necesitamos tu contraseña actual para confirmar tus cambios"
+        unhappy: "¿Descontento?"
+        cancel_account: "Cancelar mi cuenta"
     sessions:
       signed_in: "Conexión realizada."
       signed_out: "Desconexión realizada."
       new:
+        sign_in: "Entrar"
         remember_me: "Recordarme"
     unlocks:
       send_instructions: "Recibirás un correo con instrucciones de como desbloquear tu cuenta en unos minutos."
       send_paranoid_instructions: "Si tu cuenta existe, recibirás un correo con instrucciones de como desbloquearla en unos minutos."
       unlocked: "Tu cuenta ha sido desbloqueada. Por favor, entra para continuar."
+      new:
+        resend_instructions: "Reenviar instrucciones de desbloqueo"
   errors:
     messages:
       already_confirmed: "ya fue confirmado, por favor prueba a entrar"

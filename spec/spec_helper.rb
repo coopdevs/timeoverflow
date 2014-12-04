@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -67,4 +68,10 @@ RSpec.configure do |config|
 
   # Controllers must render the content of the view
   config.render_views
+end
+
+RSpec.shared_context 'stub browser locale' do
+  def set_browser_locale(locale)
+    request.env["HTTP_ACCEPT_LANGUAGE"] = "#{locale}"
+  end
 end

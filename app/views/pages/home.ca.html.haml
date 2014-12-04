@@ -1,0 +1,66 @@
+= content_for :window_title do
+  TimeOverflow - Gestió on-line de Bancs de Temps
+
+.container-inner
+  - if current_user and !current_organization
+    = render 'organization_list'
+  .row
+    .col-sm-6
+      .text-center
+        %h1 TimeOverflow
+        = image_tag "sand-clock.png", width: 50
+        %h2 El software disenyat per i per als Bancs de Temps
+        %em TimeOverflow és lliure, gratuït i col·laboratiu
+
+      .text-left{style: "margin-top: 40px;"}
+        :markdown
+          Funcionalitats de **TimeOverflow**:
+
+          * Gestió del Banc de Temps amb perfils d'administració
+            * Altes/baixes/modificacions de membres
+            * Publicar ofertes i demandes
+            * Introduir xecs i gestionar la comptabilitat
+          * Xarxa social i banca en línia accessible pels membres
+            * Els membres d'un Banc de Temps poden accedir al sistema i contactar amb altres membres
+            * Publicar ofertes i demandes
+            * Pagar hores a altres membres
+
+      %h2 Ets un Banc de Temps?
+      .text-center
+        %a.btn.btn-primary.btn-large{href: "http://adbdt.org/ca/contacta/", style:"font-size:30px;margin-top:20px;"}
+          Sol·licita accés a TimeOverflow
+      .text-center
+        %p
+          %em (ens posarem en contacte amb tu per posar-lo en marxa o fer-vos una demostració)
+
+    .col-sm-6
+      .text-center
+        %h2 Ja ets membre d'un Banc de Temps que fa servir TimeOverflow?
+        %a.btn.btn-primary.btn-large{href: new_user_session_path, style:"font-size:30px;margin-top:20px;"}
+          Entra aquí
+
+      %p
+        :markdown
+          Si ets una persona interessada a participar en un Banc de Temps,
+          busca el teu Banc de Temps més proper a
+          [bdtonline.org](http://www.bdtonline.org "Bancs de Temps").
+
+      = image_tag "oferta.png", class: "img-responsive center-block"
+
+      %h2 Internet potencia els Bancs de Temps
+      :markdown
+        TimeOveflow està especialment dissenyat ** per i per als Bancs de Temps **
+        que existeixen físicament([veure mapa](http://www.bdtonline.org "Bancs de Temps")),
+        la seva fi és potenciar gràcies a Internet.
+
+        Gràcies al treball conjunt de [CoopDevs](https://github.com/coopdevs)
+        i la [ADBdT](http://adbdt.org/ca "Associació per al Desenvolupament dels Bancs de Temps")
+        avui podem oferir el sofware **TimeOverflow** a tots els Bancs de
+        Temps que així ho desitgin de manera lliure i gratuïta.
+
+        El codi font de TimeOverflow està disponible sota una llicència
+        open source, ja es pot descarregar a [https://github.com/coopdevs/timeoverflow](https://github.com/coopdevs/timeoverflow)
+
+      .text-center
+        = link_to "https://github.com/coopdevs/timeoverflow", title: "TimeOverflow Github" do
+          = image_tag("github.png", alt: "Github logo", height: 30)

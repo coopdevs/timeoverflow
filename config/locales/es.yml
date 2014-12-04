@@ -50,6 +50,7 @@ es:
         alt_phone: Teléfono alternativo
         admin: Administrador de organización
         superadmin: Administrador de sistema
+        last_sign_in_at: Fecha último login
         description: Descripción
         unconfirmed_email: Correo sin confirmar
       organization:
@@ -84,6 +85,8 @@ es:
         permanent: Permanente
         start_on: Empieza el
         end_on: Termina el
+      account:
+        balance: Balance
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
@@ -97,11 +100,35 @@ es:
       categories: Servicios
       organizations: Organizaciones
       statistics: Estadísticas
+      global_activity: "Actividad global"
+      inactive_users: Usuarios inactivos
+      demographics: Datos demográficos
+      last_login: Último login
+      without_offers: Sin ofertas publicadas
+      type_of_swaps: Tipos de intecambios
       admin: Administrar
+      adminshort: Admin
       tags: Etiquetas
+      sign_out: Desconectar
+      offer_public_link: Enlace público a ofertas
+      inquiry_public_link: Enlace público a demandas
+    menu:
+      sign_in: Entrar
+      sing_out: Desconectar
+    organization_list:
+      welcome: Bienvenido a Timeoverflow %{user}.
+      not_member: No eres miembro de ningún banco de tiempo, para usar la plataforma tendrás que ponerte en contacto con uno de los bancos de tiempo que están integrados en la plataforma
+      time_bank: Banco de tiempo
+      email: Correo
+      phone: Teléfono
+      public_opening_times: Horario de atención al público
+      description: Descripción
+      address: Dirección
+      neighborhood: Barrio
+      city: Ciudad
     tips:
       entertag: Entre etiquetas separadas por comas
-
+      user_not_found: "Usuario no encontrado."
   # views/users/index...
 
   users:
@@ -122,6 +149,17 @@ es:
       categories: Servicios Ofrecidos
       account: Últimos movimientos
       inactive: "(Inactivo)"
+      accounts: Cuentas
+      created_at: "Alta:"
+      user_no: "Nº Usuario:"
+      balance: "Balance:"
+      movements: "Movimientos"
+      date: Fecha
+      from_to: Origen/Destino
+      post: Anuncio
+      reason: Razón
+      quantity: Cantidad
+
     give_time:
       give_time: Dar Tiempo a
     form:
@@ -137,7 +175,8 @@ es:
   tags:
     alpha_grouped_index:
       maintitle: "Etiquetas Disponibles"
-
+  terms:
+    accept: Aceptar
   offers:
     index:
       offered_by: "Ofrecido por %{size} personas"
@@ -149,11 +188,16 @@ es:
       offered_by: "Ofertantes"
     new:
       submit: Crear oferta
+    edit:
+      submit: Cambiar oferta
 
   inquiries:
     index:
       new_inquiry: Nueva demanda
-
+    new:
+      submit: Crear demanda
+    edit:
+      submit: Cambiar demanda
   categories:
     index:
       all: Todas
@@ -167,18 +211,38 @@ es:
       title: Servicios ofrecidos
     user_list:
       title: Listado usuarios
-    statistics:
-      statistics: Estadísticas
+
+  statistics:
+    statistics_global_activity:
+      bank_activity: "Actividad del banco"
+      per_month: "Por meses"
       global_activity: "Actividad global"
       users_reg: " Altas de usuario"
       num_swaps: " Intercambios"
       total_hours: " Horas intercambiadas"
+      show: Mostrar
+      ini_date: "mm/aaaa inicial"
+      end_date: "mm/aaaa final"
+    statistics_inactive_users:
       inactive_users: Usuarios inactivos
       last_movement: Útimo intercambio
       no_movements: Sin intercambios
       days_without_swaps: Días sin intercambios
+    statistics_demographics:
       demographics: Datos demográficos
       by_ages: Por edades
+      by_gender: Por género
+      male: Hombre
+      female: Mujer
+      unknown: Desconocido
+      num_people: Nº personas
+    statistics_last_login:
+      last_login: Último login
+      never_login: Nunca logueado
+    statistics_without_offers:
+      without_offers: Sin ofertas
+    statistics_type_swaps:
+      type_of_swaps: Tipos de intercambios
 
   stats:
     min_balance:
@@ -229,14 +293,21 @@ es:
     amount: Cantidad
     demote: Convertir en usuario normal
     promote: Convertir en administrador
+    statistics: Estadísticas
 
   active_admin:
     comments:
       resource_type: Tipo de recurso
       author_type: Tipo de autor
+    users:
+      upload_csv: Fichero
+      organization: Banco de tiempo
+      upload_from_csv: Importar CSV
 
   layouts:
     application:
       login: Entrar
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
+    report:
+      report_title: "INFORME"

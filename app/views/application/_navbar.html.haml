@@ -4,9 +4,10 @@
       %a.navbar-brand(href="/") TimeOverflow
 
     %ul.nav.navbar-nav
-      - if current_user and current_organization
+      - if current_user && current_organization
         - [User, Offer, Inquiry].each do |item|
-          - path = item == Offer ? dashboard_offers_path : send("#{item.to_s.downcase.pluralize}_path")
+          - path = item == Offer ? dashboard_offers_path :
+          -   send("#{item.to_s.downcase.pluralize}_path")
           %li{class: current_page?(path) && "active"}
             %a{href: path}
               = glyph(item)
@@ -14,29 +15,55 @@
 
         - if current_user.manages? current_organization
           %li.dropdown
-            %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+            %a.dropdown-toggle{ href: "#", data: { toggle: :dropdown } }
               = glyph("paperclip")
               = t ".reports"
               %b.caret
             %ul.dropdown-menu{role: :menu}
               %li
-                %a{href: "/report/user_list", data: {popup: true}}
+                %a{ href: "/report/user_list", data: { popup: true } }
                   %span.glyphicon.glyphicon-list-alt
                   = User.model_name.human(count: :many)
               %li
-                %a{href: "/report/offer_list", data: {popup: true}}
+                %a{ href: "/report/offer_list", data: { popup: true } }
                   %span.glyphicon.glyphicon-list-alt
                   = Offer.model_name.human(count: :many)
               %li
-                %a{href: "/report/inquiry_list", data: {popup: true}}
+                %a{ href: "/report/inquiry_list", data: { popup: true } }
                   %span.glyphicon.glyphicon-list-alt
                   = Inquiry.model_name.human(count: :many)
-          %li{class: current_page?('/report/statistics') && "active"}
-            %a{href: '/report/statistics'}
-              %span.glyphicon.glyphicon-stats
-              = t ".statistics"
           %li.dropdown
-            %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+            %a.dropdown-toggle{href: "#", data: { toggle: :dropdown } }
+              = glyph("stats")
+              = t ".statistics"
+              %b.caret
+            %ul.dropdown-menu{role: :menu}
+              %li
+                %a{href: "/statistics/statistics_global_activity"}
+                  %span.glyphicon.glyphicon-stats
+                  = t ".global_activity"
+              %li
+                %a{href: "/statistics/statistics_inactive_users"}
+                  %span.glyphicon.glyphicon-stats
+                  = t ".inactive_users"
+              %li
+                %a{href: "/statistics/statistics_demographics"}
+                  %span.glyphicon.glyphicon-stats
+                  = t ".demographics"
+              %li
+                %a{href: "/statistics/statistics_last_login"}
+                  %span.glyphicon.glyphicon-stats
+                  = t ".last_login"
+              %li
+                %a{href: "/statistics/statistics_without_offers"}
+                  %span.glyphicon.glyphicon-stats
+                  = t ".without_offers"
+              %li
+                %a{:href => "/statistics/statistics_type_swaps"}
+                  %span.glyphicon.glyphicon-stats
+                  = t ".type_of_swaps"
+          %li.dropdown
+            %a.dropdown-toggle{ href: "#", data: { toggle: :dropdown } }
               = glyph("wrench")
               = t ".admin"
               %b.caret
@@ -46,6 +73,18 @@
                 %a{href: path }
                   = glyph("tags")
                   = t ".tags"
+              %li
+                - path = offers_path(org: current_organization)
+                %a{href: path }
+                  = glyph("link")
+                  = glyph("eye-open")
+                  = t ".offer_public_link"
+              %li
+                - path = inquiries_path(org: current_organization)
+                %a{href: path }
+                  = glyph("link")
+                  = glyph("eye-open")
+                  = t ".inquiry_public_link"
         - else
           - path = alpha_grouped_index_tags_path(post_type: "offer")
           %li{class: current_page?(path) && "active"}
@@ -56,7 +95,7 @@
     %ul.nav.navbar-nav.navbar-right
       - if current_user
         %li.dropdown
-          %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+          %a.dropdown-toggle{href: "#", data: { toggle: :dropdown } }
             = image_tag avatar_url(current_user), style: "margin: -8px auto"
             = current_user.email
             %b.caret
@@ -65,12 +104,12 @@
               %li{role: :presentation}
                 = link_to admin_root_path do
                   = glyph(:cog)
-                  Admin
+                  = t ".adminshort"
 
             %li{role: :presentation}
               = link_to destroy_user_session_path, method: :delete  do
                 = glyph("log-out")
-                = t "Log out"
+                = t ".sign_out"
             %li.divider{role: :presentation}
             %li{role: :presentation}
               = link_to current_user do
@@ -80,9 +119,22 @@
               %li{role: :presentation}
                 = link_to m.organization do
                   = glyph(:pencil)
-                  = t "layouts.application.edit_org", organization: m.organization
-
+                  = t "layouts.application.edit_org",
+                    organization: m.organization
       - else
         %li
           %a{href: new_user_session_path}
             = t "layouts.application.login"
+
+      %li.divider{role: :presentation}
+      %li{role: :presentation}
+        = link_to "/global/switch_lang?locale=es", id: "es_flag"  do
+          = image_tag("blank.png", class: "flag flag-es", alt: "Español")
+
+      %li{role: :presentation}
+        = link_to "/global/switch_lang?locale=ca", id: "ca_flag" do
+          = image_tag("blank.png", class: "flag flag-catalonia", alt: "Català")
+
+      %li{role: :presentation}
+        = link_to "/global/switch_lang?locale=en", id: "en_flag" do
+          = image_tag("blank.png", class: "flag flag-gb", alt: "English")
