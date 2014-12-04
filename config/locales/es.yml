@@ -250,6 +250,7 @@ es:
       without_offers: Sin ofertas
     statistics_type_swaps:
       type_of_swaps: Tipos de intercambios
+      without_tags: Sin etiquetas
 
   stats:
     min_balance:

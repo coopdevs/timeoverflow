@@ -266,6 +266,7 @@ en:
       without_offers: Without offers
     statistics_type_swaps:
       type_of_swaps: Type of transactions
+      without_tags: Without tags
 
   stats:
     min_balance:
