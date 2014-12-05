@@ -33,7 +33,7 @@ User.find_or_create_by(email: "user@example.com") do |user|
   user.confirmed_at = DateTime.now.utc
   user.password = "1234test"
   user.password_confirmation = "1234test"
-  user.username = "admin"
+  user.username = "user"
   user.gender = "male"
   user.identity_document = "X1111111X"
 end
@@ -43,7 +43,7 @@ User.find_or_create_by(email: "admin2@example.com") do |user|
   user.confirmed_at = DateTime.now.utc
   user.password = "1234test"
   user.password_confirmation = "1234test"
-  user.username = "admin"
+  user.username = "admin2"
   user.gender = "male"
   user.identity_document = "X2222222X"
 end
@@ -53,7 +53,7 @@ User.find_or_create_by(email: "user2@example.com") do |user|
   user.confirmed_at = DateTime.now.utc
   user.password = "1234test"
   user.password_confirmation = "1234test"
-  user.username = "admin"
+  user.username = "user2"
   user.gender = "male"
   user.identity_document = "X3333333X"
 end
