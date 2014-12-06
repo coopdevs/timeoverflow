@@ -87,7 +87,12 @@ es:
         end_on: Termina el
       account:
         balance: Balance
-
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: inválido
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -141,6 +146,8 @@ es:
       actions: Acciones
     new:
       new_user: Nuevo usuario
+    edit:
+      edit_user: Cambiar usuario
     show:
       phone:
         one: Teléfono
