@@ -9,7 +9,7 @@ class PostsController <  ApplicationController # InheritedResources::Base
   def index
     posts = apply_scopes(model).page(params[:page]).per(25)
     instance_variable_set("@#{resources}", posts)
-  end 
+  end
 
   def new
     post = model.new
@@ -59,7 +59,7 @@ class PostsController <  ApplicationController # InheritedResources::Base
   def resources
     controller_name
   end
-    
+
   def set_user_id(p)
     if current_user.manages?(current_organization)
       p.update publisher_id: current_user.id
@@ -70,11 +70,11 @@ class PostsController <  ApplicationController # InheritedResources::Base
   end
 
   def post_params
-    permitted_fields = %i[description end_on global joinable permanent start_on title category_id tag_list user_id publisher_id]
-    
-    params.fetch(resource, {}).permit(*permitted_fields).tap { |p|
-      set_user_id(p)
-    }
-  end
+    permitted_fields = %i[description end_on global joinable permanent start_on
+                          title category_id tag_list user_id publisher_id]
 
+    params.fetch(resource, {}).permit(*permitted_fields).tap do |p|
+      set_user_id(p)
+    end
+  end
 end

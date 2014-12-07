@@ -39,7 +39,8 @@ class Post < ActiveRecord::Base
       ) union(
         #{Post.tagged_with_rank(s).to_sql}
       )
-    ) #{Post.table_name}") }
+    ) #{Post.table_name}")
+  }
 
   validates :user, presence: true
 
