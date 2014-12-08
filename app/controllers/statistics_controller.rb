@@ -112,19 +112,21 @@ class StatisticsController < ApplicationController
       if offer.category_id.blank?
         if offer.tags.blank?
           total += offer.count_of_transfers
-          [[t("statistics.statistics_type_swaps.without_category"), t("statistics.statistics_type_swaps.without_tags"), offer.sum_of_transfers,
-           offer.count_of_transfers]]
+          [[t("statistics.statistics_type_swaps.without_category"),
+            t("statistics.statistics_type_swaps.without_tags"),
+            offer.sum_of_transfers, offer.count_of_transfers]]
         else
           offer.tags.map do |tag|
             total += offer.count_of_transfers
-            [t("statistics.statistics_type_swaps.without_category"), tag, offer.sum_of_transfers,
-           offer.count_of_transfers]
+            [t("statistics.statistics_type_swaps.without_category"), tag,
+             offer.sum_of_transfers, offer.count_of_transfers]
           end
         end
       elsif offer.tags.blank?
         total += offer.count_of_transfers
-        [[offer.category.name, t("statistics.statistics_type_swaps.without_tags"), offer.sum_of_transfers,
-         offer.count_of_transfers]]
+        [[offer.category.name,
+          t("statistics.statistics_type_swaps.without_tags"),
+          offer.sum_of_transfers, offer.count_of_transfers]]
       else
         offer.tags.map do |tag|
           total += offer.count_of_transfers
