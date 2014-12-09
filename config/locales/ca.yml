@@ -299,6 +299,12 @@ ca:
     demote: Convertir en usuari normal
     promote: Convertir en administrador
     statistics: Estadístiques
+    locales_header: canviar llengua
+
+  locales:
+    en: Anglès
+    es: Espanyol
+    ca: Català
 
   active_admin:
     comments:

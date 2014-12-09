@@ -319,6 +319,12 @@ en:
     demote: Demote to normal user
     promote: Promote to administrator
     statistics: Statistics
+    locales_header: change language
+
+  locales:
+    en: English
+    es: Spanish
+    ca: Catalan
 
   active_admin:
     comments:
