@@ -247,6 +247,8 @@ ca:
       without_offers: Sense ofertas
     statistics_type_swaps:
       type_of_swaps: "Tipus d'intercanvis"
+      without_tags: Sense etiquetes
+      without_category: Sense categoria
 
   stats:
     min_balance:
