@@ -98,4 +98,9 @@ class User < ActiveRecord::Base
     set_dummy_email if empty_email
     save
   end
+
+  def email_sample?
+    self.email.include? "example.com" 
+  end
+  
 end
