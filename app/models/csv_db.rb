@@ -8,7 +8,7 @@ class CsvDb
                gender: User::GENDERS[row[5].to_i - 1])
     end
 
-    def member_from_row(row, user)
+    def member_from_row(row, user, organization, errors)
       member = organization.members.create(member_uid: row[0],
                                            entry_date: row[1],
                                            user_id: user.id)
@@ -17,12 +17,12 @@ class CsvDb
                  ) if member.errors.present?
     end
 
-    def process_row(row)
+    def process_row(row, organization, errors)
       user = user_from_row(row)
       user.skip_confirmation! # auto-confirm, not sending confirmation email
 
       if user.save
-        member_from_row(row, user)
+        member_from_row(row, user, organization, errors)
       else
         errors.push(member_id: row[0], email: row[9],
                     errors: user.errors.full_messages)
@@ -36,7 +36,7 @@ class CsvDb
       organization = Organization.find(organization_id)
       errors = []
       CSV.parse(data, headers: false) do |row|
-        process_row(row)
+        process_row(row, organization, errors)
       end
       organization.ensure_reg_number_seq!
       errors
