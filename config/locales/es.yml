@@ -41,6 +41,7 @@ es:
         one: Banco de Tiempo
         other: Bancos de Tiempo
         email: Correo
+        email_real: ¿Correo valido?
         registration_date: Fecha de alta
         gender: Género
         registration_number: Código de usuario

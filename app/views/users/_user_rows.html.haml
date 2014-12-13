@@ -12,7 +12,7 @@
     %a{ng_href: "mailto:{{user.unconfirmed_email}}", ng_if: "user.unconfirmed_email"}
       {{user.unconfirmed_email}}
   %td  
-    %span.glyphicon.glyphicon-ok{ "ng-if" => "!user.email_sample" }
+    %span.glyphicon.glyphicon-ok{ "ng-if" => "user.email_real" }
   %td {{user.phone}}
   %td {{user.alt_phone}}
   %td {{user.balance | timeBalance}}

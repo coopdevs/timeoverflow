@@ -99,8 +99,8 @@ class User < ActiveRecord::Base
     save
   end
 
-  def email_sample?
-    self.email.include? "example.com" 
+  def has_email_real?
+    !email.include? "example.com"
   end
-  
+
 end
