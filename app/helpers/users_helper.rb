@@ -22,9 +22,8 @@ module UsersHelper
         manager: !!membership.manager,
         toggle_active_link: (superadmin? || admin?) ? toggle_active_member_path(membership) : "",
         active: membership.active?,
-        email_sample: user.email_sample?
+        email_real: user.has_email_real?
       }
     end.to_json.html_safe
   end
-
 end
