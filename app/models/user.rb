@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
     save
   end
 
-  def has_email_real?
+  def has_valid_email?
     !email.include? "example.com"
   end
 end

@@ -38,7 +38,7 @@
             = User.human_attribute_name(:email)
             %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-email'" }
             %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'email'" }
-        %th= User.human_attribute_name(:email_real)
+        %th= User.human_attribute_name(:valid_email)
         %th= User.human_attribute_name(:phone)
         %th= User.human_attribute_name(:alt_phone)
         %th
