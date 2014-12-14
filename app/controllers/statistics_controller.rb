@@ -109,10 +109,30 @@ class StatisticsController < ApplicationController
              group("posts.tags, posts.category_id, posts.updated_at")
     total = 0.0
     offers_array = offers.map do |offer|
-      offer.tags.map do |tag|
+      if offer.category_id.blank?
+        if offer.tags.blank?
+          total += offer.count_of_transfers
+          [[t("statistics.statistics_type_swaps.without_category"),
+            t("statistics.statistics_type_swaps.without_tags"),
+            offer.sum_of_transfers, offer.count_of_transfers]]
+        else
+          offer.tags.map do |tag|
+            total += offer.count_of_transfers
+            [t("statistics.statistics_type_swaps.without_category"), tag,
+             offer.sum_of_transfers, offer.count_of_transfers]
+          end
+        end
+      elsif offer.tags.blank?
         total += offer.count_of_transfers
-        [offer.category.name, tag, offer.sum_of_transfers,
-         offer.count_of_transfers]
+        [[offer.category.name,
+          t("statistics.statistics_type_swaps.without_tags"),
+          offer.sum_of_transfers, offer.count_of_transfers]]
+      else
+        offer.tags.map do |tag|
+          total += offer.count_of_transfers
+          [offer.category.name, tag, offer.sum_of_transfers,
+           offer.count_of_transfers]
+        end
       end
     end.flatten(1)
     # ["Clases", "clases", 11700, 2], ["Clases", "clases", 1320, 1], ...]

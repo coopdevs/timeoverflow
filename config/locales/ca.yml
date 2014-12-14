@@ -87,7 +87,12 @@ ca:
         end_on: Finalitza al
       account:
         balance: Balanç
-
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: invàlid
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -141,6 +146,8 @@ ca:
       actions: Accions
     new:
       new_user: Nou usuari
+    edit:
+      edit_user: Canviar usuari
     show:
       phone:
         one: Telèfon
@@ -240,6 +247,8 @@ ca:
       without_offers: Sense ofertas
     statistics_type_swaps:
       type_of_swaps: "Tipus d'intercanvis"
+      without_tags: Sense etiquetes
+      without_category: Sense categoria
 
   stats:
     min_balance:
@@ -290,6 +299,12 @@ ca:
     demote: Convertir en usuari normal
     promote: Convertir en administrador
     statistics: Estadístiques
+    locales_header: canviar llengua
+
+  locales:
+    en: Anglès
+    es: Espanyol
+    ca: Català
 
   active_admin:
     comments:

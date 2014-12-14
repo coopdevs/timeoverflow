@@ -7,4 +7,6 @@
                                                 label_button: t(".submit") }
 
 :javascript
-  $("#inquiry_tag_list").tagsManager();
+  $("#inquiry_tag_list").tagsManager({
+    prefilled: '#{escape_javascript(@inquiry.tag_list)}'
+  });

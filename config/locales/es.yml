@@ -87,7 +87,12 @@ es:
         end_on: Termina el
       account:
         balance: Balance
-
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: inválido
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -141,6 +146,8 @@ es:
       actions: Acciones
     new:
       new_user: Nuevo usuario
+    edit:
+      edit_user: Cambiar usuario
     show:
       phone:
         one: Teléfono
@@ -243,6 +250,8 @@ es:
       without_offers: Sin ofertas
     statistics_type_swaps:
       type_of_swaps: Tipos de intercambios
+      without_tags: Sin etiquetas
+      without_category: Sin categoría
 
   stats:
     min_balance:
@@ -294,6 +303,12 @@ es:
     demote: Convertir en usuario normal
     promote: Convertir en administrador
     statistics: Estadísticas
+    locales_header: cambiar idioma
+
+  locales:
+    en: Inglés
+    es: Español
+    ca: Catalán
 
   active_admin:
     comments:
