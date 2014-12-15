@@ -55,4 +55,12 @@ class Post < ActiveRecord::Base
   def member_id
     read_attribute(:member_id) if has_attribute?(:member_id)
   end
+
+  def self.active_alpha_tags(organization)
+    by_organization(organization).actives.alphabetical_grouped_tags_desc.sort
+  end
+
+  def self.active_tagged_with(organization, tagname)
+    by_organization(organization).actives.tagged_with(tagname)
+  end
 end

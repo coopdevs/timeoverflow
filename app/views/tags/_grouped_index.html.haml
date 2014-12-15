@@ -1,12 +1,10 @@
 .tag_list.container_fluid
   - alpha_tags.each_slice(6) do |gr|
     .row
-      - gr.each do |kg, vg|
+      - gr.each do |kg, vl|
         .col-xs-2.col-md-2
           %h2.bg-info.text-center
             = kg
-          - # TODO: move sorting to the reader, too much code in the view
-          - vl = vg.sort_by { |_k, v| v }.reverse
           - vl.each do |tag, count|
             %p
               .badge

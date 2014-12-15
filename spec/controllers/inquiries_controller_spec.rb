@@ -1,24 +1,27 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe InquiriesController do
-  let (:test_organization) { Fabricate(:organization)}
-  let (:member) { Fabricate(:member, organization: test_organization)}
-  let (:another_member) { Fabricate(:member, organization: test_organization)}
-  let! (:inquiry) { Fabricate(:inquiry, user: member.user, organization: test_organization)}
+  let (:test_organization) { Fabricate(:organization) }
+  let (:member) { Fabricate(:member, organization: test_organization) }
+  let (:another_member) { Fabricate(:member, organization: test_organization) }
+  let! (:inquiry) do
+    Fabricate(:inquiry,
+              user: member.user,
+              organization: test_organization)
+  end
   include_context "stub browser locale"
-  before { set_browser_locale('ca') }
+  before { set_browser_locale("ca") }
 
   describe "GET #index" do
     context "with a logged user" do
       it "populates and array of inquiries" do
         login(another_member.user)
 
-        get 'index'
+        get "index"
         expect(assigns(:inquiries)).to eq([inquiry])
       end
     end
   end
-
 
   describe "GET #show" do
     context "with valid params" do
@@ -26,7 +29,7 @@ describe InquiriesController do
         it "assigns the requested inquiry to @inquiry" do
           login(another_member.user)
 
-          get 'show', id: inquiry.id
+          get "show", id: inquiry.id
           expect(assigns(:inquiry)).to eq(inquiry)
         end
       end
@@ -39,9 +42,9 @@ describe InquiriesController do
         it "creates a new inquiry" do
           login(another_member.user)
 
-          expect {
-            post 'create', inquiry: Fabricate.to_params(:inquiry)
-          }.to change(Inquiry,:count).by(1)
+          expect do
+            post "create", inquiry: Fabricate.to_params(:inquiry)
+          end.to change(Inquiry, :count).by(1)
         end
       end
     end
@@ -53,14 +56,19 @@ describe InquiriesController do
         it "located the requested @inquiry" do
           login(member.user)
 
-          put 'update', id: inquiry.id, inquiry: Fabricate.to_params(:inquiry)
+          put "update", id: inquiry.id, inquiry: Fabricate.to_params(:inquiry)
           expect(assigns(:inquiry)).to eq(inquiry)
         end
 
         it "changes @inquiry's attributes" do
           login(member.user)
 
-          put 'update', id: inquiry.id, inquiry: Fabricate.to_params(:inquiry, user: member, title: "New title", description: "New description")
+          put :update,
+              id: inquiry.id,
+              inquiry: Fabricate.to_params(:inquiry,
+                                           user: member,
+                                           title: "New title",
+                                           description: "New description")
 
           inquiry.reload
           expect(inquiry.title).to eq("New title")
@@ -74,7 +82,12 @@ describe InquiriesController do
         it "does not change @inquiry's attributes" do
           login(member.user)
 
-          put :update, id: inquiry.id, inquiry: Fabricate.to_params(:inquiry, user: nil, title: "New title", description: "New description")
+          put :update,
+              id: inquiry.id,
+              inquiry: Fabricate.to_params(:inquiry,
+                                           user: nil,
+                                           title: "New title",
+                                           description: "New description")
 
           expect(inquiry.title).not_to eq("New title")
           expect(inquiry.description).not_to eq("New description")
@@ -82,5 +95,4 @@ describe InquiriesController do
       end
     end
   end
-
 end
