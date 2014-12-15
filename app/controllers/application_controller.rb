@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :setup_vars
 
   include Pundit
   protect_from_forgery
@@ -17,27 +16,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
 
-  def set_locale
-    if params[:locale]
-      locale=params[:locale]
-      session[:locale] = locale
-    else
-      locale=extract_locale_from_accept_language_header
-    end
-
-    # we check that provided locale from browser is in our supported list of languages
-    # if not, we use the default from rails conf
-    session[:locale] ||= @supported_langs.include?(locale)? locale: I18n.default_locale.to_s
-    I18n.locale = session[:locale]
-    true
-  end
-
   append_before_filter :check_for_terms_acceptance!, unless: :devise_controller?
 
   rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
     redirect_to terms_path
   end
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protected
 
@@ -53,21 +38,18 @@ class ApplicationController < ActionController::Base
         offers_path
       end
     else
-      page_path('home')
+      page_path("home")
     end
-  end
-
-  def setup_vars
-    @supported_langs=%w(es ca en)
   end
 
   private
 
   def check_for_terms_acceptance!
     if user_signed_in?
-      if current_user.terms_accepted_at.nil?
+      accepted = current_user.terms_accepted_at
+      if accepted.nil?
         raise MissingTOSAcceptance
-      elsif current_user.terms_accepted_at < Document.terms_and_conditions.updated_at
+      elsif accepted < Document.terms_and_conditions.updated_at
         raise OutadedTOSAcceptance
       end
     end
@@ -93,7 +75,18 @@ class ApplicationController < ActionController::Base
 
   # To get locate from client supplied information
   # see http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-client-supplied-information
-  def extract_locale_from_accept_language_header
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  def set_locale
+    # read locale from params, the session or the Accept-Language header
+    I18n.locale = params[:locale] ||
+      session[:locale] ||
+      http_accept_language.compatible_language_from(I18n.available_locales) ||
+      I18n.default_locale
+    # set in the session (so ppl can override what the browser sends)
+    session[:locale] = I18n.locale
+  end
+
+  def user_not_authorized
+    flash[:error] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
   end
 end

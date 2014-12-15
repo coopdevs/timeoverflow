@@ -85,7 +85,14 @@ es:
         permanent: Permanente
         start_on: Empieza el
         end_on: Termina el
-
+      account:
+        balance: Balance
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: inválido
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -108,6 +115,8 @@ es:
       adminshort: Admin
       tags: Etiquetas
       sign_out: Desconectar
+      offer_public_link: Enlace público a ofertas
+      inquiry_public_link: Enlace público a demandas
     menu:
       sign_in: Entrar
       sing_out: Desconectar
@@ -137,6 +146,8 @@ es:
       actions: Acciones
     new:
       new_user: Nuevo usuario
+    edit:
+      edit_user: Cambiar usuario
     show:
       phone:
         one: Teléfono
@@ -184,13 +195,16 @@ es:
       offered_by: "Ofertantes"
     new:
       submit: Crear oferta
+    edit:
+      submit: Cambiar oferta
 
   inquiries:
     index:
       new_inquiry: Nueva demanda
     new:
       submit: Crear demanda
-
+    edit:
+      submit: Cambiar demanda
   categories:
     index:
       all: Todas
@@ -228,6 +242,7 @@ es:
       male: Hombre
       female: Mujer
       unknown: Desconocido
+      num_people: Nº personas
     statistics_last_login:
       last_login: Último login
       never_login: Nunca logueado
@@ -235,6 +250,8 @@ es:
       without_offers: Sin ofertas
     statistics_type_swaps:
       type_of_swaps: Tipos de intercambios
+      without_tags: Sin etiquetas
+      without_category: Sin categoría
 
   stats:
     min_balance:
@@ -286,6 +303,12 @@ es:
     demote: Convertir en usuario normal
     promote: Convertir en administrador
     statistics: Estadísticas
+    locales_header: cambiar idioma
+
+  locales:
+    en: Inglés
+    es: Español
+    ca: Catalán
 
   active_admin:
     comments:

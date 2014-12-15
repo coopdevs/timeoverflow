@@ -1,12 +1,13 @@
 %nav.navbar.navbar-static-top.navbar-inverse{role: :navigation}
   .container
     .navbar-header
-      %a.navbar-brand(href="/global/go_home") TimeOverflow
+      %a.navbar-brand(href="/") TimeOverflow
 
     %ul.nav.navbar-nav
-      - if current_user and current_organization
-        - [User,Offer,Inquiry].each do |item|
-          - path = item == Offer ? dashboard_offers_path : send("#{item.to_s.downcase.pluralize}_path")
+      - if current_user && current_organization
+        - [User, Offer, Inquiry].each do |item|
+          - path = item == Offer ? dashboard_offers_path :
+          -   send("#{item.to_s.downcase.pluralize}_path")
           %li{class: current_page?(path) && "active"}
             %a{href: path}
               = glyph(item)
@@ -14,25 +15,25 @@
 
         - if current_user.manages? current_organization
           %li.dropdown
-            %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+            %a.dropdown-toggle{ href: "#", data: { toggle: :dropdown } }
               = glyph("paperclip")
               = t ".reports"
               %b.caret
             %ul.dropdown-menu{role: :menu}
               %li
-                %a{href: "/report/user_list", data: {popup: true}}
+                %a{ href: "/report/user_list", data: { popup: true } }
                   %span.glyphicon.glyphicon-list-alt
                   = User.model_name.human(count: :many)
               %li
-                %a{href: "/report/offer_list", data: {popup: true}}
+                %a{ href: "/report/offer_list", data: { popup: true } }
                   %span.glyphicon.glyphicon-list-alt
                   = Offer.model_name.human(count: :many)
               %li
-                %a{href: "/report/inquiry_list", data: {popup: true}}
+                %a{ href: "/report/inquiry_list", data: { popup: true } }
                   %span.glyphicon.glyphicon-list-alt
                   = Inquiry.model_name.human(count: :many)
           %li.dropdown
-            %a.dropdown-toggle{:href => "#", data: {toggle: :dropdown}}
+            %a.dropdown-toggle{href: "#", data: { toggle: :dropdown } }
               = glyph("stats")
               = t ".statistics"
               %b.caret
@@ -62,7 +63,7 @@
                   %span.glyphicon.glyphicon-stats
                   = t ".type_of_swaps"
           %li.dropdown
-            %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+            %a.dropdown-toggle{ href: "#", data: { toggle: :dropdown } }
               = glyph("wrench")
               = t ".admin"
               %b.caret
@@ -72,24 +73,29 @@
                 %a{href: path }
                   = glyph("tags")
                   = t ".tags"
+              %li
+                - path = offers_path(org: current_organization)
+                %a{href: path }
+                  = glyph("link")
+                  = glyph("eye-open")
+                  = t ".offer_public_link"
+              %li
+                - path = inquiries_path(org: current_organization)
+                %a{href: path }
+                  = glyph("link")
+                  = glyph("eye-open")
+                  = t ".inquiry_public_link"
         - else
           - path = alpha_grouped_index_tags_path(post_type: "offer")
           %li{class: current_page?(path) && "active"}
             %a{href: path}
               = glyph("tags")
               = t ".tags"
-      - else
-        - [Offer, Inquiry].each do |item|
-          - path = item == Offer ? dashboard_offers_path : send("#{item.to_s.downcase.pluralize}_path")
-          %li{class: current_page?(path) && "active"}
-            %a{href: path}
-              = glyph(item)
-              = item.model_name.human(count: :many)
 
     %ul.nav.navbar-nav.navbar-right
       - if current_user
         %li.dropdown
-          %a.dropdown-toggle{href: "#", data: {toggle: :dropdown}}
+          %a.dropdown-toggle{href: "#", data: { toggle: :dropdown } }
             = image_tag avatar_url(current_user), style: "margin: -8px auto"
             = current_user.email
             %b.caret
@@ -113,21 +119,21 @@
               %li{role: :presentation}
                 = link_to m.organization do
                   = glyph(:pencil)
-                  = t "layouts.application.edit_org", organization: m.organization
+                  = t "layouts.application.edit_org",
+                    organization: m.organization
       - else
         %li
           %a{href: new_user_session_path}
             = t "layouts.application.login"
 
       %li.divider{role: :presentation}
-      %li{role: :presentation}
-        = link_to "/global/switch_lang?locale=es", id: 'es_flag'  do
-          = image_tag("blank.png",{class: "flag flag-es", alt: "Español"})
 
-      %li{role: :presentation}
-        = link_to "/global/switch_lang?locale=ca", id: 'ca_flag' do
-          = image_tag("blank.png",{class: "flag flag-catalonia", alt: "Català"})
-
-      %li{role: :presentation}
-        = link_to "/global/switch_lang?locale=en", id: 'en_flag' do
-          = image_tag("blank.png",{class: "flag flag-gb", alt: "English"})
+      %li.dropdown
+        %a.dropdown-toggle{ href: "#", data: { toggle: :dropdown } }
+          = glyph("globe")
+          %b.caret
+        %ul.dropdown-menu{role: :menu}
+          %li.disabled
+            = link_to t("global.locales_header"), "#"
+          %li.divider
+          = languages_list

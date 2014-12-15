@@ -1,7 +1,9 @@
 # encoding: utf-8
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# This file should contain all the record creation needed to seed the database
+# with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the
+# db with db:setup).
 #
 # Examples:
 #
@@ -10,6 +12,10 @@
 
 Organization.find_or_create_by(id: 1) do |org|
   org.name = "TimeOverflow"
+end
+
+Organization.find_or_create_by(id: 2) do |org|
+  org.name = "TimeOverflow 2"
 end
 
 User.find_or_create_by(email: "admin@example.com") do |user|
@@ -22,22 +28,71 @@ User.find_or_create_by(email: "admin@example.com") do |user|
   user.identity_document = "X0000000X"
 end
 
-User.find_by(email: "admin@example.com").members.find_or_create_by(organization_id: 1) do |member|
+User.find_or_create_by(email: "user@example.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
+  user.confirmed_at = DateTime.now.utc
+  user.password = "1234test"
+  user.password_confirmation = "1234test"
+  user.username = "user"
+  user.gender = "male"
+  user.identity_document = "X1111111X"
+end
+
+User.find_or_create_by(email: "admin2@example.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
+  user.confirmed_at = DateTime.now.utc
+  user.password = "1234test"
+  user.password_confirmation = "1234test"
+  user.username = "admin2"
+  user.gender = "male"
+  user.identity_document = "X2222222X"
+end
+
+User.find_or_create_by(email: "user2@example.com") do |user|
+  user.terms_accepted_at = DateTime.now.utc
+  user.confirmed_at = DateTime.now.utc
+  user.password = "1234test"
+  user.password_confirmation = "1234test"
+  user.username = "user2"
+  user.gender = "male"
+  user.identity_document = "X3333333X"
+end
+
+User.find_by(email: "admin@example.com").members.
+  find_or_create_by(organization_id: 1) do |member|
   member.manager = true
+  member.entry_date = DateTime.now.utc
+end
+
+User.find_by(email: "user@example.com").members.
+  find_or_create_by(organization_id: 1) do |member|
+  member.manager = false
+  member.entry_date = DateTime.now.utc
+end
+
+User.find_by(email: "admin2@example.com").members.
+  find_or_create_by(organization_id: 2) do |member|
+  member.manager = true
+  member.entry_date = DateTime.now.utc
+end
+
+User.find_by(email: "user2@example.com").members.
+  find_or_create_by(organization_id: 2) do |member|
+  member.manager = false
   member.entry_date = DateTime.now.utc
 end
 
 unless Category.exists?
   Category.connection.execute "ALTER SEQUENCE categories_id_seq RESTART;"
   [
-    "Acompañamiento", "Salud", "Domestic", "administrative tasks", "Clases", "Ocio", "consulting", "Otro"
+    "Acompañamiento", "Salud", "Domestic", "administrative tasks",
+    "Clases", "Ocio", "consulting", "Otro"
   ].each do |name|
     unless Category.with_name_translation(name).exists?
       Category.create { |c| c.name = name }
     end
   end
 end
-
 
 Document.find_or_create_by(label: "t&c") do |doc|
   doc.title = "Terms and Conditions"

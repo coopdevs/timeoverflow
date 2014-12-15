@@ -5,10 +5,10 @@
     .panel.panel-primary
       .panel-heading
         %h2.panel-title
-          =t(".change_password")
+          = t(".change_password")
 
       .panel-body
-        = devise_error_messages!
+        = show_error_messages!(resource)
         = form_for resource, url: password_path(resource_name), html: { method: :put } do |f|
           = f.hidden_field :reset_password_token
           .form-group

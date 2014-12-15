@@ -13,13 +13,12 @@ gem 'has_scope'
 gem 'inherited_resources'
 gem 'pundit'
 
-gem 'pg'
+gem 'pg', '0.17.1'
 gem 'hstore_translate'
 
 gem 'dalli'
 
-gem 'sass-rails', github: 'rails/sass-rails'
-# gem 'compass-rails'
+gem "sass-rails", "4.0.5"
 gem 'coffee-rails'
 gem 'ngannotate-rails'
 gem 'uglifier', '>= 1.0.3'
@@ -27,6 +26,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 
 gem "devise_browserid_authenticatable"
+gem "http_accept_language"
 
 gem 'thin'
 gem 'foreman'
@@ -64,6 +64,8 @@ gem "shelly-dependencies"
 group :development do
   gem "binding_of_caller"
   gem "better_errors"
+  gem "rubocop"
+  gem "haml-lint"
 end
 
 group :development, :test do

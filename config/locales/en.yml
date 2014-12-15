@@ -85,7 +85,14 @@ en:
         permanent: Permanent
         start_on: Start on
         end_on: Ends on
-
+      account:
+        balance: Balance
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: invalid
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -108,6 +115,8 @@ en:
       adminshort: Admin
       tags: Tags
       sign_out: Logout
+      offer_public_link: Offers public link
+      inquiry_public_link: Inquiries public link
     menu:
       sign_in: Login
       sing_out: Logout
@@ -137,6 +146,8 @@ en:
       actions: Actions
     new:
       new_user: New user
+    edit:
+      edit_user: Update user
     show:
       phone:
         one: Phone
@@ -184,13 +195,16 @@ en:
       offered_by: "Offered by"
     new:
       submit: Create offer
+    edit:
+      submit: Change offer
 
   inquiries:
     index:
       new_inquiry: New inquiry
     new:
       submit: Create inquiry
-
+    edit:
+      submit: Change inquiry
   categories:
     index:
       all: All
@@ -244,6 +258,7 @@ en:
       male: Male
       female: Female
       unknown: Unknown
+      num_people: "# of people"
     statistics_last_login:
       last_login: Last login
       never_login: Never login
@@ -251,6 +266,8 @@ en:
       without_offers: Without offers
     statistics_type_swaps:
       type_of_swaps: Type of transactions
+      without_tags: Without tags
+      without_category: Without category
 
   stats:
     min_balance:
@@ -302,6 +319,12 @@ en:
     demote: Demote to normal user
     promote: Promote to administrator
     statistics: Statistics
+    locales_header: change language
+
+  locales:
+    en: English
+    es: Spanish
+    ca: Catalan
 
   active_admin:
     comments:

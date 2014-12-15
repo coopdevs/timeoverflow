@@ -21,7 +21,7 @@ ca:
       already_authenticated: "Ja estàs registrat."
       inactive: "El teu compte no ha estat activat."
       invalid: "Correu o clau invàlida."
-      invalid_token: "Token de autentificació invàlid."
+      invalid_token: "Codi d'autentificació invàlid."
       locked: "El teu compte ha estat bloquejat."
       not_found_in_database: "Correu o clau invàlida."
       timeout: "La teva sessió ha caducat. Si us plau, torna a entrar per continuar."
@@ -31,14 +31,14 @@ ca:
       confirmation_instructions:
         subject: "Instruccions de confirmació del compte"
       reset_password_instructions:
-        subject: "Instruccions per a reestablir la teva clau"
+        subject: "Instruccions per a restablir la teva clau"
       unlock_instructions:
         subject: "Instruccions de desbloqueig del compte"
     omniauth_callbacks:
-      failure: "No s'ha pogut autentificar desde %{kind} perquè \"%{reason}\"."
-      success: "Autentificació realitzada desde el compte %{kind} ."
+      failure: "No s'ha pogut autentificar des de %{kind} perquè \"%{reason}\"."
+      success: "Autentificació realitzada des de el compte %{kind} ."
     passwords:
-      no_token: "No pots accedir a aquesta pàgina si no vens d'un correu per restablir la contrasenya. Si vens d'un correu per a restablir la contrasenya, assegurat que has utilitzat la URL completa."
+      no_token: "No pots accedir a aquesta pàgina si no véns d'un correu per restablir la contrasenya. Si véns d'un correu per a restablir la contrasenya, assegurat que has utilitzat la URL completa."
       send_instructions: "Rebràs un correu amb instruccions de com restablir la contrasenya en uns minuts."
       send_paranoid_instructions: "Si el teu correu existeix a la nostra base de dades, rebràs un enllaç al teu correu per recuperar la contrasenya en uns minuts."
       updated: "La teva contrasenya ha estat canviada. Estàs connectat."
@@ -85,11 +85,11 @@ ca:
         resend_instructions: "Reenviar instruccions de desbloqueig"
   errors:
     messages:
-      already_confirmed: "ja has estat confirmat, prova a entrar"
+      already_confirmed: "ja has estat confirmat, prova a entrar-hi"
       confirmation_period_expired: "necessita confirmar-se en %{period}, si us plau, sol·licita-la de nou"
       expired: "ha caducat, sol·licita-ho de nou"
       not_found: "no s'ha trobat"
       not_locked: "no es va bloquejar"
       not_saved:
-        one: "1 error impedeix que aquest %{resource} es desi:"
-        other: "%{count} errors impedeixen que aquest %{resource} es desi:"
+        one: "un error impedeix que aquest %{resource} es desi:"
+        other: "hi ha %{count} errors que impedeixen que aquest %{resource} es desi:"
