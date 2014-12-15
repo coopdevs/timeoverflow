@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
       if user.members.any? &:manager
         users_path
       else
-        users_path 
+        users_path
       end
     else
       page_path("home")
