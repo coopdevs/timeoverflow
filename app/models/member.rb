@@ -8,6 +8,7 @@ class Member < ActiveRecord::Base
 
   after_create :create_account
   before_validation :assign_registration_number, on: :create
+  after_destroy :remove_orphaned_users
 
   scope :by_month, -> (month) {
     where(created_at: month.beginning_of_month..month.end_of_month)
@@ -33,5 +34,11 @@ class Member < ActiveRecord::Base
 
   def offers
     Post.where(organization: organization, user: user, type: "Offer")
+  end
+
+  private
+
+  def remove_orphaned_users
+    user.destroy if user && user.members.empty?
   end
 end
