@@ -7,7 +7,7 @@ describe TransfersController do
   let (:member_taker) { Fabricate(:member, organization: test_organization) }
   include_context "stub browser locale"
   before { set_browser_locale('ca') }
-  
+
   describe "POST #create" do
     before { login(user) }
 
@@ -73,7 +73,7 @@ describe TransfersController do
         end
 
         it "redirects to destination" do
-          expect(subject).to redirect_to(member_taker)
+          expect(subject).to redirect_to(member_taker.user)
         end
       end
     end
