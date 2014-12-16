@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   scope :actives, -> { where(members: { active: true }) }
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true
   validates :email, presence: true, uniqueness: true
 
   # Allows @domain.com for dummy emails but does not allow pure invalid
