@@ -1,5 +1,5 @@
 %h1
-  = @organization.name
+  = link_to(@organization.name,@organization.web)
 .row
   .col-sm-4
     .panel.panel-default
@@ -14,7 +14,7 @@
           = @organization.phone
           %br
           %strong Web
-          = @organization.web
+          =link_to(@organization.web,@organization.web)
           %br
           %strong= Organization.human_attribute_name("public_opening_times")
           %br
