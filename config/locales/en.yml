@@ -41,6 +41,7 @@ en:
         one: Time Bank
         other: Time Banks
         email: Email
+        valid_email: Valid Email?
         registration_date: Registration date
         gender: Gender
         registration_number: User code

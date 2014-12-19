@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user if current_user.id == params[:id].to_i
-    @user ||= scoped_users.find(params[:id])
+    @user ||= scoped_users.find(params[:id]) 
   end
 
   def new
