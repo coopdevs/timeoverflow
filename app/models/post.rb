@@ -66,15 +66,13 @@ class Post < ActiveRecord::Base
 
   # Merges selected_tags with a new_name for provided organization
   def self.merge_tags(organization, new_name, selected_tags)
-    by_organization(organization).actives.merge_selected_tags(new_name, selected_tags)
-    ar = by_organization(organization).actives.tagged_with(new_name)
-    puts "****************** AR AGAIN 1*************"
-    puts ar.length
-    puts "****************** AR AGAIN 2*************"
-  end 
+    by_organization(organization).actives.
+      merge_selected_tags(new_name, selected_tags)
+  end
 
   # Deletes selected tags for provided organization
   def self.delete_tags(organization, selected_tags)
-    by_organization(organization).actives.delete_selected_tags(selected_tags)
-  end 
+    by_organization(organization).actives.
+      delete_selected_tags(selected_tags)
+  end
 end

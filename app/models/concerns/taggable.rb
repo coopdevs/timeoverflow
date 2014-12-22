@@ -60,35 +60,37 @@ module Taggable
     def alphabetical_grouped_tags_desc
       tag_cloud_desc.group_by { |l| l[0][0].capitalize }
     end
-    
+
     # Merge selected tags
     def merge_selected_tags(new_name, selected_tags)
       selected_tags.each do |tag|
         records = tagged_with(tag)
         records.each do |r|
           r.tags.map! { |t| t.eql?(tag) ? new_name : t }
-          # In order to save a changed array you need to explicitly declare it as dirty
+          # In order to save a changed array you need to explicitly
+          # declare it as dirty
           # See http://paweljaniak.co.za/2013/07/28/rails-4-and-postgres-arrays/
           # Also https://github.com/rails/rails/issues/14763
           r.tags_will_change!
           r.save!
         end
-      end 
-    end 
+      end
+    end
 
-    # Delete selected tags 
+    # Delete selected tags
     def delete_selected_tags(selected_tags)
       selected_tags.each do |tag|
         records = tagged_with(tag)
         records.each do |r|
           r.tags.delete(tag)
-          # In order to save a changed array you need to explicitly declare it as dirty
+          # In order to save a changed array you need to explicitly
+          # declare it as dirty
           # See http://paweljaniak.co.za/2013/07/28/rails-4-and-postgres-arrays/
           # Also https://github.com/rails/rails/issues/14763
-          r.tags_will_change! 
+          r.tags_will_change!
           r.save!
         end
-      end 
+      end
     end
   end
 end

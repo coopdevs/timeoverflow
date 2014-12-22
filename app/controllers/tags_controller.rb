@@ -43,7 +43,7 @@ class TagsController < ApplicationController
     respond_with @offers_tagged, @inquiries_tagged
   end
 
-  # POST 
+  # POST
   # Allows to reorganize tags by allowing actor to merge or delete tags
   def reorganize
     # permitted = tags_params(params)
@@ -52,7 +52,9 @@ class TagsController < ApplicationController
     @alpha_tags = alpha_tags_from_post_type(@current_post_type)
 
     case params[:button]
-    when "merge" then merge(@current_post_type, params[:new_name], selected_tags(params))
+    when "merge" then merge(@current_post_type,
+                            params[:new_name],
+                            selected_tags(params))
     when "delete" then delete(@current_post_type, selected_tags(params))
     end
 
@@ -74,11 +76,11 @@ class TagsController < ApplicationController
   end
 
   def selected_tags(params)
-     st = []
-     params.each do |k, p|
-       st << k.match(/tag_([^\/.]*)$/)[1] if /^tag_.+$/ =~ k && p == "1"
-     end
-     st
+    st = []
+    params.each do |k, p|
+      st << k.match(/tag_([^\/.]*)$/)[1] if /^tag_.+$/ =~ k && p == "1"
+    end
+    st
   end
 
   def merge(post_type, new_name, selected_tags)
@@ -94,7 +96,7 @@ class TagsController < ApplicationController
     when "offer" then Offer
     when "inquiry" then Inquiry
     when "all" then Post
-    end.delete_tags(current_organization, selected_tags)  
+    end.delete_tags(current_organization, selected_tags)
   end
 
   # TODO control params for reorganize action including tag_* params
