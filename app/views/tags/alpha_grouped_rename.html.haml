@@ -1,0 +1,5 @@
+= render partial: "tag_type_selector", locals: { maintitle: t(".maintitle"), switch_offer: "switch_offer_rename", switch_inquiry: "switch_inquiry_rename" }
+
+.tag_management
+  .alpha_tag_list.col-xs-12
+    = render partial: "grouped_admin_index", locals: { alpha_tags: @alpha_tags, action: "/tags/rename" }

@@ -115,6 +115,8 @@ en:
       admin: Manage
       adminshort: Admin
       tags: Tags
+      destroy_tags: Delete tags
+      rename_tags: Rename tags
       sign_out: Logout
       offer_public_link: Offers public link
       inquiry_public_link: Inquiries public link
@@ -183,6 +185,13 @@ en:
   tags:
     alpha_grouped_index:
       maintitle: Available Tags
+    alpha_grouped_destroy:
+      maintitle: Available Tags
+      delete: Delete
+    alpha_grouped_rename:
+      maintitle: Available Tags      
+      rename_tag: "Set new name for the selected tags"
+      merge: Merge
   terms:
     accept: Accept
   offers:

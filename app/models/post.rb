@@ -63,4 +63,16 @@ class Post < ActiveRecord::Base
   def self.active_tagged_with(organization, tagname)
     by_organization(organization).actives.tagged_with(tagname)
   end
+
+  # Merges selected_tags with a new_name for provided organization
+  def self.merge_tags(organization, new_name, selected_tags)
+    by_organization(organization).actives.
+      rename_tags(new_name, selected_tags)
+  end
+
+  # Deletes selected tags for provided organization
+  def self.delete_tags(organization, selected_tags)
+    by_organization(organization).actives.
+      remove_tags(selected_tags)
+  end
 end

@@ -69,10 +69,15 @@
               %b.caret
             %ul.dropdown-menu{role: :menu}
               %li
-                - path = alpha_grouped_index_tags_path(post_type: "offer")
+                - path = alpha_grouped_rename_tags_path(post_type: "offer")
                 %a{href: path }
                   = glyph("tags")
-                  = t ".tags"
+                  = t ".rename_tags"
+              %li
+                - path = alpha_grouped_destroy_tags_path(post_type: "offer")
+                %a{href: path }
+                  = glyph("tags")
+                  = t ".destroy_tags"
               %li
                 - path = offers_path(org: current_organization)
                 %a{href: path }

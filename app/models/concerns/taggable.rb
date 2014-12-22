@@ -60,5 +60,21 @@ module Taggable
     def alphabetical_grouped_tags_desc
       tag_cloud_desc.group_by { |l| l[0][0].capitalize }
     end
+
+    # Rename tags
+    def rename_tags(new_name, old_tags)
+      old_tags.each do |tag|
+        records = tagged_with(tag)
+        records.each { |r| r.update_columns tags: r.tags - [tag] + [new_name] }
+      end
+    end
+
+    #  Remove tags
+    def remove_tags(tags_to_delete)
+      tags_to_delete.each do |tag|
+        records = tagged_with(tag)
+        records.each { |r| r.update_columns tags: r.tags - [tag] }
+      end
+    end
   end
 end
