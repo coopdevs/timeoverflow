@@ -13,4 +13,13 @@
   .alpha_tag_list.col-xs-12.col-md-12
     = render :partial => 'grouped_index', :locals => { :alpha_tags => @alpha_tags }
   .row
-  .row
+  - if current_user.manages? current_organization
+    .admin_tag_actions
+      .row.reorganize_tags
+        = hidden_field_tag :current_post_type, @current_post_type
+        .col-xs-4.input-group
+          = text_field_tag "new_name", nil, placeholder: t("tags.alpha_grouped_index.rename_tag"), class: "form-control"
+          = button_tag t(".merge"), value: "merge", class: "btn btn-warning reorganize_buttons"
+          = button_tag t(".delete"), value: "delete", class: "btn btn-danger reorganize_buttons"
+      = # debug(params) if Rails.env.development? 
+      = # debug(@current_post_type) if Rails.env.development? 

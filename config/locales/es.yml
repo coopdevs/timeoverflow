@@ -183,6 +183,9 @@ es:
   tags:
     alpha_grouped_index:
       maintitle: "Etiquetas Disponibles"
+      rename_tag: "Entre nuevo texto para las etiquetas seleccionadas"
+      merge: Unificar
+      delete: Borrar
   terms:
     accept: Aceptar
   offers:

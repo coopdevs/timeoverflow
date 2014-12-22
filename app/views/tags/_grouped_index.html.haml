@@ -1,16 +1,22 @@
 .tag_list.container_fluid
-  - alpha_tags.each_slice(6) do |gr|
-    .row
-      - gr.each do |kg, vl|
-        .col-xs-2.col-md-2
-          %h2.bg-info.text-center
-            = kg
-          - vl.each do |tag, count|
-            %p
-              .badge
-                = count
-              - path = get_index_path(@current_post_type.pluralize, tag: tag)
-              = link_to path do
-                - gtag = (count == 1) ? "tag" : "tags"
-                = glyph(gtag)
-                = tag
+  .form-inline
+    = form_tag("/tags/reorganize") do 
+      - alpha_tags.each_slice(6) do |gr|
+        .row
+          - gr.each do |kg, vl|
+            .col-xs-2.col-md-2
+              %h2.bg-info.text-center
+                = kg
+              - vl.each do |tag, count|
+                %p
+                  .badge
+                    = count
+                  - path = get_index_path(@current_post_type.pluralize, tag: tag)
+                  = link_to path do
+                    - gtag = (count == 1) ? "tag" : "tags"
+                    = glyph(gtag)
+                    = tag
+                  - if current_user.manages? current_organization
+                    %label
+                      = check_box_tag("tag_#{tag}")
+                  

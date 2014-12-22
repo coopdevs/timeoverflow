@@ -69,6 +69,7 @@ Timeoverflow::Application.routes.draw do
       get "inquiries"
       get "offers"
       get "posts_with"
+      post "reorganize"
     end
   end
 
