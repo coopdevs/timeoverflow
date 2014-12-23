@@ -183,6 +183,9 @@ en:
   tags:
     alpha_grouped_index:
       maintitle: Available Tags
+      rename_tag: "Set new name for the selected tags"
+      merge: Merge
+      delete: Delete      
   terms:
     accept: Accept
   offers:

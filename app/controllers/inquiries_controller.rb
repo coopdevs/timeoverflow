@@ -1,3 +1,2 @@
 class InquiriesController < PostsController
-
 end
