@@ -1,17 +1,20 @@
-- alpha_tags.each_slice(6) do |gr|
-  .row
-    - gr.each do |kg, vl|
-      .col-xs-2
-        %h2.bg-info.text-center
-          = kg
-        - vl.each do |tag, count|
-          %p
-            .badge
-              = count
-            - path = get_index_path(@current_post_type.pluralize, tag: tag)
-            = link_to path do
-              - gtag = (count == 1) ? "tag" : "tags"
-              = glyph(gtag)
-              = tag
-            %label
-              = check_box_tag "tags[]", tag
+%div
+  - i=0
+  - alpha_tags.each_slice(6) do |gr|
+    .row
+      - gr.each do |kg, vl|
+        .col-xs-2
+          %h2.bg-info.text-center
+            = kg
+          - vl.each do |tag, count|
+            %p
+              .badge
+                = count
+              - path = get_index_path(@current_post_type.pluralize, tag: tag)
+              = link_to path do
+                - gtag = (count == 1) ? "tag" : "tags"
+                = glyph(gtag)
+                = tag
+              %label
+                = check_box_tag "tags[]", tag, false, "ng-model" => "adminCheckModels[#{i}]"
+            - i+=1

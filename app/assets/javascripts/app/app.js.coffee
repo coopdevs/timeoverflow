@@ -1,3 +1,14 @@
+angular.module('timeoverflow').controller 'AdminCheckBoxesCtrl', ($scope, $modal, $http, $location) ->
+  
+  $scope.adminCheckModels = [false,false,false,false,false] 
+
+  $scope.isButtonEnabled = -> 
+     ret = false
+     
+     for k,v of $scope.adminCheckModels
+       if v!=false then ret=v
+     ret
+
 angular.module('timeoverflow').controller 'UserListCtrl', ($scope, $modal, $http, $location) ->
 
   $scope.sortBy = (field) ->
@@ -34,7 +45,7 @@ angular.module('timeoverflow').controller 'UserListCtrl', ($scope, $modal, $http
     ).result
     .then(-> $http.put(user.toggle_active_link))
     .then(-> user.active = !user.active)
-
+  
 # override this in a view where the organizations are needed
 angular.module('timeoverflow').value 'Organizations', []
 

@@ -188,9 +188,11 @@ ca:
     alpha_grouped_destroy:
       maintitle: Etiquetes Disponibles
       delete: Esborrar
+      suremsg: Estàs segur que vols esborrar les etiquetes?
     alpha_grouped_rename:
       maintitle: Etiquetes Disponibles
       rename_tag: "Entri nou text per les etiquetes seleccionades"
+      suremsg: Estàs segur que vols unificar les etiquetes?
       merge: Unificar
   terms:
     accept: Acceptar

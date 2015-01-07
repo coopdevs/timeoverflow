@@ -188,9 +188,11 @@ en:
     alpha_grouped_destroy:
       maintitle: Available Tags
       delete: Delete
+      suremsg: Are you sure you want to delete selected tags?
     alpha_grouped_rename:
       maintitle: Available Tags      
       rename_tag: "Set new name for the selected tags"
+      suremsg: Are you sure you want to merge selected tags?
       merge: Merge
   terms:
     accept: Accept
