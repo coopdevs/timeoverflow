@@ -1,5 +1,4 @@
 class OrganizationsController < ApplicationController
-
   respond_to :json, :html
 
   before_filter :load_resource
@@ -11,7 +10,6 @@ class OrganizationsController < ApplicationController
       @organizations = Organization.all
     end
   end
-
 
   def new
     @organization = Organization.new
@@ -49,19 +47,33 @@ class OrganizationsController < ApplicationController
 
   def give_time
     @destination = @organization.account.id
-    @source = current_user.members.find_by(organization: @organization).account.id
-    @offer = current_organization.offers.find(params[:offer]) if params[:offer].present?
+    @source = find_transfer_source
+    @offer = find_transfer_offer
     @transfer = Transfer.new(source: @source, destination: @destination)
-    if admin?
-      @sources = [current_organization.account] + current_organization.member_accounts.where("members.active is true")
-    end
+    @sources = find_transfer_sources_for_admin
   end
-
 
   private
+
   def organization_params
-    params[:organization].permit(*%w"name theme email phone web public_opening_times description address neighborhood city domain")
+    params[:organization].permit(*%w[name theme email phone web
+                                     public_opening_times description address
+                                     neighborhood city domain])
   end
 
+  def find_transfer_offer
+    current_organization.offers.
+      find(params[:offer]) if params[:offer].present?
+  end
 
+  def find_transfer_source
+    current_user.members.
+      find_by(organization: @organization).account.id
+  end
+
+  def find_transfer_sources_for_admin
+    return unless admin?
+    [current_organization.account] +
+      current_organization.member_accounts.where("members.active is true")
+  end
 end
