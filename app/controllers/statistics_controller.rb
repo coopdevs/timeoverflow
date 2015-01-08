@@ -72,20 +72,8 @@ class StatisticsController < ApplicationController
 
   def statistics_demographics
     @members = current_organization.members
-
-    @age_counts = @members.each_with_object(Hash.new(0)) do |member, counts|
-      age = age(member.user.date_of_birth)
-      age_label = AGE_GROUP_LABELS.detect do |range, label|
-        label if range.include? age
-      end || t("statistics.statistics_demographics.unknown")
-      counts[age_label] += 1
-    end
-
-    @gender_counts = @members.each_with_object(Hash.new(0)) do |member, counts|
-      gender = member.user_gender || "unknown"
-      gender_label = t("statistics.statistics_demographics.#{gender}")
-      counts[gender_label] += 1
-    end
+    @age_counts = age_counts
+    @gender_counts = gender_counts
   end
 
   def statistics_last_login
@@ -105,59 +93,78 @@ class StatisticsController < ApplicationController
                      count_of_transfers").
              where("movements.amount > 0").
              group("posts.tags, posts.category_id, posts.updated_at")
-    total = 0.0
-    offers_array = offers.map do |offer|
-      transform_offer(offer)
-    end.flatten(1)
-    total += offers_array.map { |item| item[3] }.sum
 
-    # ["Clases", "clases", 11700, 2], ["Clases", "clases", 1320, 1], ...]
-    # added %
-    offers_array = offers_array.map { |a| a.push(a.last / total) }
-    offers_array = offers_array.group_by { |a, b| [a, b] }
-    # {["Clases", "clases"]=>[["Clases", "clases", 11700, 2, 0.2],
-    #  ["Clases", "clases", 1320, 1, 0.1]],,...}
-    @offers = []
-    offers_array.each do |cat_tag, values|
-      sum_of_transfers, count_of_transfers, percent = 0, 0, 0
-      values.each do |value|
-        sum_of_transfers += value[2]
-        count_of_transfers += value[3]
-        percent += value[4]
-      end
-      @offers.push([cat_tag, sum_of_transfers,
-                    count_of_transfers, percent].flatten)
-    end
-    # [["Clases", "clases", 13020, 3, 0.30],
-    # ["Domestic", "coche", 2220, 1, 0.1],...]
-    @offers = @offers.sort_by(&:last).reverse
+    @offers = count_offers_by_label(offers).to_a.flatten(1).
+              sort_by(&:last).reverse
   end
 
   protected
 
   def age(date_of_birth)
     return unless date_of_birth
-    now = DateTime.now
-    age_in_days = now - date_of_birth
+    age_in_days = Date.today - date_of_birth
     (age_in_days / 365.26).to_i
   end
 
+  # returns a hash of
+  #     {
+  #       [ category_label, tag_label ] => [ sum, count, ratio ],
+  #       ...
+  #     }
+  def count_offers_by_label(offers)
+    # Cannot use Hash.new([0, 0]) because then
+    #     counters[key][0] += n
+    # will modify directly the "global default" instead of
+    # first assigning a new array with the zeroed counters.
+    counters = Hash.new { |h, k| h[k] = [0, 0] }
+    offers.each do |offer|
+      labels_for_offer(offer).each do |labels|
+        # labels = [ category_label, tag_label ]
+        counters[labels][0] += offer.sum_of_transfers
+        counters[labels][1] += offer.count_of_transfers
+      end
+    end
+    add_ratios!(counters)
+    counters
+  end
+
+  def add_ratios!(counters)
+    # add the ratio at the end of each value
+    total_count = counters.values.map { |_, counts| counts }.sum
+    counters.each do |_, v|
+      v << v[1] / total_count
+    end
+  end
 
   # returns an array of
-  #     [category_name, tag_name, sum_of_transfers, count_of_transfers]
+  #     [category_name, tag_name]
   # one item per each tag. If the category or the tags are missing, they are
   # replaced with a fallback "Unknown" label.
-  def transform_offer(offer)
+  def labels_for_offer(offer)
     tag_labels = offer.tags.presence ||
                  [t("statistics.statistics_type_swaps.without_tags")]
 
     category_label = offer.category_name ||
                      t("statistics.statistics_type_swaps.without_category")
 
-    [category_label].product(
-      tag_labels,
-      [offer.sum_of_transfers],
-      [offer.count_of_transfers]
-    )
+    [category_label].product(tag_labels)
+  end
+
+  def age_counts
+    @members.each_with_object(Hash.new(0)) do |member, counts|
+      age = age(member.user_date_of_birth)
+      age_label = AGE_GROUP_LABELS.detect do |range, label|
+        label if range.include? age
+      end || t("statistics.statistics_demographics.unknown")
+      counts[age_label] += 1
+    end
+  end
+
+  def gender_counts
+    @members.each_with_object(Hash.new(0)) do |member, counts|
+      gender = member.user_gender || "unknown"
+      gender_label = t("statistics.statistics_demographics.#{gender}")
+      counts[gender_label] += 1
+    end
   end
 end

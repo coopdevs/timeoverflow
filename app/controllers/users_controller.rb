@@ -66,9 +66,7 @@ class UsersController < ApplicationController
     @transfer = Transfer.new(source: @source,
                              destination: @destination,
                              post: @offer)
-    if admin?
-      @sources = find_transfer_sources_for_admin
-    end
+    @sources = find_transfer_sources_for_admin
   end
 
   def toggle_active
