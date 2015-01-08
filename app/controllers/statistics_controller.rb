@@ -1,6 +1,16 @@
 class StatisticsController < ApplicationController
   before_filter :authenticate_user!
 
+  AGE_GROUP_LABELS = {
+    0..17 => " -17",
+    18..24 => "18-24",
+    25..34 => "25-34",
+    35..44 => "35-44",
+    45..54 => "45-54",
+    55..64 => "55-64",
+    65..100 => "65+",
+  }
+
   def statistics_global_activity
     @members = current_organization.members
     @total_hours = num_movements = 0
@@ -63,31 +73,19 @@ class StatisticsController < ApplicationController
   def statistics_demographics
     @members = current_organization.members
 
-    @age_groups = @members.group_by do |member|
-      case (age(member.user.date_of_birth.presence) rescue nil)
-      when 0..17 then " -17"
-      when 18..24 then "18-24"
-      when 25..34 then "25-34"
-      when 35..44 then "35-44"
-      when 45..54 then "45-54"
-      when 55..64 then "55-64"
-      when 65..100 then "65+"
-      else t("statistics.statistics_demographics.unknown")
-      end
+    @age_counts = @members.each_with_object(Hash.new(0)) do |member, counts|
+      age = age(member.user.date_of_birth)
+      age_label = AGE_GROUP_LABELS.detect do |range, label|
+        label if range.include? age
+      end || t("statistics.statistics_demographics.unknown")
+      counts[age_label] += 1
     end
 
-    @age_counts = Hash[@age_groups.map { |name, group| [name, group.size] }]
-
-    @gender_groups = @members.group_by do |member|
-      case member.user_gender
-      when "male" then t("statistics.statistics_demographics.male")
-      when "female" then t("statistics.statistics_demographics.female")
-      else t("statistics.statistics_demographics.unknown")
-      end
+    @gender_counts = @members.each_with_object(Hash.new(0)) do |member, counts|
+      gender = member.user_gender || "unknown"
+      gender_label = t("statistics.statistics_demographics.#{gender}")
+      counts[gender_label] += 1
     end
-    @gender_counts = Hash[@gender_groups.map do |name, group|
-      [name, group.size]
-    end]
   end
 
   def statistics_last_login
@@ -109,32 +107,10 @@ class StatisticsController < ApplicationController
              group("posts.tags, posts.category_id, posts.updated_at")
     total = 0.0
     offers_array = offers.map do |offer|
-      if offer.category_id.blank?
-        if offer.tags.blank?
-          total += offer.count_of_transfers
-          [[t("statistics.statistics_type_swaps.without_category"),
-            t("statistics.statistics_type_swaps.without_tags"),
-            offer.sum_of_transfers, offer.count_of_transfers]]
-        else
-          offer.tags.map do |tag|
-            total += offer.count_of_transfers
-            [t("statistics.statistics_type_swaps.without_category"), tag,
-             offer.sum_of_transfers, offer.count_of_transfers]
-          end
-        end
-      elsif offer.tags.blank?
-        total += offer.count_of_transfers
-        [[offer.category.name,
-          t("statistics.statistics_type_swaps.without_tags"),
-          offer.sum_of_transfers, offer.count_of_transfers]]
-      else
-        offer.tags.map do |tag|
-          total += offer.count_of_transfers
-          [offer.category.name, tag, offer.sum_of_transfers,
-           offer.count_of_transfers]
-        end
-      end
+      transform_offer(offer)
     end.flatten(1)
+    total += offers_array.map { |item| item[3] }.sum
+
     # ["Clases", "clases", 11700, 2], ["Clases", "clases", 1320, 1], ...]
     # added %
     offers_array = offers_array.map { |a| a.push(a.last / total) }
@@ -160,11 +136,28 @@ class StatisticsController < ApplicationController
   protected
 
   def age(date_of_birth)
+    return unless date_of_birth
     now = DateTime.now
-    age = now.year - date_of_birth.year
-    age -= 1 if (now.month < date_of_birth.month) ||
-                (now.month == date_of_birth.month &&
-                 now.day < date_of_birth.day)
-    age
+    age_in_days = now - date_of_birth
+    (age_in_days / 365.26).to_i
+  end
+
+
+  # returns an array of
+  #     [category_name, tag_name, sum_of_transfers, count_of_transfers]
+  # one item per each tag. If the category or the tags are missing, they are
+  # replaced with a fallback "Unknown" label.
+  def transform_offer(offer)
+    tag_labels = offer.tags.presence ||
+                 [t("statistics.statistics_type_swaps.without_tags")]
+
+    category_label = offer.category_name ||
+                     t("statistics.statistics_type_swaps.without_category")
+
+    [category_label].product(
+      tag_labels,
+      [offer.sum_of_transfers],
+      [offer.count_of_transfers]
+    )
   end
 end
