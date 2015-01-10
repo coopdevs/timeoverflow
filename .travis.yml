@@ -1,6 +1,7 @@
 language: ruby
 rvm:
   - 2.1
+  - 2.2
 env: DATABASE_URL=postgres://postgres@localhost/timeoverflow_test
 before_script:
   - psql -c 'create database timeoverflow_test;' -U postgres
