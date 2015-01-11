@@ -1,6 +1,16 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+angular.module('timeoverflow').controller 'AdminCheckBoxesCtrl', ($scope, $modal, $http, $location) ->
+  
+  $scope.adminCheckModels = [] 
+
+  $scope.isButtonEnabled = -> 
+     ret = false
+     
+     for k,v of $scope.adminCheckModels
+       if v!=false then ret=v
+     ret
 
 $(document).on "click", ".switch_offer", (event) ->
   $.ajax '/tags/offers',
