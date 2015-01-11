@@ -1,0 +1,14 @@
+.tag_list.container_fluid
+  .form-inline
+    = form_tag action, "ng-controller" => "AdminCheckBoxesCtrl" do
+      = render partial: "grouped_admin_checkboxes", locals: { alpha_tags: alpha_tags }
+      .admin_tag_actions
+        .row.reorganize_tags
+          = hidden_field_tag :current_post_type, @current_post_type
+          .col-xs-12.col-md-6.input-group
+            - if action.eql?("/tags/destroy")
+              = button_tag t("tags.alpha_grouped_destroy.delete"), id:"delete_button", name: "delete_button", value: "delete", method: "delete", data: { confirm: t("tags.alpha_grouped_rename.suremsg") }, class: "btn btn-danger reorganize_buttons", "ng-disabled" => "!isButtonEnabled()"
+            - else
+              = text_field_tag "new_name", nil, placeholder: t("tags.alpha_grouped_rename.rename_tag"), class: "form-control", "ng-disabled" => "!isButtonEnabled()", "ng-model" => "new_name"
+              = button_tag t("tags.alpha_grouped_rename.merge"), id:"merge_button", name: "merge_button", value: "merge", method: "post", data: { confirm: t("tags.alpha_grouped_rename.suremsg") }, class: "btn btn-warning reorganize_buttons", "ng-disabled" => "!isMergeButtonEnabled()"
+

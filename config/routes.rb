@@ -1,6 +1,6 @@
 Timeoverflow::Application.routes.draw do
   get "global/switch_lang", as: :switch_lang
-  get 'tags/index'
+  get "tags/index"
 
   devise_for :users
 
@@ -20,14 +20,13 @@ Timeoverflow::Application.routes.draw do
   end
   resources :inquiries, concerns: :joinable
 
-
   concern :accountable do
     get :give_time, on: :member
   end
 
   resources :organizations, concerns: :accountable
 
-  resources :users, concerns: :accountable, except: :destroy, :path => "members"
+  resources :users, concerns: :accountable, except: :destroy, path: "members"
 
   resources :transfers, only: [:create]
 
@@ -66,9 +65,17 @@ Timeoverflow::Application.routes.draw do
   resource :tags, only: [:index] do
     collection do
       get "alpha_grouped_index"
+      get "alpha_grouped_destroy"
+      get "alpha_grouped_rename"
       get "inquiries"
       get "offers"
+      get "destroy_inquiries"
+      get "destroy_offers"
+      get "rename_inquiries"
+      get "rename_offers"
       get "posts_with"
+      post "rename"
+      post "destroy"
     end
   end
 

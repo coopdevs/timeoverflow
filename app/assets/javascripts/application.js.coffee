@@ -27,8 +27,6 @@ $(document).on 'click', 'a[data-popup]', (event) ->
   window.open($(this).attr('href'), 'popup', 'width=600,height=600')
   event.preventDefault()
 
-
-
 $(document).on "click", "#bulk-add-offers", (event) ->
   userId = $(event.currentTarget).attr("data-user-id")
   console.log event.currentTarget, userId

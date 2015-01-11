@@ -1,0 +1,19 @@
+%h1
+  = maintitle
+  - offer_checked = @current_post_type.eql?("offer")
+  - inquiry_checked = !offer_checked
+  - offer_checked_class = (offer_checked) ? "active" : ""
+  - inquiry_checked_class = (inquiry_checked) ? "active" : ""
+  - if defined? linkto
+    .row
+      = link_to Offer.model_name.human(count: :many), "#{linkto}?post_type=offer", class: "btn btn-primary #{switch_offer}_link #{offer_checked_class}"
+      = link_to Inquiry.model_name.human(count: :many), "#{linkto}?post_type=inquiry", class: "btn btn-primary #{switch_inquiry}_link #{inquiry_checked_class}"
+  - else
+    = form_tag "/tags/alpha_grouped_index", method: :get do
+      .btn-group{"data-toggle" => "buttons"}
+        %label.btn.btn-primary{ class: "#{switch_offer} #{offer_checked_class}" }
+          = radio_button_tag switch_offer, value: "offer", checked: offer_checked
+          = Offer.model_name.human(count: :many)
+        %label.btn.btn-primary{ class: "#{switch_inquiry} #{inquiry_checked_class}" }
+          = radio_button_tag switch_inquiry, value: "inquiry", checked: inquiry_checked
+          = Inquiry.model_name.human(count: :many)

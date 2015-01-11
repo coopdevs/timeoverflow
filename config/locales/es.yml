@@ -115,6 +115,8 @@ es:
       admin: Administrar
       adminshort: Admin
       tags: Etiquetas
+      destroy_tags: Borrar etiquetas
+      rename_tags: Renombrar etiquetas
       sign_out: Desconectar
       offer_public_link: Enlace público a ofertas
       inquiry_public_link: Enlace público a demandas
@@ -182,7 +184,16 @@ es:
 
   tags:
     alpha_grouped_index:
-      maintitle: "Etiquetas Disponibles"
+      maintitle: Etiquetas Disponibles
+    alpha_grouped_destroy:
+      maintitle: Etiquetas Disponibles
+      delete: Borrar
+      suremsg: ¿Estás seguro que quieres borrar las etiquetas?
+    alpha_grouped_rename:
+      maintitle: Etiquetas Disponibles
+      rename_tag: "Entre nuevo texto para las etiquetas seleccionadas"
+      suremsg: ¿Estás seguro que quieres unificar las etiquetas?
+      merge: Unificar
   terms:
     accept: Aceptar
   offers:
