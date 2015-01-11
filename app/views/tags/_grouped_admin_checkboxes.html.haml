@@ -1,5 +1,5 @@
-%div.row
-  - i=0
+.row
+  - i = 0
   - alpha_tags.each do |kg, vl|
     .col-xs-4.col-md-2
       %h2.bg-info.text-center
@@ -15,4 +15,4 @@
             = tag
           %label
             = check_box_tag "tags[]", tag, false, "ng-model" => "adminCheckModels[#{i}]"
-        - i+=1
+        - i += 1

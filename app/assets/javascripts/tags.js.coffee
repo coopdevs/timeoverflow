@@ -4,13 +4,20 @@
 angular.module('timeoverflow').controller 'AdminCheckBoxesCtrl', ($scope, $modal, $http, $location) ->
   
   $scope.adminCheckModels = [] 
+  $scope.new_name = ''
 
   $scope.isButtonEnabled = -> 
-     ret = false
+    ret = false
      
-     for k,v of $scope.adminCheckModels
-       if v!=false then ret=v
-     ret
+    for k,v of $scope.adminCheckModels
+      if v!=false then ret=v
+
+    $scope.new_name = '' if !ret
+     
+    ret
+  
+  $scope.isMergeButtonEnabled = ->
+    $scope.isButtonEnabled and $scope.new_name!='' 
 
 $(document).on "click", ".switch_offer", (event) ->
   $.ajax '/tags/offers',
