@@ -1,3 +1,2 @@
 class Offer < Post
-
 end

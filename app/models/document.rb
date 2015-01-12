@@ -4,5 +4,4 @@ class Document < ActiveRecord::Base
   def self.terms_and_conditions
     where(label: "t&c", documentable_id: nil).first
   end
-
 end
