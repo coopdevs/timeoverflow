@@ -41,7 +41,7 @@ module UsersHelper
     can_cancel_member?(member) ? member_path(member) : ""
   end
 
-  def can_cancel_member(_member)
+  def can_cancel_member?(_member)
     superadmin? || admin?
   end
 
@@ -49,7 +49,7 @@ module UsersHelper
     can_toggle_manager?(member) ? super : ""
   end
 
-  def can_toggle_manager(member)
+  def can_toggle_manager?(member)
     (superadmin? || admin?) && member.user != current_user
   end
 
