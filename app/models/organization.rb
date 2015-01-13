@@ -39,4 +39,10 @@ class Organization < ActiveRecord::Base
     reg_number_seq
   end
 
+  def ensure_url
+    if (URl.parse(web).class != "URl:HTTP") then
+      web =  "http://" + web
+    end
+  end
+
 end
