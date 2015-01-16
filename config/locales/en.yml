@@ -151,6 +151,7 @@ en:
       create_user_button: Create
       create_more_users_button: Create and add another user
       user_created_add: "User created, now create next one"
+      cancel: Cancel
     edit:
       edit_user: Update user
     show:

@@ -29,3 +29,4 @@
     .form-actions      
       = f.button :submit, t('users.new.create_user_button')
       = f.button :submit, t('users.new.create_more_users_button'), name: 'more'
+      = link_to t('users.new.cancel'), :back
