@@ -23,8 +23,9 @@
       = f.input :date_of_birth, start_year: Date.today.year - 90, end_year: Date.today.year - 12, include_blank: :true
 
       = f.input :description, as: "text"
-
+    
       / = f.association :categories, label_method: :fqn, input_html: {style: 'width: 100%'}
 
-    .form-actions
-      = f.button :submit
+    .form-actions      
+      = f.button :submit, t('users.new.create_user_button')
+      = f.button :submit, t('users.new.create_more_users_button'), name: 'more'
