@@ -40,22 +40,32 @@ class Organization < ActiveRecord::Base
     reg_number_seq
   end
 
+  def is_web_url
+     begin  
+      w = URI.parse(web)
+      rescue  
+      return false
+    end 
+    return true
+  end
+
   def ensure_url
+    if !is_web_url
+      return web
+    end
     if (URI.parse(web).class == URI::HTTP || URI.parse(web).class == URI::HTTPS) 
       web_s = web
     else
       if (URI.parse(web).class == URI::Generic)
-        if (web == "") 
-          web_s = "about:blank"
-        else
+        if (web != "") 
           web_s = "http://"+web
         end
       end
     end 
     if web_s != nil 
-      web = web_s
+      self.web = web_s
     end
-    return web
+    return self.web
   end
 
 end

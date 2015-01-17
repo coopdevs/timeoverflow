@@ -19,11 +19,11 @@ describe Organization do
   it "3: blank" do
   	org = Organization.new
   	org.web = ""
-  	expect(org.ensure_url).to eq "about:blank"
+  	expect(org.ensure_url).to eq ""
   end
   it "4: no url" do
   	org = Organization.new
   	org.web = "la casa"
-  	expect(org.ensure_url).to eq "about:blank"
+  	expect(org.ensure_url).to eq "la casa"
   end
 end
