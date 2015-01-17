@@ -1,4 +1,5 @@
 class Organization < ActiveRecord::Base
+  before_save      :ensure_url
   validates_uniqueness_of :name
   has_many :members
   has_many :users, -> { order "members.created_at DESC" }, through: :members
@@ -40,9 +41,21 @@ class Organization < ActiveRecord::Base
   end
 
   def ensure_url
-    if (URl.parse(web).class != "URl:HTTP") then
-      web =  "http://" + web
+    if (URI.parse(web).class == URI::HTTP || URI.parse(web).class == URI::HTTPS) 
+      web_s = web
+    else
+      if (URI.parse(web).class == URI::Generic)
+        if (web == "") 
+          web_s = "about:blank"
+        else
+          web_s = "http://"+web
+        end
+      end
+    end 
+    if web_s != nil 
+      web = web_s
     end
+    return web
   end
 
 end
