@@ -1,5 +1,5 @@
 class Organization < ActiveRecord::Base
-  before_save      :ensure_url
+  before_save :ensure_url
   validates_uniqueness_of :name
   has_many :members
   has_many :users, -> { order "members.created_at DESC" }, through: :members
@@ -40,32 +40,30 @@ class Organization < ActiveRecord::Base
     reg_number_seq
   end
 
-  def is_web_url
-     begin  
-      w = URI.parse(web)
-      rescue  
-      return false
-    end 
-    return true
+  def web_url
+    true
+    begin
+      URI.parse(web)
+      rescue
+        false
+    end
   end
 
   def ensure_url
-    if !is_web_url
+    if !web_url
       return web
     end
-    if (URI.parse(web).class == URI::HTTP || URI.parse(web).class == URI::HTTPS) 
+    if URI.parse(web).class == URI::HTTP || URI.parse(web).class == URI::HTTPS
       web_s = web
     else
       if (URI.parse(web).class == URI::Generic)
-        if (web != "") 
-          web_s = "http://"+web
+        if (web != "")
+          web_s = "http://" + web
         end
       end
-    end 
-    if web_s != nil 
+    end
+    if !web_s.nil?
       self.web = web_s
     end
-    return self.web
   end
-
 end

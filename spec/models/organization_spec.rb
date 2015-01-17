@@ -19,7 +19,7 @@ describe Organization do
   it "3: blank" do
   	org = Organization.new
   	org.web = ""
-  	expect(org.ensure_url).to eq ""
+  	expect(org.ensure_url).to eq nil
   end
   it "4: no url" do
   	org = Organization.new

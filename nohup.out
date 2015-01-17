@@ -2138,3 +2138,837 @@ Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-1
 
 Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 22:41:35 +0100
 Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 22:41:35 +0100
+
+
+
+
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 22:58:48 +0100
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 22:58:48 +0100
+Processing by OrganizationsController#show as HTML
+Processing by OrganizationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[35mDocument Load (0.8ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mDocument Load (0.8ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[36mOrganization Load (0.4ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.4ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1  [["organization_id", 1]]
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1  [["organization_id", 1]]
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1[0m  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1[0m  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[35mOrganization Load (0.5ms)[0m  SELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[35mOrganization Load (0.5ms)[0m  SELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mMember Load (0.3ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMovement Load (0.3ms)[0m  SELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10  [["account_id", 1]]
+  [1m[35mMovement Load (0.3ms)[0m  SELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10  [["account_id", 1]]
+  Rendered organizations/show.html.haml within layouts/application (72.6ms)
+  Rendered organizations/show.html.haml within layouts/application (72.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMember Load (0.6ms)[0m  SELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'  [["user_id", 1]]
+  [1m[35mMember Load (0.6ms)[0m  SELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'  [["user_id", 1]]
+  [1m[36mOrganization Load (0.4ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.4ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered application/_navbar.html.haml (21.1ms)
+  Rendered application/_navbar.html.haml (21.1ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+Completed 200 OK in 156ms (Views: 113.8ms | ActiveRecord: 8.4ms)
+Completed 200 OK in 156ms (Views: 113.8ms | ActiveRecord: 8.4ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 22:58:48 +0100
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 22:58:48 +0100
+
+
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+
+
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+
+
+
+
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+
+
+
+
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+
+
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+
+
+
+
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+
+
+
+
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+
+
+
+
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:49 +0100
+
+
+
+
+Started GET "/organizations/1/edit" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/organizations/1/edit" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Processing by OrganizationsController#edit as HTML
+Processing by OrganizationsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[35mDocument Load (0.7ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mDocument Load (0.7ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered organizations/_form.html.haml (25.3ms)
+  Rendered organizations/_form.html.haml (25.3ms)
+  Rendered organizations/edit.html.haml within layouts/application (27.5ms)
+  Rendered organizations/edit.html.haml within layouts/application (27.5ms)
+  [1m[35mOrganization Load (0.7ms)[0m  SELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[35mOrganization Load (0.7ms)[0m  SELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMember Load (0.4ms)[0m  SELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'  [["user_id", 1]]
+  [1m[35mMember Load (0.4ms)[0m  SELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'  [["user_id", 1]]
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered application/_navbar.html.haml (11.1ms)
+  Rendered application/_navbar.html.haml (11.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+Completed 200 OK in 75ms (Views: 67.3ms | ActiveRecord: 3.6ms)
+Completed 200 OK in 75ms (Views: 67.3ms | ActiveRecord: 3.6ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+
+
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+
+
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+
+
+
+
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+
+
+
+
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+
+
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+
+
+
+
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+
+
+
+
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+
+
+
+
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:52 +0100
+
+
+
+
+Started PATCH "/organizations/1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+Started PATCH "/organizations/1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+Processing by OrganizationsController#update as HTML
+Processing by OrganizationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qyuSlTmn7NvVbSetArUls16+e/dmgY5zHkJ3sPGehrw=", "organization"=>{"name"=>"TimeOverflow", "theme"=>"", "email"=>"", "phone"=>"", "web"=>"https://www.lacasa.com", "description"=>"", "public_opening_times"=>"", "address"=>"", "neighborhood"=>"", "city"=>"", "domain"=>""}, "commit"=>"Actualitzar Banc de Temps", "id"=>"1"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qyuSlTmn7NvVbSetArUls16+e/dmgY5zHkJ3sPGehrw=", "organization"=>{"name"=>"TimeOverflow", "theme"=>"", "email"=>"", "phone"=>"", "web"=>"https://www.lacasa.com", "description"=>"", "public_opening_times"=>"", "address"=>"", "neighborhood"=>"", "city"=>"", "domain"=>""}, "commit"=>"Actualitzar Banc de Temps", "id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[35mDocument Load (0.7ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mDocument Load (0.7ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[36mOrganization Load (0.9ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.9ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mOrganization Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "organizations"  WHERE ("organizations"."name" = 'TimeOverflow' AND "organizations"."id" != 1) LIMIT 1[0m
+  [1m[36mOrganization Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "organizations"  WHERE ("organizations"."name" = 'TimeOverflow' AND "organizations"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "organizations" SET "updated_at" = $1, "web" = $2 WHERE "organizations"."id" = 1  [["updated_at", "2015-01-17 21:58:58.881942"], ["web", "https://www.lacasa.com"]]
+  [1m[35mSQL (0.5ms)[0m  UPDATE "organizations" SET "updated_at" = $1, "web" = $2 WHERE "organizations"."id" = 1  [["updated_at", "2015-01-17 21:58:58.881942"], ["web", "https://www.lacasa.com"]]
+  [1m[36m (6.5ms)[0m  [1mCOMMIT[0m
+  [1m[36m (6.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/organizations/1
+Redirected to http://localhost:3000/organizations/1
+Completed 302 Found in 33ms (ActiveRecord: 10.7ms)
+Completed 302 Found in 33ms (ActiveRecord: 10.7ms)
+
+
+
+
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+Processing by OrganizationsController#show as HTML
+Processing by OrganizationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[36mDocument Load (0.7ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[36mDocument Load (0.7ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[35mOrganization Load (0.4ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[35mOrganization Load (0.4ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1[0m  [["organization_id", 1]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1[0m  [["organization_id", 1]]
+  [1m[35mAccount Load (0.7ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[35mAccount Load (0.7ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[36mOrganization Load (0.5ms)[0m  [1mSELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mOrganization Load (0.5ms)[0m  [1mSELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMember Load (0.3ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[35mMember Load (0.3ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[36mMovement Load (0.3ms)[0m  [1mSELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10[0m  [["account_id", 1]]
+  [1m[36mMovement Load (0.3ms)[0m  [1mSELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10[0m  [["account_id", 1]]
+  Rendered organizations/show.html.haml within layouts/application (11.7ms)
+  Rendered organizations/show.html.haml within layouts/application (11.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[36mMember Load (0.6ms)[0m  [1mSELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'[0m  [["user_id", 1]]
+  [1m[36mMember Load (0.6ms)[0m  [1mSELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'[0m  [["user_id", 1]]
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered application/_navbar.html.haml (10.0ms)
+  Rendered application/_navbar.html.haml (10.0ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+Completed 200 OK in 54ms (Views: 41.5ms | ActiveRecord: 6.0ms)
+Completed 200 OK in 54ms (Views: 41.5ms | ActiveRecord: 6.0ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+
+
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+
+
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+
+
+
+
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:58 +0100
+
+
+
+
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+
+
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+
+
+
+
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+
+
+
+
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+
+
+
+
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 22:58:59 +0100
+
+
+
+
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Processing by OrganizationsController#show as HTML
+Processing by OrganizationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[36mDocument Load (0.8ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[36mDocument Load (0.8ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[35mOrganization Load (0.5ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[35mOrganization Load (0.5ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1[0m  [["organization_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1[0m  [["organization_id", 1]]
+  [1m[35mAccount Load (0.4ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[35mAccount Load (0.4ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[36mOrganization Load (0.7ms)[0m  [1mSELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mOrganization Load (0.7ms)[0m  [1mSELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMember Load (0.4ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[35mMember Load (0.4ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[36mMovement Load (0.3ms)[0m  [1mSELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10[0m  [["account_id", 1]]
+  [1m[36mMovement Load (0.3ms)[0m  [1mSELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10[0m  [["account_id", 1]]
+  Rendered organizations/show.html.haml within layouts/application (49.5ms)
+  Rendered organizations/show.html.haml within layouts/application (49.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[36mMember Load (0.6ms)[0m  [1mSELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'[0m  [["user_id", 1]]
+  [1m[36mMember Load (0.6ms)[0m  [1mSELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'[0m  [["user_id", 1]]
+  [1m[35mOrganization Load (0.5ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[35mOrganization Load (0.5ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered application/_navbar.html.haml (20.4ms)
+  Rendered application/_navbar.html.haml (20.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+Completed 200 OK in 133ms (Views: 89.1ms | ActiveRecord: 9.9ms)
+Completed 200 OK in 133ms (Views: 89.1ms | ActiveRecord: 9.9ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+
+
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+
+
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+
+
+
+
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+
+
+
+
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+
+
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+
+
+
+
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+
+
+
+
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+
+
+
+
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:03 +0100
+
+
+
+
+Started GET "/organizations/1/edit" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/organizations/1/edit" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Processing by OrganizationsController#edit as HTML
+Processing by OrganizationsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[36mDocument Load (0.6ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[36mDocument Load (0.6ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[35mOrganization Load (0.3ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[35mOrganization Load (0.3ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered organizations/_form.html.haml (30.9ms)
+  Rendered organizations/_form.html.haml (30.9ms)
+  Rendered organizations/edit.html.haml within layouts/application (32.9ms)
+  Rendered organizations/edit.html.haml within layouts/application (32.9ms)
+  [1m[36mOrganization Load (0.6ms)[0m  [1mSELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mOrganization Load (0.6ms)[0m  [1mSELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMember Load (0.5ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[35mMember Load (0.5ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'[0m  [["user_id", 1]]
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'[0m  [["user_id", 1]]
+  [1m[35mOrganization Load (0.3ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[35mOrganization Load (0.3ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered application/_navbar.html.haml (10.0ms)
+  Rendered application/_navbar.html.haml (10.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+Completed 200 OK in 76ms (Views: 67.7ms | ActiveRecord: 3.7ms)
+Completed 200 OK in 76ms (Views: 67.7ms | ActiveRecord: 3.7ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+
+
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+
+
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+
+
+
+
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+
+
+
+
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+
+
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+
+
+
+
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+
+
+
+
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+
+
+
+
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:05 +0100
+
+
+
+
+Started PATCH "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started PATCH "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Processing by OrganizationsController#update as HTML
+Processing by OrganizationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qyuSlTmn7NvVbSetArUls16+e/dmgY5zHkJ3sPGehrw=", "organization"=>{"name"=>"TimeOverflow", "theme"=>"", "email"=>"", "phone"=>"", "web"=>"www.lacasa.com", "description"=>"", "public_opening_times"=>"", "address"=>"", "neighborhood"=>"", "city"=>"", "domain"=>""}, "commit"=>"Actualitzar Banc de Temps", "id"=>"1"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qyuSlTmn7NvVbSetArUls16+e/dmgY5zHkJ3sPGehrw=", "organization"=>{"name"=>"TimeOverflow", "theme"=>"", "email"=>"", "phone"=>"", "web"=>"www.lacasa.com", "description"=>"", "public_opening_times"=>"", "address"=>"", "neighborhood"=>"", "city"=>"", "domain"=>""}, "commit"=>"Actualitzar Banc de Temps", "id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[36mDocument Load (1.4ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[36mDocument Load (1.4ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[35mOrganization Load (0.8ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[35mOrganization Load (0.8ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mOrganization Exists (0.5ms)[0m  SELECT  1 AS one FROM "organizations"  WHERE ("organizations"."name" = 'TimeOverflow' AND "organizations"."id" != 1) LIMIT 1
+  [1m[35mOrganization Exists (0.5ms)[0m  SELECT  1 AS one FROM "organizations"  WHERE ("organizations"."name" = 'TimeOverflow' AND "organizations"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "organizations" SET "updated_at" = $1, "web" = $2 WHERE "organizations"."id" = 1[0m  [["updated_at", "2015-01-17 22:01:13.417701"], ["web", "http://www.lacasa.com"]]
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "organizations" SET "updated_at" = $1, "web" = $2 WHERE "organizations"."id" = 1[0m  [["updated_at", "2015-01-17 22:01:13.417701"], ["web", "http://www.lacasa.com"]]
+  [1m[35m (6.5ms)[0m  COMMIT
+  [1m[35m (6.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/organizations/1
+Redirected to http://localhost:3000/organizations/1
+Completed 302 Found in 27ms (ActiveRecord: 10.8ms)
+Completed 302 Found in 27ms (ActiveRecord: 10.8ms)
+
+
+
+
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Processing by OrganizationsController#show as HTML
+Processing by OrganizationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[35mDocument Load (1.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mDocument Load (1.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[36mOrganization Load (0.5ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.5ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1  [["organization_id", 1]]
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1  [["organization_id", 1]]
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1[0m  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1[0m  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[35mOrganization Load (0.6ms)[0m  SELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[35mOrganization Load (0.6ms)[0m  SELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[36mMember Load (0.7ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mMember Load (0.7ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMovement Load (0.4ms)[0m  SELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10  [["account_id", 1]]
+  [1m[35mMovement Load (0.4ms)[0m  SELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10  [["account_id", 1]]
+  Rendered organizations/show.html.haml within layouts/application (13.5ms)
+  Rendered organizations/show.html.haml within layouts/application (13.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMember Load (0.6ms)[0m  SELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'  [["user_id", 1]]
+  [1m[35mMember Load (0.6ms)[0m  SELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'  [["user_id", 1]]
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered application/_navbar.html.haml (9.4ms)
+  Rendered application/_navbar.html.haml (9.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+Completed 200 OK in 55ms (Views: 44.0ms | ActiveRecord: 6.1ms)
+Completed 200 OK in 55ms (Views: 44.0ms | ActiveRecord: 6.1ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+
+
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+
+
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+
+
+
+
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+
+
+
+
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+
+
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+
+
+
+
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+
+
+
+
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+
+
+
+
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:13 +0100
+
+
+
+
+Started GET "/organizations/1/edit" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/organizations/1/edit" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Processing by OrganizationsController#edit as HTML
+Processing by OrganizationsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[35mDocument Load (0.4ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mDocument Load (0.4ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered organizations/_form.html.haml (27.5ms)
+  Rendered organizations/_form.html.haml (27.5ms)
+  Rendered organizations/edit.html.haml within layouts/application (30.2ms)
+  Rendered organizations/edit.html.haml within layouts/application (30.2ms)
+  [1m[35mOrganization Load (1.1ms)[0m  SELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[35mOrganization Load (1.1ms)[0m  SELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[36mMember Load (0.5ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mMember Load (0.5ms)[0m  [1mSELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'  [["user_id", 1]]
+  [1m[35mMember Load (1.0ms)[0m  SELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'  [["user_id", 1]]
+  [1m[36mOrganization Load (0.9ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.9ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered application/_navbar.html.haml (18.1ms)
+  Rendered application/_navbar.html.haml (18.1ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+Completed 200 OK in 85ms (Views: 77.0ms | ActiveRecord: 4.9ms)
+Completed 200 OK in 85ms (Views: 77.0ms | ActiveRecord: 4.9ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+
+
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+
+
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+
+
+
+
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+
+
+
+
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+
+
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+
+
+
+
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+
+
+
+
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+
+
+
+
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:17 +0100
+
+
+
+
+Started PATCH "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started PATCH "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Processing by OrganizationsController#update as HTML
+Processing by OrganizationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qyuSlTmn7NvVbSetArUls16+e/dmgY5zHkJ3sPGehrw=", "organization"=>{"name"=>"TimeOverflow", "theme"=>"", "email"=>"", "phone"=>"", "web"=>"la casa mala", "description"=>"", "public_opening_times"=>"", "address"=>"", "neighborhood"=>"", "city"=>"", "domain"=>""}, "commit"=>"Actualitzar Banc de Temps", "id"=>"1"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qyuSlTmn7NvVbSetArUls16+e/dmgY5zHkJ3sPGehrw=", "organization"=>{"name"=>"TimeOverflow", "theme"=>"", "email"=>"", "phone"=>"", "web"=>"la casa mala", "description"=>"", "public_opening_times"=>"", "address"=>"", "neighborhood"=>"", "city"=>"", "domain"=>""}, "commit"=>"Actualitzar Banc de Temps", "id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1[0m
+  [1m[35mDocument Load (0.5ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[35mDocument Load (0.5ms)[0m  SELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mOrganization Load (0.3ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mOrganization Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "organizations"  WHERE ("organizations"."name" = 'TimeOverflow' AND "organizations"."id" != 1) LIMIT 1[0m
+  [1m[36mOrganization Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "organizations"  WHERE ("organizations"."name" = 'TimeOverflow' AND "organizations"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "organizations" SET "updated_at" = $1, "web" = $2 WHERE "organizations"."id" = 1  [["updated_at", "2015-01-17 22:01:21.621314"], ["web", "la casa mala"]]
+  [1m[35mSQL (0.5ms)[0m  UPDATE "organizations" SET "updated_at" = $1, "web" = $2 WHERE "organizations"."id" = 1  [["updated_at", "2015-01-17 22:01:21.621314"], ["web", "la casa mala"]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/organizations/1
+Redirected to http://localhost:3000/organizations/1
+Completed 302 Found in 25ms (ActiveRecord: 9.6ms)
+Completed 302 Found in 25ms (ActiveRecord: 9.6ms)
+
+
+
+
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/organizations/1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Processing by OrganizationsController#show as HTML
+Processing by OrganizationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY users.id ASC LIMIT 1
+  [1m[36mDocument Load (1.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[36mDocument Load (1.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[35mOrganization Load (0.5ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[35mOrganization Load (0.5ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1[0m  [["organization_id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "members"  WHERE "members"."organization_id" = $1[0m  [["organization_id", 1]]
+  [1m[35mAccount Load (0.4ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[35mAccount Load (0.4ms)[0m  SELECT  "accounts".* FROM "accounts"  WHERE "accounts"."accountable_id" = $1 AND "accounts"."accountable_type" = $2 LIMIT 1  [["accountable_id", 1], ["accountable_type", "Organization"]]
+  [1m[36mOrganization Load (0.4ms)[0m  [1mSELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mOrganization Load (0.4ms)[0m  [1mSELECT  "organizations".* FROM "organizations" INNER JOIN "members" ON "organizations"."id" = "members"."organization_id" WHERE "members"."user_id" = $1  ORDER BY "organizations"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mMember Load (0.6ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[35mMember Load (0.6ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[36mMovement Load (0.5ms)[0m  [1mSELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10[0m  [["account_id", 1]]
+  [1m[36mMovement Load (0.5ms)[0m  [1mSELECT  "movements".* FROM "movements"  WHERE "movements"."account_id" = $1  ORDER BY created_at DESC LIMIT 10[0m  [["account_id", 1]]
+  Rendered organizations/show.html.haml within layouts/application (11.4ms)
+  Rendered organizations/show.html.haml within layouts/application (11.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."organization_id" = 1 LIMIT 1  [["user_id", 1]]
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'[0m  [["user_id", 1]]
+  [1m[36mMember Load (0.4ms)[0m  [1mSELECT "members".* FROM "members"  WHERE "members"."user_id" = $1 AND "members"."manager" = 't'[0m  [["user_id", 1]]
+  [1m[35mOrganization Load (0.3ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[35mOrganization Load (0.3ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered application/_navbar.html.haml (13.0ms)
+  Rendered application/_navbar.html.haml (13.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "documents".* FROM "documents"  WHERE "documents"."label" = 't&c' AND "documents"."documentable_id" IS NULL  ORDER BY "documents"."id" ASC LIMIT 1[0m
+Completed 200 OK in 55ms (Views: 45.5ms | ActiveRecord: 5.2ms)
+Completed 200 OK in 55ms (Views: 45.5ms | ActiveRecord: 5.2ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+
+
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+
+
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+
+
+
+
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/assets/datepicker.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+
+
+
+
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/assets/give_time.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+
+
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+
+
+
+
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/assets/ui-bootstrap-tpls-0.11.0.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+
+
+
+
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/assets/modules/ng-rails-csrf.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+
+
+
+
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100
+Started GET "/assets/app/app.js?body=1" for 127.0.0.1 at 2015-01-17 23:01:21 +0100

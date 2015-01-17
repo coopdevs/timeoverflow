@@ -1,5 +1,5 @@
 %h1
-  = link_to_unless(!@organization.is_web_url,@organization.name,@organization.web)
+  = link_to_unless(!@organization.web_url,@organization.name,@organization.web)
 .row
   .col-sm-4
     .panel.panel-default
@@ -14,7 +14,7 @@
           = @organization.phone
           %br
           %strong Web
-          =link_to_unless(!@organization.is_web_url,@organization.web,@organization.web)
+          =link_to_unless(!@organization.web_url,@organization.web,@organization.web)
           %br
           %strong= Organization.human_attribute_name("public_opening_times")
           %br
