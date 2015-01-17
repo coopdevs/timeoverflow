@@ -44,11 +44,11 @@ class UsersController < ApplicationController
         redirect_to new_user_path, notice: I18n.t("users.new.user_created_add")
       else
         redirect_to users_path, notice: I18n.t("users.index.user_created")
-      end    
+      end
     else
       @user.email = "" if empty_email
       render action: "new"
-    end    
+    end
   end
 
   def update
