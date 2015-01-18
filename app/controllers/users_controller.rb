@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user if current_user.id == params[:id].to_i
-    @user ||= scoped_users.find(params[:id]) 
+    @user ||= scoped_users.find(params[:id])
   end
 
   def new
@@ -65,18 +65,12 @@ class UsersController < ApplicationController
     @user = scoped_users.find(params[:id])
     @destination = @user.members.
                    find_by(organization: current_organization).account.id
-    @source = current_user.members.
-              find_by(organization: current_organization).account.id
-    @offer = current_organization.offers.
-             find(params[:offer]) if params[:offer].present?
+    @source = find_transfer_source
+    @offer = find_transfer_offer
     @transfer = Transfer.new(source: @source,
                              destination: @destination,
                              post: @offer)
-    if admin?
-      @sources = [current_organization.account] +
-                 current_organization.
-                 member_accounts.where("members.active is true")
-    end
+    @sources = find_transfer_sources_for_admin
   end
 
   def toggle_active
@@ -103,5 +97,21 @@ class UsersController < ApplicationController
     fields_to_permit += %w"organization_id superadmin" if superadmin?
     # params[:user].permit(*fields_to_permit).tap &method(:ap)
     params.require(:user).permit *fields_to_permit
+  end
+
+  def find_transfer_offer
+    current_organization.offers.
+      find(params[:offer]) if params[:offer].present?
+  end
+
+  def find_transfer_source
+    current_user.members.
+      find_by(organization: current_organization).account.id
+  end
+
+  def find_transfer_sources_for_admin
+    return unless admin?
+    [current_organization.account] +
+      current_organization.member_accounts.where("members.active is true")
   end
 end

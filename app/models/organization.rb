@@ -14,7 +14,8 @@ class Organization < ActiveRecord::Base
 
   has_many :documents, as: :documentable
 
-  BOOTSWATCH_THEMES = %w[amelia cerulean cosmo cyborg flatly journal readable simplex slate spacelab united]
+  BOOTSWATCH_THEMES = %w[amelia cerulean cosmo cyborg flatly journal readable
+                         simplex slate spacelab united]
   # validates :theme, allow_nil: true, inclusion: {in: BOOTSWATCH_THEMES}
 
   scope :matching, ->(str) {
@@ -38,5 +39,4 @@ class Organization < ActiveRecord::Base
     increment!(:reg_number_seq)
     reg_number_seq
   end
-
 end
