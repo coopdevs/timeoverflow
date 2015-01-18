@@ -145,8 +145,13 @@ es:
       cancel_warning_angular: "Va a eliminar del banco al usuario {{username}}"
       active_warning_angular: "Va a cambiar el estado de la cuenta del usuario {{username}}"
       actions: Acciones
+      user_created: "Usuario creado"
     new:
       new_user: Nuevo usuario
+      create_user_button: Crear
+      create_more_users_button: Crear e introducir otro usuario
+      user_created_add: "Usuario creado, crea ahora el siguiente"
+      cancel: Cancelar
     edit:
       edit_user: Cambiar usuario
     show:

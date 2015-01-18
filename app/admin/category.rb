@@ -1,5 +1,4 @@
 ActiveAdmin.register Category do
-
   index do
     selectable_column
     id_column
@@ -24,7 +23,7 @@ ActiveAdmin.register Category do
           I18n.available_locales.map do |loc|
             next unless cat.send("name_#{loc}")
             content_tag(:strong, "#{loc}: ") +
-            content_tag(:span, cat.send("name_#{loc}"))
+              content_tag(:span, cat.send("name_#{loc}"))
           end.compact.sum
         end
       end
@@ -33,5 +32,4 @@ ActiveAdmin.register Category do
   end
 
   permit_params :name
-
 end

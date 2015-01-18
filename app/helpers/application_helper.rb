@@ -42,17 +42,12 @@ module ApplicationHelper
   end
 
   def languages_list
-    locales = I18n.available_locales
-
-    locales.map do |locale|
-      content_tag(:li, class: I18n.locale == locale ? :disabled : "") do
-        locale_key = "locales.#{locale}"
-        link_to switch_lang_path(locale: locale) do
-          concat t(locale_key, locale: locale)
-          concat " (#{t(locale_key)})" unless I18n.locale == locale
-        end
-      end
-    end.join.html_safe
+    I18n.available_locales.each do |locale|
+      concat content_tag(:li,
+                         link_to(locale_menu_item(locale),
+                                 switch_lang_path(locale: locale)),
+                         class: ("disabled" if I18n.locale == locale))
+    end
   end
 
   def show_error_messages!(resource)
@@ -68,5 +63,13 @@ module ApplicationHelper
     HTML
 
     html.html_safe
+  end
+
+  private
+
+  def locale_menu_item(locale)
+    t("locales.#{locale}", locale: locale).tap do |s|
+      s << " (#{t("locales.#{locale}")})" unless I18n.locale == locale
+    end
   end
 end

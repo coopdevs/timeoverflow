@@ -10,5 +10,4 @@ class TermsController < ApplicationController
     current_user.touch :terms_accepted_at
     redirect_to root_path
   end
-
 end
