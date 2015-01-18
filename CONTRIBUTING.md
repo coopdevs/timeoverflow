@@ -5,6 +5,12 @@ iTerm2 - un terminal mucho más completo (<http://iterm2.com>). Especialmente re
 la opción "Working directory -> Reuse previous session's directory" para el perfil por defecto,
 para jugar fácilmente con múltiples pestañas en la misma directory.
 
+SublimeText2 - un editor muy muy avanzado (<http://www.sublimetext.com>). Instalar también
+PackageControl para luego instalar extensiones de forma muy fácil (seguir instrucciones en
+<https://packagecontrol.io/installation#st2>). Otro editor que promete es Atom (<https://atom.io>)
+aunque no es tan maduro, tiene unos grandes desarrolladores detrás. Ambos permiten - y es muy
+importante - evitar que se cuelen TABs en el código.
+
 Homebrew - para instalar todo tipo de paquetes adicionales (<http://brew.sh>).
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
