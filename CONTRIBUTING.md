@@ -25,10 +25,15 @@ Instalar varios paquetes por medio de homebrew
 
     brew install git rbenv ruby-build postgresql
     
-Instalar ruby, y luego abrir otro terminal - para tener rbenv y yadr y todo activo.
+Instalar ruby
 
     rbenv install 2.2.0
     rbenv global 2.2.0
+    
+Añadir la siguiente línea al fichero `.profile` para tener rbenv activado) y reiniciar
+el terminal.
+
+    eval "$(rbenv init -)"
 
 
 Actualizar rubygems e instalar bundler
