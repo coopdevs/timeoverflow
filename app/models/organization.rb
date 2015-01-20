@@ -41,7 +41,6 @@ class Organization < ActiveRecord::Base
   end
 
   def web_url
-    true
     begin
       URI.parse(web)
       rescue
@@ -50,20 +49,14 @@ class Organization < ActiveRecord::Base
   end
 
   def ensure_url
-    if !web_url
-      return web
+    begin
+      URI.parse(web)
+      rescue
+        self.web = ""
     end
-    if URI.parse(web).class == URI::HTTP || URI.parse(web).class == URI::HTTPS
-      web_s = web
-    else
-      if (URI.parse(web).class == URI::Generic)
-        if (web != "")
-          web_s = "http://" + web
-        end
-      end
-    end
-    if !web_s.nil?
-      self.web = web_s
+    return if web.blank?
+    if !URI.parse(web).is_a? URI::HTTP
+       self.web  = "http://" + web
     end
   end
 end
