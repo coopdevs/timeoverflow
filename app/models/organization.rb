@@ -41,22 +41,19 @@ class Organization < ActiveRecord::Base
   end
 
   def web_url
-    begin
-      URI.parse(web)
-      rescue
-        false
-    end
+    URI.parse(web)
+    rescue
+      false
   end
 
   def ensure_url
-    begin
-      URI.parse(web)
-      rescue
-        self.web = ""
-    end
-    return if web.blank?
-    if !URI.parse(web).is_a? URI::HTTP
-       self.web  = "http://" + web
+    if web_url
+      return if web.blank?
+      if !URI.parse(web).is_a? URI::HTTP
+        self.web  = "http://" + web
+      end
+    else
+      errors.add(:web, "formato de url incorrecto")
     end
   end
 end
