@@ -13,7 +13,7 @@
           %strong= Organization.human_attribute_name("phone")
           = @organization.phone
           %br
-          %strong Web
+          %strong Web 
           =link_to_if(@organization.web_url,@organization.web,@organization.web)
           %br
           %strong= Organization.human_attribute_name("public_opening_times")
