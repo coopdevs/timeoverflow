@@ -53,7 +53,7 @@ class Organization < ActiveRecord::Base
         self.web  = "http://" + web
       end
     else
-      errors.add(:web, "formato de url incorrecto")
+      errors.add(:web, :url_format_invalid)
     end
   end
 end

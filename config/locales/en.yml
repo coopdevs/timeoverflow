@@ -94,6 +94,11 @@ en:
           attributes:
             email:
               invalid: invalid
+         organization:
+          attributes:
+            web:
+              url_format_invalid: URL format invalid
+            
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:

@@ -94,6 +94,11 @@ ca:
           attributes:
             email:
               invalid: invàlid
+        organization:
+          attributes:
+            web:
+              url_format_invalid: Format de URL no vàlid
+
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
