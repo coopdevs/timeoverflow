@@ -153,7 +153,7 @@ class StatisticsController < ApplicationController
   def age_counts
     @members.each_with_object(Hash.new(0)) do |member, counts|
       age = age(member.user_date_of_birth)
-      age_label = AGE_GROUP_LABELS.detect do |range, label|
+      age_label = AGE_GROUP_LABELS.detect do |range, _|
         range.include? age
       end.try(:last) || t("statistics.statistics_demographics.unknown")
       counts[age_label] += 1
