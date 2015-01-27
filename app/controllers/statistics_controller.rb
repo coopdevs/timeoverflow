@@ -94,7 +94,7 @@ class StatisticsController < ApplicationController
              where("movements.amount > 0").
              group("posts.tags, posts.category_id, posts.updated_at")
 
-    @offers = count_offers_by_label(offers).to_a.flatten(1).
+    @offers = count_offers_by_label(offers).to_a.each { |a| a.flatten!(1) }.
               sort_by(&:last).reverse
   end
 
@@ -132,7 +132,7 @@ class StatisticsController < ApplicationController
     # add the ratio at the end of each value
     total_count = counters.values.map { |_, counts| counts }.sum
     counters.each do |_, v|
-      v << v[1] / total_count
+      v << v[1].to_f / total_count
     end
   end
 
@@ -144,7 +144,7 @@ class StatisticsController < ApplicationController
     tag_labels = offer.tags.presence ||
                  [t("statistics.statistics_type_swaps.without_tags")]
 
-    category_label = offer.category_name ||
+    category_label = offer.category.try(:name) ||
                      t("statistics.statistics_type_swaps.without_category")
 
     [category_label].product(tag_labels)
