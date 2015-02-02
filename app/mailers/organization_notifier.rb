@@ -6,7 +6,13 @@ class OrganizationNotifier < ActionMailer::Base
   #
   #   en.organization_notifier.recent_posts.subject
   #
-  def recent_posts
-    mail to: "to@example.org"
+  def recent_posts(posts)
+    # last 10 posts of offers and inquiries
+    @offers = posts.where(type: "Offer").take(10)
+    @inquiries = posts.where(type: "Inquiry").take(10)
+    # users with email ok
+    emails = posts.take.organization.users.where("sign_in_count > 0").pluck(:email)
+
+    mail(to: emails)
   end
 end
