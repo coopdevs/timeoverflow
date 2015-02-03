@@ -13,6 +13,6 @@ class OrganizationNotifier < ActionMailer::Base
     # users with email ok
     emails = posts.take.organization.users.where("sign_in_count > 0").pluck(:email)
 
-    mail(to: emails)
+    mail(bcc: emails)
   end
 end
