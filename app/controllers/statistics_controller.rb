@@ -67,7 +67,7 @@ class StatisticsController < ApplicationController
   end
 
   def statistics_inactive_users
-    @members = current_organization.members
+    @members = current_organization.members.active
   end
 
   def statistics_demographics
@@ -77,12 +77,12 @@ class StatisticsController < ApplicationController
   end
 
   def statistics_last_login
-    @members = current_organization.members.joins(:user).
+    @members = current_organization.members.active.joins(:user).
                order("users.current_sign_in_at ASC NULLS FIRST")
   end
 
   def statistics_without_offers
-    @members = current_organization.members
+    @members = current_organization.members.active
   end
 
   def statistics_type_swaps
