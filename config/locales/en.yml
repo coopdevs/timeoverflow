@@ -326,6 +326,7 @@ en:
     promote: Promote to administrator
     statistics: Statistics
     locales_header: change language
+    required_field: "* Required field"
 
   locales:
     en: English

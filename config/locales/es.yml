@@ -310,6 +310,7 @@ es:
     promote: Convertir en administrador
     statistics: Estadísticas
     locales_header: cambiar idioma
+    required_field: "* Campo obligatorio"
 
   locales:
     en: Inglés
