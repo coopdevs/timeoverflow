@@ -4,7 +4,8 @@ describe OffersController do
   let (:test_organization) { Fabricate(:organization)}
   let (:member) { Fabricate(:member, organization: test_organization)}
   let (:another_member) { Fabricate(:member, organization: test_organization)}
-  let! (:offer) { Fabricate(:offer, user: member.user, organization: test_organization)}
+  let (:test_category) { Fabricate(:category)}
+  let! (:offer) { Fabricate(:offer, user: member.user, organization: test_organization, category: test_category)}
   include_context "stub browser locale"
   before { set_browser_locale('ca') }
 
