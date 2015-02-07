@@ -1,25 +1,29 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe OffersController do
-  let (:test_organization) { Fabricate(:organization)}
-  let (:member) { Fabricate(:member, organization: test_organization)}
-  let (:another_member) { Fabricate(:member, organization: test_organization)}
-  let (:test_category) { Fabricate(:category)}
-  let! (:offer) { Fabricate(:offer, user: member.user, organization: test_organization, category: test_category)}
+  let (:test_organization) { Fabricate(:organization) }
+  let (:member) { Fabricate(:member, organization: test_organization) }
+  let (:another_member) { Fabricate(:member, organization: test_organization) }
+  let (:test_category) { Fabricate(:category) }
+  let! (:offer) do
+    Fabricate(:offer,
+              user: member.user,
+              organization: test_organization,
+              category: test_category)
+  end
   include_context "stub browser locale"
-  before { set_browser_locale('ca') }
+  before { set_browser_locale("ca") }
 
   describe "GET #index" do
     context "with a logged user" do
       it "populates and array of offers" do
         login(another_member.user)
 
-        get 'index'
+        get "index"
         expect(assigns(:offers)).to eq([offer])
       end
     end
   end
-
 
   describe "GET #show" do
     context "with valid params" do
@@ -27,7 +31,7 @@ describe OffersController do
         it "assigns the requested offer to @offer" do
           login(another_member.user)
 
-          get 'show', id: offer.id
+          get "show", id: offer.id
           expect(assigns(:offer)).to eq(offer)
         end
       end
@@ -40,9 +44,9 @@ describe OffersController do
         it "creates a new offer" do
           login(another_member.user)
 
-          expect {
-            post 'create', offer: Fabricate.to_params(:offer)
-          }.to change(Offer,:count).by(1)
+          expect do
+            post "create", offer: Fabricate.to_params(:offer)
+          end.to change(Offer, :count).by(1)
         end
       end
     end
@@ -54,14 +58,18 @@ describe OffersController do
         it "located the requested @offer" do
           login(member.user)
 
-          put 'update', id: offer.id, offer: Fabricate.to_params(:offer)
+          put "update", id: offer.id, offer: Fabricate.to_params(:offer)
           expect(assigns(:offer)).to eq(offer)
         end
 
         it "changes @offer's attributes" do
           login(member.user)
 
-          put 'update', id: offer.id, offer: Fabricate.to_params(:offer, user: member, title: "New title", description: "New description")
+          put "update", id: offer.id,
+                        offer: Fabricate.to_params(:offer,
+                                                   user: member,
+                                                   title: "New title",
+                                                   description: "New description")
 
           offer.reload
           expect(offer.title).to eq("New title")
@@ -75,7 +83,11 @@ describe OffersController do
         it "does not change @offer's attributes" do
           login(member.user)
 
-          put :update, id: offer.id, offer: Fabricate.to_params(:offer, user: nil, title: "New title", description: "New description")
+          put :update, id: offer.id,
+                       offer: Fabricate.to_params(:offer,
+                                                  user: nil,
+                                                  title: "New title",
+                                                  description: "New description")
 
           expect(offer.title).not_to eq("New title")
           expect(offer.description).not_to eq("New description")
