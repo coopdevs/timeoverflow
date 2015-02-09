@@ -45,7 +45,8 @@ describe InquiriesController do
           login(another_member.user)
 
           expect do
-            post "create", inquiry: Fabricate.to_params(:inquiry)
+            post "create", inquiry: { user: another_member.user,
+                                      category_id: test_category.id }
           end.to change(Inquiry, :count).by(1)
         end
       end
@@ -65,11 +66,12 @@ describe InquiriesController do
         it "changes @inquiry's attributes" do
           login(member.user)
 
-          put "update", id: inquiry.id,
-                        inquiry: Fabricate.to_params(:inquiry,
-                                                     user: member,
-                                                     title: "New title",
-                                                     description: "New description")
+          put "update",
+              id: inquiry.id,
+              inquiry: Fabricate.to_params(:inquiry,
+                                           user: member,
+                                           title: "New title",
+                                           description: "New description")
 
           inquiry.reload
           expect(inquiry.title).to eq("New title")
@@ -83,11 +85,12 @@ describe InquiriesController do
         it "does not change @inquiry's attributes" do
           login(member.user)
 
-          put :update, id: inquiry.id,
-                       inquiry: Fabricate.to_params(:inquiry,
-                                                    user: nil,
-                                                    title: "New title",
-                                                    description: "New description")
+          put :update,
+              id: inquiry.id,
+              inquiry: Fabricate.to_params(:inquiry,
+                                           user: nil,
+                                           title: "New title",
+                                           description: "New description")
 
           expect(inquiry.title).not_to eq("New title")
           expect(inquiry.description).not_to eq("New description")

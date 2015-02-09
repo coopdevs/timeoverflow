@@ -45,7 +45,8 @@ describe OffersController do
           login(another_member.user)
 
           expect do
-            post "create", offer: Fabricate.to_params(:offer)
+            post "create", offer: { user: another_member.user,
+                                    category_id: test_category }
           end.to change(Offer, :count).by(1)
         end
       end
@@ -65,11 +66,12 @@ describe OffersController do
         it "changes @offer's attributes" do
           login(member.user)
 
-          put "update", id: offer.id,
-                        offer: Fabricate.to_params(:offer,
-                                                   user: member,
-                                                   title: "New title",
-                                                   description: "New description")
+          put "update",
+              id: offer.id,
+              offer: Fabricate.to_params(:offer,
+                                         user: member,
+                                         title: "New title",
+                                         description: "New description")
 
           offer.reload
           expect(offer.title).to eq("New title")
@@ -83,11 +85,12 @@ describe OffersController do
         it "does not change @offer's attributes" do
           login(member.user)
 
-          put :update, id: offer.id,
-                       offer: Fabricate.to_params(:offer,
-                                                  user: nil,
-                                                  title: "New title",
-                                                  description: "New description")
+          put :update,
+              id: offer.id,
+              offer: Fabricate.to_params(:offer,
+                                         user: nil,
+                                         title: "New title",
+                                         description: "New description")
 
           expect(offer.title).not_to eq("New title")
           expect(offer.description).not_to eq("New description")
