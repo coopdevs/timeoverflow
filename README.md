@@ -15,7 +15,7 @@ con tres niveles de privilegios: superadmin, admin (solo gestiona un Banco) y mi
 
 TimeOverflow está dividido en 2 grandes bloques:
 * **Sistema de gestión**
-* **Red social y banca on-line**
+* **Red social y banca on-line para los usuarios**
 
 *NOTA: Un Banco de Tiempo físico puede funcionar solo con el bloque de gestión, podría ocurrir, por ejemplo, que la inmensa*
 *mayoria de sus miembros no usen Internet y podrían querer funcionar solo con listados, cheques y una oficina de gestión*
@@ -73,17 +73,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>
 
-Wireframes
-=======
-
-https://moqups.com/sseerrggii/JIu1Z1eD/
-
-
-
-
 Notas para desarrollo
 =====================
-Únete al equipo de colaboradores!! Gestionamos las tareas en Redbooth.com https://redbooth.com/public/timeoverflow
+Únete al equipo de colaboradores!! Gestionamos las tareas en Redbooth.com
 
 Si quieres probar la plataforma en local, necesitas PostgreSQL y ruby en sus últimas versiones.
 
