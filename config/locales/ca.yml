@@ -306,6 +306,7 @@ ca:
     promote: Convertir en administrador
     statistics: Estadístiques
     locales_header: canviar llengua
+    required_field: "* Camp obligatori"
 
   locales:
     en: Anglès
