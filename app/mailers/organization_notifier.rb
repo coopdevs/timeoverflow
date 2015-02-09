@@ -11,7 +11,7 @@ class OrganizationNotifier < ActionMailer::Base
     @offers = posts.where(type: "Offer").take(10)
     @inquiries = posts.where(type: "Inquiry").take(10)
     # users with email ok
-    emails = posts.take.organization.users.where("sign_in_count > 0").pluck(:email)
+    emails = posts.take.organization.users.online_active.pluck(:email)
 
     mail(bcc: emails)
   end

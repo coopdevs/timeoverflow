@@ -42,6 +42,8 @@ class Post < ActiveRecord::Base
     ) #{Post.table_name}")
   }
 
+  scope :from_last_week, -> { where("created_at >= ?", 1.week.ago.beginning_of_day) }
+
   validates :user, presence: true
 
   def to_s
