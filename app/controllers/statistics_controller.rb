@@ -13,6 +13,7 @@ class StatisticsController < ApplicationController
 
   def statistics_global_activity
     @members = current_organization.members
+    @active_members = @members.active
     @total_hours = num_movements = 0
     @members.each do |m|
       num_movements += m.account.movements.count
