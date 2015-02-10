@@ -10,6 +10,8 @@ class OrganizationNotifier < ActionMailer::Base
     # last 10 posts of offers and inquiries
     @offers = posts.where(type: "Offer").take(10)
     @inquiries = posts.where(type: "Inquiry").take(10)
+
+    @organization_name = posts.take.organization.name
     # users with email ok
     emails = posts.take.organization.users.online_active.pluck(:email)
 
