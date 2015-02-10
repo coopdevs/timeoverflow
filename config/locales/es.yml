@@ -148,9 +148,9 @@ es:
       user_created: "Usuario creado"
     new:
       new_user: Nuevo usuario
-      create_user_button: Crear
-      create_more_users_button: Crear e introducir otro usuario
-      user_created_add: "Usuario creado, crea ahora el siguiente"
+      create_user_button: Actualizar
+      create_user_button: Actualizar
+      create_more_users_button: Actualizar e introducir otro usuario
       cancel: Cancelar
     edit:
       edit_user: Cambiar usuario
