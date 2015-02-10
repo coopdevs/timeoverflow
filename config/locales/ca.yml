@@ -148,8 +148,8 @@ ca:
       user_created: "Usuari creat"
     new:
       new_user: Nou usuari
-      create_user_button: Crear
-      create_more_users_button: Crear i introduir un nou usuari
+      create_user_button: Actualitzar
+      create_more_users_button: Actualitzar i introduir un nou usuari
       user_created_add: "Usuari creat, crea ara el següent"
       cancel: Cancel·lar
     edit:
