@@ -1,7 +1,7 @@
 set :environment, 'development'
 set :output, "log/cron_log.log"
 
-every 1.weeks do
+every :monday, at: "9am" do
   runner "OrganizationNotifierService.new(Organization.all).send_recent_posts_to_online_members"
 end
 

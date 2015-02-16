@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   attr_reader :member_id
 
   belongs_to :category
+  delegate :name, to: :category, prefix: true, allow_nil: true
   belongs_to :user
   belongs_to :organization
   belongs_to :publisher, class_name: "User", foreign_key: "publisher_id"
