@@ -13,7 +13,7 @@
       <% @offers.each do |offer| %>
         <li>
           <a href="<%= offer_url(offer.id)%>">
-            <%= offer.title %>
+            <%= "#{offer.title} (#{offer.try(&:category_name)})" %>
           </a>
         </li>
       <% end %>
@@ -28,7 +28,7 @@
       <% @inquiries.each do |inquiry| %>
         <li>
           <a href="<%= inquiry_url(inquiry.id)%>">
-            <%= inquiry.title %>
+            <%= "#{inquiry.title} (#{inquiry.try(&:category_name)})" %>
           </a>
         </li>
       <% end %>

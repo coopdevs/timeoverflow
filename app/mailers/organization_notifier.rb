@@ -1,5 +1,5 @@
 class OrganizationNotifier < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "\"TimeOverflow\" <info@timeoverflow.org>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -13,7 +13,7 @@ class OrganizationNotifier < ActionMailer::Base
 
     @organization_name = posts.take.organization.name
     # users with email ok
-    emails = posts.take.organization.users.online_active.pluck(:email)
+    emails = posts.take.organization.users.online_active.actives.pluck(:email)
 
     mail(bcc: emails)
   end
