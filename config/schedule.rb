@@ -1,11 +1,13 @@
-set :environment, 'development'
+set :environment, "development"
 set :output, "log/cron_log.log"
 
 every :monday, at: "9am" do
-  runner "OrganizationNotifierService.new(Organization.all).send_recent_posts_to_online_members"
+  runner "OrganizationNotifierService.new(Organization.all).
+          send_recent_posts_to_online_members"
 end
 
-# Cada vez que se modifique este archivo, crontab debe actualizarse: whenever --update-crontab
+# Cada vez que se modifique este archivo, crontab debe actualizarse:
+# whenever --update-crontab
 
 # Use this file to easily define all of your cron jobs.
 #
@@ -28,4 +30,5 @@ end
 
 # Learn more: http://github.com/javan/whenever
 
-#  rake "pruebas:hello" #task en lib/tasks para comprobar el funcionamiento de whenever
+#  rake "pruebas:hello" #task en lib/tasks para comprobar el funcionamiento de
+# whenever

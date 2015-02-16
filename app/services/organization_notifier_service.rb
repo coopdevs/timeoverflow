@@ -11,5 +11,4 @@ class OrganizationNotifierService
       end
     end
   end
-
 end
