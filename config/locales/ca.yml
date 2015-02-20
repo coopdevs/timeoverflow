@@ -145,12 +145,12 @@ ca:
       cancel_warning_angular: "Vas a eliminar del banc a l'usuari {{username}}"
       active_warning_angular: "Vas a canviar l'estat del compte de l'usuari {{username}}"
       actions: Accions
-      user_created: "Usuari creat"
+      user_created: "Usuari %{uid} %{name} guardat"
     new:
       new_user: Nou usuari
       create_user_button: Actualitzar
       create_more_users_button: Actualitzar i introduir un nou usuari
-      user_created_add: "Usuari creat, crea ara el següent"
+      user_created_add: "Usuari %{uid} %{name} guardat, crea ara el següent"
       cancel: Cancel·lar
     edit:
       edit_user: Canviar usuari
