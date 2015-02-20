@@ -38,6 +38,7 @@ class PostsController <  ApplicationController # InheritedResources::Base
     post = current_organization.posts.find params[:id]
     authorize post
     redirect_to post if post.update_attributes(post_params)
+    instance_variable_set("@#{resource}", post)
   end
 
   def destroy
