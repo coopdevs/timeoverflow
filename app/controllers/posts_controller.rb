@@ -1,4 +1,4 @@
-class PostsController <  ApplicationController # InheritedResources::Base
+class PostsController <  ApplicationController
   respond_to :html, :js
 
   has_scope :by_category, as: :cat
