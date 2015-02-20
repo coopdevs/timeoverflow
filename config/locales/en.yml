@@ -148,8 +148,7 @@ en:
       user_created: "User %{uid} %{name} saved"
     new:
       new_user: New user
-      create_user_button: Update
-      create_more_users_button: Update and add another user
+      create_more_users_button: Create and add another user
       user_created_add: "User %{uid} %{name} saved, now create next one"
       cancel: Cancel
     edit:

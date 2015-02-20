@@ -148,9 +148,7 @@ es:
       user_created: "Usuario %{uid} %{name} guardado"
     new:
       new_user: Nuevo usuario
-      create_user_button: Actualizar
-      create_user_button: Actualizar
-      create_more_users_button: Actualizar e introducir otro usuario
+      create_more_users_button: Crear e introducir otro usuario
       cancel: Cancelar
       user_created_add: "Usuario %{uid} %{name} guardado. Introduce ahora el siguiente"
     edit:
