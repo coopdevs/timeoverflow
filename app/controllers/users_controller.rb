@@ -42,10 +42,12 @@ class UsersController < ApplicationController
       @user.tune_after_persisted(current_organization)
       if params[:more]
         redirect_to new_user_path, notice: I18n.t("users.new.user_created_add",\
-        uid:@user.member(current_organization).member_uid, name: @user.username)
+        uid: @user.member(current_organization).member_uid,\
+        name: @user.username)
       else
         redirect_to users_path, notice: I18n.t("users.index.user_created",\
-        uid:@user.member(current_organization).member_uid, name: @user.username)
+        uid: @user.member(current_organization).member_uid,\
+        name: @user.username)
       end
     else
       @user.email = "" if empty_email
