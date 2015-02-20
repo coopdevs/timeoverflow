@@ -1,4 +1,4 @@
-class PostsController < InheritedResources::Base
+class PostsController <  ApplicationController # InheritedResources::Base
   respond_to :html, :js
 
   has_scope :by_category, as: :cat
@@ -6,21 +6,58 @@ class PostsController < InheritedResources::Base
   has_scope :tagged_with, as: :tag
   has_scope :by_organization, as: :org
 
-  before_action only: %i[update destroy] do
-    authorize resource
+  def index
+    posts = apply_scopes(model).page(params[:page]).per(25)
+    instance_variable_set("@#{resources}", posts)
   end
 
-  protected
-
-  def collection
-    get_collection_ivar || begin
-      c = end_of_association_chain
-      set_collection_ivar(c.page(params[:page]).per(25))
-    end
+  def new
+    post = model.new
+    post.user = current_user
+    instance_variable_set("@#{resource}", post)
   end
 
-  def begin_of_association_chain
-    current_organization
+  def create
+    post = model.new(post_params)
+    post.user = current_user
+    post.organization = current_organization
+    redirect_to send("#{resource}_path", post) if post.save
+  end
+
+  def edit
+    post = current_organization.posts.find params[:id]
+    instance_variable_set("@#{resource}", post)
+  end
+
+  def show
+    post = current_organization.posts.find params[:id]
+    instance_variable_set("@#{resource}", post)
+  end
+
+  def update
+    post = current_organization.posts.find params[:id]
+    authorize post
+    redirect_to post if post.update_attributes(post_params)
+  end
+
+  def destroy
+    post = current_organization.posts.find params[:id]
+    authorize post
+    redirect_to send("#{resources}_path") if post.destroy
+  end
+
+  private
+
+  def model
+    controller_name == "offers" ? Offer : Inquiry
+  end
+
+  def resource
+    controller_name.singularize
+  end
+
+  def resources
+    controller_name
   end
 
   def set_user_id(p)
@@ -32,13 +69,12 @@ class PostsController < InheritedResources::Base
     end
   end
 
-  def build_resource_params
+  def post_params
     permitted_fields = %i[description end_on global joinable permanent start_on
                           title category_id tag_list user_id publisher_id]
 
-    [
-      params.fetch(resource_instance_name, {}).
-        permit(*permitted_fields).tap { |p| set_user_id(p) }
-    ]
+    params.fetch(resource, {}).permit(*permitted_fields).tap do |p|
+      set_user_id(p)
+    end
   end
 end
