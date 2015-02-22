@@ -145,11 +145,11 @@ en:
       cancel_warning_angular: "You are going to delete account from the Time Bank for user {{username}}"
       active_warning_angular: "You are going to change user account status for {{username}}"
       actions: Actions
-      user_created: "User created"
+      user_created: "User %{uid} %{name} saved"
     new:
       new_user: New user
       create_more_users_button: Create and add another user
-      user_created_add: "User created, now create next one"
+      user_created_add: "User %{uid} %{name} saved, now create next one"
       cancel: Cancel
     edit:
       edit_user: Update user
