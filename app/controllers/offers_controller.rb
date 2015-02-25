@@ -1,6 +1,10 @@
 # Managems of offer-type posts
 #
 class OffersController < PostsController
+  def model
+    Offer
+  end
+
   def dashboard
     initial_scope =
       if current_organization
