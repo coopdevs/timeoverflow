@@ -26,7 +26,8 @@
     };
   });
 
-= form_for(post, html: { name: "form" }) do |f|
+= show_error_messages!(post)
+= form_for(post, html: { name: "form", novalidate: true }) do |f|
   .form-group
     = f.label :title
     = f.text_field :title, class: "form-control"
@@ -34,7 +35,7 @@
     = f.label :description
     = f.text_area :description, rows: "10", class: "form-control"
   .form-group
-    = f.label :category
+    = f.label :category, required: true
     = f.select :category_id, Category.all.sort_by{ |a| a.name.downcase }.map{ |cat| [cat.name, cat.id] }, { include_blank: true }, { class: "form-control" }
   .form-group
     = f.label :tag_list
@@ -46,6 +47,9 @@
       = f.label :user, class: "control-label"
       = f.select :user_id, options_for_select(current_organization.members.active.order("members.member_uid").map{ |mem| ["#{mem.member_uid} #{mem.user.to_s}", mem.user_id] }, selected: post.user.id || current_user.id), {}, { id: "select2", class: "form-control", required: true }
     = f.hidden_field :publisher_id, value: current_user.id
+
+  %p.help-block
+    = t "global.required_field"
 
   = f.button label_button, class: "btn btn-default", style: "margin-bottom: 20px;"
 

@@ -43,6 +43,7 @@ class Post < ActiveRecord::Base
   }
 
   validates :user, presence: true
+  validates :category, presence: true
 
   def to_s
     title

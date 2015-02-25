@@ -39,3 +39,4 @@ sgemset
 
 # Ignore .vagrant folder with images
 .vagrant
+.metadata

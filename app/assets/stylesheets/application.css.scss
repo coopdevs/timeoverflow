@@ -127,3 +127,12 @@ ul.statistics li{
 .ui-datepicker{
   z-index: 1000 !important;
 }
+
+// fields that contain an error
+.field_with_errors{
+  color: red;
+}
+
+label[required]::after{
+  content: " *";
+}

@@ -26,6 +26,7 @@
       / = f.association :categories, label_method: :fqn, input_html: {style: 'width: 100%'}
 
     .form-actions
-      = f.button :submit, t('users.new.create_user_button')
-      = f.button :submit, t('users.new.create_more_users_button'), name: 'more'
-      = link_to t('users.new.cancel'), :back
+      = f.button :submit
+      - if @user.new_record?
+        = f.button :submit, t('users.new.create_more_users_button'), name: 'more'
+      = link_to t('users.new.cancel'), users_path

@@ -13,6 +13,7 @@ class StatisticsController < ApplicationController
 
   def statistics_global_activity
     @members = current_organization.members
+    @active_members = @members.active
     @total_hours = num_movements = 0
     @members.each do |m|
       num_movements += m.account.movements.count
@@ -67,7 +68,7 @@ class StatisticsController < ApplicationController
   end
 
   def statistics_inactive_users
-    @members = current_organization.members
+    @members = current_organization.members.active
   end
 
   def statistics_demographics
@@ -77,12 +78,12 @@ class StatisticsController < ApplicationController
   end
 
   def statistics_last_login
-    @members = current_organization.members.joins(:user).
+    @members = current_organization.members.active.joins(:user).
                order("users.current_sign_in_at ASC NULLS FIRST")
   end
 
   def statistics_without_offers
-    @members = current_organization.members
+    @members = current_organization.members.active
   end
 
   def statistics_type_swaps
@@ -94,7 +95,7 @@ class StatisticsController < ApplicationController
              where("movements.amount > 0").
              group("posts.tags, posts.category_id, posts.updated_at")
 
-    @offers = count_offers_by_label(offers).to_a.flatten(1).
+    @offers = count_offers_by_label(offers).to_a.each { |a| a.flatten!(1) }.
               sort_by(&:last).reverse
   end
 
@@ -132,7 +133,7 @@ class StatisticsController < ApplicationController
     # add the ratio at the end of each value
     total_count = counters.values.map { |_, counts| counts }.sum
     counters.each do |_, v|
-      v << v[1] / total_count
+      v << v[1].to_f / total_count
     end
   end
 
@@ -144,7 +145,7 @@ class StatisticsController < ApplicationController
     tag_labels = offer.tags.presence ||
                  [t("statistics.statistics_type_swaps.without_tags")]
 
-    category_label = offer.category_name ||
+    category_label = offer.category.try(:name) ||
                      t("statistics.statistics_type_swaps.without_category")
 
     [category_label].product(tag_labels)
@@ -153,9 +154,9 @@ class StatisticsController < ApplicationController
   def age_counts
     @members.each_with_object(Hash.new(0)) do |member, counts|
       age = age(member.user_date_of_birth)
-      age_label = AGE_GROUP_LABELS.detect do |range, label|
-        label if range.include? age
-      end || t("statistics.statistics_demographics.unknown")
+      age_label = AGE_GROUP_LABELS.detect do |range, _|
+        range.include? age
+      end.try(:last) || t("statistics.statistics_demographics.unknown")
       counts[age_label] += 1
     end
   end
