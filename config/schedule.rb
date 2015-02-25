@@ -1,4 +1,4 @@
-set :environment, "development"
+set :environment, "production"
 set :output, "log/cron_log.log"
 
 every :monday, at: "9am" do
