@@ -106,7 +106,7 @@ GEM
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
     erubis (2.7.0)
-    eventmachine (1.0.4)
+    eventmachine (1.0.7)
     execjs (2.2.2)
     fabrication (2.11.3)
     faker (1.4.3)
