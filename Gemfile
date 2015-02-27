@@ -61,6 +61,8 @@ gem 'fabrication'
 
 gem "shelly-dependencies"
 
+gem 'whenever', :require => false
+
 group :development do
   gem "binding_of_caller"
   gem "better_errors"

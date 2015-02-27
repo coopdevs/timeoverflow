@@ -12,7 +12,7 @@ timeoverflow:
       # delayed_job: 1
       # sidekiq: 1
       # clockwork: on
-      # whenever: on
+      whenever: on
       # elasticsearch: on
       databases:
         - postgresql

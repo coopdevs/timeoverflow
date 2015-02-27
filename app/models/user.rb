@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   default_scope -> { order("users.id ASC") }
 
   scope :actives, -> { where(members: { active: true }) }
+  scope :online_active, -> { where("sign_in_count > 0") }
 
   validates :username, presence: true
   validates :email, presence: true, uniqueness: true
