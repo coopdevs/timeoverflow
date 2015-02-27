@@ -44,12 +44,12 @@ class Organization < ActiveRecord::Base
     URI.parse(web)
     rescue
       errors.add(:web, :url_format_invalid)
+  else
+    return if (web.blank?) || (URI.parse(web).is_a? URI::HTTP)
+    if URI.parse("http://#{web}").is_a? URI::HTTP
+      self.web = "http://#{web}"
     else
-      return if (web.blank?) || (URI.parse(web).is_a? URI::HTTP)
-      if URI.parse("http://#{web}").is_a? URI::HTTP
-        self.web = "http://#{web}"
-      else
-        errors.add(:web, :url_format_invalid)
-      end
+      errors.add(:web, :url_format_invalid)
+    end
   end
 end
