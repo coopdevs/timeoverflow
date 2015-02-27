@@ -14,7 +14,7 @@
           = @organization.phone
           %br
           %strong Web 
-          =link_to_if(@organization.web_url,@organization.web,@organization.web)
+          =link_to_if(@organization.web.present?,@organization.web,@organization.web)
           %br
           %strong= Organization.human_attribute_name("public_opening_times")
           %br

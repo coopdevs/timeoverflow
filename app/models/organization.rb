@@ -1,5 +1,5 @@
 class Organization < ActiveRecord::Base
-  before_save :ensure_url
+  before_validation :ensure_url
   validates_uniqueness_of :name
   has_many :members
   has_many :users, -> { order "members.created_at DESC" }, through: :members
@@ -40,20 +40,16 @@ class Organization < ActiveRecord::Base
     reg_number_seq
   end
 
-  def web_url
+  def ensure_url
     URI.parse(web)
     rescue
-      false
-  end
-
-  def ensure_url
-    if web_url
-      return if web.blank?
-      if !URI.parse(web).is_a? URI::HTTP
-        self.web  = "http://" + web
-      end
-    else
       errors.add(:web, :url_format_invalid)
-    end
+    else
+      return if (web.blank?) || (URI.parse(web).is_a? URI::HTTP)
+      if URI.parse("http://#{web}").is_a? URI::HTTP
+        self.web = "http://#{web}"
+      else
+        errors.add(:web, :url_format_invalid)
+      end
   end
 end

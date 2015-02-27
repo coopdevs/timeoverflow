@@ -17,7 +17,7 @@ describe Organization do
     org = Organization.new
     org.web = "https://www.casa.com"
     org.ensure_url
-    oxpect(org.web).to eq "https://www.casa.com"
+    expect(org.web).to eq "https://www.casa.com"
   end
   it "4: blank" do
     org = Organization.new
