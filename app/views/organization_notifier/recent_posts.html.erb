@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <% if @offers.present? %>
+      <p>
+        <%= t("organization_notifier.recent_posts.text1") %>
+      </p>
+      <ul>
+      <% @offers.each do |offer| %>
+        <li>
+          <a href="<%= offer_url(offer.id)%>">
+            <%= "#{offer.title} (#{offer.try(&:category_name)})" %>
+          </a>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+
+    <% if @inquiries.present? %>
+      <p>
+        <%= t("organization_notifier.recent_posts.text2") %>
+      </p>
+      <ul>
+      <% @inquiries.each do |inquiry| %>
+        <li>
+          <a href="<%= inquiry_url(inquiry.id)%>">
+            <%= "#{inquiry.title} (#{inquiry.try(&:category_name)})" %>
+          </a>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+
+    --
+    <p>
+      <%= t("mailers_globals.footer.text", organization_name: @organization_name) %>
+      <a href="<%= page_url('home', only_path: false) %>">
+        TimeOverflow
+      <a>
+    </p>
+  </body>
+</html>

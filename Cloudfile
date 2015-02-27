@@ -1,5 +1,5 @@
 timeoverflow:
-  ruby_version: 2.1.4
+  ruby_version: 2.2.0
   environment: production # RAILS_ENV
   monitoring_email: saverio.trioni@gmail.com
   domains:
@@ -12,7 +12,7 @@ timeoverflow:
       # delayed_job: 1
       # sidekiq: 1
       # clockwork: on
-      # whenever: on
+      whenever: on
       # elasticsearch: on
       databases:
         - postgresql

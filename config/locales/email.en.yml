@@ -1,0 +1,10 @@
+en:
+  mailers_globals:
+    footer:
+      text: "%{organization_name} from"
+
+  organization_notifier:
+    recent_posts:
+      subject: Newsletter
+      text1: "Latest offers published:"
+      text2: "Lastest inquiries published:"

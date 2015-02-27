@@ -1,0 +1,10 @@
+es:
+  mailers_globals:
+    footer:
+      text: "%{organization_name} en"
+
+  organization_notifier:
+    recent_posts:
+      subject: Boletín semanal
+      text1: "Últimas ofertas publicadas:"
+      text2: "Últimas demandas publicadas:"

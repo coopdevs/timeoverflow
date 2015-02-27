@@ -10,7 +10,6 @@ gem 'high_voltage', '~> 2.1.0'
 gem 'activeadmin', github: 'activeadmin'
 
 gem 'has_scope'
-gem 'inherited_resources', github: 'josevalim/inherited_resources', branch: 'rails-4-2'
 gem 'responders', '~> 2.0'
 gem 'pundit'
 
@@ -61,6 +60,8 @@ gem 'faker'
 gem 'fabrication'
 
 gem "shelly-dependencies"
+
+gem 'whenever', :require => false
 
 group :development do
   gem "binding_of_caller"
