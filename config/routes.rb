@@ -1,4 +1,4 @@
-Timeoverflow::Application.routes.draw do
+Rails.application.routes.draw do
   get "global/switch_lang", as: :switch_lang
   get 'tags/index'
 
