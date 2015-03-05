@@ -81,4 +81,5 @@ group :test do
   # Needed for TravisCI
   gem 'rake'
   gem "database_cleaner"
+  gem 'shoulda'
 end
