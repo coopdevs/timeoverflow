@@ -7,7 +7,9 @@ class PostsController <  ApplicationController
   has_scope :by_organization, as: :org
 
   def index
-    posts = apply_scopes(model).page(params[:page]).per(25)
+    posts = model.all
+    posts = posts.merge(current_organization.posts) if current_organization.present?
+    posts = apply_scopes(posts).page(params[:page]).per(25)
     instance_variable_set("@#{resources}", posts)
   end
 

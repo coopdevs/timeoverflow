@@ -4,6 +4,7 @@ describe OffersController do
   let (:test_organization) { Fabricate(:organization) }
   let (:member) { Fabricate(:member, organization: test_organization) }
   let (:another_member) { Fabricate(:member, organization: test_organization) }
+  let (:still_another_member) { Fabricate(:member, organization: Fabricate(:organization)) }
   let (:test_category) { Fabricate(:category) }
   let! (:offer) do
     Fabricate(:offer,
@@ -23,6 +24,14 @@ describe OffersController do
         expect(assigns(:offers)).to eq([offer])
       end
     end
+    context "with another organization" do
+      it "skips the original org's offers" do
+        login(still_another_member.user)
+        get "index"
+        expect(assigns(:offers)).to eq([])
+      end
+    end
+
   end
 
   describe "GET #show" do
