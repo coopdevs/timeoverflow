@@ -9,6 +9,14 @@ require 'capybara/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+# Make sure schem persists when running tests.
+# We ran into an error that forced us to run rake db:migrate RAILS_ENV=test
+# before running tests. This kind of fixes it, although we should have a closer
+# look at this and find a better solution
+# Ref:
+# https://www.relishapp.com/rspec/rspec-rails/docs/upgrade#pending-migration-checks
+ActiveRecord::Migration.maintain_test_schema!
+
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
