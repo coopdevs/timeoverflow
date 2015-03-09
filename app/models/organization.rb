@@ -1,7 +1,7 @@
 class Organization < ActiveRecord::Base
   before_validation :ensure_url
   validates_uniqueness_of :name
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :users, -> { order "members.created_at DESC" }, through: :members
 
   has_one :account, as: :accountable
@@ -15,7 +15,8 @@ class Organization < ActiveRecord::Base
 
   has_many :documents, as: :documentable
 
-  BOOTSWATCH_THEMES = %w[amelia cerulean cosmo cyborg flatly journal readable simplex slate spacelab united]
+  BOOTSWATCH_THEMES = %w[amelia cerulean cosmo cyborg flatly journal readable
+                         simplex slate spacelab united]
   # validates :theme, allow_nil: true, inclusion: {in: BOOTSWATCH_THEMES}
 
   scope :matching, ->(str) {
@@ -52,4 +53,5 @@ class Organization < ActiveRecord::Base
       errors.add(:web, :url_format_invalid)
     end
   end
+
 end

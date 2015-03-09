@@ -150,8 +150,12 @@ ca:
       cancel_warning_angular: "Vas a eliminar del banc a l'usuari {{username}}"
       active_warning_angular: "Vas a canviar l'estat del compte de l'usuari {{username}}"
       actions: Accions
+      user_created: "Usuari %{uid} %{name} guardat"
     new:
       new_user: Nou usuari
+      create_more_users_button: Crear i introduir un nou usuari
+      user_created_add: "Usuari %{uid} %{name} guardat, crea ara el següent"
+      cancel: Cancel·lar
     edit:
       edit_user: Canviar usuari
     show:
@@ -306,6 +310,7 @@ ca:
     promote: Convertir en administrador
     statistics: Estadístiques
     locales_header: canviar llengua
+    required_field: "* Camp obligatori"
 
   locales:
     en: Anglès

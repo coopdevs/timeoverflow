@@ -3,6 +3,7 @@ Fabricator(:post) do
   title { Faker::Lorem.sentence }
   user { Fabricate(:user) }
   description { Faker::Lorem.paragraph }
+  category { Fabricate(:category) }
   permanent { false }
   joinable { false }
   global { false }
@@ -16,6 +17,7 @@ Fabricator(:inquiry) do
   title { Faker::Lorem.sentence }
   user { Fabricate(:user) }
   description { Faker::Lorem.paragraph }
+  category { Fabricate(:category) }
   permanent { false }
   joinable { false }
   global { false }
@@ -29,6 +31,7 @@ Fabricator(:offer) do
   title { Faker::Lorem.sentence }
   user { Fabricate(:user) }
   description { Faker::Lorem.paragraph }
+  category { Fabricate(:category) }
   permanent { false }
   joinable { false }
   global { false }

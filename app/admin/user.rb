@@ -1,18 +1,19 @@
 # coding: utf-8
 
 ActiveAdmin.register User do
-  action_item :only => :index do
-    link_to I18n.t("active_admin.users.upload_from_csv"), :action => 'upload_csv'
+  action_item only: :index do
+    link_to I18n.t("active_admin.users.upload_from_csv"), action: "upload_csv"
   end
 
   collection_action :upload_csv do
     render "admin/csv/upload_csv"
   end
 
-  collection_action :import_csv, :method => :post do
-    errors = CsvDb.convert_save(params[:dump][:organization_id], params[:dump][:file])
+  collection_action :import_csv, method: :post do
+    errors = CsvDb.convert_save(params[:dump][:organization_id],
+                                params[:dump][:file])
     flash[:error] = errors.join("<br/>").html_safe if errors.present?
-    redirect_to :action => :index
+    redirect_to action: :index
   end
 
   index do
@@ -37,7 +38,7 @@ ActiveAdmin.register User do
     f.inputs "Admin Details" do
       f.input :username
       f.input :email
-      f.input :gender, :as => :select, :collection => User::GENDERS
+      f.input :gender, as: :select, collection: User::GENDERS
       f.input :identity_document
     end
     f.inputs "Members" do
@@ -72,5 +73,6 @@ ActiveAdmin.register User do
     end
   end
 
-  permit_params *User.attribute_names, members_attributes: Member.attribute_names
+  permit_params *User.attribute_names,
+                members_attributes: Member.attribute_names
 end

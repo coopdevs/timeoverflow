@@ -2,7 +2,9 @@ ActiveAdmin.register Organization do
   index do
     id_column
     column :name
-    column :created_at do |organization| l organization.created_at.to_date, format: :short end
+    column :created_at do |organization|
+      l organization.created_at.to_date, format: :short
+    end
     column :city
     column :neighborhood
     column :email
@@ -26,9 +28,8 @@ ActiveAdmin.register Organization do
   end
 
   filter :name
-  filter :city, as: :select, collection: -> { Organization.pluck('city').uniq }
+  filter :city, as: :select, collection: -> { Organization.pluck(:city).uniq }
   filter :neighborhood
 
   permit_params *Organization.attribute_names
-
 end

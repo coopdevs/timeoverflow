@@ -16,7 +16,7 @@ class Account < ActiveRecord::Base
     new_balance = movements.sum(:amount)
     self.balance = new_balance
     if balance_changed?
-      self.flagged = !allowed?(self.balance)
+      self.flagged = !allowed?(balance)
     end
     save
   end
@@ -24,7 +24,11 @@ class Account < ActiveRecord::Base
   # Return the maximum allowed amount of time that the acccount is able to
   # spend without overflowing
   def allowance
-    min_allowed_balance ? [0, balance - min_allowed_balance].min : Float::INFINITY
+    if min_allowed_balance
+      [0, balance - min_allowed_balance].min
+    else
+      Float::INFINITY
+    end
   end
 
   # Print the account as its accountable reference
@@ -35,8 +39,7 @@ class Account < ActiveRecord::Base
   private
 
   def allowed?(new_balance)
-    new_balance < (max_allowed_balance || Float::INFINITY) and
+    new_balance < (max_allowed_balance || Float::INFINITY) &&
       new_balance > (min_allowed_balance || -Float::INFINITY)
   end
-
 end

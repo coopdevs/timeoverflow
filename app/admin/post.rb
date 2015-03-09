@@ -1,11 +1,12 @@
 ActiveAdmin.register Post do
-
   index do
     selectable_column
     id_column
     column :class
     column :title
-    column :created_at do |post| l post.created_at.to_date, format: :short end
+    column :created_at do |post|
+      l post.created_at.to_date, format: :short
+    end
     column :user
     column :category
     column :tag_list
@@ -33,5 +34,4 @@ ActiveAdmin.register Post do
   filter :organization
   filter :category
   filter :created_at
-
 end

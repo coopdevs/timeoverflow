@@ -20,8 +20,9 @@ class User < ActiveRecord::Base
   default_scope -> { order("users.id ASC") }
 
   scope :actives, -> { where(members: { active: true }) }
+  scope :online_active, -> { where("sign_in_count > 0") }
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true
   validates :email, presence: true, uniqueness: true
 
   # Allows @domain.com for dummy emails but does not allow pure invalid
@@ -31,7 +32,7 @@ class User < ActiveRecord::Base
 
   # validates :gender, presence: true, inclusion: {in: GENDERS}
 
-  has_many :members
+  has_many :members, dependent: :destroy
   accepts_nested_attributes_for :members
   has_many :organizations, through: :members
   has_many :accounts, through: :members

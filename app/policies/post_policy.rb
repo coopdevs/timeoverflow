@@ -1,6 +1,6 @@
 class PostPolicy < Struct.new(:user, :post)
   def destroy?
-    user == post.user or user.admins?(post.organization)
+    user == post.user || user.admins?(post.organization)
   end
 
   def create?
@@ -8,7 +8,6 @@ class PostPolicy < Struct.new(:user, :post)
   end
 
   def update?
-    user == post.user or user.admins?(post.organization)
+    user == post.user || user.admins?(post.organization)
   end
-
 end

@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   attr_reader :member_id
 
   belongs_to :category
+  delegate :name, to: :category, prefix: true, allow_nil: true
   belongs_to :user
   belongs_to :organization
   belongs_to :publisher, class_name: "User", foreign_key: "publisher_id"
@@ -42,7 +43,12 @@ class Post < ActiveRecord::Base
     ) #{Post.table_name}")
   }
 
+  scope :from_last_week, -> {
+    where("created_at >= ?", 1.week.ago.beginning_of_day)
+  }
+
   validates :user, presence: true
+  validates :category, presence: true
 
   def to_s
     title
