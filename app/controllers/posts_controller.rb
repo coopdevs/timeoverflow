@@ -8,7 +8,9 @@ class PostsController <  ApplicationController
 
   def index
     posts = model.all
-    posts = posts.merge(current_organization.posts) if current_organization.present?
+    if current_organization.present?
+      posts = posts.merge(current_organization.posts)
+    end
     posts = apply_scopes(posts).page(params[:page]).per(25)
     instance_variable_set("@#{resources}", posts)
   end

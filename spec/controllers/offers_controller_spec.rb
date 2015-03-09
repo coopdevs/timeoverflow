@@ -4,7 +4,7 @@ describe OffersController do
   let (:test_organization) { Fabricate(:organization) }
   let (:member) { Fabricate(:member, organization: test_organization) }
   let (:another_member) { Fabricate(:member, organization: test_organization) }
-  let (:still_another_member) { Fabricate(:member, organization: Fabricate(:organization)) }
+  let (:still_another_member) { Fabricate(:member) }
   let (:test_category) { Fabricate(:category) }
   let! (:offer) do
     Fabricate(:offer,
