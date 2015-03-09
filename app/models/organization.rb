@@ -42,11 +42,11 @@ class Organization < ActiveRecord::Base
   end
 
   def ensure_url
-    return if web.blank? || URI.parse(web).is_a? URI::HTTP
+    return if web.blank? || URI.parse(web).is_a?(URI::HTTP)
   rescue
     errors.add(:web, :url_format_invalid)
   else
-    if URI.parse("http://#{web}").is_a? URI::HTTP
+    if URI.parse("http://#{web}").is_a?(URI::HTTP)
       self.web = "http://#{web}"
     else
       errors.add(:web, :url_format_invalid)
