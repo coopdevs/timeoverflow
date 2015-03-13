@@ -19,7 +19,7 @@
               =link_to path do
                 = tag
           %br
-        -if current_user and current_organization    
+        -if current_user and current_organization
           = t '.created_by'
           = link_to post.user, post.user, title: post.user.email
         %br

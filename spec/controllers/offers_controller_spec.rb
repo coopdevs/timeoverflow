@@ -44,6 +44,12 @@ describe OffersController do
           expect(assigns(:offer)).to eq(offer)
         end
       end
+      context "without a logged in user" do
+        it "assigns the requested offer to @offer" do
+          get "show", id: offer.id
+          expect(assigns(:offer)).to eq(offer)
+        end
+      end
     end
   end
 

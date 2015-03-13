@@ -38,7 +38,12 @@ class PostsController <  ApplicationController
   end
 
   def show
-    post = current_organization.posts.find params[:id]
+    scope = if current_user.present?
+              current_organization.posts
+            else
+              model.all
+            end
+    post = scope.find params[:id]
     instance_variable_set("@#{resource}", post)
   end
 
