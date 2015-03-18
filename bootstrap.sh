@@ -52,9 +52,9 @@ echo '****** STEP 4 of 10 ***** Installing ruby 2.1.4'
 echo '******************************************************'
 echo ''
 
-rvm install 2.1.4
-rvm use 2.1.4
-rvm --default 2.1.4
+rvm install 2.2.0
+rvm use 2.2.0
+rvm --default 2.2.0
 
 # 5.Install bundler and apply gems from Gemfile.lock
 echo ''
