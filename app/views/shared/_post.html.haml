@@ -26,8 +26,10 @@
         = t '.created_at'
         = l post.created_at.to_date, format: :short
 
-
   .col-md-9
-
-
     %p.lead= post.description
+
+- unless current_user
+  .alert.alert-info
+    = "#{post.class.model_name.human} de #{post.organization.name} para ver los datos de la persona tienes que"
+    = link_to t("layouts.application.login"), new_user_session_path, class: "btn btn-primary"
