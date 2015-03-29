@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514225527) do
+ActiveRecord::Schema.define(version: 20150329193421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
   enable_extension "pg_trgm"
 
-  create_table "accounts", force: true do |t|
+  create_table "accounts", force: :cascade do |t|
     t.integer  "accountable_id"
     t.string   "accountable_type"
     t.integer  "balance",             default: 0
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20140514225527) do
     t.datetime "updated_at"
   end
 
-  add_index "accounts", ["accountable_id", "accountable_type"], name: "index_accounts_on_accountable_id_and_accountable_type", using: :btree
+  add_index "accounts", ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id", using: :btree
 
-  create_table "active_admin_comments", force: true do |t|
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
     t.string   "resource_id",   null: false
@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 20140514225527) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.hstore   "name_translations"
   end
 
-  create_table "documents", force: true do |t|
+  create_table "documents", force: :cascade do |t|
     t.integer  "documentable_id"
     t.string   "documentable_type"
     t.text     "title"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20140514225527) do
   add_index "documents", ["documentable_id", "documentable_type"], name: "index_documents_on_documentable_id_and_documentable_type", using: :btree
   add_index "documents", ["label"], name: "index_documents_on_label", using: :btree
 
-  create_table "members", force: true do |t|
+  create_table "members", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "organization_id"
     t.boolean  "manager"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20140514225527) do
   add_index "members", ["organization_id"], name: "index_members_on_organization_id", using: :btree
   add_index "members", ["user_id"], name: "index_members_on_user_id", using: :btree
 
-  create_table "movements", force: true do |t|
+  create_table "movements", force: :cascade do |t|
     t.integer  "account_id"
     t.integer  "transfer_id"
     t.integer  "amount"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20140514225527) do
   add_index "movements", ["account_id"], name: "index_movements_on_account_id", using: :btree
   add_index "movements", ["transfer_id"], name: "index_movements_on_transfer_id", using: :btree
 
-  create_table "organizations", force: true do |t|
+  create_table "organizations", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20140514225527) do
     t.string   "domain"
   end
 
-  create_table "posts", force: true do |t|
+  create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "type"
     t.integer  "category_id"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 20140514225527) do
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
-  create_table "transfers", force: true do |t|
+  create_table "transfers", force: :cascade do |t|
     t.integer  "post_id"
     t.text     "reason"
     t.integer  "operator_id"
@@ -142,12 +142,12 @@ ActiveRecord::Schema.define(version: 20140514225527) do
   add_index "transfers", ["operator_id"], name: "index_transfers_on_operator_id", using: :btree
   add_index "transfers", ["post_id"], name: "index_transfers_on_post_id", using: :btree
 
-  create_table "user_joined_post", force: true do |t|
+  create_table "user_joined_post", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "username",                              null: false
     t.string   "email",                                 null: false
     t.string   "password_digest"
@@ -179,6 +179,8 @@ ActiveRecord::Schema.define(version: 20140514225527) do
     t.integer  "failed_attempts",        default: 0
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "locale",                 default: "es"
+    t.boolean  "notifications",          default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
