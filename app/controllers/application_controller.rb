@@ -75,12 +75,22 @@ class ApplicationController < ActionController::Base
 
   # To get locate from client supplied information
   # see http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-client-supplied-information
-  def set_locale
-    # read locale from params, the session or the Accept-Language header
-    I18n.locale = params[:locale] ||
+  def options_locale
+    current_user.try(:locale) ||
       session[:locale] ||
       http_accept_language.compatible_language_from(I18n.available_locales) ||
       I18n.default_locale
+  end
+
+  def set_locale
+    # read locale from params, the session or the Accept-Language header
+    I18n.locale =
+      if params[:locale]
+        current_user.update_attributes(locale: params[:locale]) if current_user
+        params[:locale]
+      else
+        options_locale
+      end
     # set in the session (so ppl can override what the browser sends)
     session[:locale] = I18n.locale
   end
