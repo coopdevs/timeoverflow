@@ -5,7 +5,7 @@ describe OrganizationNotifier do
   let! (:offer) { Fabricate(:offer, organization: test_organization) }
   let! (:inquiry) { Fabricate(:inquiry, organization: test_organization) }
   let (:user) do
-    Fabricate(:user, sign_in_count: 2, active: true, email: "user@example.com")
+    Fabricate(:user, sign_in_count: 2, email: "user@example.com")
   end
   let (:another_user) { Fabricate(:user, sign_in_count: 1) }
   let (:yet_another_user) { Fabricate(:user, sign_in_count: 0) }
@@ -45,7 +45,7 @@ describe OrganizationNotifier do
     end
   end
 
-  describe "recent post" do
+  describe "recent posts" do
     let(:mail) { OrganizationNotifier.recent_posts(test_organization.posts) }
 
     it "receive email only active and online users" do
