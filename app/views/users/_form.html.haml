@@ -25,8 +25,12 @@
       = f.input :description, as: "text"
       / = f.association :categories, label_method: :fqn, input_html: {style: 'width: 100%'}
 
+      .checkbox
+        = f.label :notifications
+        = f.check_box :notifications
+
     .form-actions
       = f.button :submit
       - if @user.new_record?
         = f.button :submit, t('users.new.create_more_users_button'), name: 'more'
-      = link_to t('users.new.cancel'), users_path
+      = link_to t('users.new.cancel'), users_path, class: "btn btn-default"

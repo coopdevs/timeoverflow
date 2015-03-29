@@ -54,6 +54,7 @@ ca:
         last_sign_in_at: Data darrera connexió
         description: Descripció
         unconfirmed_email: Correu sense confirmar
+        notifications: Rebre notificacions
       organization:
         <<: *common_attributes
         name: Nom
