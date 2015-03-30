@@ -29,7 +29,7 @@ class Post < ActiveRecord::Base
   }
 
   scope :actives, -> {
-    with_member.merge(Member.active)
+    with_member.merge(Member.active) && where(active: true)
   }
 
   scope :fuzzy_and_tags, ->(s) {
