@@ -328,3 +328,11 @@ ca:
       edit_org: "Modificar %{organization}"
     report:
       report_title: "INFORME"
+
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: "Darrera &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Següent &rsaquo;"
+      truncate: "&hellip;"
