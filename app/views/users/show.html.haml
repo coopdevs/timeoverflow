@@ -135,7 +135,7 @@
             = link_to mv.other_side.account,
             user_path(mv.other_side.account.accountable.user)
         %td
-          = mv.transfer.try(&:post).try(&:is_active) ? link_to(mv.transfer.post, offer_path(mv.transfer.post)) : mv.transfer.post
+          = mv.transfer.try(&:post).try(&:active?) ? link_to(mv.transfer.post, offer_path(mv.transfer.post)) : mv.transfer.post
         %td= mv.transfer.reason
         %td= seconds_to_hm(mv.amount)
 

@@ -27,8 +27,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user if current_user.id == params[:id].to_i
-    @user ||= scoped_users.find(params[:id])
+    @user = find_user
   end
 
   def create
@@ -41,18 +40,7 @@ class UsersController < ApplicationController
 
     if @user.persisted?
       @user.tune_after_persisted(current_organization)
-      id = @user.member(current_organization).member_uid
-      if params[:more]
-        redirect_to new_user_path,
-                    notice: I18n.t("users.new.user_created_add",
-                                   uid: id,
-                                   name: @user.username)
-      else
-        redirect_to users_path,
-                    notice: I18n.t("users.index.user_created",
-                                   uid: id,
-                                   name: @user.username)
-      end
+      redirect_to_after_create
     else
       @user.email = "" if empty_email
       render action: "new"
@@ -128,6 +116,21 @@ class UsersController < ApplicationController
       current_user
     else
       scoped_users.find(params[:id])
+    end
+  end
+
+  def redirect_to_after_create
+    id = @user.member(current_organization).member_uid
+    if params[:more]
+      redirect_to new_user_path,
+                  notice: I18n.t("users.new.user_created_add",
+                                 uid: id,
+                                 name: @user.username)
+    else
+      redirect_to users_path,
+                  notice: I18n.t("users.index.user_created",
+                                 uid: id,
+                                 name: @user.username)
     end
   end
 end
