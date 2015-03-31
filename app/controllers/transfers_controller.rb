@@ -6,6 +6,15 @@ class TransfersController < ApplicationController
     redirect_to redirect_target
   end
 
+  def delete_reason
+    @transfer = Transfer.find(params[:id])
+    @transfer.update_columns(reason: nil)
+    respond_to do |format|
+      format.json { head :ok }
+      format.html { redirect_to :back }
+    end
+  end
+
   private
 
   def find_source

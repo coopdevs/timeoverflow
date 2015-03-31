@@ -171,6 +171,7 @@ en:
       post: Post
       reason: Reason
       quantity: Quantity
+      delete_reason: Are you sure to delete this comment?
 
     give_time:
       give_time: Give time to

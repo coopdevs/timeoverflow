@@ -171,6 +171,7 @@ ca:
       post: Anunci
       reason: Raó
       quantity: Quantitat
+      delete_reason: Esteu segur d'esborrar aquest comentari?
 
     give_time:
       give_time: Donar Temps a

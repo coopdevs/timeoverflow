@@ -136,7 +136,11 @@
             user_path(mv.other_side.account.accountable.user)
         %td
           = mv.transfer.try(&:post).try(&:active?) ? link_to(mv.transfer.post, offer_path(mv.transfer.post)) : mv.transfer.post
-        %td= mv.transfer.reason
+        %td
+          = mv.transfer.reason
+          - if mv.transfer.reason.present? && admin?
+            = link_to delete_reason_transfer_path(mv.transfer), method: :put, data: { confirm: t(".delete_reason") } do
+              %span.glyphicon.glyphicon-trash
         %td= seconds_to_hm(mv.amount)
 
   .paginate-align

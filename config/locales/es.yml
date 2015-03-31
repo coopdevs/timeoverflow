@@ -171,6 +171,7 @@ es:
       post: Anuncio
       reason: Razón
       quantity: Cantidad
+      delete_reason: "¿Está seguro de borrar este comentario?"
 
     give_time:
       give_time: Dar Tiempo a
