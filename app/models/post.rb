@@ -61,4 +61,8 @@ class Post < ActiveRecord::Base
   def member_id
     read_attribute(:member_id) if has_attribute?(:member_id)
   end
+
+  def is_active
+    user.member(organization).active && active
+  end
 end

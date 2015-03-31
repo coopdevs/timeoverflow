@@ -124,10 +124,20 @@
           =t(".reason")
         %th
           =t(".quantity")
-    - @user.movements.order("created_at DESC").limit(10).each do |mv|
+    - @movements.each do |mv|
       %tr
         %td= l mv.created_at, format: :short
-        %td= mv.other_side.account
-        %td= mv.transfer.post
+        %td
+          - if mv.other_side.account.accountable_type == "Organization"
+            = link_to mv.other_side.account,
+            organization_path(mv.other_side.account.accountable)
+          - else
+            = link_to mv.other_side.account,
+            user_path(mv.other_side.account.accountable.user)
+        %td
+          = mv.transfer.try(&:post).try(&:is_active) ? link_to(mv.transfer.post, offer_path(mv.transfer.post)) : mv.transfer.post
         %td= mv.transfer.reason
         %td= seconds_to_hm(mv.amount)
+
+  .paginate-align
+    = paginate @movements

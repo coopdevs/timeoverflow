@@ -16,8 +16,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user if current_user.id == params[:id].to_i
-    @user ||= scoped_users.find(params[:id])
+    @user = find_user
+    @movements = @user.movements.order("created_at DESC").page(params[:page]).
+                 per(10)
   end
 
   def new
@@ -120,5 +121,13 @@ class UsersController < ApplicationController
     return unless admin?
     [current_organization.account] +
       current_organization.member_accounts.where("members.active is true")
+  end
+
+  def find_user
+    if current_user.id == params[:id].to_i
+      current_user
+    else
+      scoped_users.find(params[:id])
+    end
   end
 end
