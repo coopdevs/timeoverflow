@@ -59,7 +59,7 @@
 
 
       %table.table.table-condensed.offers
-        - @user.offers.each do |post|
+        - @user.offers.actives.each do |post|
           %tr
             %td= link_to post, post
             %td= post.description
@@ -77,7 +77,7 @@
               %span.glyphicon.glyphicon-plus
 
       %table.table.table-condensed.offers
-        - @user.inquiries.each do |post|
+        - @user.inquiries.actives.each do |post|
           %tr
             %td= link_to post, post
             %td= post.description
