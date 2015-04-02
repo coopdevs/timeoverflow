@@ -61,7 +61,7 @@ class PostsController <  ApplicationController
   def destroy
     post = current_organization.posts.find params[:id]
     authorize post
-    redirect_to send("#{resources}_path") if post.destroy
+    redirect_to send("#{resources}_path") if post.toggle(:active).save!
   end
 
   private
@@ -85,7 +85,8 @@ class PostsController <  ApplicationController
 
   def post_params
     permitted_fields = %i[description end_on global joinable permanent start_on
-                          title category_id tag_list user_id publisher_id]
+                          title category_id tag_list user_id publisher_id
+                          active]
 
     params.fetch(resource, {}).permit(*permitted_fields).tap do |p|
       set_user_id(p)

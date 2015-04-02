@@ -31,7 +31,6 @@ describe OffersController do
         expect(assigns(:offers)).to eq([])
       end
     end
-
   end
 
   describe "GET #show" do
@@ -114,4 +113,21 @@ describe OffersController do
     end
   end
 
+  describe "DELETE destroy" do
+    it "toggle active field" do
+      login(member.user)
+
+      delete :destroy, id: offer.id
+
+      offer.reload
+      expect(offer.active).to be false
+    end
+
+    it "redirects to offers#index" do
+      login(member.user)
+
+      delete :destroy, id: offer.id
+      response.should redirect_to offers_url
+    end
+  end
 end
