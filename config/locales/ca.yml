@@ -172,6 +172,8 @@ ca:
       reason: Raó
       quantity: Quantitat
       delete_reason: Esteu segur d'esborrar aquest comentari?
+      inactive_user: L'usuari no està actiu
+      deleted_user:  L'usuari ja no existeix
 
     give_time:
       give_time: Donar Temps a

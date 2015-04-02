@@ -3,7 +3,7 @@ class MembersController < ApplicationController
 
   def destroy
     find_member
-    current_organization.posts.where(user_id: @member.user_id).destroy_all
+    toggle_active_posts
     @member.destroy
     redirect_to users_path
   end
@@ -30,5 +30,10 @@ class MembersController < ApplicationController
 
   def find_member
     @member ||= current_organization.members.find(params[:id])
+  end
+
+  def toggle_active_posts
+    current_organization.posts.where(user_id: @member.user_id).
+      each { |post| post.update_attributes(active: false) }
   end
 end

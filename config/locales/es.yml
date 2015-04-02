@@ -172,6 +172,8 @@ es:
       reason: Razón
       quantity: Cantidad
       delete_reason: "¿Está seguro de borrar este comentario?"
+      inactive_user: El usuario no está activo
+      deleted_user:  El usuario ya no existe
 
     give_time:
       give_time: Dar Tiempo a
