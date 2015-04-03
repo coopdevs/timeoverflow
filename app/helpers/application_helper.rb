@@ -4,8 +4,8 @@ module ApplicationHelper
   # from https://robohash.org
   def avatar_url(user, size = 32)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
-    gravatar_options = Hash[set: "set1", 
-                            gravatar: "hashed", 
+    gravatar_options = Hash[set: "set1",
+                            gravatar: "hashed",
                             size: "#{size}x#{size}"]
     "https://robohash.org/#{gravatar_id}.png?" +
       "#{Rack::Utils.build_query(gravatar_options)}"
