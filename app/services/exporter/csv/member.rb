@@ -1,5 +1,3 @@
-require "csv"
-
 module Exporter
   module CSV
     class Member
