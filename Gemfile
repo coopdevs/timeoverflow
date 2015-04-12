@@ -37,6 +37,8 @@ gem 'rollbar'
 gem 'travis-lint'
 gem "shelly-dependencies"
 gem 'whenever', :require => false
+gem 'prawn'
+gem 'prawn-table'
 
 group :development do
   gem "binding_of_caller"

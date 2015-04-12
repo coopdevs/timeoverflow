@@ -10,7 +10,8 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data Exporter::CSV::Member.new(@members).run }
+      format.csv { send_data Report::CSV::Member.new(@members).run }
+      format.pdf { send_data Report::PDF::Member.new(@members).run }
     end
   end
 
@@ -24,7 +25,8 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data Exporter::CSV::Post.new(@posts, @post_type).run }
+      format.csv { send_data Report::CSV::Post.new(@posts, @post_type).run }
+      format.pdf { send_data Report::PDF::Post.new(@posts, @post_type).run }
     end
   end
 end

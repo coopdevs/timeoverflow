@@ -1,6 +1,6 @@
 require "csv"
 
-module Exporter
+module Report
   module CSV
     def self.run(headers, rows)
       ::CSV.generate do |csv|
