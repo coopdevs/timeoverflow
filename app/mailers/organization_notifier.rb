@@ -12,9 +12,14 @@ class OrganizationNotifier < ActionMailer::Base
     @inquiries = posts.where(type: "Inquiry").take(10)
 
     @organization_name = posts.take.organization.name
-    # users with email ok
-    emails = posts.take.organization.users.online_active.actives.pluck(:email)
 
-    mail(bcc: emails)
+    mail(bcc: emails_newsletter(posts))
+  end
+
+  private
+
+  def emails_newsletter(posts)
+    posts.take.organization.users.online_active.actives.
+      notifications.pluck(:email)
   end
 end

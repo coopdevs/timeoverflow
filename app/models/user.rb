@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 
   scope :actives, -> { where(members: { active: true }) }
   scope :online_active, -> { where("sign_in_count > 0") }
+  scope :notifications, -> { where(notifications: true) }
 
   validates :username, presence: true
   validates :email, presence: true, uniqueness: true

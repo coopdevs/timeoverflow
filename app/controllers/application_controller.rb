@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  after_filter :store_location
 
   include Pundit
   protect_from_forgery
@@ -30,16 +31,28 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :username
   end
 
-  def after_sign_in_path_for(user)
-    if user.members.present?
-      if user.members.any? &:manager
-        users_path
-      else
-        users_path
-      end
-    else
-      page_path("home")
+  def store_location
+    # store last url - this is needed for post-login redirect to whatever the
+    # user last visited.
+    return unless request.get?
+    paths = ["/users/sign_in", "/users/sign_up", "/users/password/new",
+             "/users/password/edit", "/users/confirmation", "/users/sign_out"]
+    if !paths.include?(request.path) && !request.xhr?
+      session[:previous_url] = request.fullpath
     end
+  end
+
+  def after_sign_in_path_for(user)
+    session[:previous_url] ||
+      if user.members.present?
+        if user.members.any? &:manager
+          users_path
+        else
+          users_path
+        end
+      else
+        page_path("home")
+      end
   end
 
   private
@@ -75,12 +88,22 @@ class ApplicationController < ActionController::Base
 
   # To get locate from client supplied information
   # see http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-client-supplied-information
-  def set_locale
-    # read locale from params, the session or the Accept-Language header
-    I18n.locale = params[:locale] ||
+  def options_locale
+    current_user.try(:locale) ||
       session[:locale] ||
       http_accept_language.compatible_language_from(I18n.available_locales) ||
       I18n.default_locale
+  end
+
+  def set_locale
+    # read locale from params, the session or the Accept-Language header
+    I18n.locale =
+      if params[:locale]
+        current_user.update_attributes(locale: params[:locale]) if current_user
+        params[:locale]
+      else
+        options_locale
+      end
     # set in the session (so ppl can override what the browser sends)
     session[:locale] = I18n.locale
   end

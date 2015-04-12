@@ -54,6 +54,7 @@ en:
         last_sign_in_at: Last login
         description: Description
         unconfirmed_email: Unconfirmed Email
+        notifications: Receive notifications
       organization:
         <<: *common_attributes
         name: Name
@@ -187,8 +188,10 @@ en:
   tags:
     alpha_grouped_index:
       maintitle: Available Tags
+
   terms:
     accept: Accept
+
   offers:
     index:
       offered_by: "Offered by %{size} people"
@@ -210,6 +213,10 @@ en:
       submit: Create inquiry
     edit:
       submit: Change inquiry
+
+  posts:
+    show:
+      info: "%{type} of %{organization} to see person's details you have to"
   categories:
     index:
       all: All
