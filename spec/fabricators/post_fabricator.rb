@@ -7,6 +7,7 @@ Fabricator(:post) do
   permanent { false }
   joinable { false }
   global { false }
+  active { true }
 
 end
 
@@ -21,6 +22,7 @@ Fabricator(:inquiry) do
   permanent { false }
   joinable { false }
   global { false }
+  active { true }
 
 end
 
@@ -35,5 +37,6 @@ Fabricator(:offer) do
   permanent { false }
   joinable { false }
   global { false }
+  active { true }
 
 end

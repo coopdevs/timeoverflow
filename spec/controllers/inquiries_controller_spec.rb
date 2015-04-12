@@ -99,4 +99,21 @@ describe InquiriesController do
     end
   end
 
+  describe "DELETE destroy" do
+    it "toggle active field" do
+      login(member.user)
+
+      delete :destroy, id: inquiry.id
+
+      inquiry.reload
+      expect(inquiry.active).to be false
+    end
+
+    it "redirects to inquiries#index" do
+      login(member.user)
+
+      delete :destroy, id: inquiry.id
+      response.should redirect_to inquiries_url
+    end
+  end
 end

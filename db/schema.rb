@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329193421) do
+ActiveRecord::Schema.define(version: 20150330200315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,9 +120,10 @@ ActiveRecord::Schema.define(version: 20150329193421) do
     t.boolean  "global"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "tags",            array: true
+    t.text     "tags",                           array: true
     t.integer  "publisher_id"
     t.integer  "organization_id"
+    t.boolean  "active",          default: true
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree

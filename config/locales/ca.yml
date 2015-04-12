@@ -188,8 +188,10 @@ ca:
   tags:
     alpha_grouped_index:
       maintitle: "Etiquetes Disponibles"
+
   terms:
     accept: Acceptar
+
   offers:
     index:
       offered_by: "Ofertat per %{size} persones"
@@ -207,6 +209,10 @@ ca:
       new_inquiry: Nova demanda
     new:
       submit: Crear demanda
+
+  posts:
+    show:
+      info: "%{type} de %{organization} per veure les dades de la persona has de"
 
   categories:
     index:

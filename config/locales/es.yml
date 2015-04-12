@@ -188,8 +188,10 @@ es:
   tags:
     alpha_grouped_index:
       maintitle: "Etiquetas Disponibles"
+
   terms:
     accept: Aceptar
+
   offers:
     index:
       offered_by: "Ofrecido por %{size} personas"
@@ -211,6 +213,11 @@ es:
       submit: Crear demanda
     edit:
       submit: Cambiar demanda
+
+  posts:
+    show:
+      info: "%{type} de %{organization} para ver los datos de la persona tienes que"
+
   categories:
     index:
       all: Todas
