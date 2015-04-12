@@ -7,6 +7,11 @@ class ReportsController < ApplicationController
     @members = current_organization.members.active.
                includes(:user).
                order("members.member_uid")
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Exporter::CSV::Member.new(@members).run }
+    end
   end
 
   def post_list
@@ -16,5 +21,10 @@ class ReportsController < ApplicationController
              group_by(&:category).
              to_a.
              sort_by { |category, _| category.try(:name).to_s }
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Exporter::CSV::Post.new(@posts, @post_type).run }
+    end
   end
 end

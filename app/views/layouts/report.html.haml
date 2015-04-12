@@ -14,4 +14,8 @@
 
   %body
     .container
+      .row.exports
+        Download:
+        = link_to 'CSV', url_for(params.merge(format: :csv))
+
       = yield
