@@ -54,6 +54,7 @@ es:
         last_sign_in_at: Fecha último login
         description: Descripción
         unconfirmed_email: Correo sin confirmar
+        notifications: Recibir notificaciones
       organization:
         <<: *common_attributes
         name: Nombre
