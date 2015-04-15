@@ -1,6 +1,6 @@
 %h1
   %small
-    - unless  @user.active?(current_organization)
+    - unless  @member.active
       = t ".inactive"
   = @user.username
   %small
@@ -59,7 +59,7 @@
 
 
       %table.table.table-condensed.offers
-        - @user.offers.actives.each do |post|
+        - @member.offers.actives.each do |post|
           %tr
             %td= link_to post, post
             %td= post.description
@@ -77,35 +77,33 @@
               %span.glyphicon.glyphicon-plus
 
       %table.table.table-condensed.offers
-        - @user.inquiries.actives.each do |post|
+        - @member.inquiries.actives.each do |post|
           %tr
             %td= link_to post, post
             %td= post.description
 
-%h2
-  =t(".accounts")
 .row
-  - @user.members.each do |member|
-    .col-sm-4
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title= member.organization
-        .panel-body
-          - if member.manager
-            %p.danger
-              ADMIN
-          %p
-            %strong
-              = t(".created_at")
-            = member.entry_date ? l(member.entry_date, format: :short) : mdash
-            %br
-            %strong
-              = t(".user_no")
-            = member.member_uid || mdash
-            %br
-            %strong
-              = t(".balance")
-            = seconds_to_hm(member.account.try(:balance) || mdash)
+  .col-sm-4
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          = t(".accounts")
+      .panel-body
+        - if @member.manager
+          %p.danger
+            ADMIN
+        %p
+          %strong
+            = t(".created_at")
+          = @member.entry_date ? l(@member.entry_date, format: :short) : mdash
+          %br
+          %strong
+            = t(".user_no")
+          = @member.member_uid || mdash
+          %br
+          %strong
+            = t(".balance")
+          = seconds_to_hm(@member.account.try(:balance) || mdash)
 
 
 %h3
@@ -124,10 +122,10 @@
           =t(".reason")
         %th
           =t(".quantity")
-    - @user.movements.order("created_at DESC").limit(10).each do |mv|
+    - @member.movements.order("created_at DESC").limit(10).each do |mv|
       %tr
         %td= l mv.created_at, format: :short
-        %td= mv.other_side.account
-        %td= mv.transfer.post
-        %td= mv.transfer.reason
+        %td= mv.other_side.account if mv.other_side
+        %td= mv.transfer.post if mv.transfer
+        %td= mv.transfer.reason if mv.transfer
         %td= seconds_to_hm(mv.amount)

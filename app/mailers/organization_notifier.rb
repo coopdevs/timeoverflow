@@ -1,5 +1,6 @@
 class OrganizationNotifier < ActionMailer::Base
   default from: "\"TimeOverflow\" <info@timeoverflow.org>"
+  default to: "\"TimeOverflow\" <info@timeoverflow.org>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20150330200315) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "accountable_id"
-    t.string   "accountable_type"
-    t.integer  "balance",             default: 0
+    t.string   "accountable_type",    limit: 255
+    t.integer  "balance"
     t.integer  "max_allowed_balance"
     t.integer  "min_allowed_balance"
     t.boolean  "flagged"
@@ -29,15 +29,15 @@ ActiveRecord::Schema.define(version: 20150330200315) do
     t.datetime "updated_at"
   end
 
-  add_index "accounts", ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id", using: :btree
+  add_index "accounts", ["accountable_id", "accountable_type"], name: "index_accounts_on_accountable_id_and_accountable_type", using: :btree
 
   create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace"
+    t.string   "namespace",     limit: 255
     t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
+    t.string   "resource_id",   limit: 255, null: false
+    t.string   "resource_type", limit: 255, null: false
     t.integer  "author_id"
-    t.string   "author_type"
+    t.string   "author_type",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,17 +47,17 @@ ActiveRecord::Schema.define(version: 20150330200315) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.hstore   "name_translations"
   end
 
   create_table "documents", force: :cascade do |t|
     t.integer  "documentable_id"
-    t.string   "documentable_type"
+    t.string   "documentable_type", limit: 255
     t.text     "title"
     t.text     "content"
-    t.string   "label"
+    t.string   "label",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -91,25 +91,25 @@ ActiveRecord::Schema.define(version: 20150330200315) do
   add_index "movements", ["transfer_id"], name: "index_movements_on_transfer_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name",                 limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "reg_number_seq"
-    t.string   "theme"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "web"
+    t.string   "theme",                limit: 255
+    t.string   "email",                limit: 255
+    t.string   "phone",                limit: 255
+    t.string   "web",                  limit: 255
     t.text     "public_opening_times"
     t.text     "description"
     t.text     "address"
-    t.string   "neighborhood"
-    t.string   "city"
-    t.string   "domain"
+    t.string   "neighborhood",         limit: 255
+    t.string   "city",                 limit: 255
+    t.string   "domain",               limit: 255
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.string   "type"
+    t.string   "title",           limit: 255
+    t.string   "type",            limit: 255
     t.integer  "category_id"
     t.integer  "user_id"
     t.text     "description"
@@ -118,12 +118,12 @@ ActiveRecord::Schema.define(version: 20150330200315) do
     t.boolean  "permanent"
     t.boolean  "joinable"
     t.boolean  "global"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "tags",                           array: true
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.text     "tags",                                                    array: true
     t.integer  "publisher_id"
     t.integer  "organization_id"
-    t.boolean  "active",          default: true
+    t.boolean  "active",                      default: true
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
@@ -149,39 +149,39 @@ ActiveRecord::Schema.define(version: 20150330200315) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                              null: false
-    t.string   "email",                                 null: false
-    t.string   "password_digest"
+    t.string   "username",               limit: 255,                null: false
+    t.string   "email",                  limit: 255,                null: false
+    t.string   "password_digest",        limit: 255
     t.date     "date_of_birth"
-    t.string   "identity_document"
-    t.string   "phone"
-    t.string   "alt_phone"
+    t.string   "identity_document",      limit: 255
+    t.string   "phone",                  limit: 255
+    t.string   "alt_phone",              limit: 255
     t.text     "address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.datetime "deleted_at"
-    t.string   "gender"
+    t.string   "gender",                 limit: 255
     t.text     "description"
-    t.boolean  "active",                 default: true
     t.datetime "terms_accepted_at"
-    t.string   "encrypted_password",     default: "",   null: false
-    t.string   "reset_password_token"
+    t.string   "encrypted_password",     limit: 255, default: "",   null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0
-    t.string   "unlock_token"
+    t.string   "unconfirmed_email",      limit: 255
+    t.integer  "failed_attempts",                    default: 0
+    t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
-    t.string   "locale",                 default: "es"
-    t.boolean  "notifications",          default: true
+    t.boolean  "active",                             default: true
+    t.string   "locale",                             default: "es"
+    t.boolean  "notifications",                      default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

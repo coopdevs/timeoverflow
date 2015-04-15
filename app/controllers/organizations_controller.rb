@@ -53,6 +53,13 @@ class OrganizationsController < ApplicationController
     @sources = find_transfer_sources_for_admin
   end
 
+  def activate
+    if current_user
+      session[:current_organization_id] = @organization.id
+    end
+    redirect_to root_path
+  end
+
   private
 
   def organization_params

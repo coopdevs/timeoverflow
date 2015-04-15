@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   OutadedTOSAcceptance = Class.new(Exception)
 
   before_filter :set_locale
+  before_filter :set_current_organization
 
   append_before_filter :check_for_terms_acceptance!, unless: :devise_controller?
 
@@ -29,6 +30,14 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username
+  end
+
+  def set_current_organization
+    if session[:current_organization_id]
+      @current_organization = Organization.find(session[:current_organization_id])
+    elsif current_user
+      @current_organization = current_user.organizations.first
+    end
   end
 
   def store_location

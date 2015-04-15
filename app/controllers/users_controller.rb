@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user if current_user.id == params[:id].to_i
     @user ||= scoped_users.find(params[:id])
+    @member = @user.as_member_of(current_organization)
   end
 
   def new
@@ -34,7 +35,10 @@ class UsersController < ApplicationController
     authorize User
 
     # New User
-    @user = User.new(user_params)
+    email = user_params[:email]
+    @user = User.find_or_initialize_by(email: email) do |u|
+      u.attributes = user_params
+    end
     empty_email = @user.email.empty?
     @user.setup_and_save_user
 
@@ -61,6 +65,7 @@ class UsersController < ApplicationController
   def update
     @user = scoped_users.find(params[:id])
     authorize @user
+
     if @user.update_attributes(user_params)
       respond_with @user, location: @user
     else
@@ -80,25 +85,11 @@ class UsersController < ApplicationController
     @sources = find_transfer_sources_for_admin
   end
 
-  def toggle_active
-    @user = scoped_users.find(params[:id])
-    @user.toggle!(:active)
-
-    if @user.active?
-      # Could an admin/superadmin reactivate a user?
-    else
-      @user.members.delete_all
-      # TODO - Inquiries and Offers
-    end
-
-    redirect_to action: "index"
-  end
-
   private
 
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone
-                          alt_phone active description, notifications"
+                          alt_phone active description notifications"
     fields_to_permit += %w"admin registration_number
                            registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
