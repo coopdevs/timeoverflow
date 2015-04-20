@@ -10,8 +10,14 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data Report::CSV::Member.new(@members).run }
-      format.pdf { send_data Report::PDF::Member.new(@members).run }
+      format.csv {
+        report = Report::CSV::Member.new(current_organization, @members)
+        send_data report.run, filename: report.name, type: report.mime_type
+      }
+      format.pdf {
+        report = Report::PDF::Member.new(current_organization, @members)
+        send_data report.run, filename: report.name, type: report.mime_type
+      }
     end
   end
 
@@ -25,8 +31,14 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data Report::CSV::Post.new(@posts, @post_type).run }
-      format.pdf { send_data Report::PDF::Post.new(@posts, @post_type).run }
+      format.csv {
+        report = Report::CSV::Post.new(current_organization, @posts, @post_type)
+        send_data report.run, filename: report.name, type: report.mime_type
+      }
+      format.pdf {
+        report = Report::PDF::Post.new(current_organization, @posts, @post_type)
+        send_data report.run, filename: report.name, type: report.mime_type
+      }
     end
   end
 end

@@ -1,13 +1,21 @@
 module Report
   module PDF
     class Member
-      def initialize(collection)
+      def initialize(org, collection)
         @collection = collection
+        @decorator = MemberReportDecorator.new(org, @collection)
+      end
+
+      def name
+        @decorator.name(:pdf)
+      end
+
+      def mime_type
+        Report::PDF::MIME_TYPE
       end
 
       def run
-        member_report = MemberReportDecorator.new(@collection)
-        Report::PDF.run(member_report.headers, member_report.rows)
+        Report::PDF.run(@decorator.headers, @decorator.rows)
       end
     end
   end

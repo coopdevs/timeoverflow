@@ -1,5 +1,7 @@
 module Report
   module PDF
+    MIME_TYPE = Mime::PDF
+
     def self.run(headers, rows)
       pdf = Prawn::Document.new(options)
       pdf.table [headers] + rows
@@ -9,7 +11,7 @@ module Report
 
     def self.options
       {
-        page_size: 'A4',
+        page_size: "A4",
         margin: 30
       }
     end

@@ -1,6 +1,11 @@
 class MemberReportDecorator
-  def initialize(collection)
+  def initialize(org, collection)
+    @org = org
     @collection = collection
+  end
+
+  def name(extension)
+    "#{@org.name}_#{User.model_name.human(count: :many)}_#{Date.today}.#{extension}"
   end
 
   def headers

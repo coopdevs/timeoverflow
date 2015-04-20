@@ -1,13 +1,21 @@
 module Report
   module CSV
     class Member
-      def initialize(collection)
+      def initialize(org, collection)
         @collection = collection
+        @decorator = MemberReportDecorator.new(org, @collection)
+      end
+
+      def name
+        @decorator.name(:csv)
+      end
+
+      def mime_type
+        Report::CSV::MIME_TYPE
       end
 
       def run
-        member_report = MemberReportDecorator.new(@collection)
-        Report::CSV.run(member_report.headers, member_report.rows)
+        Report::CSV.run(@decorator.headers, @decorator.rows)
       end
     end
   end

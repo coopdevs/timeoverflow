@@ -1,14 +1,22 @@
 module Report
   module CSV
     class Post
-      def initialize(collection, type)
+      def initialize(org, collection, type)
         @collection = collection
         @type = type
+        @decorator = PostReportDecorator.new(org, @collection, @type)
+      end
+
+      def name
+        @decorator.name(:csv)
+      end
+
+      def mime_type
+        Report::CSV::MIME_TYPE
       end
 
       def run
-        post_report = PostReportDecorator.new(@collection, @type)
-        Report::CSV.run(post_report.headers, post_report.rows)
+        Report::CSV.run(@decorator.headers, @decorator.rows)
       end
     end
   end

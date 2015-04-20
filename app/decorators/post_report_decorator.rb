@@ -1,7 +1,12 @@
 class PostReportDecorator
-  def initialize(collection, type)
+  def initialize(org, collection, type)
+    @org = org
     @collection = collection
     @type = type
+  end
+
+  def name(extension)
+    "#{@org.name}_#{@type.model_name.human(count: :many)}_#{Date.today}.#{extension}"
   end
 
   def headers
