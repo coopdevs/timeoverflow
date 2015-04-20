@@ -15,7 +15,7 @@
   %body
     .container
       .row.exports
-        Download:
+        = t("reports.download")
         = link_to 'CSV', url_for(params.merge(format: :csv))
         = link_to 'PDF', url_for(params.merge(format: :pdf))
 

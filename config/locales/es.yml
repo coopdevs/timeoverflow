@@ -231,6 +231,7 @@ es:
       title: Servicios ofrecidos
     user_list:
       title: Listado usuarios
+    download: Descargar
 
   statistics:
     statistics_global_activity:

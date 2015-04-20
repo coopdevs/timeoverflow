@@ -230,22 +230,7 @@ en:
       title: Offered Services
     user_list:
       title: User List
-    statistics:
-      statistics: Statistics
-      bank_activity: "Bank Activity"
-      per_month: "Per Month"
-      global_activity: "Global Activity"
-      users_reg: "Registered users"
-      num_swaps: "Transactions"
-      total_hours: "Hours transfered"
-      inactive_users: Inactive users
-      last_movement: Last transaction
-      no_movements: Without transactions
-      days_without_swaps: Days without transactions
-      demographics: Demographic data
-      by_ages: Per ages
-      num_people: "# of people"
-      unknown: Unknown
+    download: Download
 
   statistics:
     statistics_global_activity:

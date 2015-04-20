@@ -5,7 +5,10 @@ class MemberReportDecorator
   end
 
   def name(extension)
-    "#{@org.name}_#{User.model_name.human(count: :many)}_#{Date.today}.#{extension}"
+    "#{@org.name}_"\
+    "#{User.model_name.human(count: :many)}_"\
+    "#{Date.today}."\
+    "#{extension}"
   end
 
   def headers

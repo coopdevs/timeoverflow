@@ -6,7 +6,10 @@ class PostReportDecorator
   end
 
   def name(extension)
-    "#{@org.name}_#{@type.model_name.human(count: :many)}_#{Date.today}.#{extension}"
+    "#{@org.name}_"\
+    "#{@type.model_name.human(count: :many)}_"\
+    "#{Date.today}."\
+    "#{extension}"
   end
 
   def headers
@@ -19,7 +22,7 @@ class PostReportDecorator
   def rows
     grouped_rows = []
 
-    @collection.map do |category, posts|
+    @collection.each do |category, posts|
       grouped_rows << [category.try(:name) || "-", ""]
 
       posts.each do |post|
