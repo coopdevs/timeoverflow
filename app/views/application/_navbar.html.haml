@@ -111,16 +111,17 @@
                 = glyph("log-out")
                 = t ".sign_out"
             %li.divider{role: :presentation}
-            - current_user.organizations.each do |org|
-              - if current_organization == org
-                %li.disabled
-                  = link_to org.name, "#"
-              - else
-                %li
-                  = link_to activate_organization_path(org), method: :post do
-                    = glyph(:retweet)
-                    = org.name
-            %li.divider{role: :presentation}
+            - if current_user.organizations.count >= 1
+              - current_user.organizations.each do |org|
+                - if current_organization == org
+                  %li.disabled
+                    = link_to org.name, "#"
+                - else
+                  %li
+                    = link_to activate_organization_path(org), method: :post do
+                      = glyph(:retweet)
+                      = org.name
+              %li.divider{role: :presentation}
             %li{role: :presentation}
               = link_to current_user do
                 = glyph(:user)
