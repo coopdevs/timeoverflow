@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   resources :organizations, concerns: :accountable do
     member do
-      post :activate
+      post :set_current
     end
   end
 

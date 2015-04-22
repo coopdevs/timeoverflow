@@ -118,7 +118,7 @@
                     = link_to org.name, "#"
                 - else
                   %li
-                    = link_to activate_organization_path(org), method: :post do
+                    = link_to set_current_organization_path(org), method: :post do
                       = glyph(:retweet)
                       = org.name
               %li.divider{role: :presentation}

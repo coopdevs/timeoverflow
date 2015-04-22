@@ -53,7 +53,7 @@ class OrganizationsController < ApplicationController
     @sources = find_transfer_sources_for_admin
   end
 
-  def activate
+  def set_current
     if current_user
       session[:current_organization_id] = @organization.id
     end
