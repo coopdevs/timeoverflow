@@ -9,7 +9,7 @@ module UsersHelper
         avatar: avatar_url(user),
         member_id: membership.member_uid,
         username: user.username,
-        email: user.email,
+        email: user.email_if_real,
         unconfirmed_email: user.unconfirmed_email,
         phone: user.phone,
         alt_phone: user.alt_phone,

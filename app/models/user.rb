@@ -104,4 +104,8 @@ class User < ActiveRecord::Base
   def has_valid_email?
     !email.include? "example.com"
   end
+
+  def email_if_real
+    has_valid_email? ? email : ""
+  end
 end

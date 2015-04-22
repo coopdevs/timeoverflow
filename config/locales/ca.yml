@@ -41,7 +41,6 @@ ca:
         one: Banc de Temps
         other: Bancs de Temps
         email: Correu
-        valid_email: Correu valid?
         registration_date: Data d'alta
         gender: Gènere
         registration_number: Codi d'usuari
