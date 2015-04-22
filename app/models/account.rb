@@ -10,7 +10,10 @@
 #
 class Account < ActiveRecord::Base
   belongs_to :accountable, polymorphic: true
+  belongs_to :organization
   has_many :movements
+
+  before_create :add_organization
 
   def update_balance
     new_balance = movements.sum(:amount)
@@ -35,6 +38,18 @@ class Account < ActiveRecord::Base
   def to_s
     "#{accountable.class} #{accountable}"
   end
+
+  protected
+
+  def add_organization
+    self.organization = case accountable
+                        when Organization
+                          accountable
+                        when Member
+                          accountable.organization
+                        end
+  end
+
 
   private
 
