@@ -45,10 +45,10 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 \curl -L https://get.rvm.io | bash -s stable
 source /etc/profile.d/rvm.sh
 
-# 4.Install ruby 2.1.4 and bundler
+# 4.Install ruby 2.2.0 and bundler
 echo ''
 echo '******************************************************'
-echo '****** STEP 4 of 10 ***** Installing ruby 2.1.4'
+echo '****** STEP 4 of 10 ***** Installing ruby 2.2.0'
 echo '******************************************************'
 echo ''
 
