@@ -227,6 +227,7 @@ ca:
       title: Serveis ofertats
     user_list:
       title: Llistat d'usuaris
+    download: Descarregar
 
   statistics:
     statistics_global_activity:
