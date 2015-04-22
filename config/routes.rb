@@ -33,7 +33,11 @@ Rails.application.routes.draw do
 
   resources :users, concerns: :accountable, except: :destroy, :path => "members"
 
-  resources :transfers, only: [:create]
+  resources :transfers, only: [:create] do
+    member do
+      put :delete_reason
+    end
+  end
 
   resources :documents
 

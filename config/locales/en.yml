@@ -95,6 +95,11 @@ en:
           attributes:
             email:
               invalid: invalid
+        organization:
+          attributes:
+            web:
+              url_format_invalid: invalid URL format
+
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -172,6 +177,9 @@ en:
       post: Post
       reason: Reason
       quantity: Quantity
+      delete_reason: Are you sure to delete this comment?
+      inactive_user: The user isn't active
+      deleted_user:  The user no longer exists
 
     give_time:
       give_time: Give time to
@@ -230,22 +238,7 @@ en:
       title: Offered Services
     user_list:
       title: User List
-    statistics:
-      statistics: Statistics
-      bank_activity: "Bank Activity"
-      per_month: "Per Month"
-      global_activity: "Global Activity"
-      users_reg: "Registered users"
-      num_swaps: "Transactions"
-      total_hours: "Hours transfered"
-      inactive_users: Inactive users
-      last_movement: Last transaction
-      no_movements: Without transactions
-      days_without_swaps: Days without transactions
-      demographics: Demographic data
-      by_ages: Per ages
-      num_people: "# of people"
-      unknown: Unknown
+    download: Download
 
   statistics:
     statistics_global_activity:

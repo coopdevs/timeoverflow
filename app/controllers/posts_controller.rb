@@ -39,9 +39,9 @@ class PostsController <  ApplicationController
 
   def show
     scope = if current_user.present?
-              current_organization.posts
+              current_organization.posts.actives
             else
-              model.all
+              model.all.actives
             end
     post = scope.find params[:id]
     instance_variable_set("@#{resource}", post)

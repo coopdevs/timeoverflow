@@ -25,8 +25,6 @@ gem 'foreman'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem 'textacular', "3.2.1", require: 'textacular/rails'
-# To use debugger
-# gem 'debugger'
 gem "haml-rails"
 gem 'turbolinks'
 gem "simple_form", ">= 3.0.0"
@@ -36,10 +34,11 @@ gem "paranoia"
 gem "rest-client"
 gem 'memcachier'
 gem 'rollbar'
-gem "rails-erd", group: :development
 gem 'travis-lint'
 gem "shelly-dependencies"
 gem 'whenever', :require => false
+gem 'prawn'
+gem 'prawn-table'
 
 group :development do
   gem "binding_of_caller"
@@ -47,11 +46,13 @@ group :development do
   gem "rubocop"
   gem "haml-lint"
   gem 'web-console', '~> 2.0'
+  gem "rails-erd"
 end
 
 group :development, :test do
   gem "rspec-rails", '~> 2.14'
   gem "capybara", '~> 2.4.4'
+  gem "byebug"
 end
 
 group :test do

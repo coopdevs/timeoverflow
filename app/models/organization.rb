@@ -1,4 +1,5 @@
 class Organization < ActiveRecord::Base
+  before_validation :ensure_url
   validates_uniqueness_of :name
   has_many :members, dependent: :destroy
   has_many :users, -> { order "members.created_at DESC" }, through: :members
@@ -39,4 +40,17 @@ class Organization < ActiveRecord::Base
     increment!(:reg_number_seq)
     reg_number_seq
   end
+
+  def ensure_url
+    return if web.blank? || URI.parse(web).is_a?(URI::HTTP)
+  rescue
+    errors.add(:web, :url_format_invalid)
+  else
+    if URI.parse("http://#{web}").is_a?(URI::HTTP)
+      self.web = "http://#{web}"
+    else
+      errors.add(:web, :url_format_invalid)
+    end
+  end
+
 end

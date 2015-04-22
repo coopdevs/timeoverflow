@@ -95,6 +95,11 @@ ca:
           attributes:
             email:
               invalid: invàlid
+        organization:
+          attributes:
+            web:
+              url_format_invalid: Format de URL no vàlid
+
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -172,6 +177,9 @@ ca:
       post: Anunci
       reason: Raó
       quantity: Quantitat
+      delete_reason: Esteu segur d'esborrar aquest comentari?
+      inactive_user: L'usuari no està actiu
+      deleted_user:  L'usuari ja no existeix
 
     give_time:
       give_time: Donar Temps a
@@ -227,6 +235,7 @@ ca:
       title: Serveis ofertats
     user_list:
       title: Llistat d'usuaris
+    download: Descarregar
 
   statistics:
     statistics_global_activity:
@@ -335,3 +344,11 @@ ca:
       edit_org: "Modificar %{organization}"
     report:
       report_title: "INFORME"
+
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: "Darrera &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Següent &rsaquo;"
+      truncate: "&hellip;"

@@ -1,3 +1,7 @@
+- if @organization.errors.size > 0
+  - @organization.errors.full_messages.each do |msg|
+    .alert.alert-danger{:role=> "alert"}
+      =msg
 %h1
   = link_to @organization, organization_path(@organization)
   %small= t "global.edit"

@@ -33,6 +33,10 @@
   font-size: 10px;
 }
 
+.row.exports {
+  padding: 10px;
+}
+
 @media screen {
   body {
     // padding-top: 60px;
@@ -135,4 +139,10 @@ ul.statistics li{
 
 label[required]::after{
   content: " *";
+}
+
+// paginator
+.paginate-align {
+  display: table;
+  margin: 0 auto;
 }

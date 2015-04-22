@@ -95,6 +95,11 @@ es:
           attributes:
             email:
               invalid: inválido
+        organization:
+          attributes:
+            web:
+              url_format_invalid: Formato de URL no válido
+
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
@@ -172,6 +177,9 @@ es:
       post: Anuncio
       reason: Razón
       quantity: Cantidad
+      delete_reason: "¿Está seguro de borrar este comentario?"
+      inactive_user: El usuario no está activo
+      deleted_user:  El usuario ya no existe
 
     give_time:
       give_time: Dar Tiempo a
@@ -231,6 +239,7 @@ es:
       title: Servicios ofrecidos
     user_list:
       title: Listado usuarios
+    download: Descargar
 
   statistics:
     statistics_global_activity:
@@ -340,3 +349,11 @@ es:
       edit_org: "Modificar %{organization}"
     report:
       report_title: "INFORME"
+
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: "Ultima &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Siguiente &rsaquo;"
+      truncate: "&hellip;"
