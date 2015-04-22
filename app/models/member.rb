@@ -3,6 +3,7 @@ class Member < ActiveRecord::Base
   belongs_to :organization
 
   has_one :account, as: :accountable
+  has_many :movements, through: :account
   delegate :balance, to: :account, prefix: true, allow_nil: true
   delegate :gender, :date_of_birth, to: :user, prefix: true, allow_nil: true
 
@@ -34,6 +35,10 @@ class Member < ActiveRecord::Base
 
   def offers
     Post.where(organization: organization, user: user, type: "Offer")
+  end
+
+  def inquiries
+    Post.where(organization: organization, user: user, type: "Inquiry")
   end
 
   private

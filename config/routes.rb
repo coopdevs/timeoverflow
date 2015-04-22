@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     get :give_time, on: :member
   end
 
-  resources :organizations, concerns: :accountable
+  resources :organizations, concerns: :accountable do
+    member do
+      post :set_current
+    end
+  end
 
   resources :users, concerns: :accountable, except: :destroy, :path => "members"
 
