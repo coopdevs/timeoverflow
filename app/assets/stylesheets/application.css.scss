@@ -140,3 +140,9 @@ ul.statistics li{
 label[required]::after{
   content: " *";
 }
+
+// paginator
+.paginate-align {
+  display: table;
+  margin: 0 auto;
+}

@@ -177,6 +177,9 @@ en:
       post: Post
       reason: Reason
       quantity: Quantity
+      delete_reason: Are you sure to delete this comment?
+      inactive_user: The user isn't active
+      deleted_user:  The user no longer exists
 
     give_time:
       give_time: Give time to

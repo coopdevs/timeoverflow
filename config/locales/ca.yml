@@ -177,6 +177,9 @@ ca:
       post: Anunci
       reason: Raó
       quantity: Quantitat
+      delete_reason: Esteu segur d'esborrar aquest comentari?
+      inactive_user: L'usuari no està actiu
+      deleted_user:  L'usuari ja no existeix
 
     give_time:
       give_time: Donar Temps a
@@ -341,3 +344,11 @@ ca:
       edit_org: "Modificar %{organization}"
     report:
       report_title: "INFORME"
+
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: "Darrera &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Següent &rsaquo;"
+      truncate: "&hellip;"

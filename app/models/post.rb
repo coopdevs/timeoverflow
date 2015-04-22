@@ -29,7 +29,7 @@ class Post < ActiveRecord::Base
   }
 
   scope :actives, -> {
-    with_member.merge(Member.active) && where(active: true)
+    with_member.merge(Member.active).where(active: true)
   }
 
   scope :fuzzy_and_tags, ->(s) {
@@ -60,5 +60,9 @@ class Post < ActiveRecord::Base
   # To ensure the presence of the attribute, use the `with_member` scope
   def member_id
     read_attribute(:member_id) if has_attribute?(:member_id)
+  end
+
+  def active?
+    user && user.member(organization).try(:active) && active
   end
 end

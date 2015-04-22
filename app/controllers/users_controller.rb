@@ -16,8 +16,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user if current_user.id == params[:id].to_i
-    @user ||= scoped_users.find(params[:id])
+    @user = find_user
+    @movements = @user.movements.order("created_at DESC").page(params[:page]).
+                 per(10)
   end
 
   def new
@@ -26,8 +27,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user if current_user.id == params[:id].to_i
-    @user ||= scoped_users.find(params[:id])
+    @user = find_user
   end
 
   def create
@@ -40,18 +40,7 @@ class UsersController < ApplicationController
 
     if @user.persisted?
       @user.tune_after_persisted(current_organization)
-      id = @user.member(current_organization).member_uid
-      if params[:more]
-        redirect_to new_user_path,
-                    notice: I18n.t("users.new.user_created_add",
-                                   uid: id,
-                                   name: @user.username)
-      else
-        redirect_to users_path,
-                    notice: I18n.t("users.index.user_created",
-                                   uid: id,
-                                   name: @user.username)
-      end
+      redirect_to_after_create
     else
       @user.email = "" if empty_email
       render action: "new"
@@ -120,5 +109,28 @@ class UsersController < ApplicationController
     return unless admin?
     [current_organization.account] +
       current_organization.member_accounts.where("members.active is true")
+  end
+
+  def find_user
+    if current_user.id == params[:id].to_i
+      current_user
+    else
+      scoped_users.find(params[:id])
+    end
+  end
+
+  def redirect_to_after_create
+    id = @user.member(current_organization).member_uid
+    if params[:more]
+      redirect_to new_user_path,
+                  notice: I18n.t("users.new.user_created_add",
+                                 uid: id,
+                                 name: @user.username)
+    else
+      redirect_to users_path,
+                  notice: I18n.t("users.index.user_created",
+                                 uid: id,
+                                 name: @user.username)
+    end
   end
 end
