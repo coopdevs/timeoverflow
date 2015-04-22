@@ -33,8 +33,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_organization
-    if session[:current_organization_id]
-      @current_organization = Organization.find(session[:current_organization_id])
+    if org_id = session[:current_organization_id]
+      @current_organization = Organization.find(org_id)
     elsif current_user
       @current_organization = current_user.organizations.first
     end
