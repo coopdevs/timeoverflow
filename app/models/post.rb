@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
   scope :by_organization, ->(org) { where(organization_id: org) if org }
 
   scope :with_member, -> {
-    references(:organization, :user_members).
+    joins(:organization, :user_members).
       where("members.organization_id = posts.organization_id").
       select("posts.*, members.member_uid as member_id")
   }
