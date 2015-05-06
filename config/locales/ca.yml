@@ -278,6 +278,7 @@ ca:
       post: Anunci
       reason: Raó
       quantity: Quantitat
+      delete_reason: Esteu segur d'esborrar aquest comentari?
 
   stats:
     min_balance:

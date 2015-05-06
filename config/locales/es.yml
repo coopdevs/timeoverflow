@@ -282,6 +282,7 @@ es:
       post: Anuncio
       reason: Razón
       quantity: Cantidad
+      delete_reason: "¿Está seguro de borrar este comentario?"
 
   stats:
     min_balance:
