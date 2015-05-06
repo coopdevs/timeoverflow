@@ -63,6 +63,10 @@ class User < ActiveRecord::Base
     "#{username}"
   end
 
+  def user
+    self
+  end
+
   def add_to_organization(organization)
     organization && members.
       find_or_create_by(organization: organization) do |member|

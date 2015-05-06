@@ -23,4 +23,12 @@ class Transfer < ActiveRecord::Base
     movements.create(account: Account.find(source), amount: -amount.to_i)
     movements.create(account: Account.find(destination), amount: amount.to_i)
   end
+
+  def movement_from
+    movements.detect {|m| m.amount < 0 }
+  end
+
+  def movement_to
+    movements.detect {|m| m.amount > 0 }
+  end
 end

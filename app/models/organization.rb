@@ -3,6 +3,13 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :name
   has_many :members, dependent: :destroy
   has_many :users, -> { order "members.created_at DESC" }, through: :members
+  has_many :all_accounts, class_name: "Account", inverse_of: :organization
+  has_many :all_movements, class_name: "Movement", through: :all_accounts, source: :movements do
+    def with_transfer
+      joins(transfer: :movements)
+    end
+  end
+  has_many :all_transfers, class_name: "Transfer", through: :all_movements, source: :transfer
 
   has_one :account, as: :accountable
   after_create :create_account

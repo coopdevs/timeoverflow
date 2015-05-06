@@ -10,7 +10,7 @@
 #
 class Account < ActiveRecord::Base
   belongs_to :accountable, polymorphic: true
-  belongs_to :organization
+  belongs_to :organization, inverse_of: :all_accounts
   has_many :movements
 
   before_create :add_organization

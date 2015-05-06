@@ -117,6 +117,7 @@ en:
       last_login: Last login
       without_offers: Without offers
       type_of_swaps: Type of transactions
+      statistics_all_transfers: All transfers
       admin: Manage
       adminshort: Admin
       tags: Tags
@@ -272,6 +273,14 @@ en:
       type_of_swaps: Type of transactions
       without_tags: Without tags
       without_category: Without category
+    statistics_all_transfers:
+      transfers: All transfers
+      date: Date
+      from: From
+      to: To
+      post: Post
+      reason: Reason
+      quantity: Quantity
 
   stats:
     min_balance:

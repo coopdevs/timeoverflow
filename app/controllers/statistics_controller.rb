@@ -99,6 +99,15 @@ class StatisticsController < ApplicationController
               sort_by(&:last).reverse
   end
 
+  def statistics_all_transfers
+    @transfers = current_organization.all_transfers.
+                 includes(movements: {account: :accountable}).
+                 order("transfers.created_at DESC").
+                 uniq.
+                 page(params[:page]).
+                 per(20)
+  end
+
   protected
 
   def age(date_of_birth)

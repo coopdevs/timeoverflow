@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       get "statistics_last_login"
       get "statistics_without_offers"
       get "statistics_type_swaps"
+      get "statistics_all_transfers"
     end
   end
 

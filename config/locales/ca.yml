@@ -117,6 +117,7 @@ ca:
       last_login: Darrera connexió
       without_offers: Sense ofertes publicades
       type_of_swaps: Tipus d'intecanvis
+      statistics_all_transfers: Totes les transferències
       admin: Administrar
       adminshort: Admin
       tags: Etiquetes
@@ -269,6 +270,14 @@ ca:
       type_of_swaps: "Tipus d'intercanvis"
       without_tags: Sense etiquetes
       without_category: Sense categoria
+    statistics_all_transfers:
+      transfers: Totes les transferències
+      date: Data
+      from: Origen
+      to: Destí
+      post: Anunci
+      reason: Raó
+      quantity: Quantitat
 
   stats:
     min_balance:
