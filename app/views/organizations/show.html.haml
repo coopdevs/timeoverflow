@@ -13,7 +13,7 @@
           %strong= Organization.human_attribute_name("phone")
           = @organization.phone
           %br
-          %strong Web 
+          %strong Web
           =link_to_if(@organization.web.present?,@organization.web,@organization.web)
           %br
           %strong= Organization.human_attribute_name("public_opening_times")
@@ -36,16 +36,16 @@
       .panel-body
         %p
           %strong= Organization.human_attribute_name("created_at")
-          = l(@organization.created_at, format: :short)
+          = l(@organization.created_at, format: :long)
           %br
           %strong= Organization.human_attribute_name("updated_at")
-          = l(@organization.updated_at, format: :short)
+          = l(@organization.updated_at, format: :long)
           %br
           %strong= t "global.member_count"
           = @organization.members.count
           %br
           %strong= t "global.balance"
-          = seconds_to_hm(@organization.account.try(:balance) || mdash)  
+          = seconds_to_hm(@organization.account.try(:balance) || mdash)
   .col-sm-5
     %ul.nav.nav-pills.pull-right
       - if superadmin?
@@ -81,7 +81,7 @@
         %th= t "global.amount"
     - @organization.account.movements.order("created_at DESC").limit(10).each do |mv|
       %tr
-        %td= l mv.created_at, format: :short
+        %td= l mv.created_at, format: :long
         %td= mv.other_side.account
         %td= mv.transfer.post
         %td= mv.transfer.reason

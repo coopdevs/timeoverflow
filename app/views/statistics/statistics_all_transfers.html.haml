@@ -13,7 +13,7 @@
           %th=t(".quantity")
       - @transfers.each do |transfer|
         %tr
-          %td= l transfer.created_at, format: :short
+          %td= l transfer.created_at, format: :long
           - transfer.movements.sort_by(&:amount).each do |mv|
             %td
               - if mv.account.accountable.present?

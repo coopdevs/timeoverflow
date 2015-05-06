@@ -12,4 +12,4 @@
         %tr
           %td= mem.member_uid
           %td= link_to mem.user.username, mem.user
-          %td= mem.user.current_sign_in_at.blank? ? t(".never_login") : l(mem.user.current_sign_in_at, format: :short)
+          %td= mem.user.current_sign_in_at.blank? ? t(".never_login") : l(mem.user.current_sign_in_at, format: :long)

@@ -15,4 +15,4 @@
           %td= mem.member_uid
           %td= link_to mem.user.username, mem.user
           %td= mem.days_without_swaps
-          %td= (mem.account.balance.blank? || mem.account.balance.zero?) ? t(".no_movements") : l(mem.account.updated_at, format: :short)
+          %td= (mem.account.balance.blank? || mem.account.balance.zero?) ? t(".no_movements") : l(mem.account.updated_at, format: :long)

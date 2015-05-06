@@ -3,7 +3,7 @@ ActiveAdmin.register Organization do
     id_column
     column :name
     column :created_at do |organization|
-      l organization.created_at.to_date, format: :short
+      l organization.created_at.to_date, format: :long
     end
     column :city
     column :neighborhood

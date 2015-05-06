@@ -5,7 +5,7 @@ ActiveAdmin.register Post do
     column :class
     column :title
     column :created_at do |post|
-      l post.created_at.to_date, format: :short
+      l post.created_at.to_date, format: :long
     end
     column :user
     column :category

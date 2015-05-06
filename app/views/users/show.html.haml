@@ -95,7 +95,7 @@
         %p
           %strong
             = t(".created_at")
-          = @member.entry_date ? l(@member.entry_date, format: :short) : mdash
+          = @member.entry_date ? l(@member.entry_date, format: :long) : mdash
           %br
           %strong
             = t(".user_no")
@@ -124,7 +124,7 @@
           =t(".quantity")
     - @movements.each do |mv|
       %tr
-        %td= l mv.created_at, format: :short
+        %td= l mv.created_at, format: :long
         %td
           - if mv.other_side.account.accountable.present?
             - if mv.other_side.account.accountable_type == "Organization"
