@@ -111,7 +111,7 @@
                 = glyph("log-out")
                 = t ".sign_out"
             %li.divider{role: :presentation}
-            - if current_user.organizations.count >= 1
+            - if current_user.organizations.count > 1
               - current_user.organizations.each do |org|
                 - if current_organization == org
                   %li.disabled
