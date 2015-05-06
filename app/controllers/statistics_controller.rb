@@ -78,7 +78,7 @@ class StatisticsController < ApplicationController
   end
 
   def statistics_last_login
-    @members = current_organization.members.active.joins(:user).
+    @members = current_organization.members.active.references(:user).
                order("users.current_sign_in_at ASC NULLS FIRST")
   end
 
@@ -88,7 +88,7 @@ class StatisticsController < ApplicationController
 
   def statistics_type_swaps
     offers = current_organization.posts.
-             where(type: "Offer").joins(:transfers, transfers: :movements).
+             where(type: "Offer").references(:transfers, transfers: :movements).
              select("posts.tags, posts.category_id, SUM(movements.amount) as
                      sum_of_transfers, COUNT(transfers.id) as
                      count_of_transfers").
