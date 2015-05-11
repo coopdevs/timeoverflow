@@ -31,7 +31,7 @@ describe MemberReportDecorator do
       [
         member.member_uid,
         member.user.username,
-        member.user.email,
+        member.user.email_if_real,
         member.user.phone,
         member.user.alt_phone
       ]
