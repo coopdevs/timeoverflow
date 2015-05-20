@@ -1,24 +1,27 @@
 class UserPolicy < ApplicationPolicy
   def new?
-    user.admins?(user.organizations.first)
+    user.admins?(organization)
   end
 
   def create?
-    user.admins?(user.organizations.first)
+    user.admins?(organization)
   end
 
   def update?
     user == record || (
       record.organizations.size == 1 &&
-      user.admins?(record.organizations.first)
+      record.organizations.first == organization &&
+      user.admins?(organization)
     )
   end
 
   class Scope < ApplicationPolicy::Scope
-    attr_reader :user, :scope
+    attr_reader :member, :user, :organization, :scope
 
     def initialize(user, scope)
-      @user = user
+      @member = member
+      @user = member.user if member
+      @organization = member.organization if member
       @scope = scope
     end
 

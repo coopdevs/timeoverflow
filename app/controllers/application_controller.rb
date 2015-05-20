@@ -81,6 +81,14 @@ class ApplicationController < ActionController::Base
     @current_organization ||= current_user.try(:organizations).try(:first)
   end
 
+  def current_member
+    @current_member ||= current_user.as_member_of(current_organization) if current_user
+  end
+
+  def pundit_user
+    current_member
+  end
+
   def admin?
     current_user.try :manages?, current_organization
   end
