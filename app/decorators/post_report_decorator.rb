@@ -28,7 +28,7 @@ class PostReportDecorator
       posts.each do |post|
         grouped_rows << [
           post.title,
-          "#{post.user} (#{post.member_id})"
+          "#{post.user} (#{post.member_uid})"
         ]
       end
     end
