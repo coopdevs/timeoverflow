@@ -52,6 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
+    session[:previous_url] = nil if session[:previous_url] == "/"
     session[:previous_url] || begin
       if user.members.present?
         users_path
