@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :organization
   belongs_to :publisher, class_name: "User", foreign_key: "publisher_id"
-  belongs_to :member, class_name: "Member", foreign_key: "user_id"
+  # belongs_to :member, class_name: "Member", foreign_key: "user_id"
 
   has_many :user_members, class_name: "Member", through: :user, source: :members
 
@@ -23,11 +23,10 @@ class Post < ActiveRecord::Base
   scope :by_category, ->(cat) { where(category_id: cat) if cat }
   scope :by_organization, ->(org) { where(organization_id: org) if org }
 
-  scope :with_active_members, -> do
-    joins(:member).
+  scope :of_active_members, -> do
+    joins("JOIN members USING (user_id, organization_id)").
       where("members.active").
-      where("posts.active").
-      select("posts.*, members.member_uid as member_id")
+      select("posts.*, members.member_uid as member_uid")
   end
 
   scope :with_member, -> {
@@ -62,12 +61,12 @@ class Post < ActiveRecord::Base
     title
   end
 
-  # will read the member_id if it has been returned by the query, otherwise
+  # will read the member_uid if it has been returned by the query, otherwise
   # don't complain and return nil.
   #
   # To ensure the presence of the attribute, use the `with_member` scope
-  def member_id
-    read_attribute(:member_id) if has_attribute?(:member_id)
+  def member_uid
+    read_attribute(:member_uid) if has_attribute?(:member_uid)
   end
 
   def active?

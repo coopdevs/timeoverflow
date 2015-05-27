@@ -23,8 +23,10 @@ class ReportsController < ApplicationController
 
   def post_list
     @post_type = (params[:type] || "offer").capitalize.constantize
-    @posts = current_organization.posts.with_active_members.
-             where(type: @post_type).
+    @posts = current_organization.posts.
+             of_active_members.
+             merge(@post_type.all).
+             includes(:user, :category).
              group_by(&:category).
              to_a.
              sort_by { |category, _| category.try(:name).to_s }
