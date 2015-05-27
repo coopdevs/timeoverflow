@@ -1,0 +1,34 @@
+.row
+  .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-4.col-lg-offset-4
+    .panel#login-box
+      .panel-heading
+        h1
+          span.glyphicon.glyphicon-hourglass
+          | TimeOverflow
+      .panel-body
+        form action="index.html" role="form"
+          .form-group
+            .input-group
+              span.input-group-addon
+                span.glyphicon.glyphicon-user
+              input.form-control.input-lg placeholder=("Email address") type="text" /
+          .form-group
+            .input-group
+              span.input-group-addon
+                span.glyphicon.glyphicon-lock
+              input.form-control.input-lg placeholder="Password" type="password" /
+          #remember-me-wrapper
+            .row
+              .col-xs-6
+                .checkbox-nice
+                  input#remember-me checked="checked" type="checkbox" /
+                  label for="remember-me"
+                    | Remember me
+              a#login-forget-link.col-xs-6 href="forgot-password-full.html"
+                | Forgot password?
+          .row
+            .col-xs-12
+              button.btn.btn-success.btn-lg.col-xs-12 type="submit"  Login
+
+      .panel-footer
+        = render "devise/shared/links"

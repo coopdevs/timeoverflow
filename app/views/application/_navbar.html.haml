@@ -138,6 +138,9 @@
                     organization: m.organization
       - else
         %li
+          = link_to page_path("about") do
+            = t "layouts.application.about"
+        %li
           %a{href: new_user_session_path}
             = t "layouts.application.login"
 

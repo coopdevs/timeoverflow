@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+ruby '2.2.2'
 
 gem 'rails', '~> 4.2'
 gem 'rails-i18n'
@@ -15,6 +15,7 @@ gem 'hstore_translate'
 gem 'dalli'
 gem "sass-rails", "4.0.5"
 gem 'coffee-rails'
+gem 'slim-rails' # much better than haml
 gem 'ngannotate-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'

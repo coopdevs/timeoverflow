@@ -11,6 +11,20 @@
  *= require_self
  */
 
+body[data-action="devise/sessions-new"] {
+  background: image-url('red.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+#login-box {
+  .panel-heading {
+    background: lighten(black, 10%);
+    color: darken(white, 5%);
+    text-align: center;
+  }
+}
+
+
 .post {
   border-top: solid black 1px;
   list-style: none;

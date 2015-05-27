@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
     # store last url - this is needed for post-login redirect to whatever the
     # user last visited.
     return unless request.get?
-    paths = ["/users/sign_in", "/users/sign_up", "/users/password/new",
+    paths = ["/", "/users/sign_in", "/users/sign_up", "/users/password/new",
              "/users/password/edit", "/users/confirmation", "/users/sign_out"]
     if !paths.include?(request.path) && !request.xhr?
       session[:previous_url] = request.fullpath
@@ -52,16 +52,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    session[:previous_url] ||
+    session[:previous_url] || begin
       if user.members.present?
-        if user.members.any? &:manager
-          users_path
-        else
-          users_path
-        end
+        users_path
       else
-        page_path("home")
+        page_path("about")
       end
+    end
   end
 
   private

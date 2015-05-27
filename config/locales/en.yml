@@ -352,6 +352,7 @@ en:
 
   layouts:
     application:
+      about: About TimeOverflow
       login: Login
       edit_profile: Update my profile
       edit_org: "Update %{organization}"
