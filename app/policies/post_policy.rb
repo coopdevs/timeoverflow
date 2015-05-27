@@ -1,4 +1,4 @@
-class PostPolicy < Struct.new(:user, :post)
+class PostPolicy < ApplicationPolicy
   def destroy?
     user == post.user || user.admins?(post.organization)
   end

@@ -44,7 +44,7 @@ class Post < ActiveRecord::Base
   }
 
   scope :from_last_week, -> {
-    where("created_at >= ?", 1.week.ago.beginning_of_day)
+    where(created_at: (1.week.ago.beginning_of_day...DateTime.now.end_of_day))
   }
 
   validates :user, presence: true
