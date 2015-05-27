@@ -7,7 +7,7 @@ class PostsController <  ApplicationController
   has_scope :by_organization, as: :org
 
   def index
-    posts = model.all
+    posts = model.active.of_active_members
     if current_organization.present?
       posts = posts.merge(current_organization.posts)
     end
@@ -39,9 +39,9 @@ class PostsController <  ApplicationController
 
   def show
     scope = if current_user.present?
-              current_organization.posts.actives
+              current_organization.posts.active.of_active_members
             else
-              model.all.actives
+              model.all.active.of_active_members
             end
     post = scope.find params[:id]
     instance_variable_set("@#{resource}", post)
@@ -61,7 +61,7 @@ class PostsController <  ApplicationController
   def destroy
     post = current_organization.posts.find params[:id]
     authorize post
-    redirect_to send("#{resources}_path") if post.toggle(:active).save!
+    redirect_to send("#{resources}_path") if post.update!(active: false)
   end
 
   private

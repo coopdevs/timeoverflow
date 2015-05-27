@@ -24,19 +24,16 @@ class Post < ActiveRecord::Base
   scope :by_organization, ->(org) { where(organization_id: org) if org }
 
   scope :of_active_members, -> do
-    joins("JOIN members USING (user_id, organization_id)").
-      where("members.active").
-      select("posts.*, members.member_uid as member_uid")
+    with_member.where("members.active")
   end
 
   scope :with_member, -> {
-    joins(:organization, :user_members).
-      where("members.organization_id = posts.organization_id").
-      select("posts.*, members.member_uid as member_id")
+    joins("JOIN members USING (user_id, organization_id)").
+      select("posts.*, members.member_uid as member_uid")
   }
 
-  scope :actives, -> {
-    with_member.merge(Member.active).where(active: true)
+  scope :active, -> {
+    where(active: true)
   }
 
   scope :fuzzy_and_tags, ->(s) {

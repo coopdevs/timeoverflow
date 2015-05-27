@@ -30,6 +30,6 @@
           = t "helpers.submit.create", model: Offer.model_name.human
 
 .offers
-  = render partial: "shared/posts", locals: { posts: @offers.actives }
+  = render partial: "shared/posts", locals: { posts: @offers }
 
 = link_to_next_page @offers, t(".more"), remote: true, params: params

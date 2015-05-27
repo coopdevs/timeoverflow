@@ -29,6 +29,6 @@
 - @offers.each do |cat, offs|
   .offers
     %h4=cat.name.capitalize
-    = render :partial => 'shared/posts', :locals => { :posts => offs.actives }
+    = render :partial => 'shared/posts', :locals => { :posts => offs }
 
   = link_to t('.more'), offers_path(cat: cat.id)

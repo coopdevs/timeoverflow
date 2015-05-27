@@ -20,7 +20,8 @@ class TagsController < ApplicationController
                   when "offer" then Offer
                   when "inquiry" then Inquiry
                   when "all" then Post
-                  end.by_organization(current_organization).actives.
+                  end.by_organization(current_organization).
+                  active.of_active_members.
                   alphabetical_grouped_tags
 
     respond_with @alpha_tags
@@ -28,14 +29,14 @@ class TagsController < ApplicationController
 
   def inquiries
     @current_post_type = "inquiries"
-    @alpha_tags = Inquiry.by_organization(current_organization).actives.
+    @alpha_tags = Inquiry.by_organization(current_organization).active.of_active_members.
                   alphabetical_grouped_tags
     render partial: "grouped_index", locals: { alpha_tags: @alpha_tags }
   end
 
   def offers
     @current_post_type = "offers"
-    @alpha_tags = Offer.by_organization(current_organization).actives.
+    @alpha_tags = Offer.by_organization(current_organization).active.of_active_members.
                   alphabetical_grouped_tags
     render partial: "grouped_index", locals: { alpha_tags: @alpha_tags }
   end
@@ -44,9 +45,9 @@ class TagsController < ApplicationController
     permitted = tags_params(params)
     tagname = permitted[:tagname] || ""
 
-    @offers_tagged = Offer.by_organization(current_organization).actives.
+    @offers_tagged = Offer.by_organization(current_organization).active.of_active_members.
                      tagged_with(tagname)
-    @inquiries_tagged = Inquiry.by_organization(current_organization).actives.
+    @inquiries_tagged = Inquiry.by_organization(current_organization).active.of_active_members.
                         tagged_with(tagname)
     respond_with @offers_tagged, @inquiries_tagged
   end
