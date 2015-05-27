@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :organization
   belongs_to :publisher, class_name: "User", foreign_key: "publisher_id"
+  belongs_to :member, class_name: "Member", foreign_key: "user_id"
 
   has_many :user_members, class_name: "Member", through: :user, source: :members
 
@@ -21,6 +22,13 @@ class Post < ActiveRecord::Base
 
   scope :by_category, ->(cat) { where(category_id: cat) if cat }
   scope :by_organization, ->(org) { where(organization_id: org) if org }
+
+  scope :with_active_members, -> do
+    joins(:member).
+      where("members.active").
+      where("posts.active").
+      select("posts.*, members.member_uid as member_id")
+  end
 
   scope :with_member, -> {
     joins(:organization, :user_members).
