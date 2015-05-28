@@ -1,5 +1,5 @@
 timeoverflow:
-  ruby_version: 2.2.0
+  ruby_version: 2.2.2
   environment: production # RAILS_ENV
   monitoring_email: saverio.trioni@gmail.com
   domains:
