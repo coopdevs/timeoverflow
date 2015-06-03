@@ -25,6 +25,7 @@ class ReportsController < ApplicationController
     @post_type = (params[:type] || "offer").capitalize.constantize
     @posts = current_organization.posts.
              of_active_members.
+             active.
              merge(@post_type.all).
              includes(:user, :category).
              group_by(&:category).
