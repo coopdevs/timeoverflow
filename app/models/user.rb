@@ -1,5 +1,3 @@
-require "textacular/searchable"
-
 class User < ActiveRecord::Base
   attr_accessor :empty_email
 
@@ -12,8 +10,6 @@ class User < ActiveRecord::Base
     :lockable,
     :trackable
   ]
-
-  extend Searchable :username, :email, :phone, :alt_phone
 
   GENDERS = %w[male female]
 

@@ -25,7 +25,6 @@ gem 'thin'
 gem 'foreman'
 gem 'dotenv-rails'
 gem 'kaminari'
-gem 'textacular', "3.2.1", require: 'textacular/rails'
 gem "haml-rails"
 gem 'turbolinks'
 gem "simple_form", ">= 3.0.0"
@@ -40,6 +39,10 @@ gem "shelly-dependencies"
 gem 'whenever', :require => false
 gem 'prawn'
 gem 'prawn-table'
+
+# Integrate an external search engine - tags + full-text in PG are not really the best
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development do
   gem "binding_of_caller"

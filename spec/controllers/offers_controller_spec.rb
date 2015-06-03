@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe OffersController do
+describe OffersController, type: :controller do
   let (:test_organization) { Fabricate(:organization) }
   let (:member) { Fabricate(:member, organization: test_organization) }
   let (:another_member) { Fabricate(:member, organization: test_organization) }
@@ -17,7 +17,7 @@ describe OffersController do
 
   describe "GET #index" do
     context "with a logged user" do
-      it "populates and array of offers" do
+      it "populates an array of offers" do
         login(another_member.user)
 
         get "index"
@@ -30,6 +30,15 @@ describe OffersController do
         get "index"
         expect(assigns(:offers)).to eq([])
       end
+    end
+  end
+
+  describe "GET #index (search)" do
+    it "populates an array of offers" do
+      login(another_member.user)
+
+      get "index", q: offer.title.split(/\s/).first
+      expect(assigns(:offers)).to eq([offer])
     end
   end
 

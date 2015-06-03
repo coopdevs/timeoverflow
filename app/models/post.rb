@@ -1,8 +1,23 @@
-require "textacular/searchable"
+require 'elasticsearch/model'
 
 class Post < ActiveRecord::Base
   include Taggable
-  extend Searchable :title, :description
+
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
+  settings do
+    mapping do
+      indexes :title
+      indexes :description
+      indexes :tags
+      indexes :organization_id, type: :integer
+    end
+  end
+
+  def as_indexed_json(*)
+    as_json(only: [:title, :description, :tags, :organization_id])
+  end
 
   attr_reader :member_id
 
@@ -36,17 +51,6 @@ class Post < ActiveRecord::Base
     where(active: true)
   }
 
-  scope :fuzzy_and_tags, ->(s) {
-    from("
-    (
-      (
-        #{Post.fuzzy_search(s).to_sql}
-      ) union(
-        #{Post.tagged_with_rank(s).to_sql}
-      )
-    ) #{Post.table_name}")
-  }
-
   scope :from_last_week, -> {
     where(created_at: (1.week.ago.beginning_of_day...DateTime.now.end_of_day))
   }
@@ -69,4 +73,5 @@ class Post < ActiveRecord::Base
   def active?
     user && user.member(organization).try(:active) && active
   end
+
 end

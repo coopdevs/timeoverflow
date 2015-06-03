@@ -2,16 +2,30 @@ class PostsController <  ApplicationController
   respond_to :html, :js
 
   has_scope :by_category, as: :cat
-  has_scope :fuzzy_and_tags, as: :q
   has_scope :tagged_with, as: :tag
   has_scope :by_organization, as: :org
 
   def index
-    posts = model.active.of_active_members
-    if current_organization.present?
-      posts = posts.merge(current_organization.posts)
+    if (query = params[:q]).present?
+      must = [ { multi_match: { query: query.to_s, fields: %w"title description tags" } } ]
+      if current_organization.present?
+        must << { term: { organization_id: { value: current_organization.id } } }
+      end
+      posts = model.__elasticsearch__.search(
+        query: {
+          bool: {
+            must: must
+          }
+        }
+      ).records
+    else
+      posts = model.active.of_active_members
+      if current_organization.present?
+        posts = posts.merge(current_organization.posts)
+      end
+      posts = apply_scopes(posts)
     end
-    posts = apply_scopes(posts).page(params[:page]).per(25)
+    posts = posts.page(params[:page]).per(25)
     instance_variable_set("@#{resources}", posts)
   end
 
