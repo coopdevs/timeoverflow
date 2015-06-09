@@ -21,7 +21,7 @@ class MembersController < ApplicationController
     find_member
     @member.toggle(:active).save!
     if @member.active
-      @member.index_all_posts
+      @member.add_all_posts_to_index
     else
       @member.remove_all_posts_from_index
     end
