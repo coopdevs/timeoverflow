@@ -4,7 +4,26 @@ class Post < ActiveRecord::Base
   include Taggable
 
   include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+
+  after_commit :index_document, on: :create
+  after_commit :update_or_delete_document, on: :update
+  after_commit :delete_document, on: :destroy
+
+  def index_document
+    __elasticsearch__.index_document
+  end
+
+  def update_or_delete_document
+    if active && member.active
+      __elasticsearch__.update_document rescue __elasticsearch__.index_document
+    else
+      __elasticsearch__.delete_document rescue nil
+    end
+  end
+
+  def delete_document
+    __elasticsearch__.delete_document rescue nil
+  end
 
   settings do
     mapping do
@@ -72,6 +91,10 @@ class Post < ActiveRecord::Base
 
   def active?
     user && user.member(organization).try(:active) && active
+  end
+
+  def member
+    @member ||= Member.find_by(user_id: user_id, organization_id: organization_id)
   end
 
 end
