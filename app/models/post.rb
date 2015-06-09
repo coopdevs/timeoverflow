@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   end
 
   def update_or_delete_document
-    if active && member.active
+    if active && member.try(:active)
       __elasticsearch__.update_document rescue __elasticsearch__.index_document
     else
       __elasticsearch__.delete_document rescue nil
