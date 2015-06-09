@@ -13,7 +13,9 @@ class Post < ActiveRecord::Base
     __elasticsearch__.index_document
   end
 
-  def update_or_delete_document
+  # pass member when doing bulk things
+  def update_or_delete_document(member=nil)
+    member ||= self.member
     if active && member.try(:active)
       __elasticsearch__.update_document rescue __elasticsearch__.index_document
     else

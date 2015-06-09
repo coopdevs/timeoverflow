@@ -33,7 +33,7 @@ class Member < ActiveRecord::Base
 
   def add_all_posts_to_index
     Post.with_member.where("members.id = ?", self.id).find_each do |post|
-      post.update_or_delete_document
+      post.update_or_delete_document(self)
     end
   end
 
