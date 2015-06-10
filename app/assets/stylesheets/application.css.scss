@@ -11,9 +11,9 @@
  *= require_self
  */
 
- $navs-bg-color: #080808;
- $post-bg-color: #fbfbfb;
- $white: #ffffff;
+$navs-bg-color: #080808;
+$post-bg-color: #fbfbfb;
+$white: #ffffff;
 
 body[data-action="devise/sessions-new"], body[data-action="devise/sessions-create"] {
   background: image-url('red.jpg') no-repeat center center fixed;
@@ -23,7 +23,7 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 #login-box {
   .panel-heading {
     background: lighten(black, 10%);
-    color: darken( $white, 5%);
+    color: darken($white, 5%);
     text-align: center;
   }
 }
@@ -47,8 +47,8 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
   }
 
   .category {
-    margin-right: 10px;
     font-weight: bold;
+    margin-right: 10px;
   }
 }
 
@@ -71,9 +71,9 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
     margin: 0;
     text-align: center;
 
-    a {
-      color: $white;
-    }
+  a {
+    color: $white;
+  }
 
   }
 
@@ -139,7 +139,7 @@ ul.statistics li{
   width: 100%;
   text-align: center;
 }
-.more{
+.more {
   display: block;
   margin: 10px auto;
   width: 10%;
