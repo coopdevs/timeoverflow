@@ -41,7 +41,6 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
     display: block;
   }
 
-
   .glyphicon-folder-open {
     font-size: 140%;
     margin: 0 5px;
@@ -51,6 +50,7 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
     font-weight: bold;
     margin-right: 10px;
   }
+
 }
 
 #side-nav .well {
@@ -71,11 +71,10 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
     font-size: 10px;
     margin: 0;
     text-align: center;
+  }
 
-    a {
-      color: $white;
-    }
-
+  a {
+    color: $white;
   }
 
 }
