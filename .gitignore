@@ -31,6 +31,8 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+timeoverflow_development
+timeoverflow_test
 
 .env
 .DS_Store

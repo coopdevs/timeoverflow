@@ -11,6 +11,10 @@
  *= require_self
  */
 
+$navs-bg-color: #080808;
+$post-bg-color: #fbfbfb;
+$white: #ffffff;
+
 body[data-action="devise/sessions-new"], body[data-action="devise/sessions-create"] {
   background: image-url('red.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -19,24 +23,34 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 #login-box {
   .panel-heading {
     background: lighten(black, 10%);
-    color: darken(white, 5%);
+    color: darken($white, 5%);
     text-align: center;
   }
 }
 
 
 .post {
-  border-top: solid black 1px;
+  background-color: $post-bg-color;
+  border-radius: 10px;
   list-style: none;
-  h3 small span.offerer:not(:last-of-type):after {
-    content: ",";
-  }
-}
-.offers {
+  margin: 20px 10px;
+  padding: 5px 20px;
+
   h4 {
     font-weight: bold;
-    margin-top: 20px;
+    display: block;
   }
+
+  .glyphicon-folder-open {
+    font-size: 140%;
+    margin: 0 5px;
+  }
+
+  .category {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
 }
 
 #side-nav .well {
@@ -44,7 +58,25 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 }
 
 #footer {
-  font-size: 10px;
+  background-color: $navs-bg-color;
+  bottom: 0;
+  height: 20px;
+  left: 0;
+  line-height: 20px;
+  position: absolute;
+  vertical-align: middle;
+  width: 100%;
+
+  p {
+    font-size: 10px;
+    margin: 0;
+    text-align: center;
+  }
+
+  a {
+    color: $white;
+  }
+
 }
 
 .row.exports {
@@ -52,9 +84,16 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 }
 
 @media screen {
-  body {
-    // padding-top: 60px;
+  
+  html {
+    min-height: 100%;
+    position: relative;
   }
+
+  body {
+    margin: 0 0 20px;
+  }
+
 }
 
 // td.hover-actions {
@@ -64,12 +103,15 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 
 
 @media print {
+  
   body {
     padding-top: 0px;
   }
+
   .table {
     border-collapse: collapse;
   }
+
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #ddd;
@@ -78,20 +120,6 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 
 }
 
-body {
-  // padding-top: 60px;
-  padding-bottom: 40px;
-  // background-image: image-url('light_wool.png');
-}
-nav.navbar-static-top.navbar-inverse {
-  // background-image: image-url('denim.png');
-  // height: 40px;
-  // color: white;
-}
-.container-inner{
-  // background-image: image-url('furley_bg.png');
-  // padding: 0 20px;
-}
 
 .error {
   color: red;
@@ -110,6 +138,11 @@ ul.statistics li{
 .pagination {
   width: 100%;
   text-align: center;
+}
+.more {
+  display: block;
+  margin: 10px auto;
+  width: 10%;
 }
 
 /*flash*/

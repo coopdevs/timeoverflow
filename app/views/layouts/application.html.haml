@@ -47,11 +47,15 @@
       = render 'layouts/messages'
       = yield
 
-
-      .row#footer
-        %a{href: tnc_path, "data-toggle" => "modal", "data-target" => "#modal"}
-          = t("application.terms_conditions")
-
     .modal.fade#modal
       .modal-dialog
         .modal-content
+
+    #footer
+      %p
+        %a{href: tnc_path, "data-toggle" => "modal", "data-target" => "#modal"}
+          = t("application.terms_conditions")
+          |
+        %a
+          = link_to page_path("about") do
+            = t "layouts.application.about"
