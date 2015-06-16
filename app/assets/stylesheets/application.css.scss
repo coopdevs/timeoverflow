@@ -85,7 +85,6 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 }
 
 table.users {
-  margin: auto;
   padding: 10px;
 }
 
@@ -119,7 +118,6 @@ table.users {
 
   table.users tr:nth-of-type(2) th {
     border-top:0;
-    border-color: inherit;
   }
 
   .user-profile {
