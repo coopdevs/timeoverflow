@@ -54,7 +54,7 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 
 }
 
-#new_transfer {
+#new-transfer {
   padding: 20px;
 }
 
@@ -85,6 +85,7 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 }
 
 table.users {
+  border-color: inherit;
   padding: 10px;
 }
 
@@ -118,7 +119,7 @@ table.users {
 
   table.users tr:nth-of-type(2) th {
     border-top:0;
-    border-color: transparent;
+    border-color: inherit;
   }
 
   .user-profile {
@@ -219,3 +220,4 @@ label[required]::after{
 .navbar-form {
   padding: 0;
 }
+
