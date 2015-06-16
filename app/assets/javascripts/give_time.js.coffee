@@ -8,6 +8,6 @@ giveTimeReadyFn = () ->
       $(" #transfer_amount ").val($(" #transfer_hours ").val() * 3600 + $(" #transfer_minutes ").val() * 60)
       form.submit()
 
-  $( "#new_transfer" ).validate(config)
+  $( "#new-transfer" ).validate(config)
 
 $( document ).ready giveTimeReadyFn

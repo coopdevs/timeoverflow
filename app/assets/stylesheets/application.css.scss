@@ -105,6 +105,8 @@ table.users {
     border: 1px solid $border;
     border-collapse: inherit; 
     border-radius: 5px;
+    margin-bottom:20px; 
+    padding: 20px;
   }
 
   #login-box form {
@@ -114,22 +116,9 @@ table.users {
     padding: 0;   
   }
 
-  form {
-    margin-bottom:20px; 
-    padding: 20px;
-    
-  #user_notifications {
-    margin: 0;
-    position: relative;
-  }
-  
-  }
-
-  table.users {
-  tr:nth-of-type(2) th {
+  table.users tr:nth-of-type(2) th {
     border-top:0;
-  }
-  
+    border-color: transparent;
   }
 
   .user-profile {
@@ -140,12 +129,6 @@ table.users {
   }
 
 }
-
-// td.hover-actions {
-//   > a.action { display: none; }
-//   &:hover > a.action { display: inline; }
-// }
-
 
 @media print {
   
