@@ -18,13 +18,29 @@
               - path = get_index_path(post,tag: tag)
               =link_to path do
                 = tag
-          %br
-        -if current_user and current_organization
-          = t '.created_by'
-          = link_to post.user, post.user, title: post.user.email
         %br
-        = t '.created_at'
         = l post.created_at.to_date, format: :long
+    
+    -if current_user and current_organization
+      .panel.panel-info
+        .panel-heading
+          %h3.panel-title
+            = link_to post.user, post.user
+        .panel-body
+          = link_to image_tag(avatar_url(post.user, 100)), post.user
+          %h3 
+            = t "global.contact_details"
+          - if post.user.email_if_real != ""
+            %dt= User.human_attribute_name(:email)
+            %dd= post.user.email_if_real
+          - phones = [post.user.phone, post.user.alt_phone].map(&:presence).compact
+          - if phones.present?
+            %dt= t(".phone", count: phones.size)
+            %dd
+              - phones.each_with_index do |ph, idx|
+                - unless idx.zero?
+                  &mdash;
+                = ph
 
   .col-md-9
     %p.lead= post.description

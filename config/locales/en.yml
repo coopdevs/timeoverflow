@@ -335,6 +335,8 @@ en:
     statistics: Statistics
     locales_header: change language
     required_field: "* Required field"
+    more: "More"
+    contact_details: "Contact details"
 
   locales:
     en: English

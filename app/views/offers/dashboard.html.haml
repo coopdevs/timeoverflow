@@ -31,4 +31,4 @@
     %h3=cat.name.capitalize
     = render :partial => 'shared/posts', :locals => { :posts => offs }
 
-  = link_to t('.more'), offers_path(cat: cat.id), :class=>"more btn btn-primary"
+  = link_to t('global.more'), offers_path(cat: cat.id), :class=>"more btn btn-primary"

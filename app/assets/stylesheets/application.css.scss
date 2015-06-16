@@ -11,9 +11,10 @@
  *= require_self
  */
 
+$bg-color: #f5f8fa;
 $navs-bg-color: #080808;
-$post-bg-color: #fbfbfb;
 $white: #ffffff;
+$border: #e1e8ed;
 
 body[data-action="devise/sessions-new"], body[data-action="devise/sessions-create"] {
   background: image-url('red.jpg') no-repeat center center fixed;
@@ -30,11 +31,11 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 
 
 .post {
-  background-color: $post-bg-color;
-  border-radius: 10px;
-  list-style: none;
-  margin: 20px 10px;
+  background-color: $white;
+  border-radius: 5px;
+  margin: 10px;
   padding: 5px 20px;
+  border: 1px solid #e1e8ed;
 
   h4 {
     font-weight: bold;
@@ -53,8 +54,8 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 
 }
 
-#side-nav .well {
-  padding: 15px;
+#new_transfer{
+  padding: 20px;
 }
 
 #footer {
@@ -83,6 +84,10 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
   padding: 10px;
 }
 
+table.users {
+  padding: 10px;
+}
+
 @media screen {
   
   html {
@@ -91,7 +96,48 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
   }
 
   body {
+    background-color: $bg-color;
     margin: 0 0 20px;
+  }
+
+  form {
+    background: $white;
+    border-radius: 5px;
+    border-collapse: inherit;    
+    border: 1px solid $border;
+  }
+
+  #login-box form{
+    border-radius: none;
+    padding: 0;
+    margin: 0;
+    border:none;
+  }
+
+  form {
+    padding: 20px;
+    margin-bottom:20px; 
+    
+    #user_notifications{
+      position: relative;
+      margin: 0;
+    }
+  
+  }
+
+  table.users {
+    tr:nth-of-type(2) th
+    {
+      border-top:0px;
+    }
+  }
+
+  .user-profile {
+    h1 {
+      margin-top: 0;
+      margin-bottom: inherit;
+      margin-bottom: 20px;
+    }
   }
 
 }
@@ -110,12 +156,6 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 
   .table {
     border-collapse: collapse;
-  }
-
-  .table-bordered th,
-  .table-bordered td {
-    border: 1px solid #ddd;
-    padding: 5px;
   }
 
 }
@@ -142,7 +182,7 @@ ul.statistics li{
 .more {
   display: block;
   margin: 10px auto;
-  width: 10%;
+  width: 100px;
 }
 
 /*flash*/
@@ -192,4 +232,8 @@ label[required]::after{
 .paginate-align {
   display: table;
   margin: 0 auto;
+}
+
+.navbar-form {
+  padding: 0;
 }
