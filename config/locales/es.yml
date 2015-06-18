@@ -336,6 +336,8 @@ es:
     statistics: Estadísticas
     locales_header: cambiar idioma
     required_field: "* Campo obligatorio"
+    more: "Ver más"
+    contact_details: "Datos de contacto"
 
   locales:
     en: Inglés

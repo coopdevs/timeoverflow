@@ -331,6 +331,8 @@ ca:
     statistics: Estadístiques
     locales_header: canviar llengua
     required_field: "* Camp obligatori"
+    more: "Veure més"
+    contact_details: "Dades de contacte"
 
   locales:
     en: Anglès
