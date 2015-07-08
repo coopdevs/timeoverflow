@@ -37,7 +37,7 @@
             %dd= post.user.email_if_real
           - phones = [post.user.phone, post.user.alt_phone].map(&:presence).compact
           - if phones.present?
-            %dt= t(".phone", count: phones.size)
+            %dt= User.human_attribute_name(:phone)
             %dd
               - phones.each_with_index do |ph, idx|
                 - unless idx.zero?
