@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
     :trackable
   ]
 
+  include LazyRecoverable
+
   GENDERS = %w[male female]
 
   default_scope -> { order("users.id ASC") }
