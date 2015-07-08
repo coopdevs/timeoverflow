@@ -7,8 +7,14 @@ class PostsController <  ApplicationController
 
   def index
     if (query = params[:q]).present?
-      must = [ { multi_match: { query: query.to_s, fields: %w"title description tags" } } ]
+      # match query term on fields
+      must = [ { multi_match: {
+          query: query.to_s,
+          type: "phrase_prefix",
+          fields: ["title^2", "description", "tags^2"]
+        } } ]
       if current_organization.present?
+        # filter by organization
         must << { term: { organization_id: { value: current_organization.id } } }
       end
       posts = model.__elasticsearch__.search(
