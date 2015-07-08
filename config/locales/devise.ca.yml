@@ -6,7 +6,7 @@ ca:
       links:
         sign_in: "Entrar"
         sign_up: "Registrar-se"
-        forgot_your_password: "No recordo la meva contrasenya"
+        forgot_your_password: "No recordo la meva contrasenya o encara no la tinc"
         didnt_receive_confirmation_instructions: "Tornar a enviar correu de confirmació"
         didnt_receive_unlock_instructions: "Enviar correu de desbloqueig"
         sign_in_with: "Entrar amb %{provider}"
@@ -46,7 +46,7 @@ ca:
       edit:
         change_password: Canviar contrasenya
       new:
-        forgot_question: "Has oblidat la contrasenya?"
+        forgot_question: "Has oblidat la contrasenya o vols obtenir-la per primera vegada?"
         send_instructions: "Envia'm les instruccions"
     registrations:
       destroyed: "El teu compte ha estat cancel·lat. Fins aviat!"

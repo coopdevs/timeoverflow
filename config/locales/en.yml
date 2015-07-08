@@ -209,6 +209,7 @@ en:
       by_tag: By Tag
     show:
       offered_by: "Offered by"
+      give_time_for: "Time transfer for this offer"
     new:
       submit: Create offer
     edit:
