@@ -209,6 +209,7 @@ es:
       by_tag: Por etiqueta
     show:
       offered_by: "Ofertantes"
+      give_time_for: "Transferir tiempo por esta oferta"
     new:
       submit: Crear oferta
     edit:

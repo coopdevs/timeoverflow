@@ -209,6 +209,7 @@ ca:
       by_tag: Per etiqueta
     show:
       offered_by: "Oferents"
+      give_time_for: "Transferir temps per aquesta oferta"
     new:
       submit: Crear oferta
 

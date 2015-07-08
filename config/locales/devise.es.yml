@@ -6,7 +6,7 @@ es:
       links:
         sign_in: "Entrar"
         sign_up: "Registrarse"
-        forgot_your_password: "No recuerdo mi contraseña"
+        forgot_your_password: "No recuerdo mi contraseña o aún no la tengo "
         didnt_receive_confirmation_instructions: "Volver a enviar correo de confirmación"
         didnt_receive_unlock_instructions: "Enviar correo de desbloqueo"
         sign_in_with: "Entrar con %{provider}"
@@ -46,7 +46,7 @@ es:
       edit:
         change_password: Cambiar contraseña
       new:
-        forgot_question: "¿Has olvidado tu contraseña?"
+        forgot_question: "¿Has olvidado tu contraseña o quieres obtenerla por primera vez?"
         send_instructions: "Envíame las instruciones"
     registrations:
       destroyed: "Adiós! Tu cuenta se ha cancelado. Esperamos verte pronto de nuevo."
