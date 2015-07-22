@@ -1,6 +1,6 @@
 %h1
   %small= t ".give_time"
-  = link_to @user, user_path(@user)
+  = link_to "#{@user.username} (#{@user.member(current_organization).member_uid})", user_path(@user)
 
 - if @offer
   %h3= @offer
