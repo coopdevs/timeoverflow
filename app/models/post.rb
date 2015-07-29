@@ -27,10 +27,20 @@ class Post < ActiveRecord::Base
     __elasticsearch__.delete_document rescue nil
   end
 
-  settings do
+  settings(
+    analysis: {
+      analyzer: {
+        normal: {
+          tokenizer: 'icu_tokenizer',
+          # lowercase, unaccent, compatible with unicode
+          filter:  %w[icu_normalizer icu_folding]
+        }
+      }
+    }
+  ) do
     mapping do
-      indexes :title
-      indexes :description
+      indexes :title, analyzer: 'normal'
+      indexes :description, analyzer: 'normal'
       indexes :tags
       indexes :organization_id, type: :integer
     end
