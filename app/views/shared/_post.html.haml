@@ -27,7 +27,7 @@
       .panel.panel-info
         .panel-heading
           %h3.panel-title
-            = link_to "#{post.user} (#{post.member_uid})", post.user 
+            = link_to post.member.display_name_with_uid, post.user 
         .panel-body
           = link_to image_tag(avatar_url(post.user, 100)), post.user
           %h3 

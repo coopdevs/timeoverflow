@@ -25,6 +25,10 @@ class Member < ActiveRecord::Base
     "#{user}"
   end
 
+  def display_name_with_uid
+    "#{user} (#{member_uid})"
+  end
+
   def remove_all_posts_from_index
     Post.with_member.where("members.id = ?", self.id).find_each do |post|
       post.delete_document
