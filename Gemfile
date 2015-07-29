@@ -19,7 +19,7 @@ gem 'slim-rails' # much better than haml
 gem 'ngannotate-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
-gem "devise_browserid_authenticatable"
+gem "devise"
 gem "http_accept_language"
 gem 'thin'
 gem 'foreman'
