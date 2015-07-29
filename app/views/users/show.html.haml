@@ -4,7 +4,7 @@
       %small
         - unless  @member.active
           = t ".inactive"
-      = "#{@user.username} (#{@member.member_uid})"
+      = @member.display_name_with_uid
       %small
         - if @user.superadmin?
           %span.label.label-important= t ".superadmin"
@@ -129,17 +129,18 @@
           %tr
             %td= l mv.created_at.to_date, format: :long
             %td
-              - if mv.other_side.account.accountable.present?
-                - if mv.other_side.account.accountable_type == "Organization"
-                  = link_to mv.other_side.account,
-                  organization_path(mv.other_side.account.accountable)
-                - elsif mv.other_side.account.accountable.active
-                  = link_to mv.other_side.account,
-                  user_path(mv.other_side.account.accountable.user)
+              - mv.other_side.account.tap do |account| 
+                - if account.accountable.present?
+                  - if account.accountable_type == "Organization"
+                    = link_to account,
+                              organization_path(account.accountable)
+                  - elsif account.accountable.active
+                    = link_to account.accountable.display_name_with_uid,
+                              user_path(account.accountable.user)
+                  - else
+                    = t(".inactive_user")
                 - else
-                  = t(".inactive_user")
-              - else
-                = t(".deleted_user")
+                  = t(".deleted_user")
             %td
               = mv.transfer.try(:post).try(:active?) ? link_to(mv.transfer.post, offer_path(mv.transfer.post)) : mv.transfer.post
             %td

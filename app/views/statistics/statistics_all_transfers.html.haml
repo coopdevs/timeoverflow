@@ -16,16 +16,17 @@
           %td= l transfer.created_at, format: :long
           - transfer.movements.sort_by(&:amount).each do |mv|
             %td
-              - if mv.account.accountable.present?
-                - if mv.account.accountable_type == "Organization"
-                  = link_to mv.account,
-                  organization_path(mv.account.accountable)
-                - elsif mv.account.accountable.active
-                  = link_to mv.account, user_path(mv.account.accountable.user)
+              - mv.account.tap do |account|
+                - if account.accountable.present?
+                  - if account.accountable_type == "Organization"
+                    = link_to account,
+                    organization_path(account.accountable)
+                  - elsif account.accountable.active
+                    = link_to account.accountable.display_name_with_uid, user_path(account.accountable.user)
+                  - else
+                    = t(".inactive_user")
                 - else
-                  = t(".inactive_user")
-              - else
-                = t(".deleted_user")
+                  = t(".deleted_user")
           %td
             = link_to_if(transfer.try(:post).try(:active?), transfer.post, transfer.post)
           %td
