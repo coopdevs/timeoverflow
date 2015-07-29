@@ -76,6 +76,9 @@ ca:
         amount: Quantitat
         reason: Comentaris
         source: Origen
+        hours: Hores
+        minutes: Minuts
+        post: Oferta
       post:
         <<: *common_attributes
         title: Títol
@@ -88,6 +91,7 @@ ca:
         end_on: Finalitza al
       account:
         balance: Balanç
+        organization: Organització
     errors:
       models:
         user:

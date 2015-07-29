@@ -76,6 +76,9 @@ es:
         amount: Cantidad
         reason: Comentarios
         source: Origen
+        hours: Horas
+        minutes: Minutos
+        post: Oferta
       post:
         <<: *common_attributes
         title: Título
@@ -88,6 +91,7 @@ es:
         end_on: Termina el
       account:
         balance: Balance
+        organization: Organización
     errors:
       models:
         user:

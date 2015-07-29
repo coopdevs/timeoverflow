@@ -76,6 +76,9 @@ en:
         amount: Quantity
         reason: Comments
         source: Source
+        hours: Hours
+        minutes: Minutes
+        post: Post
       post:
         <<: *common_attributes
         title: Title
@@ -88,6 +91,7 @@ en:
         end_on: Ends on
       account:
         balance: Balance
+        organization: Organization
     errors:
       models:
         user:
