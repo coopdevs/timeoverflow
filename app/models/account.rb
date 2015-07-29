@@ -36,7 +36,7 @@ class Account < ActiveRecord::Base
 
   # Print the account as its accountable reference
   def to_s
-    "#{accountable.class} #{accountable}"
+    accountable.to_s
   end
 
   protected
