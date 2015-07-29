@@ -19,6 +19,8 @@
     - if @offer
       = f.input :post, readonly: true
       = f.input :post_id, as: :hidden
+    - else
+      = f.input :post_id, collection: @user.member(current_organization).offers.active
 
   .form-actions
     = f.button :submit, class: "btn btn-default", style: "margin-bottom: 20px;"
