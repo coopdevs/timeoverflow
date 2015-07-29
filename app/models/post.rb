@@ -31,9 +31,9 @@ class Post < ActiveRecord::Base
     analysis: {
       analyzer: {
         normal: {
-          tokenizer: 'icu_tokenizer',
-          # lowercase, unaccent, compatible with unicode
-          filter:  %w[icu_normalizer icu_folding]
+          tokenizer: 'standard',
+          # lowercase, unaccent
+          filter: %w[lowercase asciifolding]
         }
       }
     }
