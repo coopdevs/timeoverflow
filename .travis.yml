@@ -5,3 +5,5 @@ env: DATABASE_URL=postgres://postgres@localhost/timeoverflow_test
 before_script:
   - psql -c 'create database timeoverflow_test;' -U postgres
   - RAILS_ENV=test bundle exec rake db:migrate
+sudo: false
+cache: bundler
