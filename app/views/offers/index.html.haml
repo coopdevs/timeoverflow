@@ -32,4 +32,4 @@
 .offers
   = render partial: "shared/posts", locals: { posts: @offers }
 
-= link_to_next_page @offers, t(".more"), remote: true, params: params
+= paginate @offers
