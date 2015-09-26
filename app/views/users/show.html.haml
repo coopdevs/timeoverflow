@@ -10,7 +10,7 @@
           %span.label.label-important= t ".superadmin"
 
     .row
-      .col-sm-3.col-xs-5.text-center
+      .col-sm-3.col-xs-5.text-center.avatar-image
         - if @user == current_user
           %a{href: "https://www.gravatar.com", target: "_blank"}
             = image_tag avatar_url(@user, 160)
@@ -35,7 +35,7 @@
 
 
         %dl.dl-horizontal
-          %h3 
+          %h3
             = t "global.contact_details"
           - if @user.email_if_real != ""
             %dt= User.human_attribute_name(:email)
@@ -129,7 +129,7 @@
           %tr
             %td= l mv.created_at.to_date, format: :long
             %td
-              - mv.other_side.account.tap do |account| 
+              - mv.other_side.account.tap do |account|
                 - if account.accountable.present?
                   - if account.accountable_type == "Organization"
                     = link_to account,
