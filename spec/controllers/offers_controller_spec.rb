@@ -39,14 +39,21 @@ describe OffersController, type: :controller do
       # for instance:
       #
       #     describe "GET #index (search)", elastic: "Offer" do ...
-      # 
+      #
       # (ensure indices are set up for a specific class), or
       #
       #     describe "GET #index (search)", elastic: true do ...
       #
       # (ensure all indices are set up)
       #
+      
+      # Force the index to exist
       Offer.__elasticsearch__.create_index!(force: true)
+      
+      # Import any already existing model into the index
+      # for instance the ones that have been created in upper
+      # `let!` or `before` blocks
+      Offer.__elasticsearch__.import
     end
 
     it "populates an array of offers" do
