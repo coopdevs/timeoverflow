@@ -46,10 +46,10 @@ describe OffersController, type: :controller do
       #
       # (ensure all indices are set up)
       #
-      
+
       # Force the index to exist
       Offer.__elasticsearch__.create_index!(force: true)
-      
+
       # Import any already existing model into the index
       # for instance the ones that have been created in upper
       # `let!` or `before` blocks
