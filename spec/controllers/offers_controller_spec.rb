@@ -69,7 +69,8 @@ describe OffersController, type: :controller do
 
           expect do
             post "create", offer: { user: another_member.user,
-                                    category_id: test_category }
+                                    category_id: test_category,
+                                    title: "New title" }
           end.to change(Offer, :count).by(1)
         end
       end
