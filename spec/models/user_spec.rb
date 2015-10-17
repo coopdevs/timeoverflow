@@ -58,7 +58,7 @@ describe User do
   end
 
   describe ".actives" do
-    pending "should list users with active members" do
+    skip "should list users with active members" do
       # The join at User.actives is failing
       user_w_inactive = Fabricate(:user)
       user_w_active = Fabricate(:user)
@@ -130,5 +130,5 @@ describe User do
     expect("#{user}").to eq(user.username)
   end
 
-  pending "#superadmin?"
+  it "#superadmin?"
 end
