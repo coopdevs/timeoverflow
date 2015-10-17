@@ -20,8 +20,8 @@ class Transfer < ActiveRecord::Base
   attr_accessor :source, :destination, :amount, :hours, :minutes
 
   def make_movements
-    movements.create(account: Account.find(source), amount: -amount.to_i)
-    movements.create(account: Account.find(destination), amount: amount.to_i)
+    movements.create(account: Account.find(source_id), amount: -amount.to_i)
+    movements.create(account: Account.find(destination_id), amount: amount.to_i)
   end
 
   def movement_from
@@ -30,5 +30,13 @@ class Transfer < ActiveRecord::Base
 
   def movement_to
     movements.detect {|m| m.amount > 0 }
+  end
+
+  def source_id
+    source.respond_to?(:id) ? source.id : source
+  end
+
+  def destination_id
+    destination.respond_to?(:id) ? destination.id : destination
   end
 end
