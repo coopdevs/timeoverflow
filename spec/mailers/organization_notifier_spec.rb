@@ -32,7 +32,7 @@ describe OrganizationNotifier do
     ActionMailer::Base.delivery_method = :test
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
-    OrganizationNotifier.recent_posts(test_organization.posts).deliver
+    OrganizationNotifier.recent_posts(test_organization.posts).deliver_now
   end
 
   after(:each) do
