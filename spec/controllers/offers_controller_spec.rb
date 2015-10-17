@@ -53,7 +53,7 @@ describe OffersController, type: :controller do
       # Import any already existing model into the index
       # for instance the ones that have been created in upper
       # `let!` or `before` blocks
-      Offer.__elasticsearch__.import
+      Offer.__elasticsearch__.import(force: true, refresh: true)
     end
 
     it "populates an array of offers" do
