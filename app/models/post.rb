@@ -3,11 +3,39 @@ require 'elasticsearch/model'
 class Post < ActiveRecord::Base
   include Taggable
 
-  include Elasticsearch::Model
+  # Elasticsearch::Model doesn't work well with STI, so
+  # include it in subclasses directly.
+  def self.inherited(child)
+    super
 
-  after_commit :index_document, on: :create
-  after_commit :update_or_delete_document, on: :update
-  after_commit :delete_document, on: :destroy
+    child.instance_eval do
+      include Elasticsearch::Model
+
+      after_commit :index_document, on: :create
+      after_commit :update_or_delete_document, on: :update
+      after_commit :delete_document, on: :destroy
+
+      settings(
+        analysis: {
+          analyzer: {
+            normal: {
+              tokenizer: 'standard',
+              # lowercase, unaccent
+              filter: %w[lowercase asciifolding]
+            }
+          }
+        }
+      ) do
+        mapping do
+          indexes :title, analyzer: 'normal'
+          indexes :description, analyzer: 'normal'
+          indexes :tags
+          indexes :organization_id, type: :integer
+        end
+      end
+
+    end
+  end
 
   def index_document
     __elasticsearch__.index_document
@@ -27,24 +55,6 @@ class Post < ActiveRecord::Base
     __elasticsearch__.delete_document rescue nil
   end
 
-  settings(
-    analysis: {
-      analyzer: {
-        normal: {
-          tokenizer: 'standard',
-          # lowercase, unaccent
-          filter: %w[lowercase asciifolding]
-        }
-      }
-    }
-  ) do
-    mapping do
-      indexes :title, analyzer: 'normal'
-      indexes :description, analyzer: 'normal'
-      indexes :tags
-      indexes :organization_id, type: :integer
-    end
-  end
 
   def as_indexed_json(*)
     as_json(only: [:title, :description, :tags, :organization_id])
