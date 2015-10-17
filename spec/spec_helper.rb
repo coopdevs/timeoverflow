@@ -84,6 +84,4 @@ RSpec.shared_context 'stub browser locale' do
   end
 end
 
-RSpec.configure do |config|
-  config.infer_spec_type_from_file_location!
-end
+RSpec.configure(&:infer_spec_type_from_file_location!)

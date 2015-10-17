@@ -16,8 +16,6 @@ describe User do
   it { is_expected.to_not allow_value("no @ here").for(:email) }
 
   it { is_expected.to validate_presence_of :username }
-  # it { is_expected.to validate_presence_of :gender }
-  # it { is_expected.to validate_inclusion_of(:gender).in_array(%w(male female))}
 
   describe "#setup_and_save_user" do
     it "sets a fake email before attempting to save user" do

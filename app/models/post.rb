@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
         analysis: {
           analyzer: {
             normal: {
-              tokenizer: 'standard',
+              tokenizer: "standard",
               # lowercase, unaccent
               filter: %w[lowercase asciifolding]
             }
@@ -27,8 +27,8 @@ class Post < ActiveRecord::Base
         }
       ) do
         mapping do
-          indexes :title, analyzer: 'normal'
-          indexes :description, analyzer: 'normal'
+          indexes :title, analyzer: "normal"
+          indexes :description, analyzer: "normal"
           indexes :tags
           indexes :organization_id, type: :integer
         end
