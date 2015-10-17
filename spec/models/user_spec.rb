@@ -1,23 +1,23 @@
 require "spec_helper"
 
 describe User do
-  it { should have_many :members }
-  it { should accept_nested_attributes_for :members }
-  it { should have_many :organizations }
-  it { should have_many :accounts }
-  it { should have_many :movements }
+  it { is_expected.to have_many :members }
+  it { is_expected.to accept_nested_attributes_for :members }
+  it { is_expected.to have_many :organizations }
+  it { is_expected.to have_many :accounts }
+  it { is_expected.to have_many :movements }
 
-  it { should have_many :posts }
-  it { should have_many :inquiries }
-  it { should have_many :offers }
+  it { is_expected.to have_many :posts }
+  it { is_expected.to have_many :inquiries }
+  it { is_expected.to have_many :offers }
 
-  it { should validate_presence_of :email }
-  it { should allow_value("my@email.com").for(:email) }
-  it { should_not allow_value("no @ here").for(:email) }
+  it { is_expected.to validate_presence_of :email }
+  it { is_expected.to allow_value("my@email.com").for(:email) }
+  it { is_expected.to_not allow_value("no @ here").for(:email) }
 
-  it { should validate_presence_of :username }
-  # it { should validate_presence_of :gender }
-  # it { should validate_inclusion_of(:gender).in_array(%w(male female))}
+  it { is_expected.to validate_presence_of :username }
+  # it { is_expected.to validate_presence_of :gender }
+  # it { is_expected.to validate_inclusion_of(:gender).in_array(%w(male female))}
 
   describe "#setup_and_save_user" do
     it "sets a fake email before attempting to save user" do

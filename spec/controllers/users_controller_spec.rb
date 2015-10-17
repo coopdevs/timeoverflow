@@ -101,9 +101,9 @@ describe UsersController do
 
         u = User.find_by(username: user.username + "2")
         u.valid?
-        u.email.should match(/(user)\d+(@example.com)/)
-        u.errors[:email].count.should == 0
-        subject.should redirect_to("/members")
+        expect(u.email).to match(/(user)\d+(@example.com)/)
+        expect(u.errors[:email]).to be_empty
+        expect(subject).to redirect_to("/members")
       end
     end
 
@@ -123,34 +123,34 @@ describe UsersController do
 
         it "creates a new user" do
           expect { subject }.to change(User, :count).by(1)
-          subject.should redirect_to("/members")
+          expect(subject).to redirect_to("/members")
         end
 
         it "can create a user with a valid email" do
           subject { post "create", user: user }
           user.valid?
-          user.errors[:email].count.should == 0
+          expect(user.errors[:email]).to be_empty
         end
 
         it "cannot create a user with invalid email" do
           wrong_user[:email] = "sin mail"
           subject { post "create", user: wrong_user }
           wrong_user.valid?
-          wrong_user.errors[:email].count.should > 0
+          expect(wrong_user.errors[:email]).not_to be_empty
         end
 
         it "cannot create a user with dummy @example.com" do
           user[:email] = "@example.com"
           subject { post "create", user: user }
           user.valid?
-          user.errors[:email].count.should > 0
+          expect(user.errors[:email]).not_to be_empty
         end
 
         it "cannot create a user with existing e-mail" do
           user[:email] = another_user[:email]
           subject { post "create", user: user }
           user.valid?
-          user.errors[:email].count.should > 0
+          expect(user.errors[:email]).not_to be_empty
         end
 
       end

@@ -158,7 +158,7 @@ describe OffersController, type: :controller do
       login(member.user)
 
       delete :destroy, id: offer.id
-      response.should redirect_to offers_url
+      expect(response).to redirect_to offers_url
     end
   end
 end
