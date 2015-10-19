@@ -83,3 +83,5 @@ RSpec.shared_context 'stub browser locale' do
     request.env["HTTP_ACCEPT_LANGUAGE"] = "#{locale}"
   end
 end
+
+RSpec.configure(&:infer_spec_type_from_file_location!)

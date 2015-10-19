@@ -114,7 +114,7 @@ describe InquiriesController do
       login(member.user)
 
       delete :destroy, id: inquiry.id
-      response.should redirect_to inquiries_url
+      expect(response).to redirect_to inquiries_url
     end
   end
 end
