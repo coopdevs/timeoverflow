@@ -22,11 +22,13 @@ es:
       inactive: "Tu cuenta no ha sido activada."
       invalid: "Correo o clave inválida."
       invalid_token: "Código de autenticación inválido."
-      locked: "Tu cuenta ha sido bloqueada."
+      locked: "Tu cuenta ha sido bloqueada, haz clic en el enlace 'Enviar correo de desbloqueo'."
       not_found_in_database: "Correo o clave inválida."
       timeout: "Tu sesión ha caducado. Por favor, regístrate nuevamente para continuar."
       unauthenticated: "Tienes que registrarte para continuar."
       unconfirmed: "Tienes que confirmar tu cuenta antes de continuar."
+      user:
+        last_attempt: "Atención, te queda un solo intento antes de que tu cuenta se bloquee"
     mailer:
       confirmation_instructions:
         subject: "Instrucciones de confirmación de cuenta"
@@ -45,6 +47,9 @@ es:
       updated_not_active: "Cambio de constraseña realizado."
       edit:
         change_password: Cambiar contraseña
+        new_password: Nueva contraseña
+        confirm_password: Repite la nueva contraseña
+        change_password: Cambiar mi contraseña
       new:
         forgot_question: "¿Has olvidado tu contraseña o quieres obtenerla por primera vez?"
         send_instructions: "Envíame las instruciones"
@@ -52,7 +57,7 @@ es:
       destroyed: "Adiós! Tu cuenta se ha cancelado. Esperamos verte pronto de nuevo."
       signed_up: "Bienvenido(a)!  Registrado realizado."
       signed_up_but_inactive: "Tu registro se ha realizado. Sin embargo, no puedes entrar porque tu cuenta no se ha activado todavía"
-      signed_up_but_locked: "Tu registro se ha realizado. Sin embargo, no puedes entrar porque tu cuenta está bloqueada."
+      signed_up_but_locked: "Tu registro se ha realizado. Sin embargo, no puedes entrar porque tu cuenta está bloqueada. Haz clic en el enlace 'Enviar correo de desbloqueo'"
       signed_up_but_unconfirmed: "Se ha enviado un mensaje de confirmación a tu dirección de correo. Por favor, abre el enlace para activar tu cuenta."
       update_needs_confirmation: "Actualización de cuenta realizada, pero necesitamos verificar tu dirección de correo. Por favor, comprueba tu correo y utiliza el enlace para confirmar tu nueva dirección de correo."
       updated: "Actualización de cuenta realizada."

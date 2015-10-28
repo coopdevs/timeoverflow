@@ -25,6 +25,8 @@ en:
       timeout: "Your session expired. Please sign in again to continue."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
+      user:
+        last_attempt: "Attention, you left one attempt before your account is locked"
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
@@ -41,6 +43,11 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
+      edit:
+        change_password: Change your password
+        new_password: New password
+        confirm_password: Confirm your new password
+        change_password: Change my password
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."

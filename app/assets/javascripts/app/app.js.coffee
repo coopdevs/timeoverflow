@@ -47,7 +47,8 @@ angular.module('timeoverflow').filter 'timeBalance', ->
     if seconds isnt 0
       minutes = Math.abs(seconds) / 60
       hours = (minutes / 60) >> 0
-      minutes %= 60;
+      minutes %= 60
+      minutes = Math.round(minutes);
       if seconds < 0 then "-#{hours}:#{minutes}" else "#{hours}:#{minutes}"
     else
       "—"

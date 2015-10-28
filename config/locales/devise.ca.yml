@@ -22,11 +22,13 @@ ca:
       inactive: "El teu compte no ha estat activat."
       invalid: "Correu o clau invàlida."
       invalid_token: "Codi d'autentificació invàlid."
-      locked: "El teu compte ha estat bloquejat."
+      locked: "El teu compte ha estat bloquejat, fes clic al enllaç 'Enviar correu de desbloqueig'."
       not_found_in_database: "Correu o clau invàlida."
       timeout: "La teva sessió ha caducat. Si us plau, torna a entrar per continuar."
       unauthenticated: "Has de entrar per continuar."
       unconfirmed: "Has de confiramar el teu compte abans de continuar."
+      user:
+        last_attempt: "Atenció, et queda un sol intent abans que el teu compte es bloquegi"
     mailer:
       confirmation_instructions:
         subject: "Instruccions de confirmació del compte"
@@ -45,6 +47,9 @@ ca:
       updated_not_active: "Canvi de contrasenya realitzat."
       edit:
         change_password: Canviar contrasenya
+        new_password: Nova contrasenya
+        confirm_password: Torna a escriure la nova contrasenya
+        change_password: Canviar la contrasenya
       new:
         forgot_question: "Has oblidat la contrasenya o vols obtenir-la per primera vegada?"
         send_instructions: "Envia'm les instruccions"
@@ -52,7 +57,7 @@ ca:
       destroyed: "El teu compte ha estat cancel·lat. Fins aviat!"
       signed_up: "Benvingut!  Registre realitzat."
       signed_up_but_inactive: "Registre realitzat. No pots accedir perquè el teu compte no està activat"
-      signed_up_but_locked: "Registre realitzat. No pots accedir perquè el teu compte està bloquejat"
+      signed_up_but_locked: "Registre realitzat. No pots accedir perquè el teu compte està bloquejat, fes clic al enllaç 'Enviar correu de desbloqueig'"
       signed_up_but_unconfirmed: "S'ha enviat un correu de confirmació, si us plau, entra al teu correu i segueix les instruccions"
       update_needs_confirmation: "S'ha actualitzat el teu compte, però necessitem verificar la teva adreça de correu. Si us plau, entra al teu correu i segueix les instruccions."
       updated: "Compte actualitzat."
