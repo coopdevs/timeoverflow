@@ -12,10 +12,10 @@
         = form_for resource, url: password_path(resource_name), html: { method: :put } do |f|
           = f.hidden_field :reset_password_token
           .form-group
-            = f.label :password, "New password", class: "control-label"
+            = f.label :password, t(".new_password"), class: "control-label"
             = f.password_field :password, required: true, autofocus: true, class: "form-control"
           .form-group
-            = f.label :password_confirmation, "Confirm your new password", class: "control-label"
+            = f.label :password_confirmation, t(".confirm_password"), class: "control-label"
             = f.password_field :password_confirmation, required: true, class: "form-control"
           .form-group
-            = f.submit "Change my password", class: "btn btn-primary"
+            = f.submit t(".change_password"), class: "btn btn-primary"
