@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
   respond_to :html, :js
+
+  before_filter :authenticate_user!
 
   def scoped_users
     current_organization.users

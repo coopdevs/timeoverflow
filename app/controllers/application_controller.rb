@@ -1,30 +1,24 @@
 class ApplicationController < ActionController::Base
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-  after_filter :store_location
-
   include Pundit
+
   protect_from_forgery
-  helper :glyph
-
-  helper_method :current_organization, :admin?, :superadmin?
-
-  # before_filter do
-  #   ap session.keys
-  # end
 
   MissingTOSAcceptance = Class.new(Exception)
   OutadedTOSAcceptance = Class.new(Exception)
 
+  append_before_filter :check_for_terms_acceptance!, unless: :devise_controller?
+  before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_locale
   before_filter :set_current_organization
-
-  append_before_filter :check_for_terms_acceptance!, unless: :devise_controller?
+  after_filter :store_location
 
   rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
     redirect_to terms_path
   end
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  helper_method :current_organization, :admin?, :superadmin?
 
   protected
 

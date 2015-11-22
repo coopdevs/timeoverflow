@@ -1,6 +1,4 @@
 class StatisticsController < ApplicationController
-  before_filter :authenticate_user!
-
   AGE_GROUP_LABELS = {
     0..17 => " -17",
     18..24 => "18-24",
@@ -10,6 +8,8 @@ class StatisticsController < ApplicationController
     55..64 => "55-64",
     65..100 => "65+",
   }
+
+  before_filter :authenticate_user!
 
   def statistics_global_activity
     @members = current_organization.members

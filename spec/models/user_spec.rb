@@ -128,5 +128,8 @@ describe User do
     expect("#{user}").to eq(user.username)
   end
 
-  it "#superadmin?"
+  it "#superadmin?" do
+    user = Fabricate(:user, email: ADMINS.sample)
+    expect(user.superadmin?).to eq(true)
+  end
 end
