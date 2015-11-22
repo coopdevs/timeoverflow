@@ -50,7 +50,7 @@ class Post < ActiveRecord::Base
 
   delegate :name, to: :category, prefix: true, allow_nil: true
 
-  default_scope -> { order("posts.updated_at DESC") }
+  default_scope { order("posts.updated_at DESC") }
   scope :by_category, ->(cat) {
     where(category_id: cat) if cat
   }
