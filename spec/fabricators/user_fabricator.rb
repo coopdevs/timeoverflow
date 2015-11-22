@@ -3,6 +3,7 @@ Fabricator(:user) do
 
   username { Faker::Internet.user_name }
   email { Faker::Internet.email }
+  password { Faker::Internet.password }
   date_of_birth { DateTime.now.utc }
   identity_document { sequence(:identity_document, 1) { |n| "X000000#{n}X" } }
   phone { Faker::PhoneNumber.phone_number }

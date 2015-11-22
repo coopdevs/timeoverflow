@@ -61,6 +61,7 @@ end
 group :test do
   # Needed for TravisCI
   gem 'rake'
+  gem 'cucumber-rails'
   gem "database_cleaner"
   gem 'shoulda', ">= 3.5"
   gem 'fabrication'

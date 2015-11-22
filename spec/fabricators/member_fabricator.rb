@@ -6,3 +6,9 @@ Fabricator(:member) do
   active true
 
 end
+
+Fabricator(:admin, from: :member) do
+
+  manager true
+
+end
