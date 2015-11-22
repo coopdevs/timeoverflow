@@ -11,13 +11,13 @@
 # account, so the total sum of the system is zero
 #
 class Transfer < ActiveRecord::Base
+  attr_accessor :source, :destination, :amount, :hours, :minutes
+
   belongs_to :post
   belongs_to :operator, class_name: "User"
   has_many :movements
 
   after_create :make_movements
-
-  attr_accessor :source, :destination, :amount, :hours, :minutes
 
   def make_movements
     movements.create(account: Account.find(source_id), amount: -amount.to_i)

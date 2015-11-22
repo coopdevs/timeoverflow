@@ -1,6 +1,7 @@
 class Organization < ActiveRecord::Base
-  before_validation :ensure_url
-  validates_uniqueness_of :name
+  BOOTSWATCH_THEMES = %w[amelia cerulean cosmo cyborg flatly journal readable
+                         simplex slate spacelab united]
+
   has_many :members, dependent: :destroy
   has_many :users, -> { order "members.created_at DESC" }, through: :members
   has_many :all_accounts, class_name: "Account", inverse_of: :organization
@@ -10,25 +11,21 @@ class Organization < ActiveRecord::Base
     end
   end
   has_many :all_transfers, class_name: "Transfer", through: :all_movements, source: :transfer
-
   has_one :account, as: :accountable
-  after_create :create_account
-
   has_many :member_accounts, through: :members, source: :account
-
   has_many :posts
   has_many :offers
   has_many :inquiries
-
   has_many :documents, as: :documentable
-
-  BOOTSWATCH_THEMES = %w[amelia cerulean cosmo cyborg flatly journal readable
-                         simplex slate spacelab united]
-  # validates :theme, allow_nil: true, inclusion: {in: BOOTSWATCH_THEMES}
 
   scope :matching, ->(str) {
     where(Organization.arel_table[:name].matches("%#{str}%"))
   }
+
+  validates_uniqueness_of :name
+
+  before_validation :ensure_url
+  after_create :create_account
 
   def to_s
     "#{name}"
@@ -59,5 +56,4 @@ class Organization < ActiveRecord::Base
       errors.add(:web, :url_format_invalid)
     end
   end
-
 end

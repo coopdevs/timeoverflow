@@ -4,15 +4,10 @@
 # They are created during the creation of the corresponding Transfer record.
 #
 class Movement < ActiveRecord::Base
-  belongs_to :account
-  belongs_to :transfer
-
   attr_readonly :account_id, :transfer_id, :amount
 
-  after_create do
-    account.update_balance
-  end
-
+  belongs_to :account
+  belongs_to :transfer
   has_one :other_side,
           (->(self_)  { where ["NOT movements.id = #{self_.id}"] }),
           through: :transfer,
@@ -22,4 +17,8 @@ class Movement < ActiveRecord::Base
         ->(month) {
           where(created_at: month.beginning_of_month..month.end_of_month)
         }
+
+  after_create do
+    account.update_balance
+  end
 end

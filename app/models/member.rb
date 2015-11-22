@@ -1,15 +1,11 @@
 class Member < ActiveRecord::Base
   belongs_to :user
   belongs_to :organization
-
   has_one :account, as: :accountable
   has_many :movements, through: :account
+
   delegate :balance, to: :account, prefix: true, allow_nil: true
   delegate :gender, :date_of_birth, to: :user, prefix: true, allow_nil: true
-
-  after_create :create_account
-  before_validation :assign_registration_number, on: :create
-  after_destroy :remove_orphaned_users
 
   scope :by_month, -> (month) {
     where(created_at: month.beginning_of_month..month.end_of_month)
@@ -20,6 +16,10 @@ class Member < ActiveRecord::Base
   validates :member_uid,
             presence: true,
             uniqueness: { scope: :organization_id }
+
+  after_create :create_account
+  before_validation :assign_registration_number, on: :create
+  after_destroy :remove_orphaned_users
 
   def to_s
     "#{user}"
