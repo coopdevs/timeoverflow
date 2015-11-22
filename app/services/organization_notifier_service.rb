@@ -7,7 +7,7 @@ class OrganizationNotifierService
     @organization.each do |org|
       posts = org.posts.active.of_active_members.from_last_week
       if posts.present?
-        OrganizationNotifier.recent_posts(posts).deliver
+        OrganizationNotifier.recent_posts(posts).deliver_now
       end
     end
   end

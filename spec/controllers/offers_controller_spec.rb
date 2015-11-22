@@ -34,6 +34,28 @@ describe OffersController, type: :controller do
   end
 
   describe "GET #index (search)" do
+    before do
+      # TODO: move to a separate module and enable with metadata
+      # for instance:
+      #
+      #     describe "GET #index (search)", elastic: "Offer" do ...
+      #
+      # (ensure indices are set up for a specific class), or
+      #
+      #     describe "GET #index (search)", elastic: true do ...
+      #
+      # (ensure all indices are set up)
+      #
+
+      # Force the index to exist
+      Offer.__elasticsearch__.create_index!(force: true)
+
+      # Import any already existing model into the index
+      # for instance the ones that have been created in upper
+      # `let!` or `before` blocks
+      Offer.__elasticsearch__.import(force: true, refresh: true)
+    end
+
     it "populates an array of offers" do
       login(another_member.user)
 
@@ -69,7 +91,8 @@ describe OffersController, type: :controller do
 
           expect do
             post "create", offer: { user: another_member.user,
-                                    category_id: test_category }
+                                    category_id: test_category,
+                                    title: "New title" }
           end.to change(Offer, :count).by(1)
         end
       end
@@ -136,7 +159,7 @@ describe OffersController, type: :controller do
       login(member.user)
 
       delete :destroy, id: offer.id
-      response.should redirect_to offers_url
+      expect(response).to redirect_to offers_url
     end
   end
 end

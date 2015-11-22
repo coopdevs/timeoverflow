@@ -29,8 +29,6 @@ gem "haml-rails"
 gem 'turbolinks'
 gem "simple_form", ">= 3.0.0"
 gem "awesome_print"
-gem "jbuilder"
-gem "paranoia"
 gem "rest-client"
 gem 'memcachier'
 gem 'rollbar'
@@ -39,6 +37,7 @@ gem "shelly-dependencies"
 gem 'whenever', :require => false
 gem 'prawn'
 gem 'prawn-table'
+gem 'bundler', '>= 1.10.6'
 
 # Integrate an external search engine - tags + full-text in PG are not really the best
 gem 'elasticsearch-model'

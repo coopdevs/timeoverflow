@@ -42,5 +42,6 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  # Avoid seeing all that stuff in tests
   config.log_level = :warn
 end

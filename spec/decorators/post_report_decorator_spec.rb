@@ -10,9 +10,8 @@ describe PostReportDecorator do
               organization: org,
               category: category)
   end
-
   let (:decorator) do
-    offers = org.offers.group_by(&:category)
+    offers = org.offers.of_active_members.active.group_by(&:category)
 
     PostReportDecorator.new(org, offers, Offer)
   end
@@ -33,9 +32,12 @@ describe PostReportDecorator do
   end
 
   it "#rows" do
+    # offer with member_uid
+    offer = org.offers.of_active_members.active.first
+
     expect(decorator.rows).to eq([
       [category.name, ""],
-      [offer.title, "#{offer.user} (#{offer.member_id})"]
+      [offer.title, "#{offer.user} (#{offer.member_uid})"]
     ])
   end
 end

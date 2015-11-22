@@ -1,6 +1,5 @@
 = simple_form_for @organization do |f|
   = f.input :name
-  = f.input :theme, collection: Organization::BOOTSWATCH_THEMES
   = f.input :email
   = f.input :phone
   = f.input :web
@@ -9,5 +8,4 @@
   = f.input :address
   = f.input :neighborhood
   = f.input :city
-  = f.input :domain
   = f.button :submit

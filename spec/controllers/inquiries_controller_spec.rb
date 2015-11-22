@@ -46,7 +46,8 @@ describe InquiriesController do
 
           expect do
             post "create", inquiry: { user: another_member.user,
-                                      category_id: test_category.id }
+                                      category_id: test_category.id,
+                                      title: "New title" }
           end.to change(Inquiry, :count).by(1)
         end
       end
@@ -113,7 +114,7 @@ describe InquiriesController do
       login(member.user)
 
       delete :destroy, id: inquiry.id
-      response.should redirect_to inquiries_url
+      expect(response).to redirect_to inquiries_url
     end
   end
 end

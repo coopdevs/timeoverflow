@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :empty_email
+  include LazyRecoverable
 
   devise *[
     :database_authenticatable,
@@ -11,35 +11,31 @@ class User < ActiveRecord::Base
     :trackable
   ]
 
-  include LazyRecoverable
-
   GENDERS = %w[male female]
 
-  default_scope -> { order("users.id ASC") }
+  attr_accessor :empty_email
 
+  has_many :members, dependent: :destroy
+  has_many :organizations, through: :members
+  has_many :accounts, through: :members
+  has_many :movements, through: :accounts
+  has_many :posts
+  has_many :offers
+  has_many :inquiries
+
+  accepts_nested_attributes_for :members
+
+  default_scope { order("users.id ASC") }
   scope :actives, -> { references(:members).where(members: { active: true }) }
   scope :online_active, -> { where("sign_in_count > 0") }
   scope :notifications, -> { where(notifications: true) }
 
   validates :username, presence: true
   validates :email, presence: true, uniqueness: true
-
   # Allows @domain.com for dummy emails but does not allow pure invalid
   # emails like 'without email'
   validates_format_of :email,
                       with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-
-  # validates :gender, presence: true, inclusion: {in: GENDERS}
-
-  has_many :members, dependent: :destroy
-  accepts_nested_attributes_for :members
-  has_many :organizations, through: :members
-  has_many :accounts, through: :members
-  has_many :movements, through: :accounts
-
-  has_many :posts
-  has_many :offers
-  has_many :inquiries
 
   def as_member_of(organization)
     organization && members.find_by(organization: organization)
@@ -48,13 +44,11 @@ class User < ActiveRecord::Base
   def admins?(organization)
     organization && !!(as_member_of(organization).try :manager)
   end
-
   alias :manages? :admins?
 
   def superadmin?
     ADMINS.include? email
   end
-
   alias :superuser? :superadmin?
 
   def to_s
