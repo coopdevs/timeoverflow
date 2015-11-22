@@ -79,14 +79,20 @@ class Post < ActiveRecord::Base
   def update_or_delete_document(member = nil)
     member ||= self.member
     if active && member.try(:active)
-      __elasticsearch__.update_document rescue __elasticsearch__.index_document
+      begin
+        __elasticsearch__.update_document
+      rescue # document was not in the index. TODO: more specifi exception class
+        __elasticsearch__.index_document
+      end
     else
-      __elasticsearch__.delete_document rescue nil
+      __elasticsearch__.delete_document
     end
+  rescue # document was not in the index. TODO: more specifi exception class
   end
 
   def delete_document
-    __elasticsearch__.delete_document rescue nil
+    __elasticsearch__.delete_document
+  rescue # document was not in the index. TODO: more specifi exception class
   end
 
   def as_indexed_json(*)
