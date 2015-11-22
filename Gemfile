@@ -29,8 +29,6 @@ gem "haml-rails"
 gem 'turbolinks'
 gem "simple_form", ">= 3.0.0"
 gem "awesome_print"
-gem "jbuilder"
-gem "paranoia"
 gem "rest-client"
 gem 'memcachier'
 gem 'rollbar'
