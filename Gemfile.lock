@@ -365,6 +365,7 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
+  bundler (>= 1.10.6)
   byebug
   capybara (~> 2.4.4)
   coffee-rails

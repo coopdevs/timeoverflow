@@ -37,6 +37,7 @@ gem "shelly-dependencies"
 gem 'whenever', :require => false
 gem 'prawn'
 gem 'prawn-table'
+gem 'bundler', '>= 1.10.6'
 
 # Integrate an external search engine - tags + full-text in PG are not really the best
 gem 'elasticsearch-model'
