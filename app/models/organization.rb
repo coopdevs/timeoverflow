@@ -22,7 +22,7 @@ class Organization < ActiveRecord::Base
     where(Organization.arel_table[:name].matches("%#{str}%"))
   }
 
-  validates_uniqueness_of :name
+  validates :name, uniqueness: true
 
   before_validation :ensure_url
   after_create :create_account

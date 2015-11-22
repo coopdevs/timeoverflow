@@ -50,7 +50,7 @@ class Post < ActiveRecord::Base
 
   delegate :name, to: :category, prefix: true, allow_nil: true
 
-  default_scope -> { order("posts.updated_at DESC") }
+  default_scope { order("posts.updated_at DESC") }
   scope :by_category, ->(cat) { where(category_id: cat) if cat }
   scope :by_organization, ->(org) { where(organization_id: org) if org }
   scope :of_active_members, -> do
@@ -76,7 +76,7 @@ class Post < ActiveRecord::Base
   end
 
   # pass member when doing bulk things
-  def update_or_delete_document(member=nil)
+  def update_or_delete_document(member = nil)
     member ||= self.member
     if active && member.try(:active)
       __elasticsearch__.update_document rescue __elasticsearch__.index_document
