@@ -6,9 +6,7 @@
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %title
       =t(".report_title")
-    / = javascript_include_tag "application"
-    / = csrf_meta_tags
-    = theme_stylesheet_link_tag
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
     = stylesheet_link_tag "application", :media => "all"
     %link{href: "/favicon.ico", rel: "shortcut icon"}
 
