@@ -23,7 +23,6 @@ gem 'kaminari'
 gem "haml-rails"
 gem "simple_form", ">= 3.0.0"
 gem "awesome_print"
-gem "rest-client"
 gem 'memcachier'
 gem 'rollbar'
 gem 'travis-lint'
