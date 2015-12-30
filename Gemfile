@@ -51,6 +51,7 @@ group :development do
   gem "haml-lint"
   gem 'web-console', '~> 2.0'
   gem "rails-erd"
+  gem "quiet_assets"
 end
 
 group :development, :test do
