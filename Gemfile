@@ -13,12 +13,7 @@ gem 'pundit'
 gem 'pg', '0.17.1'
 gem 'hstore_translate'
 gem 'dalli'
-gem "sass-rails", "4.0.5"
-gem 'coffee-rails'
 gem 'slim-rails' # much better than haml
-gem 'ngannotate-rails'
-gem 'uglifier', '>= 1.0.3'
-gem 'jquery-rails'
 gem "devise"
 gem "http_accept_language"
 gem 'thin'
@@ -26,7 +21,6 @@ gem 'foreman'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem "haml-rails"
-gem 'turbolinks'
 gem "simple_form", ">= 3.0.0"
 gem "awesome_print"
 gem "rest-client"
@@ -38,10 +32,18 @@ gem 'whenever', :require => false
 gem 'prawn'
 gem 'prawn-table'
 gem 'bundler', '>= 1.10.6'
-
-# Integrate an external search engine - tags + full-text in PG are not really the best
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+
+# Assets
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'bootstrap-sass'
+gem 'sass-rails', '~> 5.0.1'
+gem 'coffee-rails'
+gem 'ngannotate-rails'
+gem 'uglifier', '>= 1.0.3'
+gem 'select2-rails'
 
 group :development do
   gem "binding_of_caller"
