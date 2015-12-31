@@ -15,7 +15,7 @@
 
         - if current_user.manages? current_organization
           %li.dropdown
-            %a.dropdown-toggle{ href: "#", data: { toggle: :dropdown } }
+            %a.dropdown-toggle{ href: "#"}
               = glyph("paperclip")
               = t ".reports"
               %b.caret
@@ -33,7 +33,7 @@
                   %span.glyphicon.glyphicon-list-alt
                   = Inquiry.model_name.human(count: :many)
           %li.dropdown
-            %a.dropdown-toggle{href: "#", data: { toggle: :dropdown } }
+            %a.dropdown-toggle{href: "#"}
               = glyph("stats")
               = t ".statistics"
               %b.caret
@@ -67,7 +67,7 @@
                   %span.glyphicon.glyphicon-stats
                   = t ".statistics_all_transfers"
           %li.dropdown
-            %a.dropdown-toggle{ href: "#", data: { toggle: :dropdown } }
+            %a.dropdown-toggle{ href: "#"}
               = glyph("wrench")
               = t ".admin"
               %b.caret
@@ -99,7 +99,7 @@
     %ul.nav.navbar-nav.navbar-right
       - if current_user
         %li.dropdown
-          %a.dropdown-toggle{href: "#", data: { toggle: :dropdown } }
+          %a.dropdown-toggle{href: "#"}
             = image_tag avatar_url(current_user), style: "margin: -8px auto"
             = current_user.email
             %b.caret
@@ -147,7 +147,7 @@
       %li.divider{role: :presentation}
 
       %li.dropdown
-        %a.dropdown-toggle{ href: "#", data: { toggle: :dropdown } }
+        %a.dropdown-toggle{ href: "#"}
           = glyph("globe")
           %b.caret
         %ul.dropdown-menu{role: :menu}
