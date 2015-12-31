@@ -11,19 +11,6 @@ module ApplicationHelper
       "#{Rack::Utils.build_query(gravatar_options)}"
   end
 
-  def theme_stylesheet_link_tag
-    theme = current_organization.try(:theme)
-    main_url = "//netdna.bootstrapcdn.com/"
-    bs_version = "3.1.0"
-    bs_css_file = "bootstrap.min.css"
-    url = if Organization::BOOTSWATCH_THEMES.include? theme
-            "#{main_url}/bootswatch/#{bs_version}/#{theme}/#{bs_css_file}"
-          else
-            "#{main_url}/bootstrap/#{bs_version}/css/#{bs_css_file}"
-          end
-    stylesheet_link_tag url
-  end
-
   def mdash
     raw "&mdash;"
   end
