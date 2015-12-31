@@ -54,6 +54,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    airbrussh (0.8.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.0)
@@ -74,6 +76,21 @@ GEM
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
+    capistrano (3.4.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-passenger (0.2.0)
+      capistrano (~> 3.0)
+    capistrano-rails (1.1.5)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.0.3)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -188,6 +205,9 @@ GEM
     minitest (5.5.1)
     multi_json (1.10.1)
     multipart-post (2.0.0)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.2)
     netrc (0.10.2)
     ngannotate-rails (0.14.1)
       execjs
@@ -326,6 +346,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    sshkit (1.8.1)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     sysexits (1.2.0)
     temple (0.7.5)
     thin (1.6.3)
@@ -362,11 +385,16 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  airbrussh
   awesome_print
   better_errors
   binding_of_caller
   bundler (>= 1.10.6)
   byebug
+  capistrano (~> 3.1)
+  capistrano-passenger
+  capistrano-rails (~> 1.1)
+  capistrano-rbenv (~> 2.0)
   capybara (~> 2.4.4)
   coffee-rails
   dalli

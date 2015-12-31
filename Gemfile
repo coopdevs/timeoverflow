@@ -50,6 +50,12 @@ group :development do
   gem "haml-lint"
   gem 'web-console', '~> 2.0'
   gem "rails-erd"
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-passenger'
+  # gem 'capistrano3-delayed-job', '~> 1.0'
+  gem 'airbrussh', require: false
 end
 
 group :development, :test do
