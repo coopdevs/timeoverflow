@@ -193,9 +193,6 @@ GEM
     minitest (5.8.3)
     multi_json (1.11.2)
     multipart-post (2.0.0)
-    ngannotate-rails (1.0.3)
-      execjs
-      rails (>= 3.1)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -387,7 +384,6 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   memcachier
-  ngannotate-rails
   pg (= 0.17.1)
   prawn
   prawn-table

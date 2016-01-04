@@ -40,7 +40,6 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0.1'
 gem 'coffee-rails'
-gem 'ngannotate-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'select2-rails'
 
