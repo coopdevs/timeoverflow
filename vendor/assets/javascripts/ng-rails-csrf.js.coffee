@@ -1,5 +1,5 @@
 angular.module("ng-rails-csrf", []).config(
-  ($httpProvider) ->
+  ["$httpProvider", ($httpProvider) ->
     getToken = ->
       document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content")
 
@@ -13,4 +13,5 @@ angular.module("ng-rails-csrf", []).config(
 
     updateToken()
     $(document).bind "page:change", updateToken  if window["Turbolinks"]
+  ]
 )
