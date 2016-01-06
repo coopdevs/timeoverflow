@@ -14,7 +14,7 @@ module Taggable
   end
 
   def tag_list=(tag_list)
-    self.tags = Array(tag_list.to_s.split(/,\s*/))
+    self.tags = tag_list.reject(&:empty?)
   end
 
   # class methods (stupid comment to make rubocop happy)
