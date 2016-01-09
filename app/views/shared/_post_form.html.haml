@@ -11,7 +11,7 @@
     = f.select :category_id, Category.all.sort_by{ |a| a.name.downcase }.map{ |cat| [cat.name, cat.id] }, { include_blank: true }, { class: "form-control" }
   .form-group
     = f.label :tag_list
-    = f.select :tag_list, f.object.tags || [], { selected: f.object.tags }, multiple: true, data: { placeholder: t('application.tips.entertag') }, id: "tags-js", class: "form-control"
+    = f.select :tag_list, f.object.tags || [], { selected: f.object.tags }, multiple: true, data: { placeholder: t('application.tips.entertag') }, id: "tags-js", class: "form-control"
 
   - if current_user.manages? current_organization
     .form-group
@@ -31,30 +31,3 @@
         return "#{t 'application.tips.user_not_found'}";
     }
   })
-
-  $("#tags-js").select2({
-    tags: true,
-    tokenSeparators: [',', ' '],
-    dataType: 'json',
-    allowClear: true,
-    delay: 250,
-    ajax: {
-      url: "/tags/index.json",
-      data: function (params) {
-        return {
-          term: params.term, // search term
-        };
-      },
-      processResults: function (data, params) {
-        // parse the data into the format expected by Select2
-        return {
-          results: $.map(data, function (item) {
-            return {
-              id: item,
-              text: item
-            }
-          })
-        };
-      }
-    }
-  });
