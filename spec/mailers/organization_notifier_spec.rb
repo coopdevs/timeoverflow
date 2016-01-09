@@ -41,7 +41,7 @@ describe OrganizationNotifier do
 
   describe "send an email" do
     it "should send an email" do
-      ActionMailer::Base.deliveries.count.should == 1
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
   end
 
