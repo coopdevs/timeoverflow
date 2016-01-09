@@ -11,7 +11,7 @@
             %p
               .badge
                 = count
-              - path = get_index_path(@current_post_type.pluralize, tag: tag)
+              - path = get_index_path(post_type, tag: tag)
               = link_to path do
                 - gtag = (count == 1) ? "tag" : "tags"
                 = glyph(gtag)

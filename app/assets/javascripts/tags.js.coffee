@@ -23,7 +23,7 @@ $ ->
     dataType: 'json'
     delay: 250
     ajax:
-      url: '/tags/index.json'
+      url: '/tags.json'
       data: (params) ->
         term: params.term
       processResults: (data, params) ->

@@ -11,4 +11,4 @@
 
 .tag_management
   .alpha_tag_list.col-xs-12.col-md-12
-    = render :partial => 'grouped_index', :locals => { :alpha_tags => @alpha_tags }
+    = render 'grouped_index', alpha_tags: @alpha_tags, post_type: params[:post_type] || "offer"
