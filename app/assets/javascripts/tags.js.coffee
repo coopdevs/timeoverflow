@@ -19,7 +19,7 @@ $ ->
 
   $('#tags-js').select2
     tags: true
-    tokenSeparators: [',', ' ']
+    tokenSeparators: [',']
     dataType: 'json'
     delay: 250
     ajax:

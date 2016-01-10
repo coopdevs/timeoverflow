@@ -32,7 +32,7 @@ module Taggable
     end
 
     def find_like_tag(pattern)
-      all_tags.uniq.select { |t| t =~ /#{pattern}/ }
+      all_tags.uniq.select { |t| t =~ /#{pattern}/i }
     end
 
     def alphabetical_grouped_tags
