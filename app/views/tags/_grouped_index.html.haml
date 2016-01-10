@@ -5,9 +5,7 @@
         .col-xs-2.col-md-2
           %h2.bg-info.text-center
             = kg
-          - # TODO: move sorting to the reader, too much code in the view
-          - vl = vg.sort_by { |_k, v| v }.reverse
-          - vl.each do |tag, count|
+          - vg.each do |tag, count|
             %p
               .badge
                 = count

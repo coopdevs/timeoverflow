@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Taggable do
-  let (:tags) { %w(foo bar) }
+  let (:tags) { %w(foo bar baz) }
   let (:more_tags) { %w(foo baz qux) }
   let (:organization) { Fabricate(:organization) }
   let! (:offer) { Fabricate(:offer,
@@ -29,7 +29,7 @@ describe Taggable do
 
     it "alphabetical_grouped_tags" do
       expect(Offer.alphabetical_grouped_tags).to eq({
-        "B" => [["bar", 1], ["baz", 1]],
+        "B" => [["baz", 2], ["bar", 1]],
         "F" => [["foo", 2]],
         "Q" => [["qux", 1]]
       })
