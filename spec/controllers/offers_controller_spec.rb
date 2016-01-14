@@ -117,11 +117,13 @@ describe OffersController, type: :controller do
               offer: Fabricate.to_params(:offer,
                                          user: member,
                                          title: "New title",
-                                         description: "New description")
+                                         description: "New description",
+                                         tag_list: ["foo"])
 
           offer.reload
           expect(offer.title).to eq("New title")
           expect(offer.description).to eq("New description")
+          expect(offer.tags).to include("foo")
         end
       end
     end

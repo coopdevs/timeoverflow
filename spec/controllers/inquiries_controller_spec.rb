@@ -72,11 +72,13 @@ describe InquiriesController do
               inquiry: Fabricate.to_params(:inquiry,
                                            user: member,
                                            title: "New title",
-                                           description: "New description")
+                                           description: "New description",
+                                           tag_list: ["foo"])
 
           inquiry.reload
           expect(inquiry.title).to eq("New title")
           expect(inquiry.description).to eq("New description")
+          expect(inquiry.tags).to include("foo")
         end
       end
     end

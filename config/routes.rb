@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get "global/switch_lang", as: :switch_lang
-  get 'tags/index'
-
   devise_for :users
 
   devise_scope :user do
@@ -10,20 +7,15 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  concern :joinable do
-    member do
-      post :join
-      post :leave
-    end
-  end
+  get "global/switch_lang", as: :switch_lang
 
-  resources :offers, concerns: :joinable do
+  resources :offers do
     collection do
       get :dashboard
     end
   end
-  resources :inquiries, concerns: :joinable
 
+  resources :inquiries
 
   concern :accountable do
     get :give_time, on: :member
@@ -76,13 +68,11 @@ Rails.application.routes.draw do
     post :accept
   end
 
-  resource :tags, only: [:index] do
+  resources :tags, only: [:index] do
     collection do
       get "alpha_grouped_index"
       get "inquiries"
       get "offers"
-      get "posts_with"
     end
   end
-
 end

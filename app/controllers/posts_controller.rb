@@ -104,9 +104,9 @@ class PostsController <  ApplicationController
   end
 
   def post_params
-    permitted_fields = %i[description end_on global joinable permanent start_on
-                          title category_id tag_list user_id publisher_id
-                          active]
+    permitted_fields = [:description, :end_on, :global, :joinable, :permanent,
+                        :start_on, :title, :category_id, :user_id,
+                        :publisher_id, :active, tag_list: []]
 
     params.fetch(resource, {}).permit(*permitted_fields).tap do |p|
       set_user_id(p)
