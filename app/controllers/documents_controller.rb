@@ -1,6 +1,4 @@
 class DocumentsController < ApplicationController
-  respond_to :html, :js
-
   def show
     @document = find_document_or_missing
     respond_to do |format|

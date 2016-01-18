@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  respond_to :html, :js
-
   before_filter :authenticate_user!
 
   def scoped_users
@@ -57,7 +55,7 @@ class UsersController < ApplicationController
     authorize @user
 
     if @user.update_attributes(user_params)
-      respond_with @user, location: @user
+      redirect_to @user
     else
       render action: :edit, status: :unprocessable_entity
     end
