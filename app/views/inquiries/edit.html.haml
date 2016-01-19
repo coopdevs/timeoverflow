@@ -5,8 +5,3 @@
 
 = render partial: "shared/post_form", locals: { post: @inquiry,
                                                 label_button: t(".submit") }
-
-:javascript
-  $("#inquiry_tag_list").tagsManager({
-    prefilled: '#{escape_javascript(@inquiry.tag_list)}'
-  });

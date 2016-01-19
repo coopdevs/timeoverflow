@@ -1,35 +1,7 @@
-:javascript
-
-  angular.module('timeoverflow').controller('TagTypeaheadCtrl',
-  function($scope, $http) {
-
-  $scope.selected = undefined;
-
-  // Any function returning a promise object can be used to load values asynchronously
-  $scope.getTags = function(val) {
-
-    return $http.get('/tags/index', {
-      params: {
-        term: val
-      }
-    }).then(function(res){
-
-            var tags = [];
-
-            angular.forEach(res.data, function(item){
-                tags.push(item);
-            });
-
-            return tags;
-
-        });
-    };
-  });
-
 = show_error_messages!(post)
 = form_for(post, html: { name: "form", novalidate: true }) do |f|
   .form-group
-    = f.label :title
+    = f.label :title, required: true
     = f.text_field :title, class: "form-control"
   .form-group
     = f.label :description
@@ -39,8 +11,7 @@
     = f.select :category_id, Category.all.sort_by{ |a| a.name.downcase }.map{ |cat| [cat.name, cat.id] }, { include_blank: true }, { class: "form-control" }
   .form-group
     = f.label :tag_list
-    = f.text_field :tag_list, :placeholder => t('application.tips.entertag'), class: "form-control", "ng-controller" => "TagTypeaheadCtrl", "ng-model" => "asyncSelected", "typeahead" => "tag for tag in getTags($viewValue) | filter:$viewValue | limitTo:8" , "typeahead-loading" => "loadingTags"
-    %i{"ng-show" => "loadingTags", :class => "glyphicon glyphicon-refresh"}
+    = f.select :tag_list, f.object.tags || [], { selected: f.object.tags }, multiple: true, data: { placeholder: t('application.tips.entertag') }, id: "tags-js", class: "form-control"
 
   - if current_user.manages? current_organization
     .form-group

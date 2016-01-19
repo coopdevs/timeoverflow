@@ -14,7 +14,7 @@ module Taggable
   end
 
   def tag_list=(tag_list)
-    self.tags = Array(tag_list.to_s.split(/,\s*/))
+    self.tags = tag_list.reject(&:empty?)
   end
 
   # class methods (stupid comment to make rubocop happy)
@@ -32,11 +32,15 @@ module Taggable
     end
 
     def find_like_tag(pattern)
-      all_tags.uniq.select { |t| t =~ /#{pattern}/ }
+      all_tags.uniq.select { |t| t =~ /#{pattern}/i }
     end
 
     def alphabetical_grouped_tags
-      tag_cloud.group_by { |l| l[0][0].capitalize }
+      alpha_group = tag_cloud.group_by { |tag_name, _| tag_name[0].capitalize }
+
+      alpha_group.each do |letter, tags|
+        alpha_group[letter] = tags.sort_by { |_, weight| weight }.reverse
+      end
     end
   end
 end

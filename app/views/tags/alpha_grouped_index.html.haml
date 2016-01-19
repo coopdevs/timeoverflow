@@ -2,15 +2,13 @@
   =t(".maintitle")
   =form_tag '/tags/alpha_grouped_index', method: :get do
     .btn-group{"data-toggle" => "buttons"}
-      %label.btn.btn-primary.active.switch_offer
-        = radio_button_tag 'switch_offer', value: 'offer', :checked => true
+      %label.btn.btn-primary.active.switch_offer-js
+        = radio_button_tag 'switch_offer', 'offer', true
         = Offer.model_name.human(count: :many)
-      %label.btn.btn-primary.switch_inquiry
-        = radio_button_tag 'switch_inquiry', value: 'inquiry'
+      %label.btn.btn-primary.switch_inquiry-js
+        = radio_button_tag 'switch_inquiry', 'inquiry'
         = Inquiry.model_name.human(count: :many)
 
 .tag_management
   .alpha_tag_list.col-xs-12.col-md-12
-    = render :partial => 'grouped_index', :locals => { :alpha_tags => @alpha_tags }
-  .row
-  .row
+    = render 'grouped_index', alpha_tags: @alpha_tags, post_type: params[:post_type] || "offer"

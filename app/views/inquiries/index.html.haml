@@ -13,7 +13,7 @@
 
   %ul.nav.navbar-nav
     %li.dropdown
-      %a.dropdown-toggle{href: "#", "data-toggle" => "dropdown"}
+      %a.dropdown-toggle{href: "#"}
         = @category ? @category.name : Category.model_name.human
         %span.caret
       %ul.dropdown-menu{role: "menu"}

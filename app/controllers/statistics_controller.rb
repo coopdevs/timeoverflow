@@ -74,7 +74,6 @@ class StatisticsController < ApplicationController
   def statistics_demographics
     @members = current_organization.members
     @age_counts = age_counts
-    @gender_counts = gender_counts
   end
 
   def statistics_last_login
@@ -167,14 +166,6 @@ class StatisticsController < ApplicationController
         range.include? age
       end.try(:last) || t("statistics.statistics_demographics.unknown")
       counts[age_label] += 1
-    end
-  end
-
-  def gender_counts
-    @members.each_with_object(Hash.new(0)) do |member, counts|
-      gender = member.user_gender || "unknown"
-      gender_label = t("statistics.statistics_demographics.#{gender}")
-      counts[gender_label] += 1
     end
   end
 end
