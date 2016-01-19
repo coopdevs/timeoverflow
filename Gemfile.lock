@@ -394,7 +394,6 @@ DEPENDENCIES
   rails_12factor
   rake
   rdiscount
-  responders (~> 2.0)
   rollbar
   rspec-rails (~> 3.4.0)
   rubocop

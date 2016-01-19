@@ -1,6 +1,4 @@
 class OrganizationsController < ApplicationController
-  respond_to :json, :html
-
   before_filter :load_resource
 
   def load_resource
@@ -17,7 +15,6 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = @organizations.matching(params[:q]) if params[:q].present?
-    respond_with @organizations
   end
 
   def show
@@ -34,7 +31,7 @@ class OrganizationsController < ApplicationController
 
   def update
     if @organization.update_attributes(organization_params)
-      respond_with @organization
+      redirect_to @organization
     else
       render action: :edit, status: :unprocessable_entity
     end

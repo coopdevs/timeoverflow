@@ -1,6 +1,4 @@
 class PostsController <  ApplicationController
-  respond_to :html, :js
-
   has_scope :by_category, as: :cat
   has_scope :tagged_with, as: :tag
   has_scope :by_organization, as: :org

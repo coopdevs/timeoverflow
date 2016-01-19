@@ -8,7 +8,6 @@ gem "rdiscount"
 gem 'high_voltage', '~> 2.1.0'
 gem 'activeadmin', github: 'activeadmin'
 gem 'has_scope'
-gem 'responders', '~> 2.0'
 gem 'pundit'
 gem 'pg', '0.17.1'
 gem 'hstore_translate'
