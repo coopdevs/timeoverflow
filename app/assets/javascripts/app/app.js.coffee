@@ -20,7 +20,7 @@ angular.module('timeoverflow').controller 'UserListCtrl', ["$scope", "$modal", "
       templateUrl: 'confirm_toggle_manager.html'
       size: 'sm'
       scope: $scope
-      controller: ($scope) -> $scope.username = user.username
+      controller: ["$scope", ($scope) -> $scope.username = user.username]
     ).result
     .then(-> $http.put(user.toggle_manager_link))
     .then(-> user.manager = !user.manager)
@@ -30,7 +30,7 @@ angular.module('timeoverflow').controller 'UserListCtrl', ["$scope", "$modal", "
       templateUrl: 'confirm_toggle_active.html'
       size: 'sm'
       scope: $scope
-      controller: ($scope) -> $scope.username = user.username
+      controller: ["$scope", ($scope) -> $scope.username = user.username]
     ).result
     .then(-> $http.put(user.toggle_active_link))
     .then(-> user.active = !user.active)
