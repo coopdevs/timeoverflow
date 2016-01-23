@@ -15,7 +15,7 @@
         = t ".total_hours"
         .badge
           = seconds_to_hm @total_hours
-    %form.navbar-form.navbar-right
+    %form.navbar-form.navbar-right{ style: "margin-right: 20px" }
       .form-group
         %input.form-control{id: "datepicker_from", placeholder: t(".ini_date"), name: "ini", value: params[:ini]}
         %input.form-control{id: "datepicker_to", placeholder: t(".end_date"), name: "fin", value: params[:fin]}

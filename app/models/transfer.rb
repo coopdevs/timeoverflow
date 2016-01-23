@@ -17,6 +17,8 @@ class Transfer < ActiveRecord::Base
   belongs_to :operator, class_name: "User"
   has_many :movements
 
+  scope :by_month, -> (month) { Transfer.where("to_char(transfers.created_at, 'MM-YYYY') = ?", month) }
+
   after_create :make_movements
 
   def make_movements

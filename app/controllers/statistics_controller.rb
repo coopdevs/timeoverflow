@@ -12,58 +12,35 @@ class StatisticsController < ApplicationController
   before_filter :authenticate_user!
 
   def statistics_global_activity
-    @members = current_organization.members
-    @active_members = @members.active
-    @total_hours = num_movements = 0
-    @members.each do |m|
-      num_movements += m.account.movements.count
-      @total_hours += m.account.movements.map do
-        |a| (a.amount > 0) ? a.amount : 0
-      end.inject(0, :+)
-    end
-    # cada intercambio implica dos movimientos
-    @num_swaps = (num_movements +
-                  current_organization.account.movements.count) / 2
-    # intercambios con el banco
-    @total_hours += current_organization.account.movements.
-                    map { |a| (a.amount > 0) ? a.amount : 0 }.inject(0, :+)
-    # periodo a mostrar actividades globales, por defecto 6 meses
-    ini = params[:ini].presence.try(:to_date) || DateTime.now.to_date - 5.month
-    fin = params[:fin].presence.try(:to_date) || DateTime.now.to_date
-    if ini.present?
-      # calculo numero de meses
-      num_months = (fin.year * 12 + fin.month) - (ini.year * 12 + ini.month) + 1
-      date = ini
-      # vector para los meses de la gráfica ["Enero", "Febrero",...]
-      @months_names = []
-      # y vectores con los datos para la gráfica
-      @user_reg_months = []
-      @num_swaps_months = []
-      @hours_swaps_months = []
-      # valores por cada mes
-      num_months.times do
-        @months_names.push(l(date, format: "%B %Y"))
-        @user_reg_months.push(@members.by_month(date).count)
-        # movimientos de los miembros en dicho mes
-        swaps_members = @members.map { |a| a.account.movements.by_month(date) }
-        # movimimentos del banco
-        swaps_organization = current_organization.account.
-                             movements.by_month(date)
-        # numero de movimientos totales
-        sum_swaps = (swaps_members.flatten.count + swaps_organization.count) / 2
-        @num_swaps_months.push(sum_swaps)
-        # horas intercambiadas
-        sum_hours = 0
-        swaps_members.flatten.each do |s|
-          sum_hours += (s.amount > 0) ? s.amount : 0
-        end
-        sum_hours += swaps_organization.map do
-          |a| (a.amount > 0) ? a.amount : 0
-        end.inject(0, :+)
-        sum_hours = sum_hours / 3600.0 if sum_hours > 0
-        @hours_swaps_months.push(sum_hours)
-        date = date.next_month
-      end
+    members = current_organization.members
+    transfers = current_organization.all_transfers.
+                includes(movements: { account: :accountable }).
+                uniq
+
+    # totals
+    global_activity_totals(members, transfers)
+
+    # periods show, by default 6 months
+    init_date = params[:ini].presence.try(:to_date) ||
+                DateTime.now.to_date - 5.month
+    end_date = params[:fin].presence.try(:to_date) ||
+               DateTime.now.to_date
+
+    # name of months to table ["January", "February",...]
+    @months_names = []
+    # and data to table
+    @user_reg_months = []
+    @num_swaps_months = []
+    @hours_swaps_months = []
+
+    # total months to display
+    num_months = calculate_number_of_months(init_date, end_date)
+    date = init_date
+
+    num_months.times do
+      totals_by_month(members, transfers, date)
+
+      date = date.next_month
     end
   end
 
@@ -100,7 +77,7 @@ class StatisticsController < ApplicationController
 
   def statistics_all_transfers
     @transfers = current_organization.all_transfers.
-                 includes(movements: {account: :accountable}).
+                 includes(movements: { account: :accountable }).
                  order("transfers.created_at DESC").
                  uniq.
                  page(params[:page]).
@@ -108,6 +85,35 @@ class StatisticsController < ApplicationController
   end
 
   protected
+
+  def global_activity_totals(members, transfers)
+    @active_members = members.active
+    @num_swaps = transfers.count
+    @total_hours = transfers.
+                   map { |t| t.movements.first.amount.abs }.
+                   inject(0.0, :+)
+  end
+
+  def calculate_number_of_months(init_date, end_date)
+    (end_date.year * 12 + end_date.month) -
+      (init_date.year * 12 + init_date.month) + 1
+  end
+
+  def totals_by_month(members, transfers, date)
+    @months_names.push(l(date, format: "%B %Y"))
+    @user_reg_months.push(members.by_month(date).count)
+
+    transfers_by_month = transfers.
+                         by_month(l(date, format: "%m-%Y"))
+
+    @num_swaps_months.push(transfers_by_month.count)
+
+    hours_by_month = transfers_by_month.
+                     map { |t| t.movements.first.amount.abs }.
+                     inject(0, :+) / 3600
+
+    @hours_swaps_months.push(hours_by_month)
+  end
 
   def age(date_of_birth)
     return unless date_of_birth
