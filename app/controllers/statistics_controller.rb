@@ -87,7 +87,7 @@ class StatisticsController < ApplicationController
   protected
 
   def global_activity_totals(members, transfers)
-    @active_members = members.active
+    @active_members = members.active.count
     @num_swaps = transfers.count
     @total_hours = transfers.
                    map { |t| t.movements.first.amount.abs }.
@@ -110,9 +110,9 @@ class StatisticsController < ApplicationController
 
     hours_by_month = transfers_by_month.
                      map { |t| t.movements.first.amount.abs }.
-                     inject(0, :+) / 3600
+                     inject(0.0, :+) / 3600
 
-    @hours_swaps_months.push(hours_by_month)
+    @hours_swaps_months.push(hours_by_month.round(1))
   end
 
   def age(date_of_birth)

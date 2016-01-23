@@ -17,7 +17,9 @@ class Transfer < ActiveRecord::Base
   belongs_to :operator, class_name: "User"
   has_many :movements
 
-  scope :by_month, -> (month) { Transfer.where("to_char(transfers.created_at, 'MM-YYYY') = ?", month) }
+  scope :by_month, -> (month) {
+    Transfer.where("to_char(transfers.created_at, 'MM-YYYY') = ?", month)
+  }
 
   after_create :make_movements
 
@@ -27,11 +29,11 @@ class Transfer < ActiveRecord::Base
   end
 
   def movement_from
-    movements.detect {|m| m.amount < 0 }
+    movements.detect { |m| m.amount < 0 }
   end
 
   def movement_to
-    movements.detect {|m| m.amount > 0 }
+    movements.detect { |m| m.amount > 0 }
   end
 
   def source_id
