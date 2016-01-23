@@ -13,9 +13,11 @@
           = f.hidden_field :reset_password_token
           .form-group
             = f.label :password, t(".new_password"), class: "control-label"
-            = f.password_field :password, required: true, autofocus: true, class: "form-control"
-          .form-group
+            = f.password_field :password, required: true, autofocus: true, class: "form-control", ng_model: "password"
+          .form-group{ ng_class: "{ 'has-error': password != password_confirmation }" }
             = f.label :password_confirmation, t(".confirm_password"), class: "control-label"
-            = f.password_field :password_confirmation, required: true, class: "form-control"
+            = f.password_field :password_confirmation, required: true, class: "form-control", ng_model: "password_confirmation"
+            .help-block{ ng_if: "password && password_confirmation && password != password_confirmation" }
+              = t ".passwords_not_match"
           .form-group
-            = f.submit t(".change_password"), class: "btn btn-primary"
+            = f.submit t(".change_password"), class: "btn btn-primary", ng_disabled: "!password || password != password_confirmation"

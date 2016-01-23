@@ -50,6 +50,7 @@ ca:
         new_password: Nova contrasenya
         confirm_password: Torna a escriure la nova contrasenya
         change_password: Canviar la contrasenya
+        passwords_not_match: Contrasenyes no coincideixen
       new:
         forgot_question: "Has oblidat la contrasenya o vols obtenir-la per primera vegada?"
         send_instructions: "Envia'm les instruccions"
