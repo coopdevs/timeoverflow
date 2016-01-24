@@ -1,7 +1,4 @@
 ---
 - hosts: localhost
-  # remote_user: ubuntu
-  # sudo: yes
-
   roles:
     - container.osx
