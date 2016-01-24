@@ -56,7 +56,7 @@ Como instalar docker y containers en mac (WIP):
 4. ejecutar:
     >  ansible-playbook -i provisioning/hosts provisioning/development-osx.yml --ask-become-pass
 
-Si se veiran problemas de "gem not found" y similares, asegurarse de no tener
+Si se vieran problemas de "gem not found" y similares, asegurarse de no tener
 `export RUBYGEMS_GEMDEPS="-"` en ningún fichero de inicio:
 - `.bashrc`
 - `.zshrc`
