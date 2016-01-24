@@ -15,18 +15,11 @@
     url: https://github.com/zchee/docker-machine-driver-xhyve/releases/download/v0.2.2/docker-machine-driver-xhyve
     dest: /usr/local/bin/docker-machine-driver-xhyve
     checksum: "sha1:9af9650a697336f1b00ef64475d7ee952d66b9f3"
-    # BEWARE: get_url + file is not atomic. So if the following lines are
-    # uncommented, and the 'file' part of the task fails, the whole
-    # task fails but on next run it will succeed because the precondition
-    # dest+checksum is already satisfied. Thus, we need to put the
-    # file module on a separate task
-    # owner: root
-    # group: wheel
-    # mode: ug+x,u+s
 
 - name: Adjust u/g/mode for hyve driver
   # Cannot merge with above, because the download is not rolled back if
   # the file actions fail for any reason.
+  # See issue at https://github.com/ansible/ansible/issues/11821
   become: yes
   file:
     path: /usr/local/bin/docker-machine-driver-xhyve
