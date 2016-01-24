@@ -1,0 +1,3 @@
+- name: Install VirtualBox with brew cask
+  homebrew_cask:
+    name: virtualbox
