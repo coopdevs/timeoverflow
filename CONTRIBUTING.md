@@ -45,10 +45,25 @@ Actualizar rubygems e instalar bundler
 Como instalar docker y containers en mac (WIP):
 ===============================================
 
-1. instalar ansible
-2. ejecutar:
-        ansible-playbook -i provisioning/hosts provisioning/development-osx.yml --ask-become-pass
+1. instalar lo necesario para compilar cosas (esto es lo mismo que el paquete `build-essential` en debian):
 
-Si se instalan cosas con homebrew, puede que las recetas den problemas porque
-rubygems y homebrew no son muy amigos. Navegar a una directory donde no haya un
-Gemfile, y ejecutar desde allí (ajustando las rutas de los files.)
+  * Xcode: ejecutar `pkgutil --pkg-info=com.apple.pkg.CLTools_Executables` en consola.
+    si dice que `No receipt for 'com.apple.pkg.CLTools_Executables'`, instalar Xcode desde
+    <https://developer.apple.com/xcode/>
+
+2. instalar pip: `sudo easy_install pip` (para el python de sistema)
+3. instalar ansible: `sudo pip install ansible`
+4. ejecutar:
+    >  ansible-playbook -i provisioning/hosts provisioning/development-osx.yml --ask-become-pass
+
+Si se veiran problemas de "gem not found" y similares, asegurarse de no tener
+`export RUBYGEMS_GEMDEPS="-"` en ningún fichero de inicio:
+- `.bashrc`
+- `.zshrc`
+- `.zprofile`
+- `.profile`
+- `.bash_profile`
+- `.zlogin`
+- `.my_init_var_script`
+
+etc
