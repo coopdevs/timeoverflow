@@ -24,5 +24,17 @@
   file:
     path: /usr/local/bin/docker-machine-driver-xhyve
     owner: root
-    group: wheel
+    group: admin
     mode: ug+x,u+s
+
+# NEVER EVER EVER DO THIS:
+# - name: Add current user to the wheel group
+#   become: yes
+#   user:
+#     name: "{{ ansible_user_id }}"
+#     append: yes
+#     groups: wheel
+#
+# It will remove most groups that come from DirectoryServices, like 'admin'
+# so the user will not be and administrator anymore. Luckily I had another user
+# with admin credentials here....
