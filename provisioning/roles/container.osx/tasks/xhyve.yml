@@ -1,0 +1,27 @@
+---
+# Thanks to https://allysonjulian.com/setting-up-docker-with-xhyve/
+- name: Install xhyve and dependencies
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - xhyve
+    - docker
+    - docker-compose
+    - docker-machine
+
+- name: Download hyve driver for docker
+  get_url:
+    url: https://github.com/zchee/docker-machine-driver-xhyve/releases/download/v0.2.2/docker-machine-driver-xhyve
+    dest: /usr/local/bin/docker-machine-driver-xhyve
+    checksum: "sha1:9af9650a697336f1b00ef64475d7ee952d66b9f3"
+
+- name: Adjust u/g/mode for hyve driver
+  # Cannot merge with above, because the download is not rolled back if
+  # the file actions fail for any reason
+  become: yes
+  file:
+    path: /usr/local/bin/docker-machine-driver-xhyve
+    owner: root
+    group: wheel
+    mode: ug+x,u+s
