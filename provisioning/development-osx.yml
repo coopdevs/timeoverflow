@@ -2,3 +2,6 @@
 - hosts: localhost
   roles:
     - container.osx
+
+  vars:
+    container_machine_name: dev
