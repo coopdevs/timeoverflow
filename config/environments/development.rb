@@ -18,6 +18,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {
     host: (ENV["MAIL_LINK_HOST"] || "localhost:3000")
   }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: ENV['MAIL_HOST'] || 'localhost',
+    port: 1025
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

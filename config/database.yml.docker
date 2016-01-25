@@ -1,0 +1,16 @@
+development: &defaults
+  adapter: postgresql
+  encoding: utf8
+  database: timeoverflow_dev
+  host: db
+  pool: 5
+  username: postgres
+  password: postgres
+
+test:
+  <<: *defaults
+  database: timeoverflow_test
+
+production:
+  <<: *defaults
+  database: timeoverflow

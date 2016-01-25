@@ -39,6 +39,9 @@ timeoverflow_test
 .idea/
 sgemset
 
+# Ignore database configuration
+database.yml
+
 # Ignore .vagrant folder with images
 .vagrant
 .metadata
