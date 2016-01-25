@@ -5,3 +5,8 @@
 
   vars:
     container_machine_name: dev
+
+- hosts: database
+  roles:
+    - postgresql
+    - sshd
