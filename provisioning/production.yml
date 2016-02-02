@@ -1,0 +1,11 @@
+---
+# Metal configuration: install lxc and sshd
+- hosts: metal
+  roles:
+    - lxc
+    - user
+    - sshd
+
+- hosts: db
+  roles:
+    - postgresql

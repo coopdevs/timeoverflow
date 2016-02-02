@@ -1,0 +1,41 @@
+---
+- name: Create `timeoverflow` group
+  group:
+    name: timeoverflow
+
+- name: Create `timeoverflow` user in `timeoverflow` group
+  user:
+    name: timeoverflow
+    groups: timeoverflow
+    group: timeoverflow
+    shell: /bin/bash
+
+- name: Write bash_profile for `timeoverflow` user
+  template:
+    src: bash_profile
+    dest: /home/timeoverflow/.bash_profile
+    mode: 0644
+
+# - name: Create sudoers.d directory
+#   file:
+#     path: /etc/sudoers.d
+#     owner: root
+#     group: root
+#     mode: 0755
+#     state: directory
+# 
+# - name: Set includedir in sudoers
+#   lineinfile:
+#     dest: /etc/sudoers
+#     line: "#includedir /etc/sudoers.d"
+#     state: present
+#     validate: "/usr/sbin/visudo -cf %s"
+
+# - name: Create sudoers
+#   template:
+#     src: sudoers.d.j2
+#     dest: "/etc/sudoers.d/{{ sudoers_filename }}"
+#     mode: 0440
+#     owner: root
+#     group: root
+#     validate: "/usr/sbin/visudo -cf %s"
