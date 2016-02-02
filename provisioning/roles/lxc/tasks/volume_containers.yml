@@ -1,0 +1,27 @@
+---
+# These containers will remain there, stopped, forever
+# so their content can be mounted inside other containers
+# that can be stopped at will.
+- name: Database data container
+  docker:
+    name: pg-data
+    image: ubuntu
+    state: present
+    volumes:
+      - /var/lib/postgresql/data
+
+- name: Static files container
+  docker:
+    name: static
+    image: ubuntu
+    state: present
+    volumes:
+      - /static
+
+- name: Elasticsearch data container
+  docker:
+    name: elasticsearch-data
+    image: ubuntu
+    state: present
+    volumes:
+      - /usr/share/elasticsearch/data

@@ -1,34 +1,5 @@
 ---
-- name: Install docker
-  apt:
-    name: '{{ item }}'
-    state: present
-  with_items:
-    - docker.io
-    - python-docker
-
-- name: Start database container
-  docker:
-    name: postgres
-    image: postgres
-    state: started
-    volumes:
-      - /data/postgres
-
-- name: Start nginx container
-  docker:
-    name: nginx
-    image: nginx
-    state: started
-    ports:
-      - "80:80"
-    volumes:
-      - /static
-
-- name: Start elasticsearch container
-  docker:
-    name: elasticsearch
-    image: elasticsearch
-    state: started
-    volumes:
-      - /data/elasticsearch
+- include: install_docker.yml
+- include: volume_containers.yml
+- include: service_containers.yml
+- include: app_containers.yml

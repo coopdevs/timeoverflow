@@ -1,0 +1,26 @@
+- name: Start database container
+  docker:
+    name: postgres
+    image: postgres
+    state: started
+    volumes_from:
+      - data
+
+- name: Start nginx container
+  docker:
+    name: nginx
+    image: nginx
+    state: started
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes_from:
+      - static
+
+- name: Start elasticsearch container
+  docker:
+    name: elasticsearch
+    image: elasticsearch
+    state: started
+    volumes_from:
+      - data

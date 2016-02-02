@@ -5,7 +5,3 @@
     - lxc
     - user
     - sshd
-
-- hosts: db
-  roles:
-    - postgresql
