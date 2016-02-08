@@ -6,49 +6,51 @@
         %li
           = t ".users_reg"
           .badge
-            = @active_members
+            = @data[:actives]
         %li
           = t ".num_swaps"
           .badge
-            = @num_swaps
+            = @data[:global_swaps]
         %li
         = t ".total_hours"
         .badge
-          = seconds_to_hm @total_hours
+          = seconds_to_hm @data[:global_hours]
     %form.navbar-form.navbar-right{ style: "margin-right: 20px" }
       .form-group
-        %input.form-control{id: "datepicker_from", placeholder: t(".ini_date"), name: "ini", value: params[:ini]}
-        %input.form-control{id: "datepicker_to", placeholder: t(".end_date"), name: "fin", value: params[:fin]}
-        %button.btn.btn-default{type: :submit}= t(".show")
+        %input.form-control#datepicker_from{ placeholder: t(".ini_date"),
+                                            name: "from",
+                                            value: params[:from] }
+        %input.form-control#datepicker_to{ placeholder: t(".end_date"),
+                                          name: "to", value: params[:to] }
+        %button.btn.btn-default{ type: :submit }= t(".show")
     #chart
 
 :javascript
   window.onload = function () {
     //globales
-    $('#chart').highcharts({
+    $("#chart").highcharts({
       chart: {
-        type: 'column'
+        type: "column"
       },
       title: {
-        text: "#{t '.bank_activity'}"
+        text: "#{t ".bank_activity"}"
       },
       subtitle: {
-        text: "#{t '.per_month'}"
+        text: "#{t ".per_month"}"
       },
       xAxis: {
-        categories: #{@months_names.to_json}
+        categories: #{@data[:dates].to_json}
       },
       yAxis: {
         min: 0,
         title: {
-          text: ''
+          text: ""
         }
       },
       tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-          '<td style="padding:0"><b>{point.y}</b></td></tr>',
-        footerFormat: '</table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0"> {series.name}: </td>' + '<td style="padding:0"><b>{point.y}</b></td></tr>',
+        footerFormat: "</table>",
           shared: true,
           useHTML: true
       },
@@ -59,16 +61,16 @@
         }
       },
       series: [{
-        name: "#{t '.users_reg'}",
-        data: #{@user_reg_months.to_json}
+        name: "#{t ".users_reg"}",
+        data: #{@data[:users_reg].to_json}
 
         }, {
         name: "#{t ".num_swaps"}",
-        data: #{@num_swaps_months.to_json}
+        data: #{@data[:swaps].to_json}
 
         }, {
         name: "#{t ".total_hours"}",
-        data: #{@hours_swaps_months.to_json}
+        data: #{@data[:hours].to_json}
       }]
     });
   }

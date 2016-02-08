@@ -18,7 +18,7 @@ class Transfer < ActiveRecord::Base
   has_many :movements
 
   scope :by_month, -> (month) {
-    Transfer.where("to_char(transfers.created_at, 'MM-YYYY') = ?", month)
+    where(created_at: month.beginning_of_month..month.end_of_month)
   }
 
   after_create :make_movements
@@ -42,5 +42,9 @@ class Transfer < ActiveRecord::Base
 
   def destination_id
     destination.respond_to?(:id) ? destination.id : destination
+  end
+
+  def amount_to
+    movement_to.amount
   end
 end
