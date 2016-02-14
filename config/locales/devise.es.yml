@@ -50,6 +50,7 @@ es:
         new_password: Nueva contraseña
         confirm_password: Repite la nueva contraseña
         change_password: Cambiar mi contraseña
+        passwords_not_match: "Las contraseñas no coinciden"
       new:
         forgot_question: "¿Has olvidado tu contraseña o quieres obtenerla por primera vez?"
         send_instructions: "Envíame las instruciones"

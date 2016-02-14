@@ -48,6 +48,7 @@ en:
         new_password: New password
         confirm_password: Confirm your new password
         change_password: Change my password
+        passwords_not_match: "Passwords don't match"
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
