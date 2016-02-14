@@ -1,0 +1,21 @@
+app:
+  image: rails
+  command: bundle exec rails s -b 0.0.0.0 -p 3000
+  volumes:
+    - .:/app
+  working_dir: /app
+  ports:
+    - 3000:3000
+  links:
+    - db
+    - elasticsearch
+    - mailcatcher
+  env_file: .env
+db:
+  image: postgres
+elasticsearch:
+  image: elasticsearch
+mailcatcher:
+  image: schickling/mailcatcher
+  ports:
+    - 1080:1080
