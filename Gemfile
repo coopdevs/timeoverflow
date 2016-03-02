@@ -15,6 +15,7 @@ gem 'slim-rails' # much better than haml
 gem "devise"
 gem "http_accept_language"
 gem 'thin'
+gem 'unicorn'
 gem 'foreman'
 gem 'dotenv-rails'
 gem 'kaminari'
