@@ -45,16 +45,6 @@ set :linked_dirs, fetch(:linked_dirs, []).push(
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-# to set the rbenv active ruby
-set :rbenv_ruby, File.read(".ruby-version").strip
-set :rbenv_prefix, %W(
-  RBENV_ROOT=#{fetch(:rbenv_path)}
-  RBENV_VERSION=#{fetch(:rbenv_ruby)}
-  #{fetch(:rbenv_path)}/bin/rbenv exec
-).join(" ")
-set :rbenv_map_bins, %w{rake gem bundle ruby rails}
-set :rbenv_roles, :all # default value
-
 namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
