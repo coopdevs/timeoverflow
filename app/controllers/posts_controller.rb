@@ -21,15 +21,14 @@ class PostsController <  ApplicationController
             must: must
           }
         }
-      ).records
+      ).page(params[:page]).per(25).records
     else
       posts = model.active.of_active_members
       if current_organization.present?
         posts = posts.merge(current_organization.posts)
       end
-      posts = apply_scopes(posts)
+      posts = apply_scopes(posts).page(params[:page]).per(25)
     end
-    posts = posts.page(params[:page]).per(25)
     instance_variable_set("@#{resources}", posts)
   end
 
