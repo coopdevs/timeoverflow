@@ -60,7 +60,13 @@ describe OffersController, type: :controller do
       login(another_member.user)
 
       get "index", q: offer.title.split(/\s/).first
-      expect(assigns(:offers)).to eq([offer])
+
+      # @offers is a wrapper from Elasticsearch. It's iterator-equivalent to
+      # the underlying query from the database.
+      expect(assigns(:offers)).to be_a Elasticsearch::Model::Response::Records
+      expect(assigns(:offers).size).to eq 1
+      expect(assigns(:offers)[0]).to eq offer
+      expect(assigns(:offers).to_a).to eq([offer])
     end
   end
 
