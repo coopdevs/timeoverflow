@@ -35,6 +35,7 @@ timeoverflow_development
 timeoverflow_test
 
 .env
+config/database.yml
 .DS_Store
 .idea/
 sgemset
