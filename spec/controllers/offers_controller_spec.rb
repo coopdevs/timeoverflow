@@ -60,7 +60,7 @@ describe OffersController, type: :controller do
       login(another_member.user)
 
       get "index", q: offer.title.split(/\s/).first
-      expect(assigns(:offers)).to eq([offer])
+      expect(assigns(:offers).to_a).to eq([offer])
     end
   end
 
