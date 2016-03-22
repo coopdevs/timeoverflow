@@ -1,0 +1,14 @@
+defaults: &defaults
+  adapter: postgresql
+  host: <%= ENV.fetch('DATABASE_HOST', 'localhost') %>
+  username: <%= ENV.fetch('DATABASE_USER', 'null') %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD', 'null') %>
+  encoding: utf8
+
+development:
+  <<: *defaults
+  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_development') %>
+
+test:
+  <<: *defaults
+  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_test') %>
