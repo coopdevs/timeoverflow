@@ -12,7 +12,7 @@ gem 'pg', '0.17.1'
 gem 'hstore_translate'
 gem 'dalli'
 gem 'slim-rails' # much better than haml
-gem "devise"
+gem 'devise', '3.5.6'
 gem "http_accept_language"
 gem 'thin'
 gem 'unicorn'
