@@ -1,0 +1,10 @@
+---
+# Thanks to http://marvelley.com/blog/2014/04/11/local-provisioning-with-ansible/
+- name: Check Homebrew is installed
+  stat: path=/usr/local/bin/brew
+  register: brew_installed
+
+- name: Install Homebrew
+  # system ruby is enough to install homebrew
+  shell: ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+  when: brew_installed.stat.exists == false

@@ -1,0 +1,5 @@
+---
+- include: install_docker.yml
+- include: volume_containers.yml
+- include: service_containers.yml
+- include: app_containers.yml

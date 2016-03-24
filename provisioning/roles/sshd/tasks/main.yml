@@ -1,0 +1,11 @@
+---
+- name: Install sshd
+  apt:
+    name: ssh
+    state: present
+- name: Upload public keys
+  authorized_key:
+    user: timeoverflow
+    key: "{{ item }}"
+  with_file:
+    - rewritten.public.key

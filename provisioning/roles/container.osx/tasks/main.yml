@@ -1,0 +1,15 @@
+---
+- include: homebrew.yml
+- include: xhyve.yml
+- include: virtualbox.yml
+
+- name: Check existence of container machine
+  command: docker-machine env {{ container_machine_name }}
+  register: dev_machine_check
+  ignore_errors: True
+
+- name: Create container machine
+  # This needs root to enable NFS share
+  become: yes
+  command: docker-machine create {{ container_machine_name }} --driver xhyve --xhyve-experimental-nfs-share
+  when: dev_machine_check|failed

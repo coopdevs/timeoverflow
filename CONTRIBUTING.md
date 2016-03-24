@@ -1,30 +1,28 @@
 Entorno de desarrollo aconsejado (para mac)
 ===========================================
 
-iTerm2 - un terminal mucho más completo (<http://iterm2.com>). Especialmente recomendado activar
-la opción "Working directory -> Reuse previous session's directory" para el perfil por defecto,
-para jugar fácilmente con múltiples pestañas en la misma directory.
-
-SublimeText2 - un editor muy muy avanzado (<http://www.sublimetext.com>). Instalar también
-PackageControl para luego instalar extensiones de forma muy fácil (seguir instrucciones en
-<https://packagecontrol.io/installation#st2>). Otro editor que promete es Atom (<https://atom.io>)
-aunque no es tan maduro, tiene unos grandes desarrolladores detrás. Ambos permiten - y es muy
-importante - evitar que se cuelen TABs en el código.
-
 Homebrew - para instalar todo tipo de paquetes adicionales (<http://brew.sh>).
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-YADR - una biblioteca de shortcuts y mejoras para zsh y la línea de comando de ruby
-(<https://github.com/skwp/dotfiles>). No hacen falta las opciones para `vim`, sobretodo si uno
-no está acostumbrado a vim, la opción "vimification of command line tools" puede ser mortal!
+iTerm2 - un terminal mucho más completo (<http://iterm2.com>). Especialmente recomendado activar
+la opción "Working directory -> Reuse previous session's directory" para el perfil por defecto,
+para jugar fácilmente con múltiples pestañas en la misma directory.
 
-    sh -c "`curl -fsSL https://raw.githubusercontent.com/skwp/dotfiles/master/install.sh`" -s ask
-    
+    brew cask install iterm2
+
+Atom (<https://atom.io>)
+
+    brew cask install atom
+
+fish - una shell mucho más avanzada que bash, y menos enredada que zsh.
+
+    brew install fish
+
 Instalar varios paquetes por medio de homebrew
 
     brew install git rbenv ruby-build postgresql
-    
+
 Instalar ruby
 
     rbenv install 2.2.0
@@ -42,4 +40,42 @@ Actualizar rubygems e instalar bundler
     gem install bundler
     
 
-    
+How to install docker and containers in OS X (work in progress)
+===============================================================
+
+1. Install compiler and dependencies (which boils down to be
+   the same as the `build-essential` package on debian systems):
+
+  > Run `pkgutil --pkg-info=com.apple.pkg.CLTools_Executables` in terminal.
+    If it complains that `No receipt for 'com.apple.pkg.CLTools_Executables'`,
+    than install Xcode from <https://developer.apple.com/xcode/>
+
+2. Install `pip`: `sudo easy_install pip` (for system python)
+3. Install `ansible`: `sudo pip install ansible`
+4. Execute:
+
+  >  ansible-playbook -i provisioning/hosts provisioning/development-osx.yml --ask-become-pass
+
+   This will install a number of local packages that should allow parallel
+   lightweight containers in OS X.
+
+
+Troubleshooting OS X
+====================
+
+If you have YADR installed, or another giant dotfile collection, then it may
+be forcing your rubygems to take a local Gemfile into account. This behavior
+is not working as intended, so to remove it, look for a
+
+    > `export RUBYGEMS_GEMDEPS="-"`
+
+and comment it out, in any dotfile:
+
+- `.bashrc`
+- `.zshrc`
+- `.zprofile`
+- `.profile`
+- `.bash_profile`
+- `.zlogin`
+- `.my_init_var_script`
+- ...
