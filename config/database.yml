@@ -14,4 +14,5 @@ test:
   database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_test') %>
 
 production:
-  url: <%= ENV.fetch('DATABASE_URL', 'Set DATABASE_URL environment variable') %>
+  # Set DATABASE_URL environment variable
+  url: <%= ENV.fetch('DATABASE_URL', 'null') %>
