@@ -1,8 +1,8 @@
 defaults: &defaults
   adapter: postgresql
-  host: <%= ENV.fetch('DATABASE_HOST', 'localhost') %>
-  username: <%= ENV.fetch('DATABASE_USER', 'null') %>
-  password: <%= ENV.fetch('DATABASE_PASSWORD', 'null') %>
+  host: <%= ENV['DATABASE_HOST'] %>  # default is localhost
+  username: <%= ENV['DATABASE_USER'] %>  # default is null
+  password: <%= ENV['DATABASE_PASSWORD'] %>  # default is null
   encoding: utf8
 
 development:
@@ -15,4 +15,4 @@ test:
 
 production:
   # Set DATABASE_URL environment variable
-  url: <%= ENV.fetch('DATABASE_URL', 'null') %>
+  url: <%= ENV['DATABASE_URL'] %>
