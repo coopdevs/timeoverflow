@@ -1,17 +1,11 @@
 language: ruby
-
+sudo: false
+cache: bundler
+bundler_args: '--without production development'
 rvm:
   - 2.2.2
-
 env: DATABASE_URL=postgres://postgres@localhost/timeoverflow_test
-
 before_script:
-  - psql -c 'create database timeoverflow_test;' -U postgres
-  - RAILS_ENV=test bundle exec rake db:migrate
-
-sudo: false
-
-cache: bundler
-
+  - bundle exec rake db:setup
 services:
   - elasticsearch
