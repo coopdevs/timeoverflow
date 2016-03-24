@@ -3,6 +3,12 @@
 #
 #     git update-index --skip-worktree config/database.yml
 #
+# or just use DATABASE_URL, in which case Rails will happily skip the whole
+# file.
+#
+# See https://github.com/coopdevs/timeoverflow/wiki/Keeping-your-local-files
+# for more information
+#
 
 defaults: &defaults
   adapter: postgresql
