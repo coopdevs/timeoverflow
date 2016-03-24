@@ -1,7 +1,7 @@
 # If you want to change this file, please keep the changes in your working
 # copy by using
 #
-#     git update-index --assume-unchanged config/database.yml
+#     git update-index --skip-worktree config/database.yml
 #
 
 defaults: &defaults
