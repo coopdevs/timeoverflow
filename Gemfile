@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2'
+gem 'rails', '4.2.5.2'
 gem 'rails-i18n'
 gem 'rails_12factor'
 gem "rdiscount"
@@ -34,20 +34,23 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
 # Assets
-gem 'jquery-rails'
+gem 'jquery-rails', '4.0.4'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0.1'
 gem 'coffee-rails'
-gem 'uglifier', '>= 1.0.3'
+gem 'uglifier', '2.7.2'
 gem 'select2-rails'
+
+# Security
+gem 'nokogiri', '1.6.7.2'
 
 group :development do
   gem "binding_of_caller"
   gem "better_errors"
   gem "rubocop"
   gem "haml-lint"
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.1.3'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   # gem 'capistrano3-delayed-job', '~> 1.0'
