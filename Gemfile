@@ -23,7 +23,7 @@ gem "haml-rails"
 gem "simple_form", ">= 3.0.0"
 gem "awesome_print"
 gem 'memcachier'
-gem 'rollbar'
+gem 'rollbar', '2.8.3'
 gem 'travis-lint'
 gem "shelly-dependencies"
 gem 'whenever', :require => false
@@ -50,7 +50,7 @@ group :development do
   gem "better_errors"
   gem "rubocop"
   gem "haml-lint"
-  gem 'web-console', '~> 2.1.3'
+  gem 'web-console', '2.1.3'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   # gem 'capistrano3-delayed-job', '~> 1.0'
