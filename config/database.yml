@@ -1,3 +1,9 @@
+# If you want to change this file, please keep the changes in your working
+# copy by using
+#
+#     git update-index --assume-unchanged config/database.yml
+#
+
 defaults: &defaults
   adapter: postgresql
   host: <%= ENV['DATABASE_HOST'] %>  # default is localhost
