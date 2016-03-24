@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow)
 [![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow)
+[![Dependencies](https://gemnasium.com/coopdevs/timeoverflow.svg)](https://gemnasium.com/coopdevs/timeoverflow)
 
 :bank: :hourglass: Sistema de Banco de Tiempo.
 
