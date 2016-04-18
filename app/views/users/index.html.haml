@@ -45,10 +45,11 @@
             = Account.human_attribute_name(:balance)
             %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-balance'" }
             %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'balance'" }
+        - if current_user.manages? current_organization
+          %th
+            %span.glyphicon.glyphicon-hand-down
+            =t(".actions")
 
-        %th
-          %span.glyphicon.glyphicon-hand-down
-          =t(".actions")
     %tbody
       = render partial: "user_rows", locals: {users: @users}
 
