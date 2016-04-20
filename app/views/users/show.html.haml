@@ -107,48 +107,4 @@
             = t(".balance")
           = seconds_to_hm(@member.account.try(:balance) || mdash)
 
-.panel.user-profile
-  .panel-body
-    %h3
-      =t(".movements")
-    .transactions
-      %table.table.table-condensed
-        %thead
-          %tr
-            %th
-              =t(".date")
-            %th
-              =t(".from_to")
-            %th
-              =t(".post")
-            %th
-              =t(".reason")
-            %th
-              =t(".quantity")
-        - @movements.each do |mv|
-          %tr
-            %td= l mv.created_at.to_date, format: :long
-            %td
-              - mv.other_side.account.tap do |account| 
-                - if account.accountable.present?
-                  - if account.accountable_type == "Organization"
-                    = link_to account,
-                              organization_path(account.accountable)
-                  - elsif account.accountable.active
-                    = link_to account.accountable.display_name_with_uid,
-                              user_path(account.accountable.user)
-                  - else
-                    = t(".inactive_user")
-                - else
-                  = t(".deleted_user")
-            %td
-              = mv.transfer.try(:post).try(:active?) ? link_to(mv.transfer.post, offer_path(mv.transfer.post)) : mv.transfer.post
-            %td
-              = mv.transfer.reason
-              - if mv.transfer.reason.present? && admin?
-                = link_to delete_reason_transfer_path(mv.transfer), method: :put, data: { confirm: t(".delete_reason") } do
-                  %span.glyphicon.glyphicon-trash
-            %td= seconds_to_hm(mv.amount)
-
-      .paginate-align
-        = paginate @movements
+= render "partials/movements"

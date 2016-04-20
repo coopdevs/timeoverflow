@@ -1,0 +1,43 @@
+.panel.user-profile
+  .panel-body
+    %h3
+      = t(".movements")
+    .transactions
+      %table.table.table-condensed
+        %thead
+          %tr
+            %th= t "global.date"
+            %th= t "global.source_destination"
+            %th= t "global.announcements"
+            %th= t "global.reason"
+            %th= t "global.amount"
+        - @movements.each do |mv|
+          %tr
+            %td= l mv.created_at.to_date, format: :long
+            %td
+              - mv.other_side.account.tap do |account|
+                - if account.accountable.present?
+                  - if account.accountable_type == "Organization"
+                    = link_to account,
+                              organization_path(account.accountable)
+                  - elsif account.accountable.active
+                    = link_to account.accountable.display_name_with_uid,
+                              user_path(account.accountable.user)
+                  - else
+                    = t(".inactive_user")
+                - else
+                  = t(".deleted_user")
+            %td
+              - if mv.transfer.try(:post).try(:active?)
+                = link_to(mv.transfer.post, offer_path(mv.transfer.post))
+              - else
+                = mv.transfer.post
+            %td
+              = mv.transfer.reason
+              - if mv.transfer.reason.present? && admin?
+                - op = { method: :put, data: { confirm: t(".delete_reason") } }
+                = link_to(delete_reason_transfer_path(mv.transfer), op) do
+                  %span.glyphicon.glyphicon-trash
+            %td= seconds_to_hm(mv.amount)
+      .paginate-align
+        = paginate @movements
