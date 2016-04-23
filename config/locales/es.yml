@@ -373,7 +373,7 @@ es:
       next: "Siguiente &rsaquo;"
       truncate: "&hellip;"
 
-  partials:
+  shared:
     movements:
       delete_reason: ¿Está seguro de borrar este comentario?
       movements: Movimientos

@@ -364,7 +364,7 @@ en:
     report:
       report_title: "REPORT"
 
-  partials:
+  shared:
     movements:
       delete_reason: Are you sure to delete this comment?
       movements: Movements

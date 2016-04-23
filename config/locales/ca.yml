@@ -368,7 +368,7 @@ ca:
       next: "Següent &rsaquo;"
       truncate: "&hellip;"
 
-  partials:
+  shared:
     movements:
       delete_reason: Esteu segur d'esborrar aquest comentari?
       movements: Moviments
