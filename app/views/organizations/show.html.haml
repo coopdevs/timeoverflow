@@ -67,24 +67,5 @@
         %a{href: give_time_organization_path(@organization)}
           %span.glyphicon.glyphicon-time
           = t "global.give_time"
-
-.panel.user-profile
-  .panel-body
-    %h3
-      = t "global.movements"
-    .transactions
-      %table.table.table-condensed
-        %thead
-          %tr
-            %th= t "global.date"
-            %th= t "global.source_destination"
-            %th= t "global.announcements"
-            %th= t "global.reason"
-            %th= t "global.amount"
-        - @organization.account.movements.order("created_at DESC").limit(10).each do |mv|
-          %tr
-            %td= l mv.created_at, format: :long
-            %td= mv.other_side.account
-            %td= mv.transfer.post
-            %td= mv.transfer.reason
-            %td= seconds_to_hm(mv.amount)
+- if current_user
+  = render "shared/movements"

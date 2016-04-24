@@ -18,6 +18,12 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    @movements = @organization.
+                 account.
+                 movements.
+                 order("created_at DESC").
+                 page(params[:page]).
+                 per(10)
   end
 
   def create

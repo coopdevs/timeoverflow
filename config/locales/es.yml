@@ -175,13 +175,11 @@ es:
       created_at: "Alta:"
       user_no: "Nº Usuario:"
       balance: "Balance:"
-      movements: "Movimientos"
       date: Fecha
       from_to: Origen/Destino
       post: Anuncio
       reason: Razón
       quantity: Cantidad
-      delete_reason: "¿Está seguro de borrar este comentario?"
       inactive_user: El usuario no está activo
       deleted_user:  El usuario ya no existe
 
@@ -287,7 +285,7 @@ es:
       post: Anuncio
       reason: Razón
       quantity: Cantidad
-      delete_reason: "¿Está seguro de borrar este comentario?"
+      delete_reason: ¿Está seguro de borrar este comentario?
 
   stats:
     min_balance:
@@ -374,3 +372,8 @@ es:
       previous: "&lsaquo; Anterior"
       next: "Siguiente &rsaquo;"
       truncate: "&hellip;"
+
+  shared:
+    movements:
+      delete_reason: ¿Está seguro de borrar este comentario?
+      movements: Movimientos
