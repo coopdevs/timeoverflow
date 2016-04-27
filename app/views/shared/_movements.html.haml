@@ -38,6 +38,8 @@
                 - op = { method: :put, data: { confirm: t(".delete_reason") } }
                 = link_to(delete_reason_transfer_path(mv.transfer), op) do
                   %span.glyphicon.glyphicon-trash
-            %td= seconds_to_hm(mv.amount)
+            %td
+              %strong{ class: green_red(mv.amount) }
+                = seconds_to_hm(mv.amount)
       .paginate-align
         = paginate @movements
