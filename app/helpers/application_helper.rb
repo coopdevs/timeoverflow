@@ -1,6 +1,10 @@
 require "date"
 
 module ApplicationHelper
+
+  TEXT_SUCCESS = 'text-success'.freeze
+  TEXT_DANGER = 'text-danger'.freeze
+
   # from https://robohash.org
   def avatar_url(user, size = 32)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
@@ -52,6 +56,16 @@ module ApplicationHelper
     HTML
 
     html.html_safe
+  end
+
+  # Green or red CSS class depending on whether
+  # positive or negative amount
+  def green_red(amount)
+    case amount <=> 0
+    when -1 then TEXT_DANGER
+    when 0 then nil
+    when 1 then TEXT_SUCCESS
+    end
   end
 
   private
