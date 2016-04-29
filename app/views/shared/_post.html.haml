@@ -44,8 +44,8 @@
                   &mdash;
                 = ph
 
-  .col-md-9
-    %p.lead.post-description= post.description
+  .col-md-9.lead
+    = post.rendered_description.to_html.html_safe
 
 - unless current_user
   .alert.alert-info

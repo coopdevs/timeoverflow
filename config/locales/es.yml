@@ -377,3 +377,5 @@ es:
     movements:
       delete_reason: ¿Está seguro de borrar este comentario?
       movements: Movimientos
+    post_form:
+      you_can_use: Puedes usar

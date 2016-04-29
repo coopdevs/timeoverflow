@@ -6,6 +6,10 @@
   .form-group
     = f.label :description
     = f.text_area :description, rows: "10", class: "form-control"
+    %p.small.text-right
+      = t ".you_can_use"
+      - wiki_url = "https://#{I18n.locale}.wikipedia.org/wiki/Markdown"
+      %a{ href: wiki_url, title: "Markdown" } Markdown
   .form-group
     = f.label :category, required: true
     = f.select :category_id, Category.all.sort_by{ |a| a.name.downcase }.map{ |cat| [cat.name, cat.id] }, { include_blank: true }, { class: "form-control" }

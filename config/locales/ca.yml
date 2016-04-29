@@ -372,3 +372,5 @@ ca:
     movements:
       delete_reason: Esteu segur d'esborrar aquest comentari?
       movements: Moviments
+    post_form:
+      you_can_use: Pots fer servir

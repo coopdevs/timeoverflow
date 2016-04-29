@@ -122,4 +122,8 @@ class Post < ActiveRecord::Base
   def member
     @member ||= Member.find_by(user_id: user_id, organization_id: organization_id)
   end
+
+  def rendered_description
+    RDiscount.new(description, :autolink)
+  end
 end

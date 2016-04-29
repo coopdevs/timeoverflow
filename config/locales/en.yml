@@ -368,3 +368,5 @@ en:
     movements:
       delete_reason: Are you sure to delete this comment?
       movements: Movements
+    post_form:
+      you_can_use: You can use
