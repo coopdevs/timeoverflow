@@ -3,7 +3,7 @@
     %h4
       = link_to post do
         = post.title
-    %p= post.description
+    %p= strip_tags(post.rendered_description.to_html)
     %p
       %small
         - if post.category
