@@ -17,6 +17,10 @@ class Transfer < ActiveRecord::Base
   belongs_to :operator, class_name: "User"
   has_many :movements
 
+  scope :by_month, -> (month) {
+    where(created_at: month.beginning_of_month..month.end_of_month)
+  }
+
   after_create :make_movements
 
   def make_movements
@@ -25,11 +29,11 @@ class Transfer < ActiveRecord::Base
   end
 
   def movement_from
-    movements.detect {|m| m.amount < 0 }
+    movements.detect { |m| m.amount < 0 }
   end
 
   def movement_to
-    movements.detect {|m| m.amount > 0 }
+    movements.detect { |m| m.amount > 0 }
   end
 
   def source_id
@@ -38,5 +42,9 @@ class Transfer < ActiveRecord::Base
 
   def destination_id
     destination.respond_to?(:id) ? destination.id : destination
+  end
+
+  def amount_to
+    movement_to.amount
   end
 end
