@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
                       with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   def as_member_of(organization)
-    organization && members.find_by(organization: organization)
+    organization && members.where(organization: organization, active: true).first
   end
 
   def admins?(organization)
