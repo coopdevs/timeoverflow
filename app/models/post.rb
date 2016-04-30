@@ -124,6 +124,6 @@ class Post < ActiveRecord::Base
   end
 
   def rendered_description
-    RDiscount.new(description, :autolink)
+    RDiscount.new(description || '', :autolink)
   end
 end
