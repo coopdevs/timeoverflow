@@ -58,16 +58,15 @@
           - if @user == current_user
             %a.pull-right{href: new_offer_path}
               %span.glyphicon.glyphicon-plus
-
-
-      %table.table.table-condensed.offers
-        - @member.offers.active.each do |post|
-          %tr
-            %td= link_to post, post
-            %td= post.description
-            %td
-              %a{href: give_time_user_path(@user, offer: post.id), title: t("global.give_time")}
-                %span.glyphicon.glyphicon-time
+      - @member.offers.active.each do |post|
+        .row.panel-body
+          .col-sm-3
+            = link_to post, post
+          .col-sm-8
+            =post.description
+          .col-sm-1
+            %a{href: give_time_user_path(@user, offer: post.id), title: t("global.give_time")}
+              %span.glyphicon.glyphicon-time
 
   .col-sm-6.inquiries
     .panel.panel-default
@@ -77,12 +76,12 @@
           - if @user == current_user
             %a.pull-right{href: new_inquiry_path}
               %span.glyphicon.glyphicon-plus
-
-      %table.table.table-condensed.offers
-        - @member.inquiries.active.each do |post|
-          %tr
-            %td= link_to post, post
-            %td= post.description
+      - @member.inquiries.active.each do |post|
+        .row.panel-body
+          .col-sm-3
+            = link_to post, post
+          .col-sm-9
+            = post.description
 
 .row
   .col-sm-4
