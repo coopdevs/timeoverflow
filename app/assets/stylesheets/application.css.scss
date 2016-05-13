@@ -7,6 +7,8 @@ $navs-bg-color: #080808;
 $white: #ffffff;
 $border: #e1e8ed;
 
+*{word-wrap:break-word;}
+
 body[data-action="devise/sessions-new"], body[data-action="devise/sessions-create"] {
   background: image-url('red.jpg') no-repeat center center fixed;
   background-size: cover;
