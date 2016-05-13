@@ -64,7 +64,7 @@
         - @member.offers.active.each do |post|
           %tr
             %td= link_to post, post
-            %td= post.description
+            %td= strip_tags(post.rendered_description.to_html)
             %td
               %a{href: give_time_user_path(@user, offer: post.id), title: t("global.give_time")}
                 %span.glyphicon.glyphicon-time
@@ -82,7 +82,7 @@
         - @member.inquiries.active.each do |post|
           %tr
             %td= link_to post, post
-            %td= post.description
+            %td= strip_tags(post.rendered_description.to_html)
 
 .row
   .col-sm-4
