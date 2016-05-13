@@ -1,0 +1,6 @@
+<li class="<%= "active" if current_page?(dashboard_offers_path) %>">
+  <a href="<%= dashboard_offers_path %>">
+    <%= glyph :offer %>
+    <%= item.model_name.human(count: :many) %>
+  </a>
+</li>

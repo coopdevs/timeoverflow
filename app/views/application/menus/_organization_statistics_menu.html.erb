@@ -1,0 +1,51 @@
+<li class="dropdown">
+  <a class="dropdown-toggle" href="#">
+    <%= glyph :stats %>
+    <%= t "application.navbar.statistics" %>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="/statistics/statistics_global_activity">
+        <%= glyph :stats %>
+        <%= t "application.navbar.global_activity" %>
+      </a>
+    </li>
+    <li>
+      <a href="/statistics/statistics_inactive_users">
+        <%= glyph :stats %>
+        <%= t "application.navbar.inactive_users" %>
+      </a>
+    </li>
+    <li>
+      <a href="/statistics/statistics_demographics">
+        <%= glyph :stats %>
+        <%= t "application.navbar.demographics" %>
+      </a>
+    </li>
+    <li>
+      <a href="/statistics/statistics_last_login">
+        <%= glyph :stats %>
+        <%= t "application.navbar.last_login" %>
+      </a>
+    </li>
+    <li>
+      <a href="/statistics/statistics_without_offers">
+        <%= glyph :stats %>
+        <%= t "application.navbar.without_offers" %>
+      </a>
+    </li>
+    <li>
+      <a href="/statistics/statistics_type_swaps">
+        <%= glyph :stats %>
+        <%= t ".type_of_swaps" %>
+      </a>
+    </li>
+    <li>
+      <a href="/statistics/statistics_all_transfers">
+        <span class="glyphicon glyphicon-stats"></span>
+        <%= t ".statistics_all_transfers" %>
+      </a>
+    </li>
+  </ul>
+</li>

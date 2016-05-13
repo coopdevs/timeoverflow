@@ -1,0 +1,27 @@
+<li class="dropdown">
+  <a class="dropdown-toggle" href="#">
+    <%= glyph :paperclip %>
+    <%= t "application.navbar.reports" %>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="/report/user_list" data-popup>
+        <%= glyph :list_alt %>
+        <%= User.model_name.human(count: :many) %>
+      </a>
+    </li>
+    <li>
+      <a href="/report/offer_list" data-popup>
+        <%= glyph :list_alt %>
+        <%= Offer.model_name.human(count: :many) %>
+      </a>
+    </li>
+    <li>
+      <a href="/report/inquiry_list" data-popup>
+        <%= glyph :list_alt %>
+        <%= Inquiry.model_name.human(count: :many) %>
+      </a>
+    </li>
+  </ul>
+</li>

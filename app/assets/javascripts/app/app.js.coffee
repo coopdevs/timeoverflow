@@ -39,10 +39,6 @@ angular.module('timeoverflow').controller 'UserListCtrl', ["$scope", "$modal", "
 # override this in a view where the organizations are needed
 angular.module('timeoverflow').value 'Organizations', []
 
-angular.module('timeoverflow').controller 'OrganizationListCtrl', ["$scope", "Organizations", ($scope, Organizations) ->
-  $scope.organizations = Organizations
-]
-
 angular.module('timeoverflow').filter 'timeBalance', ->
   (seconds) ->
     if seconds isnt 0

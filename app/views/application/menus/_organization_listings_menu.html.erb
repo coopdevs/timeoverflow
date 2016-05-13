@@ -1,0 +1,29 @@
+<li class="dropdown">
+  <a class="dropdown-toggle" href="#">
+    <%= glyph :wrench %>
+    <%= t "application.navbar.admin" %>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="<%= alpha_grouped_index_tags_path(post_type: "offer") %>">
+        <%= glyph :tags %>
+        <%= t "application.navbar.tags" %>
+      </a>
+    </li>
+    <li>
+      <a href="<%= offers_path(org: current_organization) %>">
+        <%= glyph :link %>
+        <%= glyph :eye_open %>
+        <%= t "application.navbar.offer_public_link" %>
+      </a>
+    </li>
+    <li>
+      <a href="<%= inquiries_path(org: current_organization) %>">
+        <%= glyph :link %>
+        <%= glyph :eye_open %>
+        <%= t "application.navbar.inquiry_public_link" %>
+      </a>
+    </li>
+  </ul>
+</li>
