@@ -1,45 +1,48 @@
-Entorno de desarrollo aconsejado (para mac)
-===========================================
+Development setup (for mac)
+===========================
 
-iTerm2 - un terminal mucho más completo (<http://iterm2.com>). Especialmente recomendado activar
-la opción "Working directory -> Reuse previous session's directory" para el perfil por defecto,
-para jugar fácilmente con múltiples pestañas en la misma directory.
+- XCode - it's needed to compile things, dependencies, gems etc. Install it from the App Store.
+- homebrew - the only other thing you'll ever need. Everything else will be managed with homebrew.
+  Run the following in a terminal.
+  ```shell
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  ```
 
-SublimeText2 - un editor muy muy avanzado (<http://www.sublimetext.com>). Instalar también
-PackageControl para luego instalar extensiones de forma muy fácil (seguir instrucciones en
-<https://packagecontrol.io/installation#st2>). Otro editor que promete es Atom (<https://atom.io>)
-aunque no es tan maduro, tiene unos grandes desarrolladores detrás. Ambos permiten - y es muy
-importante - evitar que se cuelen TABs en el código.
+- homebrew extensions - enable homebrew to install GUI, fonts, older versions... etc (as needed)
+  ```shell
+  brew tap caskroom/cask
+  brew tap caskroom/fonts
+  ```
 
-Homebrew - para instalar todo tipo de paquetes adicionales (<http://brew.sh>).
+- iTerm2 (optional but recommended - more advanced terminal app than OS X default one)
+  ```shell
+  brew cask install iterm2
+  ```
+  Activate the "Working directory -> Reuse previous session's directory" option for the default profile,
+  so new tabs keep the curent directory, very useful.
 
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-YADR - una biblioteca de shortcuts y mejoras para zsh y la línea de comando de ruby
-(<https://github.com/skwp/dotfiles>). No hacen falta las opciones para `vim`, sobretodo si uno
-no está acostumbrado a vim, la opción "vimification of command line tools" puede ser mortal!
-
-    sh -c "`curl -fsSL https://raw.githubusercontent.com/skwp/dotfiles/master/install.sh`" -s ask
-    
-Instalar varios paquetes por medio de homebrew
-
-    brew install git rbenv ruby-build postgresql
-    
-Instalar ruby
-
-    rbenv install 2.2.0
-    rbenv global 2.2.0
-    
-Añadir la siguiente línea al fichero `.profile` para tener rbenv activado) y reiniciar
-el terminal.
-
-    eval "$(rbenv init -)"
-
-
-Actualizar rubygems e instalar bundler
-
-    gem update --system
-    gem install bundler
-    
-
-    
+- fish shell (optional but recommended - more advanced shell. Much more than bash. More than zsh.)
+  ```shell
+  brew install fish
+  ```
+  version 2.2 has a bug in saving prompts, it's solved in 2.3 that's about to be published
+  
+- Install various packages through homebrew:
+  ```shell
+  brew install git rbenv postgresql git-flow-avh
+  brew services start postgresql
+  ```
+  
+- Install ruby version and needed global gems
+  ```shell
+  rbenv install 2.3.0
+  rbenv global 2.3.0
+  rbenv init
+  ```
+  (follow instructions to activate rbenv in the current shell, before continuing)
+  ```
+  gem install bundler
+  bundle config path vendor/bundle
+  ```
+  the project's gems won't be installed in the global space, but only in the `vendor/bundle` subdirectory.
+  
