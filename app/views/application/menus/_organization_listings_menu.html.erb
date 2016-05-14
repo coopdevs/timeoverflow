@@ -6,24 +6,24 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="<%= alpha_grouped_index_tags_path(post_type: "offer") %>">
+      <%= link_to alpha_grouped_index_tags_path(post_type: "offer") %>
         <%= glyph :tags %>
         <%= t "application.navbar.tags" %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="<%= offers_path(org: current_organization) %>">
+      <%= link_to offers_path(org: current_organization) %>
         <%= glyph :link %>
         <%= glyph :eye_open %>
         <%= t "application.navbar.offer_public_link" %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="<%= inquiries_path(org: current_organization) %>">
+      <%= link_to inquiries_path(org: current_organization) %>
         <%= glyph :link %>
         <%= glyph :eye_open %>
         <%= t "application.navbar.inquiry_public_link" %>
-      </a>
+      <% end %>
     </li>
   </ul>
 </li>

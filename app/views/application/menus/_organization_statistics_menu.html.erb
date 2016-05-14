@@ -6,46 +6,46 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="/statistics/statistics_global_activity">
+      <%= link_to statistics_global_activity_statistics_path %>
         <%= glyph :stats %>
         <%= t "application.navbar.global_activity" %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="/statistics/statistics_inactive_users">
+      <%= link_to statistics_inactive_users_statistics %>
         <%= glyph :stats %>
         <%= t "application.navbar.inactive_users" %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="/statistics/statistics_demographics">
+      <%= link_to statistics_demographics_statistics %>
         <%= glyph :stats %>
         <%= t "application.navbar.demographics" %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="/statistics/statistics_last_login">
+      <%= link_to statistics_last_login_statistics %>
         <%= glyph :stats %>
         <%= t "application.navbar.last_login" %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="/statistics/statistics_without_offers">
+      <%= link_to statistics_without_offers_statistics %>
         <%= glyph :stats %>
         <%= t "application.navbar.without_offers" %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="/statistics/statistics_type_swaps">
+      <%= link_to statistics_type_swaps_statistics %>
         <%= glyph :stats %>
         <%= t ".type_of_swaps" %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="/statistics/statistics_all_transfers">
-        <span class="glyphicon glyphicon-stats"></span>
+      <%= link_to statistics_all_transfers_statistics %>
+        <%= glyph :stats %>
         <%= t ".statistics_all_transfers" %>
-      </a>
+      <% end %>
     </li>
   </ul>
 </li>

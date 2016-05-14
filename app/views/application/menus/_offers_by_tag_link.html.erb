@@ -1,6 +1,6 @@
 <li class="<%= "active" if current_page?(path) %>">
-  <a href="<%= alpha_grouped_index_tags_path(post_type: "offer") %>">
+  <%= link_to alpha_grouped_index_tags_path(post_type: "offer") %>
     <%= glyph :tags %>
     <%= t ".tags" %>
-  </a>
+  <% end %>
 </li>

@@ -6,22 +6,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="/report/user_list" data-popup>
+      <%= link_to user_list_report_path, data: { popup: true } %>
         <%= glyph :list_alt %>
         <%= User.model_name.human(count: :many) %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="/report/offer_list" data-popup>
+      <%= link_to offer_list_report_path, data: { popup: true } %>
         <%= glyph :list_alt %>
         <%= Offer.model_name.human(count: :many) %>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="/report/inquiry_list" data-popup>
+      <%= link_to inquiry_list_report_path, data: { popup: true } %>
         <%= glyph :list_alt %>
         <%= Inquiry.model_name.human(count: :many) %>
-      </a>
+      <% end %>
     </li>
   </ul>
 </li>

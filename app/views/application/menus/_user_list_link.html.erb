@@ -1,6 +1,6 @@
 <li class="<%= "active" if current_page?(users_path) %>">
-  <a href="<%= users_path %>">
+  <%= link_to users_path %>
     <%= glyph :user %>
     <%= item.model_name.human(count: :many) %>
-  </a>
+  <% end %>
 </li>
