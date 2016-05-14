@@ -54,6 +54,15 @@ module ApplicationHelper
     html.html_safe
   end
 
+  # Use as <%= markdown content %> or <%= m content %>
+  # Content can be nil, in that case
+  # it will be the same as an empty string.
+  def markdown(content)
+    RDiscount.new(content || ''.freeze).to_html.html_safe
+  end
+
+  alias m markdown
+
   private
 
   def locale_menu_item(locale)

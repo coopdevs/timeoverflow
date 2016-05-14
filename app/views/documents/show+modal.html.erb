@@ -5,6 +5,5 @@
   </h4>
 </div>
 <div class="modal-body">
-  <%# TODO: create a helper 'm' like 'j', so this is just <%= m @document.content %>
-  <%= RDiscount.new(@document.content).to_html.html_safe %>
+  <%= m @document.content %>
 </div>
