@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5.2'
 gem 'rails-i18n'
 gem 'rails_12factor'
-gem "rdiscount"
+gem 'rdiscount'
 gem 'high_voltage', '~> 2.1.0'
 gem 'activeadmin', github: 'activeadmin'
 gem 'has_scope'
@@ -13,20 +13,20 @@ gem 'hstore_translate'
 gem 'dalli'
 gem 'slim-rails' # much better than haml
 gem 'devise', '3.5.6'
-gem "http_accept_language"
+gem 'http_accept_language'
 gem 'thin'
 gem 'unicorn'
 gem 'foreman'
 gem 'dotenv-rails'
 gem 'kaminari'
-gem "haml-rails"
-gem "simple_form", ">= 3.0.0"
-gem "awesome_print"
+gem 'haml-rails'
+gem 'simple_form', '>= 3.0.0'
+gem 'awesome_print'
 gem 'memcachier'
 gem 'rollbar', '2.8.3'
 gem 'travis-lint'
-gem "shelly-dependencies"
-gem 'whenever', :require => false
+gem 'shelly-dependencies'
+gem 'whenever', require: false
 gem 'prawn'
 gem 'prawn-table'
 gem 'bundler', '>= 1.10.6'
@@ -46,28 +46,28 @@ gem 'select2-rails'
 gem 'nokogiri', '1.6.7.2'
 
 group :development do
-  gem "binding_of_caller"
-  gem "better_errors"
-  gem "rubocop"
+  gem 'binding_of_caller'
+  gem 'better_errors'
   gem 'web-console', '2.1.3'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   # gem 'capistrano3-delayed-job', '~> 1.0'
   gem 'airbrussh', require: false
-  gem "quiet_assets"
+  gem 'quiet_assets'
 end
 
 group :development, :test do
-  gem "rspec-rails", '~> 3.4.0'
-  gem "capybara", '~> 2.4.4'
-  gem "byebug"
+  gem 'rspec-rails', '~> 3.4.0'
+  gem 'capybara', '~> 2.4.4'
+  gem 'byebug'
+  gem 'rubocop', '~> 0.40'
 end
 
 group :test do
   # Needed for TravisCI
   gem 'rake'
-  gem "database_cleaner"
-  gem 'shoulda', ">= 3.5"
+  gem 'database_cleaner'
+  gem 'shoulda', '>= 3.5'
   gem 'fabrication'
   gem 'faker'
 end
