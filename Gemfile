@@ -25,7 +25,6 @@ gem "awesome_print"
 gem 'memcachier'
 gem 'rollbar', '2.8.3'
 gem 'travis-lint'
-gem "shelly-dependencies"
 gem 'whenever', :require => false
 gem 'prawn'
 gem 'prawn-table'
