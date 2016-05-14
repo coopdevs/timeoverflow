@@ -1,0 +1,24 @@
+<% posts.each do |post| %>
+  <div class="post">
+    <h4>
+      <%= link_to post.title, post %>
+    </h4>
+    <p>
+      <%= post.description %>
+    </p>
+    <p>
+      <small>
+        <% if post.category %>
+          <%= glyph :folder_open %>
+          <span class="category">
+            <%= link_to post.category, get_index_path(post, cat: post.category)%>
+          </span>
+        <% end %>
+        <% (post.tags || []).each do |tag| %>
+          <%= glyph :tag %>
+          <%= link_to tag, get_index_path(post,tag: tag) do %>
+        <% end %>
+      </small>
+    </p>
+  </div>
+<% end %>

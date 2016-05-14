@@ -1,0 +1,4 @@
+<h1>
+  <%= t "helpers.submit.create", model: @inquiry.class.model_name.human %>
+</h1>
+<%= render 'shared/post_form', post: @inquiry, label_button: t(".submit") %>

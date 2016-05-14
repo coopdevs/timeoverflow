@@ -1,0 +1,70 @@
+<h1>
+  <%= post.title %>
+</h1>
+<div class="row">
+  <div class="sidebar col-md-3">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= post.class.model_name.human %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= l post.created_at.to_date, format: :long %>
+        <p></p>
+        <%= link_to get_index_path(post, cat: post.category) do %>
+          <%= glyph :folder_open %>
+          <%= post.category %>
+        <% end %>
+        <p></p>
+        <% if post.tags.present? %>
+          <% post.tags.each do |tag| %>
+            <span class="badge alert-success">
+              <%= glyph(:tag) %>
+              <%= link_to tag, get_index_path(post, tag: tag) %>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% if current_user && current_organization %>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= link_to post.member.display_name_with_uid, post.user  %>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%= link_to image_tag(avatar_url(post.user, 100)), post.user %>
+          <h3>
+            <%= t "global.contact_details" %>
+          </h3>
+          <% if post.user.email_if_real != "" %>
+            <dt><%= User.human_attribute_name :email %></dt>
+            <dd><%= post.user.email_if_real %></dd>
+          <% end %>
+          <% phones = [post.user.phone, post.user.alt_phone].select(&:present?) %>
+          <% if phones.present? %>
+            <dt><%= User.human_attribute_name(:phone) %></dt>
+            <dd><%= phones.map(&:to_s).join(" — ") %></dd>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-9">
+    <p class="lead">
+      <%= post.description %>
+    </p>
+  </div>
+</div>
+<% unless current_user %>
+  <div class="alert alert-info">
+    <%= t "posts.show.info",
+          type: post.class.model_name.human,
+          organization: post.organization.name %>
+    <%= link_to t("layouts.application.login"),
+                new_user_session_path,
+                class: "btn btn-primary" %>
+  </div>
+<% end %>
