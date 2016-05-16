@@ -1,7 +1,7 @@
 <% @category = Category.where(id: params[:cat]).first %>
 <h1>
   <%= Inquiry.model_name.human(count: :many) %>
-  <%= render "/shared/show_filter_hint.html.haml" %>
+  <%= render "shared/show_filter_hint" %>
 </h1>
 
 <div class="navbar">
