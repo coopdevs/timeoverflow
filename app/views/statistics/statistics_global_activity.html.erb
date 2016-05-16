@@ -1,0 +1,98 @@
+<h1>
+  <%= t 'global.statistics' %>: <%= t '.global_activity' %>
+</h1>
+<div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <ul class="nav nav-pills statistics">
+        <li>
+          <%= t '.users_reg' %>
+          <div class="badge">
+            <%= @active_members.count %>
+          </div>
+        </li>
+        <li>
+          <%= t '.num_swaps' %>
+          <div class="badge">
+            <%= @num_swaps %>
+          </div>
+        </li>
+        <li>
+          <%= t '.total_hours' %>
+          <div class="badge">
+            <%= seconds_to_hm @total_hours %>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <form class="navbar-form navbar-right">
+      <div class="form-group">
+        <input class="form-control"
+               id="datepicker_from"
+               name="ini"
+               placeholder="<%= t '.ini_date' %>"
+               value="<%= params[:ini] %>">
+        <input class="form-control"
+               id="datepicker_to"
+               name="fin"
+               placeholder="<%= t '.end_date' %>"
+               value="<%= params[:fin] %>">
+        <button class="btn btn-default" type="submit">
+          <%= t '.show' %>
+        </button>
+      </div>
+    </form>
+    <div id="chart"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    //globales
+    $('#chart').highcharts({
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: "<%= j t('.bank_activity') %>"
+      },
+      subtitle: {
+        text: "<%= j t('.per_month') %>"
+      },
+      xAxis: {
+        categories: <%= @months_names.to_json %>
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: ''
+        }
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+          '<td style="padding:0"><b>{point.y}</b></td></tr>',
+        footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+      },
+      plotOptions: {
+        column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+        }
+      },
+      series: [{
+        name: "<%= j t('.users_reg') %>",
+        data: <%= @user_reg_months.to_json %>
+      }, {
+        name: "<%= j t('.num_swaps') %>",
+        data: <%= @num_swaps_months.to_json %>
+      }, {
+        name: "<%= j t('.total_hours') %>",
+        data: <%= @hours_swaps_months.to_json %>
+      }]
+    });
+  });
+
+</script>
