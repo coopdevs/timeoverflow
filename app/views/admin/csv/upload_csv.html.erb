@@ -1,0 +1,23 @@
+<%= form_for :dump, url: { action: "import_csv" }, html: { multipart: true, class: "formtastic user" } do |f| %>
+  <fieldset class="inputs">
+    <ol>
+      <li class="string input optional stringish">
+        <%= label_tag I18n.t("active_admin.users.upload_csv") %>
+        <%= f.file_field :file %>
+      </li>
+    </ol>
+    <ol>
+      <li class="string input optional stringish">
+        <%= label_tag I18n.t("active_admin.users.organization") %>
+        <%= f.select :organization_id, options_for_select(Organization.all.map{ |org| [org.name, org.id] }), include_blank: true %>
+      </li>
+    </ol>
+  </fieldset>
+  <fieldset class="actions">
+    <ol>
+      <li class="action input_action">
+        <%= f.submit I18n.t("global.save") %>
+      </li>
+    </ol>
+  </fieldset>
+<% end %>

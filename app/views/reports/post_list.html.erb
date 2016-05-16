@@ -1,0 +1,27 @@
+<div class="row">
+  <table class="table table-condensed table-bordered">
+    <colgroup>
+      <col class="col-sm-9"></col>
+      <col class="col-sm-3"></col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th><%= @post_type.model_name.human %></th>
+        <th><%= User.model_name.human %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |cat, ps| %>
+        <tr class="success">
+          <td colspan="2"><h4><%= cat || '—' %></h4></td>
+        </tr>
+        <% ps.each do |post| %>
+          <tr>
+            <td><strong><%= post.title %></strong></td>
+            <td><%= "#{post.user} (#{post.member_uid})" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,2 @@
+$('.inquiries').append('<%= j render("shared/posts", posts: @inquiries) %>');
+$('.inquiries ~ a[rel=next]').replaceWith('<%= j link_to_next_page(@inquiries, t('.more'), remote: true, params: params) %>');

@@ -1,0 +1,25 @@
+<h1>
+  <%= t 'global.statistics' %>: <%= t '.last_login' %>
+</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th><%= User.human_attribute_name :username %></th>
+          <th><%= User.human_attribute_name :last_sign_in_at %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @members.each do |mem| %>
+          <tr>
+            <td><%= mem.member_uid %></td>
+            <td><%= link_to mem.user.username, mem.user %></td>
+            <td><%= mem.user.current_sign_in_at.blank? ? t(".never_login") : l(mem.user.current_sign_in_at, format: :long) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

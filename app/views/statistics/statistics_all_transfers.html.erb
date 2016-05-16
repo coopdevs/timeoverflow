@@ -1,0 +1,65 @@
+<h1>
+  <%= t 'global.statistics' %>: <%= t '.transfers' %>
+</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th><%= t '.date' %></th>
+          <th><%= t '.from' %></th>
+          <th><%= t '.to' %></th>
+          <th><%= t '.post' %></th>
+          <th><%= t '.reason' %></th>
+          <th><%= t '.quantity' %></th>
+        </tr>
+      </thead>
+      <% @transfers.each do |transfer| %>
+        <tr>
+          <td>
+            <%= l transfer.created_at, format: :long %>
+          </td>
+          <% transfer.movements.sort_by(&:amount).each do |mv| %>
+            <td>
+              <% mv.account.tap do |account| %>
+                <% if account.accountable.present? %>
+                  <% if account.accountable_type == 'Organization' %>
+                    <%= link_to account,
+                                organization_path(account.accountable) %>
+                  <% elsif account.accountable.active %>
+                    <%= link_to account.accountable.display_name_with_uid,
+                                user_path(account.accountable.user) %>
+                  <% else %>
+                    <%= t '.inactive_user' %>
+                  <% end %>
+                <% else %>
+                  <%= t '.deleted_user' %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          <td>
+            <%= link_to_if transfer.try(:post).try(:active?),
+                           transfer.post,
+                           transfer.post %>
+          </td>
+          <td>
+            <%= transfer.reason %>
+            <% if transfer.reason.present? && admin? %>
+              <%= link_to glyph(:trash),
+                          delete_reason_transfer_path(transfer),
+                          method: :put,
+                          data: { confirm: t('.delete_reason') } %>
+            <% end %>
+          </td>
+          <td>
+            <%= seconds_to_hm(transfer.movements.first.amount.abs) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="paginate-align">
+      <%= paginate @transfers %>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,6 @@ gem 'pundit'
 gem 'pg', '0.17.1'
 gem 'hstore_translate'
 gem 'dalli'
-gem 'slim-rails' # much better than haml
 gem 'devise', '3.5.6'
 gem "http_accept_language"
 gem 'thin'
@@ -19,7 +18,6 @@ gem 'unicorn'
 gem 'foreman'
 gem 'dotenv-rails'
 gem 'kaminari'
-gem "haml-rails"
 gem "simple_form", ">= 3.0.0"
 gem "awesome_print"
 gem 'memcachier'

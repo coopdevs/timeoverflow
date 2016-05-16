@@ -1,0 +1,64 @@
+<tr ng-repeat="user in users | orderBy:sort | filter:filterTerm"
+    ng-class="{'bg-danger': !user.active}">
+  <td>
+    <img ng-src="{{user.avatar}}" height: "32px" width: "32px">
+  </td>
+  <td>{{user.member_id}}</td>
+  <td>
+    <span class="glyphicon glyphicon-time" ng-if="!user.active"></span>
+    <a ng-href="{{user.url}}">{{user.username}}</a>
+  </td>
+  <td>
+    <a ng-href="mailto:{{user.email}}" ng-if="!user.unconfirmed_email">
+      {{user.email}}
+    </a>
+    <a ng-href="mailto:{{user.unconfirmed_email}}" ng-if="user.unconfirmed_email">
+      {{user.unconfirmed_email}}
+    </a>
+  </td>
+  <td> {{user.phone}} </td>
+  <td> {{user.alt_phone}} </td>
+  <td> {{user.balance | timeBalance}} </td>
+  <% if current_user.manages?(current_organization) %>
+    <td class="hover-actions">
+      <a class="action" ng-if="user.edit_link" ng-href"{{user.edit_link}}">
+        <%= glyph :pencil %>
+        <%= t "global.edit" %>
+      </a>
+      <a class="action"
+         ng-if="user.cancel_link && !user.active"
+         ng-href="{{user.cancel_link}}"
+         data-method="delete"
+         data-confirm="<%= t '.cancel_warning', user: "{{user.username}}" %>">
+        <%= glyph :ban_circle %>
+        <%= t "global.cancel_membership" %>
+      </a>
+      <a class="action"
+         href=""
+         ng-if="user.toggle_manager_link && user.active"
+         ng-click="toggle_manager(user)">
+        <span ng-if="user.manager">
+          <%= glyph :arrow_down %>
+          <%= t "global.demote" %>
+        </span>
+        <span ng-if="!user.manager">
+          <%= glyph :arrow_up %>
+          <%= t "global.promote" %>
+        </span>
+      </a>
+      <a class="action"
+         href=""
+         ng-if="user.toggle_active_link"
+         ng-click="toggle_active(user)">
+        <span ng-if="user.active">
+          <%= glyph :remove %>
+          <%= t ".deactivate" %>
+        </span>
+        <span ng-if="!user.active">
+          <%= glyph :ok %>
+          <%= t ".activate" %>
+        </span>
+      </a>
+    </td>
+  <% end %>
+</tr>
