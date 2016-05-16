@@ -1,0 +1,46 @@
+<h1>
+  <%= Organization.model_name.human(count: :many) %>
+</h1>
+
+<ul class="nav nav-pills">
+  <% if superadmin? %>
+    <li>
+      <%= link_to new_organization_path do %>
+        <%= glyph :plus %>
+        <%= t 'global.add_new' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th><%= Organization.model_name.human(count: :one) %></th>
+      <th><%= t '.member_count' %></th>
+      <th><%= glyph :wrench %><%= t 'global.table.actions' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @organizations.each do |org| %>
+      <tr>
+        <td><%= link_to org.name, org %></td>
+        <td><%= org.users.count %></td>
+        <td class="hover-actions">
+          <% if current_user.admins?(org) %>
+            <%= link_to edit_organization_path(org), class: 'action' do %>
+              <%= glyph :pencil %>
+              <%= t 'global.edit' %>
+            <% end %>
+            <%= link_to organization_path(org),
+                        data: { method: :delete },
+                        class: 'action' do %>
+              <%= glyph :trash %>
+              <%= t 'global.borrar' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

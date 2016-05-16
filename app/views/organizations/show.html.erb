@@ -1,0 +1,153 @@
+<h1>
+  <%= link_to @organization, organization_path(@organization) %>
+</h1>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= t '.contact_information' %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>
+            <%= Organization.human_attribute_name 'email' %>
+          </strong>
+          <%= @organization.email %>
+          <br/>
+          <strong>
+            <%= Organization.human_attribute_name 'phone' %>
+          </strong>
+          <%= @organization.phone %>
+          <br/>
+          <strong>Web</strong>
+          <%= link_to_if @organization.web.present?,
+                         @organization.web,
+                         @organization.web %>
+          <br/>
+          <strong>
+            <%= Organization.human_attribute_name 'public_opening_times' %>
+          </strong>
+          <br/>
+          <%= @organization.public_opening_times %>
+          <br/>
+          <strong>
+            <%= Organization.human_attribute_name 'address' %>
+          </strong>
+          <%= @organization.address %>
+          <br/>
+          <strong>
+            <%= Organization.human_attribute_name 'neighborhood' %>
+          </strong>
+          <%= @organization.neighborhood %>
+          <br/>
+          <strong>
+            <%= Organization.human_attribute_name 'city' %>
+          </strong>
+          <%= @organization.city %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= t 'global.information' %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>
+            <%= Organization.human_attribute_name 'created_at' %>
+          </strong>
+          <%= l @organization.created_at, format: :long %>
+          <br/>
+          <strong>
+            <%= Organization.human_attribute_name 'updated_at' %>
+          </strong>
+          <%= l @organization.updated_at, format: :long %>
+          <br/>
+          <strong>
+            <%= t 'global.member_count' %>
+          </strong>
+          <%= @organization.members.count %>
+          <br/>
+          <strong>
+            <%= t 'global.balance' %>
+          </strong>
+          <%= seconds_to_hm(@organization.account.try(:balance) || '—') %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-5">
+    <ul class="nav nav-pills pull-right">
+      <% if superadmin? %>
+        <li>
+          <%= link_to organizations_path do %>
+            <%= glyph :hand_left %>
+            <%= t 'global.back' %>
+          <% end %>
+        </li>
+      <% end %>
+      <% if admin? %>
+        <li>
+          <%= link_to edit_organization_path(@organization) do %>
+            <%= glyph :pencil %>
+            <%= t "global.edit" %>
+          <% end %>
+        </li>
+      <% end %>
+      <% if superadmin? %>
+        <li>
+          <%= link_to organization_path(@organization),
+                      data: { method: :delete, confirm: t("are_you_sure") } do %>
+            <%= glyph :trash %>
+            <%= t "global.delete" %>
+          <% end %>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to give_time_organization_path(@organization) do %>
+          <%= glyph :time %>
+          <%= t "global.give_time" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="panel user-profile">
+  <div class="panel-body">
+    <h3>
+      <%= t 'global.movements' %>
+    </h3>
+    <div class="transactions">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th><%= t 'global.date' %></th>
+            <th><%= t 'global.source_destination' %></th>
+            <th><%= t 'global.announcements' %></th>
+            <th><%= t 'global.reason' %></th>
+            <th><%= t 'global.amount' %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%# TODO: refactor, too complex %>
+          <% @organization.account.movements.order('created_at DESC').limit(10).each do |mv| %>
+            <tr>
+              <td><%= l mv.created_at, format: :long %></td>
+              <td><%= mv.other_side.account %></td>
+              <td><%= mv.transfer.post %></td>
+              <td><%= mv.transfer.reason %></td>
+              <td><%= seconds_to_hm mv.amount %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

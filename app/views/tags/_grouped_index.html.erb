@@ -1,0 +1,24 @@
+<div class="tag_list container_fluid">
+  <% alpha_tags.each_slice(6) do |gr| %>
+    <div class="row">
+      <% gr.each do |kg, vg| %>
+        <div class="col-xs-2 col-md-2">
+          <h2 class="bg-info text-center">
+            <%= kg %>
+          </h2>
+          <% vg.each do |tag, count| %>
+            <p>
+              <div class="badge">
+                <%= count %>
+              </div>
+              <%= link_to get_index_path(post_type.pluralize, tag: tag) do %>
+                <%= glyph count == 1 ? :tag : :tags %>
+                <%= tag %>
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
