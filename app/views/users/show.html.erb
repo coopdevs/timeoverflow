@@ -1,0 +1,229 @@
+<div class="panel user-profile">
+  <div class="panel-body">
+    <h1>
+      <small>
+        <% unless  @member.active %>
+          <%= t ".inactive" %>
+        <% end %>
+      </small>
+      <%= @member.display_name_with_uid %>
+      <small>
+        <% if @user.superadmin? %>
+          <span class="label label-important">
+            <%= t ".superadmin" %>
+          </span>
+        <% end %>
+      </small>
+    </h1>
+    <div class="row">
+      <div class="col-sm-3 col-xs-5 text-center">
+        <% if @user == current_user %>
+          <a href="https://www.gravatar.com" target="_blank">
+            <%= image_tag avatar_url(@user, 160) %>
+          </a>
+        <% else %>
+          <%= image_tag avatar_url(@user, 160) %>
+        <% end %>
+      </div>
+      <div class="col-sm-9 col-xs-7">
+        <%= m @user.description %>
+        <ul class="nav nav-pills pull-right">
+          <% if @user == current_user %>
+            <li>
+              <%= link_to edit_user_path(@user) do %>
+                <%= glyph :pencil %>
+                <%= t "global.edit" %>
+              <% end %>
+            </li>
+          <% end %>
+          <% if admin? || @user != current_user %>
+            <li>
+              <%= link_to give_time_user_path(@user) %>
+                <%= glyph :time %>
+                <%= t "global.give_time" %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <dl class="dl-horizontal">
+          <h3>
+            <%= t "global.contact_details" %>
+          </h3>
+          <% if @user.email_if_real != "" %>
+            <dt>
+              <%= User.human_attribute_name(:email) %>
+            </dt>
+            <dd>
+              <%= @user.email_if_real %>
+            </dd>
+          <% end %>
+          <% phones = [@user.phone, @user.alt_phone].select(&:present?) %>
+          <% if phones.present? %>
+            <dt>
+              <%= t(".phone", count: phones.size) %>
+            </dt>
+            <dd>
+              <%= phones.map(&:to_s).join('—') %>
+            </dd>
+          <% end %>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 offers">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          <%= Offer.model_name.human(count: :many) %>
+          <% if @user == current_user %>
+            <a class="pull-right" href="<%= new_offer_path %>">
+              <%= glyph :plus %>
+            </a>
+          <% end %>
+        </h2>
+      </div>
+      <table class="table table-condensed offers">
+        <% @member.offers.active.each do |post| %>
+          <tr>
+            <td>
+              <%= link_to post, post %>
+            </td>
+            <td>
+              <%= post.description %>
+            </td>
+            <td>
+              <%= link_to glyph(:time),
+                          give_time_user_path(@user, offer: post.id)
+                          title: t("global.give_time") %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="col-sm-6 inquiries">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          <%= Inquiry.model_name.human(count: :many) %>
+          <% if @user == current_user %>
+            <a class="pull-right" href="<%= new_inquiry_path %>">
+              <%= glyph :plus %>
+            </a>
+          <% end %>
+        </h2>
+      </div>
+      <table class="table table-condensed offers">
+        <% @member.inquiries.active.each do |post| %>
+          <tr>
+            <td>
+              <%= link_to post, post %>
+            </td>
+            <td>
+              <%= post.description %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= t(".accounts") %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <% if @member.manager %>
+          <p class="danger">
+            ADMIN
+          </p>
+        <% end %>
+        <p>
+          <strong>
+            <%= t(".created_at") %>
+          </strong>
+          <%= @member.entry_date ? l(@member.entry_date, format: :long) : mdash %>
+          <br/>
+          <strong>
+            <%= t(".user_no") %>
+          </strong>
+          <%= @member.member_uid || mdash %>
+          <br/>
+          <strong>
+            <%= t(".balance") %>
+          </strong>
+          <%= seconds_to_hm(@member.account.try(:balance) || mdash) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel user-profile">
+  <div class="panel-body">
+    <h3>
+      <%= t(".movements") %>
+    </h3>
+    <div class="transactions">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th><%= t '.date' %></th>
+            <th><%= t '.from_to' %></th>
+            <th><%= t '.post' %></th>
+            <th><%= t '.reason' %></th>
+            <th><%= t '.quantity' %></th>
+          </tr>
+        </thead>
+        <% @movements.each do |mv| %>
+          <tr>
+            <td>
+              <%= l mv.created_at.to_date, format: :long %>
+            </td>
+            <td>
+              <% mv.other_side.account.tap do |account|  %>
+                <% if account.accountable.present? %>
+                  <% if account.accountable_type == "Organization" %>
+                    <%= link_to account,
+                                organization_path(account.accountable) %>
+                    <% end %>
+                  <% elsif account.accountable.active %>
+                    <%= link_to account.accountable.display_name_with_uid,
+                                user_path(account.accountable.user) %>
+                    <% end %>
+                  <% else %>
+                    <%= t(".inactive_user") %>
+                  <% end %>
+                <% else %>
+                  <%= t(".deleted_user") %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <%= mv.transfer.try(:post).try(:active?) ? link_to(mv.transfer.post, offer_path(mv.transfer.post)) : mv.transfer.post %>
+            </td>
+            <td>
+              <%= mv.transfer.reason %>
+              <% if mv.transfer.reason.present? && admin? %>
+                <%= link_to delete_reason_transfer_path(mv.transfer), method: :put, data: { confirm: t(".delete_reason") } do %>
+                  <%= glyph :trash %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <%= seconds_to_hm(mv.amount) %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="paginate-align">
+        <%= paginate @movements %>
+      </div>
+    </div>
+  </div>
+</div>
