@@ -91,7 +91,7 @@
               <%= link_to post, post %>
             </td>
             <td>
-              <%= post.description %>
+              <%= strip_tags(post.rendered_description.to_html) %>
             </td>
             <td>
               <%= link_to glyph(:time),
@@ -122,7 +122,7 @@
               <%= link_to post, post %>
             </td>
             <td>
-              <%= post.description %>
+              <%= strip_tags(post.rendered_description.to_html) %>
             </td>
           </tr>
         <% end %>
@@ -155,75 +155,14 @@
           </strong>
           <%= @member.member_uid || mdash %>
           <br/>
-          <strong>
+          <strong class="lead <%= green_red(@member.account&.balance) %>">
             <%= t(".balance") %>
+            <%= seconds_to_hm(@member.account.try(:balance) || mdash) %>
           </strong>
-          <%= seconds_to_hm(@member.account.try(:balance) || mdash) %>
         </p>
       </div>
     </div>
   </div>
 </div>
-<div class="panel user-profile">
-  <div class="panel-body">
-    <h3>
-      <%= t(".movements") %>
-    </h3>
-    <div class="transactions">
-      <table class="table table-condensed">
-        <thead>
-          <tr>
-            <th><%= t '.date' %></th>
-            <th><%= t '.from_to' %></th>
-            <th><%= t '.post' %></th>
-            <th><%= t '.reason' %></th>
-            <th><%= t '.quantity' %></th>
-          </tr>
-        </thead>
-        <% @movements.each do |mv| %>
-          <tr>
-            <td>
-              <%= l mv.created_at.to_date, format: :long %>
-            </td>
-            <td>
-              <% mv.other_side.account.tap do |account|  %>
-                <% if account.accountable.present? %>
-                  <% if account.accountable_type == "Organization" %>
-                    <%= link_to account,
-                                organization_path(account.accountable) %>
-                    <% end %>
-                  <% elsif account.accountable.active %>
-                    <%= link_to account.accountable.display_name_with_uid,
-                                user_path(account.accountable.user) %>
-                    <% end %>
-                  <% else %>
-                    <%= t(".inactive_user") %>
-                  <% end %>
-                <% else %>
-                  <%= t(".deleted_user") %>
-                <% end %>
-              <% end %>
-            </td>
-            <td>
-              <%= mv.transfer.try(:post).try(:active?) ? link_to(mv.transfer.post, offer_path(mv.transfer.post)) : mv.transfer.post %>
-            </td>
-            <td>
-              <%= mv.transfer.reason %>
-              <% if mv.transfer.reason.present? && admin? %>
-                <%= link_to delete_reason_transfer_path(mv.transfer), method: :put, data: { confirm: t(".delete_reason") } do %>
-                  <%= glyph :trash %>
-                <% end %>
-              <% end %>
-            </td>
-            <td>
-              <%= seconds_to_hm(mv.amount) %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-      <div class="paginate-align">
-        <%= paginate @movements %>
-      </div>
-    </div>
-  </div>
-</div>
+
+<%= render 'shared/movements' %>

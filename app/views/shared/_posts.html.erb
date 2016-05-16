@@ -4,7 +4,7 @@
       <%= link_to post.title, post %>
     </h4>
     <p>
-      <%= post.description %>
+      <%= strip_tags m(post.description) %>
     </p>
     <p>
       <small>
@@ -18,6 +18,9 @@
           <%= glyph :tag %>
           <%= link_to tag, get_index_path(post,tag: tag) do %>
         <% end %>
+        <span class="pull-right">
+          <%= l post.created_at.to_date, format: :long %>
+        </span>
       </small>
     </p>
   </div>

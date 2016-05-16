@@ -175,13 +175,11 @@ en:
       created_at: "Registered:"
       user_no: "User #:"
       balance: "Balance:"
-      movements: "Transactions"
       date: Date
       from_to: From/To
       post: Post
       reason: Reason
       quantity: Quantity
-      delete_reason: Are you sure to delete this comment?
       inactive_user: The user isn't active
       deleted_user:  The user no longer exists
 
@@ -365,3 +363,10 @@ en:
       edit_org: "Update %{organization}"
     report:
       report_title: "REPORT"
+
+  shared:
+    movements:
+      delete_reason: Are you sure to delete this comment?
+      movements: Movements
+    post_form:
+      you_can_use: You can use

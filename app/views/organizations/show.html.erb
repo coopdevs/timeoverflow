@@ -119,35 +119,6 @@
   </div>
 </div>
 
-<div class="panel user-profile">
-  <div class="panel-body">
-    <h3>
-      <%= t 'global.movements' %>
-    </h3>
-    <div class="transactions">
-      <table class="table table-condensed">
-        <thead>
-          <tr>
-            <th><%= t 'global.date' %></th>
-            <th><%= t 'global.source_destination' %></th>
-            <th><%= t 'global.announcements' %></th>
-            <th><%= t 'global.reason' %></th>
-            <th><%= t 'global.amount' %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <%# TODO: refactor, too complex %>
-          <% @organization.account.movements.order('created_at DESC').limit(10).each do |mv| %>
-            <tr>
-              <td><%= l mv.created_at, format: :long %></td>
-              <td><%= mv.other_side.account %></td>
-              <td><%= mv.transfer.post %></td>
-              <td><%= mv.transfer.reason %></td>
-              <td><%= seconds_to_hm mv.amount %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<% if current_user %>
+  <%= render "shared/movements" %>
+<% end %>

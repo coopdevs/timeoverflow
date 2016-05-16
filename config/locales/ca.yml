@@ -175,13 +175,11 @@ ca:
       created_at: "Alta:"
       user_no: "núm. Usuari:"
       balance: "Balanç:"
-      movements: "Moviments"
       date: Data
       from_to: Origen/Destí
       post: Anunci
       reason: Raó
       quantity: Quantitat
-      delete_reason: Esteu segur d'esborrar aquest comentari?
       inactive_user: L'usuari no està actiu
       deleted_user:  L'usuari ja no existeix
 
@@ -369,3 +367,10 @@ ca:
       previous: "&lsaquo; Anterior"
       next: "Següent &rsaquo;"
       truncate: "&hellip;"
+
+  shared:
+    movements:
+      delete_reason: Esteu segur d'esborrar aquest comentari?
+      movements: Moviments
+    post_form:
+      you_can_use: Pots fer servir

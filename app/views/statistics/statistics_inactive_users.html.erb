@@ -15,7 +15,6 @@
       <tbody></tbody>
       <%# Por días sin movimientos %>
       <% @members.includes(:account)
-                 .reject { |a| a.days_without_swaps.zero? }
                  .sort_by(&:days_without_swaps)
                  .reverse
                  .each do |mem| %>
@@ -23,7 +22,7 @@
           <td><%= mem.member_uid %></td>
           <td><%= link_to mem.user.username, mem.user %></td>
           <td><%= mem.days_without_swaps %></td>
-          <td><%= (mem.account.balance.blank? || mem.account.balance.zero?) ? t(".no_movements") : l(mem.account.updated_at, format: :long) %></td>
+          <td><%= (mem.account.updated_at == mem.account.created_at) ? t(".no_movements") : l(mem.account.updated_at, format: :long) %></td>
         </tr>
       <% end %>
     </table>
