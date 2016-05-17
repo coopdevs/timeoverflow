@@ -60,7 +60,7 @@
         text: "<%= j t('.per_month') %>"
       },
       xAxis: {
-        categories: <%= @months_names.to_json %>
+        categories: <%= raw @months_names.to_json %>
       },
       yAxis: {
         min: 0,
