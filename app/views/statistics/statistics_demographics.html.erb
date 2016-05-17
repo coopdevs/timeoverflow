@@ -12,7 +12,7 @@
   $(function () {
     // Demograficos
     // Por edades
-    var ages = <%= j @age_counts.to_a.to_json %>;
+    var ages = <%= raw @age_counts.to_a.to_json %>;
     $('#pie').highcharts({
       chart: {
         plotBackgroundColor: null,
