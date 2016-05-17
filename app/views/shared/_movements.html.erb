@@ -23,13 +23,11 @@
               <% mv.other_side.account.tap do |account| %>
                 <% if account.accountable.present? %>
                   <% if account.accountable_type == "Organization" %>
-                    <%= link_to account, %>
-                      organization_path(account.accountable)
-                    <% end %>
+                    <%= link_to account,
+                        organization_path(account.accountable) %>
                   <% elsif account.accountable.active %>
-                    <%= link_to account.accountable.display_name_with_uid, %>
-                      user_path(account.accountable.user)
-                    <% end %>
+                    <%= link_to account.accountable.display_name_with_uid,
+                        user_path(account.accountable.user) %>
                   <% else %>
                     <%= t(".inactive_user") %>
                   <% end %>
@@ -39,8 +37,8 @@
               <% end %>
             </td>
             <td>
-              <% if mv.transfer.try(:post).try(:active?) %>
-                <%= link_to(mv.transfer.post, offer_path(mv.transfer.post)) %>
+              <% if mv.transfer&.post&.active? %>
+                <%= link_to mv.transfer.post, offer_path(mv.transfer.post) %>
               <% else %>
                 <%= mv.transfer.post %>
               <% end %>
@@ -48,11 +46,10 @@
             <td>
               <%= mv.transfer.reason %>
               <% if mv.transfer.reason.present? && admin? %>
-                <%= link_to delete_reason_transfer_path(mv.transfer),
+                <%= link_to glyph(:trash),
+                            delete_reason_transfer_path(mv.transfer),
                             method: :put,
-                            data: { confirm: t(".delete_reason") } do %>
-                  <span class="glyphicon glyphicon-trash"></span>
-                <% end %>
+                            data: { confirm: t(".delete_reason") } %>
               <% end %>
             </td>
             <td>
