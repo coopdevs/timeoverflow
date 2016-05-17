@@ -7,8 +7,9 @@ $navs-bg-color: #080808;
 $white: #ffffff;
 $border: #e1e8ed;
 
-[ng\:cloak], [ng-cloak], .ng-cloak {
-  visibility: hidden!important;
+[ng-cloak],
+.ng-cloak {
+  visibility: hidden !important;
 }
 
 body[data-action="devise/sessions-new"], body[data-action="devise/sessions-create"] {
