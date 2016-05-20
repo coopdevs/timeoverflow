@@ -1,7 +1,4 @@
-= render "shared/post", post: @offer
-
-
-%p.actions
+%p.actions.text-right
   - if admin? or @offer.user == current_user
     = link_to edit_offer_path(@offer), class: "btn btn-warning" do
       = glyph :pencil
@@ -14,3 +11,5 @@
     = link_to(give_time_user_path(@offer.user, offer: @offer.id), {:class => "btn btn-success"}) do
       = glyph(:time)
       = t ".give_time_for"
+
+= render "shared/post", post: @offer

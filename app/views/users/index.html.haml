@@ -18,52 +18,53 @@
             %span.glyphicon.glyphicon-plus
             = t "helpers.submit.create", model: User.model_name.human
 
-  %table.table.table-hover.table-condensed.users.panel{"ng-cloak"=>""}
-    %thead
-      %tr
-      %tr
-        %th
-        %th
-          %a{ href: "", ng_click: "sortBy('member_id')" }
-            ID
-            %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-member_id'" }
-            %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'member_id'" }
-        %th
-          %a{ href: "", ng_click: "sortBy('username')" }
-            = User.human_attribute_name(:username)
-            %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-username'" }
-            %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'username'" }
-        %th
-          %a{ href: "", ng_click: "sortBy('email')" }
-            = User.human_attribute_name(:email)
-            %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-email'" }
-            %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'email'" }
-        %th= User.human_attribute_name(:phone)
-        %th= User.human_attribute_name(:alt_phone)
-        %th
-          %a{ href: "", ng_click: "sortBy('balance')" }
-            = Account.human_attribute_name(:balance)
-            %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-balance'" }
-            %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'balance'" }
-        - if current_user.manages? current_organization
+  .table-responsive
+    %table.table.table-hover.table-condensed.users.panel{"ng-cloak"=>""}
+      %thead
+        %tr
+        %tr
           %th
-            %span.glyphicon.glyphicon-hand-down
-            =t(".actions")
+          %th
+            %a{ href: "", ng_click: "sortBy('member_id')" }
+              ID
+              %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-member_id'" }
+              %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'member_id'" }
+          %th
+            %a{ href: "", ng_click: "sortBy('username')" }
+              = User.human_attribute_name(:username)
+              %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-username'" }
+              %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'username'" }
+          %th
+            %a{ href: "", ng_click: "sortBy('email')" }
+              = User.human_attribute_name(:email)
+              %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-email'" }
+              %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'email'" }
+          %th= User.human_attribute_name(:phone)
+          %th= User.human_attribute_name(:alt_phone)
+          %th
+            %a{ href: "", ng_click: "sortBy('balance')" }
+              = Account.human_attribute_name(:balance)
+              %span.glyphicon.glyphicon-chevron-down{ ng_if: "sort == '-balance'" }
+              %span.glyphicon.glyphicon-chevron-up{ ng_if: "sort == 'balance'" }
+          - if current_user.manages? current_organization
+            %th
+              %span.glyphicon.glyphicon-hand-down
+              =t(".actions")
 
-    %tbody
-      = render partial: "user_rows", locals: {users: @users}
+      %tbody
+        = render partial: "user_rows", locals: {users: @users}
 
-%script{type: "text/ng-template", id: "confirm_toggle_manager.html"}
-  .modal-body= t('.manage_warning_angular')
-  .modal-footer
-    %button.btn.btn-primary{"ng-click" => "$close(true)"} OK
-    %button.btn.btn-warning{"ng-click" => "$dismiss()"} NO
+  %script{type: "text/ng-template", id: "confirm_toggle_manager.html"}
+    .modal-body= t('.manage_warning_angular')
+    .modal-footer
+      %button.btn.btn-primary{"ng-click" => "$close(true)"} OK
+      %button.btn.btn-warning{"ng-click" => "$dismiss()"} NO
 
-%script{type: "text/ng-template", id: "confirm_toggle_active.html"}
-  .modal-body= t('.active_warning_angular')
-  .modal-footer
-    %button.btn.btn-primary{"ng-click" => "$close(true)"} OK
-    %button.btn.btn-warning{"ng-click" => "$dismiss()"} NO
+  %script{type: "text/ng-template", id: "confirm_toggle_active.html"}
+    .modal-body= t('.active_warning_angular')
+    .modal-footer
+      %button.btn.btn-primary{"ng-click" => "$close(true)"} OK
+      %button.btn.btn-warning{"ng-click" => "$dismiss()"} NO
 
 :javascript
   angular.module("timeoverflow").run(function ($rootScope, $location, $http, $modal) {

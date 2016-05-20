@@ -1,6 +1,4 @@
-= render "shared/post", post: @inquiry
-
-%p.actions
+%p.actions.text-right
 
   - if admin? or @inquiry.user == current_user
     = link_to edit_inquiry_path(@inquiry), class: "btn btn-warning" do
@@ -11,3 +9,4 @@
       = glyph :trash
       = t "global.delete"
 
+= render "shared/post", post: @inquiry
