@@ -12,8 +12,6 @@ $border: #e1e8ed;
   visibility: hidden !important;
 }
 
-*{word-wrap:break-word;}
-
 body[data-action="devise/sessions-new"], body[data-action="devise/sessions-create"] {
   background: image-url('red.jpg') no-repeat center center fixed;
   background-size: cover;

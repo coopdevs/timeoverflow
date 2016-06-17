@@ -25,7 +25,7 @@
           <%= image_tag avatar_url(@user, 160) %>
         <% end %>
       </div>
-      <div class="col-sm-9 col-xs-7">
+      <div class="col-sm-9 col-xs-7 break-word">
         <%= m @user.description %>
         <ul class="nav nav-pills pull-right">
           <% if @user == current_user %>
@@ -73,7 +73,7 @@
 </div>
 <div class="row">
   <div class="col-sm-6 offers">
-    <div class="panel panel-default">
+    <div class="panel panel-default break-word">
       <div class="panel-heading">
         <h2 class="panel-title">
           <%= Offer.model_name.human(count: :many) %>
@@ -84,27 +84,26 @@
           <% end %>
         </h2>
       </div>
-      <table class="table table-condensed offers">
         <% @member.offers.active.each do |post| %>
-          <tr>
-            <td>
+          <div class="row panel-body">
+            <div class="col-sm-3">
               <%= link_to post, post %>
-            </td>
-            <td>
-              <%= strip_tags(post.rendered_description.to_html) %>
-            </td>
-            <td>
+            </div>
+            <div class="col-sm-8">
+              <%= strip_tags(post.description) %>
+            </div>
+            <div class="col-sm-1">
               <%= link_to glyph(:time),
                           give_time_user_path(@user, offer: post.id),
                           title: t("global.give_time") %>
-            </td>
-          </tr>
+            </div>
+          </div>
         <% end %>
       </table>
     </div>
   </div>
   <div class="col-sm-6 inquiries">
-    <div class="panel panel-default">
+    <div class="panel panel-default break-word">
       <div class="panel-heading">
         <h2 class="panel-title">
           <%= Inquiry.model_name.human(count: :many) %>
@@ -115,16 +114,15 @@
           <% end %>
         </h2>
       </div>
-      <table class="table table-condensed offers">
         <% @member.inquiries.active.each do |post| %>
-          <tr>
-            <td>
+          <div class="row panel-body">
+            <div class="col-sm-3">
               <%= link_to post, post %>
-            </td>
-            <td>
-              <%= strip_tags(post.rendered_description.to_html) %>
-            </td>
-          </tr>
+            </div>
+            <div class="col-sm-9">
+              <%= strip_tags(post.description) %>
+            </div>
+          </div>
         <% end %>
       </table>
     </div>
