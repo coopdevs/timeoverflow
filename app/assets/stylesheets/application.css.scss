@@ -51,12 +51,12 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 }
 
 .break-word {
-  word-wrap:break-word;
+  word-wrap: break-word;
 }
 
 .post-description img {
+  float: left;
   max-width: 60%;
-  float:left;
 }
 
 #new_transfer {
@@ -226,11 +226,10 @@ label[required]::after{
 
 .navbar-form {
   padding: 0;
-  background-color:transparent;
+  background-color: transparent;
 }
 
-form .checkbox input[type="checkbox"]
-{
- position:relative;
- margin-left:5px;
+form .checkbox input[type="checkbox"] {
+  margin-left: 5px;
+  position: relative;
 }
