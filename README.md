@@ -38,7 +38,7 @@ de Tiempo y también tienen la posibilidad de consultar el extracto de su cuenta
 
 ## Notas para desarrollo
 
-Únete al equipo de colaboradores!! Gestionamos las tareas en Redbooth.com
+Únete al equipo de colaboradores!!
 
 Visita la guia para empezar a desarrollar para timeoverflow en https://github.com/coopdevs/timeoverflow/wiki/Getting-started
 
