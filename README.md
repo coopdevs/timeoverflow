@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow)
 [![Dependencies](https://gemnasium.com/coopdevs/timeoverflow.svg)](https://gemnasium.com/coopdevs/timeoverflow)
 
-:bank: :hourglass: Sistema de gestión de Banco de Tiempo.
+:bank: :hourglass: Sistema de gestión de Banco de Tiempo. [Saber más sobre Bancos de Tiempo](http://www.bdtonline.org/)
 
 TimeOverflow es un software desarrollado de manera altruista para ofrecer un sistema que facilite la interacción
 de los miembros y la gestión de los Bancos de Tiempo. El modelo sobre el que se trabaja está guiado por las necesidades de los Bancos de Tiempo
