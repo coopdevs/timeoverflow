@@ -34,9 +34,13 @@ así como poder publicar anuncios de ofertas/demandas explicados en detalle.
 Por otro lado los miembros pueden pagarse los servicios de manera virtual para ahorrarse el paso por la oficina del Banco
 de Tiempo y también tienen la posibilidad de consultar el extracto de su cuenta.
 
-## Notas para desarrollo
+# Contribuciones
 
-Únete al equipo de colaboradores!!
+## Únete al equipo de colaboradores!!
+
+Entra en nuestro Discourse y saludanos ;) [community.coopdevs.org](http://community.coopdevs.org/)
+
+Los viernes nos encuentras en Freenode IRC [#coopdevs](https://webchat.freenode.net/?channels=coopdevs)
 
 Visita [la guia para empezar a desarrollar para timeoverflow](https://github.com/coopdevs/timeoverflow/wiki/Getting-started)
 
