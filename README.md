@@ -40,9 +40,7 @@ de Tiempo y también tienen la posibilidad de consultar el extracto de su cuenta
 
 Únete al equipo de colaboradores!! Gestionamos las tareas en Redbooth.com
 
-Si quieres probar la plataforma en local, necesitas PostgreSQL y ruby en sus últimas versiones.
-
-Para más información visita la guia para empezar a desarrollar para timeoverflow en https://github.com/coopdevs/timeoverflow/wiki/Getting-started
+Visita la guia para empezar a desarrollar para timeoverflow en https://github.com/coopdevs/timeoverflow/wiki/Getting-started
 
 ## License
 
