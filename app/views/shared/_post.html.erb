@@ -53,7 +53,11 @@
     <% end %>
   </div>
   <div class="col-md-9 lead">
-    <%= m post.description %>
+    <div class="panel panel-info break-word">
+      <div class="panel-body post-description">
+        <%= m post.description %>
+      </div>
+    </div>
   </div>
 </div>
 <% unless current_user %>

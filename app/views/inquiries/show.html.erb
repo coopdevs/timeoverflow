@@ -1,5 +1,4 @@
-<%= render "shared/post", post: @inquiry %>
-<p class="actions">
+<p class="actions text-right">
   <% if admin? || @inquiry.user == current_user %>
     <%= link_to edit_inquiry_path(@inquiry), class: "btn btn-warning" do %>
       <%= glyph :pencil %>
@@ -13,3 +12,4 @@
     <% end %>
   <% end %>
 </p>
+<%= render "shared/post", post: @inquiry %>
