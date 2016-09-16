@@ -1,0 +1,23 @@
+<h1>
+  <%= t 'global.statistics' %>: <%= t '.without_offers' %>
+</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th><%= User.human_attribute_name(:username) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @members.reject { |mem| mem.offers.present? }.each do |mem| %>
+          <tr>
+            <td><%= mem.member_uid %></td>
+            <td><%= link_to mem.user.username, mem.user %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

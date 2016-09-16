@@ -1,0 +1,48 @@
+<nav class="navbar navbar-static-top navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">TimeOverflow</a>
+    </div>
+    
+    <ul class="nav navbar-nav">  
+      <% if current_user && current_organization %>
+        <%= render 'application/menus/user_list_link' %>
+        <%= render 'application/menus/offers_dashboard_link' %>
+        <%= render 'application/menus/inquiries_list_link' %>
+   </ul>
+    <div id="navbar-collapse" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+          <% if current_user.manages? current_organization %>
+            <%= render 'application/menus/organization_reports_menu' %>
+            <%= render 'application/menus/organization_statistics_menu' %>
+            <%= render 'application/menus/organization_listings_menu' %>
+          <% else %>
+            <%= render 'application/menus/offers_by_tag_link' %>
+          <% end %>
+      <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <%= render 'application/menus/user_admin_menu' %>
+        <% else %>
+          <li>
+            <%= link_to t("layouts.application.about"), page_path("about") %>
+          </li>
+          <li>
+            <%= link_to t("layouts.application.login"), new_user_session_path %>
+          </li>
+        <% end %>
+        <li class="divider" role="presentation"></li>
+
+        <%= render 'application/menus/language_switcher' %>
+      </ul>
+    </div>
+  </div>
+</nav>

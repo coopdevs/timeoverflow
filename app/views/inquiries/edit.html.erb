@@ -1,0 +1,5 @@
+<h1>
+  <%= @inquiry.title %>
+  <small><%= t ".edit" %></small>
+</h1>
+<%= render "shared/post_form", post: @inquiry, label_button: t(".submit") %>

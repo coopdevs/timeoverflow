@@ -7,6 +7,11 @@ $navs-bg-color: #080808;
 $white: #ffffff;
 $border: #e1e8ed;
 
+[ng-cloak],
+.ng-cloak {
+  visibility: hidden !important;
+}
+
 body[data-action="devise/sessions-new"], body[data-action="devise/sessions-create"] {
   background: image-url('red.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -45,8 +50,13 @@ body[data-action="devise/sessions-new"], body[data-action="devise/sessions-creat
 
 }
 
-.post-description {
-  white-space: pre-line;
+.break-word {
+  word-wrap: break-word;
+}
+
+.post-description img {
+  float: left;
+  max-width: 60%;
 }
 
 #new_transfer {
@@ -119,6 +129,10 @@ table.users {
     h1 {
       margin-bottom: 20px;
       margin-top: 0;
+    }
+
+    img {
+      max-width: 100%;
     }
   }
 
@@ -212,5 +226,10 @@ label[required]::after{
 
 .navbar-form {
   padding: 0;
+  background-color: transparent;
 }
 
+form .checkbox input[type="checkbox"] {
+  margin-left: 5px;
+  position: relative;
+}

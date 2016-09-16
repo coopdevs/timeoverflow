@@ -1,0 +1,27 @@
+<div class="row">
+  <table class="table table-condensed table-bordered table-striped">
+    <thead>
+      <tr>
+        <!-- %th= User.human_attribute_name(:registration_number)
+        -->
+        <th>N</th>
+        <th><%= User.human_attribute_name :username %></th>
+        <th><%= User.human_attribute_name :email %></th>
+        <th><%= User.human_attribute_name :phone %></th>
+        <th><%= User.human_attribute_name :alt_phone %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @members.each do |u| %>
+        <tr>
+          <th><%= u.member_uid %></th>
+          <td><%= u.user.username %></td>
+          <td><%= u.user.email_if_real %></td>
+          <td><%= u.user.phone %></td>
+          <td><%= u.user.alt_phone %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot></tfoot>
+  </table>
+</div>

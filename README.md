@@ -4,9 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow)
 [![Dependencies](https://gemnasium.com/coopdevs/timeoverflow.svg)](https://gemnasium.com/coopdevs/timeoverflow)
 
-:bank: :hourglass: Sistema de Banco de Tiempo.
-
-Mira la nueva página de TimeOverflow: <http://coopdevs.github.io/timeoverflow/>
+:bank: :hourglass: Sistema de gestión de Banco de Tiempo. [Saber más sobre Bancos de Tiempo](http://www.bdtonline.org/)
 
 TimeOverflow es un software desarrollado de manera altruista para ofrecer un sistema que facilite la interacción
 de los miembros y la gestión de los Bancos de Tiempo. El modelo sobre el que se trabaja está guiado por las necesidades de los Bancos de Tiempo
@@ -15,7 +13,7 @@ con tres niveles de privilegios: superadmin, admin (solo gestiona un Banco) y mi
 
 TimeOverflow está dividido en 2 grandes bloques:
 
-* **Sistema de gestión**
+* **Sistema de gestión para los administradores**
 * **Red social y banca on-line para los usuarios**
 
 > **NOTA** Un Banco de Tiempo físico puede funcionar solo con el bloque de gestión, podría ocurrir, por ejemplo, que la inmensa mayoria de sus miembros no usen Internet y podrían querer funcionar solo con listados, cheques y una oficina de gestión.
@@ -36,13 +34,15 @@ así como poder publicar anuncios de ofertas/demandas explicados en detalle.
 Por otro lado los miembros pueden pagarse los servicios de manera virtual para ahorrarse el paso por la oficina del Banco
 de Tiempo y también tienen la posibilidad de consultar el extracto de su cuenta.
 
-## Notas para desarrollo
+# Contribuciones
 
-Únete al equipo de colaboradores!! Gestionamos las tareas en Redbooth.com
+## Únete al equipo de colaboradores!!
 
-Si quieres probar la plataforma en local, necesitas PostgreSQL y ruby en sus últimas versiones.
+Entra en nuestro Discourse y saludanos ;) [community.coopdevs.org](http://community.coopdevs.org/)
 
-Para más información visita la guia para empezar a desarrollar para timeoverflow en https://github.com/coopdevs/timeoverflow/wiki/Getting-started
+Los viernes nos encuentras en Freenode IRC [#coopdevs](https://webchat.freenode.net/?channels=coopdevs)
+
+Visita [la guia para empezar a desarrollar para timeoverflow](https://github.com/coopdevs/timeoverflow/wiki/Getting-started)
 
 ## License
 

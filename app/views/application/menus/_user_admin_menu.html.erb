@@ -1,0 +1,42 @@
+<li class="dropdown">
+  <a class="dropdown-toggle" href="#">
+    <%= image_tag avatar_url(current_user), style: "margin: -8px auto" %>
+    <%= current_user.email %>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <% if superadmin? %>
+      <li role="presentation">
+        <%= link_to admin_root_path do %>
+          <%= glyph :cog %>
+          <%= t "application.navbar.adminshort" %>
+        <% end %>
+      </li>
+    <% end %>
+    <li role="presentation">
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <%= glyph :log_out %>
+        <%= t "application.navbar.sign_out" %>
+      <% end %>
+    </li>
+    <li class="divider" role="presentation"></li>
+    <% if current_user.organizations.count > 1 %>
+      <%= render 'application/menus/organization_switcher' %>
+      <li class="divider" role="presentation"></li>
+    <% end %>
+    <li role="presentation">
+      <%= link_to current_user do %>
+        <%= glyph :user %>
+        <%= t "layouts.application.edit_profile" %>
+      <% end %>
+    </li>
+    <% current_user.members.where(manager: true).each do |m| %>
+      <li role="presentation">
+        <%= link_to m.organization do %>
+          <%= glyph :pencil %>
+          <%= t "layouts.application.edit_org", organization: m.organization %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</li>

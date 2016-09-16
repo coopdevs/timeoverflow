@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>
+      <%= t('.report_title') %>
+    </title>
+    <%= stylesheet_link_tag 'libs', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link href="/favicon.ico" rel="shortcut icon">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row exports">
+        <%= t 'reports.download' %>
+        <%= link_to 'CSV', url_for(params.merge(format: :csv)) %>
+        <%= link_to 'PDF', url_for(params.merge(format: :pdf)) %>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

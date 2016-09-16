@@ -1,0 +1,31 @@
+<div class="jumbotron">
+  <p class="lead">
+    <%= t "application.organization_list.welcome", user: current_user.to_s %>
+    <br/>
+    <%= t "application.organization_list.not_member" %>
+  </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t "application.organization_list.time_bank" %></th>
+        <th><%= t "application.organization_list.email" %></th>
+        <th><%= t "application.organization_list.phone" %></th>
+        <th><%= t "application.organization_list.public_opening_times" %></th>
+        <th><%= t "application.organization_list.city" %></th>
+        <th><%= t "application.organization_list.neighborhood" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Organization.find_each do |org| %>
+        <tr>
+          <td><%= org.name %></td>
+          <td><%= org.email %></td>
+          <td><%= org.phone %></td>
+          <td><%= org.public_opening_times %></td>
+          <td><%= org.city %></td>
+          <td><%= org.neighborhood %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,64 @@
+<%= show_error_messages! post %>
+<%= form_for post, html: { name: "form", novalidate: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :title, required: true %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: "10", class: "form-control" %>
+    <p class="small text-right">
+      <%= t ".you_can_use" %>
+      <a href="https://<%= I18n.locale %>.wikipedia.org/wiki/Markdown"
+         title="Markdown">Markdown</a>
+    </p>
+
+  </div>
+  <div class="form-group">
+    <%= f.label :category, required: true %>
+    <%# TODO: too complex %>
+    <%= f.select :category_id,
+                 Category.all
+                         .sort_by { |a| a.name.downcase }
+                         .map { |cat| [cat.name, cat.id] },
+                 { include_blank: true },
+                 class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tag_list %>
+    <%= f.select :tag_list,
+                 f.object.tags || [],
+                 { selected: f.object.tags },
+                 multiple: true,
+                 data: { placeholder: t('application.tips.entertag') },
+                 id: "tags-js",
+                 class: "form-control" %>
+  </div>
+  <% if current_user.manages?(current_organization) %>
+    <div class="form-group">
+      <%= f.label :user, class: "control-label" %>
+      <%# TODO: too complex %>
+      <%= f.select :user_id,
+                   options_for_select(current_organization.members.active
+                                                          .order("members.member_uid")
+                                                          .map { |mem| ["#{mem.member_uid} #{mem.user.to_s}", mem.user_id] },
+                                      selected: post.user.id || current_user.id),
+                   {},
+                   id: "select2",
+                   class: "form-control",
+                   required: true %>
+    </div>
+    <%= f.hidden_field :publisher_id, value: current_user.id %>
+  <% end %>
+  <p class="help-block">
+    <%= t "global.required_field" %>
+  </p>
+  <%= f.button label_button, class: "btn btn-default", style: "margin-bottom: 20px;" %>
+<% end %>
+<script>
+  $("#select2").select2({
+    formatNoMatches: function () {
+      return "<%= j t('application.tips.user_not_found') %>";
+    }
+  });
+</script>

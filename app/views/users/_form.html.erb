@@ -1,0 +1,40 @@
+<%= show_error_messages!(@user) %>
+<%= simple_form_for @user do |f| %>
+  <div class="form-inputs">
+    <%= f.input :username %>
+    <% if admin? %>
+      <%= f.input :email %>
+      <% if @user.unconfirmed_email.present? %>
+        <%= f.input :unconfirmed_email, readonly: true %>
+      <% end %>
+    <% else %>
+      <%= f.input :email, readonly: true %>
+    <% end %>
+    <%# if current_user.try :superadmin? %>
+      <%#= f.association :organization, include_blank: false %>
+      <%#= f.input :superadmin, as: :boolean, label: false, inline_label: true %>
+    <%# end %>
+    <%#  if current_user.try :admin? %>
+      <%#= f.input :admin, as: :boolean, label: false, inline_label: true, hint: t(".admin_warning") %>
+    <%# end %>
+    <%= f.input :phone %>
+    <%= f.input :alt_phone %>
+    <%= f.input :date_of_birth,
+                start_year: Date.today.year - 90,
+                end_year: Date.today.year - 12,
+                include_blank: :true %>
+    <%= f.input :description, as: "text" %>
+    <%#= f.association :categories, label_method: :fqn, input_html: {style: 'width: 100%'} %>
+    <div class="checkbox">
+      <%= f.label :notifications %>
+      <%= f.check_box :notifications %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <% if @user.new_record? %>
+      <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more' %>
+    <% end %>
+    <%= link_to t('users.new.cancel'), users_path, class: "btn btn-default" %>
+  </div>
+<% end %>

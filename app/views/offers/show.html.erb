@@ -1,0 +1,22 @@
+<p class="actions text-right">
+  <% if admin? or @offer.user == current_user %>
+    <%= link_to edit_offer_path(@offer), class: "btn btn-warning" do %>
+      <%= glyph :pencil %>
+      <%= t "global.edit" %>
+    <% end %>
+    <%= link_to @offer,
+                data: { method: :DELETE, confirm: "sure?" },
+                class: "btn btn-danger" do %>
+      <%= glyph :trash %>
+      <%= t "global.delete" %>
+    <% end %>
+  <% end %>
+  <% if current_user and @offer.user != current_user %>
+    <%= link_to give_time_user_path(@offer.user, offer: @offer.id),
+                class: "btn btn-success" do %>
+      <%= glyph :time %>
+      <%= t ".give_time_for" %>
+    <% end %>
+  <% end %>
+</p>
+<%= render "shared/post", post: @offer %>

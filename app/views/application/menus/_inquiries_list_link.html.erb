@@ -1,0 +1,6 @@
+<li class="<%= "active" if current_page?(inquiries_path) %>">
+  <%= link_to inquiries_path do %>
+    <%= glyph :inquiry %>
+    <%= Inquiry.model_name.human(count: :many) %>
+  <% end %>
+</li>

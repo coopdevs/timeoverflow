@@ -1,0 +1,22 @@
+<h1>
+  <%= t '.maintitle' %>
+  <%= form_tag '/tags/alpha_grouped_index', method: :get do %>
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-primary active switch_offer-js">
+        <%= radio_button_tag 'switch_offer', 'offer', true %>
+        <%= Offer.model_name.human count: :many %>
+      </label>
+      <label class="btn btn-primary switch_inquiry-js">
+        <%= radio_button_tag 'switch_inquiry', 'inquiry' %>
+        <%= Inquiry.model_name.human count: :many %>
+      </label>
+    </div>
+  <% end %>
+</h1>
+<div class="tag_management">
+  <div class="alpha_tag_list col-xs-12 col-md-12">
+    <%= render 'grouped_index',
+               alpha_tags: @alpha_tags,
+               post_type: params[:post_type] || 'offer' %>
+  </div>
+</div>

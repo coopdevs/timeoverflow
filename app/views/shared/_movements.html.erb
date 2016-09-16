@@ -1,0 +1,68 @@
+<div class="panel user-profile">
+  <div class="panel-body">
+    <h3>
+      <%= t(".movements") %>
+    </h3>
+    <div class="transactions table-responsive">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th><%= t "global.date" %></th>
+            <th><%= t "global.source_destination" %></th>
+            <th><%= t "global.announcements" %></th>
+            <th><%= t "global.reason" %></th>
+            <th><%= t "global.amount" %></th>
+          </tr>
+        </thead>
+        <% @movements.each do |mv| %>
+          <tr>
+            <td>
+              <%= l mv.created_at.to_date, format: :long %>
+            </td>
+            <td>
+              <% mv.other_side.account.tap do |account| %>
+                <% if account.accountable.present? %>
+                  <% if account.accountable_type == "Organization" %>
+                    <%= link_to account,
+                        organization_path(account.accountable) %>
+                  <% elsif account.accountable.active %>
+                    <%= link_to account.accountable.display_name_with_uid,
+                        user_path(account.accountable.user) %>
+                  <% else %>
+                    <%= t(".inactive_user") %>
+                  <% end %>
+                <% else %>
+                  <%= t(".deleted_user") %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <% if mv.transfer&.post&.active? %>
+                <%= link_to mv.transfer.post, offer_path(mv.transfer.post) %>
+              <% else %>
+                <%= mv.transfer.post %>
+              <% end %>
+            </td>
+            <td>
+              <%= mv.transfer.reason %>
+              <% if mv.transfer.reason.present? && admin? %>
+                <%= link_to glyph(:trash),
+                            delete_reason_transfer_path(mv.transfer),
+                            method: :put,
+                            data: { confirm: t(".delete_reason") } %>
+              <% end %>
+            </td>
+            <td>
+              <strong class="<%= green_red(mv.amount) %>">
+                <%= seconds_to_hm(mv.amount) %>
+              </strong>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="paginate-align">
+        <%= paginate @movements %>
+      </div>
+    </div>
+  </div>
+</div>

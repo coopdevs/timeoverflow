@@ -1,0 +1,47 @@
+<h1>
+  <%= t 'global.statistics' %>: <%= t '.demographics' %>
+</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div id="pie"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  $(function () {
+    // Demograficos
+    // Por edades
+    var ages = <%= raw @age_counts.to_a.to_json %>;
+    $('#pie').highcharts({
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false
+      },
+      title: {
+        text: "<%= t '.by_ages' %>"
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            color: '#000000',
+            connectorColor: '#000000',
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+          }
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: '<%= t '.num_people' %>',
+        data: ages
+      }]
+    });
+  });
+</script>
