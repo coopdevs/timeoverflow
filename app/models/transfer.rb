@@ -19,6 +19,12 @@ class Transfer < ActiveRecord::Base
 
   after_create :make_movements
 
+  # TODO: Extract it along with destination, source and amount accessors. It
+  # absolutely violates encapsulation and adds high coupling.
+  #
+  # EDIT: It might not be that easy. The simple_form_for in give_time.html.erb
+  # depends on this model having the destination column. A form object could be
+  # a solution.
   def make_movements
     movements.create(account: Account.find(source_id), amount: -amount.to_i)
     movements.create(account: Account.find(destination_id), amount: amount.to_i)
