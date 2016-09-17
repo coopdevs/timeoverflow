@@ -36,7 +36,7 @@
               <% end %>
             </li>
           <% end %>
-          <% if admin? || @user != current_user %>
+          <% if @user != current_user %>
             <li>
               <%= link_to give_time_user_path(@user) do %>
                 <%= glyph :time %>
