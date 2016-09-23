@@ -5,14 +5,14 @@ module ApplicationHelper
   TEXT_SUCCESS = 'text-success'.freeze
   TEXT_DANGER = 'text-danger'.freeze
 
-  # from https://robohash.org
+  # from gravatar
   def avatar_url(user, size = 32)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
     gravatar_options = Hash[set: "set1",
                             gravatar: "hashed",
                             size: "#{size}x#{size}"]
-    "https://robohash.org/#{gravatar_id}.png?" +
-      "#{Rack::Utils.build_query(gravatar_options)}"
+    "https://www.gravatar.com/avatar/#{gravatar_id}.png?" +
+      "#{Rack::Utils.build_query(gravatar_options)}&d=identicon"
   end
 
   def mdash
