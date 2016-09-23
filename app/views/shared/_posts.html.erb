@@ -18,9 +18,11 @@
           <%= glyph :tag %>
           <%= link_to tag, get_index_path(post,tag: tag) %>
         <% end %>
-        <span class="pull-right">
-          <%= l post.created_at.to_date, format: :long %>
-        </span>
+        <% if post.type == "Inquiry" %>
+          <span class="pull-right">
+            <%= l post.updated_at.to_date, format: :long %>
+          </span>
+        <% end %>
       </small>
     </p>
   </div>

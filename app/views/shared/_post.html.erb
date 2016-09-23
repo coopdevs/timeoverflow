@@ -10,7 +10,7 @@
         </h3>
       </div>
       <div class="panel-body">
-        <%= l post.created_at.to_date, format: :long %>
+        <%= l post.updated_at.to_date, format: :long %>
         <p></p>
         <%= link_to get_index_path(post, cat: post.category) do %>
           <%= glyph :folder_open %>
