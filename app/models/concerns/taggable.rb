@@ -37,10 +37,6 @@ module Taggable
 
     def alphabetical_grouped_tags
       alpha_group = tag_cloud.group_by { |tag_name, _| tag_name[0].capitalize }
-
-      alpha_group.each do |letter, tags|
-        alpha_group[letter] = tags.sort_by { |_, weight| weight }.reverse
-      end
     end
   end
 end
