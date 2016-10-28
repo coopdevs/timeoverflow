@@ -110,6 +110,10 @@ en:
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
+    landing:
+      slogan: Let's value our time
+      sub_slogan: There is a time bank near to you
+      button: Enter
     terms_conditions: terms of service
     navbar:
       administration: Administration

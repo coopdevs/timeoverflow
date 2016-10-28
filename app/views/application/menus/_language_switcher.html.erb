@@ -1,13 +1,9 @@
 <li class="dropdown">
-  <a class="dropdown-toggle" href="#">
-    <%= glyph :globe %>
+  <a class="dropdown-toggle language" href="#">
+    <%= t("locales.#{locale}") %>
     <b class="caret"></b>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="disabled">
-      <%= link_to t("global.locales_header"), "#" %>
-    </li>
-    <li class="divider"></li>
     <% I18n.available_locales.each do |locale| %>
       <li class="<%= "disabled" if I18n.locale == locale %>">
         <%= link_to locale_menu_item(locale), switch_lang_path(locale: locale) %>

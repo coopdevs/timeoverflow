@@ -110,6 +110,10 @@ ca:
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
+    landing:
+      slogan: Fem valer el temps
+      sub_slogan: Hi ha un banc de temps molt aprop teu
+      button: Entra
     terms_conditions: Termes del servei
     navbar:
       administration: Administració
@@ -357,7 +361,7 @@ ca:
 
   layouts:
     application:
-      about: Informació sobre TimeOverflow
+      about: Ajuda
       login: Entrar
       edit_profile: Modificar perfil
       edit_org: "Modificar %{organization}"

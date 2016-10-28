@@ -33,10 +33,10 @@
           <%= render 'application/menus/user_admin_menu' %>
         <% else %>
           <li>
-            <%= link_to t("layouts.application.about"), page_path("about") %>
+            <%= link_to t("layouts.application.login"), new_user_session_path %>
           </li>
           <li>
-            <%= link_to t("layouts.application.login"), new_user_session_path %>
+            <%= link_to t("layouts.application.about"), page_path("about") %>
           </li>
         <% end %>
         <li class="divider" role="presentation"></li>

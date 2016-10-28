@@ -21,7 +21,7 @@
     <%= javascript_include_tag 'libs' %>
     <%= javascript_include_tag 'application' %>
   </head>
-  <body data-action="<%= params[:controller] %>-<%= params[:action] %>"
+  <body <%= controller.controller_name == 'home' ? 'class=landing' : '' %> data-action="<%= params[:controller] %>-<%= params[:action] %>"
         ng-app="timeoverflow"
         ng-cloak>
     <%= render 'navbar' %>
@@ -34,7 +34,7 @@
         <div class="modal-content"></div>
       </div>
     </div>
-    <div id="footer">
+    <div class="footer">
       <p>
         <%= link_to t('application.terms_conditions'),
             tnc_path,
