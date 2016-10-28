@@ -29,7 +29,7 @@ describe Taggable do
 
     it "alphabetical_grouped_tags" do
       expect(Offer.alphabetical_grouped_tags).to eq({
-        "B" => [["baz", 2], ["bar", 1]],
+        "B" => [["bar", 1], ["baz", 2]],
         "F" => [["foo", 2]],
         "Q" => [["qux", 1]]
       })
