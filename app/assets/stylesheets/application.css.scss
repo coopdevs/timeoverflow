@@ -138,41 +138,41 @@ ul.dropdown-menu a:hover {
     text-align: center;
 
     h2 {
+      color: $white;
       font-size: 9rem;
       font-weight: bold;
-      color: $white;
       margin-top: 12%;
     }
 
     h3 {
+      color: $white;
       font-size: 4.8rem;
       font-weight: bold;
-      color: $white;
     }
 
     a.btn {
       font-size: 4.3rem;
-      padding: 2rem 7.2rem;
       margin-top: 5%;
+      padding: 2rem 7.2rem;
     }
 
   }
 
   .footer {
-    bottom: 5% !important;
-    height: auto !important;
-    background: none !important;
+    background: none;
+    bottom: 5%;
+    height: auto;
     padding: 1rem;
 
     p {
-      font-size: 1.9rem !important;
+      font-size: 1.9rem;
     }
   }
 }
 
 .container-fluid {
-  padding-top: 0.8rem;
   padding-bottom: 0.8rem;
+  padding-top: 0.8rem;
 }
 
 .row.exports {
@@ -195,8 +195,8 @@ table.users {
     margin: 0 0 20px;
   }
 
-  .landing{
-    background: url("/home_back.jpg") no-repeat ;
+  .landing {
+    background: url("/home_back.jpg") no-repeat;
     background-size: 100%;
   }
 
