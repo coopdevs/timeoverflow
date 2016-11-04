@@ -152,53 +152,49 @@ unless Category.exists?
   end
 end
 
-Post.find_or_create_by(title: "Ruby on Rails nivel principiante") do |post|
+Offer.find_or_create_by(title: "Ruby on Rails nivel principiante") do |post|
   post.description = <<-EOF
   Te enseño a trastear un poco sin cuidar el codigo, pero con mucho amor.
   Aprenderas a ser un coder de verdad http://rubyonrails.org/
   EOF
-  post.type = "Offer"
   post.category_id = 5
   post.user_id = 1
   post.tags = ["Rails", "Ruby", "programación"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Cocina low cost") do |post|
+Offer.find_or_create_by(title: "Cocina low cost") do |post|
   post.description = <<-EOF
   Si **no sabes que puedes comer** y no quieres gastar mucho dinero te enseño como hacer una sopa de plantas silvestres encontradas entre las grietas del asfalto
   EOF
-  post.type = "Offer"
   post.category_id = 7
   post.user_id = 1
   post.tags = ["Cocinar", "Cocina"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Yoga para principiantes") do |post|
+Offer.find_or_create_by(title: "Yoga para principiantes") do |post|
   post.description = <<-EOF
   Comparteixo les tècniques que he après i he practicat de respiració i meditació (una és inherent a l´altra, l´altra és inherent a l´una).
   En cada sessió: minuts de consciencia postural, cant de mantres, *breu escalfament** (movilització de l´articulacions i la columna vertebral) i una sèrie de PRANAYAMA (respiració) / MEDITACIÓ. Sessions de 1h aprox. *CAPACITACIÓ INTERNACIONAL DE MESTRES DE KUNDALINI IOGA, NIVELL I d’acord Yogi Bhajan. per la “KRI” (KUNDALINI RESEARCH INSTITUT)
   EOF
-  post.type = "Offer"
   post.category_id = 5
   post.user_id = 2
   post.tags = ["Yoga", "Estiramientos", "Respiración", "Meditación"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "English conversation") do |post|
+Offer.find_or_create_by(title: "English conversation") do |post|
   post.description = <<-EOF
   Our specially designed courses are for adults looking to improve their proficiency in English. Whether you want to improve your overall communication, take an English exam, or simply want to develop your spoken English skills, we have the right course for you. All successful students will receive a British Council certificate at the end of the course.
   EOF
-  post.type = "Offer"
   post.category_id = 5
   post.user_id = 2
   post.tags = ["Inglés", "English", "Conversación"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Te enseño a escribir con Markdown") do |post|
+Offer.find_or_create_by(title: "Te enseño a escribir con Markdown") do |post|
   post.description = <<-EOF
   An h1 header
   ============
@@ -220,88 +216,80 @@ Post.find_or_create_by(title: "Te enseño a escribir con Markdown") do |post|
 
   http://www.google.com 
   EOF
-  post.type = "Offer"
   post.category_id = 5
   post.user_id = 1
   post.tags = ["Markdown", "programación"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Pequeñas reparaciones de casa") do |post|
+Offer.find_or_create_by(title: "Pequeñas reparaciones de casa") do |post|
   post.description = <<-EOF
   Llamame y miramos que necesitas, si veo que puedo ayudarte nos ponemos a ello
   EOF
-  post.type = "Offer"
   post.category_id = 3
   post.user_id = 3
   post.tags = ["casa", "manitas"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Ayuda a organizarme con los tupper") do |post|
+Inquiry.find_or_create_by(title: "Ayuda a organizarme con los tupper") do |post|
   post.description = <<-EOF
   Me cuesta **organizarme con los tupper** me gustaría poder preparar los tupper de toda la semana el domingo, pero para eso necesito consejos y organización ;)
   EOF
-  post.type = "Inquiry"
   post.category_id = 7
   post.user_id = 1
   post.tags = ["Cocinar", "Cocina", "Tupper"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Quiero aprender a programar") do |post|
+Inquiry.find_or_create_by(title: "Quiero aprender a programar") do |post|
   post.description = <<-EOF
   Si, pues eso que me gustaría aprender a programar en Ruby on Rails, de momento solo se hacer copy & paste, me gustaría que alguien se sentara a mi lado para explicarme mejor algunas cosas
   EOF
-  post.type = "Inquiry"
   post.category_id = 5
   post.user_id = 1
   post.tags = ["Rails", "Ruby", "programación"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Cocina Tailandesa") do |post|
-  post.type = "Inquiry"
+Inquiry.find_or_create_by(title: "Cocina Tailandesa") do |post|
   post.category_id = 7
   post.user_id = 1
   post.tags = ["Tailandesa", "Cocina"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Cocinar Sushi") do |post|
+Inquiry.find_or_create_by(title: "Cocinar Sushi") do |post|
   post.description = <<-EOF
   Quiero aprender a cocinar sushi del bueno. ![Sushi del bueno](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVixUvEhTshPcin46IJAIDPb8fAjvGH7jcPwbye3ypyVuqqgVD)
   EOF
-  post.type = "Inquiry"
   post.category_id = 7
   post.user_id = 3
   post.tags = ["Cocinar", "Cocina", "Tupper"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Aprender cocina Libanesa") do |post|
+Inquiry.find_or_create_by(title: "Aprender cocina Libanesa") do |post|
   post.description = <<-EOF
   Humus, falafel, labne, mohamara, kebap y todas estas cosas...
   EOF
-  post.type = "Inquiry"
   post.category_id = 7
   post.user_id = 3
   post.tags = ["Cocinar", "Cocina", "Tupper"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Conversación en Inglés") do |post|
+Inquiry.find_or_create_by(title: "Conversación en Inglés") do |post|
   post.description = <<-EOF
   Necesito aprendrender ingles urgentemente ya que en dos meses me voy a vivir a Chicago y voy a necesitar inglés fluido
   EOF
-  post.type = "Inquiry"
   post.category_id = 5
   post.user_id = 1
   post.tags = ["Inglés", "gramática", "Conversación"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Clases de Italiano") do |post|
+Inquiry.find_or_create_by(title: "Clases de Italiano") do |post|
   post.description = <<-EOF
   Mi farò prestare un soldino di sole
   perchè regalare lo voglio a te?
@@ -313,51 +301,46 @@ Post.find_or_create_by(title: "Clases de Italiano") do |post|
   Ogni innamorato all'innamorata
   la sussurrerà, la sussurrerà?
   EOF
-  post.type = "Inquiry"
   post.category_id = 5
   post.user_id = 1
   post.tags = ["Italiano", "clases", "Conversación"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Alguien que me explique Markdown") do |post|
+Inquiry.find_or_create_by(title: "Alguien que me explique Markdown") do |post|
   post.description = <<-EOF
   No lo entiendo, todo el mundo publica anuncios con imagenes, negritas, cursivas y yo no se hacerlo... alguien me lo explica??
   EOF
-  post.type = "Inquiry"
   post.category_id = 5
   post.user_id = 1
   post.tags = ["Markdown"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Quiero hacer Yoga") do |post|
+Inquiry.find_or_create_by(title: "Quiero hacer Yoga") do |post|
   post.description = <<-EOF
   Me gustaría abrir mis chakras y conectarme con el universo para ser uno con él. Un ser completo y superior. Vamos que quiero ser más flexible.
   EOF
-  post.type = "Inquiry"
   post.category_id = 5
   post.user_id = 2
   post.tags = ["Yoga", "Estiramientos", "Respiración", "flexibilidad"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Practicar Meditación transcendental") do |post|
+Inquiry.find_or_create_by(title: "Practicar Meditación transcendental") do |post|
   post.description = <<-EOF
   Busco un maestro o un gurú. Paz interior y calma como un lago lleno de peces tranquilos.
   EOF
-  post.type = "Inquiry"
   post.category_id = 5
   post.user_id = 2
   post.tags = ["Meditación", "Estiramientos", "Respiración", "flexibilidad"]
   post.organization_id = 1
 end
 
-Post.find_or_create_by(title: "Clases de Alemán") do |post|
+Inquiry.find_or_create_by(title: "Clases de Alemán") do |post|
   post.description = <<-EOF
   Necesito practicar un Alemán básico, ya que me voy a Berlin a trabajar, por fin, he conseguido trabajo como ingeniero, me ayudas???
   EOF
-  post.type = "Inquiry"
   post.category_id = 5
   post.user_id = 1
   post.tags = ["Aleman", "Deutsche", "Conversación"]
