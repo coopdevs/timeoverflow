@@ -28,7 +28,12 @@ module Taggable
     end
 
     def tag_cloud
-      Hash[all_tags.group_by(&:to_s).map { |k, v| [k, v.size] }.sort]
+      Hash[
+        all_tags
+        .group_by(&:to_s)
+        .map { |k, v| [k, v.size] }
+        .sort_by { |array| array.first.downcase }
+      ]
     end
 
     def find_like_tag(pattern)
