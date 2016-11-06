@@ -1,9 +1,8 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-sm-offset-2 col-md-offset-3 col-lg-offset-3">
     <div class="panel" id="login-box">
       <div class="panel-heading">
         <h1>
-          <%= glyph :hourglass %>
           TimeOverflow
         </h1>
       </div>
@@ -15,7 +14,7 @@
               <span class="input-group-addon">
                 <%= glyph :user %>
               </span>
-              <%= f.text_field :email, required: false, autofocus: true, placeholder: "Email address", class: "form-control input-lg" %>
+              <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control input-lg" %>
             </div>
           </div>
           <div class="form-group">
@@ -23,7 +22,10 @@
               <span class="input-group-addon">
                 <%= glyph :lock %>
               </span>
-              <%= f.password_field :password, required: false, autofocus: true, placeholder: "Password", class: "form-control input-lg" %>
+              <%= f.password_field :password, required: false, autofocus: true, placeholder: t("application.login_form.password"), class: "form-control input-lg" %>
+              <span class="input-group-addon">
+                <%= glyph :eye_open %>
+              </span>
             </div>
           </div>
           <div class="form-group" id="remember-me-wrapper">
@@ -32,7 +34,7 @@
                 <div class="checkbox">
                   <%= f.label :remember_me do |nada| %>
                     <%= f.check_box :remember_me %>
-                    <%= t(".remember_me") %>
+                    <%= t("application.login_form.remember_check") %>
                   <% end %>
                 </div>
               </div>
@@ -41,7 +43,7 @@
           <div class="form-group">
             <div class="row">
               <div class="col-xs-12">
-                <%= f.submit t(".sign_in"), class: "btn btn-primary btn-lg col-xs-12" %>
+                <%= f.submit t("application.login_form.button"), class: "btn btn-primary btn-lg col-xs-12" %>
               </div>
             </div>
           </div>

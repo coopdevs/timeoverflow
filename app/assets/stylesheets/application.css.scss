@@ -10,6 +10,12 @@ $border: #e1e8ed;
 $menu-drop: #333;
 $menu-drop-hover: #333;
 $menu-disabled: #ddd;
+$black: #000;
+$form-input-glyph: gray;
+$form-input-bg-color: #eee;
+$form-input-button: #1e1e1e;
+$form-a-color: gray;
+$form-a-hover-color: #333;
 
 [ng-cloak],
 .ng-cloak {
@@ -17,15 +23,88 @@ $menu-disabled: #ddd;
 }
 
 body[data-action="devise/sessions-new"], body[data-action="devise/sessions-create"] {
-  background: image-url('red.jpg') no-repeat center center fixed;
+  background: image-url('/home_back.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
+html {
+  font-size:62.5%;
+}
+
 #login-box {
+  border-radius: 0;
+
   .panel-heading {
-    background: lighten(black, 10%);
-    color: darken($white, 5%);
+    color: darken($black, 5%);
     text-align: center;
+  }
+
+  .panel-body {
+    padding: 0;
+  }
+
+  .panel-footer {
+    padding: 3rem;
+
+    a {
+      color: $form-a-color;
+    }
+
+    a:hover {
+      color: $form-a-hover-color;
+      text-decoration: none;
+    }
+  }
+
+  form {
+    border: none;
+    border-radius: none;
+    margin: 0;
+    padding: 2.8rem;
+  }
+
+  .input-group-addon {
+    background-color: $form-input-bg-color;
+    border: none;
+    border-radius: 0;
+    color: $form-input-glyph;
+    font-size: 1.8rem;
+    padding: 2rem;
+  }
+
+  input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px $form-input-bg-color inset !important;
+  }
+  
+  .form-control {
+    border: none;
+    padding: 3.1rem 0;
+  }
+  
+  .form-control:focus {
+    border-color: none;
+    box-shadow: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+   }
+
+  input {
+    background-color: $form-input-bg-color;
+    border-radius: 0;
+  }
+
+  .btn {
+    background-color: $form-input-button;
+    margin-top: 1rem;
+    padding: 2rem;
+  }
+
+  .radio label, .checkbox label {
+    padding: 0;
+  }
+
+  input[type="checkbox"] {
+    border: none;
   }
 }
 
@@ -146,7 +225,7 @@ ul.dropdown-menu a:hover {
 
     h3 {
       color: $white;
-      font-size: 4.8rem;
+      font-size: 3.8rem;
       font-weight: bold;
     }
 
@@ -196,7 +275,7 @@ table.users {
   }
 
   .landing {
-    background: url("/home_back.jpg") no-repeat;
+    background: image-url('/home_back.jpg') no-repeat center center fixed;
     background-size: 100%;
   }
 
@@ -207,13 +286,6 @@ table.users {
     border-radius: 5px;
     margin-bottom:20px;
     padding: 20px;
-  }
-
-  #login-box form {
-    border:none;
-    border-radius: none;
-    margin: 0;
-    padding: 0;
   }
 
   table.users tr:nth-of-type(2) th {

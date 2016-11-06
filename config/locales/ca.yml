@@ -114,6 +114,11 @@ ca:
       slogan: Fem valer el temps
       sub_slogan: Hi ha un banc de temps molt aprop teu
       button: Entra
+    login_form:
+      email: Correu electrònic
+      password: Clau de pas
+      remember_check: Recorda'm
+      button: Entra
     terms_conditions: Termes del servei
     navbar:
       administration: Administració
@@ -137,7 +142,7 @@ ca:
       offer_public_link: Enllaç públic a ofertes
       inquiry_public_link: Enllaç públic a demandes
     menu:
-      sign_in: Entrar
+      sign_in: Entra
       sing_out: Desconnectar
     organization_list:
       welcome: Benvingut a Timeoverflow %{user}.
@@ -362,7 +367,7 @@ ca:
   layouts:
     application:
       about: Ajuda
-      login: Entrar
+      login: Entra
       edit_profile: Modificar perfil
       edit_org: "Modificar %{organization}"
     report:

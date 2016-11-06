@@ -114,6 +114,11 @@ es:
       slogan: Valoramos el tiempo
       sub_slogan: Hay un banco de tiempo cerca de tí
       button: Entra
+    login_form:
+      email: Correo electrónico
+      password: Contraseña
+      remember_check: Recuérdame
+      button: Entra
     terms_conditions: términos del servicio
     navbar:
       administration: Administración
@@ -137,7 +142,7 @@ es:
       offer_public_link: Enlace público a ofertas
       inquiry_public_link: Enlace público a demandas
     menu:
-      sign_in: Entrar
+      sign_in: Entra
       sing_out: Desconectar
     organization_list:
       welcome: Bienvenido a Timeoverflow %{user}.
@@ -367,7 +372,7 @@ es:
   layouts:
     application:
       about: Ayuda
-      login: Entrar
+      login: Entra
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
     report:

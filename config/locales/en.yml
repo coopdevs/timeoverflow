@@ -114,6 +114,11 @@ en:
       slogan: Let's value our time
       sub_slogan: There is a time bank near to you
       button: Enter
+    login_form:
+      email: E-mail
+      password: Password
+      remember_check: Remember me
+      button: Enter
     terms_conditions: terms of service
     navbar:
       administration: Administration
