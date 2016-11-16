@@ -1,8 +1,16 @@
 class TransfersController < ApplicationController
   def create
     @source = find_source
-    Transfer.create(transfer_params.merge source: @source)
     @account = Account.find(transfer_params[:destination])
+    transfer = Transfer.new(
+      transfer_params.merge(source: @source, destination: @account)
+    )
+
+    if transfer.valid?
+      transfer.make_movements
+    else
+      flash[:error] = transfer.errors.full_messages.to_sentence
+    end
     redirect_to redirect_target
   end
 
