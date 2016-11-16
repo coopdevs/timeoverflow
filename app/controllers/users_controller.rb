@@ -62,12 +62,15 @@ class UsersController < ApplicationController
   end
 
   def give_time
-    give_time = GiveTime.new(self)
-
-    @user = give_time.user
-    @transfer = give_time.transfer
-    @sources = give_time.sources
-    @offer = give_time.offer
+    @user = scoped_users.find(params[:id])
+    @destination = @user.members.
+                   find_by(organization: current_organization).account.id
+    @source = find_transfer_source
+    @offer = find_transfer_offer
+    @transfer = Transfer.new(source: @source,
+                             destination: @destination,
+                             post: @offer)
+    @sources = find_transfer_sources_for_admin
   end
 
   private
@@ -80,6 +83,22 @@ class UsersController < ApplicationController
     fields_to_permit += %w"organization_id superadmin" if superadmin?
     # params[:user].permit(*fields_to_permit).tap &method(:ap)
     params.require(:user).permit *fields_to_permit
+  end
+
+  def find_transfer_offer
+    current_organization.offers.
+      find(params[:offer]) if params[:offer].present?
+  end
+
+  def find_transfer_source
+    current_user.members.
+      find_by(organization: current_organization).account.id
+  end
+
+  def find_transfer_sources_for_admin
+    return unless admin?
+    [current_organization.account] +
+      current_organization.member_accounts.where("members.active is true")
   end
 
   def find_user
