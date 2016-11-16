@@ -93,9 +93,12 @@
               <%= strip_tags(post.rendered_description.to_html) %>
             </div>
             <div class="col-sm-1">
-              <%= link_to glyph(:time),
-                          give_time_user_path(@user, offer: post.id),
-                          title: t("global.give_time") %>
+              <% if @user != current_user %>
+                <%= link_to give_time_user_path(@user, offer: post.id) do %>
+                  <%= glyph :time %>
+                  <%= t "global.give_time" %>
+                <% end %>
+              <% end %>
             </div>
           </div>
         <% end %>
