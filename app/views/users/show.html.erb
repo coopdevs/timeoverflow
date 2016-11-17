@@ -96,7 +96,6 @@
               <% if @user != current_user %>
                 <%= link_to give_time_user_path(@user, offer: post.id) do %>
                   <%= glyph :time %>
-                  <%= t "global.give_time" %>
                 <% end %>
               <% end %>
             </div>
