@@ -6,9 +6,9 @@ class TransfersController < ApplicationController
       transfer_params.merge(source: @source, destination: @account)
     )
 
-    if transfer.valid?
-      transfer.make_movements
-    else
+    begin
+      transfer.save!
+    rescue ActiveRecord::RecordInvalid
       flash[:error] = transfer.errors.full_messages.to_sentence
     end
     redirect_to redirect_target
