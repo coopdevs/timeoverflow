@@ -102,6 +102,10 @@ ca:
           attributes:
             web:
               url_format_invalid: Format de URL no vàlid
+        transfer:
+          attributes:
+            base:
+              same_account: No es pot fer una transacció al mateix compte
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 

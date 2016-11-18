@@ -17,6 +17,8 @@ class Transfer < ActiveRecord::Base
   belongs_to :operator, class_name: "User"
   has_many :movements
 
+  validate :different_source_and_destination
+
   after_create :make_movements
 
   def make_movements
@@ -38,5 +40,10 @@ class Transfer < ActiveRecord::Base
 
   def destination_id
     destination.respond_to?(:id) ? destination.id : destination
+  end
+
+  def different_source_and_destination
+    return unless source == destination
+    errors.add(:base, :same_account)
   end
 end
