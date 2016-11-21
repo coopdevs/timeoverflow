@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
-  def scoped_users
-    current_organization.users
-  end
-
   def index
     @users = scoped_users
     @memberships = current_organization.members.
@@ -61,19 +57,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def give_time
-    @user = scoped_users.find(params[:id])
-    @destination = @user.members.
-                   find_by(organization: current_organization).account.id
-    @source = find_transfer_source
-    @offer = find_transfer_offer
-    @transfer = Transfer.new(source: @source,
-                             destination: @destination,
-                             post: @offer)
-    @sources = find_transfer_sources_for_admin
-  end
-
   private
+
+  def scoped_users
+    current_organization.users
+  end
 
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone
@@ -83,22 +71,6 @@ class UsersController < ApplicationController
     fields_to_permit += %w"organization_id superadmin" if superadmin?
     # params[:user].permit(*fields_to_permit).tap &method(:ap)
     params.require(:user).permit *fields_to_permit
-  end
-
-  def find_transfer_offer
-    current_organization.offers.
-      find(params[:offer]) if params[:offer].present?
-  end
-
-  def find_transfer_source
-    current_user.members.
-      find_by(organization: current_organization).account.id
-  end
-
-  def find_transfer_sources_for_admin
-    return unless admin?
-    [current_organization.account] +
-      current_organization.member_accounts.where("members.active is true")
   end
 
   def find_user

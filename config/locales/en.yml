@@ -322,6 +322,8 @@ en:
       minute:
         one: ! '%{count} minute'
         other: ! '%{count} minutes'
+    new:
+      give_time: Give time to
 
   global:
     table:

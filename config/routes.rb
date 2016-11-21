@@ -29,9 +29,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, concerns: :accountable, except: :destroy, :path => "members"
+  resources :users, except: :destroy, path: 'members'
 
-  resources :transfers, only: [:create] do
+  resources :transfers, only: [:create, :new] do
     member do
       put :delete_reason
     end

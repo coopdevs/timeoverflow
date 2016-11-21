@@ -319,6 +319,9 @@ ca:
       minute:
         one: ! '%{count} minut'
         other: ! '%{count} minuts'
+    new:
+      give_time: Donar Temps a
+
   global:
     table:
       actions: Accions
