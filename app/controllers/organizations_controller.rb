@@ -71,16 +71,19 @@ class OrganizationsController < ApplicationController
                                      neighborhood city domain])
   end
 
+  # TODO: Save to remove; it's a copy from tranfers
   def find_transfer_offer
     current_organization.offers.
       find(params[:offer]) if params[:offer].present?
   end
 
+  # TODO: Save to remove; @organization is got from the param id
   def find_transfer_source
     current_user.members.
       find_by(organization: @organization).account.id
   end
 
+  # TODO: Save to remove; it's a copy from tranfers
   def find_transfer_sources_for_admin
     return unless admin?
     [current_organization.account] +

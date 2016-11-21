@@ -1,4 +1,32 @@
 class TransfersController < ApplicationController
+  def destination_parent
+    if params.key?(:organization_id)
+      @organization = Organization.find(params[:organization_id])
+    else
+      @user = scoped_users.find(params[:id])
+      @user.members.find_by(organization: current_organization)
+    end
+  end
+
+  def template
+    if params.key?(:organization_id)
+      :organization
+    else
+      :new
+    end
+  end
+
+  def new
+    @destination = destination_parent.account.id
+    @source = find_transfer_source
+    @offer = find_transfer_offer
+    @transfer = Transfer.new(source: @source, destination: @destination)
+    @transfer.post = @offer
+    @sources = find_transfer_sources_for_admin
+
+    render template
+  end
+
   def create
     @source = find_source
     @account = Account.find(transfer_params[:destination])
@@ -20,28 +48,6 @@ class TransfersController < ApplicationController
     respond_to do |format|
       format.json { head :ok }
       format.html { redirect_to :back }
-    end
-  end
-
-  def new
-    if params.key?(:organization_id)
-      @organization = Organization.find(params[:organization_id])
-      @destination = @organization.account.id
-      @source = find_transfer_source
-      @offer = find_transfer_offer
-      @transfer = Transfer.new(source: @source, destination: @destination)
-      @sources = find_transfer_sources_for_admin
-      render :organization
-    else
-      @user = scoped_users.find(params[:id])
-      @destination = @user.members.
-        find_by(organization: current_organization).account.id
-      @source = find_transfer_source
-      @offer = find_transfer_offer
-      @transfer = Transfer.new(source: @source,
-                               destination: @destination,
-                               post: @offer)
-      @sources = find_transfer_sources_for_admin
     end
   end
 
