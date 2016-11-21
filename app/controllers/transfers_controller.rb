@@ -24,15 +24,25 @@ class TransfersController < ApplicationController
   end
 
   def new
-    @user = scoped_users.find(params[:id])
-    @destination = @user.members.
-      find_by(organization: current_organization).account.id
-    @source = find_transfer_source
-    @offer = find_transfer_offer
-    @transfer = Transfer.new(source: @source,
-                             destination: @destination,
-                             post: @offer)
-    @sources = find_transfer_sources_for_admin
+    if params.key?(:organization_id)
+      @organization = Organization.find(params[:organization_id])
+      @destination = @organization.account.id
+      @source = find_transfer_source
+      @offer = find_transfer_offer
+      @transfer = Transfer.new(source: @source, destination: @destination)
+      @sources = find_transfer_sources_for_admin
+      render :organization
+    else
+      @user = scoped_users.find(params[:id])
+      @destination = @user.members.
+        find_by(organization: current_organization).account.id
+      @source = find_transfer_source
+      @offer = find_transfer_offer
+      @transfer = Transfer.new(source: @source,
+                               destination: @destination,
+                               post: @offer)
+      @sources = find_transfer_sources_for_admin
+    end
   end
 
   private
