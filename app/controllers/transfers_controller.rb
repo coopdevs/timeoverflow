@@ -1,10 +1,9 @@
 class TransfersController < ApplicationController
-  def destination_parent
+  def load_destination_parent
     if params.key?(:organization_id)
       @organization = Organization.find(params[:organization_id])
     else
       @user = scoped_users.find(params[:id])
-      @user.members.find_by(organization: current_organization)
     end
   end
 
@@ -17,7 +16,9 @@ class TransfersController < ApplicationController
   end
 
   def new
-    @destination = destination_parent.account.id
+    load_destination_parent
+
+    @destination = params[:account_id]
     @source = find_transfer_source
     @offer = find_transfer_offer
     @transfer = Transfer.new(source: @source, destination: @destination)
@@ -53,17 +54,12 @@ class TransfersController < ApplicationController
 
   private
 
-  def resource
-    params[:resource]
-  end
-
   def scoped_users
     current_organization.users
   end
 
   def find_transfer_source
-    current_user.members.
-      find_by(organization: current_organization).account.id
+    current_user.members.find_by(organization: current_organization).account.id
   end
 
   def find_transfer_sources_for_admin
@@ -73,8 +69,7 @@ class TransfersController < ApplicationController
   end
 
   def find_transfer_offer
-    current_organization.offers.
-      find(params[:offer]) if params[:offer].present?
+    current_organization.offers.find(params[:offer]) if params[:offer].present?
   end
 
   def find_source
@@ -103,6 +98,7 @@ class TransfersController < ApplicationController
              :amount,
              :reason,
              :post_id,
+             :account_id,
              *[*(:source if admin?)])
   end
 end

@@ -18,6 +18,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    @account_id = @organization.account.id
     @movements = @organization.
                  account.
                  movements.

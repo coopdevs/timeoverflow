@@ -13,6 +13,10 @@ class UsersController < ApplicationController
   def show
     @user = find_user
     @member = @user.as_member_of(current_organization)
+    @account_id = @user
+      .members
+      .find_by(organization: current_organization)
+      .id
     @movements = @member.movements.order("created_at DESC").page(params[:page]).
                  per(10)
   end

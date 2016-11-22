@@ -110,7 +110,7 @@
         </li>
       <% end %>
       <li>
-        <%= link_to new_transfer_path(organization_id: @organization.id) do %>
+        <%= link_to new_transfer_path(organization_id: @organization.id, account_id: @account_id) do %>
           <%= glyph :time %>
           <%= t "global.give_time" %>
         <% end %>
