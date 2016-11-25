@@ -84,4 +84,13 @@ module ApplicationHelper
       s << " (#{t("locales.#{locale}")})" unless I18n.locale == locale
     end
   end
+
+  def get_body_css_class(controller)
+    case controller
+      when 'home' then return 'class=landing-page'
+      when 'sessions' then return 'class=login-page'
+      when 'pages' then return 'class=pages'
+    end
+    return ""
+  end
 end
