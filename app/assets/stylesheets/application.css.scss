@@ -16,6 +16,8 @@ $form-input-bg-color: #eee;
 $form-input-button: #1e1e1e;
 $form-a-color: gray;
 $form-a-hover-color: #333;
+$btn-landing: rgba(255, 255, 255, 0.7);
+$btn-landing-hover: rgba(255, 255, 255, 0.9);
 
 [ng-cloak],
 .ng-cloak {
@@ -63,15 +65,15 @@ html {
   }
 
   form {
-    border: none;
-    border-radius: none;
+    border: 0;
+    border-radius: 0;
     margin: 0;
     padding: 1rem 3.8rem;
   }
 
   .input-group-addon, .input-lg {
     background-color: $form-input-bg-color;
-    border: none;
+    border: 0;
     border-radius: 0;
     color: $form-input-glyph;
     font-size: 2.24rem;
@@ -88,7 +90,7 @@ html {
   }
   
   .form-control {
-    border: none;
+    border: 0;
     padding: 4rem 0;
   }
   
@@ -115,7 +117,7 @@ html {
   }
 
   input[type="checkbox"] {
-    border: none;
+    border: 0;
   }
 }
 
@@ -189,7 +191,7 @@ html {
 }
 
 .navbar-inverse {
-  border: none;
+  border: 0;
 }
 
 .navbar-inverse .navbar-brand {
@@ -230,42 +232,42 @@ ul.dropdown-menu a:hover {
   color: $menu-disabled;
 }
 
-.landing-page .content {
+.landing-page{
   text-align: center;
-}
 
-.landing-page .content h2 {
+  h2 {
     color: $white;
     font-size: 5.76rem;
     font-weight: 700;
     letter-spacing: -0.073rem;
     margin: 0;
-}
+  }
 
-.landing-page .content h3 {
-  color: $white;
-  font-size: 2.88rem;
-  font-weight: 400;
-  letter-spacing: -0.107rem;
-  margin-top: 1rem;
-}
+  h3 {
+    color: $white;
+    font-size: 2.88rem;
+    font-weight: 400;
+    letter-spacing: -0.107rem;
+    margin-top: 1rem;
+  }
 
-.landing-page .content a.btn {
-  font-size: 2.88rem;
-  font-weight: 400;
-  letter-spacing: 0.023rem;
-  margin-top: 5%;
-  padding: 1.5rem 6.2rem;
-}
+  .btn {
+    font-size: 2.88rem;
+    font-weight: 400;
+    letter-spacing: 0.023rem;
+    margin-top: 5%;
+    padding: 1.5rem 6.2rem;
+  }
 
-.landing-page .content .btn-info {
-  background: rgba(255, 255, 255, 0.7);
-  color: $black;
-  border: none;
-}
+  .btn-info {
+    background: $btn-landing;
+    border: 0;
+    color: $black;
+  }
 
-.landing-page .content .btn-info:hover {
-  background: rgba(255, 255, 255, 0.9);
+  .btn-info:hover {
+    background: $btn-landing-hover;
+  }
 }
 
 .landing-page, .login-page, .pages {
