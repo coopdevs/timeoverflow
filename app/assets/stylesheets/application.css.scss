@@ -5,8 +5,8 @@
 $bg-color: #f5f8fa;
 $navs-bg-color: #1e1e1e;
 $white: #ffffff;
-$navs-hover-color: #aaa;
 $border: #e1e8ed;
+$navs-hover-color: #aaa;
 $menu-drop: #333;
 $menu-drop-hover: #333;
 $menu-disabled: #ddd;
@@ -16,17 +16,13 @@ $form-input-bg-color: #eee;
 $form-input-button: #1e1e1e;
 $form-a-color: gray;
 $form-a-hover-color: #333;
+$form-login-gray-text: #9b9b9b;
 $btn-landing: rgba(255, 255, 255, 0.7);
 $btn-landing-hover: rgba(255, 255, 255, 0.9);
 
 [ng-cloak],
 .ng-cloak {
   visibility: hidden !important;
-}
-
-body[data-action="devise/sessions-new"], body[data-action="devise/sessions-create"] {
-  background: image-url('/home_back.jpg') no-repeat center center fixed;
-  background-size: cover;
 }
 
 html {
@@ -36,10 +32,28 @@ html {
 #login-box {
   border-radius: 0;
 
-  .btn {
-    font-size: 2.24rem;
-    font-weight: 400;
-    letter-spacing: -0.040rem;
+  form {
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 1rem 3.8rem 2rem 3.8rem;
+  }
+
+  input {
+    background-color: $form-input-bg-color;
+    border-radius: 0;
+  }
+
+  input[type="checkbox"] {
+    border: 0;
+  }
+
+  input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px $form-input-bg-color inset !important;
+  }
+
+  span.input-group-addon {
+    padding: 2rem 2rem 2rem 3rem;
   }
 
   .panel-heading {
@@ -64,13 +78,6 @@ html {
     }
   }
 
-  form {
-    border: 0;
-    border-radius: 0;
-    margin: 0;
-    padding: 1rem 3.8rem;
-  }
-
   .input-group-addon, .input-lg {
     background-color: $form-input-bg-color;
     border: 0;
@@ -81,16 +88,9 @@ html {
     padding: 2rem;
   }
 
-  span.input-group-addon {
-    padding: 2rem 3rem;
-  }
-
-  input:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 1000px $form-input-bg-color inset !important;
-  }
-  
   .form-control {
     border: 0;
+    font-weight: 400;
     padding: 4rem 0;
   }
   
@@ -101,23 +101,17 @@ html {
     -webkit-box-shadow: none;
    }
 
-  input {
-    background-color: $form-input-bg-color;
-    border-radius: 0;
-  }
-
-  .btn {
-    background-color: $form-input-button;
-    margin-top: 1rem;
-    padding: 2rem;
-  }
-
   .radio label, .checkbox label {
     padding: 0;
   }
 
-  input[type="checkbox"] {
-    border: 0;
+  .btn {
+    background-color: $form-input-button;
+    font-size: 2.24rem;
+    font-weight: 400;
+    letter-spacing: -0.040rem;
+    margin-top: 1rem;
+    padding: 2rem;
   }
 }
 
@@ -178,123 +172,7 @@ html {
   a {
     color: $white;
   }
-}
 
-.navbar-nav > li > a {
-  font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: 0.013rem;
-}
-
-.navbar-static-top {
-  background-color: $navs-bg-color;
-}
-
-.navbar-inverse {
-  border: 0;
-}
-
-.navbar-inverse .navbar-brand {
-  color: $white;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-  color: $white;
-}
-
-.navbar-inverse .navbar-brand a:hover, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-  color: $navs-hover-color;
-}
-
-.container-fluid > .navbar-header {
-  margin-left: 10%;
-}
-
-.navbar-right {
-  margin-right: 10%;
-}
-
-.navbar-brand {
-  font-size: 2.4rem;
-  font-weight: 500;
-  letter-spacing: 0.019rem;
-}
-
-ul.dropdown-menu a {
-  color: $menu-drop;
-}
-
-ul.dropdown-menu a:hover {
-  color: $menu-drop-hover;
-}
-
-.dropdown-menu>.disabled > a, .dropdown-menu>.disabled > a:hover {
-  color: $menu-disabled;
-}
-
-.landing-page{
-  text-align: center;
-
-  h2 {
-    color: $white;
-    font-size: 5.76rem;
-    font-weight: 700;
-    letter-spacing: -0.073rem;
-    margin: 0;
-  }
-
-  h3 {
-    color: $white;
-    font-size: 2.88rem;
-    font-weight: 400;
-    letter-spacing: -0.107rem;
-    margin-top: 1rem;
-  }
-
-  .btn {
-    font-size: 2.88rem;
-    font-weight: 400;
-    letter-spacing: 0.023rem;
-    margin-top: 5%;
-    padding: 1.5rem 6.2rem;
-  }
-
-  .btn-info {
-    background: $btn-landing;
-    border: 0;
-    color: $black;
-  }
-
-  .btn-info:hover {
-    background: $btn-landing-hover;
-  }
-}
-
-.landing-page, .login-page, .pages {
-  .footer {
-    background: none;
-    bottom: 5%;
-    height: auto;
-    padding: 1rem;
-
-    p {
-      font-size: 1.6rem;
-      letter-spacing: 0.013rem;
-    }
-  }
-
-  .vertical-align {
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 75%;
-  }
-}
-
-.container-fluid {
-  padding-bottom: 0.8rem;
-  padding-top: 0.8rem;
 }
 
 .row.exports {
@@ -316,47 +194,6 @@ table.users {
     background-color: $bg-color;
     font-family: 'Work Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0 0 20px;
-  }
-
-  .back-overlay {
-    display: none;
-  }
-
-  .landing-page {
-    background: image-url('/home_back.jpg') no-repeat center center fixed;
-    background-color: $navs-bg-color;
-    background-size: cover;
-
-    .back-overlay {
-      display: block;
-      filter: alpha(opacity = 30); /* For IE8 and earlier */
-      opacity: 0.4;
-    }
-  }
-
-  .login-page {
-    .back-overlay {
-      display: block;
-      filter: alpha(opacity = 60); /* For IE8 and earlier */
-      opacity: 0.6;
-    }
-
-    h1 {
-      font-size: 3.84rem;
-      font-weight: 500;
-      letter-spacing: 0.031rem;
-      margin-top: 5.6rem;
-    }
-  }
-
-  .back-overlay {
-    background-color: $black;
-    background-size: cover;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -1;
   }
 
   form {
@@ -479,4 +316,236 @@ label[required]::after{
 form .checkbox input[type="checkbox"] {
   margin-left: 5px;
   position: relative;
+}
+
+.back-overlay {
+  background-color: $black;
+  background-size: cover;
+  display: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
+  background: image-url('home_back.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+  .back-overlay {
+    display: block;
+    filter: alpha(opacity = 60); /* For IE8 and earlier */
+    opacity: 0.6;
+  }
+
+  .navbar-nav > li > a {
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 0.013rem;
+    margin: 1.4rem 2rem;
+    padding: 0;
+  }
+
+  .navbar-static-top {
+    background-color: $navs-bg-color;
+  }
+
+  .navbar-inverse {
+    border: 0;
+  }
+
+  .navbar-inverse .navbar-brand {
+    color: $white;
+  }
+
+  .navbar-inverse .navbar-nav > li > a {
+    color: $white;
+  }
+
+  .navbar-inverse .navbar-brand a:hover, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: $navs-hover-color;
+  }
+
+  .navbar-nav > .dropdown > .language {
+    border: 1px solid $white;
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+    padding: 0.8rem 1.2rem;
+  }
+  
+  .navbar-nav .dropdown .material-icons {
+    float: right;
+    margin-left: 3rem;
+    position: relative;
+    top: -0.4rem;
+  }
+
+  .navbar-brand {
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 0.019rem;
+  }
+
+  ul.dropdown-menu a {
+    color: $menu-drop;
+  }
+
+  ul.dropdown-menu a:hover {
+    color: $menu-drop-hover;
+  }
+
+  .dropdown-menu>.disabled > a, .dropdown-menu>.disabled > a:hover {
+    color: $menu-disabled;
+  }
+  
+  .footer {
+    background: none;
+    bottom: 5rem;
+    height: auto;
+    padding: 0;
+
+    p {
+      font-size: 1.6rem;
+      letter-spacing: 0.013rem;
+    }
+
+    .row {
+      margin: 0;
+    }
+
+    a {
+      font-weight: 500;
+      margin-left: 1.5rem;
+    }
+  }
+
+  .vertical-align {
+    left: 50%;
+    position: absolute;
+    top: 47%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+  }
+
+  .container-fluid {
+    padding-bottom: 0.8rem;
+    padding-top: 0.8rem;
+  }
+}
+
+.landing-page{
+  background: image-url('home_back.jpg') no-repeat center center fixed;
+  background-color: $navs-bg-color;
+  background-size: cover;
+  text-align: center;
+
+  h2 {
+    color: $white;
+    font-size: 5.76rem;
+    font-weight: 700;
+    letter-spacing: -0.073rem;
+    margin: 0;
+  }
+
+  h3 {
+    color: $white;
+    font-size: 2.88rem;
+    font-weight: 500;
+    letter-spacing: -0.107rem;
+    margin-top: 1rem;
+  }
+
+  .btn {
+    font-size: 2.88rem;
+    font-weight: 500;
+    letter-spacing: 0.023rem;
+    margin-top: 5%;
+    padding: 1.5rem 6.2rem;
+  }
+
+  .btn-info {
+    background: $btn-landing;
+    border: 0;
+    color: $black;
+  }
+
+  .btn-info:hover {
+    background: $btn-landing-hover;
+  }
+
+  .back-overlay {
+    filter: alpha(opacity = 40); /* For IE8 and earlier */
+    opacity: 0.4;
+  }
+}
+
+.login-page {
+  h1 {
+    font-size: 3.84rem;
+    font-weight: 600;
+    letter-spacing: 0.031rem;
+    margin-top: 4rem;
+  }
+
+  .material-icons {
+    font-size: 3rem;
+  }
+  
+  .checkbox {
+    color: $form-login-gray-text;
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+
+  form .checkbox input[type="checkbox"] {
+    display: block;
+    float: left;
+    height: 2rem;
+    margin-bottom: -0.2rem;
+    margin-left: 0;
+    margin-right: 1rem;
+    outline: 0;
+    position: relative;
+    top: -0.2rem;
+    width: 2rem;
+    -webkit-appearance: none;
+  }
+
+  form .checkbox input[type="checkbox"]:checked {
+    background-image: url(checked.png);
+    background-size: 100%;
+  }
+
+  #login-box .panel-footer {
+    background-color: $white;
+    border-top: 0.1rem solid $form-input-button;
+    font-size: 1.6rem;
+  }
+}
+
+.footer-left-col, .footer-left-col p {
+  text-align: left;
+}
+
+.footer-center, .footer-center-col p {
+  text-align: center;
+}
+
+.footer-right-col, .footer-right-col p {
+  text-align: right;
+}
+
+@media(max-width:767px){
+  .footer-left-col, .footer-left-col p {
+    text-align: center;
+  }
+
+  .footer-center-col, .footer-center-col p {
+    text-align: center;
+  }
+
+  .footer-right-col, .footer-right-col p {
+    text-align: center;
+  }
 }

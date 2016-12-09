@@ -12,7 +12,7 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon">
-                <%= glyph :user %>
+                <i class="material-icons">email</i>
               </span>
               <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control input-lg" %>
             </div>
@@ -20,11 +20,11 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon">
-                <%= glyph :lock %>
+                <i class="material-icons">lock</i>
               </span>
               <%= f.password_field :password, required: false, autofocus: true, placeholder: t("application.login_form.password"), class: "form-control input-lg" %>
               <span class="input-group-addon">
-                <%= glyph :eye_open %>
+                <i class="material-icons">visibility</i>
               </span>
             </div>
           </div>

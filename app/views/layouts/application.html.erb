@@ -18,7 +18,8 @@
     <link href="/favicon.ico" rel="shortcut icon">
     <%= stylesheet_link_tag 'libs', media: 'all' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Work+Sans:400,500,700', type='text/css' %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700', type='text/css' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/icon?family=Material+Icons', type='text/css' %>
     <%= javascript_include_tag 'libs' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -35,25 +36,27 @@
         <div class="modal-content"></div>
       </div>
     </div>
-    <div class="footer">
-      <div class="row">
-        <div class="col-xs col-sm-12 col-md-12 col-lg-4 text-left">
-          <p>
-            <%= link_to t('layouts.application.about'), page_path('about') %>
-          </p>
-        </div>
-        <div class="col-xs col-sm-12 col-md-12 col-lg-4 text-center">
-          <p>
-            <%= link_to t('application.terms_conditions'),
-              tnc_path,
-              data: { target: '#modal', toggle: 'modal' } %>
-          </p>
-        </div>
-        <div class="col-xs col-sm-12 col-md-12 col-lg-4 text-right">
-          <p>
-            <a href="https://twitter.com/timeoverflow">Twitter</a>
-            <a href="https://github.com/coopdevs/timeoverflow">Github</a>
-          </p>
+    <div class="footer container-fluid">
+      <div class="container"> 
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-left-col">
+            <p>
+              <%== js_antispam_email_link('info@timeoverflow.com', t('layouts.application.help')) %>            
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-center-col">
+            <p>
+              <%= link_to t('application.terms_conditions'),
+                tnc_path,
+                data: { target: '#modal', toggle: 'modal' } %>
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-right-col">
+            <p>
+              <a href="https://twitter.com/timeoverflow">Twitter</a>
+              <a href="https://github.com/coopdevs/timeoverflow">Github</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

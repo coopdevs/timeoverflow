@@ -370,6 +370,7 @@ ca:
       login: Entra
       edit_profile: Modificar perfil
       edit_org: "Modificar %{organization}"
+      help: Ajuda
     report:
       report_title: "INFORME"
 

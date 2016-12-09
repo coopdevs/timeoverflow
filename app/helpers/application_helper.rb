@@ -90,6 +90,9 @@ module ApplicationHelper
       when 'home' then return 'class=landing-page'
       when 'sessions' then return 'class=login-page'
       when 'pages' then return 'class=pages'
+      when 'unlocks' then return 'class=unlocks-page'
+      when 'passwords' then return 'class=passwords-page'
+      when 'confirmations' then return 'class=confirmations-page'
     end
     return ""
   end

@@ -119,7 +119,7 @@ es:
       password: Contraseña
       remember_check: Recuérdame
       button: Entra
-    terms_conditions: términos del servicio
+    terms_conditions: Términos del servicio
     navbar:
       administration: Administración
       reports: Informes
@@ -375,6 +375,7 @@ es:
       login: Entra
       edit_profile: Modificar mi perfil
       edit_org: "Modificar %{organization}"
+      help: Ayuda
     report:
       report_title: "INFORME"
 
