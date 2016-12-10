@@ -393,3 +393,31 @@ es:
       movements: Movimientos
     post_form:
       you_can_use: Puedes usar
+
+  pages:
+    about:
+      title: "El software diseñado por y para los Bancos de Tiempo"
+      subtitle: "TimeOverflow es libre, gratuito y colaborativo"
+      feature-group-1: "Gestión del Banco de Tiempo con perfiles de administración"
+      feature-group-2: "Red social y banca on-line accesible por los miembros"
+      feature-text-1: "Altas/bajas/modificaciones de miembros"
+      feature-text-2: "Publicar ofertas y demandas"
+      feature-text-3: "Introducir cheques y gestionar la contabilidad"
+      feature-text-4: "Los miembros de un Banco de Tiempo pueden acceder al sistema y contactar con otros miembros"
+      feature-text-5: "Publicar ofertas y demandas"
+      feature-text-6: "Pagar horas a otros miembros"
+      banner-title: "¿Eres un Banco de Tiempo?"
+      banner-subtitle: "Os ayudaremos a ponerlo en marcha o a haceros una demostración"
+      banner-button: "Solicita acceso"
+      empower-title: "Empoderando los bancos de tiempo"
+      empower-text-1: "TimeOveflow está especialmente diseñado por y para los Bancos de Tiempo que existen físicamente - %{showmap_link}, su fin es potenciarlos."
+      empower-text-2: "Gracias al trabajo conjunto de %{coopdevs_link} y la %{abdt_link} hoy podemos ofrecer el sofware TimeOverflow a todos los Bancos de Tiempo que así lo deseen de manera libre y gratuita."
+      empower-text-3: "El código fuente de TimeOverflow está disponible bajo una licencia open source y descargable a %{github_link}"
+      empower-showmap: "ver mapa"
+      empower-showmap-title: "Bancos de Tiempo"
+      empower-coopdevs: "CoopDevs"
+      empower-coopdevs-title: "CoopDevs"
+      empower-adbdt: "ADBdT"
+      empower-adbdt-title: "Asociación para el Desarrollo de los Bancos de Tiempo"
+      empower-github: "Github"
+      empower-github-title: "Github"

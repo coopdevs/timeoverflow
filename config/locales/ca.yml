@@ -388,3 +388,31 @@ ca:
       movements: Moviments
     post_form:
       you_can_use: Pots fer servir
+
+  pages:
+    about:
+      title: "El software disenyat per i per als Bancs de Temps"
+      subtitle: "TimeOverflow és lliure, gratuït i col·laboratiu"
+      feature-group-1: "Gestió del Banc de Temps amb perfils d'administració"
+      feature-group-2: "Xarxa social i banca en línia accessible pels membres"
+      feature-text-1: "Altes/baixes/modificacions de membres"
+      feature-text-2: "Publicar ofertes i demandes"
+      feature-text-3: "Introduir xecs i gestionar la comptabilitat"
+      feature-text-4: "Els membres d'un Banc de Temps poden accedir al sistema i contactar amb altres membres"
+      feature-text-5: "Publicar ofertes i demandes"
+      feature-text-6: "Pagar hores a altres membres"
+      banner-title: "Ets un Banc de Temps?"
+      banner-subtitle: "Us ajudarem a posar-lo en marxa o fer-vos una demostració"
+      banner-button: "Sol·licita accés"
+      empower-title: "Empoderant els bancs del temps"
+      empower-text-1: "TimeOveflow està especialment dissenyat per i per als Bancs de Temps que existeixen físicament - %{showmap_link}, la seva missió és potenciar-los."
+      empower-text-2: "Gràcies al treball conjunt de %{coopdevs_link} i la %{abdt_link} avui podem oferir el sofware TimeOverflow a tots els Bancs de Temps que així ho desitgin de manera lliure i gratuïta."
+      empower-text-3: "El codi font de TimeOverflow està disponible sota una llicència open source i descarregable a %{github_link}"
+      empower-showmap: "veure mapa"
+      empower-showmap-title: "Bancs de Temps"
+      empower-coopdevs: "CoopDevs"
+      empower-coopdevs-title: "CoopDevs"
+      empower-adbdt: "ADBdT"
+      empower-adbdt-title: "Associació pel Desenvolupament dels Bancs de Temps"
+      empower-github: "Github"
+      empower-github-title: "Github"

@@ -11,14 +11,21 @@ $menu-drop: #333;
 $menu-drop-hover: #333;
 $menu-disabled: #ddd;
 $black: #000;
-$form-input-glyph: gray;
-$form-input-bg-color: #eee;
-$form-input-button: #1e1e1e;
+$form-input-glyph: #555;
+$form-input-bg-color: #f5f5f5;
+$form-input-button: #2a292a;
+$form-input-button-hover: #3a393a;
 $form-a-color: gray;
 $form-a-hover-color: #333;
 $form-login-gray-text: #9b9b9b;
 $btn-landing: rgba(255, 255, 255, 0.7);
 $btn-landing-hover: rgba(255, 255, 255, 0.9);
+$pages-title: #4a4a4a;
+$pages-text: #4a4a4a;
+$pages-anchor: #4a4a4a;
+$pages-anchor-hover: #8a8a8a;
+$features-background: #f5f5f5;
+$features-separator: #d8d8d8;
 
 [ng-cloak],
 .ng-cloak {
@@ -39,6 +46,10 @@ html {
     padding: 1rem 3.8rem 2rem 3.8rem;
   }
 
+  form .material-icons {
+    color: $form-input-glyph;
+  }
+
   input {
     background-color: $form-input-bg-color;
     border-radius: 0;
@@ -54,6 +65,22 @@ html {
 
   span.input-group-addon {
     padding: 2rem 2rem 2rem 3rem;
+  }
+
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $form-login-gray-text;
+  }
+
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: $form-login-gray-text;
+  }
+
+  ::-ms-input-placeholder { /* IE 10+ */
+    color: $form-login-gray-text;
+  }
+
+  ::-moz-placeholder { /* Firefox 18- */
+    color: $form-login-gray-text;
   }
 
   .panel-heading {
@@ -112,6 +139,10 @@ html {
     letter-spacing: -0.040rem;
     margin-top: 1rem;
     padding: 2rem;
+  }
+
+  .btn:hover {
+    background-color: $form-input-button-hover;
   }
 }
 
@@ -378,7 +409,6 @@ form .checkbox input[type="checkbox"] {
     float: right;
     margin-left: 3rem;
     position: relative;
-    top: -0.4rem;
   }
 
   .navbar-brand {
@@ -432,14 +462,20 @@ form .checkbox input[type="checkbox"] {
     padding-bottom: 0.8rem;
     padding-top: 0.8rem;
   }
+
+  .container-inner {
+    margin-bottom: 14rem;
+  }
 }
 
-.landing-page{
+.landing-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-color: $navs-bg-color;
   background-size: cover;
   text-align: center;
+}
 
+.landing-page, .pages .banner {
   h2 {
     color: $white;
     font-size: 5.76rem;
@@ -460,7 +496,7 @@ form .checkbox input[type="checkbox"] {
     font-size: 2.88rem;
     font-weight: 500;
     letter-spacing: 0.023rem;
-    margin-top: 5%;
+    margin-top: 4rem;
     padding: 1.5rem 6.2rem;
   }
 
@@ -521,6 +557,154 @@ form .checkbox input[type="checkbox"] {
     background-color: $white;
     border-top: 0.1rem solid $form-input-button;
     font-size: 1.6rem;
+  }
+}
+
+.unlocks-page, .confirmations-page, .passwords-page {
+  #login-box form {
+    border: none;
+    margin-top: 2rem;
+    padding: 0;
+  }
+
+  #login-box .panel-body {
+    padding: 3rem;
+  }
+
+  .panel-body h2 {
+    font-size: 1.9rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+  }
+
+  .panel-body .description {
+    color: $form-login-gray-text;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: -0.028rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.pages{
+  background-image: none;
+
+  h2 {
+    color: $pages-title;
+    font-size: 2.88rem;
+    font-weight: 600;
+    letter-spacing: -0.037rem;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    color: $pages-title;
+    font-size: 1.92rem;
+    font-weight: 500;
+    letter-spacing: 0.016rem;
+    margin-top: 1.5rem;
+  }
+
+  .back-overlay {
+    display: none;
+  }
+
+  .header, .banner, .empower {
+    text-align: center;
+  }
+
+  .features ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .features > ul {
+    margin-top: 5rem;
+  }
+
+  .features ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .features span {
+    background-color: $features-background;
+    border-bottom: 0.1rem solid $features-separator;
+    color: $pages-text;
+    display: block;
+    font-size: 1.92rem;
+    font-weight: 400;
+    letter-spacing: 0.016rem;
+    padding: 2rem 4rem;
+  }
+
+  .features .last span {
+    border-bottom: 0;
+  }
+
+  .features > ul > li > span {
+    font-weight: 500;
+  }
+
+  .features .material-icons {
+    margin-right: 2rem;
+    position: relative;
+    top: 0.5rem;
+  }
+
+  .banner {
+    background: image-url('home_back.jpg') no-repeat center center;
+    background-size: cover;
+    margin: 7rem 0 4rem 0;
+    padding: 8rem 1rem;
+    text-align: center;
+
+    h2 {
+      font-size: 2.88em;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 1.92rem;
+      font-weight: 500;
+    }
+
+    .btn {
+      font-size: 2.88rem;
+    }
+  }
+
+  .empower {
+    h2 {
+      margin-bottom: 5rem;
+    }
+
+    p {
+      font-size: 1.92rem;
+      font-weight: 400;
+      letter-spacing: 0.016rem;
+      margin-bottom: 4rem;
+      text-align: left;
+    }
+
+    a {
+      color: $pages-anchor;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: $pages-anchor-hover;
+    }
+  }
+
+  .footer a {
+    color: $pages-anchor;
+  }
+
+  .footer a:hover {
+    color: $pages-anchor-hover;
   }
 }
 
