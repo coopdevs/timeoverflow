@@ -391,7 +391,7 @@ ca:
 
   pages:
     about:
-      title: "El software disenyat per i per als Bancs de Temps"
+      title: "El software disenyat per i per <span>als Bancs de Temps</span>"
       subtitle: "TimeOverflow és lliure, gratuït i col·laboratiu"
       feature-group-1: "Gestió del Banc de Temps amb perfils d'administració"
       feature-group-2: "Xarxa social i banca en línia accessible pels membres"
@@ -405,7 +405,7 @@ ca:
       banner-subtitle: "Us ajudarem a posar-lo en marxa o fer-vos una demostració"
       banner-button: "Sol·licita accés"
       empower-title: "Empoderant els bancs del temps"
-      empower-text-1: "TimeOveflow està especialment dissenyat per i per als Bancs de Temps que existeixen físicament - %{showmap_link}, la seva missió és potenciar-los."
+      empower-text-1: "TimeOveflow està especialment dissenyat per i per als Bancs de Temps que existeixen físicament &mdash; %{showmap_link}, la seva missió és potenciar-los."
       empower-text-2: "Gràcies al treball conjunt de %{coopdevs_link} i la %{abdt_link} avui podem oferir el sofware TimeOverflow a tots els Bancs de Temps que així ho desitgin de manera lliure i gratuïta."
       empower-text-3: "El codi font de TimeOverflow està disponible sota una llicència open source i descarregable a %{github_link}"
       empower-showmap: "veure mapa"

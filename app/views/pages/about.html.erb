@@ -1,29 +1,30 @@
 <div class="container-inner">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 header">
-      <h2><%= t("pages.about.title") %></h2>
+    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3 col-lg-offset-3 header">
+      <h2><%== t("pages.about.title") %></h2>
       <h3><%= t("pages.about.subtitle") %></h3>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1 features">
       <ul>
+      <% for i in 1..2 %>
         <li>
-          <span><%= t("pages.about.feature-group-1") %></span>
+          <div class="feature-group<%= i == 1 ? ' first' : '' %>">
+            <div class="feature-group-text"><%= t("pages.about.feature-group-#{i}") %></div>
+          </div>
           <ul>
-            <li><span><i class="material-icons">done</i><%= t("pages.about.feature-text-1") %></span></li>
-            <li><span><i class="material-icons">done</i><%= t("pages.about.feature-text-2") %></span></li>
-            <li><span><i class="material-icons">done</i><%= t("pages.about.feature-text-3") %></span></li>
+          <% for j in 1..3 %>
+            <li <%= (i*j) == 6 ? 'class=last' : '' %>>
+              <div class="feature">
+                <div class="feature-icon"><i class="material-icons">done</i></div>
+                <div class="feature-text"><%= t("pages.about.feature-text-#{i*j}") %></div>
+              </div>
+            </li>
+          <% end %>
           </ul>
         </li>
-        <li>
-          <span><%= t("pages.about.feature-group-2") %></span>
-          <ul>
-            <li><span><i class="material-icons">done</i><%= t("pages.about.feature-text-4") %></span></li>
-            <li><span><i class="material-icons">done</i><%= t("pages.about.feature-text-5") %></span></li>
-            <li class="last"><span><i class="material-icons">done</i><%= t("pages.about.feature-text-6") %></span></li>
-          </ul>
-        </li>
+      <% end %>
       </ul>
     </div>
   </div>

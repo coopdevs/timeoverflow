@@ -396,7 +396,7 @@ es:
 
   pages:
     about:
-      title: "El software diseñado por y para los Bancos de Tiempo"
+      title: "El software diseñado por y para <span>los Bancos de Tiempo</span>"
       subtitle: "TimeOverflow es libre, gratuito y colaborativo"
       feature-group-1: "Gestión del Banco de Tiempo con perfiles de administración"
       feature-group-2: "Red social y banca on-line accesible por los miembros"
@@ -410,7 +410,7 @@ es:
       banner-subtitle: "Os ayudaremos a ponerlo en marcha o a haceros una demostración"
       banner-button: "Solicita acceso"
       empower-title: "Empoderando los bancos de tiempo"
-      empower-text-1: "TimeOveflow está especialmente diseñado por y para los Bancos de Tiempo que existen físicamente - %{showmap_link}, su fin es potenciarlos."
+      empower-text-1: "TimeOveflow está especialmente diseñado por y para los Bancos de Tiempo que existen físicamente &mdash; %{showmap_link}, su fin es potenciarlos."
       empower-text-2: "Gracias al trabajo conjunto de %{coopdevs_link} y la %{abdt_link} hoy podemos ofrecer el sofware TimeOverflow a todos los Bancos de Tiempo que así lo deseen de manera libre y gratuita."
       empower-text-3: "El código fuente de TimeOverflow está disponible bajo una licencia open source y descargable a %{github_link}"
       empower-showmap: "ver mapa"

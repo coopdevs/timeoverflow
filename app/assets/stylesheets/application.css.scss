@@ -37,11 +37,11 @@ html {
 }
 
 #login-box {
-  border-radius: 0;
+  border-radius: 0.3rem;
 
   form {
     border: 0;
-    border-radius: 0;
+    border-radius: 0.3rem;
     margin: 0;
     padding: 1rem 3.8rem 2rem 3.8rem;
   }
@@ -52,7 +52,7 @@ html {
 
   input {
     background-color: $form-input-bg-color;
-    border-radius: 0;
+    border-radius: 0.3rem;
   }
 
   input[type="checkbox"] {
@@ -105,10 +105,17 @@ html {
     }
   }
 
+  .input-group-addon {
+    border-radius: 0.3rem 0 0 0.3rem;
+  }
+
+  .input-lg {
+    border-radius: 0 0.3rem 0.3rem 0;
+  }
+
   .input-group-addon, .input-lg {
     background-color: $form-input-bg-color;
     border: 0;
-    border-radius: 0;
     color: $form-input-glyph;
     font-size: 2.24rem;
     letter-spacing: -0.0040rem;
@@ -231,7 +238,7 @@ table.users {
     background: $white;
     border: 1px solid $border;
     border-collapse: inherit;
-    border-radius: 5px;
+    border-radius: 0.3rem;
     margin-bottom:20px;
     padding: 20px;
   }
@@ -400,6 +407,7 @@ form .checkbox input[type="checkbox"] {
 
   .navbar-nav > .dropdown > .language {
     border: 1px solid $white;
+    border-radius: 0.3rem;
     margin-bottom: 0;
     margin-top: 0.5rem;
     padding: 0.8rem 1.2rem;
@@ -598,6 +606,10 @@ form .checkbox input[type="checkbox"] {
     margin-bottom: 0;
   }
 
+  h2 span {
+    display: block;
+  }
+
   h3 {
     color: $pages-title;
     font-size: 1.92rem;
@@ -629,9 +641,10 @@ form .checkbox input[type="checkbox"] {
     padding: 0;
   }
 
-  .features span {
+  .feature, .feature-group {
     background-color: $features-background;
     border-bottom: 0.1rem solid $features-separator;
+    border-radius: 0;
     color: $pages-text;
     display: block;
     font-size: 1.92rem;
@@ -640,12 +653,22 @@ form .checkbox input[type="checkbox"] {
     padding: 2rem 4rem;
   }
 
-  .features .last span {
-    border-bottom: 0;
+  .feature-icon {
+    float: left;
   }
 
-  .features > ul > li > span {
+  .features .first {
+    border-radius: 0.3rem 0.3rem 0 0;
+  }
+
+  .features .last .feature {
+    border-bottom: 0;
+    border-radius: 0 0 0.3rem 0.3rem;
+  }
+
+  .feature-group {
     font-weight: 500;
+    padding-top: 3.5rem;
   }
 
   .features .material-icons {
