@@ -14,6 +14,25 @@
           </div>
         </div>
         <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <%= render 'application/menus/user_admin_menu' %>
+            <% else %>
+              <li>
+                <%= link_to t("layouts.application.login"), new_user_session_path %>
+              </li>
+              <li>
+                <%= link_to t("layouts.application.about"), page_path("about") %>
+              </li>
+            <% end %>
+            <li class="divider" role="presentation"></li>
+
+            <%= render 'application/menus/language_switcher' %>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="nav navbar-nav">
             <% if current_user && current_organization %>
               <%= render 'application/menus/user_list_link' %>
@@ -30,22 +49,6 @@
                   <%= render 'application/menus/offers_by_tag_link' %>
                 <% end %>
             <% end %>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-              <% if current_user %>
-                <%= render 'application/menus/user_admin_menu' %>
-              <% else %>
-                <li>
-                  <%= link_to t("layouts.application.login"), new_user_session_path %>
-                </li>
-                <li>
-                  <%= link_to t("layouts.application.about"), page_path("about") %>
-                </li>
-              <% end %>
-              <li class="divider" role="presentation"></li>
-
-              <%= render 'application/menus/language_switcher' %>
             </ul>
           </div>
         </div>

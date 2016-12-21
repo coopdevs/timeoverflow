@@ -36,6 +36,15 @@ html {
   font-size:62.5%;
 }
 
+.navbar-nav > .dropdown > .language b {
+  display: inline-block;
+  margin-left: 0.7rem;
+}
+
+.navbar-nav .dropdown .material-icons {
+  display: none;
+}
+
 #login-box {
   border-radius: 0.3rem;
 
@@ -60,11 +69,15 @@ html {
   }
 
   input:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 1000px $form-input-bg-color inset !important;
+    -webkit-box-shadow: 0 0 0 1000px $form-input-bg-color inset !important;
   }
 
   span.input-group-addon {
     padding: 2rem 2rem 2rem 3rem;
+  }
+
+  span.show-password {
+    cursor: pointer;
   }
 
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -412,8 +425,13 @@ form .checkbox input[type="checkbox"] {
     margin-top: 0.5rem;
     padding: 0.8rem 1.2rem;
   }
+
+  .navbar-nav > .dropdown > .language b {
+    display: none;
+  }
   
   .navbar-nav .dropdown .material-icons {
+    display: block;
     float: right;
     margin-left: 3rem;
     position: relative;
