@@ -1,12 +1,19 @@
-<li class="dropdown">
-  <a class="dropdown-toggle language" href="#">
-    <%= t("locales.#{locale}") %><i class="material-icons">keyboard_arrow_down</i><b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <% I18n.available_locales.each do |locale| %>
-      <li class="<%= "disabled" if I18n.locale == locale %>">
-        <%= link_to locale_menu_item(locale), switch_lang_path(locale: locale) %>
-      </li>
-    <% end %>
-  </ul>
+<li>
+  <div class="language-selector">
+    <div class="dropdown dropdown-language-selector">
+      <a class="btn btn-default dropdown-toggle language" type="button" id="dropdownLanguage">
+        <%= t("locales.#{locale}") %>
+        <b class="caret"></b><i class="material-icons">keyboard_arrow_down</i>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+        <% I18n.available_locales.each do |locale| %>
+          <% if I18n.locale != locale %>
+          <li>
+            <%= link_to t("locales.#{locale}"), switch_lang_path(locale: locale) %>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </li>

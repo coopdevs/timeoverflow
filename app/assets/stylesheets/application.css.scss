@@ -390,6 +390,10 @@ form .checkbox input[type="checkbox"] {
     opacity: 0.6;
   }
 
+  .navbar-block{
+    margin-top: 0.2rem;
+  }
+
   .navbar-nav > li > a {
     font-size: 1.6rem;
     font-weight: 500;
@@ -418,43 +422,85 @@ form .checkbox input[type="checkbox"] {
     color: $navs-hover-color;
   }
 
-  .navbar-nav > .dropdown > .language {
-    border: 1px solid $white;
-    border-radius: 0.3rem;
-    margin-bottom: 0;
-    margin-top: 0.5rem;
-    padding: 0.8rem 1.2rem;
-  }
-
-  .navbar-nav > .dropdown > .language b {
-    display: none;
-  }
-  
-  .navbar-nav .dropdown .material-icons {
-    display: block;
-    float: right;
-    margin-left: 3rem;
-    position: relative;
-  }
-
   .navbar-brand {
     font-size: 2.4rem;
     font-weight: 600;
     letter-spacing: 0.019rem;
   }
 
-  ul.dropdown-menu a {
-    color: $menu-drop;
+  .language-selector{
+    margin: 0.5rem 2rem 0 2rem;
+    width: 13.5rem;
   }
 
-  ul.dropdown-menu a:hover {
-    color: $menu-drop-hover;
+  .dropdown{
+    &.dropdown-language-selector{
+      .dropdown-toggle{
+        background: none;
+        border: 0.2rem solid $white;
+        border-radius: 0.3rem;
+        color: $white;
+        font-size: 1.6rem;
+        font-weight: 500;
+        min-width: 13.5rem;
+        text-align: left;
+
+        .caret{
+          display: block;
+          float: right;
+          margin-top: 1.1rem;
+        }
+        &:focus,
+        &:active{
+          box-shadow: none;
+          outline: none;
+        }
+      }
+      &.open>.btn-default.dropdown-toggle{
+        background: none;
+        border-color: $white;
+        border-bottom: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        color: $white;
+
+        .caret{
+          -ms-transform: rotate(180deg);
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+        }
+      }
+      .dropdown-menu{
+        background: none;
+        border: 0.2rem solid #ffffff;
+        border-top: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        box-shadow: none;
+        margin-top: 0;
+        min-width: 13.5rem;
+        li{
+          a{
+            color: $white;
+            font-size: 1.6rem;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            &:hover{
+              background: none;
+              opacity: 0.8;
+            }
+            &:focus,
+            &:active{
+              background: none;
+              box-shadow: none;
+              outline: none;
+            }
+          }
+        }
+      }
+    }
   }
 
-  .dropdown-menu>.disabled > a, .dropdown-menu>.disabled > a:hover {
-    color: $menu-disabled;
-  }
-  
   .footer {
     background: none;
     bottom: 5rem;
@@ -518,22 +564,24 @@ form .checkbox input[type="checkbox"] {
     margin-top: 1rem;
   }
 
-  .btn {
-    font-size: 2.88rem;
-    font-weight: 500;
-    letter-spacing: 0.023rem;
-    margin-top: 4rem;
-    padding: 1.5rem 6.2rem;
-  }
+  .content {
+    .btn {
+      font-size: 2.88rem;
+      font-weight: 500;
+      letter-spacing: 0.023rem;
+      margin-top: 4rem;
+      padding: 1.5rem 6.2rem;
+    }
 
-  .btn-info {
-    background: $btn-landing;
-    border: 0;
-    color: $black;
-  }
+    .btn-info {
+      background: $btn-landing;
+      border: 0;
+      color: $black;
+    }
 
-  .btn-info:hover {
-    background: $btn-landing-hover;
+    .btn-info:hover {
+      background: $btn-landing-hover;
+    }
   }
 
   .back-overlay {
@@ -772,5 +820,12 @@ form .checkbox input[type="checkbox"] {
 
   .footer-right-col, .footer-right-col p {
     text-align: center;
+  }
+
+  .landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
+    .language-selector{
+      margin: 0 auto;
+      width: 13.5rem;
+    }
   }
 }
