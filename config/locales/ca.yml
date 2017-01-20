@@ -391,7 +391,8 @@ ca:
 
   pages:
     about:
-      title: "El software disenyat per i per <span>als Bancs de Temps</span>"
+      title: "El software disenyat per i per"
+      title2: "als Bancs de Temps"
       subtitle: "TimeOverflow és lliure, gratuït i col·laboratiu"
       feature-group-1: "Gestió del Banc de Temps amb perfils d'administració"
       feature-group-2: "Xarxa social i banca en línia accessible pels membres"

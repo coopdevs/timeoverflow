@@ -18,12 +18,12 @@
     <link href="/favicon.ico" rel="shortcut icon">
     <%= stylesheet_link_tag 'libs', media: 'all' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' %>
     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/icon?family=Material+Icons' %>
     <%= javascript_include_tag 'libs' %>
     <%= javascript_include_tag 'application' %>
   </head>
-  <body <%= get_body_css_class(controller.controller_name) %> data-action="<%= params[:controller] %>-<%= params[:action] %>"
+  <body class="<%= get_body_css_class(controller.controller_name) %>" data-action="<%= params[:controller] %>-<%= params[:action] %>"
         ng-app="timeoverflow"
         ng-cloak>
     <%= render 'navbar' %>

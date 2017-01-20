@@ -396,7 +396,8 @@ es:
 
   pages:
     about:
-      title: "El software diseñado por y para <span>los Bancos de Tiempo</span>"
+      title: "El software diseñado por y para"
+      title2: "los Bancos de Tiempo"
       subtitle: "TimeOverflow es libre, gratuito y colaborativo"
       feature-group-1: "Gestión del Banco de Tiempo con perfiles de administración"
       feature-group-2: "Red social y banca on-line accesible por los miembros"

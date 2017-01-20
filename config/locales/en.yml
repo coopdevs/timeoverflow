@@ -387,7 +387,8 @@ en:
 
   pages:
     about:
-      title: "The software designed by and for <span>Time Banks</span>"
+      title: "The software designed by and for"
+      title2: "Time Banks"
       subtitle: "TimeOverflow is open source, free and collaborative"
       feature-group-1: "Time Bank management with administration roles"
       feature-group-2: "Social network and online banking accessible by members"

@@ -86,14 +86,15 @@ module ApplicationHelper
   end
 
   def get_body_css_class(controller)
-    case controller
-      when 'home' then return 'class=landing-page'
-      when 'sessions' then return 'class=login-page'
-      when 'pages' then return 'class=pages'
-      when 'unlocks' then return 'class=unlocks-page'
-      when 'passwords' then return 'class=passwords-page'
-      when 'confirmations' then return 'class=confirmations-page'
-    end
-    return ""
+    classes = {
+      'home' => 'landing-page',
+      'sessions' => 'login-page',
+      'pages' => 'pages',
+      'unlocks' => 'unlocks-page',
+      'passwords' => 'passwords-page',
+      'confirmations' => 'confirmations-page'
+    }
+
+    "#{classes[controller]}"
   end
 end

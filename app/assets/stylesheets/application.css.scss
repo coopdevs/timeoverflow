@@ -45,10 +45,6 @@ html {
   margin-left: 0.7rem;
 }
 
-.navbar-nav .dropdown .material-icons {
-  display: none;
-}
-
 #login-box {
   border-radius: 0.3rem;
 
@@ -56,7 +52,7 @@ html {
     border: 0;
     border-radius: 0.3rem;
     margin: 0;
-    padding: 1rem 3.8rem 2rem 3.8rem;
+    padding: 1rem 3rem 1.4rem 3rem;
   }
 
   form .material-icons {
@@ -110,7 +106,7 @@ html {
   }
 
   .panel-footer {
-    padding: 3rem;
+    padding: 2rem 3rem;
 
     a {
       color: $form-a-color;
@@ -475,8 +471,8 @@ form .checkbox input[type="checkbox"] {
         }
       }
       .dropdown-menu{
-        background: none;
-        border: 0.2rem solid #ffffff;
+        background: $navs-bg-color;
+        border: 0.2rem solid $white;
         border-top: 0;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
@@ -490,7 +486,7 @@ form .checkbox input[type="checkbox"] {
             font-weight: 500;
             padding: 0.6rem 1.2rem;
             &:hover{
-              background: none;
+              background: $menu-drop-hover;
               opacity: 0.8;
             }
             &:focus,
@@ -551,7 +547,7 @@ form .checkbox input[type="checkbox"] {
   text-align: center;
 }
 
-.landing-page, .pages .banner {
+.landing-page .content, .pages .banner {
   h2 {
     color: $white;
     font-size: 5.76rem;
@@ -568,24 +564,22 @@ form .checkbox input[type="checkbox"] {
     margin-top: 1rem;
   }
 
-  .content {
-    .btn {
-      font-size: 2.88rem;
-      font-weight: 500;
-      letter-spacing: 0.023rem;
-      margin-top: 4rem;
-      padding: 1.5rem 6.2rem;
-    }
+  .btn {
+    font-size: 2.88rem;
+    font-weight: 500;
+    letter-spacing: 0.023rem;
+    margin-top: 4rem;
+    padding: 1.5rem 6.2rem;
+  }
 
-    .btn-info {
-      background: $btn-landing;
-      border: 0;
-      color: $black;
-    }
+  .btn-info {
+    background: $btn-landing;
+    border: 0;
+    color: $black;
+  }
 
-    .btn-info:hover {
-      background: $btn-landing-hover;
-    }
+  .btn-info:hover {
+    background: $btn-landing-hover;
   }
 
   .back-overlay {
@@ -599,7 +593,8 @@ form .checkbox input[type="checkbox"] {
     font-size: 3.84rem;
     font-weight: 600;
     letter-spacing: 0.031rem;
-    margin-top: 4rem;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
   }
 
   .material-icons {
@@ -610,6 +605,8 @@ form .checkbox input[type="checkbox"] {
     color: $form-login-gray-text;
     font-size: 1.6rem;
     font-weight: 400;
+    margin-bottom: 0rem;
+    margin-top: 1rem;
   }
 
   form .checkbox input[type="checkbox"] {
@@ -641,12 +638,12 @@ form .checkbox input[type="checkbox"] {
 .unlocks-page, .confirmations-page, .passwords-page {
   #login-box form {
     border: none;
-    margin-top: 2rem;
+    margin-top: 3rem;
     padding: 0;
   }
 
   #login-box .panel-body {
-    padding: 3rem;
+    padding: 3rem 3rem 2rem 3rem;
   }
 
   .panel-body h2 {
@@ -661,7 +658,7 @@ form .checkbox input[type="checkbox"] {
     font-size: 1.6rem;
     font-weight: 400;
     letter-spacing: -0.028rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
   }
 }
 
@@ -674,6 +671,7 @@ form .checkbox input[type="checkbox"] {
     font-weight: 600;
     letter-spacing: -0.037rem;
     margin-bottom: 0;
+    margin-top: 4rem;
   }
 
   h2 span {
@@ -748,9 +746,9 @@ form .checkbox input[type="checkbox"] {
   }
 
   .banner {
-    background: image-url('home_back.jpg') no-repeat center center;
+    background: image-url('home_back_overlay.jpg') no-repeat center center;
     background-size: cover;
-    margin: 7rem 0 4rem 0;
+    margin: 8rem 0 3rem 0;
     padding: 8rem 1rem;
     text-align: center;
 
@@ -771,7 +769,7 @@ form .checkbox input[type="checkbox"] {
 
   .empower {
     h2 {
-      margin-bottom: 5rem;
+      margin-bottom: 4rem;
     }
 
     p {
