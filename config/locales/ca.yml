@@ -258,7 +258,7 @@ ca:
       bank_activity: "Activitat del banc"
       per_month: "Per mesos"
       global_activity: "Activitat global"
-      users_reg: " Altes d'usuari"
+      users_reg: " Altes usuaris"
       num_swaps: " Intercanvis"
       total_hours: " Hores intercanviades"
       show: Mostrar

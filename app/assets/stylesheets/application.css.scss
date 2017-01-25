@@ -40,9 +40,17 @@ html {
   margin: 1.2rem 3rem 1.2rem 1rem;
 }
 
-.navbar-nav > .dropdown > .language b {
+.actions-menu > .dropdown > .language b {
   display: inline-block;
   margin-left: 0.7rem;
+}
+
+.actions-menu > li > a {
+  color: #101010;
+}
+
+.actions-menu > li{
+  margin-right:5px;
 }
 
 #login-box {
@@ -166,7 +174,6 @@ html {
   }
 }
 
-
 .post {
   background-color: $white;
   border: 1px solid $border;
@@ -244,6 +251,7 @@ table.users {
   body {
     background-color: $bg-color;
     font-family: 'Work Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: medium;
     margin: 0 0 20px;
   }
 
@@ -380,6 +388,117 @@ form .checkbox input[type="checkbox"] {
   z-index: -1;
 }
 
+.navbar-block{
+  margin-top: 0.2rem;
+}
+
+.navbar-nav > li > a {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.013rem;
+  margin: 1.4rem 2rem;
+  padding: 0;
+}
+
+.navbar-static-top {
+  background-color: $navs-bg-color;
+}
+
+.navbar-inverse {
+  border: 0;
+}
+
+.navbar-inverse .navbar-brand {
+  color: $white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: $white;
+}
+
+.navbar-inverse .navbar-brand a:hover, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+  color: $navs-hover-color;
+}
+
+.navbar-brand {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 0.019rem;
+}
+
+.language-selector{
+  margin: 0.5rem 2rem 0 2rem;
+  width: 13.5rem;
+}
+
+.dropdown{
+  &.dropdown-language-selector{
+    .dropdown-toggle{
+      background: none;
+      border: 0.2rem solid $white;
+      border-radius: 0.3rem;
+      color: $white;
+      font-size: 1.6rem;
+      font-weight: 500;
+      min-width: 13.5rem;
+      text-align: left;
+
+      .caret{
+        display: block;
+        float: right;
+        margin-top: 1.1rem;
+      }
+      &:focus,
+      &:active{
+        box-shadow: none;
+        outline: none;
+      }
+    }
+    &.open>.btn-default.dropdown-toggle{
+      background: none;
+      border-color: $white;
+      border-bottom: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      color: $white;
+
+      .caret{
+        -ms-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+    .dropdown-menu{
+      background: $navs-bg-color;
+      border: 0.2rem solid $white;
+      border-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: none;
+      margin-top: 0;
+      min-width: 13.5rem;
+      li{
+        a{
+          color: $white;
+          font-size: 1.6rem;
+          font-weight: 500;
+          padding: 0.6rem 1.2rem;
+          &:hover{
+            background: $menu-drop-hover;
+            opacity: 0.8;
+          }
+          &:focus,
+          &:active{
+            background: none;
+            box-shadow: none;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+
 .landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -390,122 +509,12 @@ form .checkbox input[type="checkbox"] {
     opacity: 0.6;
   }
 
-  .navbar-block{
-    margin-top: 0.2rem;
-  }
-
-  .navbar-nav > li > a {
-    font-size: 1.6rem;
-    font-weight: 500;
-    letter-spacing: 0.013rem;
-    margin: 1.4rem 2rem;
-    padding: 0;
-  }
-
-  .navbar-static-top {
-    background-color: $navs-bg-color;
-  }
-
-  .navbar-inverse {
-    border: 0;
-  }
-
-  .navbar-inverse .navbar-brand {
-    color: $white;
-  }
-
-  .navbar-inverse .navbar-nav > li > a {
-    color: $white;
-  }
-
-  .navbar-inverse .navbar-brand a:hover, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-    color: $navs-hover-color;
-  }
-
-  .navbar-brand {
-    font-size: 2.4rem;
-    font-weight: 600;
-    letter-spacing: 0.019rem;
-  }
-
-  .language-selector{
-    margin: 0.5rem 2rem 0 2rem;
-    width: 13.5rem;
-  }
-
-  .dropdown{
-    &.dropdown-language-selector{
-      .dropdown-toggle{
-        background: none;
-        border: 0.2rem solid $white;
-        border-radius: 0.3rem;
-        color: $white;
-        font-size: 1.6rem;
-        font-weight: 500;
-        min-width: 13.5rem;
-        text-align: left;
-
-        .caret{
-          display: block;
-          float: right;
-          margin-top: 1.1rem;
-        }
-        &:focus,
-        &:active{
-          box-shadow: none;
-          outline: none;
-        }
-      }
-      &.open>.btn-default.dropdown-toggle{
-        background: none;
-        border-color: $white;
-        border-bottom: 0;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-        color: $white;
-
-        .caret{
-          -ms-transform: rotate(180deg);
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-        }
-      }
-      .dropdown-menu{
-        background: $navs-bg-color;
-        border: 0.2rem solid $white;
-        border-top: 0;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        box-shadow: none;
-        margin-top: 0;
-        min-width: 13.5rem;
-        li{
-          a{
-            color: $white;
-            font-size: 1.6rem;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            &:hover{
-              background: $menu-drop-hover;
-              opacity: 0.8;
-            }
-            &:focus,
-            &:active{
-              background: none;
-              box-shadow: none;
-              outline: none;
-            }
-          }
-        }
-      }
-    }
-  }
-
   .footer {
     background: none;
     bottom: 5rem;
     height: auto;
     padding: 0;
+
 
     p {
       font-size: 1.6rem;
@@ -529,16 +538,14 @@ form .checkbox input[type="checkbox"] {
     transform: translate(-50%, -50%);
     width: 75%;
   }
-
   .container-fluid {
     padding-bottom: 0.8rem;
     padding-top: 0.8rem;
   }
-
+}
   .container-inner {
     margin-bottom: 14rem;
   }
-}
 
 .landing-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
