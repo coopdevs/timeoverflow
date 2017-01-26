@@ -212,25 +212,34 @@ html {
 }
 
 .footer {
-  background-color: $navs-bg-color;
-  bottom: 0;
-  height: 20px;
+  bottom: 5rem;
   left: 0;
   line-height: 20px;
+  padding: 0;
   position: absolute;
   vertical-align: middle;
   width: 100%;
 
   p {
-    font-size: 10px;
+    font-size: 1.6rem;
+    letter-spacing: 0.013rem;
     margin: 0;
     text-align: center;
   }
 
-  a {
-    color: $white;
+  .row {
+    margin: 0;
   }
 
+  a {
+    color: $pages-anchor;
+    font-weight: 500;
+    margin-left: 1.5rem;
+  }
+
+  a:hover {
+    color: $pages-anchor-hover;
+  }
 }
 
 .row.exports {
@@ -508,29 +517,6 @@ form .checkbox input[type="checkbox"] {
     filter: alpha(opacity = 60); /* For IE8 and earlier */
     opacity: 0.6;
   }
-
-  .footer {
-    background: none;
-    bottom: 5rem;
-    height: auto;
-    padding: 0;
-
-
-    p {
-      font-size: 1.6rem;
-      letter-spacing: 0.013rem;
-    }
-
-    .row {
-      margin: 0;
-    }
-
-    a {
-      font-weight: 500;
-      margin-left: 1.5rem;
-    }
-  }
-
   .vertical-align {
     left: 50%;
     position: absolute;
@@ -546,6 +532,16 @@ form .checkbox input[type="checkbox"] {
   .container-inner {
     margin-bottom: 14rem;
   }
+
+.landing-page, .login-page, .unlocks-page, .confirmations-page, .passwords-page {
+  a {
+    color: $white;
+  }
+
+  a:hover {
+    color: $white;
+  }
+}
 
 .landing-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
@@ -749,7 +745,7 @@ form .checkbox input[type="checkbox"] {
   .features .material-icons {
     margin-right: 2rem;
     position: relative;
-    top: 0.5rem;
+    top: 0.2rem;
   }
 
   .banner {
@@ -796,14 +792,6 @@ form .checkbox input[type="checkbox"] {
       color: $pages-anchor-hover;
     }
   }
-
-  .footer a {
-    color: $pages-anchor;
-  }
-
-  .footer a:hover {
-    color: $pages-anchor-hover;
-  }
 }
 
 .footer-left-col, .footer-left-col p {
@@ -819,6 +807,10 @@ form .checkbox input[type="checkbox"] {
 }
 
 @media(max-width:767px){
+  html{
+    font-size:55.5%;
+  }
+
   .footer-left-col, .footer-left-col p {
     text-align: center;
   }
@@ -831,10 +823,48 @@ form .checkbox input[type="checkbox"] {
     text-align: center;
   }
 
+  .navbar-nav > li > a{
+    text-align: center;
+  }
+
+  .footer {
+    margin-top: 4rem;
+    position: static;
+  }
+
   .landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
     .language-selector{
       margin: 0 auto;
       width: 13.5rem;
+    }
+
+    .footer {
+      bottom: 1rem;
+      margin-top: 0;
+    }
+
+    .footer a{
+      margin-left: 0rem;
+    }
+
+    .footer-right-col a{
+      margin: 0 1rem;
+    }
+  }
+
+  .landing-page, .unlocks-page, .confirmations-page, .passwords-page {
+    .footer {
+      position: absolute;
+    }
+  }
+
+  .login-page {
+    .vertical-align{
+      height: auto;
+      position: static;
+      top: 0;
+      transform: none;
+      width: 100%;
     }
   }
 }
