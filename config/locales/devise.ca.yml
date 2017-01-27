@@ -81,8 +81,8 @@ ca:
         unhappy: "Descontent?"
         cancel_account: "Cancel·lar el meu compte"
     sessions:
-      signed_in: "Connexió realitzada."
-      signed_out: "Desconnexió realitzada."
+      signed_in: ""
+      signed_out: ""
       new:
         sign_in: "Entrar"
         remember_me: "Recorda'm"

@@ -81,8 +81,8 @@ es:
         unhappy: "¿Descontento?"
         cancel_account: "Cancelar mi cuenta"
     sessions:
-      signed_in: "Conexión realizada."
-      signed_out: "Desconexión realizada."
+      signed_in: ""
+      signed_out: ""
       new:
         sign_in: "Entrar"
         remember_me: "Recordarme"
