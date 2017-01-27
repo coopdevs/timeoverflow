@@ -366,7 +366,7 @@ ca:
 
   layouts:
     application:
-      about: Sobre Timeoverflow
+      about: Sobre TimeOverflow
       login: Entra
       edit_profile: Modificar perfil
       edit_org: "Modificar %{organization}"

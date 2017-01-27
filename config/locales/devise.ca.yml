@@ -55,7 +55,7 @@ ca:
         passwords_not_match: Contrasenyes no coincideixen
       new:
         forgot_question: "Crea una nova clau de pas"
-        forgot_question_description: "Introdueix l'adreça associada a la teva conta i t'enviarem un correu amb l'enllaç per crear una nova clau de pas."
+        forgot_question_description: "Introdueix l'adreça associada al teu compte i t'enviarem un correu amb l'enllaç per crear una nova clau de pas."
         send_instructions: "Envia enllaç"
     registrations:
       destroyed: "El teu compte ha estat cancel·lat. Fins aviat!"
