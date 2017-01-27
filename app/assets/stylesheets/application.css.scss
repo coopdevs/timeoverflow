@@ -36,6 +36,12 @@ html {
   font-size:62.5%;
 }
 
+.content
+{
+  min-height:500px;
+  margin-bottom: 40px;
+}
+
 .language-selector{
   margin: 1.2rem 3rem 1.2rem 1rem;
 }
@@ -212,9 +218,9 @@ html {
 }
 
 .footer {
-  bottom: 5rem;
+  bottom: 0;
   left: 0;
-  line-height: 20px;
+  line-height: 40px;
   padding: 0;
   position: absolute;
   vertical-align: middle;
