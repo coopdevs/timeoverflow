@@ -521,7 +521,7 @@ form .checkbox input[type="checkbox"] {
   .back-overlay {
     display: block;
     filter: alpha(opacity = 60); /* For IE8 and earlier */
-    opacity: 0.2;
+    opacity: 0.6;
   }
   .vertical-align {
     left: 50%;
@@ -534,10 +534,11 @@ form .checkbox input[type="checkbox"] {
     padding-bottom: 0.8rem;
     padding-top: 0.8rem;
   }
-}
+
   .container-inner {
     margin-bottom: 14rem;
   }
+}
 
 .landing-page, .login-page, .unlocks-page, .confirmations-page, .passwords-page {
   a {
@@ -554,6 +555,11 @@ form .checkbox input[type="checkbox"] {
   background-color: $navs-bg-color;
   background-size: cover;
   text-align: center;
+
+  .back-overlay {
+    filter: alpha(opacity = 15); /* For IE8 and earlier */
+    opacity: 0.15;
+  }
 }
 
 .landing-page .content, .pages .banner {
@@ -589,11 +595,6 @@ form .checkbox input[type="checkbox"] {
 
   .btn-info:hover {
     background: $btn-landing-hover;
-  }
-
-  .back-overlay {
-    filter: alpha(opacity = 40); /* For IE8 and earlier */
-    opacity: 0.4;
   }
 }
 
