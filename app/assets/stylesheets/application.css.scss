@@ -46,6 +46,11 @@ html {
   margin: 1.2rem 3rem 1.2rem 1rem;
 }
 
+.language-selector a span {
+  display: block;
+  float: left;
+}
+
 .actions-menu > .dropdown > .language b {
   display: inline-block;
   margin-left: 0.7rem;
@@ -83,7 +88,8 @@ html {
   }
 
   input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px $form-input-bg-color inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px $form-input-bg-color inset;
+    transition: background-color 100000s ease-in-out 0s;
   }
 
   span.input-group-addon {
@@ -91,23 +97,24 @@ html {
   }
 
   span.show-password {
+    border-radius: 0 0.3rem 0.3rem 0;
     cursor: pointer;
   }
 
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: $form-login-gray-text;
+    color: $form-input-glyph;
   }
 
   ::-moz-placeholder { /* Firefox 19+ */
-    color: $form-login-gray-text;
+    color: $form-input-glyph;
   }
 
   ::-ms-input-placeholder { /* IE 10+ */
-    color: $form-login-gray-text;
+    color: $form-input-glyph;
   }
 
   ::-moz-placeholder { /* Firefox 18- */
-    color: $form-login-gray-text;
+    color: $form-input-glyph;
   }
 
   .panel-heading {
@@ -136,13 +143,18 @@ html {
     border-radius: 0.3rem 0 0 0.3rem;
   }
 
-  .input-lg {
+  .input-lg, #user_email {
     border-radius: 0 0.3rem 0.3rem 0;
+  }
+
+  #user_password {
+    border-radius: 0;
   }
 
   .input-group-addon, .input-lg {
     background-color: $form-input-bg-color;
     border: 0;
+    box-shadow: none;
     color: $form-input-glyph;
     font-size: 2.24rem;
     letter-spacing: -0.0040rem;
@@ -152,7 +164,7 @@ html {
   .form-control {
     border: 0;
     font-weight: 400;
-    padding: 4rem 0;
+    height: 7.5rem;
   }
   
   .form-control:focus {
