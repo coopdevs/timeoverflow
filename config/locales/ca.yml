@@ -112,7 +112,7 @@ ca:
   application:
     landing:
       slogan: Fem valer el temps
-      sub_slogan: Hi ha un banc de temps molt aprop teu
+      sub_slogan: Hi ha un banc de temps molt a prop teu
       button: Entra
     login_form:
       email: Correu electrònic
