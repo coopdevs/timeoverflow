@@ -84,4 +84,17 @@ module ApplicationHelper
       s << " (#{t("locales.#{locale}")})" unless I18n.locale == locale
     end
   end
+
+  def get_body_css_class(controller)
+    classes = {
+      'home' => 'landing-page',
+      'sessions' => 'login-page',
+      'pages' => 'pages',
+      'unlocks' => 'unlocks-page',
+      'passwords' => 'passwords-page',
+      'confirmations' => 'confirmations-page'
+    }
+
+    "#{classes[controller]}"
+  end
 end

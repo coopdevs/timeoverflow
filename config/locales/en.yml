@@ -110,7 +110,16 @@ en:
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
-    terms_conditions: terms of service
+    landing:
+      slogan: Let's value our time
+      sub_slogan: There is a time bank near to you
+      button: Enter
+    login_form:
+      email: E-mail
+      password: Password
+      remember_check: Remember me
+      button: Enter
+    terms_conditions: Terms of service
     navbar:
       administration: Administration
       reports: Reports
@@ -365,6 +374,7 @@ en:
       login: Login
       edit_profile: Update my profile
       edit_org: "Update %{organization}"
+      help: Help
     report:
       report_title: "REPORT"
 
@@ -374,3 +384,32 @@ en:
       movements: Movements
     post_form:
       you_can_use: You can use
+
+  pages:
+    about:
+      title: "The software designed by and for"
+      title2: "Time Banks"
+      subtitle: "TimeOverflow is open source, free and collaborative"
+      feature-group-1: "Time Bank management with administration roles"
+      feature-group-2: "Social network and online banking accessible by members"
+      feature-text-1: "Creation/deletion/updates of bank members"
+      feature-text-2: "Posting of offers and inquiries"
+      feature-text-3: "Enter checks and manage accounting"
+      feature-text-4: "Members of a Time Bank can access the system and connect with other members"
+      feature-text-5: "Posting of offers and inquiries"
+      feature-text-6: "Pay hours to other members"
+      banner-title: "Are you a Time Bank?"
+      banner-subtitle: "We will contact you to start it up or make you a demonstration"
+      banner-button: "Request access to TimeOverflow"
+      empower-title: "Empowering the Time Banks"
+      empower-text-1: "TimeOveflow is specially designed for and by Time Banks that physically exist &mdash; %{showmap_link}, and its purpose is to boost them thanks to Internet."
+      empower-text-2: "Thanks to the joint job of %{coopdevs_link} and %{abdt_link} today we can offer the software TimeOverflow to all Time Banks that want it, open and for free."
+      empower-text-3: "The source code of TimeOverflow is available based on an open source license and you can download it at %{github_link}"
+      empower-showmap: "see map"
+      empower-showmap-title: "Time Banks"
+      empower-coopdevs: "CoopDevs"
+      empower-coopdevs-title: "CoopDevs"
+      empower-adbdt: "ADBdT"
+      empower-adbdt-title: "Association for the Development of Time Banks"
+      empower-github: "Github"
+      empower-github-title: "Github"

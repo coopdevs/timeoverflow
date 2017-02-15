@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  root to: "home#index"
+
   devise_for :users
 
   devise_scope :user do
-    root to: "devise/sessions#new"
+    get "login", to: "devise/sessions#new"
   end
 
   ActiveAdmin.routes(self)
@@ -75,4 +77,5 @@ Rails.application.routes.draw do
       get "offers"
     end
   end
+
 end

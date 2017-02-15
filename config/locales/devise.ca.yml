@@ -17,6 +17,8 @@ ca:
       send_paranoid_instructions: "Si la teva adreça de correu existeix a la nostra base de dades, rebràs un correu amb les instruccions de com confirmar el teu compte en uns minuts."
       new:
         resend_instructions: "Reenviar instruccions de confirmació"
+        resend_instructions_description: "Si has canviat el teu correu tens que fer aquest pas perquè el canvi sigui efectiu"
+        resend_instructions_button: "Reenviar"
     failure:
       already_authenticated: "Ja estàs registrat."
       inactive: "El teu compte no ha estat activat."
@@ -52,8 +54,9 @@ ca:
         change_password: Canviar la contrasenya
         passwords_not_match: Contrasenyes no coincideixen
       new:
-        forgot_question: "Has oblidat la contrasenya o vols obtenir-la per primera vegada?"
-        send_instructions: "Envia'm les instruccions"
+        forgot_question: "Crea una nova clau de pas"
+        forgot_question_description: "Introdueix l'adreça associada al teu compte i t'enviarem un correu amb l'enllaç per crear una nova clau de pas."
+        send_instructions: "Envia enllaç"
     registrations:
       destroyed: "El teu compte ha estat cancel·lat. Fins aviat!"
       signed_up: "Benvingut!  Registre realitzat."
@@ -78,8 +81,8 @@ ca:
         unhappy: "Descontent?"
         cancel_account: "Cancel·lar el meu compte"
     sessions:
-      signed_in: "Connexió realitzada."
-      signed_out: "Desconnexió realitzada."
+      signed_in: ""
+      signed_out: ""
       new:
         sign_in: "Entrar"
         remember_me: "Recorda'm"
@@ -89,6 +92,8 @@ ca:
       unlocked: "El teu compte ha estat desbloquejat. Si us plau, entra per continuar."
       new:
         resend_instructions: "Reenviar instruccions de desbloqueig"
+        resend_instructions_description: "Si t'has equivocat en el login més de cinc vegades tens que fer aquest pas per desbloquejar el teu compte"
+        resend_instructions_button: "Reenviar"
   errors:
     messages:
       already_confirmed: "ja has estat confirmat, prova a entrar-hi"

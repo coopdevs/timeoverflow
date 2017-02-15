@@ -18,14 +18,16 @@
     <link href="/favicon.ico" rel="shortcut icon">
     <%= stylesheet_link_tag 'libs', media: 'all' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/icon?family=Material+Icons' %>
     <%= javascript_include_tag 'libs' %>
     <%= javascript_include_tag 'application' %>
   </head>
-  <body data-action="<%= params[:controller] %>-<%= params[:action] %>"
+  <body class="<%= get_body_css_class(controller.controller_name) %>" data-action="<%= params[:controller] %>-<%= params[:action] %>"
         ng-app="timeoverflow"
         ng-cloak>
     <%= render 'navbar' %>
-    <div class="container">
+    <div class="container content">
       <%= render 'layouts/messages' %>
       <%= yield %>
     </div>
@@ -34,15 +36,31 @@
         <div class="modal-content"></div>
       </div>
     </div>
-    <div id="footer">
-      <p>
-        <%= link_to t('application.terms_conditions'),
-            tnc_path,
-            data: { target: '#modal', toggle: 'modal' } %>
-        |
-        <%= link_to t('layouts.application.about'), page_path('about') %>
-      </p>
+    <div class="footer container-fluid">
+      <div class="container"> 
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-left-col">
+            <p>
+              <a href="http://community.coopdevs.org/" target="_blank"><%= t('layouts.application.help') %></a>
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-center-col">
+            <p>
+              <%= link_to t('application.terms_conditions'),
+                tnc_path,
+                data: { target: '#modal', toggle: 'modal' } %>
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-right-col">
+            <p>
+              <a href="https://twitter.com/timeoverflow" target="_blank">Twitter</a>
+              <a href="https://github.com/coopdevs/timeoverflow" target="_blank">Github</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="back-overlay"></div>    
     <!-- Piwik -->
     <script type="text/javascript">
       var _paq = _paq || [];

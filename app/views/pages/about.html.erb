@@ -1,91 +1,72 @@
 <div class="container-inner">
   <div class="row">
-    <div class="col-sm-6">
-      <div class="text-center">
-        <h1>TimeOverflow</h1>
-        <%= image_tag "sand-clock.png", width: 50 %>
-        <h2>El software diseñado por y para los Bancos de Tiempo</h2>
-        <em>TimeOverflow es libre, gratuito y colaborativo</em>
-      </div>
-      <div class="text-left" style="margin-top: 40px;">
-        <p>Funcionalidades de
-          <strong>TimeOverflow</strong>:</p>
-
-        <ul>
-          <li>
-            Gestión del Banco de Tiempo con perfiles de administración
-            <ul>
-              <li>Altas/bajas/modificaciones de miembros</li>
-              <li>Publicar ofertas y demandas</li>
-              <li>Introducir cheques y gestionar la contabilidad</li>
-            </ul>
-          </li>
-          <li>
-            Red social y banca on-line accesible por los miembros
-            <ul>
-              <li>Los miembros de un Banco de Tiempo pueden acceder al sistema
-                y contactar con otros miembros</li>
-              <li>Publicar ofertas y demandas</li>
-              <li>Pagar horas a otros miembros</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <h2>¿Eres un Banco de Tiempo?</h2>
-      <div class="text-center">
-        <a class="btn btn-primary btn-large"
-           href="http://adbdt.org/contacta/"
-           style="font-size:30px;margin-top:20px;">
-          Solicita acceso a TimeOverflow
-        </a>
-      </div>
-      <div class="text-center">
-        <p>
-          <em>(nos pondremos en contacto contigo para ponerlo en marcha o haceros una
-            demostración)</em>
-        </p>
-      </div>
+    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3 col-lg-offset-3 header">
+      <h2><%== t("pages.about.title") %><span><%== t("pages.about.title2") %></span></h2>
+      <h3><%= t("pages.about.subtitle") %></h3>
     </div>
-    <div class="col-sm-6">
-      <div class="text-center">
-        <h2>¿Ya eres miembro de un Banco de Tiempo que usa TimeOverflow?</h2>
-        <a class="btn btn-primary btn-large"
-           href="<%= new_user_session_path %>"
-           style="font-size:30px;margin-top:20px;">
-          Entra aquí
-        </a>
-      </div>
-      <p></p>
-      <p>Si eres una persona interesada en participar en un Banco de Tiempo, busca tu
-        Banco de Tiempo más cercano en
-        <a href="http://www.bdtonline.org" title="Bancos de Tiempo">bdtonline.org</a>.</p>
-      <p></p>
-      <%= image_tag "oferta.png", class: "img-responsive center-block" %>
-
-      <h2>Internet potencia los Bancos de Tiempo</h2>
-      <p>TimeOveflow está especialmente diseñado
-        <strong>por y para los Bancos de Tiempo</strong>
-        que existen físicamente (<a href="http://www.bdtonline.org" title="Bancos de Tiempo">ver mapa</a>), su fin es potenciarlos gracias a Internet.</p>
-
-      <p>Gracias al trabajo conjunto de
-        <a href="https://github.com/coopdevs">CoopDevs</a>
-        y la
-        <a
-          href="http://adbdt.org"
-          title="Asociación para el Desarrollo de los Bancos de Tiempo">ADBdT</a>
-        hoy podemos ofrecer el sofware
-        <strong>TimeOverflow</strong>
-        a todos los Bancos de Tiempo que así lo deseen de manera libre y gratuita.</p>
-
-      <p>El código fuente de TimeOverflow está disponible bajo una licencia open
-        source, ya se puede descargar en
-        <a href="https://github.com/coopdevs/timeoverflow">https://github.com/coopdevs/timeoverflow</a>
-      </p>
-      <div class="text-center">
-        <%= link_to image_tag("github.png", alt: "Github logo", height: 30),
-                    "https://github.com/coopdevs/timeoverflow",
-                    title: "TimeOverflow Github" %>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 features">
+      <ul>
+      <% for i in 1..2 %>
+        <li>
+          <div class="feature-group<%= i == 1 ? ' first' : '' %>">
+            <div class="feature-group-text"><%= t("pages.about.feature-group-#{i}") %></div>
+          </div>
+          <ul>
+          <% for j in 1..3 %>
+            <li <%= (i*j) == 6 ? 'class=last' : '' %>>
+              <div class="feature">
+                <div class="feature-icon"><i class="material-icons">done</i></div>
+                <div class="feature-text"><%= t("pages.about.feature-text-#{i*j}") %></div>
+              </div>
+            </li>
+          <% end %>
+          </ul>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 banner">
+      <h2><%= t("pages.about.banner-title") %></h2>
+      <h3><%= t("pages.about.banner-subtitle") %></h3>
+      <a href="http://adbdt.org/contacta/" class="btn btn-info" role="button"><%= t("pages.about.banner-button") %></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 empower">
+      <h2><%= t("pages.about.empower-title") %></h2>
+      <p><%== t(
+        "pages.about.empower-text-1",
+        showmap_link: link_to(
+          t("pages.about.empower-showmap"),
+          "http://www.bdtonline.org",
+          { title: t("pages.about.empower-showmap-title") }
+        )
+      ).html_safe %></p>
+      <p><%== t(
+        "pages.about.empower-text-2",
+        coopdevs_link: link_to(
+          t("pages.about.empower-coopdevs"),
+          "https://github.com/coopdevs",
+          { title: t("pages.about.empower-coopdevs-title") }
+        ),
+        abdt_link: link_to(
+          t("pages.about.empower-adbdt"),
+          "http://adbdt.org",
+          { title: t("pages.about.empower-adbdt-title") }
+        )
+      ).html_safe %></p>
+      <p><%== t(
+        "pages.about.empower-text-3",
+        github_link: link_to(
+          t("pages.about.empower-github"),
+          "https://github.com/coopdevs/timeoverflow",
+          { title: t("pages.about.empower-github-title") }
+        )
+      ).html_safe %></p>
     </div>
   </div>
 </div>

@@ -1,23 +1,25 @@
 <div class="row">
-  <div class="col-sm-4">
-    <%= render "devise/shared/links" %>
-  </div>
-  <div class="col-sm-8">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h2 class="panel-title">
-          <%= t(".resend_instructions") %>
-        </h2>
-      </div>
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-primary" id="login-box">
       <div class="panel-body">
+        <h2><%= t(".resend_instructions") %></h2>
+        <p class="description"><%= t(".resend_instructions_description") %></p>
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: unlock_path(resource_name), html: { method: :post } do |f| %>
           <div class="form-group">
-            <%= f.label :email, class: "control-label" %>
-            <%= f.text_field :email, required: false, autofocus: true, class: "form-control" %>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="material-icons">email</i>
+              </span>
+              <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control input-lg" %>
+            </div>
           </div>
           <div class="form-group">
-            <%= f.submit t(".resend_instructions"), class: "btn btn-primary" %>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= f.submit t(".resend_instructions_button"), class: "btn btn-primary btn-lg col-xs-12" %>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>
