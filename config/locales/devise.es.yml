@@ -17,6 +17,8 @@ es:
       send_paranoid_instructions: "Si tu dirección de correo existe in nuestra base de datos, recibirás un correo con las instrucciones sobre como confirmar tu cuenta en unos minutos."
       new:
         resend_instructions: "Reenviar instrucciones de confirmación"
+        resend_instructions_description: "Si has cambiado tu email debes de realizar este paso para que el cambio sea efectivo"
+        resend_instructions_button: "Reenviar"
     failure:
       already_authenticated: "Ya estás registrado."
       inactive: "Tu cuenta no ha sido activada."
@@ -52,8 +54,9 @@ es:
         change_password: Cambiar mi contraseña
         passwords_not_match: "Las contraseñas no coinciden"
       new:
-        forgot_question: "¿Has olvidado tu contraseña o quieres obtenerla por primera vez?"
-        send_instructions: "Envíame las instruciones"
+        forgot_question: "Crea una nueva contraseña"
+        forgot_question_description: "Introduce la dirección asociada a tu cuenta y te enviaremos un correo con el enlace para crear una nueva contraseña."
+        send_instructions: "Envía enlace"
     registrations:
       destroyed: "Adiós! Tu cuenta se ha cancelado. Esperamos verte pronto de nuevo."
       signed_up: "Bienvenido(a)!  Registrado realizado."
@@ -78,8 +81,8 @@ es:
         unhappy: "¿Descontento?"
         cancel_account: "Cancelar mi cuenta"
     sessions:
-      signed_in: "Conexión realizada."
-      signed_out: "Desconexión realizada."
+      signed_in: ""
+      signed_out: ""
       new:
         sign_in: "Entrar"
         remember_me: "Recordarme"
@@ -89,6 +92,8 @@ es:
       unlocked: "Tu cuenta ha sido desbloqueada. Por favor, entra para continuar."
       new:
         resend_instructions: "Reenviar instrucciones de desbloqueo"
+        resend_instructions_description: "Si te has equivocado en el login más de cinco veces tienes que hacer este paso para desbloquear tu cuenta"
+        resend_instructions_button: "Reenviar"
   errors:
     messages:
       already_confirmed: "ya fue confirmado, por favor prueba a entrar"

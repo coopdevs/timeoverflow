@@ -102,10 +102,23 @@ ca:
           attributes:
             web:
               url_format_invalid: Format de URL no vàlid
+        transfer:
+          attributes:
+            base:
+              same_account: No es pot fer una transacció al mateix compte
 
   # ETIQUETAS VARIADAS EN PLANTILLAS
 
   application:
+    landing:
+      slogan: Fem valer el temps
+      sub_slogan: Hi ha un banc de temps molt a prop teu
+      button: Entra
+    login_form:
+      email: Correu electrònic
+      password: Clau de pas
+      remember_check: Recorda'm
+      button: Entra
     terms_conditions: Termes del servei
     navbar:
       administration: Administració
@@ -129,7 +142,7 @@ ca:
       offer_public_link: Enllaç públic a ofertes
       inquiry_public_link: Enllaç públic a demandes
     menu:
-      sign_in: Entrar
+      sign_in: Entra
       sing_out: Desconnectar
     organization_list:
       welcome: Benvingut a Timeoverflow %{user}.
@@ -245,7 +258,7 @@ ca:
       bank_activity: "Activitat del banc"
       per_month: "Per mesos"
       global_activity: "Activitat global"
-      users_reg: " Altes d'usuari"
+      users_reg: " Altes usuaris"
       num_swaps: " Intercanvis"
       total_hours: " Hores intercanviades"
       show: Mostrar
@@ -353,10 +366,11 @@ ca:
 
   layouts:
     application:
-      about: Informació sobre TimeOverflow
-      login: Entrar
+      about: Sobre TimeOverflow
+      login: Entra
       edit_profile: Modificar perfil
       edit_org: "Modificar %{organization}"
+      help: Ajuda
     report:
       report_title: "INFORME"
 
@@ -374,3 +388,32 @@ ca:
       movements: Moviments
     post_form:
       you_can_use: Pots fer servir
+
+  pages:
+    about:
+      title: "El software disenyat per i per"
+      title2: "als Bancs de Temps"
+      subtitle: "TimeOverflow és lliure, gratuït i col·laboratiu"
+      feature-group-1: "Gestió del Banc de Temps amb perfils d'administració"
+      feature-group-2: "Xarxa social i banca en línia accessible pels membres"
+      feature-text-1: "Altes/baixes/modificacions de membres"
+      feature-text-2: "Publicar ofertes i demandes"
+      feature-text-3: "Introduir xecs i gestionar la comptabilitat"
+      feature-text-4: "Els membres d'un Banc de Temps poden accedir al sistema i contactar amb altres membres"
+      feature-text-5: "Publicar ofertes i demandes"
+      feature-text-6: "Pagar hores a altres membres"
+      banner-title: "Ets un Banc de Temps?"
+      banner-subtitle: "Us ajudarem a posar-lo en marxa o fer-vos una demostració"
+      banner-button: "Sol·licita accés"
+      empower-title: "Empoderant els bancs del temps"
+      empower-text-1: "TimeOveflow està especialment dissenyat per i per als Bancs de Temps que existeixen físicament &mdash; %{showmap_link}, la seva missió és potenciar-los."
+      empower-text-2: "Gràcies al treball conjunt de %{coopdevs_link} i la %{abdt_link} avui podem oferir el sofware TimeOverflow a tots els Bancs de Temps que així ho desitgin de manera lliure i gratuïta."
+      empower-text-3: "El codi font de TimeOverflow està disponible sota una llicència open source i descarregable a %{github_link}"
+      empower-showmap: "veure mapa"
+      empower-showmap-title: "Bancs de Temps"
+      empower-coopdevs: "CoopDevs"
+      empower-coopdevs-title: "CoopDevs"
+      empower-adbdt: "ADBdT"
+      empower-adbdt-title: "Associació pel Desenvolupament dels Bancs de Temps"
+      empower-github: "Github"
+      empower-github-title: "Github"

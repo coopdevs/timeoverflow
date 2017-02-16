@@ -64,7 +64,11 @@ end
 group :test do
   # Needed for TravisCI
   gem 'rake'
-  gem "database_cleaner"
+
+  # Do not upgrade until
+  # https://github.com/DatabaseCleaner/database_cleaner/issues/317 is fixed
+  gem "database_cleaner", '1.3.0'
+
   gem 'shoulda', ">= 3.5"
   gem 'fabrication'
   gem 'faker'
