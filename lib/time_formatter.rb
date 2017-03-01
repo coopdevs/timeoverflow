@@ -1,5 +1,8 @@
-class TimeFormatter < ActiveRecord::Base
-  
+class TimeFormatter
+  def mdash
+    raw "&mdash;"
+  end
+
   def seconds_to_h_m(seconds)
     sign = seconds <=> 0
     if sign.try :nonzero?
