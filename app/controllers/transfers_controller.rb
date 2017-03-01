@@ -8,6 +8,10 @@ class TransfersController < ApplicationController
 
     begin
       transfer.save!
+      #byebug
+      # mail notificación pago
+      PaymentNotifier.transfer_source(@account.accountable.display_name_with_uid,transfer.amount.to_f/3600).deliver_now
+      PaymentNotifier.transfer_destination(@source.accountable.display_name_with_uid,transfer.amount.to_f/3600).deliver_now
     rescue ActiveRecord::RecordInvalid
       flash[:error] = transfer.errors.full_messages.to_sentence
     end
