@@ -1,103 +1,80 @@
 es:
-  # NOMBRES DE LAS COSAS
+  active_admin:
+    comments:
+      author_type: Tipo de autor
+      resource_type: Tipo de recurso
+    users:
+      organization: Banco de tiempo
+      upload_csv: Fichero
+      upload_from_csv: Importar CSV
   activerecord:
-
-    models:
-      # Para usar:
-      # User.model_name.human
-      user:
-        one: Usuario
-        other: Usuarios
-      organization:
-        one: Banco de Tiempo
-        other: Bancos de Tiempo
-      category:
-        one: Categoría
-        other: Categorías
-      offer:
-        one: Oferta
-        other: Ofertas
-      inquiry:
-        one: Demanda
-        other: Demandas
-      transfer:
-        one: Transferencia
-        other: Transferencias
-      post:
-        one: Anuncio
-        other: Anuncios
-      comment:
-        one: Comentario
-        other: Comentarios
-
     attributes:
-      common: &common_attributes
-        created_at: Creado
-        updated_at: Actualizado
-      user:
-        <<: *common_attributes
-        username: Nombre
-        organization:
-        one: Banco de Tiempo
-        other: Bancos de Tiempo
-        email: Correo
-        registration_date: Fecha de alta
-        gender: Género
-        registration_number: Código de usuario
-        date_of_birth: Fecha de nacimiento
-        identity_document: DNI
-        phone: Teléfono
-        alt_phone: Teléfono alternativo
-        admin: Administrador de organización
-        superadmin: Administrador de sistema
-        last_sign_in_at: Fecha último login
-        description: Descripción
-        unconfirmed_email: Correo sin confirmar
-        notifications: Recibir notificaciones
-      organization:
-        <<: *common_attributes
-        name: Nombre
-        reg_number_seq: Número de secuencia de usuario
-        theme: Tema visual
-        email: Correo
-        phone: Teléfono
-        public_opening_times: Horario de atención al público
-        description: Descripción
-        address: Dirección
-        neighborhood: Barrio
-        city: Ciudad
-      category:
-        <<: *common_attributes
-        name: Nombre
-        parent: Categoría padre
-        name_translations: Nombre (traducciones)
-      transfer:
-        <<: *common_attributes
-        amount: Cantidad
-        reason: Comentarios
-        source: Origen
-        hours: Horas
-        minutes: Minutos
-        post: Oferta
-      post:
-        <<: *common_attributes
-        title: Título
-        description: Descripción
-        category: Categoria
-        tag_list: Etiquetas
-        joinable: Se puede unir otros
-        permanent: Permanente
-        start_on: Empieza el
-        end_on: Termina el
       account:
         balance: Balance
         organization: Organización
+      category:
+        created_at: Creado
+        name: Nombre
+        name_translations: Nombre (traducciones)
+        parent: Categoría padre
+        updated_at: Actualizado
+      common:
+        created_at: Creado
+        updated_at: Actualizado
+      organization:
+        address: Dirección
+        city: Ciudad
+        created_at: Creado
+        description: Descripción
+        email: Correo
+        name: Nombre
+        neighborhood: Barrio
+        phone: Teléfono
+        public_opening_times: Horario de atención al público
+        reg_number_seq: Número de secuencia de usuario
+        theme: Tema visual
+        updated_at: Actualizado
+      post:
+        category: Categoria
+        created_at: Creado
+        description: Descripción
+        end_on: Termina el
+        joinable: Se puede unir otros
+        permanent: Permanente
+        start_on: Empieza el
+        tag_list: Etiquetas
+        title: Título
+        updated_at: Actualizado
+      transfer:
+        amount: Cantidad
+        created_at: Creado
+        hours: Horas
+        minutes: Minutos
+        post: Oferta
+        reason: Comentarios
+        source: Origen
+        updated_at: Actualizado
+      user:
+        admin: Administrador de organización
+        alt_phone: Teléfono alternativo
+        created_at: Creado
+        date_of_birth: Fecha de nacimiento
+        description: Descripción
+        email: Correo
+        gender: Género
+        identity_document: DNI
+        last_sign_in_at: Fecha último login
+        notifications: Recibir notificaciones
+        organization: 
+        phone: Teléfono
+        registration_date: Fecha de alta
+        registration_number: Código de usuario
+        superadmin: Administrador de sistema
+        unconfirmed_email: Correo sin confirmar
+        updated_at: Actualizado
+        username: Nombre
     errors:
       models:
-        user:
-          attributes:
-            email:
-              invalid: inválido
         organization:
           attributes:
             web:
@@ -106,319 +83,441 @@ es:
           attributes:
             base:
               same_account: No se puede hacer una transacción a la misma cuenta
-
-  # ETIQUETAS VARIADAS EN PLANTILLAS
-
+        user:
+          attributes:
+            email:
+              invalid: inválido
+    models:
+      category:
+        one: Categoría
+        other: Categorías
+      comment:
+        one: Comentario
+        other: Comentarios
+      inquiry:
+        one: Demanda
+        other: Demandas
+      offer:
+        one: Oferta
+        other: Ofertas
+      organization:
+        one: Banco de Tiempo
+        other: Bancos de Tiempo
+      post:
+        one: Anuncio
+        other: Anuncios
+      transfer:
+        one: Transferencia
+        other: Transferencias
+      user:
+        one: Usuario
+        other: Usuarios
   application:
     landing:
+      button: Entra
       slogan: Valoramos el tiempo
       sub_slogan: Hay un banco de tiempo cerca de tí
-      button: Entra
     login_form:
+      button: Entra
       email: Correo electrónico
       password: Contraseña
       remember_check: Recuérdame
-      button: Entra
-    terms_conditions: Términos del servicio
-    navbar:
-      administration: Administración
-      reports: Informes
-      stats: Estadísticas
-      users: Usuarios
-      categories: Servicios
-      organizations: Organizaciones
-      statistics: Estadísticas
-      global_activity: "Actividad global"
-      inactive_users: Usuarios inactivos
-      demographics: Datos demográficos
-      last_login: Último login
-      without_offers: Sin ofertas publicadas
-      type_of_swaps: Tipos de intecambios
-      statistics_all_transfers: Todas las transferencias
-      admin: Administrar
-      adminshort: Admin
-      tags: Etiquetas
-      sign_out: Desconectar
-      offer_public_link: Enlace público a ofertas
-      inquiry_public_link: Enlace público a demandas
     menu:
       sign_in: Entra
       sing_out: Desconectar
+    navbar:
+      admin: Administrar
+      administration: Administración
+      adminshort: Admin
+      categories: Servicios
+      demographics: Datos demográficos
+      global_activity: Actividad global
+      inactive_users: Usuarios inactivos
+      inquiry_public_link: Enlace público a demandas
+      last_login: Último login
+      offer_public_link: Enlace público a ofertas
+      organizations: Organizaciones
+      reports: Informes
+      sign_out: Desconectar
+      statistics: Estadísticas
+      statistics_all_transfers: Todas las transferencias
+      stats: Estadísticas
+      tags: Etiquetas
+      type_of_swaps: Tipos de intecambios
+      users: Usuarios
+      without_offers: Sin ofertas publicadas
     organization_list:
-      welcome: Bienvenido a Timeoverflow %{user}.
-      not_member: No eres miembro de ningún banco de tiempo, para usar la plataforma tendrás que ponerte en contacto con uno de los bancos de tiempo que están integrados en la plataforma
-      time_bank: Banco de tiempo
+      address: Dirección
+      city: Ciudad
+      description: Descripción
       email: Correo
+      neighborhood: Barrio
+      not_member: No eres miembro de ningún banco de tiempo, para usar la plataforma tendrás que ponerte en contacto con uno de los bancos de tiempo que están integrados en la plataforma
       phone: Teléfono
       public_opening_times: Horario de atención al público
-      description: Descripción
-      address: Dirección
-      neighborhood: Barrio
-      city: Ciudad
+      time_bank: Banco de tiempo
+      welcome: Bienvenido a Timeoverflow %{user}.
+    terms_conditions: Términos del servicio
     tips:
       entertag: Entre etiquetas separadas por comas
-      user_not_found: "Usuario no encontrado."
-  # views/users/index...
-
-  users:
-
+      user_not_found: Usuario no encontrado.
+  categories:
     index:
-      create: Crear nuevo usuario
-      manage_warning_angular: "Va a cambiar los privilegios del usuario {{username}}"
-      cancel_warning_angular: "Va a eliminar del banco al usuario {{username}}"
-      active_warning_angular: "Va a cambiar el estado de la cuenta del usuario {{username}}"
+      add: Añadir servicio
+      all: Todas
+      global: Globales
+      local: Locales
+      tree: Principales
+  devise:
+    confirmations:
+      confirmed: Tu cuenta ha sido confirmada con éxito.
+      confirmed_and_signed_in: Tu cuenta ha sido confirmada con éxito. Ahora estás registrado.
+      new:
+        resend_instructions: Reenviar instrucciones de confirmación
+        resend_instructions_button: Reenviar
+        resend_instructions_description: Si has cambiado tu email debes de realizar este paso para que el cambio sea efectivo
+      send_instructions: Recibirás un correo con las instrucciones sobre como confirmar tu cuenta en unos minutos.
+      send_paranoid_instructions: Si tu dirección de correo existe in nuestra base de datos, recibirás un correo con las instrucciones sobre como confirmar tu cuenta en unos minutos.
+    failure:
+      already_authenticated: Ya estás registrado.
+      inactive: Tu cuenta no ha sido activada.
+      invalid: Correo o clave inválida.
+      invalid_token: Código de autenticación inválido.
+      locked: Tu cuenta ha sido bloqueada, haz clic en el enlace 'Enviar correo de desbloqueo'.
+      not_found_in_database: Correo o clave inválida.
+      timeout: Tu sesión ha caducado. Por favor, regístrate nuevamente para continuar.
+      unauthenticated: Tienes que registrarte para continuar.
+      unconfirmed: Tienes que confirmar tu cuenta antes de continuar.
+      user:
+        last_attempt: Atención, te queda un solo intento antes de que tu cuenta se bloquee
+    mailer:
+      confirmation_instructions:
+        subject: Instrucciones de confirmación de cuenta
+      reset_password_instructions:
+        subject: Instrucciones para reestablecer tu clave
+      unlock_instructions:
+        subject: Instrucciones de desbloqueo de la cuenta
+    omniauth_callbacks:
+      failure: No se te pudo autentificar desde %{kind} porque "%{reason}".
+      success: Autentificación realizada desde la cuenta %{kind} .
+    passwords:
+      edit:
+        change_password: Cambiar mi contraseña
+        confirm_password: Repite la nueva contraseña
+        new_password: Nueva contraseña
+        passwords_not_match: Las contraseñas no coinciden
+      new:
+        forgot_question: Crea una nueva contraseña
+        forgot_question_description: Introduce la dirección asociada a tu cuenta y te enviaremos un correo con el enlace para crear una nueva contraseña.
+        send_instructions: Envía enlace
+      no_token: No puedes acceder a esta página si no vienes de un correo para reestablecer la contraseña. Si vienes de un correo para reestablecer la contraseña, asegurate que has utilizado la URL completa.
+      send_instructions: Recibirás un correo con instrucciones de como reestablecer tu contraseña en unos minutos.
+      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, recibirás un enlace pare la recuperación de la contraseña en tu correo en unos minutos.
+      updated: Tu contraseña se ha cambiado. Estás conectado(a).
+      updated_not_active: Cambio de constraseña realizado.
+    registrations:
+      destroyed: Adiós! Tu cuenta se ha cancelado. Esperamos verte pronto de nuevo.
+      edit:
+        cancel_account: Cancelar mi cuenta
+        current_password: Contraseña actual
+        edit_user: Editar Usuario
+        help_current_password: necesitamos tu contraseña actual para confirmar tus cambios
+        help_password: déjalo en blanco si no quieres cambiarla
+        password: Contraseña
+        password_confirmation: Confirma la contraseña
+        unhappy: "¿Descontento?"
+        update: Actualizar
+      new:
+        password: Contraseña
+        password_confirmation: Confirma la contraseña
+        sign_me_up: Regístrame
+        sign_up: Registro
+      signed_up: Bienvenido(a)!  Registrado realizado.
+      signed_up_but_inactive: Tu registro se ha realizado. Sin embargo, no puedes entrar porque tu cuenta no se ha activado todavía
+      signed_up_but_locked: Tu registro se ha realizado. Sin embargo, no puedes entrar porque tu cuenta está bloqueada. Haz clic en el enlace 'Enviar correo de desbloqueo'
+      signed_up_but_unconfirmed: Se ha enviado un mensaje de confirmación a tu dirección de correo. Por favor, abre el enlace para activar tu cuenta.
+      update_needs_confirmation: Actualización de cuenta realizada, pero necesitamos verificar tu dirección de correo. Por favor, comprueba tu correo y utiliza el enlace para confirmar tu nueva dirección de correo.
+      updated: Actualización de cuenta realizada.
+    sessions:
+      new:
+        remember_me: Recordarme
+        sign_in: Entrar
+      signed_in: 
+      signed_out: 
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: Volver a enviar correo de confirmación
+        didnt_receive_unlock_instructions: Enviar correo de desbloqueo
+        forgot_your_password: 'No recuerdo mi contraseña o aún no la tengo '
+        sign_in: Entrar
+        sign_in_with: Entrar con %{provider}
+        sign_up: Registrarse
+    unlocks:
+      new:
+        resend_instructions: Reenviar instrucciones de desbloqueo
+        resend_instructions_button: Reenviar
+        resend_instructions_description: Si te has equivocado en el login más de cinco veces tienes que hacer este paso para desbloquear tu cuenta
+      send_instructions: Recibirás un correo con instrucciones de como desbloquear tu cuenta en unos minutos.
+      send_paranoid_instructions: Si tu cuenta existe, recibirás un correo con instrucciones de como desbloquearla en unos minutos.
+      unlocked: Tu cuenta ha sido desbloqueada. Por favor, entra para continuar.
+  errors:
+    messages:
+      already_confirmed: ya fue confirmado, por favor prueba a entrar
+      confirmation_period_expired: necesita confirmarse en %{period}, por favor, solicita uno nuevo
+      expired: ha caducado, solicita uno nuevo
+      not_found: no se ha encontrado
+      not_locked: no se bloqueó
+      not_saved:
+        one: '1 error impide que este %{resource} se guarde:'
+        other: "%{count} errores impiden que este %{resource} se guarde:"
+  global:
+    add_new: Crear nuevo
+    all: Todo
+    amount: Cantidad
+    announcements: Anuncio
+    back: Atrás
+    balance: 'Balance:'
+    cancel_membership: Borrar definitivamente
+    contact_details: Datos d contacto
+    date: Fecha
+    delete: Borrar
+    demote: Convertir en usuario normal
+    edit: Modificar
+    filter: Filtro
+    give_time: Transferir tiempo
+    information: Información
+    locales_header: cambiar idioma
+    member_count: 'Número de usuarios:'
+    more: Ver más
+    movements: Movimientos
+    promote: Convertir en administrador
+    reason: Razón
+    required_field: "* Campo obligatorio"
+    save: Guardar
+    search: Buscar
+    show: Mostrar
+    source_destination: Origen/Destino
+    statistics: Estadísticas
+    table:
       actions: Acciones
-      user_created: "Usuario %{uid} %{name} guardado"
-    new:
-      new_user: Nuevo usuario
-      create_more_users_button: Crear e introducir otro usuario
-      cancel: Cancelar
-      user_created_add: "Usuario %{uid} %{name} guardado. Introduce ahora el siguiente"
-    edit:
-      edit_user: Cambiar usuario
-    show:
-      phone:
-        one: Teléfono
-        other: Teléfonos
-      data: Datos del usuario
-      categories: Servicios Ofrecidos
-      account: Últimos movimientos
-      inactive: "(Inactivo)"
-      accounts: Cuentas
-      created_at: "Alta:"
-      user_no: "Nº Usuario:"
-      balance: "Balance:"
-      date: Fecha
-      from_to: Origen/Destino
-      post: Anuncio
-      reason: Razón
-      quantity: Cantidad
-      inactive_user: El usuario no está activo
-      deleted_user:  El usuario ya no existe
-
-    give_time:
-      give_time: Dar Tiempo a
-    form:
-      superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
-      admin_warning: Atención!!! Estás dando poderes a este usuario!!
-    user_rows:
-      activate: Activar
-      deactivate: Desactivar
-      manage_warning: "Va a cambiar los privilegios del usuario %{user}"
-      cancel_warning: "Va a eliminar del banco al usuario %{user}"
-      active_warning: "Va a cambiar el estado de la cuenta del usuario %{user}"
-
-  tags:
-    alpha_grouped_index:
-      maintitle: "Etiquetas Disponibles"
-
-  terms:
-    accept: Aceptar
-
-  offers:
-    index:
-      offered_by: "Ofrecido por %{size} personas"
-      new_offer: "Nueva oferta"
-      filter: Filtrar
-      by_category: Por categoría
-      by_tag: Por etiqueta
-    show:
-      offered_by: "Ofertantes"
-      give_time_for: "Transferir tiempo por esta oferta"
-    new:
-      submit: Crear oferta
-    edit:
-      submit: Cambiar oferta
-
   inquiries:
+    edit:
+      submit: Cambiar demanda
     index:
       new_inquiry: Nueva demanda
     new:
       submit: Crear demanda
+  layouts:
+    application:
+      about: Sobre TimeOverflow
+      edit_org: Modificar %{organization}
+      edit_profile: Modificar mi perfil
+      help: Ayuda
+      login: Entra
+    report:
+      report_title: INFORME
+  locales:
+    ca: Catalán
+    en: Inglés
+    es: Español
+    eu: Euskera
+    gl: Gallego
+    ar: Árabe
+  mailers_globals:
+    footer:
+      text: "%{organization_name} en"
+  offers:
     edit:
-      submit: Cambiar demanda
-
-  posts:
-    show:
-      info: "%{type} de %{organization} para ver los datos de la persona tienes que"
-
-  categories:
+      submit: Cambiar oferta
     index:
-      all: Todas
-      tree: Principales
-      global: Globales
-      local: Locales
-      add: Añadir servicio
-
-  reports:
-    cat_with_users:
-      title: Servicios ofrecidos
-    user_list:
-      title: Listado usuarios
-    download: Descargar
-
-  statistics:
-    statistics_global_activity:
-      bank_activity: "Actividad del banco"
-      per_month: "Por meses"
-      global_activity: "Actividad global"
-      users_reg: " Altas de usuario"
-      num_swaps: " Intercambios"
-      total_hours: " Horas intercambiadas"
-      show: Mostrar
-      ini_date: "mm/aaaa inicial"
-      end_date: "mm/aaaa final"
-    statistics_inactive_users:
-      inactive_users: Usuarios inactivos
-      last_movement: Útimo intercambio
-      no_movements: Sin intercambios
-      days_without_swaps: Días sin intercambios
-    statistics_demographics:
-      demographics: Datos demográficos
-      by_ages: Por edades
-      by_gender: Por género
-      male: Hombre
-      female: Mujer
-      unknown: Desconocido
-      num_people: Nº personas
-    statistics_last_login:
-      last_login: Último login
-      never_login: Nunca logueado
-    statistics_without_offers:
-      without_offers: Sin ofertas
-    statistics_type_swaps:
-      type_of_swaps: Tipos de intercambios
-      without_tags: Sin etiquetas
-      without_category: Sin categoría
-    statistics_all_transfers:
-      transfers: Todas las transferencias
-      date: Fecha
-      from: Origen
-      to: Destino
-      post: Anuncio
-      reason: Razón
-      quantity: Cantidad
-      delete_reason: ¿Está seguro de borrar este comentario?
-
-  stats:
-    min_balance:
-      title: Usuarios Saldo Mínimo
-
+      by_category: Por categoría
+      by_tag: Por etiqueta
+      filter: Filtrar
+      new_offer: Nueva oferta
+      offered_by: Ofrecido por %{size} personas
+    new:
+      submit: Crear oferta
+    show:
+      give_time_for: Transferir tiempo por esta oferta
+      offered_by: Ofertantes
+  organization_notifier:
+    recent_posts:
+      subject: Boletín semanal
+      text1: 'Últimas ofertas publicadas:'
+      text2: 'Últimas demandas publicadas:'
   organizations:
+    give_time:
+      give_time: Dar Tiempo a
     index:
       member_count: Número de usuarios
     new:
       new: Nuevo banco
     show:
       contact_information: Información de contacto
-    give_time:
-      give_time: Dar Tiempo a
-
-  transfers:
-    computation:
-      joiner: " y "
-      hour:
-        one: ! '%{count} hora'
-        other: ! '%{count} horas'
-      minute:
-        one: ! '%{count} minuto'
-        other: ! '%{count} minutos'
-
-  global:
-    table:
-      actions: Acciones
-    show: Mostrar
-    edit: Modificar
-    delete: Borrar
-    save: Guardar
-    add_new: Crear nuevo
-    cancel_membership: Borrar definitivamente
-    back: Atrás
-    give_time: Transferir tiempo
-    filter: Filtro
-    all: Todo
-    search: Buscar
-    information: Información
-    member_count: 'Número de usuarios:'
-    balance: 'Balance:'
-    movements: Movimientos
-    date: Fecha
-    source_destination: 'Origen/Destino'
-    announcements: Anuncio
-    reason: Razón
-    amount: Cantidad
-    demote: Convertir en usuario normal
-    promote: Convertir en administrador
-    statistics: Estadísticas
-    locales_header: cambiar idioma
-    required_field: "* Campo obligatorio"
-    more: "Ver más"
-    contact_details: "Datos de contacto"
-
-  locales:
-    en: Inglés
-    es: Español
-    ca: Catalán
-
-  active_admin:
-    comments:
-      resource_type: Tipo de recurso
-      author_type: Tipo de autor
-    users:
-      upload_csv: Fichero
-      organization: Banco de tiempo
-      upload_from_csv: Importar CSV
-
-  layouts:
-    application:
-      about: Sobre TimeOverflow
-      login: Entra
-      edit_profile: Modificar mi perfil
-      edit_org: "Modificar %{organization}"
-      help: Ayuda
-    report:
-      report_title: "INFORME"
-
-  views:
-    pagination:
-      first: "&laquo; Primera"
-      last: "Ultima &raquo;"
-      previous: "&lsaquo; Anterior"
-      next: "Siguiente &rsaquo;"
-      truncate: "&hellip;"
-
+  pages:
+    about:
+      banner-button: Solicita acceso
+      banner-subtitle: Os ayudaremos a ponerlo en marcha o a haceros una demostración
+      banner-title: "¿Eres un Banco de Tiempo?"
+      empower-adbdt: ADBdT
+      empower-adbdt-title: Asociación para el Desarrollo de los Bancos de Tiempo
+      empower-coopdevs: CoopDevs
+      empower-coopdevs-title: CoopDevs
+      empower-github: Github
+      empower-github-title: Github
+      empower-showmap: ver mapa
+      empower-showmap-title: Bancos de Tiempo
+      empower-text-1: TimeOveflow está especialmente diseñado por y para los Bancos de Tiempo que existen físicamente &mdash; %{showmap_link}, su fin es potenciarlos.
+      empower-text-2: Gracias al trabajo conjunto de %{coopdevs_link} y la %{abdt_link} hoy podemos ofrecer el sofware TimeOverflow a todos los Bancos de Tiempo que así lo deseen de manera libre y gratuita.
+      empower-text-3: El código fuente de TimeOverflow está disponible bajo una licencia open source y descargable a %{github_link}
+      empower-title: Empoderando los bancos de tiempo
+      feature-group-1: Gestión del Banco de Tiempo con perfiles de administración
+      feature-group-2: Red social y banca on-line accesible por los miembros
+      feature-text-1: Altas/bajas/modificaciones de miembros
+      feature-text-2: Publicar ofertas y demandas
+      feature-text-3: Introducir cheques y gestionar la contabilidad
+      feature-text-4: Los miembros de un Banco de Tiempo pueden acceder al sistema y contactar con otros miembros
+      feature-text-5: Publicar ofertas y demandas
+      feature-text-6: Pagar horas a otros miembros
+      subtitle: TimeOverflow es libre, gratuito y colaborativo
+      title: El software diseñado por y para
+      title2: los Bancos de Tiempo
+  posts:
+    show:
+      info: "%{type} de %{organization} para ver los datos de la persona tienes que"
+  reports:
+    cat_with_users:
+      title: Servicios ofrecidos
+    download: Descargar
+    user_list:
+      title: Listado usuarios
   shared:
     movements:
-      delete_reason: ¿Está seguro de borrar este comentario?
+      delete_reason: "¿Está seguro de borrar este comentario?"
       movements: Movimientos
     post_form:
       you_can_use: Puedes usar
-
-  pages:
-    about:
-      title: "El software diseñado por y para"
-      title2: "los Bancos de Tiempo"
-      subtitle: "TimeOverflow es libre, gratuito y colaborativo"
-      feature-group-1: "Gestión del Banco de Tiempo con perfiles de administración"
-      feature-group-2: "Red social y banca on-line accesible por los miembros"
-      feature-text-1: "Altas/bajas/modificaciones de miembros"
-      feature-text-2: "Publicar ofertas y demandas"
-      feature-text-3: "Introducir cheques y gestionar la contabilidad"
-      feature-text-4: "Los miembros de un Banco de Tiempo pueden acceder al sistema y contactar con otros miembros"
-      feature-text-5: "Publicar ofertas y demandas"
-      feature-text-6: "Pagar horas a otros miembros"
-      banner-title: "¿Eres un Banco de Tiempo?"
-      banner-subtitle: "Os ayudaremos a ponerlo en marcha o a haceros una demostración"
-      banner-button: "Solicita acceso"
-      empower-title: "Empoderando los bancos de tiempo"
-      empower-text-1: "TimeOveflow está especialmente diseñado por y para los Bancos de Tiempo que existen físicamente &mdash; %{showmap_link}, su fin es potenciarlos."
-      empower-text-2: "Gracias al trabajo conjunto de %{coopdevs_link} y la %{abdt_link} hoy podemos ofrecer el sofware TimeOverflow a todos los Bancos de Tiempo que así lo deseen de manera libre y gratuita."
-      empower-text-3: "El código fuente de TimeOverflow está disponible bajo una licencia open source y descargable a %{github_link}"
-      empower-showmap: "ver mapa"
-      empower-showmap-title: "Bancos de Tiempo"
-      empower-coopdevs: "CoopDevs"
-      empower-coopdevs-title: "CoopDevs"
-      empower-adbdt: "ADBdT"
-      empower-adbdt-title: "Asociación para el Desarrollo de los Bancos de Tiempo"
-      empower-github: "Github"
-      empower-github-title: "Github"
+  simple_form:
+    error_notification:
+      default_message: 'Por favor revisa los siguientes problemas:'
+    'no': 'No'
+    options:
+      user:
+        gender:
+          female: Mujer
+          male: Hombre
+    required:
+      mark: "*"
+      text: necesario
+    'yes': Si
+  statistics:
+    statistics_all_transfers:
+      date: Fecha
+      delete_reason: "¿Está seguro de borrar este comentario?"
+      from: Origen
+      post: Anuncio
+      quantity: Cantidad
+      reason: Razón
+      to: Destino
+      transfers: Todas las transferencias
+    statistics_demographics:
+      by_ages: Por edades
+      by_gender: Por género
+      demographics: Datos demográficos
+      female: Mujer
+      male: Hombre
+      num_people: Nº personas
+      unknown: Desconocido
+    statistics_global_activity:
+      bank_activity: Actividad del banco
+      end_date: mm/aaaa final
+      global_activity: Actividad global
+      ini_date: mm/aaaa inicial
+      num_swaps: " Intercambios"
+      per_month: Por meses
+      show: Mostrar
+      total_hours: " Horas intercambiadas"
+      users_reg: " Altas de usuario"
+    statistics_inactive_users:
+      days_without_swaps: Días sin intercambios
+      inactive_users: Usuarios inactivos
+      last_movement: Útimo intercambio
+      no_movements: Sin intercambios
+    statistics_last_login:
+      last_login: Último login
+      never_login: Nunca logueado
+    statistics_type_swaps:
+      type_of_swaps: Tipos de intercambios
+      without_category: Sin categoría
+      without_tags: Sin etiquetas
+    statistics_without_offers:
+      without_offers: Sin ofertas
+  stats:
+    min_balance:
+      title: Usuarios Saldo Mínimo
+  tags:
+    alpha_grouped_index:
+      maintitle: Etiquetas Disponibles
+  terms:
+    accept: Aceptar
+  transfers:
+    computation:
+      hour:
+        one: "%{count} hora"
+        other: "%{count} horas"
+      joiner: " y "
+      minute:
+        one: "%{count} minuto"
+        other: "%{count} minutos"
+  users:
+    edit:
+      edit_user: Cambiar usuario
+    form:
+      admin_warning: Atención!!! Estás dando poderes a este usuario!!
+      superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
+    give_time:
+      give_time: Dar Tiempo a
+    index:
+      actions: Acciones
+      active_warning_angular: Va a cambiar el estado de la cuenta del usuario {{username}}
+      cancel_warning_angular: Va a eliminar del banco al usuario {{username}}
+      create: Crear nuevo usuario
+      manage_warning_angular: Va a cambiar los privilegios del usuario {{username}}
+      user_created: Usuario %{uid} %{name} guardado
+    new:
+      cancel: Cancelar
+      create_more_users_button: Crear e introducir otro usuario
+      new_user: Nuevo usuario
+      user_created_add: Usuario %{uid} %{name} guardado. Introduce ahora el siguiente
+    show:
+      account: Últimos movimientos
+      accounts: Cuentas
+      balance: 'Balance:'
+      categories: Servicios Ofrecidos
+      created_at: 'Alta:'
+      data: Datos del usuario
+      date: Fecha
+      deleted_user: El usuario ya no existe
+      from_to: Origen/Destino
+      inactive: "(Inactivo)"
+      inactive_user: El usuario no está activo
+      phone:
+        one: Teléfono
+        other: Teléfonos
+      post: Anuncio
+      quantity: Cantidad
+      reason: Razón
+      user_no: 'Nº Usuario:'
+    user_rows:
+      activate: Activar
+      active_warning: Va a cambiar el estado de la cuenta del usuario %{user}
+      cancel_warning: Va a eliminar del banco al usuario %{user}
+      deactivate: Desactivar
+      manage_warning: Va a cambiar los privilegios del usuario %{user}
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: Ultima &raquo;
+      next: Siguiente &rsaquo;
+      previous: "&lsaquo; Anterior"
+      truncate: "&hellip;"
