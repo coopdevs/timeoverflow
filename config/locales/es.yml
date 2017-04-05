@@ -278,7 +278,7 @@ es:
     back: Atrás
     balance: 'Balance:'
     cancel_membership: Borrar definitivamente
-    contact_details: Datos d contacto
+    contact_details: Datos de contacto
     date: Fecha
     delete: Borrar
     demote: Convertir en usuario normal
@@ -317,12 +317,12 @@ es:
     report:
       report_title: INFORME
   locales:
+    ar: Árabe
     ca: Catalán
     en: Inglés
     es: Español
     eu: Euskera
     gl: Gallego
-    ar: Árabe
   mailers_globals:
     footer:
       text: "%{organization_name} en"

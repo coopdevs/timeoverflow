@@ -260,7 +260,7 @@ ar:
     back: 
     balance: 
     cancel_membership: 
-    contact_details: test
+    contact_details: 
     date: 
     delete: 
     demote: 
@@ -299,9 +299,12 @@ ar:
     report:
       report_title: 
   locales:
+    ar: 
     ca: 
     en: 
     es: 
+    eu: 
+    gl: 
   mailers_globals:
     footer:
       text: 

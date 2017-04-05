@@ -278,7 +278,7 @@ en:
     back: Back
     balance: 'Balance:'
     cancel_membership: Permanent deletion
-    contact_details: Contact details s
+    contact_details: Contact details
     date: Data
     delete: Delete
     demote: Demote to normal user
@@ -317,9 +317,12 @@ en:
     report:
       report_title: REPORT
   locales:
+    ar: 
     ca: Catalan
     en: English
     es: Spanish
+    eu: 
+    gl: 
   mailers_globals:
     footer:
       text: "%{organization_name} from"
