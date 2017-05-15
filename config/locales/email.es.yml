@@ -8,3 +8,9 @@ es:
       subject: Boletín semanal
       text1: "Últimas ofertas publicadas:"
       text2: "Últimas demandas publicadas:"
+
+  payment_notifier:
+    transfer_source:
+      subject: "Has pagado %{time} horas a %{username_destination}"
+    transfer_destination:
+      subject: "Has recibido %{time} horas de %{username_source}"

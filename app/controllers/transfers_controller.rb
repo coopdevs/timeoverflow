@@ -2,18 +2,18 @@ class TransfersController < ApplicationController
   def create
     @source = find_source
     @account = Account.find(transfer_params[:destination])
-    transfer = Transfer.new(
-      transfer_params.merge(source: @source, destination: @account)
-    )
 
+    transfer_creator = TransferCreator.new(
+      source: @source,
+      destination: @account,
+      amount: transfer_params[:amount],
+      reason: transfer_params[:reason],
+      post_id: transfer_params[:post_id]
+    )
     begin
-      transfer.save!
-      #byebug
-      # mail notificación pago
-      PaymentNotifier.transfer_source(@account.accountable.display_name_with_uid,transfer.amount.to_f/3600).deliver_now
-      PaymentNotifier.transfer_destination(@source.accountable.display_name_with_uid,transfer.amount.to_f/3600).deliver_now
+      transfer_creator.create!
     rescue ActiveRecord::RecordInvalid
-      flash[:error] = transfer.errors.full_messages.to_sentence
+      flash[:error] = transfer_creator.transfer.errors.full_messages.to_sentence
     end
     redirect_to redirect_target
   end

@@ -1,10 +1,16 @@
 ca:
   mailers_globals:
     footer:
-      text: "%{organization_name} en"
+      text: "%{organization_name} a"
 
   organization_notifier:
     recent_posts:
-      subject: Boletín semanal
-      text1: "Últimas ofertas publicadas:"
-      text2: "Últimas demandas publicadas:"
+      subject: "Butlletí setmanal"
+      text1: "Darreres ofertes publicades:"
+      text2: "Darreres demandes publicades:"
+
+  payment_notifier:
+    transfer_source:
+      subject: "Has pagat %{time} hores a %{username_destination}"
+    transfer_destination:
+      subject: "Has rebut %{time} hores de %{username_source}"

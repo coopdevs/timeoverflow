@@ -1,15 +1,16 @@
 class PaymentNotifier < ActionMailer::Base
   default from: "\"TimeOverflow\" <info@timeoverflow.org>"
   
-  def transfer_source(user_name,time)
-    # mail to user that transfer time
-    horas = TimeFormatter.new.seconds_to_h_m(time).to_s
-    mail(to: 'admin@timeoverflow.org', subject: 'Has pagado '+horas+" horas a "+user_name,body: 'SI')
+  # @param username [String] username of the destination account
+  # @param time [String]
+  def transfer_source(user, username_destination, time)
+    mail(to: "#{user.email}", subject: default_i18n_subject(time: time, username_destination: username_destination), body: 'SI')
   end
   
-  def transfer_destination(user_name,time)
-    # mail to user that transfer time
-    horas = TimeFormatter.new.seconds_to_h_m(time).to_s
-    mail(to: 'admin@timeoverflow.org', subject: 'Has recibido '+horas+" horas de "+user_name,body: 'SI')
+  # @param username [String] username of the source account
+  # @param time [String]
+  def transfer_destination(user, username_source, time)
+    # Todo: Send with destination locale
+    mail(to: "#{user.email}", subject: default_i18n_subject(time: time, username_source: username_source), body: 'SI')
   end
 end

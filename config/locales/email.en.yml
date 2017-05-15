@@ -8,3 +8,9 @@ en:
       subject: Newsletter
       text1: "Latest offers published:"
       text2: "Lastest inquiries published:"
+
+  payment_notifier:
+    transfer_source:
+      subject: "You paid %{time} hours to %{username_destination}"
+    transfer_destination:
+      subject: "You received %{time} hours from %{username_source}"
