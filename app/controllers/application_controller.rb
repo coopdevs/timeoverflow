@@ -34,9 +34,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Store last url, this is needed for post-login redirect to whatever the
+  # user last visited.
+  # See #after_sign_in_path_for method in this class and Devise documentation:
+  # https://github.com/plataformatec/devise/wiki/How-To%3a-Redirect-to-a-specific-page-on-successful-sign-in-out
   def store_location
-    # store last url - this is needed for post-login redirect to whatever the
-    # user last visited.
     return unless request.get?
     paths = ["/", "/users/sign_in", "/users/sign_up", "/users/password/new",
              "/users/password/edit", "/users/confirmation", "/users/sign_out"]
@@ -45,12 +47,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Returns a string with the path where the user will be redirected
+  # after the sign in.
+  #
+  # @return [String]
   def after_sign_in_path_for(user)
-    if user.members.present?
-      users_path
-    else
-      page_path("about")
-    end
+    return session[:previous_url] if session[:previous_url]
+    return users_path if user.members.present?
+
+    page_path("about")
   end
 
   private
