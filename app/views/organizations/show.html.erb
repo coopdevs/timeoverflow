@@ -109,16 +109,18 @@
           <% end %>
         </li>
       <% end %>
-      <li>
-        <%= link_to give_time_organization_path(@organization) do %>
-          <%= glyph :time %>
-          <%= t "global.give_time" %>
-        <% end %>
-      </li>
+      <% if current_user && current_user.member(@organization) %>
+        <li>
+          <%= link_to give_time_organization_path(@organization) do %>
+            <%= glyph :time %>
+            <%= t "global.give_time" %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
 
-<% if current_user %>
+<% if current_user && current_user.member(@organization) %>
   <%= render "shared/movements" %>
 <% end %>

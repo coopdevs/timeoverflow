@@ -18,6 +18,8 @@ class UsersController < ApplicationController
   # GET /organizations/:id/members
   #
   def index
+    authorize @organization, :show?
+
     @users = scoped_users
     @memberships = @organization.members.
                    where(user_id: @users.map(&:id)).
@@ -29,6 +31,8 @@ class UsersController < ApplicationController
   # GET /members/:user_id
   #
   def show
+    authorize @organization, :show?
+
     @user = find_user
     authorize @user
 
@@ -38,17 +42,21 @@ class UsersController < ApplicationController
   end
 
   def new
-    authorize User
+    authorize @organization, :admin?
+
     @user = scoped_users.build
   end
 
   def edit
-    @user = find_user
+    @user = User.find_by_id(params[:id])
+
+    # TODO: raise 404
+    raise unless @user
+
+    authorize @user
   end
 
   def create
-    authorize User
-
     # New User
     email = user_params[:email]
     @user = User.find_or_initialize_by(email: email) do |u|

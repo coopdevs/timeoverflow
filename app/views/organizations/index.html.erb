@@ -27,7 +27,7 @@
         <td><%= link_to org.name, org %></td>
         <td><%= org.users.count %></td>
         <td class="hover-actions">
-          <% if current_user.admins?(org) %>
+          <% if current_user && current_user.admins?(org) %>
             <%= link_to edit_organization_path(org), class: 'action' do %>
               <%= glyph :pencil %>
               <%= t 'global.edit' %>
