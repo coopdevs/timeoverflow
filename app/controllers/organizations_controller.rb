@@ -24,7 +24,7 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = @organizations.build organization_params
+    @organization = Organization.new(organization_params)
     if @organization.save
       redirect_to @organization, status: :created
     else
