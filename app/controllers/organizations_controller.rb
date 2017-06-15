@@ -45,6 +45,8 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_path, notice: "deleted"
   end
 
+  # Transfer time to the current organization
+  #
   def give_time
     @destination = @organization.account.id
     @source = find_transfer_source

@@ -15,6 +15,8 @@ class UsersController < ApplicationController
     @organization.users
   end
 
+  # GET /organizations/:id/members
+  #
   def index
     @users = scoped_users
     @memberships = @organization.members.
@@ -24,6 +26,8 @@ class UsersController < ApplicationController
                    end
   end
 
+  # GET /members/:user_id
+  #
   def show
     @user = find_user
     authorize @user
