@@ -30,13 +30,5 @@
         <%= t "layouts.application.edit_profile" %>
       <% end %>
     </li>
-    <% current_user.members.where(manager: true).each do |m| %>
-      <li role="presentation">
-        <%= link_to m.organization do %>
-          <%= glyph :pencil %>
-          <%= t "layouts.application.edit_org", organization: m.organization %>
-        <% end %>
-      </li>
-    <% end %>
   </ul>
 </li>
