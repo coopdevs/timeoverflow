@@ -38,7 +38,7 @@
       </ul>
     </li>
   </ul>
-  <% if current_user && current_organization && !params[:org] %>
+  <% if current_user && @organization %>
     <ul class="nav navbar-nav pull-right">
       <li>
         <%= link_to new_offer_path do %>

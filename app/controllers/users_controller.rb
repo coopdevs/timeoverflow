@@ -1,13 +1,23 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :load_organization, only: [:index]
+
+  # TODO: move to abstract controller for all nested resources
+  def load_organization
+    @organization = Organization.find_by_id(params[:organization_id])
+
+    raise not_found unless @organization
+
+    @organization
+  end
 
   def scoped_users
-    current_organization.users
+    @organization.users
   end
 
   def index
     @users = scoped_users
-    @memberships = current_organization.members.
+    @memberships = @organization.members.
                    where(user_id: @users.map(&:id)).
                    includes(:account).each_with_object({}) do |mem, ob|
                      ob[mem.user_id] = mem
@@ -16,7 +26,9 @@ class UsersController < ApplicationController
 
   def show
     @user = find_user
-    @member = @user.as_member_of(current_organization)
+    authorize @user
+
+    @member = @user.as_member_of(@organization)
     @movements = @member.movements.order("created_at DESC").page(params[:page]).
                  per(10)
   end
@@ -42,7 +54,7 @@ class UsersController < ApplicationController
     @user.setup_and_save_user
 
     if @user.persisted?
-      @user.tune_after_persisted(current_organization)
+      @user.tune_after_persisted(@organization)
       redirect_to_after_create
     else
       @user.email = "" if empty_email
@@ -64,7 +76,7 @@ class UsersController < ApplicationController
   def give_time
     @user = scoped_users.find(params[:id])
     @destination = @user.members.
-                   find_by(organization: current_organization).account.id
+                   find_by(organization: @organization).account.id
     @source = find_transfer_source
     @offer = find_transfer_offer
     @transfer = Transfer.new(source: @source,
@@ -86,19 +98,19 @@ class UsersController < ApplicationController
   end
 
   def find_transfer_offer
-    current_organization.offers.
+    @organization.offers.
       find(params[:offer]) if params[:offer].present?
   end
 
   def find_transfer_source
     current_user.members.
-      find_by(organization: current_organization).account.id
+      find_by(organization: @organization).account.id
   end
 
   def find_transfer_sources_for_admin
     return unless admin?
-    [current_organization.account] +
-      current_organization.member_accounts.where("members.active is true")
+    [@organization.account] +
+      @organization.member_accounts.where("members.active is true")
   end
 
   def find_user
@@ -110,7 +122,7 @@ class UsersController < ApplicationController
   end
 
   def redirect_to_after_create
-    id = @user.member(current_organization).member_uid
+    id = @user.member(@organization).member_uid
     if params[:more]
       redirect_to new_user_path,
                   notice: I18n.t("users.new.user_created_add",

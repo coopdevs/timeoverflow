@@ -2,8 +2,8 @@
   <h1>
     <%= User.model_name.human.pluralize %>
     —
-    <%= link_to current_organization.name,
-                organization_path(current_organization) %>
+    <%= link_to @organization.name,
+                organization_path(@organization) %>
     <% if params[:q].present? %>
       <small>
         <%= glyph :search %>
@@ -69,7 +69,7 @@
               <span class="glyphicon glyphicon-chevron-up" ng-if="sort == 'balance'"></span>
             </a>
           </th>
-          <% if current_user.manages? current_organization %>
+          <% if current_user.manages? @organization %>
             <th>
               <span class="glyphicon glyphicon-hand-down"></span>
               <%= t(".actions") %>

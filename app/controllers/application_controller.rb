@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   append_before_filter :check_for_terms_acceptance!, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_locale
-  before_filter :set_current_organization
   after_filter :store_location
 
   rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
@@ -18,20 +17,12 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  helper_method :current_organization, :admin?, :superadmin?
+  helper_method :admin?, :superadmin?
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username
-  end
-
-  def set_current_organization
-    if org_id = session[:current_organization_id]
-      @current_organization = Organization.find(org_id)
-    elsif current_user
-      @current_organization = current_user.organizations.first
-    end
   end
 
   def store_location
@@ -66,20 +57,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_organization
-    @current_organization ||= current_user.try(:organizations).try(:first)
-  end
-
-  def current_member
-    @current_member ||= current_user.as_member_of(current_organization) if current_user
-  end
-
-  def pundit_user
-    current_member
-  end
-
   def admin?
-    current_user.try :manages?, current_organization
+    current_user.try :manages?, @organization
   end
 
   def superadmin?
