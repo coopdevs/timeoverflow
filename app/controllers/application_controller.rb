@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if user.members.present?
-      users_path
+      root_path
     else
       page_path("about")
     end
