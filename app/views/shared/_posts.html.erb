@@ -1,7 +1,7 @@
 <% posts.each do |post| %>
   <div class="post">
     <h4>
-      <%= link_to post.title, post %>
+      <%= link_to post.title, polymorphic_url([@organization, post]) %>
     </h4>
     <p>
       <%= strip_tags(post.rendered_description.to_html) %>
@@ -16,7 +16,7 @@
         <% end %>
         <% (post.tags || []).each do |tag| %>
           <%= glyph :tag %>
-          <%= link_to tag, get_index_path(post,tag: tag) %>
+          <%= link_to tag, get_index_path(post, tag: tag) %>
         <% end %>
         <% if post.type == "Inquiry" %>
           <span class="pull-right">

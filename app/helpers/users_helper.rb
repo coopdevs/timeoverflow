@@ -15,7 +15,7 @@ module UsersHelper
         alt_phone: user.alt_phone,
         balance: membership.account_balance.to_i,
 
-        url: user_path(user),
+        url: organization_user_path(organization_id: membership.organization_id, id: user.id),
         edit_link: edit_user_path(user),
         cancel_link: cancel_member_path(membership),
         toggle_manager_link: toggle_manager_member_path(membership),

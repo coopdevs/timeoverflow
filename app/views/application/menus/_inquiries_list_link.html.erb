@@ -1,5 +1,5 @@
-<li class="<%= "active" if current_page?(inquiries_path) %>">
-  <%= link_to inquiries_path do %>
+<li class="<%= "active" if current_page?(organization_inquiries_path(organization_id: @organization.id)) %>">
+  <%= link_to organization_inquiries_path(organization_id: @organization.id) do %>
     <%= glyph :inquiry %>
     <%= Inquiry.model_name.human(count: :many) %>
   <% end %>

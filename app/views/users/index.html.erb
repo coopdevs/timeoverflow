@@ -21,7 +21,7 @@
     <ul class="nav navbar-nav pull-right">
       <% if admin? %>
         <li>
-          <a href="<%= new_user_path %>">
+          <a href="<%= new_organization_user_path(organization_id: @organization.id) %>">
             <span class="glyphicon glyphicon-plus"></span>
             <%= t "helpers.submit.create", model: User.model_name.human %>
           </a>

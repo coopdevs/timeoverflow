@@ -5,7 +5,7 @@
 </h1>
 
 <div class="navbar">
-  <form action="<%= inquiries_path %>"
+  <form action="<%= organization_inquiries_path(organization_id: @organization.id) %>"
         class="navbar-form navbar-left"
         method="get"
         role="search">
@@ -28,12 +28,12 @@
       </a>
       <ul class="dropdown-menu" role="menu">
         <li>
-          <%= link_to "× #{t("global.all")}", inquiries_path %>
+          <%= link_to "× #{t("global.all")}", organization_inquiries_path(organization_id: @organization.id) %>
         </li>
         <% Category.all.sort_by { |a| a.name.downcase }.each do |c| %>
           <% next if c == @category %>
           <li>
-            <%= link_to c.name, inquiries_path(cat: c.id) %>
+            <%= link_to c.name, organization_inquiries_path(organization_id: @organization.id, cat: c.id) %>
           </li>
         <% end %>
       </ul>
@@ -42,7 +42,7 @@
   <% if current_user && @organization %>
     <ul class="nav navbar-nav pull-right">
       <li>
-        <%= link_to new_inquiry_path do %>
+        <%= link_to new_organization_inquiry_path(@organization) do %>
           <%= glyph :plus %>
           <%= t "helpers.submit.create", model: Inquiry.model_name.human %>
         <% end %>

@@ -1,5 +1,5 @@
 <%= show_error_messages! post %>
-<%= form_for post, html: { name: "form", novalidate: true } do |f| %>
+<%= form_for [@organization, post], html: { name: "form", novalidate: true } do |f| %>
   <div class="form-group">
     <%= f.label :title, required: true %>
     <%= f.text_field :title, class: "form-control" %>
