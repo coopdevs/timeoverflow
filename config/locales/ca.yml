@@ -322,7 +322,10 @@ ca:
     en: Anglès
     es: Espanyol
     eu: 
+    fr: 
     gl: 
+    pt: 
+    pt-BR: Portuguès
   mailers_globals:
     footer:
       text: "%{organization_name} en"
@@ -460,6 +463,8 @@ ca:
       maintitle: Etiquetes Disponibles
   terms:
     accept: Acceptar
+    show:
+      accept: 
   transfers:
     computation:
       hour:

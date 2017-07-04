@@ -228,6 +228,8 @@ fr:
         sign_in: 
       signed_in: 
       signed_out: 
+      user:
+        signed_in: 
     shared:
       links:
         didnt_receive_confirmation_instructions: 
@@ -304,7 +306,10 @@ fr:
     en: 
     es: 
     eu: 
+    fr: 
     gl: 
+    pt: 
+    pt-BR: 
   mailers_globals:
     footer:
       text: 
@@ -442,6 +447,8 @@ fr:
       maintitle: 
   terms:
     accept: 
+    show:
+      accept: 
   transfers:
     computation:
       hour: 

@@ -4,8 +4,8 @@ pt:
       author_type: 
       resource_type: 
     users:
-      organization: 
-      upload_csv: 
+      organization: Banco de Tempo
+      upload_csv: Arquivo
       upload_from_csv: 
   activerecord:
     attributes:
@@ -109,6 +109,9 @@ pt:
     menu:
       sign_in: 
       sing_out: 
+    menus:
+      offers_by_tag_link:
+        tags: 
     navbar:
       admin: 
       administration: 
@@ -228,6 +231,8 @@ pt:
         sign_in: 
       signed_in: 
       signed_out: 
+      user:
+        signed_in: 
     shared:
       links:
         didnt_receive_confirmation_instructions: 
@@ -304,7 +309,10 @@ pt:
     en: 
     es: 
     eu: 
+    fr: 
     gl: 
+    pt: 
+    pt-BR: 
   mailers_globals:
     footer:
       text: 
@@ -442,6 +450,8 @@ pt:
       maintitle: 
   terms:
     accept: 
+    show:
+      accept: 
   transfers:
     computation:
       hour: 

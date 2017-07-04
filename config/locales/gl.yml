@@ -1,45 +1,45 @@
 gl:
   active_admin:
     comments:
-      author_type: 
-      resource_type: 
+      author_type: Tipo de autor
+      resource_type: Tipo de recurso
     users:
-      organization: 
-      upload_csv: 
-      upload_from_csv: 
+      organization: Banco de tempo
+      upload_csv: Ficheiro
+      upload_from_csv: Importar CSV
   activerecord:
     attributes:
       account:
-        balance: 
-        organization: 
+        balance: Balance
+        organization: Organización
       category:
-        created_at: 
-        name: 
-        name_translations: 
-        parent: 
-        updated_at: 
+        created_at: Creado
+        name: Nome
+        name_translations: Nome (traducións)
+        parent: Categoría pai
+        updated_at: Actualizado
       common:
-        created_at: 
-        updated_at: 
+        created_at: Creado
+        updated_at: Actualizado
       organization:
-        address: 
-        city: 
-        created_at: 
-        description: 
-        email: 
-        name: 
-        neighborhood: 
-        phone: 
-        public_opening_times: 
-        reg_number_seq: 
-        theme: 
-        updated_at: 
+        address: Dirección
+        city: Cidade
+        created_at: Creado
+        description: Descrición
+        email: Correo
+        name: Nome
+        neighborhood: Barrio
+        phone: Teléfono
+        public_opening_times: Horario de atención ao público
+        reg_number_seq: Número de secuencia de usuario
+        theme: Tema visual
+        updated_at: Actualizado
       post:
-        category: 
-        created_at: 
-        description: 
-        end_on: 
-        joinable: 
+        category: Categoría
+        created_at: Creado
+        description: Descrición
+        end_on: Termina o
+        joinable: Pódese unir outros
         permanent: 
         start_on: 
         tag_list: 
@@ -109,6 +109,9 @@ gl:
     menu:
       sign_in: 
       sing_out: 
+    menus:
+      offers_by_tag_link:
+        tags: 
     navbar:
       admin: 
       administration: 
@@ -228,6 +231,8 @@ gl:
         sign_in: 
       signed_in: 
       signed_out: 
+      user:
+        signed_in: 
     shared:
       links:
         didnt_receive_confirmation_instructions: 
@@ -304,7 +309,10 @@ gl:
     en: 
     es: 
     eu: 
+    fr: 
     gl: 
+    pt: 
+    pt-BR: 
   mailers_globals:
     footer:
       text: 
@@ -442,6 +450,8 @@ gl:
       maintitle: 
   terms:
     accept: 
+    show:
+      accept: 
   transfers:
     computation:
       hour: 

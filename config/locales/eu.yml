@@ -304,7 +304,10 @@ eu:
     en: 
     es: 
     eu: 
+    fr: 
     gl: 
+    pt: 
+    pt-BR: 
   mailers_globals:
     footer:
       text: 
@@ -442,6 +445,8 @@ eu:
       maintitle: 
   terms:
     accept: 
+    show:
+      accept: 
   transfers:
     computation:
       hour: 

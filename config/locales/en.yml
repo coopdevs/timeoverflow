@@ -322,7 +322,10 @@ en:
     en: English
     es: Spanish
     eu: 
+    fr: 
     gl: 
+    pt: 
+    pt-BR: Portuguese
   mailers_globals:
     footer:
       text: "%{organization_name} from"
@@ -460,6 +463,8 @@ en:
       maintitle: Available Tags
   terms:
     accept: Accept
+    show:
+      accept: 
   transfers:
     computation:
       hour:

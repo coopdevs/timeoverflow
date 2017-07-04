@@ -125,6 +125,9 @@ es:
     menu:
       sign_in: Entra
       sing_out: Desconectar
+    menus:
+      offers_by_tag_link:
+        tags: 
     navbar:
       admin: Administrar
       administration: Administración
@@ -244,6 +247,8 @@ es:
         sign_in: Entrar
       signed_in: 
       signed_out: 
+      user:
+        signed_in: 
     shared:
       links:
         didnt_receive_confirmation_instructions: Volver a enviar correo de confirmación
@@ -322,7 +327,10 @@ es:
     en: Inglés
     es: Español
     eu: Euskera
+    fr: Francés
     gl: Gallego
+    pt: Portugués
+    pt-BR: Portugués
   mailers_globals:
     footer:
       text: "%{organization_name} en"
@@ -460,6 +468,8 @@ es:
       maintitle: Etiquetas Disponibles
   terms:
     accept: Aceptar
+    show:
+      accept: 
   transfers:
     computation:
       hour:
