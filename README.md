@@ -67,15 +67,3 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>
-
----
-
-A ruby translation project managed on [Locale](http://www.localeapp.com/) that's open to all!
-
-## Contributing to coopdevs/timeoverflow
-
-- Edit the translations directly on the [coopdevs/timeoverflow](http://www.localeapp.com/projects/public?search=coopdevs/timeoverflow) project on Locale.
-- **That's it!**
-- The maintainer will then pull translations from the Locale project and push to Github.
-
-Happy translating!
