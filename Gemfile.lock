@@ -393,7 +393,7 @@ DEPENDENCIES
   jquery-rails (= 4.0.4)
   jquery-ui-rails
   kaminari
-  localeapp
+  localeapp (= 2.1.1)
   memcachier
   nokogiri (= 1.6.7.2)
   pg (= 0.17.1)

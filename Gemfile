@@ -59,7 +59,7 @@ group :development, :test do
   gem "rspec-rails", '~> 3.4.0'
   gem "capybara", '~> 2.4.4'
   gem "byebug"
-  gem "localeapp"
+  gem 'localeapp', '2.1.1'
 end
 
 group :test do
