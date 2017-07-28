@@ -5,12 +5,81 @@ describe TransfersController do
   let (:member_admin) { Fabricate(:member, organization: test_organization, manager: true)}
   let (:member_giver) { Fabricate(:member, organization: test_organization) }
   let (:member_taker) { Fabricate(:member, organization: test_organization) }
+
   include_context "stub browser locale"
+
   before { set_browser_locale('ca') }
+
+  describe '#new' do
+    let(:user) { member_giver.user }
+    let(:params) { { id: user.id } }
+
+    before { login(user) }
+
+    it 'renders the :new template' do
+      expect(get :new, params).to render_template(:new)
+    end
+
+    it 'finds the user' do
+      get :new, params
+      expect(assigns(:user)).to eq(user)
+    end
+
+    it 'finds the destination account' do
+      get :new, params
+      account = user.members.find_by(organization: user.organizations.first).account
+
+      expect(assigns(:destination)).to eq(account.id)
+    end
+
+    it 'finds the transfer source' do
+      get :new, params
+      source = user.members.find_by(organization: user.organizations.first).account.id
+
+      expect(assigns(:source)).to eq(source)
+    end
+
+    context 'when the offer is specified' do
+      let(:offer) { Fabricate(:offer, organization: user.organizations.first) }
+
+      before { params.merge!(offer: offer.id) }
+
+      it 'finds the transfer offer' do
+        get :new, params
+        offer = user.organizations.first.offers.find(params[:offer])
+
+        expect(assigns(:offer)).to eq(offer)
+      end
+    end
+
+    context 'when the offer is not specified' do
+      it 'does not find any offer' do
+        get :new, params
+        expect(assigns(:offer)).to be_nil
+      end
+    end
+
+    context 'when the user is admin of the current organization' do
+      let(:user) { member_admin.user }
+
+      it 'finds all accounts in the organization as sources' do
+        get :new, params
+        expect(assigns(:sources)).to contain_exactly(
+          test_organization.account, member_admin.account
+        )
+      end
+    end
+
+    context 'when the user is not admin of the current organization' do
+      it 'does not assign :sources' do
+        get :new, params
+        expect(assigns(:sources)).to be_nil
+      end
+    end
+  end
 
   describe "POST #create" do
     before { login(user) }
-
 
     context "with valid params" do
       context "with an admin user logged" do

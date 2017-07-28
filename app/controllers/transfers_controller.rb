@@ -14,6 +14,23 @@ class TransfersController < ApplicationController
     redirect_to redirect_target
   end
 
+  def new
+    @user = scoped_users.find(params[:id])
+    @destination = @user
+      .members
+      .find_by(organization: current_organization)
+      .account
+      .id
+    @source = find_transfer_source
+    @offer = find_transfer_offer
+    @transfer = Transfer.new(
+      source: @source,
+      destination: @destination,
+      post: @offer
+    )
+    @sources = find_transfer_sources_for_admin
+  end
+
   def delete_reason
     @transfer = Transfer.find(params[:id])
     @transfer.update_columns(reason: nil)
@@ -24,6 +41,26 @@ class TransfersController < ApplicationController
   end
 
   private
+
+  def find_transfer_sources_for_admin
+    return unless admin?
+    [current_organization.account] +
+      current_organization.member_accounts.where("members.active is true")
+  end
+
+  def find_transfer_offer
+    current_organization.offers.
+      find(params[:offer]) if params[:offer].present?
+  end
+
+  def find_transfer_source
+    current_user.members.
+      find_by(organization: current_organization).account.id
+  end
+
+  def scoped_users
+    current_organization.users
+  end
 
   def find_source
     if admin?
