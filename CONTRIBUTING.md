@@ -8,8 +8,10 @@ Proceso:
 * Pull request que resuelve la issue
 * Reportar en el hilo de discourse que el bug ha sido resuelto con enlace a PR
 
-Los viernes nos encuentras en Freenode IRC [#coopdevs](https://webchat.freenode.net/?channels=coopdevs)
-
 Visita [la guia para empezar a desarrollar para timeoverflow](https://github.com/coopdevs/timeoverflow/wiki/Getting-started)
 
-    
+## Contributing with translations
+
+- Edit the translations directly on the [coopdevs/timeoverflow](https://www.localeapp.com/projects/10031) project on Locale.
+- **That's it!**
+- The maintainer will then pull translations from the Locale project and push to Github.

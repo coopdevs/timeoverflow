@@ -1,103 +1,80 @@
 ca:
-  # NOMBRES DE LAS COSAS
+  active_admin:
+    comments:
+      author_type: Tipus d'autor
+      resource_type: Tipus de recurs
+    users:
+      organization: Banc de temps
+      upload_csv: Fitxer
+      upload_from_csv: Importar CSV
   activerecord:
-
-    models:
-      # Para usar:
-      # User.model_name.human
-      user:
-        one: Usuari
-        other: Usuaris
-      organization:
-        one: Banc de Temps
-        other: Bancs de Temps
-      category:
-        one: Categoria
-        other: Categories
-      offer:
-        one: Oferta
-        other: Ofertes
-      inquiry:
-        one: Demanda
-        other: Demandes
-      transfer:
-        one: Transferència
-        other: Transferències
-      post:
-        one: Anunci
-        other: Anuncis
-      comment:
-        one: Comentari
-        other: Comentaris
-
     attributes:
-      common: &common_attributes
-        created_at: Creat
-        updated_at: Actualitzat
-      user:
-        <<: *common_attributes
-        username: Nom
-        organization:
-        one: Banc de Temps
-        other: Bancs de Temps
-        email: Correu
-        registration_date: Data d'alta
-        gender: Gènere
-        registration_number: Codi d'usuari
-        date_of_birth: Data de naixement
-        identity_document: DNI
-        phone: Telèfon
-        alt_phone: Telèfon alternatiu
-        admin: Administrador del Banc de Temps
-        superadmin: SuperAdministrador del Sistema
-        last_sign_in_at: Data darrera connexió
-        description: Descripció
-        unconfirmed_email: Correu sense confirmar
-        notifications: Rebre notificacions
-      organization:
-        <<: *common_attributes
-        name: Nom
-        reg_number_seq: Nombre de seqüència d'usuari
-        theme: Tema visual
-        email: Correu
-        phone: Telèfon
-        public_opening_times: Horari d'atenció al públic
-        description: Descripció
-        address: Direcció
-        neighborhood: Barri
-        city: Ciutat
-      category:
-        <<: *common_attributes
-        name: Nom
-        parent: Categoria pare
-        name_translations: Nom (traduccions)
-      transfer:
-        <<: *common_attributes
-        amount: Quantitat
-        reason: Comentaris
-        source: Origen
-        hours: Hores
-        minutes: Minuts
-        post: Oferta
-      post:
-        <<: *common_attributes
-        title: Títol
-        description: Descripció
-        category: Categoria
-        tag_list: Etiquetes
-        joinable: Es poden afegir altres
-        permanent: Permanent
-        start_on: Comença al
-        end_on: Finalitza al
       account:
         balance: Balanç
         organization: Organització
+      category:
+        created_at: Creat
+        name: Nom
+        name_translations: Nom (traduccions)
+        parent: Categoria pare
+        updated_at: Actualitzat
+      common:
+        created_at: Creat
+        updated_at: Actualitzat
+      organization:
+        address: Direcció
+        city: Ciutat
+        created_at: Creat
+        description: Descripció
+        email: Correu
+        name: Nom
+        neighborhood: Barri
+        phone: Telèfon
+        public_opening_times: Horari d'atenció al públic
+        reg_number_seq: Nombre de seqüència d'usuari
+        theme: Tema visual
+        updated_at: Actualitzat
+      post:
+        category: Categoria
+        created_at: Creat
+        description: Descripció
+        end_on: Finalitza al
+        joinable: Es poden afegir altres
+        permanent: Permanent
+        start_on: Comença al
+        tag_list: Etiquetes
+        title: Títol
+        updated_at: Actualitzat
+      transfer:
+        amount: Quantitat
+        created_at: Creat
+        hours: Hores
+        minutes: Minuts
+        post: Oferta
+        reason: Comentaris
+        source: Origen
+        updated_at: Actualitzat
+      user:
+        admin: Administrador del Banc de Temps
+        alt_phone: Telèfon alternatiu
+        created_at: Creat
+        date_of_birth: Data de naixement
+        description: Descripció
+        email: Correu
+        gender: Gènere
+        identity_document: DNI
+        last_sign_in_at: Data darrera connexió
+        notifications: Rebre notificacions
+        organization: 
+        phone: Telèfon
+        registration_date: Data d'alta
+        registration_number: Codi d'usuari
+        superadmin: SuperAdministrador del Sistema
+        unconfirmed_email: Correu sense confirmar
+        updated_at: Actualitzat
+        username: Nom
     errors:
       models:
-        user:
-          attributes:
-            email:
-              invalid: invàlid
         organization:
           attributes:
             web:
@@ -106,314 +83,446 @@ ca:
           attributes:
             base:
               same_account: No es pot fer una transacció al mateix compte
-
-  # ETIQUETAS VARIADAS EN PLANTILLAS
-
+        user:
+          attributes:
+            email:
+              invalid: invàlid
+    models:
+      category:
+        one: Categoria
+        other: Categories
+      comment:
+        one: Comentari
+        other: Comentaris
+      inquiry:
+        one: Demanda
+        other: Demandes
+      offer:
+        one: Oferta
+        other: Ofertes
+      organization:
+        one: Banc de Temps
+        other: Bancs de Temps
+      post:
+        one: Anunci
+        other: Anuncis
+      transfer:
+        one: Transferència
+        other: Transferències
+      user:
+        one: Usuari
+        other: Usuaris
   application:
     landing:
+      button: Entra
       slogan: Fem valer el temps
       sub_slogan: Hi ha un banc de temps molt a prop teu
-      button: Entra
     login_form:
+      button: Entra
       email: Correu electrònic
       password: Clau de pas
       remember_check: Recorda'm
-      button: Entra
-    terms_conditions: Termes del servei
-    navbar:
-      administration: Administració
-      reports: Informes
-      stats: Estadístiques
-      users: Usuaris
-      categories: Serveis
-      organizations: Organitzacions
-      statistics: Estadístiques
-      global_activity: "Activitat global"
-      inactive_users: Usuaris inactius
-      demographics: Dades demogràfiques
-      last_login: Darrera connexió
-      without_offers: Sense ofertes publicades
-      type_of_swaps: Tipus d'intecanvis
-      statistics_all_transfers: Totes les transferències
-      admin: Administrar
-      adminshort: Admin
-      tags: Etiquetes
-      sign_out: Desconnectar
-      offer_public_link: Enllaç públic a ofertes
-      inquiry_public_link: Enllaç públic a demandes
     menu:
       sign_in: Entra
       sing_out: Desconnectar
+    navbar:
+      admin: Administrar
+      administration: Administració
+      adminshort: Admin
+      categories: Serveis
+      demographics: Dades demogràfiques
+      global_activity: Activitat global
+      inactive_users: Usuaris inactius
+      inquiry_public_link: Enllaç públic a demandes
+      last_login: Darrera connexió
+      offer_public_link: Enllaç públic a ofertes
+      organizations: Organitzacions
+      reports: Informes
+      sign_out: Desconnectar
+      statistics: Estadístiques
+      statistics_all_transfers: Totes les transferències
+      stats: Estadístiques
+      tags: Etiquetes
+      type_of_swaps: Tipus d'intecanvis
+      users: Usuaris
+      without_offers: Sense ofertes publicades
     organization_list:
-      welcome: Benvingut a Timeoverflow %{user}.
-      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de posar-te en contacte amb un dels Bancs de Temps del sistema
-      time_bank: Banc de Temps
+      address: Direcció
+      city: Ciutat
+      description: Descripció
       email: Correu
+      neighborhood: Barri
+      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de posar-te en contacte amb un dels Bancs de Temps del sistema
       phone: Telèfon
       public_opening_times: Horari d'atenció al públic
-      description: Descripció
-      address: Direcció
-      neighborhood: Barri
-      city: Ciutat
+      time_bank: Banc de Temps
+      welcome: Benvingut a Timeoverflow %{user}.
+    terms_conditions: Termes del servei
     tips:
       entertag: Introdueix etiquetes separades per comes
-      user_not_found: "Usuari no trobat."
-  # views/users/index...
-
-  users:
-
+      user_not_found: Usuari no trobat.
+  categories:
     index:
-      create: Crear nou usuari
-      manage_warning_angular: "Vas a canviar els permisos de l'usuari {{username}}"
-      cancel_warning_angular: "Vas a eliminar del banc a l'usuari {{username}}"
-      active_warning_angular: "Vas a canviar l'estat del compte de l'usuari {{username}}"
+      add: Afegir servei
+      all: Totes
+      global: Globals
+      local: Locals
+      tree: Principals
+  devise:
+    confirmations:
+      confirmed: El teu compte ha estat confirmat amb èxit.
+      confirmed_and_signed_in: El teu compte ha estat confirmat amb èxit. Ara estàs registrat.
+      new:
+        resend_instructions: Reenviar instruccions de confirmació
+        resend_instructions_button: Reenviar
+        resend_instructions_description: Si has canviat el teu correu tens que fer aquest pas perquè el canvi sigui efectiu
+      send_instructions: Rebràs un correu amb les instruccions de com confirmar el teu compte en uns minuts.
+      send_paranoid_instructions: Si la teva adreça de correu existeix a la nostra base de dades, rebràs un correu amb les instruccions de com confirmar el teu compte en uns minuts.
+    failure:
+      already_authenticated: Ja estàs registrat.
+      inactive: El teu compte no ha estat activat.
+      invalid: Correu o clau invàlida.
+      invalid_token: Codi d'autentificació invàlid.
+      locked: El teu compte ha estat bloquejat, fes clic al enllaç 'Enviar correu de desbloqueig'.
+      not_found_in_database: Correu o clau invàlida.
+      timeout: La teva sessió ha caducat. Si us plau, torna a entrar per continuar.
+      unauthenticated: Has de entrar per continuar.
+      unconfirmed: Has de confiramar el teu compte abans de continuar.
+      user:
+        last_attempt: Atenció, et queda un sol intent abans que el teu compte es bloquegi
+    mailer:
+      confirmation_instructions:
+        subject: Instruccions de confirmació del compte
+      reset_password_instructions:
+        subject: Instruccions per a restablir la teva clau
+      unlock_instructions:
+        subject: Instruccions de desbloqueig del compte
+    omniauth_callbacks:
+      failure: No s'ha pogut autentificar des de %{kind} perquè "%{reason}".
+      success: Autentificació realitzada des de el compte %{kind} .
+    passwords:
+      edit:
+        change_password: Canviar la contrasenya
+        confirm_password: Torna a escriure la nova contrasenya
+        new_password: Nova contrasenya
+        passwords_not_match: Contrasenyes no coincideixen
+      new:
+        forgot_question: Crea una nova clau de pas
+        forgot_question_description: Introdueix l'adreça associada al teu compte i t'enviarem un correu amb l'enllaç per crear una nova clau de pas.
+        send_instructions: Envia enllaç
+      no_token: No pots accedir a aquesta pàgina si no véns d'un correu per restablir la contrasenya. Si véns d'un correu per a restablir la contrasenya, assegurat que has utilitzat la URL completa.
+      send_instructions: Rebràs un correu amb instruccions de com restablir la contrasenya en uns minuts.
+      send_paranoid_instructions: Si el teu correu existeix a la nostra base de dades, rebràs un enllaç al teu correu per recuperar la contrasenya en uns minuts.
+      updated: La teva contrasenya ha estat canviada. Estàs connectat.
+      updated_not_active: Canvi de contrasenya realitzat.
+    registrations:
+      destroyed: El teu compte ha estat cancel·lat. Fins aviat!
+      edit:
+        cancel_account: Cancel·lar el meu compte
+        current_password: Contrasenya actual
+        edit_user: Editar Usuari
+        help_current_password: necessitem la contrasenya actual per confirmar els canvis
+        help_password: deixa-ho en blanc si no vols canviar-la
+        password: Contrasenya
+        password_confirmation: Confirma la contrasenya
+        unhappy: Descontent?
+        update: Actualitzar
+      new:
+        password: Contrasenya
+        password_confirmation: Confirma la contrasenya
+        sign_me_up: Registra'm
+        sign_up: Registre
+      signed_up: Benvingut!  Registre realitzat.
+      signed_up_but_inactive: Registre realitzat. No pots accedir perquè el teu compte no està activat
+      signed_up_but_locked: Registre realitzat. No pots accedir perquè el teu compte està bloquejat, fes clic al enllaç 'Enviar correu de desbloqueig'
+      signed_up_but_unconfirmed: S'ha enviat un correu de confirmació, si us plau, entra al teu correu i segueix les instruccions
+      update_needs_confirmation: S'ha actualitzat el teu compte, però necessitem verificar la teva adreça de correu. Si us plau, entra al teu correu i segueix les instruccions.
+      updated: Compte actualitzat.
+    sessions:
+      new:
+        remember_me: Recorda'm
+        sign_in: Entrar
+      signed_in: 
+      signed_out: 
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: Tornar a enviar correu de confirmació
+        didnt_receive_unlock_instructions: Enviar correu de desbloqueig
+        forgot_your_password: No recordo la meva contrasenya o encara no la tinc
+        sign_in: Entrar
+        sign_in_with: Entrar amb %{provider}
+        sign_up: Registrar-se
+    unlocks:
+      new:
+        resend_instructions: Reenviar instruccions de desbloqueig
+        resend_instructions_button: Reenviar
+        resend_instructions_description: Si t'has equivocat en el login més de cinc vegades tens que fer aquest pas per desbloquejar el teu compte
+      send_instructions: Rebràs un correu amb instruccions de com desbloquejar el teu compte en uns minuts.
+      send_paranoid_instructions: Si el teu compte existeix, rebràs un correu amb instruccions de com desbloquejar el teu compte en uns minuts.
+      unlocked: El teu compte ha estat desbloquejat. Si us plau, entra per continuar.
+  errors:
+    messages:
+      already_confirmed: ja has estat confirmat, prova a entrar-hi
+      confirmation_period_expired: necessita confirmar-se en %{period}, si us plau, sol·licita-la de nou
+      expired: ha caducat, sol·licita-ho de nou
+      not_found: no s'ha trobat
+      not_locked: no es va bloquejar
+      not_saved:
+        one: 'un error impedeix que aquest %{resource} es desi:'
+        other: 'hi ha %{count} errors que impedeixen que aquest %{resource} es desi:'
+  global:
+    add_new: Crear nou
+    all: Tot
+    amount: Quantitat
+    announcements: Anunci
+    back: Enrere
+    balance: 'Balanç:'
+    cancel_membership: Esborrar definitivament
+    contact_details: Dades de contacte
+    date: Data
+    delete: Esborrar
+    demote: Convertir en usuari normal
+    edit: Modificar
+    filter: Filtre
+    give_time: Transferir temps
+    information: Informació
+    locales_header: canviar llengua
+    member_count: 'Nombre d''usuaris:'
+    more: Veure més
+    movements: Moviments
+    promote: Convertir en administrador
+    reason: Raó
+    required_field: "* Camp obligatori"
+    save: Desar
+    search: Cercar
+    show: Mostrar
+    source_destination: Origen/Destí
+    statistics: Estadístiques
+    table:
       actions: Accions
-      user_created: "Usuari %{uid} %{name} guardat"
-    new:
-      new_user: Nou usuari
-      create_more_users_button: Crear i introduir un nou usuari
-      user_created_add: "Usuari %{uid} %{name} guardat, crea ara el següent"
-      cancel: Cancel·lar
-    edit:
-      edit_user: Canviar usuari
-    show:
-      phone:
-        one: Telèfon
-        other: Telèfons
-      data: Dades de l'usuari
-      categories: Serveis Ofertats
-      account: Darrers moviments
-      inactive: "(Inactiu)"
-      accounts: Comptes
-      created_at: "Alta:"
-      user_no: "núm. Usuari:"
-      balance: "Balanç:"
-      date: Data
-      from_to: Origen/Destí
-      post: Anunci
-      reason: Raó
-      quantity: Quantitat
-      inactive_user: L'usuari no està actiu
-      deleted_user:  L'usuari ja no existeix
-
-    give_time:
-      give_time: Donar Temps a
-    form:
-      superadmin_warning: Atenció!!! Estàs atorgant PODERS DIVINS a aquest usuari!!
-      admin_warning: Atenció!!! Estàs atorgant poders a aquest usuari!!
-    user_rows:
-      activate: Activar
-      deactivate: Desactivar
-      manage_warning: "Vas a canviar els privilegis de l'usuari %{user}"
-      cancel_warning: "Vas a eliminar del banc a l'usuari %{user}"
-      active_warning: "Vas a canviar l'estat del compte de l'usuari %{user}"
-
-  tags:
-    alpha_grouped_index:
-      maintitle: "Etiquetes Disponibles"
-
-  terms:
-    accept: Acceptar
-
-  offers:
-    index:
-      offered_by: "Ofertat per %{size} persones"
-      new_offer: "Nova oferta"
-      filter: Filtrar
-      by_category: Per categoria
-      by_tag: Per etiqueta
-    show:
-      offered_by: "Oferents"
-      give_time_for: "Transferir temps per aquesta oferta"
-    new:
-      submit: Crear oferta
-
   inquiries:
+    edit:
+      submit: 
     index:
       new_inquiry: Nova demanda
     new:
       submit: Crear demanda
-
-  posts:
-    show:
-      info: "%{type} de %{organization} per veure les dades de la persona has de"
-
-  categories:
+  layouts:
+    application:
+      about: Sobre TimeOverflow
+      edit_org: Modificar %{organization}
+      edit_profile: Modificar perfil
+      help: Ajuda
+      login: Entra
+    report:
+      report_title: INFORME
+  locales:
+    ar: 
+    ca: Català
+    en: Anglès
+    es: Espanyol
+    eu: 
+    fr: 
+    gl: 
+    pt: 
+    pt-BR: Portuguès
+  mailers_globals:
+    footer:
+      text: "%{organization_name} en"
+  offers:
+    edit:
+      submit: 
     index:
-      all: Totes
-      tree: Principals
-      global: Globals
-      local: Locals
-      add: Afegir servei
-
-  reports:
-    cat_with_users:
-      title: Serveis ofertats
-    user_list:
-      title: Llistat d'usuaris
-    download: Descarregar
-
-  statistics:
-    statistics_global_activity:
-      bank_activity: "Activitat del banc"
-      per_month: "Per mesos"
-      global_activity: "Activitat global"
-      users_reg: " Altes usuaris"
-      num_swaps: " Intercanvis"
-      total_hours: " Hores intercanviades"
-      show: Mostrar
-      ini_date: "mm/aaaa inicial"
-      end_date: "mm/aaaa final"
-    statistics_inactive_users:
-      inactive_users: Usuaris inactius
-      last_movement: Darrer intercanvi
-      no_movements: Sense intercanvis
-      days_without_swaps: Dies sense intercanvis
-    statistics_demographics:
-      demographics: Dades demogràfiques
-      by_ages: Per edats
-      by_gender: Per gènere
-      male: Home
-      female: Dona
-      unknown: Desconegut
-      num_people: núm. persones
-    statistics_last_login:
-      last_login: Darrera connexió
-      never_login: Mai connectat
-    statistics_without_offers:
-      without_offers: Sense ofertas
-    statistics_type_swaps:
-      type_of_swaps: "Tipus d'intercanvis"
-      without_tags: Sense etiquetes
-      without_category: Sense categoria
-    statistics_all_transfers:
-      transfers: Totes les transferències
-      date: Data
-      from: Origen
-      to: Destí
-      post: Anunci
-      reason: Raó
-      quantity: Quantitat
-      delete_reason: Esteu segur d'esborrar aquest comentari?
-
-  stats:
-    min_balance:
-      title: Usuaris Saldo Mínim
-
+      by_category: Per categoria
+      by_tag: Per etiqueta
+      filter: Filtrar
+      new_offer: Nova oferta
+      offered_by: Ofertat per %{size} persones
+    new:
+      submit: Crear oferta
+    show:
+      give_time_for: Transferir temps per aquesta oferta
+      offered_by: Oferents
+  organization_notifier:
+    recent_posts:
+      subject: Boletín semanal
+      text1: 'Últimas ofertas publicadas:'
+      text2: 'Últimas demandas publicadas:'
   organizations:
+    give_time:
+      give_time: Donar Temps a
     index:
       member_count: Nombre d'usuaris
     new:
       new: Nou banc
     show:
       contact_information: Informació de contacte
-    give_time:
-      give_time: Donar Temps a
-
-  transfers:
-    computation:
-      joiner: " i "
-      hour:
-        one: ! '%{count} hora'
-        other: ! '%{count} hores'
-      minute:
-        one: ! '%{count} minut'
-        other: ! '%{count} minuts'
-  global:
-    table:
-      actions: Accions
-    show: Mostrar
-    edit: Modificar
-    delete: Esborrar
-    save: Desar
-    add_new: Crear nou
-    cancel_membership: Esborrar definitivament
-    back: Enrere
-    give_time: Transferir temps
-    filter: Filtre
-    all: Tot
-    search: Cercar
-    information: Informació
-    member_count: "Nombre d'usuaris:"
-    balance: 'Balanç:'
-    movements: Moviments
-    date: Data
-    source_destination: 'Origen/Destí'
-    announcements: Anunci
-    reason: Raó
-    amount: Quantitat
-    demote: Convertir en usuari normal
-    promote: Convertir en administrador
-    statistics: Estadístiques
-    locales_header: canviar llengua
-    required_field: "* Camp obligatori"
-    more: "Veure més"
-    contact_details: "Dades de contacte"
-
-  locales:
-    en: Anglès
-    es: Espanyol
-    ca: Català
-
-  active_admin:
-    comments:
-      resource_type: Tipus de recurs
-      author_type: Tipus d'autor
-    users:
-      upload_csv: Fitxer
-      organization: Banc de temps
-      upload_from_csv: Importar CSV
-
-  layouts:
-    application:
-      about: Sobre TimeOverflow
-      login: Entra
-      edit_profile: Modificar perfil
-      edit_org: "Modificar %{organization}"
-      help: Ajuda
-    report:
-      report_title: "INFORME"
-
-  views:
-    pagination:
-      first: "&laquo; Primera"
-      last: "Darrera &raquo;"
-      previous: "&lsaquo; Anterior"
-      next: "Següent &rsaquo;"
-      truncate: "&hellip;"
-
+  pages:
+    about:
+      banner-button: Sol·licita accés
+      banner-subtitle: Us ajudarem a posar-lo en marxa o fer-vos una demostració
+      banner-title: Ets un Banc de Temps?
+      empower-adbdt: ADBdT
+      empower-adbdt-title: Associació pel Desenvolupament dels Bancs de Temps
+      empower-coopdevs: CoopDevs
+      empower-coopdevs-title: CoopDevs
+      empower-github: Github
+      empower-github-title: Github
+      empower-showmap: veure mapa
+      empower-showmap-title: Bancs de Temps
+      empower-text-1: TimeOveflow està especialment dissenyat per i per als Bancs de Temps que existeixen físicament &mdash; %{showmap_link}, la seva missió és potenciar-los.
+      empower-text-2: Gràcies al treball conjunt de %{coopdevs_link} i la %{abdt_link} avui podem oferir el sofware TimeOverflow a tots els Bancs de Temps que així ho desitgin de manera lliure i gratuïta.
+      empower-text-3: El codi font de TimeOverflow està disponible sota una llicència open source i descarregable a %{github_link}
+      empower-title: Empoderant els bancs del temps
+      feature-group-1: Gestió del Banc de Temps amb perfils d'administració
+      feature-group-2: Xarxa social i banca en línia accessible pels membres
+      feature-text-1: Altes/baixes/modificacions de membres
+      feature-text-2: Publicar ofertes i demandes
+      feature-text-3: Introduir xecs i gestionar la comptabilitat
+      feature-text-4: Els membres d'un Banc de Temps poden accedir al sistema i contactar amb altres membres
+      feature-text-5: Publicar ofertes i demandes
+      feature-text-6: Pagar hores a altres membres
+      subtitle: TimeOverflow és lliure, gratuït i col·laboratiu
+      title: El software disenyat per i per
+      title2: als Bancs de Temps
+  posts:
+    show:
+      info: "%{type} de %{organization} per veure les dades de la persona has de"
+  reports:
+    cat_with_users:
+      title: Serveis ofertats
+    download: Descarregar
+    user_list:
+      title: Llistat d'usuaris
   shared:
     movements:
       delete_reason: Esteu segur d'esborrar aquest comentari?
       movements: Moviments
     post_form:
       you_can_use: Pots fer servir
-
-  pages:
-    about:
-      title: "El software disenyat per i per"
-      title2: "als Bancs de Temps"
-      subtitle: "TimeOverflow és lliure, gratuït i col·laboratiu"
-      feature-group-1: "Gestió del Banc de Temps amb perfils d'administració"
-      feature-group-2: "Xarxa social i banca en línia accessible pels membres"
-      feature-text-1: "Altes/baixes/modificacions de membres"
-      feature-text-2: "Publicar ofertes i demandes"
-      feature-text-3: "Introduir xecs i gestionar la comptabilitat"
-      feature-text-4: "Els membres d'un Banc de Temps poden accedir al sistema i contactar amb altres membres"
-      feature-text-5: "Publicar ofertes i demandes"
-      feature-text-6: "Pagar hores a altres membres"
-      banner-title: "Ets un Banc de Temps?"
-      banner-subtitle: "Us ajudarem a posar-lo en marxa o fer-vos una demostració"
-      banner-button: "Sol·licita accés"
-      empower-title: "Empoderant els bancs del temps"
-      empower-text-1: "TimeOveflow està especialment dissenyat per i per als Bancs de Temps que existeixen físicament &mdash; %{showmap_link}, la seva missió és potenciar-los."
-      empower-text-2: "Gràcies al treball conjunt de %{coopdevs_link} i la %{abdt_link} avui podem oferir el sofware TimeOverflow a tots els Bancs de Temps que així ho desitgin de manera lliure i gratuïta."
-      empower-text-3: "El codi font de TimeOverflow està disponible sota una llicència open source i descarregable a %{github_link}"
-      empower-showmap: "veure mapa"
-      empower-showmap-title: "Bancs de Temps"
-      empower-coopdevs: "CoopDevs"
-      empower-coopdevs-title: "CoopDevs"
-      empower-adbdt: "ADBdT"
-      empower-adbdt-title: "Associació pel Desenvolupament dels Bancs de Temps"
-      empower-github: "Github"
-      empower-github-title: "Github"
+  simple_form:
+    error_notification:
+      default_message: 'Please review the problems below:'
+    'no': 'No'
+    options:
+      user:
+        gender:
+          female: Dona
+          male: Home
+    required:
+      mark: "*"
+      text: required
+    'yes': 'Yes'
+  statistics:
+    statistics_all_transfers:
+      date: Data
+      delete_reason: Esteu segur d'esborrar aquest comentari?
+      from: Origen
+      post: Anunci
+      quantity: Quantitat
+      reason: Raó
+      to: Destí
+      transfers: Totes les transferències
+    statistics_demographics:
+      by_ages: Per edats
+      by_gender: Per gènere
+      demographics: Dades demogràfiques
+      female: Dona
+      male: Home
+      num_people: núm. persones
+      unknown: Desconegut
+    statistics_global_activity:
+      bank_activity: Activitat del banc
+      end_date: mm/aaaa final
+      global_activity: Activitat global
+      ini_date: mm/aaaa inicial
+      num_swaps: " Intercanvis"
+      per_month: Per mesos
+      show: Mostrar
+      total_hours: " Hores intercanviades"
+      users_reg: " Altes usuaris"
+    statistics_inactive_users:
+      days_without_swaps: Dies sense intercanvis
+      inactive_users: Usuaris inactius
+      last_movement: Darrer intercanvi
+      no_movements: Sense intercanvis
+    statistics_last_login:
+      last_login: Darrera connexió
+      never_login: Mai connectat
+    statistics_type_swaps:
+      type_of_swaps: Tipus d'intercanvis
+      without_category: Sense categoria
+      without_tags: Sense etiquetes
+    statistics_without_offers:
+      without_offers: Sense ofertas
+  stats:
+    min_balance:
+      title: Usuaris Saldo Mínim
+  tags:
+    alpha_grouped_index:
+      maintitle: Etiquetes Disponibles
+  terms:
+    accept: Acceptar
+    show:
+      accept: 
+  transfers:
+    computation:
+      hour:
+        one: "%{count} hora"
+        other: "%{count} hores"
+      joiner: " i "
+      minute:
+        one: "%{count} minut"
+        other: "%{count} minuts"
+  users:
+    edit:
+      edit_user: Canviar usuari
+    form:
+      admin_warning: Atenció!!! Estàs atorgant poders a aquest usuari!!
+      superadmin_warning: Atenció!!! Estàs atorgant PODERS DIVINS a aquest usuari!!
+    give_time:
+      give_time: Donar Temps a
+    index:
+      actions: Accions
+      active_warning_angular: Vas a canviar l'estat del compte de l'usuari {{username}}
+      cancel_warning_angular: Vas a eliminar del banc a l'usuari {{username}}
+      create: Crear nou usuari
+      manage_warning_angular: Vas a canviar els permisos de l'usuari {{username}}
+      user_created: Usuari %{uid} %{name} guardat
+    new:
+      cancel: Cancel·lar
+      create_more_users_button: Crear i introduir un nou usuari
+      new_user: Nou usuari
+      user_created_add: Usuari %{uid} %{name} guardat, crea ara el següent
+    show:
+      account: Darrers moviments
+      accounts: Comptes
+      balance: 'Balanç:'
+      categories: Serveis Ofertats
+      created_at: 'Alta:'
+      data: Dades de l'usuari
+      date: Data
+      deleted_user: L'usuari ja no existeix
+      from_to: Origen/Destí
+      inactive: "(Inactiu)"
+      inactive_user: L'usuari no està actiu
+      phone:
+        one: Telèfon
+        other: Telèfons
+      post: Anunci
+      quantity: Quantitat
+      reason: Raó
+      user_no: 'núm. Usuari:'
+    user_rows:
+      activate: Activar
+      active_warning: Vas a canviar l'estat del compte de l'usuari %{user}
+      cancel_warning: Vas a eliminar del banc a l'usuari %{user}
+      deactivate: Desactivar
+      manage_warning: Vas a canviar els privilegis de l'usuari %{user}
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: Darrera &raquo;
+      next: Següent &rsaquo;
+      previous: "&lsaquo; Anterior"
+      truncate: "&hellip;"
