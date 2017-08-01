@@ -329,6 +329,8 @@ ca:
   mailers_globals:
     footer:
       text: "%{organization_name} en"
+      text_donation: L'associació ADBdT ofereix TimeOverflow de forma gratuïta als Bancs de Temps. Amb una donació de %{href} pots ajudar a mantenir i millorar la plataforma.
+      text_donation_link: 1€ al mes
   offers:
     edit:
       submit: 
@@ -362,6 +364,9 @@ ca:
       banner-button: Sol·licita accés
       banner-subtitle: Us ajudarem a posar-lo en marxa o fer-vos una demostració
       banner-title: Ets un Banc de Temps?
+      donate-text: Amb la finalitat de donar suport a moltes comunitats la associació ADBdT ofereix la plataforma TimeOverflow a tots los Bancs de Temps. Considera %{donate_link} per contribuir a les despeses de manteniment i innovació.
+      donate-title: Participa amb una donació
+      donate_link: donar 1€ al mes
       empower-adbdt: ADBdT
       empower-adbdt-title: Associació pel Desenvolupament dels Bancs de Temps
       empower-coopdevs: CoopDevs
