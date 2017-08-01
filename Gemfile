@@ -53,13 +53,13 @@ group :development do
   # gem 'capistrano3-delayed-job', '~> 1.0'
   gem 'airbrussh', require: false
   gem "quiet_assets"
+  gem 'localeapp', '2.1.1'
 end
 
 group :development, :test do
   gem "rspec-rails", '~> 3.4.0'
   gem "capybara", '~> 2.4.4'
   gem "byebug"
-  gem 'localeapp', '2.1.1'
 end
 
 group :test do
