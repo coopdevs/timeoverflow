@@ -54,6 +54,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.5.1)
+      public_suffix (~> 2.0, >= 2.0.2)
     airbrussh (0.8.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arbre (1.0.3)
@@ -183,6 +185,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.10.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     localeapp (2.1.1)
       gli
       i18n (~> 0.4)
@@ -218,6 +224,7 @@ GEM
       pdf-core (~> 0.5.1)
       ttfunk (~> 1.4.0)
     prawn-table (0.2.1)
+    public_suffix (2.0.5)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
@@ -393,6 +400,7 @@ DEPENDENCIES
   jquery-rails (= 4.0.4)
   jquery-ui-rails
   kaminari
+  letter_opener (= 1.4.1)
   localeapp (= 2.1.1)
   memcachier
   nokogiri (= 1.6.7.2)

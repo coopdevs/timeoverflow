@@ -54,6 +54,7 @@ group :development do
   gem 'airbrussh', require: false
   gem "quiet_assets"
   gem 'localeapp', '2.1.1', require: false
+  gem 'letter_opener', '1.4.1'
 end
 
 group :development, :test do
