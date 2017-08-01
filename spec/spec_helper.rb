@@ -75,6 +75,8 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include ControllerMacros, :type => :controller
 
+  config.include Features::SessionHelpers, type: :feature
+
   # Database cleaner configuration
 
   config.before :suite do
