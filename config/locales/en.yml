@@ -329,6 +329,8 @@ en:
   mailers_globals:
     footer:
       text: "%{organization_name} from"
+      text_donation: The ADBdT association offers TimeOverflow for free to Time Banks. With a donation of %{href} you can help maintain and improve the platform.
+      text_donation_link: 1€ a month
   offers:
     edit:
       submit: Change offer
@@ -362,6 +364,9 @@ en:
       banner-button: Request access to TimeOverflow
       banner-subtitle: We will contact you to start it up or make you a demonstration
       banner-title: Are you a Time Bank?
+      donate-text: In order to support many communities the ADBdT asociation offers TimeOverflow platform to all Time Banks. %{donate_link} to contribute to maintenance and innovation costs.
+      donate-title: Participate with a donation
+      donate_link: Donate 1€ a month
       empower-adbdt: ADBdT
       empower-adbdt-title: Association for the Development of Time Banks
       empower-coopdevs: CoopDevs
