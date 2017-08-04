@@ -20,7 +20,7 @@ module Timeoverflow
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.default_locale = :es
-    config.i18n.available_locales = [:es, :ca, :en]
+    config.i18n.available_locales = [:es, :ca, :en, :'pt-BR']
     config.i18n.fallbacks = true
 
     # Do not swallow errors in after_commit/after_rollback callbacks.

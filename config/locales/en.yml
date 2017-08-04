@@ -1,103 +1,80 @@
 en:
-  # NOMBRES DE LAS COSAS
+  active_admin:
+    comments:
+      author_type: Author type
+      resource_type: Resource type
+    users:
+      organization: Time bank
+      upload_csv: File
+      upload_from_csv: Upload CSV
   activerecord:
-
-    models:
-      # Para usar:
-      # User.model_name.human
-      user:
-        one: User
-        other: Users
-      organization:
-        one: Time Bank
-        other: Time Banks
-      category:
-        one: Category
-        other: Categories
-      offer:
-        one: Offer
-        other: Offers
-      inquiry:
-        one: Inquiry
-        other: Inquiries
-      transfer:
-        one: Transfer
-        other: Transfers
-      post:
-        one: Post
-        other: Posts
-      comment:
-        one: Comment
-        other: Comments
-
     attributes:
-      common: &common_attributes
-        created_at: Created
-        updated_at: Updated
-      user:
-        <<: *common_attributes
-        username: Name
-        organization:
-        one: Time Bank
-        other: Time Banks
-        email: Email
-        registration_date: Registration date
-        gender: Gender
-        registration_number: User code
-        date_of_birth: Date of birth
-        identity_document: Identity Document
-        phone: Phone
-        alt_phone: Alternative Phone
-        admin: Organization Administrator
-        superadmin: System Administrator
-        last_sign_in_at: Last login
-        description: Description
-        unconfirmed_email: Unconfirmed Email
-        notifications: Receive notifications
-      organization:
-        <<: *common_attributes
-        name: Name
-        reg_number_seq: User sequence number
-        theme: Theme
-        email: Email
-        phone: Phone
-        public_opening_times: Opening hours
-        description: Description
-        address: Address
-        neighborhood: Neighborhood
-        city: City
-      category:
-        <<: *common_attributes
-        name: Name
-        parent: Parent category
-        name_translations: Name (translations)
-      transfer:
-        <<: *common_attributes
-        amount: Quantity
-        reason: Comments
-        source: Source
-        hours: Hours
-        minutes: Minutes
-        post: Post
-      post:
-        <<: *common_attributes
-        title: Title
-        description: Description
-        category: Category
-        tag_list: Tags
-        joinable: Can join others
-        permanent: Permanent
-        start_on: Start on
-        end_on: Ends on
       account:
         balance: Balance
         organization: Organization
+      category:
+        created_at: Created
+        name: Name
+        name_translations: Name (translations)
+        parent: Parent category
+        updated_at: Updated
+      common:
+        created_at: Created
+        updated_at: Updated
+      organization:
+        address: Address
+        city: City
+        created_at: Created
+        description: Description
+        email: Email
+        name: Name
+        neighborhood: Neighborhood
+        phone: Phone
+        public_opening_times: Opening hours
+        reg_number_seq: User sequence number
+        theme: Theme
+        updated_at: Updated
+      post:
+        category: Category
+        created_at: Created
+        description: Description
+        end_on: Ends on
+        joinable: Can join others
+        permanent: Permanent
+        start_on: Start on
+        tag_list: Tags
+        title: Title
+        updated_at: Updated
+      transfer:
+        amount: Quantity
+        created_at: Created
+        hours: Hours
+        minutes: Minutes
+        post: Post
+        reason: Comments
+        source: Source
+        updated_at: Updated
+      user:
+        admin: Organization Administrator
+        alt_phone: Alternative Phone
+        created_at: Created
+        date_of_birth: Date of birth
+        description: Description
+        email: Email
+        gender: Gender
+        identity_document: Identity Document
+        last_sign_in_at: Last login
+        notifications: Receive notifications
+        organization: 
+        phone: Phone
+        registration_date: Registration date
+        registration_number: User code
+        superadmin: System Administrator
+        unconfirmed_email: Unconfirmed Email
+        updated_at: Updated
+        username: Name
     errors:
       models:
-        user:
-          attributes:
-            email:
-              invalid: invalid
         organization:
           attributes:
             web:
@@ -106,310 +83,451 @@ en:
           attributes:
             base:
               same_account: A transfer cannot be made to the same account
-
-  # ETIQUETAS VARIADAS EN PLANTILLAS
-
+        user:
+          attributes:
+            email:
+              invalid: invalid
+    models:
+      category:
+        one: Category
+        other: Categories
+      comment:
+        one: Comment
+        other: Comments
+      inquiry:
+        one: Inquiry
+        other: Inquiries
+      offer:
+        one: Offer
+        other: Offers
+      organization:
+        one: Time Bank
+        other: Time Banks
+      post:
+        one: Post
+        other: Posts
+      transfer:
+        one: Transfer
+        other: Transfers
+      user:
+        one: User
+        other: Users
   application:
     landing:
+      button: Enter
       slogan: Let's value our time
       sub_slogan: There is a time bank near to you
-      button: Enter
     login_form:
+      button: Enter
       email: E-mail
       password: Password
       remember_check: Remember me
-      button: Enter
-    terms_conditions: Terms of service
-    navbar:
-      administration: Administration
-      reports: Reports
-      stats: Statistics
-      users: Users
-      categories: Services
-      organizations: Organizations
-      statistics: Statistics
-      global_activity: "Global activity"
-      inactive_users: "Inactive users"
-      demographics: Demographics data
-      last_login: Last login
-      without_offers: Without offers
-      type_of_swaps: Type of transactions
-      statistics_all_transfers: All transfers
-      admin: Manage
-      adminshort: Admin
-      tags: Tags
-      sign_out: Logout
-      offer_public_link: Offers public link
-      inquiry_public_link: Inquiries public link
     menu:
       sign_in: Login
       sing_out: Logout
+    navbar:
+      admin: Manage
+      administration: Administration
+      adminshort: Admin
+      categories: Services
+      demographics: Demographics data
+      global_activity: Global activity
+      inactive_users: Inactive users
+      inquiry_public_link: Inquiries public link
+      last_login: Last login
+      offer_public_link: Offers public link
+      organizations: Organizations
+      reports: Reports
+      sign_out: Logout
+      statistics: Statistics
+      statistics_all_transfers: All transfers
+      stats: Statistics
+      tags: Tags
+      type_of_swaps: Type of transactions
+      users: Users
+      without_offers: Without offers
     organization_list:
-      welcome: Welcome to Timeoverflow %{user}.
-      not_member: You do not belong to any time bank at this moment, in order to use this platform you need to keep in touch with one of the time banks that have joint the platform
-      time_bank: Time Bank
+      address: Address
+      city: City
+      description: Description
       email: Email
+      neighborhood: Neighborhood
+      not_member: You do not belong to any time bank at this moment, in order to use this platform you need to keep in touch with one of the time banks that have joint the platform
       phone: Phone
       public_opening_times: Opening hours
-      description: Description
-      address: Address
-      neighborhood: Neighborhood
-      city: City
+      time_bank: Time Bank
+      welcome: Welcome to Timeoverflow %{user}.
+    terms_conditions: Terms of service
     tips:
       entertag: Enter tags separated by commas
-      user_not_found: "User not found."
-  # views/users/index...
-
-  users:
-
+      user_not_found: User not found.
+  categories:
     index:
-      create: Create new user
-      manage_warning_angular: "You are going to change privileges for user {{username}}"
-      cancel_warning_angular: "You are going to delete account from the Time Bank for user {{username}}"
-      active_warning_angular: "You are going to change user account status for {{username}}"
+      add: Add service
+      all: All
+      global: Global
+      local: Local
+      tree: Main
+  devise:
+    confirmations:
+      confirmed: Your account was successfully confirmed.
+      confirmed_and_signed_in: Your account was successfully confirmed. You are now signed in.
+      new:
+        resend_instructions: Resend confirmation instructions
+        resend_instructions_button: Resend
+        resend_instructions_description: If you have changed your email you must perform this step to make the change effective
+      send_instructions: You will receive an email with instructions about how to confirm your account in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid email or password.
+      invalid_token: Invalid authentication token.
+      locked: Your account is locked.
+      not_found_in_database: Invalid email or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your account before continuing.
+      user:
+        last_attempt: Attention, you left one attempt before your account is locked
+    mailer:
+      confirmation_instructions:
+        subject: Confirmation instructions
+      reset_password_instructions:
+        subject: Reset password instructions
+      unlock_instructions:
+        subject: Unlock Instructions
+    omniauth_callbacks:
+      failure: Could not authenticate you from %{kind} because "%{reason}".
+      success: Successfully authenticated from %{kind} account.
+    passwords:
+      edit:
+        change_password: Change my password
+        confirm_password: Confirm your new password
+        new_password: New password
+        passwords_not_match: Passwords don't match
+      new:
+        forgot_question: Create a new password
+        forgot_question_description: Enter the address associated with your account and we will send you an email with the link to create a new password.
+        send_instructions: Send link
+      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
+      send_instructions: You will receive an email with instructions about how to reset your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      updated: Your password was changed successfully. You are now signed in.
+      updated_not_active: Your password was changed successfully.
+    registrations:
+      destroyed: Bye! Your account was successfully cancelled. We hope to see you again soon.
+      edit:
+        cancel_account: 
+        current_password: 
+        edit_user: 
+        help_current_password: 
+        help_password: 
+        password: 
+        password_confirmation: 
+        unhappy: 
+        update: 
+      new:
+        password: 
+        password_confirmation: 
+        sign_me_up: 
+        sign_up: 
+      signed_up: Welcome! You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address.
+      updated: You updated your account successfully.
+    sessions:
+      new:
+        remember_me: Remember me
+        sign_in: Login
+      signed_in: 
+      signed_out: 
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: Resend confirmation email
+        didnt_receive_unlock_instructions: Receive unlock instructions
+        forgot_your_password: I do not remember my password
+        sign_in: Login
+        sign_in_with: Login with %{provider}
+        sign_up: Register
+    unlocks:
+      new:
+        resend_instructions: Resend unlock instructions
+        resend_instructions_button: Resend
+        resend_instructions_description: If you have mistakenly logged in more than five times you have to do this step to unlock your account
+      send_instructions: You will receive an email with instructions about how to unlock your account in a few minutes.
+      send_paranoid_instructions: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
+      unlocked: Your account has been unlocked successfully. Please sign in to continue.
+  errors:
+    messages:
+      already_confirmed: was already confirmed, please try signing in
+      confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+      expired: has expired, please request a new one
+      not_found: not found
+      not_locked: was not locked
+      not_saved:
+        one: '1 error prohibited this %{resource} from being saved:'
+        other: "%{count} errors prohibited this %{resource} from being saved:"
+  global:
+    add_new: Create new
+    all: All
+    amount: Quantity
+    announcements: Post
+    back: Back
+    balance: 'Balance:'
+    cancel_membership: Permanent deletion
+    contact_details: Contact details
+    date: Data
+    delete: Delete
+    demote: Demote to normal user
+    edit: Update
+    filter: Filter
+    give_time: Time transfer
+    information: Information
+    locales_header: change language
+    member_count: 'Number of users:'
+    more: More
+    movements: Transactions
+    promote: Promote to administrator
+    reason: Reason
+    required_field: "* Required field"
+    save: Save
+    search: Search
+    show: Show
+    source_destination: From/to
+    statistics: Statistics
+    table:
       actions: Actions
-      user_created: "User %{uid} %{name} saved"
-    new:
-      new_user: New user
-      create_more_users_button: Create and add another user
-      user_created_add: "User %{uid} %{name} saved, now create next one"
-      cancel: Cancel
-    edit:
-      edit_user: Update user
-    show:
-      phone:
-        one: Phone
-        other: Phones
-      data: User details
-      categories: Offered Services
-      account: Last transactions
-      inactive: "(Inactive)"
-      accounts: Accounts
-      created_at: "Registered:"
-      user_no: "User #:"
-      balance: "Balance:"
-      date: Date
-      from_to: From/To
-      post: Post
-      reason: Reason
-      quantity: Quantity
-      inactive_user: The user isn't active
-      deleted_user:  The user no longer exists
-
-    give_time:
-      give_time: Give time to
-    form:
-      superadmin_warning: Warning!!! You are giving GOD PRIVILEGES to this user!!
-      admin_warning: Warning!!! You are giving privileges to this user!!
-    user_rows:
-      activate: Activate
-      deactivate: Deactivate
-      manage_warning: "You are going to change privileges for user %{user}"
-      cancel_warning: "You are going to delete account from the Time Bank for user  %{user}"
-      active_warning: "You are going to change user account status for %{user}"
-
-  tags:
-    alpha_grouped_index:
-      maintitle: Available Tags
-
-  terms:
-    accept: Accept
-
-  offers:
-    index:
-      offered_by: "Offered by %{size} people"
-      new_offer: "New offer"
-      filter: Filter
-      by_category: By category
-      by_tag: By Tag
-    show:
-      offered_by: "Offered by"
-      give_time_for: "Time transfer for this offer"
-    new:
-      submit: Create offer
-    edit:
-      submit: Change offer
-
   inquiries:
+    edit:
+      submit: Change inquiry
     index:
       new_inquiry: New inquiry
     new:
       submit: Create inquiry
+  layouts:
+    application:
+      about: About TimeOverflow
+      edit_org: Update %{organization}
+      edit_profile: Update my profile
+      help: Help
+      login: Login
+    report:
+      report_title: REPORT
+  locales:
+    ar: 
+    ca: Catalan
+    en: English
+    es: Spanish
+    eu: 
+    fr: 
+    gl: 
+    pt: 
+    pt-BR: Portuguese
+  mailers_globals:
+    footer:
+      text: "%{organization_name} from"
+      text_donation: The ADBdT association offers TimeOverflow for free to Time Banks. With a donation of %{href} you can help maintain and improve the platform.
+      text_donation_link: 1€ a month
+  offers:
     edit:
-      submit: Change inquiry
-
-  posts:
-    show:
-      info: "%{type} of %{organization} to see person's details you have to"
-  categories:
+      submit: Change offer
     index:
-      all: All
-      tree: Main
-      global: Global
-      local: Local
-      add: Add service
-
-  reports:
-    cat_with_users:
-      title: Offered Services
-    user_list:
-      title: User List
-    download: Download
-
-  statistics:
-    statistics_global_activity:
-      bank_activity: "Bank Activity"
-      per_month: "By Month"
-      global_activity: "Global Activity"
-      users_reg: " Registered users"
-      num_swaps: " Transactions"
-      total_hours: " Hours transfered"
-      show: Show
-      ini_date: "ini mm/yyyy"
-      end_date: "end mm/yyyy"
-    statistics_inactive_users:
-      inactive_users: Inactive users
-      last_movement: Last transaction
-      no_movements: Without transactions
-      days_without_swaps: Days without transactions
-    statistics_demographics:
-      demographics: Demographics data
-      by_ages: By ages
-      by_gender: By gender
-      male: Male
-      female: Female
-      unknown: Unknown
-      num_people: "# of people"
-    statistics_last_login:
-      last_login: Last login
-      never_login: Never login
-    statistics_without_offers:
-      without_offers: Without offers
-    statistics_type_swaps:
-      type_of_swaps: Type of transactions
-      without_tags: Without tags
-      without_category: Without category
-    statistics_all_transfers:
-      transfers: All transfers
-      date: Date
-      from: From
-      to: To
-      post: Post
-      reason: Reason
-      quantity: Quantity
-      delete_reason: Are you sure to delete this comment?
-
-  stats:
-    min_balance:
-      title: Users Minimum Balance
-
+      by_category: By category
+      by_tag: By Tag
+      filter: Filter
+      new_offer: New offer
+      offered_by: Offered by %{size} people
+    new:
+      submit: Create offer
+    show:
+      give_time_for: Time transfer for this offer
+      offered_by: Offered by
+  organization_notifier:
+    recent_posts:
+      subject: Newsletter
+      text1: 'Latest offers published:'
+      text2: 'Lastest inquiries published:'
   organizations:
+    give_time:
+      give_time: Give time to
     index:
       member_count: Number of users
     new:
       new: New bank
     show:
       contact_information: Contact information
-    give_time:
-      give_time: Give time to
-
-  transfers:
-    computation:
-      joiner: " and "
-      hour:
-        one: ! '%{count} hour'
-        other: ! '%{count} hours'
-      minute:
-        one: ! '%{count} minute'
-        other: ! '%{count} minutes'
-
-  global:
-    table:
-      actions: Actions
-    show: Show
-    edit: Update
-    delete: Delete
-    save: Save
-    add_new: Create new
-    cancel_membership: Permanent deletion
-    back: Back
-    give_time: Time transfer
-    filter: Filter
-    all: All
-    search: Search
-    information: Information
-    member_count: 'Number of users:'
-    balance: 'Balance:'
-    movements: Transactions
-    date: Data
-    source_destination: 'From/to'
-    announcements: Post
-    reason: Reason
-    amount: Quantity
-    demote: Demote to normal user
-    promote: Promote to administrator
-    statistics: Statistics
-    locales_header: change language
-    required_field: "* Required field"
-    more: "More"
-    contact_details: "Contact details"
-
-  locales:
-    en: English
-    es: Spanish
-    ca: Catalan
-
-  active_admin:
-    comments:
-      resource_type: Resource type
-      author_type: Author type
-    users:
-      upload_csv: File
-      organization: Time bank
-      upload_from_csv: Upload CSV
-
-  layouts:
-    application:
-      about: About TimeOverflow
-      login: Login
-      edit_profile: Update my profile
-      edit_org: "Update %{organization}"
-      help: Help
-    report:
-      report_title: "REPORT"
-
+  pages:
+    about:
+      banner-button: Request access to TimeOverflow
+      banner-subtitle: We will contact you to start it up or make you a demonstration
+      banner-title: Are you a Time Bank?
+      donate-text: In order to support many communities the ADBdT asociation offers TimeOverflow platform to all Time Banks. %{donate_link} to contribute to maintenance and innovation costs.
+      donate-title: Participate with a donation
+      donate_link: Donate 1€ a month
+      empower-adbdt: ADBdT
+      empower-adbdt-title: Association for the Development of Time Banks
+      empower-coopdevs: CoopDevs
+      empower-coopdevs-title: CoopDevs
+      empower-github: Github
+      empower-github-title: Github
+      empower-showmap: see map
+      empower-showmap-title: Time Banks
+      empower-text-1: TimeOveflow is specially designed for and by Time Banks that physically exist &mdash; %{showmap_link}, and its purpose is to boost them thanks to Internet.
+      empower-text-2: Thanks to the joint job of %{coopdevs_link} and %{abdt_link} today we can offer the software TimeOverflow to all Time Banks that want it, open and for free.
+      empower-text-3: The source code of TimeOverflow is available based on an open source license and you can download it at %{github_link}
+      empower-title: Empowering the Time Banks
+      feature-group-1: Time Bank management with administration roles
+      feature-group-2: Social network and online banking accessible by members
+      feature-text-1: Creation/deletion/updates of bank members
+      feature-text-2: Posting of offers and inquiries
+      feature-text-3: Enter checks and manage accounting
+      feature-text-4: Members of a Time Bank can access the system and connect with other members
+      feature-text-5: Posting of offers and inquiries
+      feature-text-6: Pay hours to other members
+      subtitle: TimeOverflow is open source, free and collaborative
+      title: The software designed by and for
+      title2: Time Banks
+  posts:
+    show:
+      info: "%{type} of %{organization} to see person's details you have to"
+  reports:
+    cat_with_users:
+      title: Offered Services
+    download: Download
+    user_list:
+      title: User List
   shared:
     movements:
       delete_reason: Are you sure to delete this comment?
       movements: Movements
     post_form:
       you_can_use: You can use
-
-  pages:
-    about:
-      title: "The software designed by and for"
-      title2: "Time Banks"
-      subtitle: "TimeOverflow is open source, free and collaborative"
-      feature-group-1: "Time Bank management with administration roles"
-      feature-group-2: "Social network and online banking accessible by members"
-      feature-text-1: "Creation/deletion/updates of bank members"
-      feature-text-2: "Posting of offers and inquiries"
-      feature-text-3: "Enter checks and manage accounting"
-      feature-text-4: "Members of a Time Bank can access the system and connect with other members"
-      feature-text-5: "Posting of offers and inquiries"
-      feature-text-6: "Pay hours to other members"
-      banner-title: "Are you a Time Bank?"
-      banner-subtitle: "We will contact you to start it up or make you a demonstration"
-      banner-button: "Request access to TimeOverflow"
-      empower-title: "Empowering the Time Banks"
-      empower-text-1: "TimeOveflow is specially designed for and by Time Banks that physically exist &mdash; %{showmap_link}, and its purpose is to boost them thanks to Internet."
-      empower-text-2: "Thanks to the joint job of %{coopdevs_link} and %{abdt_link} today we can offer the software TimeOverflow to all Time Banks that want it, open and for free."
-      empower-text-3: "The source code of TimeOverflow is available based on an open source license and you can download it at %{github_link}"
-      empower-showmap: "see map"
-      empower-showmap-title: "Time Banks"
-      empower-coopdevs: "CoopDevs"
-      empower-coopdevs-title: "CoopDevs"
-      empower-adbdt: "ADBdT"
-      empower-adbdt-title: "Association for the Development of Time Banks"
-      empower-github: "Github"
-      empower-github-title: "Github"
+  simple_form:
+    error_notification:
+      default_message: 'Please review the problems below:'
+    'no': 'No'
+    options:
+      user:
+        gender:
+          female: Female
+          male: Male
+    required:
+      mark: "*"
+      text: required
+    'yes': 'Yes'
+  statistics:
+    statistics_all_transfers:
+      date: Date
+      delete_reason: Are you sure to delete this comment?
+      from: From
+      post: Post
+      quantity: Quantity
+      reason: Reason
+      to: To
+      transfers: All transfers
+    statistics_demographics:
+      by_ages: By ages
+      by_gender: By gender
+      demographics: Demographics data
+      female: Female
+      male: Male
+      num_people: "# of people"
+      unknown: Unknown
+    statistics_global_activity:
+      bank_activity: Bank Activity
+      end_date: end mm/yyyy
+      global_activity: Global Activity
+      ini_date: ini mm/yyyy
+      num_swaps: " Transactions"
+      per_month: By Month
+      show: Show
+      total_hours: " Hours transfered"
+      users_reg: " Registered users"
+    statistics_inactive_users:
+      days_without_swaps: Days without transactions
+      inactive_users: Inactive users
+      last_movement: Last transaction
+      no_movements: Without transactions
+    statistics_last_login:
+      last_login: Last login
+      never_login: Never login
+    statistics_type_swaps:
+      type_of_swaps: Type of transactions
+      without_category: Without category
+      without_tags: Without tags
+    statistics_without_offers:
+      without_offers: Without offers
+  stats:
+    min_balance:
+      title: Users Minimum Balance
+  tags:
+    alpha_grouped_index:
+      maintitle: Available Tags
+  terms:
+    accept: Accept
+    show:
+      accept: 
+  transfers:
+    computation:
+      hour:
+        one: "%{count} hour"
+        other: "%{count} hours"
+      joiner: " and "
+      minute:
+        one: "%{count} minute"
+        other: "%{count} minutes"
+  users:
+    edit:
+      edit_user: Update user
+    form:
+      admin_warning: Warning!!! You are giving privileges to this user!!
+      superadmin_warning: Warning!!! You are giving GOD PRIVILEGES to this user!!
+    give_time:
+      give_time: Give time to
+    index:
+      actions: Actions
+      active_warning_angular: You are going to change user account status for {{username}}
+      cancel_warning_angular: You are going to delete account from the Time Bank for user {{username}}
+      create: Create new user
+      manage_warning_angular: You are going to change privileges for user {{username}}
+      user_created: User %{uid} %{name} saved
+    new:
+      cancel: Cancel
+      create_more_users_button: Create and add another user
+      new_user: New user
+      user_created_add: User %{uid} %{name} saved, now create next one
+    show:
+      account: Last transactions
+      accounts: Accounts
+      balance: 'Balance:'
+      categories: Offered Services
+      created_at: 'Registered:'
+      data: User details
+      date: Date
+      deleted_user: The user no longer exists
+      from_to: From/To
+      inactive: "(Inactive)"
+      inactive_user: The user isn't active
+      phone:
+        one: Phone
+        other: Phones
+      post: Post
+      quantity: Quantity
+      reason: Reason
+      user_no: 'User #:'
+    user_rows:
+      activate: Activate
+      active_warning: You are going to change user account status for %{user}
+      cancel_warning: You are going to delete account from the Time Bank for user  %{user}
+      deactivate: Deactivate
+      manage_warning: You are going to change privileges for user %{user}
+  views:
+    pagination:
+      first: 
+      last: 
+      next: 
+      previous: 
+      truncate: 
