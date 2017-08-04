@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   get "global/switch_lang", as: :switch_lang
 
-  resources :users, only: [:show, :edit]
-
   concern :accountable do
     get :give_time, on: :member
   end
@@ -21,7 +19,7 @@ Rails.application.routes.draw do
     # TODO: 'members' path is misleading, there is already a resource called 'members'
     resources :users,
       concerns: :accountable,
-      except: [:show, :edit, :destroy],
+      except: [:destroy],
       path: 'members'
     resources :inquiries
     resources :offers

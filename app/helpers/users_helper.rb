@@ -16,7 +16,7 @@ module UsersHelper
         balance: membership.account_balance.to_i,
 
         url: organization_user_path(organization_id: membership.organization_id, id: user.id),
-        edit_link: edit_user_path(user),
+        edit_link: edit_link(membership),
         cancel_link: cancel_member_path(membership),
         toggle_manager_link: toggle_manager_member_path(membership),
         manager: !!membership.manager,
@@ -29,8 +29,13 @@ module UsersHelper
 
   private
 
-  def edit_user_path(user)
-    can_edit_user?(user) ? super : ""
+  def edit_link(membership)
+    return '' unless can_edit_user?(membership.user)
+
+    edit_organization_user_path(
+      organization_id: membership.organization_id,
+      id: membership.user_id
+    )
   end
 
   def can_edit_user?(user)
