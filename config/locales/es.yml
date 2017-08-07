@@ -245,8 +245,6 @@ es:
       new:
         remember_me: Recordarme
         sign_in: Entrar
-      signed_in: 
-      signed_out: 
       user:
         signed_in: 
     shared:

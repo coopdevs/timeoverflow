@@ -242,8 +242,6 @@ en:
       new:
         remember_me: Remember me
         sign_in: Login
-      signed_in: 
-      signed_out: 
     shared:
       links:
         didnt_receive_confirmation_instructions: Resend confirmation email

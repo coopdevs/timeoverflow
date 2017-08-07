@@ -242,8 +242,6 @@ ca:
       new:
         remember_me: Recorda'm
         sign_in: Entrar
-      signed_in: 
-      signed_out: 
     shared:
       links:
         didnt_receive_confirmation_instructions: Tornar a enviar correu de confirmació
