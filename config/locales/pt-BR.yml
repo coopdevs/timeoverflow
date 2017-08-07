@@ -245,8 +245,6 @@ pt-BR:
       new:
         remember_me: Lembrar de mim
         sign_in: Entrar
-      signed_in: 
-      signed_out: 
       user:
         signed_in: 
     shared:
