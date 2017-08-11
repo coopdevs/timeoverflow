@@ -1,0 +1,49 @@
+<div class="row">
+  <table class="table table-condensed table-bordered table-striped">
+    <thead>
+      <tr>
+        <!-- %th= User.human_attribute_name(:registration_number)
+        -->
+        <th>N</th>
+        <th><%= User.human_attribute_name :username %></th>
+        <th><%= User.human_attribute_name :email %></th>
+        <th><%= User.human_attribute_name :date_of_birth %></th>
+        <th><%= User.human_attribute_name :phone %></th>
+        <th><%= User.human_attribute_name :alt_phone %></th>
+        <th><%= User.human_attribute_name :address %></th>
+        <th><%= User.human_attribute_name :created_at %></th>
+        <th><%= User.human_attribute_name :updated_at %></th>
+        <th><%= User.human_attribute_name :gender %></th>
+        <th><%= User.human_attribute_name :description %></th>
+        <th><%= User.human_attribute_name :terms_accepted_at %></th>
+        <th><%= User.human_attribute_name :current_sign_in_at %></th>
+        <th><%= User.human_attribute_name :last_sign_in_at %></th>
+        <th><%= User.human_attribute_name :locale %></th>
+        <th><%= User.human_attribute_name :notifications %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @members.each do |u| %>
+        <tr>
+          <th><%= u.member_uid %></th>
+          <td><%= u.user.username %></td>
+          <td><%= u.user.email_if_real %></td>
+          <td><%= u.user.date_of_birth %></td>
+          <td><%= u.user.phone %></td>
+          <td><%= u.user.alt_phone %></td>
+          <td><%= u.user.address %></td>
+          <td><%= u.user.created_at %></td>
+          <td><%= u.user.updated_at %></td>
+          <td><%= u.user.gender %></td>
+          <td><%= u.user.description %></td>
+          <td><%= u.user.terms_accepted_at %></td>
+          <td><%= u.user.current_sign_in_at %></td>
+          <td><%= u.user.last_sign_in_at %></td>
+          <td><%= u.user.locale %></td>
+          <td><%= u.user.notifications %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot></tfoot>
+  </table>
+</div>

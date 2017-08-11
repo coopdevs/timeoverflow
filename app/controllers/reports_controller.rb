@@ -21,6 +21,24 @@ class ReportsController < ApplicationController
     end
   end
 
+  def user_complete_list
+    @members = current_organization.members.active.
+               includes(:user).
+               order("members.member_uid")
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        report = Report::CSV::MemberComplete.new(current_organization, @members)
+        send_data report.run, filename: report.name, type: report.mime_type
+      end
+      format.pdf do
+        report = Report::PDF::MemberComplete.new(current_organization, @members)
+        send_data report.run, filename: report.name, type: report.mime_type
+      end
+    end
+  end
+
   def post_list
     @post_type = (params[:type] || "offer").capitalize.constantize
     @posts = current_organization.posts.
