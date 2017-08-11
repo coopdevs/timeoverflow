@@ -22,24 +22,35 @@ describe 'time transfer', js: true do
 
   it 'transfers time from one account to another' do
     offer = Fabricate(:offer, user: other_user, organization: organization)
+
     sign_in_with(user.email, 'papapa22')
+    navigate_to_member
+    navigate_to_transfer_for(offer)
+    submit_transfer_form_with(hours: 2)
 
-    within members_list do
-      click_link other_user.username
-    end
+    expect(page).to have_css('.transactions tr', count: 1, text: '2:00')
+  end
 
-    click_link offer.title
-    click_link I18n.t('offers.show.give_time_for')
-
+  def submit_transfer_form_with(hours: nil, minutes: nil)
     within transfer_form do
-      fill_in 'transfer_hours', with: 2
+      fill_in 'transfer_hours', with: hours
+      fill_in 'transfer_minutes', with: minutes
 
       # hack alert! there is no translation for this string. How we build the
       # copy then?
       click_button 'Crear Transferencia'
     end
+  end
 
-    expect(page).to have_css('.transactions tr', count: 1, text: '2:00')
+  def navigate_to_transfer_for(offer)
+    click_link offer.title
+    click_link I18n.t('offers.show.give_time_for')
+  end
+
+  def navigate_to_member
+    within members_list do
+      click_link other_user.username
+    end
   end
 
   def members_list
