@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   get "global/switch_lang", as: :switch_lang
 
+  get :account, controller: :account, action: :show
+  get 'account/edit', controller: :account, action: :edit
+
   resources :offers do
     collection do
       get :dashboard

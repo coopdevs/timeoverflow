@@ -1,0 +1,54 @@
+<div class="panel user-profile">
+  <div class="panel-body">
+    <h1>
+      <%= current_user.username %>
+      <small>
+        <% if current_user.superadmin? %>
+          <span class="label label-important">
+            <%= t ".superadmin" %>
+          </span>
+        <% end %>
+      </small>
+    </h1>
+    <div class="row">
+      <div class="col-sm-3 col-xs-5 text-center">
+        <a href="https://www.gravatar.com" target="_blank">
+          <%= image_tag avatar_url(current_user, 160) %>
+        </a>
+      </div>
+      <div class="col-sm-9 col-xs-7 break-word">
+        <%= m current_user.description %>
+        <ul class="nav nav-pills pull-right">
+          <li>
+            <%= link_to account_edit_path do %>
+              <%= glyph :pencil %>
+              <%= t "global.edit" %>
+            <% end %>
+          </li>
+        </ul>
+        <dl class="dl-horizontal">
+          <h3>
+            <%= t "global.contact_details" %>
+          </h3>
+          <% if current_user.email_if_real != "" %>
+            <dt>
+              <%= User.human_attribute_name(:email) %>
+            </dt>
+            <dd>
+              <%= current_user.email_if_real %>
+            </dd>
+          <% end %>
+          <% phones = [current_user.phone, current_user.alt_phone].select(&:present?) %>
+          <% if phones.present? %>
+            <dt>
+              <%= t(".phone", count: phones.size) %>
+            </dt>
+            <dd>
+              <%= phones.map(&:to_s).join('—') %>
+            </dd>
+          <% end %>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
