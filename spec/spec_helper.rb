@@ -21,9 +21,11 @@ Capybara.register_driver :headless_chrome do |app|
     chromeOptions: { args: %w(headless disable-gpu) }
   )
 
-  Capybara::Selenium::Driver.new app,
+  Capybara::Selenium::Driver.new(
+    app,
     browser: :chrome,
     desired_capabilities: capabilities
+  )
 end
 
 Capybara.javascript_driver = :headless_chrome
@@ -64,9 +66,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.include Devise::TestHelpers, :type => :controller
-  config.include ControllerMacros, :type => :controller
-
+  config.include Devise::TestHelpers, type: :controller
+  config.include ControllerMacros, type: :controller
   config.include Features::SessionHelpers, type: :feature
 
   # Create terms and conditions
