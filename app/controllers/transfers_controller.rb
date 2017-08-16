@@ -6,12 +6,10 @@ class TransfersController < ApplicationController
       transfer_params.merge(source: @source, destination: @account)
     )
 
-    begin
-      transfer.save!
-    rescue ActiveRecord::RecordInvalid
-      flash[:error] = transfer.errors.full_messages.to_sentence
-    end
+    transfer.save!
     redirect_to redirect_target
+  rescue ActiveRecord::RecordInvalid
+    flash[:error] = transfer.errors.full_messages.to_sentence
   end
 
   def new
