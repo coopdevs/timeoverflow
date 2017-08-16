@@ -13,7 +13,6 @@ class TransfersController < ApplicationController
   end
 
   def new
-    load_resource
     @source = find_transfer_source
     @offer = find_transfer_offer
     @sources = find_transfer_sources_for_admin
@@ -70,12 +69,8 @@ class TransfersController < ApplicationController
     destination_account.accountable.class == Organization
   end
 
-  def load_resource
-    if for_organization?
-      @organization = destination_account.accountable
-    else
-      @user = destination_account.accountable.user
-    end
+  def accountable
+    @accountable ||= destination_account.accountable
   end
 
   def find_transfer_sources_for_admin
@@ -93,11 +88,16 @@ class TransfersController < ApplicationController
       find(params[:offer]) if params[:offer].present?
   end
 
-  # Returns the id of the account that acts as source of the transfer
+  # Returns the id of the account that acts as source of the transfer.
+  # Either the account of the organization or the account of the current user.
   #
   # @return [Integer]
   def find_transfer_source
-    organization = @organization || current_organization
+    organization = if accountable.is_a?(Organization)
+                     accountable
+                   else
+                     current_organization
+                   end
     current_user.members.find_by(organization: organization).account.id
   end
 

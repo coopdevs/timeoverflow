@@ -28,9 +28,9 @@ describe TransfersController do
         expect(get :new, params).to render_template(:new)
       end
 
-      it 'finds the user' do
+      it 'finds the accountable' do
         get :new, params
-        expect(assigns(:user)).to eq(user)
+        expect(assigns(:accountable)).to eq(member_giver)
       end
 
       it 'finds the destination account' do
@@ -98,6 +98,11 @@ describe TransfersController do
 
       it 'renders the :new template' do
         expect(get :new, params).to render_template(:new_organization)
+      end
+
+      it 'finds the accountable' do
+        get :new, params
+        expect(assigns(:accountable)).to eq(test_organization)
       end
 
       it 'finds the destination account' do
