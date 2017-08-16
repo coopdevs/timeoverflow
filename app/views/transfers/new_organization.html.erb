@@ -1,0 +1,63 @@
+<h1>
+  <small><%= t '.give_time' %></small>
+  <%= link_to @organization, organization_path(@organization) %>
+</h1>
+<% if @offer %>
+  <h3>
+    <%= @offer %>
+  </h3>
+<% end %>
+<%= simple_form_for @transfer do |f| %>
+  <div class="form-inputs">
+    <%= f.input :hours,
+                as: :integer,
+                input_html: {
+                  min: 0,
+                  max: 20,
+                  'data-rule-either-hours-minutes-informed' => 'true',
+                  'data-rule-range' => '[0,20]'
+                } %>
+    <%= f.input :minutes,
+                as: :integer,
+                input_html: {
+                  min: 0,
+                  max: 59,
+                  step: 15,
+                  'data-rule-either-hours-minutes-informed' => 'true',
+                  'data-rule-range' => '[0,59]'
+                } %>
+    <%= f.input :amount, as: :hidden %>
+    <%= f.input :reason %>
+    <%= f.input :destination, as: :hidden %>
+    <% if admin? %>
+      <div class="form-group">
+        <%= f.label :source %>
+        <%# TODO: refactor. it's very complex for a view. %>
+        <%= f.select :source,
+                     options_for_select(
+                       @sources.sort_by { |source| [source.accountable_type, source.accountable_id] }
+                               .map { |a| ["#{a.accountable_type == 'Member' ? a.accountable.member_uid : a.accountable_id} #{a.accountable_type} #{a.accountable.to_s}", a.id] },
+                       selected: current_user.member(current_organization).account.id
+                     ),
+                     {},
+                     id: 'select2-time',
+                     class: 'form-control' %>
+      </div>
+    <% end %>
+    <% if @offer %>
+      <%= f.input :post, as: :hidden %>
+    <% end %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit,
+                 class: 'btn btn-default',
+                 style: 'margin-bottom: 20px;' %>
+  </div>
+<% end %>
+<script>
+  $("#select2-time").select2({
+    formatNoMatches: function () {
+        return "<%= j t('application.tips.user_not_found') %>";
+    }
+  });
+</script>

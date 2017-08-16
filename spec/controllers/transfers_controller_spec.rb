@@ -12,68 +12,104 @@ describe TransfersController do
 
   describe '#new' do
     let(:user) { member_giver.user }
-    let(:params) { { id: user.id } }
 
     before { login(user) }
 
-    it 'renders the :new template' do
-      expect(get :new, params).to render_template(:new)
-    end
+    context 'when the destination is a user account' do
+      let(:params) { { id: user.id } }
 
-    it 'finds the user' do
-      get :new, params
-      expect(assigns(:user)).to eq(user)
-    end
+      it 'renders the :new template' do
+        expect(get :new, params).to render_template(:new)
+      end
 
-    it 'finds the destination account' do
-      get :new, params
-      account = user.members.find_by(organization: user.organizations.first).account
-
-      expect(assigns(:destination)).to eq(account.id)
-    end
-
-    it 'finds the transfer source' do
-      get :new, params
-      source = user.members.find_by(organization: user.organizations.first).account.id
-
-      expect(assigns(:source)).to eq(source)
-    end
-
-    context 'when the offer is specified' do
-      let(:offer) { Fabricate(:offer, organization: user.organizations.first) }
-
-      before { params.merge!(offer: offer.id) }
-
-      it 'finds the transfer offer' do
+      it 'finds the user' do
         get :new, params
-        offer = user.organizations.first.offers.find(params[:offer])
+        expect(assigns(:user)).to eq(user)
+      end
 
-        expect(assigns(:offer)).to eq(offer)
+      it 'finds the destination account' do
+        get :new, params
+        account = user.members.find_by(organization: user.organizations.first).account
+
+        expect(assigns(:destination)).to eq(account.id)
+      end
+
+      it 'finds the transfer source' do
+        get :new, params
+        source = user.members.find_by(organization: user.organizations.first).account.id
+
+        expect(assigns(:source)).to eq(source)
+      end
+
+      context 'when the offer is specified' do
+        let(:offer) { Fabricate(:offer, organization: user.organizations.first) }
+
+        it 'finds the transfer offer' do
+          get :new, params.merge(offer: offer.id)
+          expect(assigns(:offer)).to eq(offer)
+        end
+      end
+
+      context 'when the offer is not specified' do
+        it 'does not find any offer' do
+          get :new, params
+          expect(assigns(:offer)).to be_nil
+        end
+      end
+
+      context 'when the user is admin of the current organization' do
+        let(:user) { member_admin.user }
+
+        it 'finds all accounts in the organization as sources' do
+          get :new, params
+          expect(assigns(:sources)).to contain_exactly(
+            test_organization.account, member_admin.account
+          )
+        end
+      end
+
+      context 'when the user is not admin of the current organization' do
+        it 'does not assign :sources' do
+          get :new, params
+          expect(assigns(:sources)).to be_nil
+        end
       end
     end
 
-    context 'when the offer is not specified' do
-      it 'does not find any offer' do
-        get :new, params
-        expect(assigns(:offer)).to be_nil
+    context 'when the destination is an organization account' do
+      let(:params) { { id: test_organization.id, organization: true } }
+
+      it 'renders the :new template' do
+        expect(get :new, params).to render_template(:new_organization)
       end
-    end
 
-    context 'when the user is admin of the current organization' do
-      let(:user) { member_admin.user }
-
-      it 'finds all accounts in the organization as sources' do
+      it 'finds the destination account' do
         get :new, params
-        expect(assigns(:sources)).to contain_exactly(
-          test_organization.account, member_admin.account
-        )
+        expect(assigns(:destination)).to eq(test_organization.account.id)
       end
-    end
 
-    context 'when the user is not admin of the current organization' do
-      it 'does not assign :sources' do
+      context 'when the user is the admin of the current organization' do
+        let(:user) { member_admin.user }
+
+        it 'renders the page successfully' do
+          expect(get :new, params).to be_ok
+        end
+      end
+
+      it 'finds the transfer source' do
         get :new, params
-        expect(assigns(:sources)).to be_nil
+        source = user.members.find_by(organization: test_organization).account.id
+
+        expect(assigns(:source)).to eq(source)
+      end
+
+      context 'when an offer is specified' do
+        let(:offer) { Fabricate(:offer, organization: test_organization) }
+
+        it 'finds the transfer offer' do
+          get :new, params.merge(offer: offer.id)
+          expect(assigns(:offer)).to eq(offer)
+        end
       end
     end
   end

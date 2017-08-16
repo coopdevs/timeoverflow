@@ -15,20 +15,32 @@ class TransfersController < ApplicationController
   end
 
   def new
-    @user = scoped_users.find(params[:id])
-    @destination = @user
-      .members
-      .find_by(organization: current_organization)
-      .account
-      .id
-    @source = find_transfer_source
-    @offer = find_transfer_offer
-    @transfer = Transfer.new(
-      source: @source,
-      destination: @destination,
-      post: @offer
-    )
-    @sources = find_transfer_sources_for_admin
+    if for_organization?
+      load_resource
+
+      @source = find_transfer_source
+      @offer = find_transfer_offer
+      @destination = @organization.account.id
+      @transfer = Transfer.new(source: @source, destination: @destination)
+      @sources = find_transfer_sources_for_admin
+
+      render :new_organization
+    else
+      @user = scoped_users.find(params[:id])
+      @destination = @user
+        .members
+        .find_by(organization: current_organization)
+        .account
+        .id
+      @source = find_transfer_source
+      @offer = find_transfer_offer
+      @transfer = Transfer.new(
+        source: @source,
+        destination: @destination,
+        post: @offer
+      )
+      @sources = find_transfer_sources_for_admin
+    end
   end
 
   def delete_reason
@@ -42,6 +54,18 @@ class TransfersController < ApplicationController
 
   private
 
+  def for_organization?
+    params.key?('organization')
+  end
+
+  def load_resource
+    if params[:id]
+      @organization = Organization.find(params[:id])
+    else
+      @organizations = Organization.all
+    end
+  end
+
   def find_transfer_sources_for_admin
     return unless admin?
     [current_organization.account] +
@@ -54,8 +78,13 @@ class TransfersController < ApplicationController
   end
 
   def find_transfer_source
-    current_user.members.
-      find_by(organization: current_organization).account.id
+    if for_organization?
+      current_user.members.
+        find_by(organization: @organization).account.id
+    else
+      current_user.members.
+        find_by(organization: current_organization).account.id
+    end
   end
 
   def scoped_users
