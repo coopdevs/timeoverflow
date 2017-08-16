@@ -5,6 +5,7 @@ ENV["ADMINS"] = "superadmin@example.com"
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
+require 'capybara/rspec'
 require 'database_cleaner'
 require 'fabrication'
 require 'selenium/webdriver'
