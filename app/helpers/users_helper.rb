@@ -7,7 +7,7 @@ module UsersHelper
       {
         id: user.id,
         avatar: avatar_url(user),
-        member_id: membership.member_uid,
+        member_uid: membership.member_uid,
         username: user.username,
         email: user.email_if_real,
         unconfirmed_email: user.unconfirmed_email,
@@ -15,7 +15,7 @@ module UsersHelper
         alt_phone: user.alt_phone,
         balance: membership.account_balance.to_i,
 
-        url: user_path(user),
+        url: member_path(membership.member_uid),
         edit_link: edit_user_path(user),
         cancel_link: cancel_member_path(membership),
         toggle_manager_link: toggle_manager_member_path(membership),

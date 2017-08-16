@@ -1,6 +1,6 @@
 <div ng-controller="UserListCtrl">
   <h1>
-    <%= User.model_name.human.pluralize %>
+    <%= Member.model_name.human.pluralize %>
     —
     <%= link_to current_organization.name,
                 organization_path(current_organization) %>
@@ -23,7 +23,7 @@
         <li>
           <a href="<%= new_user_path %>">
             <span class="glyphicon glyphicon-plus"></span>
-            <%= t "helpers.submit.create", model: User.model_name.human %>
+            <%= t "helpers.submit.create", model: Member.model_name.human %>
           </a>
         </li>
       <% end %>
@@ -78,7 +78,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render "user_rows", users: @users %>
+        <%= render "members_rows", users: @users %>
       </tbody>
     </table>
   </div>

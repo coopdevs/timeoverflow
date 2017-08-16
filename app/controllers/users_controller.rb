@@ -5,20 +5,8 @@ class UsersController < ApplicationController
     current_organization.users
   end
 
-  def index
-    @users = scoped_users
-    @memberships = current_organization.members.
-                   where(user_id: @users.map(&:id)).
-                   includes(:account).each_with_object({}) do |mem, ob|
-                     ob[mem.user_id] = mem
-                   end
-  end
-
   def show
     @user = find_user
-    @member = @user.as_member_of(current_organization)
-    @movements = @member.movements.order("created_at DESC").page(params[:page]).
-                 per(10)
   end
 
   def new

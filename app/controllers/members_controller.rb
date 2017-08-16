@@ -1,11 +1,38 @@
 class MembersController < ApplicationController
   before_filter :authenticate_user!
 
+  # GET /members
+  #
+  def index
+    @users = current_organization.users
+    @memberships = current_organization
+      .members
+      .where(user_id: @users.map(&:id))
+      .includes(:account)
+      .each_with_object({}) do |mem, ob|
+        ob[mem.user_id] = mem
+      end
+  end
+
+  # GET /members/:member_uid
+  #
+  def show
+    find_member
+    @user = @member.user
+    @movements = @member
+      .movements
+      .order('created_at DESC')
+      .page(params[:page])
+      .per(10)
+  end
+
+  # DELETE /members/:member_uid
+  #
   def destroy
     find_member
     toggle_active_posts
     @member.destroy
-    redirect_to users_path
+    redirect_to members_path
   end
 
   def toggle_manager
@@ -33,8 +60,15 @@ class MembersController < ApplicationController
 
   private
 
+  # TODO: rely on organization scope instead of current_organization
   def find_member
-    @member ||= current_organization.members.find(params[:id])
+    @member ||= Member.where(
+      organization_id: current_organization.id,
+      member_uid: params[:member_uid]
+    ).first
+
+    # TODO: better not found management please
+    raise unless @member
   end
 
   def toggle_active_posts

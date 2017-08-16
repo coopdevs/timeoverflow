@@ -1,0 +1,6 @@
+<li class="<%= "active" if current_page?(members_path) %>">
+  <%= link_to members_path do %>
+    <%= glyph :user %>
+    <%= Member.model_name.human.pluralize %>
+  <% end %>
+</li>
