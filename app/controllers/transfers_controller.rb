@@ -15,32 +15,13 @@ class TransfersController < ApplicationController
   end
 
   def new
-    if for_organization?
-      load_resource
+    load_resource
+    @source = find_transfer_source
+    @offer = find_transfer_offer
+    @sources = find_transfer_sources_for_admin
+    @transfer = build_transfer
 
-      @source = find_transfer_source
-      @offer = find_transfer_offer
-      @destination = @organization.account.id
-      @transfer = Transfer.new(source: @source, destination: @destination)
-      @sources = find_transfer_sources_for_admin
-
-      render :new_organization
-    else
-      @user = scoped_users.find(params[:id])
-      @destination = @user
-        .members
-        .find_by(organization: current_organization)
-        .account
-        .id
-      @source = find_transfer_source
-      @offer = find_transfer_offer
-      @transfer = Transfer.new(
-        source: @source,
-        destination: @destination,
-        post: @offer
-      )
-      @sources = find_transfer_sources_for_admin
-    end
+    render(template)
   end
 
   def delete_reason
@@ -54,20 +35,57 @@ class TransfersController < ApplicationController
 
   private
 
+  def template
+    if for_organization?
+      :new_organization
+    else
+      :new
+    end
+  end
+
+  def build_transfer
+    if for_organization?
+      Transfer.new(source: @source, destination: destination)
+    else
+      Transfer.new(
+        source: @source,
+        destination: destination,
+        post: @offer
+      )
+    end
+  end
+
+  def destination
+    @destination ||= if for_organization?
+                       @organization.account.id
+                     else
+                       @user
+                         .members
+                         .find_by(organization: current_organization)
+                         .account
+                         .id
+                     end
+  end
+
   def for_organization?
     params.key?('organization')
   end
 
   def load_resource
-    if params[:id]
-      @organization = Organization.find(params[:id])
+    if for_organization?
+      if params[:id]
+        @organization = Organization.find(params[:id])
+      else
+        @organizations = Organization.all
+      end
     else
-      @organizations = Organization.all
+      @user = scoped_users.find(params[:id])
     end
   end
 
   def find_transfer_sources_for_admin
     return unless admin?
+
     [current_organization.account] +
       current_organization.member_accounts.where("members.active is true")
   end
@@ -78,13 +96,13 @@ class TransfersController < ApplicationController
   end
 
   def find_transfer_source
-    if for_organization?
-      current_user.members.
-        find_by(organization: @organization).account.id
-    else
-      current_user.members.
-        find_by(organization: current_organization).account.id
-    end
+    organization = if for_organization?
+                     @organization
+                   else
+                     current_organization
+                   end
+
+    current_user.members.find_by(organization: organization).account.id
   end
 
   def scoped_users

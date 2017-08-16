@@ -29,9 +29,9 @@ describe TransfersController do
 
       it 'finds the destination account' do
         get :new, params
-        account = user.members.find_by(organization: user.organizations.first).account
+        user_account = user.members.find_by(organization: user.organizations.first).account
 
-        expect(assigns(:destination)).to eq(account.id)
+        expect(assigns(:destination)).to eq(user_account.id)
       end
 
       it 'finds the transfer source' do
@@ -98,9 +98,9 @@ describe TransfersController do
 
       it 'finds the transfer source' do
         get :new, params
-        source = user.members.find_by(organization: test_organization).account.id
+        giver_account = user.members.find_by(organization: test_organization).account.id
 
-        expect(assigns(:source)).to eq(source)
+        expect(assigns(:source)).to eq(giver_account)
       end
 
       context 'when an offer is specified' do
