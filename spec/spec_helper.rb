@@ -72,7 +72,7 @@ RSpec.configure do |config|
 
   # Create terms and conditions
   config.before do
-    Document.create(label: "t&c") do |doc|
+    Document.create!(label: "t&c") do |doc|
       doc.title = "Terms and Conditions"
       doc.content = "blah blah blah"
     end
