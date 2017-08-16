@@ -73,7 +73,7 @@ group :test do
   gem 'shoulda', ">= 3.5"
   gem 'fabrication'
   gem 'faker'
-  gem 'capybara', '~> 2.4.4'
+  gem 'capybara', '~> 2.7'
   gem 'capybara-selenium', '~> 0.0.6'
   gem 'chromedriver-helper', '~> 1.0'
 end
