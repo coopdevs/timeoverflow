@@ -41,43 +41,40 @@ class TransfersController < ApplicationController
     end
   end
 
+  # Returns a new instance of Transfer with the data provided in the request
+  #
+  # @return [Transfer]
   def build_transfer
-    if for_organization?
-      Transfer.new(source: @source, destination: destination)
-    else
-      Transfer.new(
-        source: @source,
-        destination: destination,
-        post: @offer
-      )
-    end
+    transfer = Transfer.new(source: @source, destination: destination_account.id)
+    transfer.post = @offer unless for_organization?
+    transfer
   end
 
-  def destination
-    @destination ||= if for_organization?
-                       @organization.account.id
-                     else
-                       @user
-                         .members
-                         .find_by(organization: current_organization)
-                         .account
-                         .id
-                     end
+  # TODO: this method implements authorization by scoping the destination
+  # account in all the accounts of the current organization. If the specified
+  # destination account does not belong to it, the request will simply faily.
+  #
+  # Returns the account the time will be transfered to
+  #
+  # @return [Account]
+  def destination_account
+    @destination_account ||= current_organization
+      .all_accounts
+      .find(params[:destination_account_id])
   end
 
+  # Checks whether the destination account is an organization
+  #
+  # @return [Boolean]
   def for_organization?
-    params.key?('organization')
+    destination_account.accountable.class == Organization
   end
 
   def load_resource
     if for_organization?
-      if params[:id]
-        @organization = Organization.find(params[:id])
-      else
-        @organizations = Organization.all
-      end
+      @organization = destination_account.accountable
     else
-      @user = scoped_users.find(params[:id])
+      @user = destination_account.accountable.user
     end
   end
 
@@ -88,23 +85,20 @@ class TransfersController < ApplicationController
       current_organization.member_accounts.where("members.active is true")
   end
 
+  # Returns the offer that is the subject of the transfer
+  #
+  # @return [Offer]
   def find_transfer_offer
     current_organization.offers.
       find(params[:offer]) if params[:offer].present?
   end
 
+  # Returns the id of the account that acts as source of the transfer
+  #
+  # @return [Integer]
   def find_transfer_source
-    organization = if for_organization?
-                     @organization
-                   else
-                     current_organization
-                   end
-
+    organization = @organization || current_organization
     current_user.members.find_by(organization: organization).account.id
-  end
-
-  def scoped_users
-    current_organization.users
   end
 
   def find_source

@@ -16,7 +16,13 @@ describe TransfersController do
     before { login(user) }
 
     context 'when the destination is a user account' do
-      let(:params) { { id: user.id } }
+      let(:user_account) { user.members.find_by(organization: user.organizations.first).account }
+      let(:params) do
+        {
+          id: user.id,
+          destination_account_id: user_account.id
+        }
+      end
 
       it 'renders the :new template' do
         expect(get :new, params).to render_template(:new)
@@ -29,16 +35,17 @@ describe TransfersController do
 
       it 'finds the destination account' do
         get :new, params
-        user_account = user.members.find_by(organization: user.organizations.first).account
-
-        expect(assigns(:destination)).to eq(user_account.id)
+        expect(assigns(:destination_account)).to eq(user_account)
       end
 
       it 'finds the transfer source' do
         get :new, params
-        source = user.members.find_by(organization: user.organizations.first).account.id
+        expect(assigns(:source)).to eq(user_account.id)
+      end
 
-        expect(assigns(:source)).to eq(source)
+      it 'builds a transfer with the id of the destination' do
+        get :new, params
+        expect(assigns(:transfer).destination).to eq(user_account.id)
       end
 
       context 'when the offer is specified' do
@@ -47,6 +54,11 @@ describe TransfersController do
         it 'finds the transfer offer' do
           get :new, params.merge(offer: offer.id)
           expect(assigns(:offer)).to eq(offer)
+        end
+
+        it 'builds a transfer with the offer as post' do
+          get :new, params.merge(offer: offer.id)
+          expect(assigns(:transfer).post).to eq(offer)
         end
       end
 
@@ -77,7 +89,12 @@ describe TransfersController do
     end
 
     context 'when the destination is an organization account' do
-      let(:params) { { id: test_organization.id, organization: true } }
+      let(:params) do
+        {
+          id: test_organization.id,
+          destination_account_id: test_organization.account.id
+        }
+      end
 
       it 'renders the :new template' do
         expect(get :new, params).to render_template(:new_organization)
@@ -85,7 +102,12 @@ describe TransfersController do
 
       it 'finds the destination account' do
         get :new, params
-        expect(assigns(:destination)).to eq(test_organization.account.id)
+        expect(assigns(:destination_account)).to eq(test_organization.account)
+      end
+
+      it 'builds a transfer with the id of the destination' do
+        get :new, params
+        expect(assigns(:transfer).destination).to eq(test_organization.account.id)
       end
 
       context 'when the user is the admin of the current organization' do
