@@ -30,22 +30,19 @@ describe TransfersController do
 
       it 'finds the accountable' do
         get :new, params
-        expect(assigns(:accountable)).to eq(member_giver)
+        expect(response.body)
+          .to include("<a href=\"/members/#{member_giver.user.id}\">#{member_giver.display_name_with_uid}</a>")
       end
 
       it 'finds the destination account' do
         get :new, params
-        expect(assigns(:destination_account)).to eq(user_account)
-      end
-
-      it 'finds the transfer source' do
-        get :new, params
-        expect(assigns(:source)).to eq(user_account.id)
+        expect(response.body).to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{user_account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       it 'builds a transfer with the id of the destination' do
         get :new, params
-        expect(assigns(:transfer).destination).to eq(user_account.id)
+        expect(response.body)
+          .to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{user_account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       context 'when the offer is specified' do
@@ -53,19 +50,19 @@ describe TransfersController do
 
         it 'finds the transfer offer' do
           get :new, params.merge(offer: offer.id)
-          expect(assigns(:offer)).to eq(offer)
+          expect(response.body).to include("<h3>#{offer}</h3>")
         end
 
         it 'builds a transfer with the offer as post' do
           get :new, params.merge(offer: offer.id)
-          expect(assigns(:transfer).post).to eq(offer)
+          expect(response.body).to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{offer.id}\" name=\"transfer[post_id]\" id=\"transfer_post_id\" />")
         end
       end
 
       context 'when the offer is not specified' do
         it 'does not find any offer' do
           get :new, params
-          expect(assigns(:offer)).to be_nil
+          expect(response.body).to include('<option value="">')
         end
       end
 
@@ -74,16 +71,17 @@ describe TransfersController do
 
         it 'finds all accounts in the organization as sources' do
           get :new, params
-          expect(assigns(:sources)).to contain_exactly(
-            test_organization.account, member_admin.account
-          )
+
+          expect(response.body).to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\"><option selected=\"selected\" value=\"#{member_admin.account.id}\">#{member_admin.member_uid} Member #{member_admin}</option>")
+          expect(response.body).to include("<option value=\"#{test_organization.account.id}\"> Organization #{test_organization}</option></select>")
         end
       end
 
       context 'when the user is not admin of the current organization' do
         it 'does not assign :sources' do
           get :new, params
-          expect(assigns(:sources)).to be_nil
+          expect(response.body)
+            .not_to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\">")
         end
       end
     end
@@ -102,17 +100,19 @@ describe TransfersController do
 
       it 'finds the accountable' do
         get :new, params
-        expect(assigns(:accountable)).to eq(test_organization)
+        expect(response.body)
+          .to include("<a href=\"/organizations/#{test_organization.id}\">#{test_organization}</a>")
       end
 
       it 'finds the destination account' do
         get :new, params
-        expect(assigns(:destination_account)).to eq(test_organization.account)
+        expect(response.body).to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{test_organization.account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       it 'builds a transfer with the id of the destination' do
         get :new, params
-        expect(assigns(:transfer).destination).to eq(test_organization.account.id)
+        expect(response.body)
+          .to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{test_organization.account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       context 'when the user is the admin of the current organization' do
@@ -121,13 +121,14 @@ describe TransfersController do
         it 'renders the page successfully' do
           expect(get :new, params).to be_ok
         end
-      end
 
-      it 'finds the transfer source' do
-        get :new, params
-        giver_account = user.members.find_by(organization: test_organization).account.id
+        it 'finds the transfer source' do
+          get :new, params
 
-        expect(assigns(:source)).to eq(giver_account)
+          expect(response.body).to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\"><option selected=\"selected\" value=\"#{member_admin.account.id}\">#{member_admin.member_uid} Member #{member_admin}</option>")
+          expect(response.body).to include("<option value=\"#{test_organization.account.id}\">#{test_organization.id} Organization #{test_organization}</option></select>")
+          HTML
+        end
       end
 
       context 'when an offer is specified' do
@@ -135,7 +136,7 @@ describe TransfersController do
 
         it 'finds the transfer offer' do
           get :new, params.merge(offer: offer.id)
-          expect(assigns(:offer)).to eq(offer)
+          expect(response.body).to include("<h3>#{offer}</h3>")
         end
       end
     end

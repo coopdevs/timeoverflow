@@ -5,9 +5,7 @@
   <%= link_to @accountable.display_name_with_uid, user_path(@accountable.user) %>
 </h1>
 <% if @offer %>
-  <h3>
-    <%= @offer %>
-  </h3>
+  <h3><%= @offer %></h3>
 <% end %>
 <%= simple_form_for @transfer do |f| %>
   <div class="form-inputs">
