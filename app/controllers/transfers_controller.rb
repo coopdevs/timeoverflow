@@ -13,12 +13,20 @@ class TransfersController < ApplicationController
   end
 
   def new
-    @source = find_transfer_source
-    @offer = find_transfer_offer
-    @sources = find_transfer_sources_for_admin
-    @transfer = build_transfer
+    source = find_transfer_source
+    offer = find_transfer_offer
+    sources = find_transfer_sources_for_admin
+    transfer = build_transfer(offer, source)
 
-    render(template)
+    render(
+      template,
+      locals: {
+        accountable: accountable,
+        transfer: transfer,
+        offer: offer,
+        sources: sources
+      }
+    )
   end
 
   def delete_reason
@@ -43,9 +51,9 @@ class TransfersController < ApplicationController
   # Returns a new instance of Transfer with the data provided in the request
   #
   # @return [Transfer]
-  def build_transfer
-    transfer = Transfer.new(source: @source, destination: destination_account.id)
-    transfer.post = @offer unless for_organization?
+  def build_transfer(offer, source)
+    transfer = Transfer.new(source: source, destination: destination_account.id)
+    transfer.post = offer unless for_organization?
     transfer
   end
 

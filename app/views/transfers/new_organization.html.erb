@@ -1,11 +1,11 @@
 <h1>
   <small><%= t '.give_time' %></small>
-  <%= link_to @accountable, organization_path(@accountable) %>
+  <%= link_to accountable, organization_path(accountable) %>
 </h1>
-<% if @offer %>
-  <h3><%= @offer %></h3>
+<% if offer %>
+  <h3><%= offer %></h3>
 <% end %>
-<%= simple_form_for @transfer do |f| %>
+<%= simple_form_for transfer do |f| %>
   <div class="form-inputs">
     <%= f.input :hours,
                 as: :integer,
@@ -33,7 +33,7 @@
         <%# TODO: refactor. it's very complex for a view. %>
         <%= f.select :source,
                      options_for_select(
-                       @sources.sort_by { |source| [source.accountable_type, source.accountable_id] }
+                       sources.sort_by { |source| [source.accountable_type, source.accountable_id] }
                                .map { |a| ["#{a.accountable_type == 'Member' ? a.accountable.member_uid : a.accountable_id} #{a.accountable_type} #{a.accountable.to_s}", a.id] },
                        selected: current_user.member(current_organization).account.id
                      ),
@@ -42,7 +42,7 @@
                      class: 'form-control' %>
       </div>
     <% end %>
-    <% if @offer %>
+    <% if offer %>
       <%= f.input :post, as: :hidden %>
     <% end %>
   </div>
