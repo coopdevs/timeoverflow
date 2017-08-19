@@ -19,7 +19,7 @@ class TransfersController < ApplicationController
     transfer = build_transfer(offer, source)
 
     render(
-      template,
+      :new,
       locals: {
         accountable: accountable,
         transfer: transfer,
@@ -39,14 +39,6 @@ class TransfersController < ApplicationController
   end
 
   private
-
-  def template
-    if for_organization?
-      :new_organization
-    else
-      :new
-    end
-  end
 
   # Returns a new instance of Transfer with the data provided in the request
   #

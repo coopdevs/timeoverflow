@@ -24,10 +24,6 @@ describe TransfersController do
         }
       end
 
-      it 'renders the :new template' do
-        expect(get :new, params).to render_template(:new)
-      end
-
       it 'finds the accountable' do
         get :new, params
         expect(response.body)
@@ -92,10 +88,6 @@ describe TransfersController do
           id: test_organization.id,
           destination_account_id: test_organization.account.id
         }
-      end
-
-      it 'renders the :new template' do
-        expect(get :new, params).to render_template(:new_organization)
       end
 
       it 'finds the accountable' do
