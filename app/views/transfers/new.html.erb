@@ -1,8 +1,6 @@
 <h1>
-  <small>
-    <%= t ".give_time" %>
-  </small>
-  <%= link_to accountable.display_name_with_uid, user_path(accountable.user) %>
+  <small><%= t ".give_time" %></small>
+  <%= link_to accountable.display_name_with_uid, accountable_path(accountable) %>
 </h1>
 <% if offer %>
   <h3><%= offer %></h3>
@@ -31,17 +29,12 @@
     <%= f.input :destination, as: :hidden %>
 
     <% if admin? %>
-      <%= render partial: 'sources', locals: { form: f, sources: sources, accountable: accountable} %>
+      <%= render partial: 'sources', locals: { form: f, sources: sources, accountable: accountable } %>
     <% end %>
 
-    <% if offer %>
-      <%= f.input :post, readonly: true %>
-      <%= f.input :post_id, as: :hidden %>
-    <% else %>
-      <%= f.input :post_id, collection: accountable.offers.active %>
-    <% end %>
-
+    <%= render partial: "#{accountable.model_name.singular}_offer", locals: { form: f, offer: offer, accountable: accountable } %>
   </div>
+
   <div class="form-actions">
     <%= f.button :submit, class: "btn btn-default", style: "margin-bottom: 20px;" %>
   </div>

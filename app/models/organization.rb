@@ -28,6 +28,10 @@ class Organization < ActiveRecord::Base
     "#{name}"
   end
 
+  def display_name_with_uid
+    self
+  end
+
   def ensure_reg_number_seq!
     update_column(:reg_number_seq, members.maximum(:member_uid))
   end

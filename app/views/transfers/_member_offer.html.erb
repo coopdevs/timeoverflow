@@ -1,0 +1,6 @@
+<% if offer %>
+  <%= form.input :post, readonly: true %>
+  <%= form.input :post_id, as: :hidden %>
+<% else %>
+  <%= form.input :post_id, collection: accountable.offers.active %>
+<% end %>
