@@ -27,29 +27,18 @@
     <%= f.input :amount, as: :hidden %>
     <%= f.input :reason %>
     <%= f.input :destination, as: :hidden %>
+
     <% if admin? %>
-      <div class="form-group">
-        <%= f.label :source %>
-        <%# TODO: refactor. it's very complex for a view. %>
-        <%= f.select :source,
-                     options_for_select(
-                       sources.sort_by { |source| [source.accountable_type, source.accountable_id] }
-                               .map { |a| ["#{a.accountable_type == 'Member' ? a.accountable.member_uid : a.accountable_id} #{a.accountable_type} #{a.accountable.to_s}", a.id] },
-                       selected: current_user.member(current_organization).account.id
-                     ),
-                     {},
-                     id: 'select2-time',
-                     class: 'form-control' %>
-      </div>
+      <%= render partial: 'sources', locals: { form: f, sources: sources, accountable: accountable } %>
     <% end %>
+
     <% if offer %>
       <%= f.input :post, as: :hidden %>
     <% end %>
   </div>
+
   <div class="form-actions">
-    <%= f.button :submit,
-                 class: 'btn btn-default',
-                 style: 'margin-bottom: 20px;' %>
+    <%= f.button :submit, class: 'btn btn-default', style: 'margin-bottom: 20px;' %>
   </div>
 <% end %>
 <script>
