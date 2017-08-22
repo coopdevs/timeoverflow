@@ -5,8 +5,12 @@ class UsersController < ApplicationController
     current_organization.users
   end
 
+  # GET /users/:id
+  #
   def show
-    @user = find_user
+    @user = User.find_by_id(params[:id])
+    raise unless @user
+    authorize @user
   end
 
   def new

@@ -60,23 +60,44 @@ describe UsersController do
     end
   end
 
-  describe "GET #show" do
-    context "with valid params" do
-      context "with a normal logged user" do
-        it "assigns the requested user to @user" do
-          login(user)
+  describe 'GET #show' do
+    context 'when the user is the same user' do
+      before { login(user) }
 
-          get "show", id: user.id
-          expect(assigns(:user)).to eq(user)
+      it 'assigns user to @user' do
+        get :show, id: user.id
+        expect(assigns(:user)).to eq(user)
+      end
+    end
+
+    context 'when the user is not the same' do
+      before { login(user) }
+
+      context 'and is not a member of the same organization' do
+        let(:other_organization) { Fabricate(:organization) }
+        let(:other_admin) do
+          Fabricate(
+            :member,
+            organization: test_organization,
+            manager: true
+          )
+        end
+        let(:other_user) { other_admin.user }
+
+        it 'redirects to root path' do
+          get :show, id: other_user
+
+          expect(response).to redirect_to(root_path)
         end
       end
-      context "with an admin logged user" do
-        it "assigns the requested user to @user" do
-          login(admin_user)
+    end
 
-          get "show", id: user.id
-          expect(assigns(:user)).to eq(user)
-        end
+    context "with an admin logged user" do
+      it "assigns the requested user to @user" do
+        login(admin_user)
+
+        get "show", id: user.id
+        expect(assigns(:user)).to eq(user)
       end
     end
   end
