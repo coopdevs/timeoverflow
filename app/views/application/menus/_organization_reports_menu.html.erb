@@ -30,7 +30,7 @@
       <% end %>
     </li>
     <li>
-      <%= link_to alpha_grouped_index_tags_path(post_type: "offer") do %>
+      <%= link_to post_complete_list_report_path, data: { popup: true } do %>
         <%= glyph :list_alt %>
         <%= t "application.navbar.posts_complete" %>
       <% end %>

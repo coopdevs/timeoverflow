@@ -62,4 +62,25 @@ class ReportsController < ApplicationController
       end
     end
   end
+
+  def post_complete_list
+    @posts = current_organization.posts.
+             of_active_members.
+             active.
+             includes(:user, :category).
+             to_a.
+             sort_by { "posts.id" }
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        report = Report::CSV::PostComplete.new(current_organization, @posts)
+        send_data report.run, filename: report.name, type: report.mime_type
+      end
+      format.pdf do
+        report = Report::PDF::PostComplete.new(current_organization, @posts)
+        send_data report.run, filename: report.name, type: report.mime_type
+      end
+    end
+  end
 end

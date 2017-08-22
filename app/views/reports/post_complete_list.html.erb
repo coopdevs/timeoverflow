@@ -1,0 +1,38 @@
+<div class="row">
+  <table class="table table-condensed table-bordered">
+    <colgroup>
+      <col class="col-sm-9"></col>
+      <col class="col-sm-3"></col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th><%= Post.human_attribute_name :id %></th>
+        <th><%= Post.human_attribute_name :title %></th>
+        <th><%= Post.human_attribute_name :description %></th>
+        <th><%= Category.model_name.human %></th>
+        <th><%= Post.human_attribute_name :type %></th>
+        <th><%= User.model_name.human %></th>
+        <th>N</th>
+        <th><%= Post.human_attribute_name :created_at %></th>
+        <th><%= Post.human_attribute_name :updated_at %></th>
+        <th><%= Post.human_attribute_name :tags %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.id %></td>
+          <td><%= post.title %></td>
+          <td><%= post.description %></td>
+          <td><%= post.category_name %></td>
+          <td><%= post.model_name.human %></td>
+          <td><%= post.user %></td>
+          <td><%= post.member_uid %></td>
+          <td><%= post.created_at %></td>
+          <td><%= post.updated_at %></td>
+          <td><%= post.tags %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

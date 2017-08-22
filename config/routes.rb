@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       get "user_complete_list"
       get "offer_list" => :post_list, type: "offer"
       get "inquiry_list" => :post_list, type: "inquiry"
+      get "post_complete_list"
     end
   end
 

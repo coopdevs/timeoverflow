@@ -45,6 +45,8 @@ en:
         tag_list: Tags
         title: Title
         updated_at: Updated
+        type: Type
+        tags: Tags
       transfer:
         amount: Quantity
         created_at: Created
