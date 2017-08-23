@@ -65,8 +65,29 @@ describe UsersController do
       before { login(user) }
 
       it 'assigns user to @user' do
-        get :show, id: user.id
+        get :show, id: user
         expect(assigns(:user)).to eq(user)
+      end
+
+      it 'renders a page with the user username' do
+        get :show, id: user
+        expect(response.body).to include(user.username)
+      end
+
+      it 'renders a page with the user avatar as link to Gravatar' do
+        get :show, id: user
+        expect(response.body).to include("<a href=\"https://www.gravatar.com\" target=\"_blank\">")
+        expect(response.body).to include("<img style=\"margin: -8px auto\" src=\"https://www.gravatar.com/avatar/")
+      end
+
+      it 'renders a page with the user description' do
+        get :show, id: user
+        expect(response.body).to include(user.description)
+      end
+
+      it 'renders a page with a link to edit the user profile' do
+        get :show, id: user
+        expect(response.body).to include("<a href=\"/account/edit\"")
       end
     end
 
@@ -89,15 +110,52 @@ describe UsersController do
 
           expect(response).to redirect_to(root_path)
         end
+
+        it 'sets an error flash message' do
+          get :show, id: other_user
+
+          expect(flash[:error]).to match(/You are not authorized to perform this action./)
+        end
       end
-    end
 
-    context "with an admin logged user" do
-      it "assigns the requested user to @user" do
-        login(admin_user)
+      context 'and is a member of the same organization' do
+        context 'and is not an admin of the organization' do
+          it 'redirects to root path' do
+            get :show, id: another_user
 
-        get "show", id: user.id
-        expect(assigns(:user)).to eq(user)
+            expect(response).to redirect_to(root_path)
+          end
+
+          it 'sets an error flash message' do
+            get :show, id: another_user
+
+            expect(flash[:error]).to match(/You are not authorized to perform this action./)
+          end
+        end
+
+        context 'and is an admin of the organization' do
+          before { login(admin_user) }
+
+          it 'assigns user to @user' do
+            get :show, id: user
+            expect(assigns(:user)).to eq(user)
+          end
+
+          it 'renders a page with the user username' do
+            get :show, id: user
+            expect(response.body).to include(user.username)
+          end
+
+          it 'renders a page with the user avatar' do
+            get :show, id: user
+            expect(response.body).to include("<img style=\"margin: -8px auto\" src=\"https://www.gravatar.com/avatar/")
+          end
+
+          it 'renders a page with a link to give time to the user' do
+            get :show, id: user
+            expect(response.body).to include("<a href=\"/users/#{user.id}/give_time\">")
+          end
+        end
       end
     end
   end
