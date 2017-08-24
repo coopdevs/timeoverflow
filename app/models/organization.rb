@@ -57,4 +57,12 @@ class Organization < ActiveRecord::Base
       errors.add(:web, :url_format_invalid)
     end
   end
+
+  def display_id(destination_accountable)
+    if destination_accountable.is_a?(Organization)
+      account.accountable_id
+    else
+      ''
+    end
+  end
 end

@@ -57,6 +57,10 @@ class Member < ActiveRecord::Base
     Post.where(organization: organization, user: user, type: "Inquiry")
   end
 
+  def display_id(_destination_accountable)
+    member_uid
+  end
+
   private
 
   def remove_orphaned_users

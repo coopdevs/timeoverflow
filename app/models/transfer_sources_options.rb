@@ -1,24 +1,26 @@
 class TransferSourcesOptions
-  def initialize(sources, accountable)
+  def initialize(sources, destination_accountable)
     @sources = sources
-    @accountable = accountable
+    @destination_accountable = destination_accountable
   end
 
   def to_a
     sources
-      .sort_by { |source| [source.accountable_type, source.accountable.try(:member_uid)] }
-      .map { |a| ["#{a.accountable_type == "Member" ? a.accountable.member_uid : accountable_option_name(a)} #{a.accountable_type} #{a.accountable.to_s}", a.id] }
+      .sort_by do |source|
+      [
+        source.accountable_type,
+        source.accountable.try(:member_uid)
+      ]
+    end
+      .map do |account|
+      [
+        AccountOptionTag.new(account.accountable, destination_accountable).to_s,
+        account.id
+      ]
+    end
   end
 
   private
 
-  attr_reader :sources, :accountable
-
-  def accountable_option_name(account)
-    if accountable.is_a?(Organization)
-      account.accountable_id
-    else
-      ''
-    end
-  end
+  attr_reader :sources, :destination_accountable
 end
