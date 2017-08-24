@@ -1,0 +1,79 @@
+class TransferFactory
+  def initialize(current_organization, current_user, offer_id, destination_account_id)
+    @current_organization = current_organization
+    @current_user = current_user
+    @offer_id = offer_id
+    @destination_account_id = destination_account_id
+  end
+
+  # Returns the offer that is the subject of the transfer
+  #
+  # @return [Offer]
+  def offer
+    current_organization.offers.
+      find(offer_id) if offer_id.present?
+  end
+
+  # Returns a new instance of Transfer with the data provided in the request
+  #
+  # @return [Transfer]
+  def build_transfer
+    transfer = Transfer.new(source: source, destination: destination_account.id)
+    transfer.post = offer unless for_organization?
+    transfer
+  end
+
+  def transfer_sources
+    if admin?
+      [current_organization.account] +
+        current_organization.member_accounts.merge(Member.active)
+    else
+      []
+    end
+  end
+
+  def accountable
+    @accountable ||= destination_account.accountable
+  end
+
+  private
+
+  attr_reader :current_organization, :current_user, :offer_id, :destination_account_id
+
+  # Returns the id of the account that acts as source of the transfer.
+  # Either the account of the organization or the account of the current user.
+  #
+  # @return [Integer]
+  def source
+    organization = if accountable.is_a?(Organization)
+                     accountable
+                   else
+                     current_organization
+                   end
+    current_user.members.find_by(organization: organization).account.id
+  end
+
+  # Checks whether the destination account is an organization
+  #
+  # @return [Boolean]
+  def for_organization?
+    destination_account.accountable.class == Organization
+  end
+
+  def admin?
+    current_user.try :manages?, current_organization
+  end
+
+  # TODO: this method implements authorization by scoping the destination
+  # account in all the accounts of the current organization. If the specified
+  # destination account does not belong to it, the request will simply faily.
+  #
+  # Returns the account the time will be transfered to
+  #
+  # @return [Account]
+  def destination_account
+    @destination_account ||= current_organization
+      .all_accounts
+      .find(destination_account_id)
+  end
+end

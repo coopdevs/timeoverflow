@@ -28,7 +28,7 @@
     <%= f.input :reason %>
     <%= f.input :destination, as: :hidden %>
 
-    <% if admin? %>
+    <% if sources.present? %>
       <%= render partial: 'sources', locals: { form: f, sources: sources, accountable: accountable } %>
     <% end %>
 
