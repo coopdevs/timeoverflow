@@ -8,10 +8,9 @@ class TransferFactory
 
   # Returns the offer that is the subject of the transfer
   #
-  # @return [Offer]
+  # @return [Maybe<Offer>]
   def offer
-    current_organization.offers.
-      find(offer_id) if offer_id.present?
+    current_organization.offers.find_by_id(offer_id)
   end
 
   # Returns a new instance of Transfer with the data provided in the request
@@ -38,7 +37,8 @@ class TransferFactory
 
   private
 
-  attr_reader :current_organization, :current_user, :offer_id, :destination_account_id
+  attr_reader :current_organization, :current_user, :offer_id,
+              :destination_account_id
 
   # Returns the id of the account that acts as source of the transfer.
   # Either the account of the organization or the account of the current user.
