@@ -31,6 +31,7 @@ class Post < ActiveRecord::Base
           indexes :description, analyzer: "normal"
           indexes :tags
           indexes :organization_id, type: :integer
+          indexes :active, type: :boolean
         end
       end
     end
