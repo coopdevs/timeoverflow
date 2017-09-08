@@ -1,12 +1,12 @@
 require "spec_helper"
 
 describe OffersController, type: :controller do
-  let (:test_organization) { Fabricate(:organization) }
-  let (:member) { Fabricate(:member, organization: test_organization) }
-  let (:another_member) { Fabricate(:member, organization: test_organization) }
-  let (:yet_another_member) { Fabricate(:member) }
-  let (:test_category) { Fabricate(:category) }
-  let! (:offer) do
+  let(:test_organization) { Fabricate(:organization) }
+  let(:member) { Fabricate(:member, organization: test_organization) }
+  let(:another_member) { Fabricate(:member, organization: test_organization) }
+  let(:yet_another_member) { Fabricate(:member) }
+  let(:test_category) { Fabricate(:category) }
+  let!(:offer) do
     Fabricate(:offer,
               user: member.user,
               organization: test_organization,
@@ -34,39 +34,59 @@ describe OffersController, type: :controller do
   end
 
   describe "GET #index (search)" do
-    before do
-      # TODO: move to a separate module and enable with metadata
-      # for instance:
-      #
-      #     describe "GET #index (search)", elastic: "Offer" do ...
-      #
-      # (ensure indices are set up for a specific class), or
-      #
-      #     describe "GET #index (search)", elastic: true do ...
-      #
-      # (ensure all indices are set up)
-      #
+    context 'when there is a matching active offer' do
+      before do
+        # Force the index to exist
+        Offer.__elasticsearch__.create_index!(force: true)
 
-      # Force the index to exist
-      Offer.__elasticsearch__.create_index!(force: true)
+        # Import any already existing model into the index
+        # for instance the ones that have been created in upper
+        # `let!` or `before` blocks
+        Offer.__elasticsearch__.import(force: true, refresh: true)
 
-      # Import any already existing model into the index
-      # for instance the ones that have been created in upper
-      # `let!` or `before` blocks
-      Offer.__elasticsearch__.import(force: true, refresh: true)
+        login(another_member.user)
+      end
+
+      it "populates an array of offers" do
+        get "index", q: offer.title.split(/\s/).first
+
+        # @offers is a wrapper from Elasticsearch. It's iterator-equivalent to
+        # the underlying query from the database.
+        expect(assigns(:offers)).to be_a Elasticsearch::Model::Response::Records
+        expect(assigns(:offers).to_a).to eq([offer])
+      end
     end
 
-    it "populates an array of offers" do
-      login(another_member.user)
+    context 'when there is a matching non active offer' do
+      before do
+        non_active_offer
 
-      get "index", q: offer.title.split(/\s/).first
+        # Force the index to exist
+        Offer.__elasticsearch__.create_index!(force: true)
 
-      # @offers is a wrapper from Elasticsearch. It's iterator-equivalent to
-      # the underlying query from the database.
-      expect(assigns(:offers)).to be_a Elasticsearch::Model::Response::Records
-      expect(assigns(:offers).size).to eq 1
-      expect(assigns(:offers)[0]).to eq offer
-      expect(assigns(:offers).to_a).to eq([offer])
+        # Import any already existing model into the index
+        # for instance the ones that have been created in upper
+        # `let!` or `before` blocks
+        Offer.__elasticsearch__.import(force: true, refresh: true)
+
+        login(another_member.user)
+      end
+
+      let(:non_active_offer) do
+        Fabricate(
+          :offer,
+          title: offer.title,
+          user: member.user,
+          organization: test_organization,
+          category: test_category,
+          active: false
+        )
+      end
+
+      it 'does not show up on the search results' do
+        get "index", q: offer.title.split(/\s/).first
+        expect(assigns(:offers).to_a).to contain_exactly(offer)
+      end
     end
   end
 

@@ -6,28 +6,32 @@ class PostsController <  ApplicationController
   def index
     if (query = params[:q]).present?
       # match query term on fields
-      must = [ { multi_match: {
-          query: query.to_s,
-          type: "phrase_prefix",
-          fields: ["title^2", "description", "tags^2"]
-        } } ]
+      must = [
+        {
+          multi_match: {
+            query: query.to_s,
+            type: "phrase_prefix",
+            fields: ["title^2", "description", "tags^2"]
+          }
+        }
+      ]
+
       if current_organization.present?
         # filter by organization
         must << { term: { organization_id: { value: current_organization.id } } }
       end
-      posts = model.__elasticsearch__.search(
-        query: {
-          bool: {
-            must: must
-          }
-        }
-      ).page(params[:page]).per(25).records
+
+      posts = model.__elasticsearch__.search( query: { bool: { must: must } })
+      posts = posts.page(params[:page]).per(25).records
     else
       posts = model.active.of_active_members
+
       if current_organization.present?
         posts = posts.merge(current_organization.posts)
       end
-      posts = apply_scopes(posts).page(params[:page]).per(25)
+
+      posts = apply_scopes(posts)
+      posts = posts.page(params[:page]).per(25)
     end
     instance_variable_set("@#{resources}", posts)
   end
