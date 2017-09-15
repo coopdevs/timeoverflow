@@ -4,14 +4,12 @@ class MembersController < ApplicationController
   # GET /members
   #
   def index
-    @users = current_organization.users
-    @memberships = current_organization
+    context = current_organization
       .members
-      .where(user_id: @users.map(&:id))
-      .includes(:account)
-      .each_with_object({}) do |mem, ob|
-        ob[mem.user_id] = mem
-      end
+      .includes(:account, :user)
+    context = context.where(active: true) unless (admin? || superadmin?)
+
+    @memberships = context
   end
 
   # GET /members/:member_uid

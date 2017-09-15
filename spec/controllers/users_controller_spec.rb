@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe UsersController do
   let (:test_organization) { Fabricate(:organization) }
@@ -36,29 +36,6 @@ describe UsersController do
 
   include_context "stub browser locale"
   before { set_browser_locale("ca") }
-
-  describe "GET #index" do
-    context "with an normal logged user" do
-      it "populates and array of users" do
-        login(user)
-
-        get "index"
-        expect(assigns(:users)).to eq([user, another_user,
-                                       admin_user, wrong_user,
-                                       empty_email_user])
-      end
-    end
-    context "with an admin logged user" do
-      it "populates and array of users" do
-        login(admin_user)
-
-        get "index"
-        expect(assigns(:users)).to eq([user, another_user,
-                                       admin_user, wrong_user,
-                                       empty_email_user])
-      end
-    end
-  end
 
   describe 'GET #show' do
     context 'when the user is the same user' do
