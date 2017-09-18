@@ -127,11 +127,6 @@ describe UsersController do
             get :show, id: user
             expect(response.body).to include("<img style=\"margin: -8px auto\" src=\"https://www.gravatar.com/avatar/")
           end
-
-          it 'renders a page with a link to give time to the user' do
-            get :show, id: user
-            expect(response.body).to include("<a href=\"/users/#{user.id}/give_time\">")
-          end
         end
       end
     end

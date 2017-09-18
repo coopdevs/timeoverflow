@@ -56,6 +56,20 @@ class MembersController < ApplicationController
     end
   end
 
+  # TODO: move to service and probably different controller
+  def give_time
+    find_member
+    @destination = @member.account.id
+    @source = find_transfer_source
+    @offer = find_transfer_offer
+    @transfer = Transfer.new(
+      source: @source,
+      destination: @destination,
+      post: @offer
+    )
+    @sources = find_transfer_sources_for_admin
+  end
+
   private
 
   # TODO: rely on organization scope instead of current_organization
@@ -72,5 +86,24 @@ class MembersController < ApplicationController
   def toggle_active_posts
     current_organization.posts.where(user_id: @member.user_id).
       each { |post| post.update_attributes(active: false) }
+  end
+
+  # TODO: move to service and probably different controller
+  def find_transfer_offer
+    current_organization.offers.
+      find(params[:offer]) if params[:offer].present?
+  end
+
+  # TODO: move to service and probably different controller
+  def find_transfer_source
+    current_user.members.
+      find_by(organization: current_organization).account.id
+  end
+
+  # TODO: move to service and probably different controller
+  def find_transfer_sources_for_admin
+    return unless admin?
+    [current_organization.account] +
+      current_organization.member_accounts.where("members.active is true")
   end
 end

@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, concerns: :accountable, except: :destroy
+  resources :users, except: :destroy
 
   resources :transfers, only: [:create] do
     member do
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   resources :documents
 
-  resources :members, param: :member_uid, only: [:index, :show, :destroy] do
+  resources :members, param: :member_uid, concerns: :accountable, only: [:index, :show, :destroy] do
     member do
       put :toggle_manager
       put :toggle_active

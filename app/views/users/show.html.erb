@@ -31,14 +31,6 @@
               <% end %>
             </li>
           <% end %>
-          <% if admin? || @user != current_user %>
-            <li>
-              <%= link_to give_time_user_path(@user) do %>
-                <%= glyph :time %>
-                <%= t "global.give_time" %>
-              <% end %>
-            </li>
-          <% end %>
         </ul>
         <dl class="dl-horizontal">
           <h3>

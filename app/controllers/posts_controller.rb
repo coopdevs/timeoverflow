@@ -60,7 +60,11 @@ class PostsController <  ApplicationController
             else
               model.all.active.of_active_members
             end
-    post = scope.find params[:id]
+    post = scope.find(params[:id])
+    @member = Member.where(
+      organization: post.organization,
+      user: post.user
+    )
     instance_variable_set("@#{resource}", post)
   end
 
