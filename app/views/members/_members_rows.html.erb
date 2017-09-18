@@ -21,10 +21,6 @@
   <td> {{user.balance | timeBalance}} </td>
   <% if current_user.manages?(current_organization) %>
     <td class="hover-actions">
-      <a class="action" ng-if="user.edit_link" ng-href="{{user.edit_link}}">
-        <%= glyph :pencil %>
-        <%= t "global.edit" %>
-      </a>
       <a class="action"
          ng-if="user.cancel_link && !user.active"
          ng-href="{{user.cancel_link}}"

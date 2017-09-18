@@ -28,9 +28,9 @@
       <div class="col-sm-9 col-xs-7 break-word">
         <%= m @user.description %>
         <ul class="nav nav-pills pull-right">
-          <% if @user == current_user %>
+          <% if admin? || @user == current_user %>
             <li>
-              <%= link_to account_edit_path do %>
+              <%= link_to edit_user_path(@user) do %>
                 <%= glyph :pencil %>
                 <%= t "global.edit" %>
               <% end %>
