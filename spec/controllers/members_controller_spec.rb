@@ -35,6 +35,14 @@ describe MembersController do
   let(:admin) { member_admin.user }
 
   describe '#index' do
+    context 'when the user is not logged in' do
+      it 'responds with a redirect' do
+        get :index
+
+        expect(response.status).to eq(302)
+      end
+    end
+
     context 'when the logged user is not an admin' do
       before { login(user) }
 
