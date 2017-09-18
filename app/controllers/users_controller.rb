@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   #
   def show
     @user = User.find_by_id(params[:id])
+    # TODO: better not found management please
     raise unless @user
     authorize @user
   end
