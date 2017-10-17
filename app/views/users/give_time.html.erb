@@ -2,7 +2,7 @@
   <small>
     <%= t ".give_time" %>
   </small>
-  <%= link_to @user.member(current_organization).display_name_with_uid, user_path(@user) %>
+  <%= link_to @user.member(@organization).display_name_with_uid, user_path(@user) %>
 </h1>
 <% if @offer %>
   <h3>
@@ -38,7 +38,7 @@
                      options_for_select(
                        @sources.sort_by { |source| [source.accountable_type, source.accountable.try(:member_uid)] }
                                .map { |a| ["#{a.accountable_type == "Member" ? a.accountable.member_uid : ""} #{a.accountable_type} #{a.accountable.to_s}", a.id] },
-                       selected: current_user.member(current_organization).account.id
+                       selected: current_user.member(@organization).account.id
                      ),
                      {},
                      id: "select2-time",
@@ -49,7 +49,7 @@
       <%= f.input :post, readonly: true %>
       <%= f.input :post_id, as: :hidden %>
     <% else %>
-      <%= f.input :post_id, collection: @user.member(current_organization).offers.active %>
+      <%= f.input :post_id, collection: @user.member(@organization).offers.active %>
     <% end %>
   </div>
   <div class="form-actions">

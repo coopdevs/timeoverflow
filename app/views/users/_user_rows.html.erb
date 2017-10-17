@@ -19,7 +19,7 @@
   <td> {{user.phone}} </td>
   <td> {{user.alt_phone}} </td>
   <td> {{user.balance | timeBalance}} </td>
-  <% if current_user.manages?(current_organization) %>
+  <% if current_user.manages?(@organization) %>
     <td class="hover-actions">
       <a class="action" ng-if="user.edit_link" ng-href="{{user.edit_link}}">
         <%= glyph :pencil %>

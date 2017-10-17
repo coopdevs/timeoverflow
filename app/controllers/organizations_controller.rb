@@ -1,20 +1,17 @@
 class OrganizationsController < ApplicationController
-  before_filter :load_resource
-
-  def load_resource
-    if params[:id]
-      @organization = Organization.find(params[:id])
-    else
-      @organizations = Organization.all
-    end
-  end
+  before_filter :load_resource, only: [:show, :update, :destroy, :give_time]
 
   def new
     @organization = Organization.new
   end
 
+  # TODO: define which organizations we should display
+  #
   def index
-    @organizations = @organizations.matching(params[:q]) if params[:q].present?
+    context = Organization.all
+    context = context.matching(params[:q]) if params[:q].present?
+
+    @organizations = context
   end
 
   def show
@@ -27,7 +24,7 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = @organizations.build organization_params
+    @organization = Organization.new(organization_params)
     if @organization.save
       redirect_to @organization, status: :created
     else
@@ -48,19 +45,14 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_path, notice: "deleted"
   end
 
+  # Transfer time to the current organization
+  #
   def give_time
     @destination = @organization.account.id
     @source = find_transfer_source
     @offer = find_transfer_offer
     @transfer = Transfer.new(source: @source, destination: @destination)
     @sources = find_transfer_sources_for_admin
-  end
-
-  def set_current
-    if current_user
-      session[:current_organization_id] = @organization.id
-    end
-    redirect_to root_path
   end
 
   private
@@ -71,8 +63,18 @@ class OrganizationsController < ApplicationController
                                      neighborhood city domain])
   end
 
+  def load_resource
+    @organization = Organization.find_by_id(params[:id])
+
+    raise unless @organization
+
+    # TODO: authorize
+
+    @organization
+  end
+
   def find_transfer_offer
-    current_organization.offers.
+    @organization.offers.
       find(params[:offer]) if params[:offer].present?
   end
 

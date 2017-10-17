@@ -1,10 +1,8 @@
 class ApplicationPolicy
-  attr_reader :member, :user, :organization, :record
+  attr_reader :user, :record
 
-  def initialize(member, record)
-    @member = member
-    @user = member.user if member
-    @organization = member.organization if member
+  def initialize(user, record)
+    @user = user
     @record = record
   end
 
@@ -13,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(id: record.id).exists?
+    false
   end
 
   def create?
@@ -34,24 +32,5 @@ class ApplicationPolicy
 
   def destroy?
     false
-  end
-
-  def scope
-    Pundit.policy_scope!(member, record.class)
-  end
-
-  class Scope
-    attr_reader :member, :user, :organization, :scope
-
-    def initialize(member, scope)
-      @member = member
-      @user = member.user if member
-      @organization = member.organization if member
-      @scope = scope
-    end
-
-    def resolve
-      scope
-    end
   end
 end

@@ -1,5 +1,5 @@
 <%= show_error_messages! post %>
-<%= form_for post, html: { name: "form", novalidate: true } do |f| %>
+<%= form_for [@organization, post], html: { name: "form", novalidate: true } do |f| %>
   <div class="form-group">
     <%= f.label :title, required: true %>
     <%= f.text_field :title, class: "form-control" %>
@@ -34,12 +34,12 @@
                  id: "tags-js",
                  class: "form-control" %>
   </div>
-  <% if current_user.manages?(current_organization) %>
+  <% if current_user.manages?(@organization) %>
     <div class="form-group">
       <%= f.label :user, class: "control-label" %>
       <%# TODO: too complex %>
       <%= f.select :user_id,
-                   options_for_select(current_organization.members.active
+                   options_for_select(@organization.members.active
                                                           .order("members.member_uid")
                                                           .map { |mem| ["#{mem.member_uid} #{mem.user.to_s}", mem.user_id] },
                                       selected: post.user.id || current_user.id),

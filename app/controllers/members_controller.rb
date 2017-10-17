@@ -1,5 +1,17 @@
 class MembersController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :load_organization
+
+  # TODO: move to abstract controller for all nested resources
+  # TODO: check authorization
+  #
+  def load_organization
+    @organization = Organization.find_by_id(params[:id])
+
+    raise not_found unless @organization
+
+    @organization
+  end
 
   def destroy
     find_member
@@ -34,11 +46,11 @@ class MembersController < ApplicationController
   private
 
   def find_member
-    @member ||= current_organization.members.find(params[:id])
+    @member ||= @organization.members.find(params[:id])
   end
 
   def toggle_active_posts
-    current_organization.posts.where(user_id: @member.user_id).
+    @organization.posts.where(user_id: @member.user_id).
       each { |post| post.update_attributes(active: false) }
   end
 end

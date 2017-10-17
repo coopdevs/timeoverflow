@@ -8,8 +8,8 @@
       <% if content_for? :window_title %>
         <%= content_for :window_title %>
       <% else %>
-        <% if current_organization %>
-          <%= current_organization %> —
+        <% if @organization %>
+          <%= @organization %> —
         <% end %>
         <%= yield :title %>
       <% end %>

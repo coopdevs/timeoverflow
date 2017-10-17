@@ -1,10 +1,6 @@
-<li class="disabled">
-  <a href="#"><%= current_organization.name %></a>
-</li>
-<% (current_user.organizations - [current_organization]).each do |org| %>
+<% current_user.organizations.each do |org| %>
   <li>
-    <%= link_to set_current_organization_path(org), method: :post do %>
-      <%= glyph(:retweet) %>
+    <%= link_to organization_path(org) do %>
       <%= org.name %>
     <% end %>
   </li>

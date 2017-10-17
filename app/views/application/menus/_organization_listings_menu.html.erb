@@ -12,14 +12,14 @@
       <% end %>
     </li>
     <li>
-      <%= link_to offers_path(org: current_organization) do %>
+      <%= link_to organization_offers_path(organization_id: @organization.id) do %>
         <%= glyph :link %>
         <%= glyph :eye_open %>
         <%= t "application.navbar.offer_public_link" %>
       <% end %>
     </li>
     <li>
-      <%= link_to inquiries_path(org: current_organization) do %>
+      <%= link_to organization_inquiries_path(organization_id: @organization.id) do %>
         <%= glyph :link %>
         <%= glyph :eye_open %>
         <%= t "application.navbar.inquiry_public_link" %>

@@ -25,18 +25,10 @@
       <li class="divider" role="presentation"></li>
     <% end %>
     <li role="presentation">
-      <%= link_to current_user do %>
+      <%= link_to organization_user_path(organization_id: @organization.id, id: current_user.id) do %>
         <%= glyph :user %>
         <%= t "layouts.application.edit_profile" %>
       <% end %>
     </li>
-    <% current_user.members.where(manager: true).each do |m| %>
-      <li role="presentation">
-        <%= link_to m.organization do %>
-          <%= glyph :pencil %>
-          <%= t "layouts.application.edit_org", organization: m.organization %>
-        <% end %>
-      </li>
-    <% end %>
   </ul>
 </li>

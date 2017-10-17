@@ -1,4 +1,6 @@
 class PostsController <  ApplicationController
+  before_filter :load_organization
+
   has_scope :by_category, as: :cat
   has_scope :tagged_with, as: :tag
   has_scope :by_organization, as: :org
@@ -11,9 +13,9 @@ class PostsController <  ApplicationController
           type: "phrase_prefix",
           fields: ["title^2", "description", "tags^2"]
         } } ]
-      if current_organization.present?
+      if @organization.present?
         # filter by organization
-        must << { term: { organization_id: { value: current_organization.id } } }
+        must << { term: { organization_id: { value: @organization.id } } }
       end
       posts = model.__elasticsearch__.search(
         query: {
@@ -24,8 +26,8 @@ class PostsController <  ApplicationController
       ).page(params[:page]).per(25).records
     else
       posts = model.active.of_active_members
-      if current_organization.present?
-        posts = posts.merge(current_organization.posts)
+      if @organization.present?
+        posts = posts.merge(@organization.posts)
       end
       posts = apply_scopes(posts).page(params[:page]).per(25)
     end
@@ -40,9 +42,9 @@ class PostsController <  ApplicationController
 
   def create
     post = model.new(post_params)
-    post.organization = current_organization
+    post.organization = @organization
     if post.save
-      redirect_to send("#{resource}_path", post)
+      redirect_to polymorphic_url([@organization, post])
     else
       instance_variable_set("@#{resource}", post)
       render action: :new
@@ -50,13 +52,13 @@ class PostsController <  ApplicationController
   end
 
   def edit
-    post = current_organization.posts.find params[:id]
+    post = @organization.posts.find params[:id]
     instance_variable_set("@#{resource}", post)
   end
 
   def show
     scope = if current_user.present?
-              current_organization.posts.active.of_active_members
+              @organization.posts.active.of_active_members
             else
               model.all.active.of_active_members
             end
@@ -65,34 +67,36 @@ class PostsController <  ApplicationController
   end
 
   def update
-    post = current_organization.posts.find params[:id]
+    post = @organization.posts.find params[:id]
     authorize post
     instance_variable_set("@#{resource}", post)
     if post.update_attributes(post_params)
-      redirect_to post
+      redirect_to polymorphic_url([@organization, post])
     else
       render action: :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    post = current_organization.posts.find params[:id]
+    post = @organization.posts.find params[:id]
     authorize post
-    redirect_to send("#{resources}_path") if post.update!(active: false)
+    redirect_to polymorphic_url([@organization, resources]) if post.update!(active: false)
   end
 
   private
 
+  # TODO: Investigate why we need this
   def resource
     controller_name.singularize
   end
 
+  # TODO: Investigate why we need this
   def resources
     controller_name
   end
 
   def set_user_id(p)
-    if current_user.manages?(current_organization)
+    if current_user.manages?(@organization)
       p.update publisher_id: current_user.id
       p.reverse_merge! user_id: current_user.id
     else
@@ -108,5 +112,16 @@ class PostsController <  ApplicationController
     params.fetch(resource, {}).permit(*permitted_fields).tap do |p|
       set_user_id(p)
     end
+  end
+
+  # TODO: move to abstract controller for all nested resources
+  # TODO: check authorization
+  #
+  def load_organization
+    @organization = Organization.find_by_id(params[:organization_id])
+
+    raise not_found unless @organization
+
+    @organization
   end
 end

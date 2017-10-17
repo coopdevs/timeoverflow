@@ -2,7 +2,7 @@
   <div class="panel-body">
     <h1>
       <small>
-        <% unless  @member.active %>
+        <% unless @member.active %>
           <%= t ".inactive" %>
         <% end %>
       </small>
@@ -38,7 +38,7 @@
           <% end %>
           <% if admin? || @user != current_user %>
             <li>
-              <%= link_to give_time_user_path(@user) do %>
+              <%= link_to give_time_organization_user_path(organization_id: @organization.id, id: @user.id) do %>
                 <%= glyph :time %>
                 <%= t "global.give_time" %>
               <% end %>
@@ -110,7 +110,7 @@
         <h2 class="panel-title">
           <%= Inquiry.model_name.human(count: :many) %>
           <% if @user == current_user %>
-            <a class="pull-right" href="<%= new_inquiry_path %>">
+            <a class="pull-right" href="<%= new_organization_inquiry_path(organization_id: @organization.id) %>">
               <%= glyph :plus %>
             </a>
           <% end %>

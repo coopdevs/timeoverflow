@@ -1,0 +1,6 @@
+<li class="<%= "active" if current_page?(organization_offers_path(organization_id: @organization.id)) %>">
+  <%= link_to organization_offers_path(organization_id: @organization.id) do %>
+    <%= glyph :offer %>
+    <%= Offer.model_name.human(count: :many) %>
+  <% end %>
+</li>
