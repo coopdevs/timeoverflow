@@ -492,10 +492,10 @@ pt-BR:
       give_time: Dar Tempo a
     index:
       actions: Ações
-      active_warning_angular: Mudará o estado da conta do usuário {{username}}
-      cancel_warning_angular: Eliminará o usuário do banco {{username}}
+      active_warning: Mudará o estado da conta do usuário %{username}
+      cancel_warning: Eliminará o usuário do banco %{username}
       create: Criar novo usuário
-      manage_warning_angular: Mudará os privilégios do usuário {{username}}
+      manage_warning: Mudará os privilégios do usuário %{username}
       user_created: Usuário %{uid} %{name} guardado
     new:
       cancel: Cancelar

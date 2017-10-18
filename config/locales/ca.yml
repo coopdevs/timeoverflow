@@ -487,10 +487,10 @@ ca:
       give_time: Donar Temps a
     index:
       actions: Accions
-      active_warning_angular: Vas a canviar l'estat del compte de l'usuari {{username}}
-      cancel_warning_angular: Vas a eliminar del banc a l'usuari {{username}}
+      active_warning: Vas a canviar l'estat del compte de l'usuari %{username}
+      cancel_warning: Vas a eliminar del banc a l'usuari %{username}
       create: Crear nou usuari
-      manage_warning_angular: Vas a canviar els permisos de l'usuari {{username}}
+      manage_warning: Vas a canviar els permisos de l'usuari %{username}
       user_created: Usuari %{uid} %{name} guardat
     new:
       cancel: Cancel·lar

@@ -1,23 +1,14 @@
-<div ng-controller="UserListCtrl">
+<div>
   <h1>
     <%= User.model_name.human.pluralize %>
     —
     <%= link_to current_organization.name,
                 organization_path(current_organization) %>
-    <% if params[:q].present? %>
-      <small>
-        <%= glyph :search %>
-        <%= params[:q] %>
-      </small>
-    <% end %>
   </h1>
   <div class="navbar">
-    <form class="navbar-form navbar-left">
-      <input class="form-control"
-             ng-model="filterTerm"
-             placeholder="<%= t("global.search") %>"
-             type="text">
-    </form>
+    <%= search_form_for(@search, class: "navbar-form navbar-left") do |f| %>
+      <%= f.search_field :username_or_email_contains, class: "form-control" %>
+    <% end %>
     <ul class="nav navbar-nav pull-right">
       <% if admin? %>
         <li>
@@ -35,26 +26,12 @@
         <tr></tr>
         <tr>
           <th></th>
+          <th>ID</th>
           <th>
-            <a ng-click="sortBy('member_id')">
-              ID
-              <span class="glyphicon glyphicon-chevron-down" ng-if="sort == '-member_id'"></span>
-              <span class="glyphicon glyphicon-chevron-up" ng-if="sort == 'member_id'"></span>
-            </a>
+            <%= sort_link @search, :username, User.human_attribute_name(:username) %>
           </th>
           <th>
-            <a ng-click="sortBy('username')">
-              <%= User.human_attribute_name(:username) %>
-              <span class="glyphicon glyphicon-chevron-down" ng-if="sort == '-username'"></span>
-              <span class="glyphicon glyphicon-chevron-up" ng-if="sort == 'username'"></span>
-            </a>
-          </th>
-          <th>
-            <a ng-click="sortBy('email')">
-              <%= User.human_attribute_name(:email) %>
-              <span class="glyphicon glyphicon-chevron-down" ng-if="sort == '-email'"></span>
-              <span class="glyphicon glyphicon-chevron-up" ng-if="sort == 'email'"></span>
-            </a>
+            <%= sort_link @search, :email, User.human_attribute_name(:email) %>
           </th>
           <th>
             <%= User.human_attribute_name(:phone) %>
@@ -63,11 +40,7 @@
             <%= User.human_attribute_name(:alt_phone) %>
           </th>
           <th>
-            <a ng-click="sortBy('balance')">
-              <%= Account.human_attribute_name(:balance) %>
-              <span class="glyphicon glyphicon-chevron-down" ng-if="sort == '-balance'"></span>
-              <span class="glyphicon glyphicon-chevron-up" ng-if="sort == 'balance'"></span>
-            </a>
+            <%= sort_link @search, :balance, User.human_attribute_name(:balance) %>
           </th>
           <% if current_user.manages? current_organization %>
             <th>
@@ -81,33 +54,7 @@
         <%= render "user_rows", users: @users %>
       </tbody>
     </table>
+
+    <%= paginate @users %>
   </div>
 </div>
-
-<script id="confirm_toggle_manager.html" type="text/ng-template">
-  <div class="modal-body">
-    <%= t('.manage_warning_angular') %>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="$close(true)">OK</button>
-    <button class="btn btn-warning" ng-click="$dismiss()">NO</button>
-  </div>
-</script>
-
-<script id="confirm_toggle_active.html" type="text/ng-template">
-  <div class="modal-body">
-    <%= t('.active_warning_angular') %>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="$close(true)">OK</button>
-    <button class="btn btn-warning" ng-click="$dismiss()">NO</button>
-  </div>
-</script>
-
-<script type="text/javascript">
-
-  angular.module("timeoverflow").run(function ($rootScope, $location, $http, $modal) {
-    $rootScope.users = <%= users_as_json %>;
-  });
-
-</script>

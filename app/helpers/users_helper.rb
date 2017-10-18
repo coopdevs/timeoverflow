@@ -1,33 +1,13 @@
 module UsersHelper
-  # TODO refactor or eliminate - poosibly the second.
-  def users_as_json
-    @users = (admin? || superadmin?) ? @users : @users.actives
-    @users.map do |user|
-      membership = @memberships[user.id]
-      {
-        id: user.id,
-        avatar: avatar_url(user),
-        member_id: membership.member_uid,
-        username: user.username,
-        email: user.email_if_real,
-        unconfirmed_email: user.unconfirmed_email,
-        phone: user.phone,
-        alt_phone: user.alt_phone,
-        balance: membership.account_balance.to_i,
-
-        url: user_path(user),
-        edit_link: edit_user_path(user),
-        cancel_link: cancel_member_path(membership),
-        toggle_manager_link: toggle_manager_member_path(membership),
-        manager: !!membership.manager,
-        toggle_active_link: toggle_active_member_path(membership),
-        active: membership.active?,
-        valid_email: user.has_valid_email?
-      }
-    end.to_json.html_safe
-  end
-
   private
+
+  def time_balance(seconds)
+    if seconds.zero?
+      "—"
+    else
+      [seconds / (60 * 60), (seconds / 60) % 60].map{|value| value.to_s.rjust(2, "0") }.join(":")
+    end
+  end
 
   def edit_user_path(user)
     can_edit_user?(user) ? super : ""

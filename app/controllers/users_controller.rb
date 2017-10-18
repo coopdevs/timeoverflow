@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
-  def scoped_users
-    current_organization.users
-  end
-
   def index
-    @users = scoped_users
+    @search = scoped_users.ransack(params[:q])
+    @users = @search.result(distinct: false).page(params[:page]).per(25)
+
     @memberships = current_organization.members.
                    where(user_id: @users.map(&:id)).
                    includes(:account).each_with_object({}) do |mem, ob|
@@ -74,6 +72,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def scoped_users
+    current_organization.users
+  end
 
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone
