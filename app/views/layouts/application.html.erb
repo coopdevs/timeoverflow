@@ -23,9 +23,7 @@
     <%= javascript_include_tag 'libs' %>
     <%= javascript_include_tag 'application' %>
   </head>
-  <body class="<%= get_body_css_class(controller.controller_name) %>" data-action="<%= params[:controller] %>-<%= params[:action] %>"
-        ng-app="timeoverflow"
-        ng-cloak>
+  <body class="<%= get_body_css_class(controller.controller_name) %>" data-action="<%= params[:controller] %>-<%= params[:action] %>">
     <%= render 'navbar' %>
     <div class="container content">
       <%= render 'layouts/messages' %>
@@ -37,7 +35,7 @@
       </div>
     </div>
     <div class="footer container-fluid">
-      <div class="container"> 
+      <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-left-col">
             <p>
@@ -60,7 +58,7 @@
         </div>
       </div>
     </div>
-    <div class="back-overlay"></div>    
+    <div class="back-overlay"></div>
     <!-- Piwik -->
     <script type="text/javascript">
       var _paq = _paq || [];
