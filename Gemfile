@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-gem 'rails', '4.2.5.2'
+gem 'rails', '~> 4.2'
 gem 'rails-i18n'
 gem 'rails_12factor'
 gem "rdiscount"
 gem 'high_voltage', '~> 2.1.0'
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin'
 gem 'has_scope'
 gem 'pundit'
 gem 'pg', '0.17.1'
@@ -24,7 +24,7 @@ gem "awesome_print"
 gem 'memcachier'
 gem 'rollbar', '2.8.3'
 gem 'travis-lint'
-gem 'whenever', :require => false
+gem 'whenever', require: false
 gem 'prawn'
 gem 'prawn-table'
 gem 'bundler', '>= 1.10.6'
@@ -32,7 +32,7 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
 # Assets
-gem 'jquery-rails', '4.0.4'
+gem 'jquery-rails', '>= 4.2.0'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0.1'
