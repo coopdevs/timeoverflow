@@ -40,7 +40,7 @@
             <%= User.human_attribute_name(:alt_phone) %>
           </th>
           <th>
-            <%= sort_link @search, :balance, User.human_attribute_name(:balance) %>
+            <%= User.human_attribute_name(:balance) %>
           </th>
           <% if current_user.manages? current_organization %>
             <th>
