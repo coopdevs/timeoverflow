@@ -1,0 +1,23 @@
+<div class="row">
+  <table class="table table-condensed table-bordered">
+    <colgroup>
+      <col class="col-sm-9"></col>
+      <col class="col-sm-3"></col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th><%= t "global.date" %></th>
+        <th><%= t "global.source" %></th>
+        <th><%= t "global.destination" %></th>
+        <th><%= t "global.announcements" %></th>
+        <th><%= t "global.reason" %></th>
+        <th><%= t "global.amount" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transfers.each do |transfer| %>
+        <%= render partial: 'shared/transfer_row', locals: { transfer: transfer } %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

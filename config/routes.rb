@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       get "offer_list" => :post_list, type: "offer"
       get "inquiry_list" => :post_list, type: "inquiry"
       get "post_complete_list"
+      get "transfer_complete_list"
     end
   end
 
