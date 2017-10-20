@@ -8,6 +8,9 @@
   <div class="navbar">
     <%= search_form_for(@search, class: "navbar-form navbar-left") do |f| %>
       <%= f.search_field :username_or_email_contains, class: "form-control" %>
+      <button class="btn btn-default" type="submit">
+        <%= t 'global.search' %>
+      </button>
     <% end %>
     <ul class="nav navbar-nav pull-right">
       <% if admin? %>
