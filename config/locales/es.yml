@@ -185,7 +185,7 @@ es:
       already_authenticated: Ya estás registrado.
       inactive: Tu cuenta no ha sido activada.
       invalid: Correo o clave inválida.
-      invalid_token: Código de autenticación inválido.
+      invalid_token: Código de autentificación inválido.
       locked: Tu cuenta ha sido bloqueada, haz clic en el enlace 'Enviar correo de desbloqueo'.
       not_found_in_database: Correo o clave inválida.
       timeout: Tu sesión ha caducado. Por favor, regístrate nuevamente para continuar.
@@ -247,6 +247,7 @@ es:
         sign_in: Entrar
       user:
         signed_in: 
+        signed_out: 
     shared:
       links:
         didnt_receive_confirmation_instructions: Volver a enviar correo de confirmación
@@ -472,7 +473,7 @@ es:
   terms:
     accept: Aceptar
     show:
-      accept: 
+      accept: Aceptar
   transfers:
     computation:
       hour:
