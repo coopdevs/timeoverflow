@@ -12,7 +12,7 @@ class TransferSourcesOptions
   end
 
   # Returns the collection as an Array containing pairs of <option>'s text and
-  # value sorted by type and member_uid
+  # value sorted by accountable type and member_uid
   #
   # @return [Array<String, Integer>]
   def to_a
