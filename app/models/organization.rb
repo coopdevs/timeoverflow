@@ -32,6 +32,19 @@ class Organization < ActiveRecord::Base
     self
   end
 
+  # Returns the id to be displayed in the :new transfer page with the given
+  # destination_accountable
+  #
+  # @params destination_accountable [Organization | Object] target of a transfer
+  # @return [Integer | String]
+  def display_id(destination_accountable)
+    if destination_accountable.is_a?(Organization)
+      account.accountable_id
+    else
+      ''
+    end
+  end
+
   def ensure_reg_number_seq!
     update_column(:reg_number_seq, members.maximum(:member_uid))
   end
@@ -55,14 +68,6 @@ class Organization < ActiveRecord::Base
       self.web = "http://#{web}"
     else
       errors.add(:web, :url_format_invalid)
-    end
-  end
-
-  def display_id(destination_accountable)
-    if destination_accountable.is_a?(Organization)
-      account.accountable_id
-    else
-      ''
     end
   end
 end
