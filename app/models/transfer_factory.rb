@@ -13,7 +13,7 @@ class TransferFactory
     current_organization.offers.find_by_id(offer_id)
   end
 
-  # Returns a new instance of Transfer with the data provided in the request
+  # Returns a new instance of Transfer with the data provided
   #
   # @return [Transfer]
   def build_transfer
@@ -43,13 +43,14 @@ class TransferFactory
   # Returns the id of the account that acts as source of the transfer.
   # Either the account of the organization or the account of the current user.
   #
-  # @return [Integer]
+  # @return [Maybe<Integer>]
   def source
     organization = if accountable.is_a?(Organization)
                      accountable
                    else
                      current_organization
                    end
+
     current_user.members.find_by(organization: organization).account.id
   end
 
