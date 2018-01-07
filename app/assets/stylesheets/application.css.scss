@@ -71,7 +71,7 @@ html {
     border: 0;
     border-radius: 0.3rem;
     margin: 0;
-    padding: 1rem 3rem 1.4rem 3rem;
+    padding: 1rem 0 1.4rem 0;
   }
 
   form .material-icons {
@@ -123,7 +123,7 @@ html {
   }
 
   .panel-body {
-    padding: 0;
+    padding: 0 3rem 0 3rem;
   }
 
   .panel-footer {
