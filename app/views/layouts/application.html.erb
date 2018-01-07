@@ -28,7 +28,7 @@
         ng-cloak>
     <%= render 'navbar' %>
     <div class="container content">
-      <%= render 'layouts/messages' %>
+      <%= render 'layouts/messages' unless devise_controller? %>
       <%= yield %>
     </div>
     <div class="modal fade" id="modal">
