@@ -4,6 +4,7 @@
       <div class="panel-body">
         <h2><%= t(".forgot_question") %></h2>
         <p class="description"><%= t(".forgot_question_description") %></p>
+        <%= render 'layouts/messages' %>
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: password_path(resource_name), html: { method: :post } do |f| %>
           <div class="form-group">
