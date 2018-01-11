@@ -13,6 +13,8 @@ de los miembros y la gestión de los Bancos de Tiempo. El modelo sobre el que se
 que hacen uso de él y está preparado para poder albergar varios Bancos de Tiempo en una sola instalación, para ello cuenta
 con tres niveles de privilegios: superadmin, admin (solo gestiona un Banco) y miembros de un Banco.
 
+![Lista de usuarios](usuarios.png) ![Lista de ofertas](ofertas.png)
+
 TimeOverflow está dividido en 2 grandes bloques:
 
 * **Sistema de gestión para los administradores**
