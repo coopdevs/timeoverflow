@@ -1,3 +1,6 @@
+Read this in English:
+[CONTRIBUTING.en.md](https://github.com/coopdevs/timeoverflow/blob/master/CONTRIBUTING.en.md)
+
 # Contribuciones
 
 ¿Has encontrado algún bug? ¿Quieres colaborar?
