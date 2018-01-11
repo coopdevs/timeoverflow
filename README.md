@@ -1,10 +1,6 @@
-# TimeOverflow
-##  https://www.timeoverflow.org/
-####  Read this in English :  https://github.com/coopdevs/timeoverflow/blob/develop/README.en.md
-
-[![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow)
-[![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow)
-[![Dependencies](https://gemnasium.com/coopdevs/timeoverflow.svg)](https://gemnasium.com/coopdevs/timeoverflow)
+# TimeOverflow [![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow) [![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow) [![Dependencies](https://gemnasium.com/coopdevs/timeoverflow.svg)](https://gemnasium.com/coopdevs/timeoverflow) 
+#### www.timeoverflow.org
+#### Read this in English: https://github.com/coopdevs/timeoverflow/blob/master/README.en.md
 
 :bank: :hourglass: Sistema de gestión de Banco de Tiempo. [Saber más sobre Bancos de Tiempo](http://www.bdtonline.org/)
 
