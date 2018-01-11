@@ -394,6 +394,11 @@ label[required]::after{
   margin: 0 auto;
 }
 
+//fix select2 100px
+.select2-container {
+  width: 100% !important;
+}
+
 .navbar-form {
   padding: 0;
   background-color: transparent;
