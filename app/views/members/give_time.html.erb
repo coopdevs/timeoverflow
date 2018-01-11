@@ -2,7 +2,7 @@
   <small>
     <%= t ".give_time" %>
   </small>
-  <%= link_to @user.member(current_organization).display_name_with_uid, user_path(@user) %>
+  <%= link_to @member.display_name_with_uid, member_path(@member.member_uid) %>
 </h1>
 <% if @offer %>
   <h3>
@@ -49,7 +49,7 @@
       <%= f.input :post, readonly: true %>
       <%= f.input :post_id, as: :hidden %>
     <% else %>
-      <%= f.input :post_id, collection: @user.member(current_organization).offers.active %>
+      <%= f.input :post_id, collection: @member.offers.active %>
     <% end %>
   </div>
   <div class="form-actions">

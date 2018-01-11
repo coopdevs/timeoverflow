@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe UsersController do
   let (:test_organization) { Fabricate(:organization) }
@@ -37,45 +37,96 @@ describe UsersController do
   include_context "stub browser locale"
   before { set_browser_locale("ca") }
 
-  describe "GET #index" do
-    context "with an normal logged user" do
-      it "populates and array of users" do
-        login(user)
+  describe 'GET #show' do
+    context 'when the user is the same user' do
+      before { login(user) }
 
-        get "index"
-        expect(assigns(:users)).to eq([user, another_user,
-                                       admin_user, wrong_user,
-                                       empty_email_user])
+      it 'assigns user to @user' do
+        get :show, id: user
+        expect(assigns(:user)).to eq(user)
+      end
+
+      it 'renders a page with the user username' do
+        get :show, id: user
+        expect(response.body).to include(user.username)
+      end
+
+      it 'renders a page with the user avatar as link to Gravatar' do
+        get :show, id: user
+        expect(response.body).to include("<a href=\"https://www.gravatar.com\" target=\"_blank\">")
+        expect(response.body).to include("<img style=\"margin: -8px auto\" src=\"https://www.gravatar.com/avatar/")
+      end
+
+      it 'renders a page with the user description' do
+        get :show, id: user
+        expect(response.body).to include(user.description)
+      end
+
+      it 'renders a page with a link to edit the user profile' do
+        get :show, id: user
+        expect(response.body).to include("<a href=\"/account/edit\"")
       end
     end
-    context "with an admin logged user" do
-      it "populates and array of users" do
-        login(admin_user)
 
-        get "index"
-        expect(assigns(:users)).to eq([user, another_user,
-                                       admin_user, wrong_user,
-                                       empty_email_user])
-      end
-    end
-  end
+    context 'when the user is not the same' do
+      before { login(user) }
 
-  describe "GET #show" do
-    context "with valid params" do
-      context "with a normal logged user" do
-        it "assigns the requested user to @user" do
-          login(user)
+      context 'and is not a member of the same organization' do
+        let(:other_organization) { Fabricate(:organization) }
+        let(:other_admin) do
+          Fabricate(
+            :member,
+            organization: test_organization,
+            manager: true
+          )
+        end
+        let(:other_user) { other_admin.user }
 
-          get "show", id: user.id
-          expect(assigns(:user)).to eq(user)
+        it 'redirects to root path' do
+          get :show, id: other_user
+
+          expect(response).to redirect_to(root_path)
+        end
+
+        it 'sets an error flash message' do
+          get :show, id: other_user
+
+          expect(flash[:error]).to match(/You are not authorized to perform this action./)
         end
       end
-      context "with an admin logged user" do
-        it "assigns the requested user to @user" do
-          login(admin_user)
 
-          get "show", id: user.id
-          expect(assigns(:user)).to eq(user)
+      context 'and is a member of the same organization' do
+        context 'and is not an admin of the organization' do
+          it 'redirects to root path' do
+            get :show, id: another_user
+
+            expect(response).to redirect_to(root_path)
+          end
+
+          it 'sets an error flash message' do
+            get :show, id: another_user
+
+            expect(flash[:error]).to match(/You are not authorized to perform this action./)
+          end
+        end
+
+        context 'and is an admin of the organization' do
+          before { login(admin_user) }
+
+          it 'assigns user to @user' do
+            get :show, id: user
+            expect(assigns(:user)).to eq(user)
+          end
+
+          it 'renders a page with the user username' do
+            get :show, id: user
+            expect(response.body).to include(user.username)
+          end
+
+          it 'renders a page with the user avatar' do
+            get :show, id: user
+            expect(response.body).to include("<img style=\"margin: -8px auto\" src=\"https://www.gravatar.com/avatar/")
+          end
         end
       end
     end

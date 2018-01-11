@@ -3,7 +3,7 @@
   <td>
     <img ng-src="{{user.avatar}}" height: "32px" width: "32px">
   </td>
-  <td>{{user.member_id}}</td>
+  <td>{{user.member_uid}}</td>
   <td>
     <span class="glyphicon glyphicon-time" ng-if="!user.active"></span>
     <a ng-href="{{user.url}}">{{user.username}}</a>
@@ -21,10 +21,6 @@
   <td> {{user.balance | timeBalance}} </td>
   <% if current_user.manages?(current_organization) %>
     <td class="hover-actions">
-      <a class="action" ng-if="user.edit_link" ng-href="{{user.edit_link}}">
-        <%= glyph :pencil %>
-        <%= t "global.edit" %>
-      </a>
       <a class="action"
          ng-if="user.cancel_link && !user.active"
          ng-href="{{user.cancel_link}}"

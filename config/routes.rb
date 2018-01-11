@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   get "global/switch_lang", as: :switch_lang
 
+  get :account, controller: :account, action: :show
+  get 'account/edit', controller: :account, action: :edit
+
   resources :offers do
     collection do
       get :dashboard
@@ -29,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, concerns: :accountable, except: :destroy, :path => "members"
+  resources :users, except: :destroy
 
   resources :transfers, only: [:create] do
     member do
@@ -39,7 +42,7 @@ Rails.application.routes.draw do
 
   resources :documents
 
-  resources :members, only: [:destroy] do
+  resources :members, param: :member_uid, concerns: :accountable, only: [:index, :show, :destroy] do
     member do
       put :toggle_manager
       put :toggle_active

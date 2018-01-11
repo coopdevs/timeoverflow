@@ -3,6 +3,14 @@ class UserPolicy < ApplicationPolicy
     user.admins?(organization)
   end
 
+  def show?
+    return true if user.id == record.id
+
+    record.organizations.any? do |org|
+      user.admins?(org)
+    end
+  end
+
   def create?
     user.admins?(organization)
   end

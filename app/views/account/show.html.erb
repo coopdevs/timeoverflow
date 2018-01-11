@@ -1,9 +1,9 @@
 <div class="panel user-profile">
   <div class="panel-body">
     <h1>
-      <%= @user.username %>
+      <%= current_user.username %>
       <small>
-        <% if @user.superadmin? %>
+        <% if current_user.superadmin? %>
           <span class="label label-important">
             <%= t ".superadmin" %>
           </span>
@@ -12,39 +12,33 @@
     </h1>
     <div class="row">
       <div class="col-sm-3 col-xs-5 text-center">
-        <% if @user == current_user %>
-          <a href="https://www.gravatar.com" target="_blank">
-            <%= image_tag avatar_url(@user, 160) %>
-          </a>
-        <% else %>
-          <%= image_tag avatar_url(@user, 160) %>
-        <% end %>
+        <a href="https://www.gravatar.com" target="_blank">
+          <%= image_tag avatar_url(current_user, 160) %>
+        </a>
       </div>
       <div class="col-sm-9 col-xs-7 break-word">
-        <%= m @user.description %>
+        <%= m current_user.description %>
         <ul class="nav nav-pills pull-right">
-          <% if @user == current_user %>
-            <li>
-              <%= link_to account_edit_path do %>
-                <%= glyph :pencil %>
-                <%= t "global.edit" %>
-              <% end %>
-            </li>
-          <% end %>
+          <li>
+            <%= link_to account_edit_path do %>
+              <%= glyph :pencil %>
+              <%= t "global.edit" %>
+            <% end %>
+          </li>
         </ul>
         <dl class="dl-horizontal">
           <h3>
             <%= t "global.contact_details" %>
           </h3>
-          <% if @user.email_if_real != "" %>
+          <% if current_user.email_if_real != "" %>
             <dt>
               <%= User.human_attribute_name(:email) %>
             </dt>
             <dd>
-              <%= @user.email_if_real %>
+              <%= current_user.email_if_real %>
             </dd>
           <% end %>
-          <% phones = [@user.phone, @user.alt_phone].select(&:present?) %>
+          <% phones = [current_user.phone, current_user.alt_phone].select(&:present?) %>
           <% if phones.present? %>
             <dt>
               <%= t(".phone", count: phones.size) %>
