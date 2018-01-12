@@ -35,19 +35,6 @@ describe OffersController, type: :controller do
 
   describe "GET #index (search)" do
     before do
-      # TODO: move to a separate module and enable with metadata
-      # for instance:
-      #
-      #     describe "GET #index (search)", elastic: "Offer" do ...
-      #
-      # (ensure indices are set up for a specific class), or
-      #
-      #     describe "GET #index (search)", elastic: true do ...
-      #
-      # (ensure all indices are set up)
-      #
-
-      # Force the index to exist
       Offer.__elasticsearch__.create_index!(force: true)
 
       # Import any already existing model into the index
