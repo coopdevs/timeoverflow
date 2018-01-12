@@ -6,8 +6,6 @@
 # The Account may also be flagged, if needed, when the balance overflows
 # some set limits
 #
-# TODO: How to set limits in a generic way?
-#
 class Account < ActiveRecord::Base
   belongs_to :accountable, polymorphic: true
   belongs_to :organization, inverse_of: :all_accounts
