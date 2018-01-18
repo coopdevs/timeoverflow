@@ -1,5 +1,4 @@
 module UsersHelper
-  # TODO refactor or eliminate - poosibly the second.
   def users_as_json
     @users = (admin? || superadmin?) ? @users : @users.actives
     @users.map do |user|
