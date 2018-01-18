@@ -13,12 +13,12 @@ class Account < ActiveRecord::Base
 
   before_create :add_organization
 
+  # Denormalizes the account's balance summing the amount in all its movements.
+  # It will flag the account if its balance falls out of the min or max limits.
   def update_balance
     new_balance = movements.sum(:amount)
     self.balance = new_balance
-    if balance_changed?
-      self.flagged = !allowed?(balance)
-    end
+    self.flagged = !within_allowed_limits? if balance_changed?
     save
   end
 
@@ -51,8 +51,34 @@ class Account < ActiveRecord::Base
 
   private
 
-  def allowed?(new_balance)
-    new_balance < (max_allowed_balance || Float::INFINITY) &&
-      new_balance > (min_allowed_balance || -Float::INFINITY)
+  # Checks whether the balance falls within the max and min allowed balance,
+  # none of these included
+  #
+  # @return [Boolean]
+  def within_allowed_limits?
+    less_than_upper_limit? && greater_than_lower_limit?
+  end
+
+  def less_than_upper_limit?
+    balance < max_allowed_balance
+  end
+
+  def greater_than_lower_limit?
+    balance > min_allowed_balance
+  end
+
+  # Returns the maximum allowed balance, falling back to infinite it not set
+  #
+  # @return [Integer | Float]
+  def max_allowed_balance
+    super || Float::INFINITY
+  end
+
+  # Returns the minimum allowed balance, falling back to minus infinite it not
+  # set
+  #
+  # @return [Integer | Float]
+  def min_allowed_balance
+    super || -Float::INFINITY
   end
 end
