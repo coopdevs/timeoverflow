@@ -38,7 +38,7 @@
           <% end %>
           <% if admin? || @user != current_user %>
             <li>
-              <%= link_to give_time_user_path(@user) do %>
+              <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id) do %>
                 <%= glyph :time %>
                 <%= t "global.give_time" %>
               <% end %>
@@ -94,7 +94,7 @@
             </div>
             <div class="col-sm-1">
               <% if @user != current_user %>
-                <%= link_to give_time_user_path(@user, offer: post.id) do %>
+                <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id, offer: post.id) do %>
                   <%= glyph :time %>
                 <% end %>
               <% end %>

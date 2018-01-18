@@ -16,7 +16,9 @@ describe TransfersController do
     before { login(user) }
 
     context 'when the destination is a user account' do
-      let(:user_account) { user.members.find_by(organization: user.organizations.first).account }
+      let(:user_account) do
+        user.members.find_by(organization: user.organizations.first).account
+      end
       let(:params) do
         {
           id: user.id,

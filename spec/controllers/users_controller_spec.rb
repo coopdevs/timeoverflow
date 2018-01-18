@@ -63,19 +63,45 @@ describe UsersController do
   describe "GET #show" do
     context "with valid params" do
       context "with a normal logged user" do
-        it "assigns the requested user to @user" do
-          login(user)
+        before { login(another_user) }
 
+        it "assigns the requested user to @user" do
           get "show", id: user.id
           expect(assigns(:user)).to eq(user)
         end
-      end
-      context "with an admin logged user" do
-        it "assigns the requested user to @user" do
-          login(admin_user)
+
+        it 'links to new_transfer_path for his individual offers' do
+          offer = Fabricate(:offer, user: user, publisher: user, organization: test_organization)
 
           get "show", id: user.id
+          expect(response.body).to include(
+            "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}&amp;offer=#{offer.id}\">"
+          )
+        end
+      end
+
+      context "with an admin logged user" do
+        before { login(admin_user) }
+
+        it "assigns the requested user to @user" do
+          get "show", id: user.id
           expect(assigns(:user)).to eq(user)
+        end
+
+        it 'links to new_transfer_path' do
+          get "show", id: user.id
+          expect(response.body).to include(
+            "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}\">"
+          )
+        end
+
+        it 'links to new_transfer_path for his individual offers' do
+          offer = Fabricate(:offer, user: user, publisher: user, organization: test_organization)
+
+          get "show", id: user.id
+          expect(response.body).to include(
+            "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}&amp;offer=#{offer.id}\">"
+          )
         end
       end
     end
