@@ -34,15 +34,6 @@ module ApplicationHelper
     document_path(Document.terms_and_conditions || 0, modal: true)
   end
 
-  def languages_list
-    I18n.available_locales.each do |locale|
-      concat content_tag(:li,
-                         link_to(locale_menu_item(locale),
-                                 switch_lang_path(locale: locale)),
-                         class: ("disabled" if I18n.locale == locale))
-    end
-  end
-
   def show_error_messages!(resource)
     return "" if resource.errors.empty?
 
