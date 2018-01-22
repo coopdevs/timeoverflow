@@ -1,7 +1,6 @@
 # Wraps the passed sources as a collection of HTML <option>'s value and text
 # pairs as expected by Rails' #options_for_select.
 class TransferSourcesOptions
-
   # Constructor
   #
   # @param sources [Array<Account>]
