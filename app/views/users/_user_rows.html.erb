@@ -1,5 +1,5 @@
 <% users.each do |user| %>
-  <% membership = @memberships[user.id] %>
+  <% membership = user.members.first %>
 
   <%= content_tag(:tr, class: membership.active? ? "" : "bg-danger") do %>
     <td>
@@ -23,7 +23,7 @@
     </td>
     <td> <%= user.phone %> </td>
     <td> <%= user.alt_phone %> </td>
-    <td> <%= time_balance(membership.account_balance.to_i) %> </td>
+    <td> <%= time_balance(membership.account.balance) %> </td>
     <% if current_user.manages?(current_organization) %>
       <td class="hover-actions">
         <%= link_to edit_user_path(user), class: "action" do %>

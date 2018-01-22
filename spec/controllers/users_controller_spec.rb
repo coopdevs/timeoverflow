@@ -28,11 +28,11 @@ describe UsersController do
               manager: false)
   end
 
-  let! (:user) { member.user }
-  let! (:another_user) { another_member.user }
-  let! (:admin_user) { member_admin.user }
-  let! (:wrong_user) { wrong_email_member.user }
-  let! (:empty_email_user) { empty_email_member.user }
+  let!(:user) { member.user }
+  let!(:another_user) { another_member.user }
+  let!(:admin_user) { member_admin.user }
+  let!(:wrong_user) { wrong_email_member.user }
+  let!(:empty_email_user) { empty_email_member.user }
 
   include_context "stub browser locale"
   before { set_browser_locale("ca") }
@@ -48,6 +48,7 @@ describe UsersController do
                                        empty_email_user])
       end
     end
+
     context "with an admin logged user" do
       it "populates and array of users" do
         login(admin_user)
@@ -56,6 +57,51 @@ describe UsersController do
         expect(assigns(:users)).to eq([user, another_user,
                                        admin_user, wrong_user,
                                        empty_email_user])
+      end
+    end
+
+    context 'when sorting by balance' do
+      before do
+        login(user)
+        member_admin.account.update_attribute(:balance, 3600)
+      end
+
+      context 'desc' do
+        let(:direction) { 'desc' }
+
+        it 'orders the rows by their balance' do
+          get :index, q: { s: "accounts_balance #{direction}" }
+
+          expect(assigns(:users).pluck(:id))
+            .to eq(
+              [
+                admin_user.id,
+                user.id,
+                another_user.id,
+                wrong_user.id,
+                empty_email_user.id
+              ]
+          )
+        end
+      end
+
+      context 'asc' do
+        let(:direction) { 'asc' }
+
+        it 'orders the rows by their balance' do
+          get :index, q: { s: "accounts_balance #{direction}" }
+
+          expect(assigns(:users).pluck(:id))
+            .to eq(
+              [
+                user.id,
+                another_user.id,
+                wrong_user.id,
+                empty_email_user.id,
+                admin_user.id,
+              ]
+          )
+        end
       end
     end
   end
