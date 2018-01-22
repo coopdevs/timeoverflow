@@ -20,18 +20,13 @@ class TransfersController < ApplicationController
       params[:destination_account_id]
     )
 
-    offer = transfer_factory.offer
-    transfer = transfer_factory.build_transfer
-    transfer_sources = transfer_factory.transfer_sources
-    accountable = transfer_factory.accountable
-
     render(
       :new,
       locals: {
-        accountable: accountable,
-        transfer: transfer,
-        offer: offer,
-        sources: transfer_sources
+        accountable: transfer_factory.accountable,
+        transfer: transfer_factory.build_transfer,
+        offer: transfer_factory.offer,
+        sources: transfer_factory.transfer_sources
       }
     )
   end
