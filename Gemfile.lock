@@ -67,7 +67,6 @@ GEM
     autoprefixer-rails (6.3.1)
       execjs
       json
-    awesome_print (1.6.1)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -374,7 +373,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   airbrussh
-  awesome_print
   better_errors
   binding_of_caller
   bootstrap-sass
@@ -429,4 +427,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.11.2
+   1.16.1

@@ -19,7 +19,6 @@ gem 'foreman'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem "simple_form", ">= 3.0.0"
-gem "awesome_print"
 gem 'memcachier'
 gem 'rollbar', '2.8.3'
 gem 'travis-lint'
