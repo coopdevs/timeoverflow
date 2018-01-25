@@ -16,7 +16,6 @@ gem "http_accept_language"
 gem 'thin'
 gem 'unicorn'
 gem 'foreman'
-gem 'dotenv-rails'
 gem 'kaminari'
 gem "simple_form", ">= 3.0.0"
 gem 'memcachier'
@@ -52,6 +51,7 @@ group :development do
   gem "quiet_assets"
   gem 'localeapp', '2.1.1', require: false
   gem 'letter_opener', '1.4.1'
+  gem 'dotenv-rails', '1.0.2'
 end
 
 group :development, :test do
