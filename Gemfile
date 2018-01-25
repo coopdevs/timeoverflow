@@ -46,7 +46,6 @@ group :development do
   gem 'web-console', '2.1.3'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
-  # gem 'capistrano3-delayed-job', '~> 1.0'
   gem 'airbrussh', require: false
   gem "quiet_assets"
   gem 'localeapp', '2.1.1', require: false
