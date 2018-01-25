@@ -27,12 +27,16 @@ module Taggable
       all_tags.uniq.sort
     end
 
+    # Builds a hash where the keys are the tags and the values are the number of
+    # their occurrences
+    #
+    # @return [Hash<String => Integer>]
     def tag_cloud
       Hash[
         all_tags
-        .group_by(&:to_s)
-        .map { |k, v| [k, v.size] }
-        .sort_by { |array| array.first.downcase }
+          .group_by(&:to_s)
+          .map { |tag_name, values| [tag_name, values.size] }
+          .sort_by { |array| array.first.downcase }
       ]
     end
 
@@ -40,6 +44,11 @@ module Taggable
       all_tags.uniq.select { |t| t =~ /#{pattern}/i }
     end
 
+    # Builds a hash where the keys are the capital letters of the tags and the
+    # values are the individual tags together with the number of their
+    # occurrences
+    #
+    # @return [Hash<Array<Array<String, Integer>>>]
     def alphabetical_grouped_tags
       tag_cloud.group_by { |tag_name, _| tag_name[0].capitalize }
     end
