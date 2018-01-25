@@ -340,8 +340,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
-    travis-lint (2.0.0)
-      json
     ttfunk (1.4.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -420,7 +418,6 @@ DEPENDENCIES
   shoulda (>= 3.5)
   simple_form (>= 3.0.0)
   thin
-  travis-lint
   uglifier (= 2.7.2)
   unicorn
   web-console (= 2.1.3)

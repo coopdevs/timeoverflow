@@ -21,7 +21,6 @@ gem 'kaminari'
 gem "simple_form", ">= 3.0.0"
 gem 'memcachier'
 gem 'rollbar', '2.8.3'
-gem 'travis-lint'
 gem 'whenever', :require => false
 gem 'prawn'
 gem 'prawn-table'
