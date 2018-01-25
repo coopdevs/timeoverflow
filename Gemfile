@@ -3,7 +3,6 @@ ruby '2.3.0'
 
 gem 'rails', '4.2.5.2'
 gem 'rails-i18n'
-gem 'rails_12factor'
 gem "rdiscount"
 gem 'high_voltage', '~> 2.1.0'
 gem 'activeadmin', github: 'activeadmin'
@@ -74,4 +73,8 @@ group :test do
   gem 'shoulda', ">= 3.5"
   gem 'fabrication'
   gem 'faker'
+end
+
+group :production do
+  gem 'rails_12factor', '0.0.3'
 end
