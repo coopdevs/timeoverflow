@@ -26,7 +26,7 @@
   <body class="<%= get_body_css_class(controller.controller_name) %>" data-action="<%= params[:controller] %>-<%= params[:action] %>">
     <%= render 'navbar' %>
     <div class="container content">
-      <%= render 'layouts/messages' %>
+      <%= render 'layouts/messages' unless devise_controller? %>
       <%= yield %>
     </div>
     <div class="modal fade" id="modal">

@@ -1,10 +1,6 @@
-# TimeOverflow
-##  https://www.timeoverflow.org/
-####  Read this in English :  https://github.com/coopdevs/timeoverflow/blob/develop/README.en.md
-
-[![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow)
-[![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow)
-[![Dependencies](https://gemnasium.com/coopdevs/timeoverflow.svg)](https://gemnasium.com/coopdevs/timeoverflow)
+# TimeOverflow [![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow) [![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow) [![Dependencies](https://gemnasium.com/coopdevs/timeoverflow.svg)](https://gemnasium.com/coopdevs/timeoverflow) 
+#### www.timeoverflow.org
+#### Read this in English: https://github.com/coopdevs/timeoverflow/blob/master/README.en.md
 
 :bank: :hourglass: Sistema de gestión de Banco de Tiempo. [Saber más sobre Bancos de Tiempo](http://www.bdtonline.org/)
 
@@ -12,6 +8,8 @@ TimeOverflow es un software desarrollado de manera altruista para ofrecer un sis
 de los miembros y la gestión de los Bancos de Tiempo. El modelo sobre el que se trabaja está guiado por las necesidades de los Bancos de Tiempo
 que hacen uso de él y está preparado para poder albergar varios Bancos de Tiempo en una sola instalación, para ello cuenta
 con tres niveles de privilegios: superadmin, admin (solo gestiona un Banco) y miembros de un Banco.
+
+![Lista de usuarios](usuarios.png) ![Lista de ofertas](ofertas.png)
 
 TimeOverflow está dividido en 2 grandes bloques:
 

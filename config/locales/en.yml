@@ -65,7 +65,7 @@ en:
         identity_document: Identity Document
         last_sign_in_at: Last login
         notifications: Receive notifications
-        organization:
+        organization: Organization
         phone: Phone
         registration_date: Registration date
         registration_number: User code
@@ -125,6 +125,9 @@ en:
     menu:
       sign_in: Login
       sing_out: Logout
+    menus:
+      offers_by_tag_link:
+        tags: Tags
     navbar:
       admin: Manage
       administration: Administration
@@ -242,6 +245,9 @@ en:
       new:
         remember_me: Remember me
         sign_in: Login
+      user:
+        signed_in: Signed in
+        signed_out: Signed out
     shared:
       links:
         didnt_receive_confirmation_instructions: Resend confirmation email
@@ -467,7 +473,7 @@ en:
   terms:
     accept: Accept
     show:
-      accept:
+      accept: Accept
   transfers:
     computation:
       hour:

@@ -1,3 +1,6 @@
+Read this in English:
+[CONTRIBUTING.en.md](https://github.com/coopdevs/timeoverflow/blob/master/CONTRIBUTING.en.md)
+
 # Contribuciones
 
 ¿Has encontrado algún bug? ¿Quieres colaborar?
@@ -10,8 +13,8 @@ Proceso:
 
 Visita [la guia para empezar a desarrollar para timeoverflow](https://github.com/coopdevs/timeoverflow/wiki/Getting-started)
 
-## Contributing with translations
+## Contribuir con traducciones
 
-- Edit the translations directly on the [coopdevs/timeoverflow](https://www.localeapp.com/projects/10031) project on Locale.
-- **That's it!**
-- The maintainer will then pull translations from the Locale project and push to Github.
+- Modifica las traducciones directamente en el proyecto [coopdevs/timeoverflow](https://www.localeapp.com/projects/10031) en Locale.
+- **Eso es todo!**
+- El mantenedor obtendrá las nuevas tradcciones del proyecto de Locale y las publicará en Github.
