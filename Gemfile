@@ -23,7 +23,6 @@ gem 'rollbar', '2.8.3'
 gem 'whenever', require: false
 gem 'prawn'
 gem 'prawn-table'
-gem 'bundler', '>= 1.10.6'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
