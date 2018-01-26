@@ -1,5 +1,3 @@
-require "date"
-
 module ApplicationHelper
 
   TEXT_SUCCESS = 'text-success'.freeze
@@ -40,7 +38,7 @@ module ApplicationHelper
     messages = resource.errors.
                full_messages.map { |msg| content_tag(:li, msg) }.join
     html = <<-HTML
-    <div class="alert alert-error alert-block"> 
+    <div class="alert alert-error alert-block">
       <button type="button" class="close" data-dismiss="alert">x</button>
       <ul>
         #{messages}
@@ -67,14 +65,6 @@ module ApplicationHelper
     when -1 then TEXT_DANGER
     when 0 then nil
     when 1 then TEXT_SUCCESS
-    end
-  end
-
-  private
-
-  def locale_menu_item(locale)
-    t("locales.#{locale}", locale: locale).tap do |s|
-      s << " (#{t("locales.#{locale}")})" unless I18n.locale == locale
     end
   end
 
