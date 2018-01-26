@@ -36,9 +36,6 @@ gem 'coffee-rails'
 gem 'uglifier', '2.7.2'
 gem 'select2-rails'
 
-# Security
-gem 'nokogiri', '1.6.7.2'
-
 group :development do
   gem "binding_of_caller"
   gem "better_errors"
