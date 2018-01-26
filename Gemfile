@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 ruby '2.3.0'
 
 gem 'rails', '~> 4.2'
@@ -13,7 +14,6 @@ gem 'hstore_translate'
 gem 'dalli'
 gem 'devise', '3.5.6'
 gem "http_accept_language"
-gem 'thin'
 gem 'unicorn'
 gem 'foreman'
 gem 'kaminari'
