@@ -44,7 +44,6 @@ group :development do
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'airbrussh', require: false
-  gem "quiet_assets"
   gem 'localeapp', '2.1.1', require: false
   gem 'letter_opener', '1.4.1'
   gem 'dotenv-rails', '1.0.2'
