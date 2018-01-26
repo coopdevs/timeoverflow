@@ -27,11 +27,6 @@ $pages-anchor-hover: #8a8a8a;
 $features-background: #f5f5f5;
 $features-separator: #d8d8d8;
 
-[ng-cloak],
-.ng-cloak {
-  visibility: hidden !important;
-}
-
 html {
   font-size:62.5%;
 }
@@ -166,7 +161,7 @@ html {
     font-weight: 400;
     height: 7.5rem;
   }
-  
+
   .form-control:focus {
     border-color: none;
     box-shadow: none;
@@ -262,6 +257,10 @@ html {
 
 .row.exports {
   padding: 10px;
+}
+
+.table-responsive {
+  overflow-x: inherit;
 }
 
 table.users {
@@ -631,7 +630,7 @@ form .checkbox input[type="checkbox"] {
   .material-icons {
     font-size: 3rem;
   }
-  
+
   .checkbox {
     color: $form-login-gray-text;
     font-size: 1.6rem;
