@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-gem 'rails', '4.2.5.2'
+gem 'rails', '~> 4.2.7.1'
 gem 'rails-i18n'
 gem 'rails_12factor'
 gem "rdiscount"
@@ -58,7 +58,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "rspec-rails", '~> 3.4.0'
+  gem "rspec-rails", '~> 3.5.2'
   gem "capybara", '~> 2.4.4'
   gem "byebug"
 end
