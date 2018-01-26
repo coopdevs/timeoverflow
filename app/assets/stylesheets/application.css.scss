@@ -259,6 +259,10 @@ html {
   padding: 10px;
 }
 
+.table-responsive {
+  overflow-x: inherit;
+}
+
 table.users {
   padding: 10px;
 }
