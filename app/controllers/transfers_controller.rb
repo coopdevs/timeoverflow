@@ -6,12 +6,29 @@ class TransfersController < ApplicationController
       transfer_params.merge(source: @source, destination: @account)
     )
 
-    begin
-      transfer.save!
-    rescue ActiveRecord::RecordInvalid
-      flash[:error] = transfer.errors.full_messages.to_sentence
-    end
+    transfer.save!
     redirect_to redirect_target
+  rescue ActiveRecord::RecordInvalid
+    flash[:error] = transfer.errors.full_messages.to_sentence
+  end
+
+  def new
+    transfer_factory = TransferFactory.new(
+      current_organization,
+      current_user,
+      params[:offer],
+      params[:destination_account_id]
+    )
+
+    render(
+      :new,
+      locals: {
+        accountable: transfer_factory.accountable,
+        transfer: transfer_factory.build_transfer,
+        offer: transfer_factory.offer,
+        sources: transfer_factory.transfer_sources
+      }
+    )
   end
 
   def delete_reason

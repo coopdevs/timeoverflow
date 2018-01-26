@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Member do
-  subject { Fabricate(:member) }
+  subject(:member) { Fabricate(:member) }
 
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:organization) }
@@ -14,7 +14,6 @@ describe Member do
   it { is_expected.to validate_presence_of(:member_uid) }
 
   describe "#offers" do
-    let(:member) { Fabricate(:member) }
     let(:member_offer) { Fabricate(
       :offer,
       user: member.user,
@@ -35,10 +34,14 @@ describe Member do
     end
   end
 
+  describe '#display_id' do
+    subject { member.display_id(nil) }
+
+    it { is_expected.to eq(member.member_uid) }
+  end
+
   context "callbacks" do
     context "#after_create" do
-      let(:member) { Fabricate(:member) }
-
       it "should have an account" do
         expect(member.account).to_not be_nil
       end
