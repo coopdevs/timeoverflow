@@ -27,11 +27,6 @@ $pages-anchor-hover: #8a8a8a;
 $features-background: #f5f5f5;
 $features-separator: #d8d8d8;
 
-[ng-cloak],
-.ng-cloak {
-  visibility: hidden !important;
-}
-
 html {
   font-size:62.5%;
 }
@@ -71,7 +66,7 @@ html {
     border: 0;
     border-radius: 0.3rem;
     margin: 0;
-    padding: 1rem 3rem 1.4rem 3rem;
+    padding: 1rem 0 1.4rem 0;
   }
 
   form .material-icons {
@@ -123,7 +118,7 @@ html {
   }
 
   .panel-body {
-    padding: 0;
+    padding: 0 3rem 0 3rem;
   }
 
   .panel-footer {
@@ -166,7 +161,7 @@ html {
     font-weight: 400;
     height: 7.5rem;
   }
-  
+
   .form-control:focus {
     border-color: none;
     box-shadow: none;
@@ -264,6 +259,10 @@ html {
   padding: 10px;
 }
 
+.table-responsive {
+  overflow-x: inherit;
+}
+
 table.users {
   padding: 10px;
 }
@@ -346,6 +345,10 @@ ul.statistics li{
 }
 
 /*flash*/
+.alert > p, .alert > ul {
+  padding-left: 1.5rem;
+}
+
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
@@ -392,6 +395,11 @@ label[required]::after{
 .paginate-align {
   display: table;
   margin: 0 auto;
+}
+
+//fix select2 100px
+.select2-container {
+  width: 100% !important;
 }
 
 .navbar-form {
@@ -622,7 +630,7 @@ form .checkbox input[type="checkbox"] {
   .material-icons {
     font-size: 3rem;
   }
-  
+
   .checkbox {
     color: $form-login-gray-text;
     font-size: 1.6rem;

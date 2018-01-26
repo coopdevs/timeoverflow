@@ -1,11 +1,7 @@
-# TimeOverflow
-##  https://www.timeoverflow.org/
+# TimeOverflow [![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow) [![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow) [![Dependencies](https://gemnasium.com/coopdevs/timeoverflow.svg)](https://gemnasium.com/coopdevs/timeoverflow) 
+#### https://www.timeoverflow.org/
 
-[![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow)
-[![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow)
-[![Dependencies](https://gemnasium.com/coopdevs/timeoverflow.svg)](https://gemnasium.com/coopdevs/timeoverflow)
-
-:bank: :hourglass: Time Bank management system. [Learn more about Time Banks] (http://www.bdtonline.org/)
+:bank: :hourglass: Time Bank management system. [Learn more about Time Banks](http://www.bdtonline.org/)
 
 TimeOverflow is a software developed in an altruistic way to offer a system that
 facilitates the interaction of the members and the management of the Time Banks.
@@ -13,6 +9,8 @@ The model on which we work is guided by the needs of the Time Banks that make us
 of it and is prepared to be able to accommodate several Time Banks in a single installation,
 for this account with three levels of privileges: superadmin, admin (only manages a bank)
 and members of a bank.
+
+![Users list](usuarios.png) ![Offers list](ofertas.png)
 
 TimeOverflow is divided into 2 large blocks:
 

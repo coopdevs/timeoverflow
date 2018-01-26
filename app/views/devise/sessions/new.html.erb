@@ -7,6 +7,7 @@
         </h1>
       </div>
       <div class="panel-body">
+        <%= render 'layouts/messages' %>
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: session_path(resource_name) do |f| %>
           <div class="form-group">

@@ -125,6 +125,9 @@ ca:
     menu:
       sign_in: Entra
       sing_out: Desconnectar
+    menus:
+      offers_by_tag_link:
+        tags: 
     navbar:
       admin: Administrar
       administration: Administració
@@ -242,6 +245,9 @@ ca:
       new:
         remember_me: Recorda'm
         sign_in: Entrar
+      user:
+        signed_in: 
+        signed_out: 
     shared:
       links:
         didnt_receive_confirmation_instructions: Tornar a enviar correu de confirmació
@@ -467,7 +473,7 @@ ca:
   terms:
     accept: Acceptar
     show:
-      accept: 
+      accept: Acceptar
   transfers:
     computation:
       hour:
@@ -487,10 +493,10 @@ ca:
       give_time: Donar Temps a
     index:
       actions: Accions
-      active_warning_angular: Vas a canviar l'estat del compte de l'usuari {{username}}
-      cancel_warning_angular: Vas a eliminar del banc a l'usuari {{username}}
+      active_warning: Vas a canviar l'estat del compte de l'usuari %{username}
+      cancel_warning: Vas a eliminar del banc a l'usuari %{username}
       create: Crear nou usuari
-      manage_warning_angular: Vas a canviar els permisos de l'usuari {{username}}
+      manage_warning: Vas a canviar els permisos de l'usuari %{username}
       user_created: Usuari %{uid} %{name} guardat
     new:
       cancel: Cancel·lar

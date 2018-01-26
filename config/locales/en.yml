@@ -65,7 +65,7 @@ en:
         identity_document: Identity Document
         last_sign_in_at: Last login
         notifications: Receive notifications
-        organization: 
+        organization: Organization
         phone: Phone
         registration_date: Registration date
         registration_number: User code
@@ -125,6 +125,9 @@ en:
     menu:
       sign_in: Login
       sing_out: Logout
+    menus:
+      offers_by_tag_link:
+        tags: Tags
     navbar:
       admin: Manage
       administration: Administration
@@ -218,20 +221,20 @@ en:
     registrations:
       destroyed: Bye! Your account was successfully cancelled. We hope to see you again soon.
       edit:
-        cancel_account: 
-        current_password: 
-        edit_user: 
-        help_current_password: 
-        help_password: 
-        password: 
-        password_confirmation: 
-        unhappy: 
-        update: 
+        cancel_account:
+        current_password:
+        edit_user:
+        help_current_password:
+        help_password:
+        password:
+        password_confirmation:
+        unhappy:
+        update:
       new:
-        password: 
-        password_confirmation: 
-        sign_me_up: 
-        sign_up: 
+        password:
+        password_confirmation:
+        sign_me_up:
+        sign_up:
       signed_up: Welcome! You have signed up successfully.
       signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
       signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
@@ -242,6 +245,9 @@ en:
       new:
         remember_me: Remember me
         sign_in: Login
+      user:
+        signed_in: Signed in
+        signed_out: Signed out
     shared:
       links:
         didnt_receive_confirmation_instructions: Resend confirmation email
@@ -315,14 +321,14 @@ en:
     report:
       report_title: REPORT
   locales:
-    ar: 
+    ar:
     ca: Catalan
     en: English
     es: Spanish
-    eu: 
-    fr: 
-    gl: 
-    pt: 
+    eu:
+    fr:
+    gl:
+    pt:
     pt-BR: Portuguese
   mailers_globals:
     footer:
@@ -467,7 +473,7 @@ en:
   terms:
     accept: Accept
     show:
-      accept: 
+      accept: Accept
   transfers:
     computation:
       hour:
@@ -487,10 +493,10 @@ en:
       give_time: Give time to
     index:
       actions: Actions
-      active_warning_angular: You are going to change user account status for {{username}}
-      cancel_warning_angular: You are going to delete account from the Time Bank for user {{username}}
+      active_warning: You are going to change user account status for %{username}
+      cancel_warning: You are going to delete account from the Time Bank for user %{username}
       create: Create new user
-      manage_warning_angular: You are going to change privileges for user {{username}}
+      manage_warning: You are going to change privileges for user %{username}
       user_created: User %{uid} %{name} saved
     new:
       cancel: Cancel
@@ -524,8 +530,8 @@ en:
       manage_warning: You are going to change privileges for user %{user}
   views:
     pagination:
-      first: 
-      last: 
-      next: 
-      previous: 
-      truncate: 
+      first:
+      last:
+      next:
+      previous:
+      truncate:

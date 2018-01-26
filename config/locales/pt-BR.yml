@@ -247,6 +247,7 @@ pt-BR:
         sign_in: Entrar
       user:
         signed_in: 
+        signed_out: 
     shared:
       links:
         didnt_receive_confirmation_instructions: Enviar e-mail de confirmação novamente
@@ -332,8 +333,8 @@ pt-BR:
   mailers_globals:
     footer:
       text: "%{organization_name} em"
-      text_donation:
-      text_donation_link:
+      text_donation: 
+      text_donation_link: 
   offers:
     edit:
       submit: Trocar oferta
@@ -367,9 +368,9 @@ pt-BR:
       banner-button: Pedir acesso
       banner-subtitle: Vamos ajudá-los a começar ou obter uma demonstração
       banner-title: Você é um Banco de Tempo?
-      donate-text:
-      donate-title:
-      donate_link:
+      donate-text: 
+      donate-title: 
+      donate_link: 
       empower-adbdt: ADBdt
       empower-adbdt-title: Associação para o Desenvolvimento dos Bancos de Tempo
       empower-coopdevs: CoopDevs
@@ -492,10 +493,10 @@ pt-BR:
       give_time: Dar Tempo a
     index:
       actions: Ações
-      active_warning_angular: Mudará o estado da conta do usuário {{username}}
-      cancel_warning_angular: Eliminará o usuário do banco {{username}}
+      active_warning: Mudará o estado da conta do usuário %{username}
+      cancel_warning: Eliminará o usuário do banco %{username}
       create: Criar novo usuário
-      manage_warning_angular: Mudará os privilégios do usuário {{username}}
+      manage_warning: Mudará os privilégios do usuário %{username}
       user_created: Usuário %{uid} %{name} guardado
     new:
       cancel: Cancelar
