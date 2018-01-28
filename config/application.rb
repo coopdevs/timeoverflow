@@ -25,5 +25,8 @@ module Timeoverflow
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # This tells Rails to serve error pages from the app itself, rather than using static error pages in public/
+    config.exceptions_app = self.routes
   end
 end
