@@ -43,7 +43,7 @@
             <%= User.human_attribute_name(:alt_phone) %>
           </th>
           <th>
-            <%= sort_link @search, 'accounts_balance', User.human_attribute_name(:balance) %>
+            <%= sort_link @search, 'accounts_balance', Account.human_attribute_name(:balance) %>
           </th>
           <% if current_user.manages? current_organization %>
             <th>
