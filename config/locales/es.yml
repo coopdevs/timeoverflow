@@ -65,7 +65,7 @@ es:
         identity_document: DNI
         last_sign_in_at: Fecha último login
         notifications: Recibir notificaciones
-        organization:
+        organization: Organización
         phone: Teléfono
         registration_date: Fecha de alta
         registration_number: Código de usuario
@@ -127,7 +127,7 @@ es:
       sing_out: Desconectar
     menus:
       offers_by_tag_link:
-        tags:
+        tags: Etiquetas
     navbar:
       admin: Administrar
       administration: Administración
@@ -246,8 +246,8 @@ es:
         remember_me: Recordarme
         sign_in: Entrar
       user:
-        signed_in:
-        signed_out:
+        signed_in: Has iniciado la sesión
+        signed_out: Has cerrado la sesión
     shared:
       links:
         didnt_receive_confirmation_instructions: Volver a enviar correo de confirmación
@@ -265,6 +265,9 @@ es:
       send_paranoid_instructions: Si tu cuenta existe, recibirás un correo con instrucciones de como desbloquearla en unos minutos.
       unlocked: Tu cuenta ha sido desbloqueada. Por favor, entra para continuar.
   errors:
+    internal_server_error:
+      description: Lo sentimos, parece que hay un error en esta consulta. Una notificación se ha enviado automáticamente al departamento técnico y lo resolveremos lo antes posible.
+      title: Error interno de servidor
     messages:
       already_confirmed: ya fue confirmado, por favor prueba a entrar
       confirmation_period_expired: necesita confirmarse en %{period}, por favor, solicita uno nuevo
@@ -274,6 +277,9 @@ es:
       not_saved:
         one: '1 error impide que este %{resource} se guarde:'
         other: "%{count} errores impiden que este %{resource} se guarde:"
+    not_found:
+      description: La página que estás buscando no existe. Quizás la dirección no es correcta o la página ha sido movida.
+      title: No se encontró
   global:
     add_new: Crear nuevo
     all: Todo
@@ -289,6 +295,7 @@ es:
     edit: Modificar
     filter: Filtro
     give_time: Transferir tiempo
+    home: Inicio
     information: Información
     locales_header: cambiar idioma
     member_count: 'Número de usuarios:'
@@ -493,10 +500,13 @@ es:
       give_time: Dar Tiempo a
     index:
       actions: Acciones
-      active_warning: Va a cambiar el estado de la cuenta del usuario %{username}
-      cancel_warning: Va a eliminar del banco al usuario %{username}
+      active_warning: Estás a punto de cambiar el estado del usuario %{username}
+      active_warning_angular: Va a cambiar el estado de la cuenta del usuario {{username}}
+      cancel_warning: Estás a punto de borrar la cuenta al usuario %{username}
+      cancel_warning_angular: Va a eliminar del banco al usuario {{username}}
       create: Crear nuevo usuario
-      manage_warning: Va a cambiar los privilegios del usuario %{username}
+      manage_warning: Estás a punto de cambiar los permisos del usuario %{username}
+      manage_warning_angular: Va a cambiar los privilegios del usuario {{username}}
       user_created: Usuario %{uid} %{name} guardado
     new:
       cancel: Cancelar
