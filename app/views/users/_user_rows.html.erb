@@ -23,7 +23,7 @@
     </td>
     <td> <%= user.phone %> </td>
     <td> <%= user.alt_phone %> </td>
-    <td> <%= time_balance(membership.account.balance) %> </td>
+    <td> <%= seconds_to_hm(membership.account.try(:balance) || mdash) %> </td>
     <% if current_user.manages?(current_organization) %>
       <td class="hover-actions">
         <%= link_to edit_user_path(user), class: "action" do %>
