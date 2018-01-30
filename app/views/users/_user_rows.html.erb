@@ -1,5 +1,5 @@
 <% users.each do |user| %>
-  <% membership = user.members.first %>
+  <% membership = memberships[user.id] %>
 
   <%= content_tag(:tr, class: membership.active? ? "" : "bg-danger") do %>
     <td>
