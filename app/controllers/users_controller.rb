@@ -10,6 +10,12 @@ class UsersController < ApplicationController
       .eager_load(members: :account)
       .page(params[:page])
       .per(25)
+
+    @memberships = current_organization.members.
+      where(user_id: @users.map(&:id)).
+      includes(:account).each_with_object({}) do |mem, ob|
+        ob[mem.user_id] = mem
+      end
   end
 
   def show
