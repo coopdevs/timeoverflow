@@ -1,14 +1,6 @@
 module UsersHelper
   private
 
-  def time_balance(seconds)
-    if seconds.zero?
-      "—"
-    else
-      [seconds / (60 * 60), (seconds / 60) % 60].map{|value| value.to_s.rjust(2, "0") }.join(":")
-    end
-  end
-
   def edit_user_path(user)
     can_edit_user?(user) ? super : ""
   end
