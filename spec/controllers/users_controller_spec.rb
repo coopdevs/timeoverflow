@@ -38,11 +38,26 @@ describe UsersController do
   before { set_browser_locale("ca") }
 
   describe "GET #index" do
+    before { login(user) }
+
+    it 'sorts the users by their member_uid' do
+      member.update_attribute(:member_uid, 100)
+
+      get :index
+
+      expect(assigns(:users)).to eq([
+        another_user,
+        admin_user,
+        wrong_user,
+        empty_email_user,
+        user,
+      ])
+    end
+
     context 'when a user has many memberships' do
       let!(:member_in_another_organization) { Fabricate(:member, user: user) }
 
       before do
-        login(user)
         member.account.update_attribute(
           :balance,
           Time.parse('13:33').seconds_since_midnight
