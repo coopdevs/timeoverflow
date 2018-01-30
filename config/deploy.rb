@@ -4,6 +4,8 @@ lock '3.4.0'
 set :application, 'timeoverflow'
 set :repo_url, 'git@github.com:coopdevs/timeoverflow.git'
 
+set :rbenv_type, :user
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
