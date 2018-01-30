@@ -12,7 +12,7 @@
     <% end %>
   <% end %>
   <% if current_user and @offer.user != current_user %>
-    <%= link_to give_time_user_path(@offer.user, offer: @offer.id),
+    <%= link_to new_transfer_path(id: @offer.user.id, offer: @offer.id),
                 class: "btn btn-success" do %>
       <%= glyph :time %>
       <%= t ".give_time_for" %>

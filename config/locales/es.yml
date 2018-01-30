@@ -65,7 +65,7 @@ es:
         identity_document: DNI
         last_sign_in_at: Fecha último login
         notifications: Recibir notificaciones
-        organization: 
+        organization:
         phone: Teléfono
         registration_date: Fecha de alta
         registration_number: Código de usuario
@@ -127,7 +127,7 @@ es:
       sing_out: Desconectar
     menus:
       offers_by_tag_link:
-        tags: 
+        tags:
     navbar:
       admin: Administrar
       administration: Administración
@@ -246,8 +246,8 @@ es:
         remember_me: Recordarme
         sign_in: Entrar
       user:
-        signed_in: 
-        signed_out: 
+        signed_in:
+        signed_out:
     shared:
       links:
         didnt_receive_confirmation_instructions: Volver a enviar correo de confirmación
@@ -493,10 +493,10 @@ es:
       give_time: Dar Tiempo a
     index:
       actions: Acciones
-      active_warning_angular: Va a cambiar el estado de la cuenta del usuario {{username}}
-      cancel_warning_angular: Va a eliminar del banco al usuario {{username}}
+      active_warning: Va a cambiar el estado de la cuenta del usuario %{username}
+      cancel_warning: Va a eliminar del banco al usuario %{username}
       create: Crear nuevo usuario
-      manage_warning_angular: Va a cambiar los privilegios del usuario {{username}}
+      manage_warning: Va a cambiar los privilegios del usuario %{username}
       user_created: Usuario %{uid} %{name} guardado
     new:
       cancel: Cancelar

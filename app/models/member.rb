@@ -29,6 +29,15 @@ class Member < ActiveRecord::Base
     "#{user} (#{member_uid})"
   end
 
+  # Returns the id to be displayed in the :new transfer page
+  #
+  # @params _destination_accountable used to keep the same API as
+  #   Organization#display_id
+  # @return [Integer]
+  def display_id(_destination_accountable)
+    member_uid
+  end
+
   def remove_all_posts_from_index
     Post.with_member.where("members.id = ?", self.id).find_each do |post|
       post.delete_document

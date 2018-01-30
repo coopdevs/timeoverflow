@@ -28,6 +28,23 @@ class Organization < ActiveRecord::Base
     "#{name}"
   end
 
+  def display_name_with_uid
+    self
+  end
+
+  # Returns the id to be displayed in the :new transfer page with the given
+  # destination_accountable
+  #
+  # @params destination_accountable [Organization | Object] target of a transfer
+  # @return [Integer | String]
+  def display_id(destination_accountable)
+    if destination_accountable.is_a?(Organization)
+      account.accountable_id
+    else
+      ''
+    end
+  end
+
   def ensure_reg_number_seq!
     update_column(:reg_number_seq, members.maximum(:member_uid))
   end

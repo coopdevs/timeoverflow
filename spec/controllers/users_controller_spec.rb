@@ -28,11 +28,11 @@ describe UsersController do
               manager: false)
   end
 
-  let! (:user) { member.user }
-  let! (:another_user) { another_member.user }
-  let! (:admin_user) { member_admin.user }
-  let! (:wrong_user) { wrong_email_member.user }
-  let! (:empty_email_user) { empty_email_member.user }
+  let!(:user) { member.user }
+  let!(:another_user) { another_member.user }
+  let!(:admin_user) { member_admin.user }
+  let!(:wrong_user) { wrong_email_member.user }
+  let!(:empty_email_user) { empty_email_member.user }
 
   include_context "stub browser locale"
   before { set_browser_locale("ca") }
@@ -48,6 +48,7 @@ describe UsersController do
                                        empty_email_user])
       end
     end
+
     context "with an admin logged user" do
       it "populates and array of users" do
         login(admin_user)
@@ -58,24 +59,95 @@ describe UsersController do
                                        empty_email_user])
       end
     end
+
+    context 'when sorting by balance' do
+      before do
+        login(user)
+        member_admin.account.update_attribute(:balance, 3600)
+      end
+
+      context 'desc' do
+        let(:direction) { 'desc' }
+
+        it 'orders the rows by their balance' do
+          get :index, q: { s: "accounts_balance #{direction}" }
+
+          expect(assigns(:users).pluck(:id))
+            .to eq(
+              [
+                admin_user.id,
+                user.id,
+                another_user.id,
+                wrong_user.id,
+                empty_email_user.id
+              ]
+          )
+        end
+      end
+
+      context 'asc' do
+        let(:direction) { 'asc' }
+
+        it 'orders the rows by their balance' do
+          get :index, q: { s: "accounts_balance #{direction}" }
+
+          expect(assigns(:users).pluck(:id))
+            .to eq(
+              [
+                user.id,
+                another_user.id,
+                wrong_user.id,
+                empty_email_user.id,
+                admin_user.id,
+              ]
+          )
+        end
+      end
+    end
   end
 
   describe "GET #show" do
     context "with valid params" do
       context "with a normal logged user" do
-        it "assigns the requested user to @user" do
-          login(user)
+        before { login(another_user) }
 
+        it "assigns the requested user to @user" do
           get "show", id: user.id
           expect(assigns(:user)).to eq(user)
         end
-      end
-      context "with an admin logged user" do
-        it "assigns the requested user to @user" do
-          login(admin_user)
+
+        it 'links to new_transfer_path for his individual offers' do
+          offer = Fabricate(:offer, user: user, publisher: user, organization: test_organization)
 
           get "show", id: user.id
+          expect(response.body).to include(
+            "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}&amp;offer=#{offer.id}\">"
+          )
+        end
+      end
+
+      context "with an admin logged user" do
+        before { login(admin_user) }
+
+        it "assigns the requested user to @user" do
+          get "show", id: user.id
           expect(assigns(:user)).to eq(user)
+        end
+
+        it 'links to new_transfer_path' do
+          get "show", id: user.id
+          expect(response.body).to include(
+            "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}\">"
+          )
+        end
+
+        it 'links to new_transfer_path for his individual offers' do
+          offer = Fabricate(:offer, user: user, publisher: user, organization: test_organization)
+
+          get "show", id: user.id
+          expect(response.body).to include(
+            "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}&amp;offer=#{offer.id}\">"
+          )
         end
       end
     end

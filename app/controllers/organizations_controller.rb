@@ -48,14 +48,6 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_path, notice: "deleted"
   end
 
-  def give_time
-    @destination = @organization.account.id
-    @source = find_transfer_source
-    @offer = find_transfer_offer
-    @transfer = Transfer.new(source: @source, destination: @destination)
-    @sources = find_transfer_sources_for_admin
-  end
-
   def set_current
     if current_user
       session[:current_organization_id] = @organization.id
@@ -69,21 +61,5 @@ class OrganizationsController < ApplicationController
     params[:organization].permit(*%w[name theme email phone web
                                      public_opening_times description address
                                      neighborhood city domain])
-  end
-
-  def find_transfer_offer
-    current_organization.offers.
-      find(params[:offer]) if params[:offer].present?
-  end
-
-  def find_transfer_source
-    current_user.members.
-      find_by(organization: @organization).account.id
-  end
-
-  def find_transfer_sources_for_admin
-    return unless admin?
-    [current_organization.account] +
-      current_organization.member_accounts.where("members.active is true")
   end
 end
