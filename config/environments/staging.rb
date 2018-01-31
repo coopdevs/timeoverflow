@@ -71,6 +71,8 @@ Rails.application.configure do
     protocol: (ENV["MAIL_LINK_PROTO"] || "https")
   }
 
+  # Retrieve SMTP configuration from environment variables
+  # starting with `SMTP_`
   smtp_env = Hash[ENV.map do |k,v|
     if /^SMTP_(.*)$/ === k
       [$1.downcase.to_sym, YAML.load(v)]
