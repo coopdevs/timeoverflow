@@ -43,7 +43,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :organization
   belongs_to :publisher, class_name: "User", foreign_key: "publisher_id"
-  # belongs_to :member, class_name: "Member", foreign_key: "user_id"
   has_many :user_members, class_name: "Member", through: :user, source: :members
   has_many :transfers
   has_many :movements, through: :transfers
