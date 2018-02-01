@@ -18,4 +18,13 @@ class OffersController < PostsController
       offers[category] = list if list.present?
     end
   end
+
+  def show
+    super
+    @destination_account = @offer
+      .user
+      .members
+      .find_by(organization: current_organization)
+      .account
+  end
 end
