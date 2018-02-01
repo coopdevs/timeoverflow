@@ -62,16 +62,14 @@ describe OffersController, type: :controller do
   describe "GET #show" do
     context "with valid params" do
       context "with a logged user" do
-        it "assigns the requested offer to @offer" do
-          login(another_member.user)
+        before { login(another_member.user) }
 
-          get "show", id: offer.id
+        it "assigns the requested offer to @offer" do
+          get :show, id: offer.id
           expect(assigns(:offer)).to eq(offer)
         end
 
         it 'assigns the account destination of the transfer' do
-          login(another_member.user)
-
           get :show, id: offer.id
           expect(assigns(:destination_account)).to eq(member.account)
         end
@@ -79,7 +77,7 @@ describe OffersController, type: :controller do
 
       context "without a logged in user" do
         it "assigns the requested offer to @offer" do
-          get "show", id: offer.id
+          get :show, id: offer.id
           expect(assigns(:offer)).to eq(offer)
         end
       end
