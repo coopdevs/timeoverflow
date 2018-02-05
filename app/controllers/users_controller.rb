@@ -2,14 +2,22 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @search = current_organization.users.ransack(params[:q])
+    @search = User.ransack(params[:q])
+    @search.sorts = 'members_member_uid asc' if @search.sorts.empty?
 
     @users = @search
       .result(distinct: false)
       .joins(members: :account)
       .eager_load(members: :account)
+      .where(members: { organization: current_organization.id })
       .page(params[:page])
       .per(25)
+
+    @memberships = current_organization.members.
+      where(user_id: @users.map(&:id)).
+      includes(:account).each_with_object({}) do |mem, ob|
+        ob[mem.user_id] = mem
+      end
   end
 
   def show

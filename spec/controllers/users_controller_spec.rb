@@ -1,28 +1,28 @@
 require "spec_helper"
 
 describe UsersController do
-  let (:test_organization) { Fabricate(:organization) }
-  let (:member_admin) do
+  let(:test_organization) { Fabricate(:organization) }
+  let(:member_admin) do
     Fabricate(:member,
               organization: test_organization,
               manager: true)
   end
-  let (:member) do
+  let(:member) do
     Fabricate(:member,
               organization: test_organization,
               manager: false)
   end
-  let (:another_member) do
+  let(:another_member) do
     Fabricate(:member,
               organization: test_organization,
               manager: false)
   end
-  let (:wrong_email_member) do
+  let(:wrong_email_member) do
     Fabricate(:member,
               organization: test_organization,
               manager: false)
   end
-  let (:empty_email_member) do
+  let(:empty_email_member) do
     Fabricate(:member,
               organization: test_organization,
               manager: false)
@@ -38,6 +38,50 @@ describe UsersController do
   before { set_browser_locale("ca") }
 
   describe "GET #index" do
+    before { login(user) }
+
+    it 'sorts the users by their member_uid' do
+      member.update_attribute(:member_uid, 100)
+
+      get :index
+
+      expect(assigns(:users)).to eq([
+        another_user,
+        admin_user,
+        wrong_user,
+        empty_email_user,
+        user,
+      ])
+    end
+
+    context 'when a user has many memberships' do
+      let!(:member_in_another_organization) { Fabricate(:member, user: user) }
+
+      before do
+        member.account.update_attribute(
+          :balance,
+          Time.parse('13:33').seconds_since_midnight
+        )
+      end
+
+      it 'gets her membership in the current organization' do
+        get :index
+
+        expect(assigns(:memberships)).to eq({
+          member.user_id => member,
+          another_member.user_id => another_member,
+          member_admin.user_id => member_admin,
+          wrong_email_member.user_id => wrong_email_member,
+          empty_email_member.user_id => empty_email_member
+        })
+      end
+
+      it 'shows data for her membership in the current organization' do
+        get :index
+        expect(response.body).to include("<td> 13:33 </td>")
+      end
+    end
+
     context "with an normal logged user" do
       it "populates and array of users" do
         login(user)
