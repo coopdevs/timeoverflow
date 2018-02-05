@@ -26,6 +26,7 @@ gem 'prawn-table'
 gem 'bundler', '>= 1.10.6'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'skylight'
 
 # Assets
 gem 'jquery-rails', '4.0.4'
