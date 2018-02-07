@@ -1,18 +1,20 @@
 require "spec_helper"
 
 describe OffersController, type: :controller do
-  let (:test_organization) { Fabricate(:organization) }
-  let (:member) { Fabricate(:member, organization: test_organization) }
-  let (:another_member) { Fabricate(:member, organization: test_organization) }
-  let (:yet_another_member) { Fabricate(:member) }
-  let (:test_category) { Fabricate(:category) }
-  let! (:offer) do
+  let(:test_organization) { Fabricate(:organization) }
+  let(:member) { Fabricate(:member, organization: test_organization) }
+  let(:another_member) { Fabricate(:member, organization: test_organization) }
+  let(:yet_another_member) { Fabricate(:member) }
+  let(:test_category) { Fabricate(:category) }
+  let!(:offer) do
     Fabricate(:offer,
               user: member.user,
               organization: test_organization,
               category: test_category)
   end
+
   include_context "stub browser locale"
+
   before { set_browser_locale("ca") }
 
   describe "GET #index" do
@@ -60,16 +62,22 @@ describe OffersController, type: :controller do
   describe "GET #show" do
     context "with valid params" do
       context "with a logged user" do
-        it "assigns the requested offer to @offer" do
-          login(another_member.user)
+        before { login(another_member.user) }
 
-          get "show", id: offer.id
+        it "assigns the requested offer to @offer" do
+          get :show, id: offer.id
           expect(assigns(:offer)).to eq(offer)
         end
+
+        it 'assigns the account destination of the transfer' do
+          get :show, id: offer.id
+          expect(assigns(:destination_account)).to eq(member.account)
+        end
       end
+
       context "without a logged in user" do
         it "assigns the requested offer to @offer" do
-          get "show", id: offer.id
+          get :show, id: offer.id
           expect(assigns(:offer)).to eq(offer)
         end
       end
