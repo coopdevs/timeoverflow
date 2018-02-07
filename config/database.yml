@@ -25,10 +25,6 @@ test:
   <<: *defaults
   database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_test') %>
 
-staging:
-  <<: *defaults
-  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_staging') %>
-
 production:
   # Set DATABASE_URL environment variable
   url: <%= ENV['DATABASE_URL'] %>
