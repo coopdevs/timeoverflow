@@ -191,7 +191,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    memcachier (0.0.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -389,7 +388,6 @@ DEPENDENCIES
   kaminari
   letter_opener (= 1.4.1)
   localeapp (= 2.1.1)
-  memcachier
   pg (= 0.17.1)
   prawn
   prawn-table
