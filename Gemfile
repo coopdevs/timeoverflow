@@ -38,7 +38,7 @@ gem 'select2-rails'
 group :development do
   gem "binding_of_caller"
   gem "better_errors"
-  gem "rubocop"
+  gem 'rubocop', '~> 0.52.1', require: false
   gem 'web-console', '2.1.3'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
