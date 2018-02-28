@@ -6,9 +6,11 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
+require 'capybara/rspec'
 require 'database_cleaner'
 require 'fabrication'
 require 'faker'
+require 'selenium/webdriver'
 I18n.reload!
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -91,3 +93,20 @@ RSpec.shared_context 'stub browser locale' do
 end
 
 RSpec.configure(&:infer_spec_type_from_file_location!)
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w(headless disable-gpu) }
+  )
+
+  Capybara::Selenium::Driver.new app,
+    browser: :chrome,
+    desired_capabilities: capabilities
+end
+
+Capybara.javascript_driver = :headless_chrome
+Capybara.default_driver = :headless_chrome

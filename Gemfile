@@ -57,7 +57,6 @@ end
 
 group :development, :test do
   gem "rspec-rails", '~> 3.5.2'
-  gem "capybara", '~> 2.4.4'
   gem "byebug"
 end
 
@@ -71,6 +70,8 @@ group :test do
 
   gem 'shoulda', ">= 3.5"
   gem 'fabrication'
+  gem "capybara", '~> 2.4.4'
+  gem 'capybara-selenium'
   gem 'faker'
 end
 
