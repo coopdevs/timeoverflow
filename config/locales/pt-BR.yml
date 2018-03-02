@@ -265,6 +265,9 @@ pt-BR:
       send_paranoid_instructions: Se tua conta existe, você receberá um e-mail com instruções de como desbloqueá-la em alguns minutos.
       unlocked: Tua conta foi desbloqueada. Por favor, entre para continuar.
   errors:
+    internal_server_error:
+      description: 
+      title: 
     messages:
       already_confirmed: já foi confirmado, por favor tente entrar
       confirmation_period_expired: É necessário se confirmar em %{period}, por favor, solicite um novo
@@ -274,6 +277,9 @@ pt-BR:
       not_saved:
         one: '1 erro impede que este %{resource} se guarde:'
         other: "%{count} erros impedem que este %{resource} se guarde:"
+    not_found:
+      description: 
+      title: 
   global:
     add_new: Criar novo
     all: Tudo
@@ -289,6 +295,7 @@ pt-BR:
     edit: Modificar
     filter: Filtro
     give_time: Transferir tempo
+    home: 
     information: Informação
     locales_header: Trocar idioma
     member_count: 'Número de usuários:'
@@ -493,10 +500,13 @@ pt-BR:
       give_time: Dar Tempo a
     index:
       actions: Ações
-      active_warning: Mudará o estado da conta do usuário %{username}
-      cancel_warning: Eliminará o usuário do banco %{username}
+      active_warning: 
+      active_warning_angular: Mudará o estado da conta do usuário {{username}}
+      cancel_warning: 
+      cancel_warning_angular: Eliminará o usuário do banco {{username}}
       create: Criar novo usuário
-      manage_warning: Mudará os privilégios do usuário %{username}
+      manage_warning: 
+      manage_warning_angular: Mudará os privilégios do usuário {{username}}
       user_created: Usuário %{uid} %{name} guardado
     new:
       cancel: Cancelar

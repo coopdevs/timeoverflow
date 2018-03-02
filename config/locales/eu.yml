@@ -271,6 +271,9 @@ eu:
       send_paranoid_instructions: Zure imeila existitzen bada, segidan iritsiko zaizu , zure kontua nola desbloqueatu argituko dizun imeila
       unlocked: Zure kontua desblokeatua izan da. Sartu jarraitzeko.
   errors:
+    internal_server_error:
+      description: 
+      title: 
     messages:
       already_confirmed: Baieztatu izan da , Saiatu sartzen.
       confirmation_period_expired: "%{period}an baieztatzea beharrezkoa da. Eskatu berria."
@@ -280,6 +283,9 @@ eu:
       not_saved:
         one: Arazo batek ez du uzten  %{resource} gorde dadin.
         other: "%{count} arazok ez dute uzten %{resource}  gorde dadin"
+    not_found:
+      description: 
+      title: 
   global:
     add_new: Berria sortu
     all: Dena.
@@ -295,10 +301,11 @@ eu:
     edit: Aldaketak egin
     filter: Iragazkia
     give_time: Denbora eman
+    home: 
     information: Informazioa
     locales_header: Hizkuntza aldatu
     member_count: Erabiltzaile zenbakia
-    more: Gehiago ikusi
+    more: 'Gehiago ikusi  '
     movements: Mugimenduak
     promote: Administratzaile bihurtu
     reason: Arrazoia
@@ -374,9 +381,9 @@ eu:
       banner-button: Sartzea eskatzen du
       banner-subtitle: Martxan jartzen edo erakustaldi bat eginez lagunduko dizugu
       banner-title: Denbora banku bat al zara?
-      donate-text: komunitate askori babesteko asmotan ADBdt elakrteak , TimeOverflow plataforma eskaintzen die Denbora Banku guztiei. Hausnar ezazu %{donate_link}  mantenu eta berritze lanetarako laguntzeko.
+      donate-text: komunitate askori babesteko asmotan ADBdt elkarteak , TimeOverflow plataforma eskaintzen die Denbora Banku guztiei. Hausnar ezazu %{donate_link}  mantenu eta berritze lanetan laguntzeko.
       donate-title: Laguntzan parte hartu
-      donate_link: Hilean €1 eman
+      donate_link: Hilean €1 ematea
       empower-adbdt: ADBdt
       empower-adbdt-title: Denbora Bankuen garapenerako elkartea
       empower-coopdevs: CoopDevs
@@ -385,8 +392,8 @@ eu:
       empower-github-title: Github
       empower-showmap: Mapa ikusi
       empower-showmap-title: Denbora bankuak
-      empower-text-1: TimeOveflow denbora bankuentzat diseinaturik dago &mdash; %{showmap_link}. Bere helburua  ahuek bultztzea da.
-      empower-text-2: "%{abdt_link} a eta %{coopdevs_link}ren elkarlanari esker ,  TimeOverflow  sofwarea eskain diezaiekegu hala behar duten denbora banku guztiei, era libre eta dohakoan."
+      empower-text-1: TimeOveflow denbora bankuentzat diseinaturik dago &mdash; %{showmap_link}. Bere helburua  hauek bultzatzea da.
+      empower-text-2: "%{abdt_link}  eta %{coopdevs_link}ren elkarlanari esker ,  TimeOverflow  softwarea eskain diezaiekegu, hala behar duten denbora banku guztiei, era libre eta dohakoan."
       empower-text-3: TimeOverflowren oinarrizko kodea, eskuragarri dago, open source lizentziapean eta hemen %{github_link}  jaits daiteke
       empower-title: Denbora bankuak enpoderatuz
       feature-group-1: Denbora bankuaren kudeaketa administrazio profilen bidez.
@@ -398,8 +405,8 @@ eu:
       feature-text-5: Eskaintza eta eskariak argitaratu
       feature-text-6: Beste erabiltzaileei orduak ordaindu
       subtitle: TimeOverflow librea dohakoa eta kolaborazio bidezkoa da
-      title: Software hau  denentzat da
-      title2: Denbora bankuak
+      title: Denbora  bankuek  diseinaturiko softwarea,
+      title2: Denbora bankuentzat
   posts:
     show:
       info: "%{type}  %{organization}koaren datuak ikusteko, hau egin behar duzu"
@@ -499,9 +506,12 @@ eu:
       give_time: honi denbora eman
     index:
       actions: Ekintzak
+      active_warning: 
       active_warning_angular: " {{username}} erabiltzailearen kontuaren egoera, aldatuko duzu."
+      cancel_warning: 
       cancel_warning_angular: " {{username}} erabiltzailea D bankutik ezabatuko duzu."
       create: Erabiltzaile berria sortu
+      manage_warning: 
       manage_warning_angular: " {{username}} erabiltzailearen onurak, aldatuko diztuzu"
       user_created: "%{uid} %{name} erabiltzailea gorde da"
     new:

@@ -221,20 +221,20 @@ en:
     registrations:
       destroyed: Bye! Your account was successfully cancelled. We hope to see you again soon.
       edit:
-        cancel_account:
-        current_password:
-        edit_user:
-        help_current_password:
-        help_password:
-        password:
-        password_confirmation:
-        unhappy:
-        update:
+        cancel_account: 
+        current_password: 
+        edit_user: 
+        help_current_password: 
+        help_password: 
+        password: 
+        password_confirmation: 
+        unhappy: 
+        update: 
       new:
-        password:
-        password_confirmation:
-        sign_me_up:
-        sign_up:
+        password: 
+        password_confirmation: 
+        sign_me_up: 
+        sign_up: 
       signed_up: Welcome! You have signed up successfully.
       signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
       signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
@@ -266,11 +266,8 @@ en:
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
   errors:
     internal_server_error:
+      description: We're sorry, there seems to be an error with this request. A notification has automatically been sent to us, and we will resolve this as soon as possible.
       title: Internal server error
-      description:  We're sorry, there seems to be an error with this request. A notification has automatically been sent to us, and we will resolve this as soon as possible.
-    not_found:
-      title: Not found
-      description: The page you were looking for doesn't exist. You may have mistyped the address or the page may have moved.
     messages:
       already_confirmed: was already confirmed, please try signing in
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
@@ -280,6 +277,9 @@ en:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+    not_found:
+      description: The page you were looking for doesn't exist. You may have mistyped the address or the page may have moved.
+      title: Not found
   global:
     add_new: Create new
     all: All
@@ -328,14 +328,14 @@ en:
     report:
       report_title: REPORT
   locales:
-    ar:
+    ar: 
     ca: Catalan
     en: English
     es: Spanish
-    eu:
-    fr:
-    gl:
-    pt:
+    eu: 
+    fr: 
+    gl: 
+    pt: 
     pt-BR: Portuguese
   mailers_globals:
     footer:
@@ -501,9 +501,12 @@ en:
     index:
       actions: Actions
       active_warning: You are going to change user account status for %{username}
+      active_warning_angular: You are going to change user account status for {{username}}
       cancel_warning: You are going to delete account from the Time Bank for user %{username}
+      cancel_warning_angular: You are going to delete account from the Time Bank for user {{username}}
       create: Create new user
       manage_warning: You are going to change privileges for user %{username}
+      manage_warning_angular: You are going to change privileges for user {{username}}
       user_created: User %{uid} %{name} saved
     new:
       cancel: Cancel
@@ -537,8 +540,8 @@ en:
       manage_warning: You are going to change privileges for user %{user}
   views:
     pagination:
-      first:
-      last:
-      next:
-      previous:
-      truncate:
+      first: 
+      last: 
+      next: 
+      previous: 
+      truncate: 
