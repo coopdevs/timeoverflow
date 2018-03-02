@@ -265,6 +265,12 @@ en:
       send_paranoid_instructions: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
   errors:
+    internal_server_error:
+      title: Internal server error
+      description:  We're sorry, there seems to be an error with this request. A notification has automatically been sent to us, and we will resolve this as soon as possible.
+    not_found:
+      title: Not found
+      description: The page you were looking for doesn't exist. You may have mistyped the address or the page may have moved.
     messages:
       already_confirmed: was already confirmed, please try signing in
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
@@ -289,6 +295,7 @@ en:
     edit: Update
     filter: Filter
     give_time: Time transfer
+    home: Home
     information: Information
     locales_header: change language
     member_count: 'Number of users:'
