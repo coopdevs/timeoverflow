@@ -1,15 +1,19 @@
 module PushNotifications
-  class PostBroadcasterService
-    def initialize(post)
-      @post = post
+  class UsersBroadcasterService
+    def initialize(users)
+      @users = users
     end
 
     def broadcast
       notification = PostNotification.new
 
-      @post.organization.users.each do |user|
-        ExpoAdaptorService.new(notification, user).send
+      users.each do |user|
+        ExpoSenderService.new(notification, user).run
       end
     end
+
+    private
+
+    attr_reader :users
   end
 end
