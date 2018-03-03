@@ -2,7 +2,7 @@ class DeviceTokensController < PostsController
   before_filter :authenticate_user!
 
   def create
-    @device_token = DeviceToken.all.build device_token_params.merge! user_id: current_user.id
+    @device_token = DeviceToken.new device_token_params.merge! user_id: current_user.id
 
     if @device_token.save
       render nothing: true, status: :created
