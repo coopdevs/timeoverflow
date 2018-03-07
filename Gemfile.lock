@@ -157,7 +157,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http_accept_language (2.0.2)
-    i18n (0.9.3)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     inherited_resources (1.8.0)
       actionpack (>= 4.2, <= 5.2)
@@ -171,9 +171,18 @@ GEM
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
     json (2.1.0)
-    kaminari (0.16.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -184,7 +193,7 @@ GEM
       i18n (~> 0.4)
       json
       rest-client
-    loofah (2.1.1)
+    loofah (2.2.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -194,14 +203,14 @@ GEM
     mime-types-data (3.2016.0521)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.11.2)
+    minitest (5.11.3)
     multi_json (1.11.2)
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     netrc (0.11.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     parallel (1.12.1)
@@ -331,7 +340,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     ttfunk (1.4.0)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
@@ -360,7 +369,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin
+  activeadmin (~> 1.2.1)
   airbrussh
   better_errors (~> 2.4.0)
   binding_of_caller (~> 0.8.0)
@@ -386,7 +395,7 @@ DEPENDENCIES
   http_accept_language
   jquery-rails (>= 4.2.0)
   jquery-ui-rails
-  kaminari
+  kaminari (~> 1.1.1)
   letter_opener (= 1.4.1)
   localeapp (= 2.1.1)
   pg (= 0.17.1)

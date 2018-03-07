@@ -6,7 +6,7 @@ gem 'rails', '~> 4.2'
 gem 'rails-i18n'
 gem "rdiscount"
 gem 'high_voltage', '~> 2.1.0'
-gem 'activeadmin'
+gem 'activeadmin', '~> 1.2.1'
 gem 'has_scope'
 gem 'pundit'
 gem 'pg', '0.17.1'
@@ -16,7 +16,7 @@ gem 'devise', '~> 4.4.1'
 gem "http_accept_language"
 gem 'unicorn'
 gem 'foreman'
-gem 'kaminari'
+gem 'kaminari', '~> 1.1.1'
 gem "simple_form", ">= 3.0.0"
 gem 'rollbar', '2.8.3'
 gem 'whenever', require: false
