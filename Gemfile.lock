@@ -156,7 +156,7 @@ GEM
       activerecord (>= 3.1.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    http_accept_language (2.0.2)
+    http_accept_language (2.1.1)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     inherited_resources (1.8.0)
@@ -392,7 +392,7 @@ DEPENDENCIES
   has_scope
   high_voltage (~> 2.1.0)
   hstore_translate
-  http_accept_language
+  http_accept_language (~> 2.1.1)
   jquery-rails (>= 4.2.0)
   jquery-ui-rails
   kaminari (~> 1.1.1)
