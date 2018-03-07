@@ -15,7 +15,6 @@ gem 'dalli'
 gem 'devise', '~> 4.4.1'
 gem "http_accept_language", '~> 2.1.1'
 gem 'unicorn'
-gem 'foreman'
 gem 'kaminari', '~> 1.1.1'
 gem "simple_form", ">= 3.0.0"
 gem 'rollbar', '2.8.3'
