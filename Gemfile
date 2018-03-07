@@ -36,8 +36,8 @@ gem 'uglifier', '2.7.2'
 gem 'select2-rails'
 
 group :development do
-  gem "binding_of_caller"
-  gem "better_errors"
+  gem "binding_of_caller", '~> 0.8.0'
+  gem "better_errors", '~> 2.4.0'
   gem 'rubocop', '~> 0.52.1', require: false
   gem 'web-console', '2.1.3'
   gem 'capistrano', '~> 3.1'
