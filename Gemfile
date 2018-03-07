@@ -5,7 +5,6 @@ ruby '2.3.0'
 gem 'rails', '~> 4.2'
 gem 'rails-i18n'
 gem "rdiscount"
-gem 'high_voltage', '~> 2.1.0'
 gem 'activeadmin', '~> 1.2.1'
 gem 'has_scope'
 gem 'pundit'

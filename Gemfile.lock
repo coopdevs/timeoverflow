@@ -148,7 +148,6 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (3.4.1)
-    high_voltage (2.1.0)
     hstore_translate (1.0.0)
       activerecord (>= 3.1.0)
     http-cookie (1.0.3)
@@ -387,7 +386,6 @@ DEPENDENCIES
   fabrication
   faker
   has_scope
-  high_voltage (~> 2.1.0)
   hstore_translate
   http_accept_language (~> 2.1.1)
   jquery-rails (>= 4.2.0)
