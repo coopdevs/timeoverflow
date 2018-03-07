@@ -12,7 +12,7 @@ gem 'pundit'
 gem 'pg', '0.17.1'
 gem 'hstore_translate'
 gem 'dalli'
-gem 'devise', '3.5.6'
+gem 'devise', '~> 4.4.1'
 gem "http_accept_language"
 gem 'unicorn'
 gem 'foreman'
