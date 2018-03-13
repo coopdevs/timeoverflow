@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get "global/switch_lang", as: :switch_lang
 
+  get "/pages/:page" => "pages#show", as: :page
+
   resources :offers do
     collection do
       get :dashboard

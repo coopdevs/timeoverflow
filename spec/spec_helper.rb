@@ -4,7 +4,6 @@ ENV["ADMINS"] = "superadmin@example.com"
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'capybara/rails'
 require 'database_cleaner'
 require 'fabrication'
@@ -55,7 +54,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include ControllerMacros, :type => :controller
 
   # Database cleaner configuration
