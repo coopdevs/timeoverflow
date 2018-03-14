@@ -92,6 +92,10 @@ html {
 
   span.input-group-addon {
     padding: 2rem 2rem 2rem 3rem;
+
+    @media (max-width: $screen-xs-min) {
+      display: none;
+    }
   }
 
   span.show-password {
@@ -307,7 +311,6 @@ table.users {
       max-width: 100%;
     }
   }
-
 }
 
 @media print {
@@ -628,6 +631,10 @@ form .checkbox input[type="checkbox"] {
     letter-spacing: 0.031rem;
     margin-bottom: 2rem;
     margin-top: 3rem;
+
+    @media (max-width: $screen-xs-min) {
+      display: none;
+    }
   }
 
   .material-icons {
