@@ -3,4 +3,5 @@ class DeviceToken < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :token, presence: true
+  validates :token, uniqueness: { scope: :user_id }
 end

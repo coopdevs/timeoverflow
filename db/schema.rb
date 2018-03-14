@@ -61,8 +61,7 @@ ActiveRecord::Schema.define(version: 20180221161343) do
     t.datetime "updated_at"
   end
 
-  add_index "device_tokens", ["user_id", "token"], name: "index_device_tokens_on_user_id_and_token", using: :btree
-  add_index "device_tokens", ["user_id"], name: "index_device_tokens_on_user_id", using: :btree
+  add_index "device_tokens", ["user_id", "token"], name: "index_device_tokens_on_user_id_and_token", unique: true, using: :btree
 
   create_table "documents", force: :cascade do |t|
     t.integer  "documentable_id"

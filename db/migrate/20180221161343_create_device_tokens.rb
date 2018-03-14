@@ -6,6 +6,6 @@ class CreateDeviceTokens < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :device_tokens, [:user_id, :token]
+    add_index :device_tokens, [:user_id, :token], unique: true
   end
 end
