@@ -23,7 +23,8 @@ development:
 
 test:
   <<: *defaults
-  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_test') %>
+  host: localhost
+  database: 'timeoverflow_test'
 
 staging:
   <<: *defaults
