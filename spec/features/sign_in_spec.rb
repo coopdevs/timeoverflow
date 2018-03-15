@@ -7,8 +7,11 @@ feature 'sign in' do
 
   context 'with a valid password' do
     it 'signs the user in' do
+      expect(Capybara.current_session.driver.browser.manage.cookie_named('_timeoverflow_session')).to be_falsy
+
       sign_in_with(user.email, 'papapa22')
-      expect(page).to have_content(I18n.t('application.navbar.sign_out'))
+
+      expect(Capybara.current_session.driver.browser.manage.cookie_named('_timeoverflow_session')).to be_truthy
     end
   end
 
