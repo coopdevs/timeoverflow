@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'time transfer', js: true do
+feature 'time transfer' do
   let(:user) do
     Fabricate(:user, email: 'user@timeoverflow.org', password: 'papapa22')
   end

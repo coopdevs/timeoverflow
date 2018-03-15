@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'sign out' do
+feature 'sign out' do
   let!(:user) do
     Fabricate(:user, email: 'user@timeoverflow.org', password: 'papapa22')
   end
