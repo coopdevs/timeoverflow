@@ -10,7 +10,7 @@ of it and is prepared to be able to accommodate several Time Banks in a single i
 for this account with three levels of privileges: superadmin, admin (only manages a bank)
 and members of a bank.
 
-![Users list](docs/usuarios.png) ![Offers list](docs/ofertas.png)
+![Users list](usuarios.png) ![Offers list](ofertas.png)
 
 TimeOverflow is divided into 2 large blocks:
 
@@ -39,10 +39,10 @@ of Time and also have the possibility to consult the extract of their account.
 
 **Join our collaborators team!**
 
-:point_right: Further information [here](docs/CONTRIBUTING.en.md).
+:point_right: Further information [here](CONTRIBUTING.en.md).
 
 # License
 
 > The Unlicense
 
-You can find the license file [here](UNLICENSE).
+You can find the license file [here](../UNLICENSE).
