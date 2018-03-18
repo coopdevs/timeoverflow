@@ -2,28 +2,30 @@ require 'spec_helper'
 
 feature 'time transfer' do
   let(:user) do
-    Fabricate(:user, email: 'user@timeoverflow.org', password: 'papapa22')
-  end
-  let(:other_user) do
-    Fabricate(:user, email: 'other_user@timeoverflow.org', password: 'papapa22')
-  end
-  let(:organization) { Fabricate(:organization) }
-
-  before do
-    # Create terms and conditions
-    Document.create(label: "t&c") do |doc|
-      doc.title = "Terms and Conditions"
-      doc.content = "blah blah blah"
-    end
+    user = Fabricate(
+      :user,
+      email: 'user@timeoverflow.org',
+      password: 'papapa22',
+      terms_accepted_at: 1.day.from_now
+    )
 
     user.add_to_organization(organization)
-    other_user.add_to_organization(organization)
+
+    user
   end
+
+  let(:other_user) do
+    other_user = Fabricate(:user, email: 'other_user@timeoverflow.org', password: 'papapa22')
+
+    other_user.add_to_organization(organization)
+    other_user
+  end
+
+  let(:organization) { Fabricate(:organization) }
 
   it 'transfers time from one account to another' do
     offer = Fabricate(:offer, user: other_user, organization: organization)
-
-    sign_in_with(user.email, 'papapa22')
+    sign_in_with(user.email, user.password)
     navigate_to_member
     navigate_to_transfer_for(offer)
     submit_transfer_form_with(hours: 2)
@@ -36,8 +38,6 @@ feature 'time transfer' do
       fill_in 'transfer_hours', with: hours
       fill_in 'transfer_minutes', with: minutes
 
-      # hack alert! there is no translation for this string. How we build the
-      # copy then?
       click_button 'Crear Transferencia'
     end
   end
