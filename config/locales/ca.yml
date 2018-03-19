@@ -65,7 +65,7 @@ ca:
         identity_document: DNI
         last_sign_in_at: Data darrera connexió
         notifications: Rebre notificacions
-        organization: 
+        organization: Organització
         phone: Telèfon
         registration_date: Data d'alta
         registration_number: Codi d'usuari
@@ -127,7 +127,7 @@ ca:
       sing_out: Desconnectar
     menus:
       offers_by_tag_link:
-        tags: 
+        tags: Etiquetes
     navbar:
       admin: Administrar
       administration: Administració
@@ -246,8 +246,8 @@ ca:
         remember_me: Recorda'm
         sign_in: Entrar
       user:
-        signed_in: 
-        signed_out: 
+        signed_in: Has iniciat sessió
+        signed_out: Has tancat la sessió
     shared:
       links:
         didnt_receive_confirmation_instructions: Tornar a enviar correu de confirmació
@@ -265,6 +265,9 @@ ca:
       send_paranoid_instructions: Si el teu compte existeix, rebràs un correu amb instruccions de com desbloquejar el teu compte en uns minuts.
       unlocked: El teu compte ha estat desbloquejat. Si us plau, entra per continuar.
   errors:
+    internal_server_error:
+      description: 'Ho sentim, sembla que hi ha un error en aquesta consulta. Una notificació s''ha enviat directament al equip tècnic, ho resoldrem tant aviat com sigui possible. '
+      title: Error intern de servidor
     messages:
       already_confirmed: ja has estat confirmat, prova a entrar-hi
       confirmation_period_expired: necessita confirmar-se en %{period}, si us plau, sol·licita-la de nou
@@ -274,6 +277,9 @@ ca:
       not_saved:
         one: 'un error impedeix que aquest %{resource} es desi:'
         other: 'hi ha %{count} errors que impedeixen que aquest %{resource} es desi:'
+    not_found:
+      description: La pàgina que cerques no existeix. Potser la adreça està equivocada o la pàgina s'ha mogut.
+      title: No s'ha trobat
   global:
     add_new: Crear nou
     all: Tot
@@ -289,6 +295,7 @@ ca:
     edit: Modificar
     filter: Filtre
     give_time: Transferir temps
+    home: Inici
     information: Informació
     locales_header: canviar llengua
     member_count: 'Nombre d''usuaris:'
@@ -306,7 +313,7 @@ ca:
       actions: Accions
   inquiries:
     edit:
-      submit: 
+      submit: Canviar demanda
     index:
       new_inquiry: Nova demanda
     new:
@@ -337,7 +344,7 @@ ca:
       text_donation_link: 1€ al mes
   offers:
     edit:
-      submit: 
+      submit: Canviar Oferta
     index:
       by_category: Per categoria
       by_tag: Per etiqueta
@@ -493,10 +500,13 @@ ca:
       give_time: Donar Temps a
     index:
       actions: Accions
-      active_warning: Vas a canviar l'estat del compte de l'usuari %{username}
-      cancel_warning: Vas a eliminar del banc a l'usuari %{username}
+      active_warning: Estàs a punt de canviar l'estat de l'usuari %{username}
+      active_warning_angular: Vas a canviar l'estat del compte de l'usuari {{username}}
+      cancel_warning: Estàs a punt d'esborrar el compte de l'usuari %{username}
+      cancel_warning_angular: Vas a eliminar del banc a l'usuari {{username}}
       create: Crear nou usuari
-      manage_warning: Vas a canviar els permisos de l'usuari %{username}
+      manage_warning: Estàs a punt de canviar els permisos de l'usuari %{username}
+      manage_warning_angular: Vas a canviar els permisos de l'usuari {{username}}
       user_created: Usuari %{uid} %{name} guardat
     new:
       cancel: Cancel·lar
