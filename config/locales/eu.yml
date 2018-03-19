@@ -524,6 +524,7 @@ eu:
       accounts: Kontuak
       balance: 'Balantzea:'
       categories: Eskainiriko zerbitzuak
+      change_your_image:
       created_at: 'Alta:'
       data: Erabiltzailearen datuak
       date: Eguna

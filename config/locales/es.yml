@@ -518,6 +518,7 @@ es:
       accounts: Cuentas
       balance: 'Balance:'
       categories: Servicios Ofrecidos
+      change_your_image: Cambia tu imagen
       created_at: 'Alta:'
       data: Datos del usuario
       date: Fecha
