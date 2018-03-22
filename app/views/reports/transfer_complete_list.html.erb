@@ -1,23 +1,68 @@
 <div class="row">
-  <table class="table table-condensed table-bordered">
-    <colgroup>
-      <col class="col-sm-9"></col>
-      <col class="col-sm-3"></col>
-    </colgroup>
-    <thead>
+  <table class="table table-condensed table-bordered table-striped">
+      <thead>
       <tr>
-        <th><%= t "global.date" %></th>
-        <th><%= t "global.source" %></th>
-        <th><%= t "global.destination" %></th>
-        <th><%= t "global.announcements" %></th>
-        <th><%= t "global.reason" %></th>
-        <th><%= t "global.amount" %></th>
+        <th><%= t '.date' %></th>
+        <th><%= t '.from' %></th>
+        <th><%= t 'from ID' %></th>
+        <th><%= t '.to' %></th>
+        <th><%= t 'to ID' %></th>
+        <th><%= t '.post' %></th>
+        <th><%= t 'post ID' %></th>
+        <th><%= t '.reason' %></th>
+        <th><%= t '.quantity' %></th>
       </tr>
     </thead>
-    <tbody>
-      <% @transfers.each do |transfer| %>
-        <%= render partial: 'shared/transfer_row', locals: { transfer: transfer } %>
-      <% end %>
-    </tbody>
+    <% @transfers.each do |transfer| %>
+      <tr>
+        <td>
+          <%= transfer.created_at %>
+        </td>
+        <% transfer.movements.sort_by(&:amount).each do |mv| %>
+          <td>
+            <% mv.account.tap do |account| %>
+              <% if account.accountable.present? %>
+                <% if account.accountable_type == 'Organization' %>
+                  <%= account.accountable %>
+                <% elsif account.accountable.active %>
+                  <%= account.accountable.display_name_with_uid %>
+                <% else %>
+                  <%= t '.inactive_user' %>
+                <% end %>
+              <% else %>
+                <%= t '.deleted_user' %>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <% mv.account.tap do |account| %>
+              <% if account.accountable.present? %>
+                <% if account.accountable_type == 'Organization' %>
+                  0
+                <% elsif account.accountable.active %>
+                  <%= account.accountable.display_id %>
+                <% else %>
+                  <%= t '.inactive_user' %>
+                <% end %>
+              <% else %>
+                <%= t '.deleted_user' %>
+              <% end %>
+            <% end %>
+          </td>
+        <% end %>
+        <td>
+          <%= transfer.post %>
+        </td>
+        <td>
+          <%= transfer.post_id %>
+        </td>
+        <td>
+          <%= transfer.reason %>
+        </td>
+        <td>
+          <%= (transfer.movements.first.amount/3600.0).abs.round(2) %>
+        </td>
+      </tr>
+    <% end %>
   </table>
 </div>
