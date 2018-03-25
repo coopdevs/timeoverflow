@@ -65,7 +65,23 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+
+  puts "Randomized with seed #{config.seed}."
+
+  config.register_ordering(:global) do |items|
+    items_by_type = items.group_by { |item| item.metadata[:type] === :feature ? :feature : :rest }
+
+    feature_specs = items_by_type[:feature] || []
+    rest_of_specs = items_by_type[:rest] || []
+
+
+    random = Random.new(config.seed)
+
+    [
+      *rest_of_specs.shuffle(random: random),
+      *feature_specs.shuffle(random: random)
+    ]
+  end
 
   config.include Devise::TestHelpers, type: :controller
   config.include ControllerMacros, type: :controller
