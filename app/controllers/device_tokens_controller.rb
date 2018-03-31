@@ -1,4 +1,4 @@
-class DeviceTokensController < PostsController
+class DeviceTokensController < ApplicationController
   before_filter :authenticate_user!
 
   def create
