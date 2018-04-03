@@ -654,7 +654,7 @@ form .checkbox input[type="checkbox"] {
   }
 
   form .checkbox input[type="checkbox"]:checked {
-    background-image: url(checked.png);
+    background-image: image-url('checked.png');
     background-size: 100%;
   }
 
