@@ -518,6 +518,7 @@ ca:
       accounts: Comptes
       balance: 'Balanç:'
       categories: Serveis Ofertats
+      change_your_image: Canvia la teva imatge
       created_at: 'Alta:'
       data: Dades de l'usuari
       date: Data
