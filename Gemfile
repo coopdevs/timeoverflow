@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby File.read('.ruby-version').strip
 
 gem 'rails', '~> 4.2'
 gem 'rails-i18n'
