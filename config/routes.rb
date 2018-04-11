@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :inquiries
+  resources :device_tokens, only: :create
 
   concern :accountable do
     get :give_time, on: :member

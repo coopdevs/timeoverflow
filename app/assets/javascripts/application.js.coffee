@@ -2,6 +2,7 @@
 #= require datepicker
 #= require give_time
 #= require tags
+#= require mobile_app_libs
 
 $(document).on 'click', 'a[data-popup]', (event) ->
   window.open($(this).attr('href'), 'popup', 'width=600,height=600')

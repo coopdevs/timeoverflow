@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :offers
   has_many :inquiries
+  has_many :device_tokens
 
   accepts_nested_attributes_for :members
 
