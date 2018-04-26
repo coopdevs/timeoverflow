@@ -1,6 +1,6 @@
 module Report
   module PDF
-    class PostComplete
+    class TransferComplete
       def initialize(org, collection)
         @collection = collection
         @decorator = TransferCompleteReportDecorator.new(org, @collection)

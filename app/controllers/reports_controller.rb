@@ -93,11 +93,11 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        report = Report::CSV::TransfersComplete.new(current_organization, @transfers)
+        report = Report::CSV::TransferComplete.new(current_organization, @transfers)
         send_data report.run, filename: report.name, type: report.mime_type
       end
       format.pdf do
-        report = Report::PDF::TransfersComplete.new(current_organization, @transfers)
+        report = Report::PDF::TransferComplete.new(current_organization, @transfers)
         send_data report.run, filename: report.name, type: report.mime_type
       end
     end
