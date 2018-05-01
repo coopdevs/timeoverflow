@@ -41,7 +41,10 @@ class PostsController <  ApplicationController
   def create
     post = model.new(post_params)
     post.organization = current_organization
-    if post.save
+
+    persister = ::Persister::PostPersister.new(post)
+
+    if persister.save
       redirect_to send("#{resource}_path", post)
     else
       instance_variable_set("@#{resource}", post)
@@ -68,7 +71,10 @@ class PostsController <  ApplicationController
     post = current_organization.posts.find params[:id]
     authorize post
     instance_variable_set("@#{resource}", post)
-    if post.update_attributes(post_params)
+
+    persister = ::Persister::PostPersister.new(post)
+
+    if persister.update_attributes(post_params)
       redirect_to post
     else
       render action: :edit, status: :unprocessable_entity
