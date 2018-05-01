@@ -2,14 +2,18 @@ class TransfersController < ApplicationController
   def create
     @source = find_source
     @account = Account.find(transfer_params[:destination])
+
     transfer = Transfer.new(
       transfer_params.merge(source: @source, destination: @account)
     )
 
-    transfer.save!
-    redirect_to redirect_target
-  rescue ActiveRecord::RecordInvalid
-    flash[:error] = transfer.errors.full_messages.to_sentence
+    persister = ::Persister::TransferPersister.new(transfer)
+
+    if persister.save
+      redirect_to redirect_target
+    else
+      flash[:error] = transfer.errors.full_messages.to_sentence
+    end
   end
 
   def new
