@@ -61,10 +61,18 @@ class User < ActiveRecord::Base
   end
 
   def add_to_organization(organization)
-    organization && members.
-      find_or_create_by(organization: organization) do |member|
-      member.entry_date = DateTime.now.utc
-    end
+    return unless organization
+
+    member = members.where(organization: organization).first_or_initialize
+
+    return member if member.persisted?
+
+    member.entry_date = DateTime.now.utc
+
+    persister = ::Persister::MemberPersister.new(member)
+    persister.save
+
+    return member if member.persisted?
   end
 
   def active?(organization)
