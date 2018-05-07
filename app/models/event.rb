@@ -5,12 +5,12 @@ class Event < ActiveRecord::Base
   belongs_to :member
   belongs_to :transfer
 
-  validates :action, inclusion: { :in => ACTIONS }, presence: true
+  validates :action, inclusion: { in: ACTIONS }, presence: true
   validate :resource_presence
 
   private
 
-  # Validates that only one resourece id is set
+  # Validates that only one resource id is set
   #
   def resource_presence
     return if post_id.present? ^ member_id.present? ^ transfer_id.present?
