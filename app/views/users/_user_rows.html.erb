@@ -1,38 +1,26 @@
 <% users.each do |user| %>
   <% membership = memberships[user.id] %>
 
-  <%= content_tag(:tr, class: membership.active? ? "" : "bg-danger") do %>
+  <%= content_tag(:tr, class: membership.row_css_class) do %>
+    <td> <%= membership.avatar %> </td>
+    <td> <%= membership.member_uid %> </td>
     <td>
-      <%= image_tag avatar_url(user, 32), width: 32, height: 32 %>
+      <%= membership.inactive_icon %>
+      <%= membership.link_to_self %>
     </td>
-    <td><%= membership.member_uid %></td>
-    <td>
-      <% if !membership.active? %><span class="glyphicon glyphicon-time"></span><% end %>
-      <%= link_to user.username, user_path(user) %>
-    </td>
-    <td>
-      <% if user.unconfirmed_email %>
-        <a href="mailto:<%= user.unconfirmed_email %>">
-          <%= user.unconfirmed_email %>
-        </a>
-      <% else %>
-        <a href="mailto:<%= user.email %>">
-          <%= user.email %>
-        </a>
-      <% end %>
-    </td>
-    <td> <%= user.phone %> </td>
-    <td> <%= user.alt_phone %> </td>
-    <td> <%= seconds_to_hm(membership.account.try(:balance) || mdash) %> </td>
+    <td> <%= membership.mail_to %> </td>
+    <td> <%= membership.phone %> </td>
+    <td> <%= membership.alt_phone %> </td>
+    <td> <%= membership.account_balance %> </td>
     <% if current_user.manages?(current_organization) %>
       <td class="hover-actions">
-        <%= link_to edit_user_path(user), class: "action" do %>
+        <%= link_to membership.edit_user_path, class: "action" do %>
           <%= glyph :pencil %>
           <%= t "global.edit" %>
         <% end %>
 
         <% if membership.active? %>
-          <%= link_to toggle_manager_member_path(membership), class: "action", method: :put, data: { confirm: t('users.index.manage_warning', username: user.username) } do %>
+          <%= link_to membership.toggle_manager_member_path, class: "action", method: :put, data: { confirm: t('users.index.manage_warning', username: membership.username) } do %>
             <% if !!membership.manager %>
               <%= glyph :arrow_down %>
               <%= t "global.demote" %>
@@ -42,13 +30,13 @@
             <% end %>
           <% end %>
         <% else %>
-          <%= link_to cancel_member_path(membership), class: "action", data: { confirm: t('.cancel_warning', user: user.username) }, method: :delete do %>
+          <%= link_to membership.cancel_member_path, class: "action", data: { confirm: t('.cancel_warning', user: membership.username) }, method: :delete do %>
             <%= glyph :ban_circle %>
             <%= t("global.cancel_membership") %>
           <% end %>
         <% end %>
 
-        <%= link_to toggle_active_member_path(membership), class: "action", method: :put, data: { confirm: t('users.index.active_warning', username: user.username) } do %>
+        <%= link_to membership.toggle_active_member_path, class: "action", method: :put, data: { confirm: t('users.index.active_warning', username: membership.username) } do %>
           <% if membership.active? %>
             <%= glyph :remove %>
             <%= t ".deactivate" %>
