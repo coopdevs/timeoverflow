@@ -15,9 +15,10 @@ class UsersController < ApplicationController
 
     @memberships = current_organization.members.
       where(user_id: @users.map(&:id)).
-      includes(:account).each_with_object({}) do |mem, ob|
-        ob[mem.user_id] = mem
-      end
+      includes(:account, :user).
+      to_a.
+      sort_by { |m| @users.index(m.user) }.
+      map { |m| MemberDecorator.new(m, view_context) }
   end
 
   def show

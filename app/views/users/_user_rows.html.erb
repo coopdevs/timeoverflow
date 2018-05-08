@@ -1,27 +1,25 @@
-<% users.each do |user| %>
-  <% membership = memberships[user.id] %>
-
-  <%= content_tag(:tr, class: membership.row_css_class) do %>
-    <td> <%= membership.avatar %> </td>
-    <td> <%= membership.member_uid %> </td>
+<% members.each do |member| %>
+  <%= content_tag(:tr, class: member.row_css_class) do %>
+    <td> <%= member.avatar %> </td>
+    <td> <%= member.member_uid %> </td>
     <td>
-      <%= membership.inactive_icon %>
-      <%= membership.link_to_self %>
+      <%= member.inactive_icon %>
+      <%= member.link_to_self %>
     </td>
-    <td> <%= membership.mail_to %> </td>
-    <td> <%= membership.phone %> </td>
-    <td> <%= membership.alt_phone %> </td>
-    <td> <%= membership.account_balance %> </td>
+    <td> <%= member.mail_to %> </td>
+    <td> <%= member.phone %> </td>
+    <td> <%= member.alt_phone %> </td>
+    <td> <%= member.account_balance %> </td>
     <% if current_user.manages?(current_organization) %>
       <td class="hover-actions">
-        <%= link_to membership.edit_user_path, class: "action" do %>
+        <%= link_to member.edit_user_path, class: "action" do %>
           <%= glyph :pencil %>
           <%= t "global.edit" %>
         <% end %>
 
-        <% if membership.active? %>
-          <%= link_to membership.toggle_manager_member_path, class: "action", method: :put, data: { confirm: t('users.index.manage_warning', username: membership.username) } do %>
-            <% if !!membership.manager %>
+        <% if member.active? %>
+          <%= link_to member.toggle_manager_member_path, class: "action", method: :put, data: { confirm: t('users.index.manage_warning', username: member.username) } do %>
+            <% if !!member.manager %>
               <%= glyph :arrow_down %>
               <%= t "global.demote" %>
             <% else %>
@@ -30,14 +28,14 @@
             <% end %>
           <% end %>
         <% else %>
-          <%= link_to membership.cancel_member_path, class: "action", data: { confirm: t('.cancel_warning', user: membership.username) }, method: :delete do %>
+          <%= link_to member.cancel_member_path, class: "action", data: { confirm: t('.cancel_warning', user: member.username) }, method: :delete do %>
             <%= glyph :ban_circle %>
-            <%= t("global.cancel_membership") %>
+            <%= t("global.cancel_member") %>
           <% end %>
         <% end %>
 
-        <%= link_to membership.toggle_active_member_path, class: "action", method: :put, data: { confirm: t('users.index.active_warning', username: membership.username) } do %>
-          <% if membership.active? %>
+        <%= link_to member.toggle_active_member_path, class: "action", method: :put, data: { confirm: t('users.index.active_warning', username: member.username) } do %>
+          <% if member.active? %>
             <%= glyph :remove %>
             <%= t ".deactivate" %>
           <% else %>

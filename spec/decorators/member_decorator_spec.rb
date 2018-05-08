@@ -8,10 +8,28 @@ describe MemberDecorator do
 
   describe '#row_css_class' do
     subject { decorator.row_css_class }
+
+    context 'active member' do
+      it { is_expected.to be_nil }
+    end
+
+    context 'inactive member' do
+      before { member.update_attributes(active: false) }
+      it { is_expected.to eq('bg-danger') }
+    end
   end
 
   describe '#inactive_icon' do
     subject { decorator.inactive_icon }
+
+    context 'active member' do
+      it { is_expected.to be_nil }
+    end
+
+    context 'inactive member' do
+      before { member.update_attributes(active: false) }
+      it { is_expected.to match('icon') }
+    end
   end
 
   describe '#link_to_self' do
