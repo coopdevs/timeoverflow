@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       .page(params[:page])
       .per(25)
 
-    @memberships = current_organization.members.
+    @members = current_organization.members.
       where(user_id: @users.map(&:id)).
       includes(:account, :user).
       to_a.
