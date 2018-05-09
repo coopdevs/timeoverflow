@@ -13,12 +13,25 @@ class UsersController < ApplicationController
       .page(params[:page])
       .per(25)
 
-    @members = current_organization.members.
-      where(user_id: @users.map(&:id)).
+    user_ids = @users.pluck(:id)
+
+    @members = current_organization.
+      members.
+      where(user_id: user_ids).
       includes(:account, :user).
-      to_a.
-      sort_by { |m| @users.index(m.user) }.
-      map { |m| MemberDecorator.new(m, view_context) }
+      each_with_object({}) { |mem, ob| ob[mem.user_id] = mem }.
+      values_at(*user_ids).
+      map { |m| MemberDecorator.new(m, self.class.helpers) }
+
+    # TODO: mutate theparameters so they can be used directly on the
+    # members table.
+    #
+    # @members = current_organization.members.
+    #   joins(:account, :user).
+    #   merge(@search.result(distinct: false)).
+    #   page(params[:page]).
+    #   per(25).
+    #   map { |m| MemberDecorator.new(m, self.class.helpers) }
   end
 
   def show

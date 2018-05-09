@@ -3,7 +3,7 @@ require "spec_helper"
 describe MemberDecorator do
   let(:org) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: org) }
-  let(:view_context) { ApplicationController.new.view_context.tap { |ctx| ctx.singleton_class.include Rails.application.routes.url_helpers } }
+  let(:view_context) { ApplicationController.new.view_context }
   let(:decorator) { MemberDecorator.new(member, view_context) }
 
   describe '#row_css_class' do

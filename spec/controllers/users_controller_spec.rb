@@ -67,7 +67,9 @@ describe UsersController do
       it 'gets her membership in the current organization' do
         get :index
 
-        expect(assigns(:members)).to eq([
+        assigns(:members).each { |m| expect(m).to be_a(MemberDecorator) }
+
+        expect(assigns(:members).map(&:member)).to eq([
           member,
           another_member,
           member_admin,
