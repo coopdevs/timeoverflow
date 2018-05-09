@@ -96,16 +96,16 @@ describe MemberDecorator do
 
   describe '#toggle_manager_member_path' do
     subject { decorator.toggle_manager_member_path }
-    it { is_expected.to include("members/#{member.user.id}/toggle_manager")}
+    it { is_expected.to include("members/#{member.id}/toggle_manager")}
   end
 
   describe '#cancel_member_path' do
     subject { decorator.cancel_member_path }
-    it { is_expected.to include("members/#{member.user.id}")}
+    it { is_expected.to include("members/#{member.id}")}
   end
 
   describe '#toggle_active_member_path' do
     subject { decorator.toggle_active_member_path }
-    it { is_expected.to include("members/#{member.user.id}/toggle_active")}
+    it { is_expected.to include("members/#{member.id}/toggle_active")}
   end
 end
