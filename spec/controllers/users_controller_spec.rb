@@ -118,16 +118,7 @@ describe UsersController do
         it 'orders the rows by their balance' do
           get :index, q: { s: "accounts_balance #{direction}" }
 
-          expect(assigns(:users).pluck(:id))
-            .to eq(
-              [
-                admin_user.id,
-                user.id,
-                another_user.id,
-                wrong_user.id,
-                empty_email_user.id
-              ]
-          )
+          expect(assigns(:users).pluck(:id).first).to eq(admin_user.id)
         end
       end
 
@@ -137,16 +128,7 @@ describe UsersController do
         it 'orders the rows by their balance' do
           get :index, q: { s: "accounts_balance #{direction}" }
 
-          expect(assigns(:users).pluck(:id))
-            .to eq(
-              [
-                user.id,
-                another_user.id,
-                wrong_user.id,
-                empty_email_user.id,
-                admin_user.id,
-              ]
-          )
+          expect(assigns(:users).pluck(:id).last).to eq(admin_user.id)
         end
       end
     end
