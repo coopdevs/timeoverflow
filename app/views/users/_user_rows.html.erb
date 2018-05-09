@@ -1,6 +1,6 @@
 <% members.each do |member| %>
   <%= content_tag(:tr, class: member.row_css_class) do %>
-    <td> <%= member.avatar %> </td>
+    <td> <%= member.avatar_img %> </td>
     <td> <%= member.member_uid %> </td>
     <td>
       <%= member.inactive_icon %>
@@ -18,31 +18,12 @@
         <% end %>
 
         <% if member.active? %>
-          <%= link_to member.toggle_manager_member_path, class: "action", method: :put, data: { confirm: t('users.index.manage_warning', username: member.username) } do %>
-            <% if !!member.manager %>
-              <%= glyph :arrow_down %>
-              <%= t "global.demote" %>
-            <% else %>
-              <%= glyph :arrow_up %>
-              <%= t "global.promote" %>
-            <% end %>
-          <% end %>
+          <%= render 'toggle_manager_link', member: member if can_toggle_manager?(member) %>
         <% else %>
-          <%= link_to member.cancel_member_path, class: "action", data: { confirm: t('.cancel_warning', user: member.username) }, method: :delete do %>
-            <%= glyph :ban_circle %>
-            <%= t("global.cancel_member") %>
-          <% end %>
+          <%= render 'cancel_membership_link', member: member if can_cancel_member?(member) %>
         <% end %>
 
-        <%= link_to member.toggle_active_member_path, class: "action", method: :put, data: { confirm: t('users.index.active_warning', username: member.username) } do %>
-          <% if member.active? %>
-            <%= glyph :remove %>
-            <%= t ".deactivate" %>
-          <% else %>
-            <%= glyph :ok %>
-            <%= t ".activate" %>
-          <% end %>
-        <% end %>
+        <%= render 'toggle_active_link', member: member if can_toggle_active?(member) %>
       </td>
     <% end %>
   <% end %>

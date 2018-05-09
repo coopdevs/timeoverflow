@@ -67,13 +67,13 @@ describe UsersController do
       it 'gets her membership in the current organization' do
         get :index
 
-        expect(assigns(:memberships)).to eq({
-          member.user_id => member,
-          another_member.user_id => another_member,
-          member_admin.user_id => member_admin,
-          wrong_email_member.user_id => wrong_email_member,
-          empty_email_member.user_id => empty_email_member
-        })
+        expect(assigns(:members)).to eq([
+          member,
+          another_member,
+          member_admin,
+          wrong_email_member,
+          empty_email_member
+        ])
       end
 
       it 'shows data for her membership in the current organization' do

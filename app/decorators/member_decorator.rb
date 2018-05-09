@@ -11,6 +11,10 @@ class MemberDecorator
   delegate :user, :member_uid, :active?, to: :member
   delegate :phone, :alt_phone, :username, to: :user
 
+  def manager?
+    !!member.manager
+  end
+
   def row_css_class
     'bg-danger' unless active?
   end
@@ -20,7 +24,7 @@ class MemberDecorator
   end
 
   def link_to_self
-    v.link_to(user.username, v.user_path(user))
+    v.link_to(user.username, h.user_path(user))
   end
 
   def mail_to
@@ -33,22 +37,28 @@ class MemberDecorator
   end
 
   def account_balance
-    v.seconds_to_hm(membership.account.try(:balance) || 0)
+    v.seconds_to_hm(member.account.try(:balance) || 0)
   end
 
   def edit_user_path
-    v.edit_user_path(user)
+    h.edit_user_path(user)
   end
 
   def toggle_manager_member_path
-    v.toggle_manager_member_path(member)
+    h.toggle_manager_member_path(member)
   end
 
   def cancel_member_path
-    v.cancel_member_path(member)
+    h.member_path(member)
   end
 
   def toggle_active_member_path
-    v.toggle_active_member_path(member)
+    h.toggle_active_member_path(member)
+  end
+
+  private
+
+  def h
+    Rails.application.routes.url_helpers
   end
 end
