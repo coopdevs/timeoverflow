@@ -32,5 +32,8 @@ module Timeoverflow
     # Activate the Skylight agent in staging. You need to provision the
     # SKYLIGHT_AUTHENTICATION env var for this to work.
     config.skylight.environments += ["staging"]
+
+    # ActiveJob configuration
+    config.active_job.queue_adapter = :sidekiq
   end
 end
