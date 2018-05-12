@@ -148,6 +148,17 @@ describe UsersController do
         end
       end
     end
+
+    context 'when searching' do
+      it 'allows to search by member_uid' do
+        user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
+        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
+
+        get :index, q: { username_or_email_or_members_member_uid_contains: 1000 }
+
+        expect(assigns(:memberships).values).to include(member)
+      end
+    end
   end
 
   describe "GET #show" do
