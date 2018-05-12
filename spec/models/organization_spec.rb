@@ -17,35 +17,43 @@ describe Organization do
     end
   end
 
-  it "1:  without http & https" do
-    organization.web = "www.casa.com"
-    expect(organization).to be_valid
-    expect(organization.web).to eq "http://www.casa.com"
+  describe 'ensure_url validation' do
+    it "without http & https" do
+      organization.web = "www.casa.com"
+      expect(organization).to be_valid
+      expect(organization.web).to eq "http://www.casa.com"
+    end
+    it "with http" do
+      organization.web = "http://www.casa.com"
+      expect(organization).to be_valid
+      expect(organization.web).to eq "http://www.casa.com"
+    end
+    it "with https" do
+      organization.web = "https://www.casa.com"
+      expect(organization).to be_valid
+      expect(organization.web).to eq "https://www.casa.com"
+    end
+    it "with blank value" do
+      organization.web = ""
+      expect(organization).to be_valid
+      expect(organization.web).to eq ""
+    end
+    it "with nil value" do
+      organization.web = nil
+      expect(organization).to be_valid
+      expect(organization.web).to eq nil
+    end
+    it "with an invalid" do
+      organization.web = "la casa"
+      expect(organization).not_to be_valid
+      expect(organization.web).to eq "la casa"
+      expect(organization.errors.size).to eq 1
+    end
   end
-  it "2: with http" do
-    organization.web = "http://www.casa.com"
-    expect(organization).to be_valid
-    expect(organization.web).to eq "http://www.casa.com"
-  end
-  it "3: with https" do
-    organization.web = "https://www.casa.com"
-    expect(organization).to be_valid
-    expect(organization.web).to eq "https://www.casa.com"
-  end
-  it "4: blank" do
-    organization.web = ""
-    expect(organization).to be_valid
-    expect(organization.web).to eq ""
-  end
-  it "5: nil" do
-    organization.web = ""
-    expect(organization).to be_valid
-    expect(organization.web).to eq ""
-  end
-  it "6: no url" do
-    organization.web = "la casa"
-    expect(organization).not_to be_valid
-    expect(organization.web).to eq "la casa"
-    expect(organization.errors.size).to eq 1
+
+  it 'name is mandatory' do
+    organization.name = nil
+    organization.save
+    expect(organization.errors[:name]).to include(I18n.t('errors.messages.blank'))
   end
 end

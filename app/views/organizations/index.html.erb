@@ -2,7 +2,7 @@
   <%= Organization.model_name.human(count: :many) %>
 </h1>
 
-<ul class="nav nav-pills">
+<ul class="nav navbar-nav pull-right">
   <% if superadmin? %>
     <li>
       <%= link_to new_organization_path do %>
