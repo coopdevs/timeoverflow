@@ -117,7 +117,6 @@ GEM
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
-    dry-initializer (2.4.0)
     elasticsearch (1.0.8)
       elasticsearch-api (= 1.0.7)
       elasticsearch-transport (= 1.0.7)
@@ -382,7 +381,6 @@ DEPENDENCIES
   database_cleaner (= 1.3.0)
   devise (~> 4.4.1)
   dotenv-rails (= 1.0.2)
-  dry-initializer
   elasticsearch-model
   elasticsearch-rails
   fabrication

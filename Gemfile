@@ -6,7 +6,6 @@ gem 'rails', '~> 4.2'
 gem 'rails-i18n'
 gem "rdiscount"
 gem 'activeadmin', '~> 1.2.1'
-gem 'dry-initializer'
 gem 'has_scope'
 gem 'pundit'
 gem 'pg', '0.17.1'
