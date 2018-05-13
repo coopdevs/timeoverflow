@@ -500,8 +500,7 @@ eu:
     edit:
       edit_user: Erabiltzailea aldatu
     form:
-      admin_warning: Kontuz!!! Erabiltzaile honi boterea ematen ari zara.
-      superadmin_warning: Kontuz!!! Erabiltzaile honi izugarrizko boterea ematen ari zara.
+      notifications: Jakinarazpen
     give_time:
       give_time: honi denbora eman
     index:

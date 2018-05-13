@@ -64,7 +64,8 @@ es:
         gender: Género
         identity_document: DNI
         last_sign_in_at: Fecha último login
-        notifications: Recibir notificaciones
+        notifications: Recibir notificaciones por email
+        push_notifications: Recibir notificaciones en el móbil
         organization: Organización
         phone: Teléfono
         registration_date: Fecha de alta
@@ -494,8 +495,7 @@ es:
     edit:
       edit_user: Cambiar usuario
     form:
-      admin_warning: Atención!!! Estás dando poderes a este usuario!!
-      superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
+      notifications: Notificaciones
     give_time:
       give_time: Dar Tiempo a
     index:
