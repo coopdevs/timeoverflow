@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_filter :load_resource, except: [:new, :index, :create]
+  before_filter :load_resource, only: [:show, :edit, :update, :destroy]
 
   def new
     @organization = Organization.new

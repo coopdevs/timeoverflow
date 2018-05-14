@@ -23,26 +23,31 @@ describe Organization do
       expect(organization).to be_valid
       expect(organization.web).to eq "http://www.casa.com"
     end
+
     it "with http" do
       organization.web = "http://www.casa.com"
       expect(organization).to be_valid
       expect(organization.web).to eq "http://www.casa.com"
     end
+
     it "with https" do
       organization.web = "https://www.casa.com"
       expect(organization).to be_valid
       expect(organization.web).to eq "https://www.casa.com"
     end
+
     it "with blank value" do
       organization.web = ""
       expect(organization).to be_valid
       expect(organization.web).to eq ""
     end
+
     it "with nil value" do
       organization.web = nil
       expect(organization).to be_valid
       expect(organization.web).to eq nil
     end
+
     it "with an invalid" do
       organization.web = "la casa"
       expect(organization).not_to be_valid
