@@ -6,11 +6,14 @@ module ApplicationHelper
   # from gravatar
   def avatar_url(user, size = 32)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
-    gravatar_options = Hash[set: "set1",
-                            gravatar: "hashed",
-                            size: "#{size}x#{size}"]
-    "https://www.gravatar.com/avatar/#{gravatar_id}.png?" +
-      "#{Rack::Utils.build_query(gravatar_options)}&d=identicon"
+    gravatar_options = {
+      set: "set1",
+      gravatar: "hashed",
+      size: "#{size}x#{size}",
+      d: "identicon"
+    }
+
+    "https://www.gravatar.com/avatar/#{gravatar_id}.png?#{gravatar_options.to_param}"
   end
 
   def mdash
