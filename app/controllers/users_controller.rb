@@ -2,36 +2,16 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @search = User.ransack(params[:q])
-    @search.sorts = 'members_member_uid asc' if @search.sorts.empty?
+    default_sort
 
-    @users = @search
-      .result(distinct: false)
-      .joins(members: :account)
-      .eager_load(members: :account)
-      .where(members: { organization: current_organization.id })
-      .page(params[:page])
-      .per(25)
+    @search =
+      current_organization.members.joins(:account, :user).ransack(params[:q])
 
-    user_ids = @users.pluck(:id)
+    @members =
+      @search.result.page(params[:page]).per(25)
 
-    @members = current_organization.
-      members.
-      where(user_id: user_ids).
-      includes(:account, :user).
-      each_with_object({}) { |mem, ob| ob[mem.user_id] = mem }.
-      values_at(*user_ids).
-      map { |m| MemberDecorator.new(m, self.class.helpers) }
-
-    # TODO: mutate theparameters so they can be used directly on the
-    # members table.
-    #
-    # @members = current_organization.members.
-    #   joins(:account, :user).
-    #   merge(@search.result(distinct: false)).
-    #   page(params[:page]).
-    #   per(25).
-    #   map { |m| MemberDecorator.new(m, self.class.helpers) }
+    @member_view_models =
+      @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
   end
 
   def show
@@ -82,6 +62,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def default_sort
+    params[:q] ||= {}
+    params[:q][:s] ||= 'member_uid asc'
+  end
 
   def scoped_users
     current_organization.users
