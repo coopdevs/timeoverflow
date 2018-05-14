@@ -2,13 +2,10 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    default_sort
-
-    @search =
-      current_organization.members.joins(:account, :user).ransack(params[:q])
+    @search = current_organization.members.ransack(search_params)
 
     @members =
-      @search.result.page(params[:page]).per(25)
+      @search.result.eager_load(:account, :user).page(params[:page]).per(25)
 
     @member_view_models =
       @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
@@ -63,9 +60,8 @@ class UsersController < ApplicationController
 
   private
 
-  def default_sort
-    params[:q] ||= {}
-    params[:q][:s] ||= 'member_uid asc'
+  def search_params
+    {s: 'member_uid asc'}.merge(params.fetch(:q, {}))
   end
 
   def scoped_users
