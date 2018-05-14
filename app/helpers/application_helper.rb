@@ -3,11 +3,6 @@ module ApplicationHelper
   TEXT_SUCCESS = 'text-success'.freeze
   TEXT_DANGER = 'text-danger'.freeze
 
-  # Ransacks to Members should go to users controller :)
-  def members_path(*args, &block)
-    users_path(*args, &block)
-  end
-
   # from gravatar
   def avatar_url(user, size = 32)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
