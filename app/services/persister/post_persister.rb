@@ -23,7 +23,7 @@ module Persister
     private
 
     def create_save_event!
-      ::Event.create! action: :create, post: post
+      ::Event.create! action: :created, post: post
     end
   end
 end
