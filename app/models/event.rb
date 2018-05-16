@@ -1,11 +1,11 @@
 class Event < ActiveRecord::Base
-  ACTIONS = ['create', 'update'].freeze
+  enum action: { created: 0, updated: 1 }
 
   belongs_to :post
   belongs_to :member
   belongs_to :transfer
 
-  validates :action, inclusion: { in: ACTIONS }, presence: true
+  validates :action, presence: true
   validate :resource_presence
 
   private

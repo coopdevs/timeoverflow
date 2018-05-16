@@ -9,16 +9,15 @@
 class CreateEvents < ActiveRecord::Migration
   def up
     execute <<-SQL
-      CREATE TYPE action_enum AS ENUM ('create', 'update');
-
       CREATE TABLE events (
         id          serial PRIMARY KEY,
-        action      action_enum NOT NULL,
+        action      integer NOT NULL,
         post_id     integer REFERENCES posts,
         member_id   integer REFERENCES members,
         transfer_id integer REFERENCES transfers,
         created_at  timestamp without time zone,
         updated_at  timestamp without time zone,
+        CHECK(action IN (0, 1)),
         CHECK(
           (
             (post_id IS NOT NULL)::integer +

@@ -76,8 +76,18 @@ ActiveRecord::Schema.define(version: 20180501093846) do
   add_index "documents", ["documentable_id", "documentable_type"], name: "index_documents_on_documentable_id_and_documentable_type", using: :btree
   add_index "documents", ["label"], name: "index_documents_on_label", using: :btree
 
-# Could not dump table "events" because of following StandardError
-#   Unknown type 'action_enum' for column 'action'
+  create_table "events", force: :cascade do |t|
+    t.integer  "action",      null: false
+    t.integer  "post_id"
+    t.integer  "member_id"
+    t.integer  "transfer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["member_id"], name: "events_member_id_idx", unique: true, where: "(member_id IS NOT NULL)", using: :btree
+  add_index "events", ["post_id"], name: "events_post_id_idx", unique: true, where: "(post_id IS NOT NULL)", using: :btree
+  add_index "events", ["transfer_id"], name: "events_transfer_id_idx", unique: true, where: "(transfer_id IS NOT NULL)", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id"
