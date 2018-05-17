@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(version: 20180501093846) do
     t.datetime "updated_at"
   end
 
-  add_index "events", ["member_id"], name: "events_member_id_idx", unique: true, where: "(member_id IS NOT NULL)", using: :btree
-  add_index "events", ["post_id"], name: "events_post_id_idx", unique: true, where: "(post_id IS NOT NULL)", using: :btree
-  add_index "events", ["transfer_id"], name: "events_transfer_id_idx", unique: true, where: "(transfer_id IS NOT NULL)", using: :btree
+  add_index "events", ["member_id"], name: "index_events_on_member_id", unique: true, where: "(member_id IS NOT NULL)", using: :btree
+  add_index "events", ["post_id"], name: "index_events_on_post_id", unique: true, where: "(post_id IS NOT NULL)", using: :btree
+  add_index "events", ["transfer_id"], name: "index_events_on_transfer_id", unique: true, where: "(transfer_id IS NOT NULL)", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id"

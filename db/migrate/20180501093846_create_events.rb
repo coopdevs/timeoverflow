@@ -8,28 +8,32 @@
 #
 class CreateEvents < ActiveRecord::Migration
   def up
+    create_table :events do |t|
+      t.integer :action, null:false
+      t.integer :post_id
+      t.integer :member_id
+      t.integer :transfer_id
+      t.timestamps
+    end
+
+    add_foreign_key :events, :posts, name: 'events_post_id_fkey'
+    add_foreign_key :events, :members, name: 'events_member_id_fkey'
+    add_foreign_key :events, :transfers, name: 'events_transfer_id_fkey'
+
+    add_index :events, :post_id, unique: true, where: 'post_id IS NOT NULL'
+    add_index :events, :member_id, unique: true, where: 'member_id IS NOT NULL'
+    add_index :events, :transfer_id, unique: true, where: 'transfer_id IS NOT NULL'
+
     execute <<-SQL
-      CREATE TABLE events (
-        id          serial PRIMARY KEY,
-        action      integer NOT NULL,
-        post_id     integer REFERENCES posts,
-        member_id   integer REFERENCES members,
-        transfer_id integer REFERENCES transfers,
-        created_at  timestamp without time zone,
-        updated_at  timestamp without time zone,
-        CHECK(action IN (0, 1)),
-        CHECK(
+      ALTER TABLE events
+        ADD CHECK(action IN (0, 1)),
+        ADD CHECK(
           (
             (post_id IS NOT NULL)::integer +
             (member_id IS NOT NULL)::integer +
             (transfer_id IS NOT NULL)::integer
           ) = 1
-        )
-      );
-
-      CREATE UNIQUE INDEX ON events (post_id) WHERE post_id IS NOT NULL;
-      CREATE UNIQUE INDEX ON events (member_id) WHERE member_id IS NOT NULL;
-      CREATE UNIQUE INDEX ON events (transfer_id) WHERE transfer_id IS NOT NULL;
+        );
     SQL
   end
 
