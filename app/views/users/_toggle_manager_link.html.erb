@@ -1,0 +1,12 @@
+<%= link_to member.toggle_manager_member_path,
+            class: 'action',
+            method: :put,
+            data: { confirm: t('users.index.manage_warning', username: member.username) } do %>
+  <% if member.manager? %>
+    <%= glyph :arrow_down %>
+    <%= t 'global.demote' %>
+  <% else %>
+    <%= glyph :arrow_up %>
+    <%= t 'global.promote' %>
+  <% end %>
+<% end %>

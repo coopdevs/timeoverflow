@@ -45,7 +45,7 @@ describe UsersController do
 
       get :index
 
-      expect(assigns(:users)).to eq([
+      expect(assigns(:members).map(&:user)).to eq([
         another_user,
         admin_user,
         wrong_user,
@@ -67,13 +67,8 @@ describe UsersController do
       it 'gets her membership in the current organization' do
         get :index
 
-        expect(assigns(:memberships)).to eq({
-          member.user_id => member,
-          another_member.user_id => another_member,
-          member_admin.user_id => member_admin,
-          wrong_email_member.user_id => wrong_email_member,
-          empty_email_member.user_id => empty_email_member
-        })
+        expect(assigns(:members))
+          .to eq([member, another_member, member_admin, wrong_email_member, empty_email_member])
       end
 
       it 'shows data for her membership in the current organization' do
@@ -87,9 +82,9 @@ describe UsersController do
         login(user)
 
         get "index"
-        expect(assigns(:users)).to eq([user, another_user,
-                                       admin_user, wrong_user,
-                                       empty_email_user])
+
+        expect(assigns(:members).map(&:user))
+          .to eq([user, another_user, admin_user, wrong_user, empty_email_user])
       end
     end
 
@@ -98,9 +93,9 @@ describe UsersController do
         login(admin_user)
 
         get "index"
-        expect(assigns(:users)).to eq([user, another_user,
-                                       admin_user, wrong_user,
-                                       empty_email_user])
+
+        expect(assigns(:members).map(&:user))
+          .to eq([user, another_user, admin_user, wrong_user, empty_email_user])
       end
     end
 
@@ -114,18 +109,9 @@ describe UsersController do
         let(:direction) { 'desc' }
 
         it 'orders the rows by their balance' do
-          get :index, q: { s: "accounts_balance #{direction}" }
+          get :index, q: { s: "account_balance #{direction}" }
 
-          expect(assigns(:users).pluck(:id))
-            .to eq(
-              [
-                admin_user.id,
-                user.id,
-                another_user.id,
-                wrong_user.id,
-                empty_email_user.id
-              ]
-          )
+          expect(assigns(:members).pluck(:user_id).first).to eq(admin_user.id)
         end
       end
 
@@ -133,18 +119,9 @@ describe UsersController do
         let(:direction) { 'asc' }
 
         it 'orders the rows by their balance' do
-          get :index, q: { s: "accounts_balance #{direction}" }
+          get :index, q: { s: "account_balance #{direction}" }
 
-          expect(assigns(:users).pluck(:id))
-            .to eq(
-              [
-                user.id,
-                another_user.id,
-                wrong_user.id,
-                empty_email_user.id,
-                admin_user.id,
-              ]
-          )
+          expect(assigns(:members).pluck(:user_id).last).to eq(admin_user.id)
         end
       end
     end
