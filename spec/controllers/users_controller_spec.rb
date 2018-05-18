@@ -54,6 +54,12 @@ describe UsersController do
       ])
     end
 
+    it 'allows to sort by member_uid' do
+      get :index, q: { s: "member_uid desc" }
+
+      expect(assigns(:members).last).to eq(member)
+    end
+
     context 'when a user has many memberships' do
       let!(:member_in_another_organization) { Fabricate(:member, user: user) }
 

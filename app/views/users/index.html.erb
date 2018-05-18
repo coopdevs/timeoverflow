@@ -29,7 +29,9 @@
         <tr></tr>
         <tr>
           <th></th>
-          <th>ID</th>
+          <th>
+            <%= sort_link @search, :member_uid, 'ID' %>
+          </th>
           <th>
             <%= sort_link @search, :user_username, User.human_attribute_name(:username) %>
           </th>
