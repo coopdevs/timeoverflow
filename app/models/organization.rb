@@ -2,11 +2,7 @@ class Organization < ActiveRecord::Base
   has_many :members, dependent: :destroy
   has_many :users, -> { order "members.created_at DESC" }, through: :members
   has_many :all_accounts, class_name: "Account", inverse_of: :organization
-  has_many :all_movements, class_name: "Movement", through: :all_accounts, source: :movements do
-    def with_transfer
-      joins(transfer: :movements)
-    end
-  end
+  has_many :all_movements, class_name: "Movement", through: :all_accounts, source: :movements
   has_many :all_transfers, class_name: "Transfer", through: :all_movements, source: :transfer
   has_one :account, as: :accountable
   has_many :member_accounts, through: :members, source: :account
@@ -15,11 +11,7 @@ class Organization < ActiveRecord::Base
   has_many :inquiries
   has_many :documents, as: :documentable
 
-  scope :matching, ->(str) {
-    where(Organization.arel_table[:name].matches("%#{str}%"))
-  }
-
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 
   before_validation :ensure_url
   after_create :create_account

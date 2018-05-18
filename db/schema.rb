@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501093846) do
+ActiveRecord::Schema.define(version: 20180514193153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20180501093846) do
   add_index "movements", ["transfer_id"], name: "index_movements_on_transfer_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                 limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "reg_number_seq"
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 20180501093846) do
     t.string   "city"
     t.string   "domain"
   end
+
+  add_index "organizations", ["name"], name: "index_organizations_on_name", unique: true, using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
