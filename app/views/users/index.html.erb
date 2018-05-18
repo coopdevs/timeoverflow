@@ -6,8 +6,8 @@
                 organization_path(current_organization) %>
   </h1>
   <div class="navbar">
-    <%= search_form_for(@search, class: "navbar-form navbar-left") do |f| %>
-      <%= f.search_field :username_or_email_contains, class: "form-control" %>
+    <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
+      <%= f.search_field :user_username_or_user_email_contains, class: "form-control" %>
       <button class="btn btn-default" type="submit">
         <%= t 'global.search' %>
       </button>
@@ -31,10 +31,10 @@
           <th></th>
           <th>ID</th>
           <th>
-            <%= sort_link @search, :username, User.human_attribute_name(:username) %>
+            <%= sort_link @search, :user_username, User.human_attribute_name(:username) %>
           </th>
           <th>
-            <%= sort_link @search, :email, User.human_attribute_name(:email) %>
+            <%= sort_link @search, :user_email, User.human_attribute_name(:email) %>
           </th>
           <th>
             <%= User.human_attribute_name(:phone) %>
@@ -43,7 +43,7 @@
             <%= User.human_attribute_name(:alt_phone) %>
           </th>
           <th>
-            <%= sort_link @search, 'accounts_balance', Account.human_attribute_name(:balance) %>
+            <%= sort_link @search, 'account_balance', Account.human_attribute_name(:balance) %>
           </th>
           <% if current_user.manages? current_organization %>
             <th>
@@ -54,10 +54,10 @@
         </tr>
       </thead>
       <tbody>
-        <%= render "user_rows", users: @users, memberships: @memberships %>
+        <%= render "user_rows", members: @member_view_models %>
       </tbody>
     </table>
 
-    <%= paginate @users %>
+    <%= paginate @members %>
   </div>
 </div>

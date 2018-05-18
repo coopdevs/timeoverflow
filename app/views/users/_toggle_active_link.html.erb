@@ -1,0 +1,12 @@
+<%= link_to member.toggle_active_member_path,
+            class: 'action',
+            method: :put,
+            data: { confirm: t('users.index.active_warning', username: member.username) } do %>
+  <% if member.active? %>
+    <%= glyph :remove %>
+    <%= t 'users.user_rows.deactivate' %>
+  <% else %>
+    <%= glyph :ok %>
+    <%= t 'users.user_rows.activate' %>
+  <% end %>
+<% end %>
