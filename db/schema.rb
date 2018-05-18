@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221161343) do
+ActiveRecord::Schema.define(version: 20180501093846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,19 @@ ActiveRecord::Schema.define(version: 20180221161343) do
 
   add_index "documents", ["documentable_id", "documentable_type"], name: "index_documents_on_documentable_id_and_documentable_type", using: :btree
   add_index "documents", ["label"], name: "index_documents_on_label", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "action",      null: false
+    t.integer  "post_id"
+    t.integer  "member_id"
+    t.integer  "transfer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["member_id"], name: "index_events_on_member_id", unique: true, where: "(member_id IS NOT NULL)", using: :btree
+  add_index "events", ["post_id"], name: "index_events_on_post_id", unique: true, where: "(post_id IS NOT NULL)", using: :btree
+  add_index "events", ["transfer_id"], name: "index_events_on_transfer_id", unique: true, where: "(transfer_id IS NOT NULL)", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id"
@@ -198,4 +211,7 @@ ActiveRecord::Schema.define(version: 20180221161343) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
   add_foreign_key "accounts", "organizations"
+  add_foreign_key "events", "members", name: "events_member_id_fkey"
+  add_foreign_key "events", "posts", name: "events_post_id_fkey"
+  add_foreign_key "events", "transfers", name: "events_transfer_id_fkey"
 end

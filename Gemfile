@@ -54,7 +54,7 @@ end
 
 group :test do
   gem "database_cleaner", '1.6.2'
-  gem 'shoulda', ">= 3.5"
+  gem 'shoulda-matchers', '~> 3.1.2'
   gem 'fabrication'
   gem 'faker'
   gem 'capybara', '~> 2.7'
