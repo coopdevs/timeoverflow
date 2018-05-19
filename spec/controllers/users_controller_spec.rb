@@ -40,24 +40,20 @@ describe UsersController do
   describe "GET #index" do
     before { login(user) }
 
-    it 'sorts the users by their member_uid' do
-      member.update_attribute(:member_uid, 100)
+    it 'sorts the users by their member_uid asc by default' do
+      member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
 
       get :index
 
-      expect(assigns(:members).map(&:user)).to eq([
-        another_user,
-        admin_user,
-        wrong_user,
-        empty_email_user,
-        user,
-      ])
+      expect(assigns(:members).last).to eq(member)
     end
 
     it 'allows to sort by member_uid' do
+      member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
+
       get :index, q: { s: "member_uid desc" }
 
-      expect(assigns(:members).last).to eq(member)
+      expect(assigns(:members).first).to eq(member)
     end
 
     context 'when a user has many memberships' do
