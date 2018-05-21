@@ -11,6 +11,7 @@ require 'fabrication'
 require 'selenium/webdriver'
 require 'faker'
 require 'shoulda/matchers'
+
 I18n.reload!
 
 Capybara.register_driver :chrome do |app|
@@ -36,7 +37,7 @@ Capybara.default_driver = :headless_chrome
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-# Make sure schem persists when running tests.
+# Make sure schema persists when running tests.
 # We ran into an error that forced us to run rake db:migrate RAILS_ENV=test
 # before running tests. This kind of fixes it, although we should have a closer
 # look at this and find a better solution
@@ -67,14 +68,11 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
 
-  puts "Randomized with seed #{config.seed}."
-
   config.register_ordering(:global) do |items|
     items_by_type = items.group_by { |item| item.metadata[:type] === :feature ? :feature : :rest }
 
     feature_specs = items_by_type[:feature] || []
     rest_of_specs = items_by_type[:rest] || []
-
 
     random = Random.new(config.seed)
 
