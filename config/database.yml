@@ -12,9 +12,10 @@
 
 defaults: &defaults
   adapter: postgresql
-  host: <%= ENV['DATABASE_HOST'] %>  # default is localhost
   username: <%= ENV['DATABASE_USER'] %>  # default is null
-  password: <%= ENV['DATABASE_PASSWORD'] %>  # default is null
+  collation: 'es_ES.UTF-8'
+  ctype: 'es_ES.UTF-8'
+  template: 'template0'
   encoding: utf8
 
 development:
@@ -23,7 +24,6 @@ development:
 
 test:
   <<: *defaults
-  host: localhost
   database: 'timeoverflow_test'
 
 staging:
