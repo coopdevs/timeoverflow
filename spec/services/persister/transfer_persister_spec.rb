@@ -13,7 +13,7 @@ describe Persister::TransferPersister do
       destination: destination_account
     )
   end
-  let(:persister) { ::Persister::TransferPersister.new(transfer) }
+  let(:persister) { ::Persister::TransferPersister.new(transfer, organization) }
 
   describe '#save' do
     before { persister.save }

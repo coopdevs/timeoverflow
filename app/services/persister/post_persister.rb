@@ -1,9 +1,10 @@
 module Persister
   class PostPersister
-    attr_accessor :post
+    attr_accessor :post, :organization
 
-    def initialize(post)
+    def initialize(post, organization)
       @post = post
+      @organization = organization
     end
 
     def save
@@ -29,11 +30,11 @@ module Persister
     private
 
     def create_save_event!
-      ::Event.create! action: :created, post: post
+      ::Event.create! action: :created, post: post, organization: organization
     end
 
     def create_update_event!
-      ::Event.create! action: :updated, post: post
+      ::Event.create! action: :updated, post: post, organization: organization
     end
   end
 end

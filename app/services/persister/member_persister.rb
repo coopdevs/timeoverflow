@@ -1,9 +1,10 @@
 module Persister
   class MemberPersister
-    attr_accessor :member
+    attr_accessor :member, :organization
 
-    def initialize(member)
+    def initialize(member, organization)
       @member = member
+      @organization = organization
     end
 
     def save
@@ -29,11 +30,11 @@ module Persister
     private
 
     def create_save_event!
-      ::Event.create! action: :created, member: member
+      ::Event.create! action: :created, member: member, organization: organization
     end
 
     def create_update_event!
-      ::Event.create! action: :updated, member: member
+      ::Event.create! action: :updated, member: member, organization: organization
     end
   end
 end

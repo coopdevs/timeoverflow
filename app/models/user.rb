@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
 
     member.entry_date = DateTime.now.utc
 
-    persister = ::Persister::MemberPersister.new(member)
+    persister = ::Persister::MemberPersister.new(member, organization)
     persister.save
 
     return member if member.persisted?
