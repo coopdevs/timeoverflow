@@ -51,8 +51,8 @@
               <%= render 'application/menus/user_list_link' %>
               <%= render 'application/menus/offers_dashboard_link' %>
               <%= render 'application/menus/inquiries_list_link' %>
-              <%= render 'application/menus/offers_by_tag_link' %>
               <% if current_user.manages? current_organization %>
+                <%= render 'application/menus/offers_by_tag_link' %>
                 <%= render 'application/menus/organization_reports_menu' %>
                 <%= render 'application/menus/organization_statistics_menu' %>
                 <%= render 'application/menus/organization_listings_menu' %>

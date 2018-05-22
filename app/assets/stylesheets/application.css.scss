@@ -2,33 +2,9 @@
  *= require_self
  */
 
+@import "variables";
 @import "bootstrap-sprockets";
-@import "bootstrap";
-
-$bg-color: #f5f8fa;
-$navs-bg-color: #1e1e1e;
-$white: #ffffff;
-$border: #e1e8ed;
-$navs-hover-color: #aaa;
-$menu-drop: #333;
-$menu-drop-hover: #333;
-$menu-disabled: #ddd;
-$black: #000;
-$form-input-glyph: #555;
-$form-input-bg-color: #f5f5f5;
-$form-input-button: #2a292a;
-$form-input-button-hover: #3a393a;
-$form-a-color: gray;
-$form-a-hover-color: #333;
-$form-login-gray-text: #9b9b9b;
-$btn-landing: rgba(255, 255, 255, 0.7);
-$btn-landing-hover: rgba(255, 255, 255, 0.9);
-$pages-title: #4a4a4a;
-$pages-text: #4a4a4a;
-$pages-anchor: #4a4a4a;
-$pages-anchor-hover: #8a8a8a;
-$features-background: #f5f5f5;
-$features-separator: #d8d8d8;
+@import "bootstrap-custom";
 
 html {
   font-size:62.5%;
@@ -442,23 +418,11 @@ form .checkbox input[type="checkbox"] {
 }
 
 .navbar-static-top {
-  background-color: $navs-bg-color;
+  background-color: $palette-turkey;
 }
 
 .navbar-inverse {
   border: 0;
-}
-
-.navbar-inverse .navbar-brand {
-  color: $white;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-  color: $white;
-}
-
-.navbar-inverse .navbar-brand a:hover, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-  color: $navs-hover-color;
 }
 
 .navbar-brand {
@@ -510,7 +474,7 @@ form .checkbox input[type="checkbox"] {
       }
     }
     .dropdown-menu{
-      background: $navs-bg-color;
+      background: $palette-turkey;
       border: 0.2rem solid $white;
       border-top: 0;
       border-top-left-radius: 0;
@@ -525,7 +489,7 @@ form .checkbox input[type="checkbox"] {
           font-weight: 500;
           padding: 0.6rem 1.2rem;
           &:hover{
-            background: $menu-drop-hover;
+            background: $palette-dark-turkey;
             opacity: 0.8;
           }
           &:focus,
@@ -578,7 +542,7 @@ form .checkbox input[type="checkbox"] {
 
 .landing-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
-  background-color: $navs-bg-color;
+  background-color: $palette-turkey;
   background-size: cover;
   text-align: center;
 
