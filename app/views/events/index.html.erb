@@ -1,0 +1,12 @@
+<h1>Events</h1>
+
+<ul>
+  <% @events.each do |e| %>
+    <li>
+      <span><%= e.id %></span>
+      <span><%= e.action %></span>
+      <span><%= e.updated_at %></span>
+      <span><%= e.created_at %></span>
+    </li>
+  <% end %>
+</ul>

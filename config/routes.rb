@@ -49,6 +49,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :events, only: [:index]
+
   resource "report" do
     collection do
       get "user_list"
