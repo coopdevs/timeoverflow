@@ -13,7 +13,7 @@ describe Persister::PostPersister do
       title: 'Title'
     )
   end
-  let(:persister) { ::Persister::PostPersister.new(post) }
+  let(:persister) { ::Persister::PostPersister.new(post, organization) }
 
   describe '#save' do
     before { persister.save }

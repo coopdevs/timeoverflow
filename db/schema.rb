@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514193153) do
+ActiveRecord::Schema.define(version: 20180522202639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,12 +77,13 @@ ActiveRecord::Schema.define(version: 20180514193153) do
   add_index "documents", ["label"], name: "index_documents_on_label", using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.integer  "action",      null: false
+    t.integer  "action",          null: false
     t.integer  "post_id"
     t.integer  "member_id"
     t.integer  "transfer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id", null: false
   end
 
   add_index "events", ["member_id"], name: "index_events_on_member_id", unique: true, where: "(member_id IS NOT NULL)", using: :btree

@@ -1,9 +1,10 @@
 module Persister
   class TransferPersister
-    attr_accessor :transfer
+    attr_accessor :transfer, :organization
 
-    def initialize(transfer)
+    def initialize(transfer, organization)
       @transfer = transfer
+      @organization = organization
     end
 
     def save
@@ -29,11 +30,11 @@ module Persister
     private
 
     def create_save_event!
-      ::Event.create! action: :created, transfer: transfer
+      ::Event.create! action: :created, transfer: transfer, organization: organization
     end
 
     def create_update_event!
-      ::Event.create! action: :updated, transfer: transfer
+      ::Event.create! action: :updated, transfer: transfer, organization: organization
     end
   end
 end

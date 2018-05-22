@@ -7,7 +7,7 @@ class TransfersController < ApplicationController
       transfer_params.merge(source: @source, destination: @account)
     )
 
-    persister = ::Persister::TransferPersister.new(transfer)
+    persister = ::Persister::TransferPersister.new(transfer, current_organization)
 
     if persister.save
       redirect_to redirect_target

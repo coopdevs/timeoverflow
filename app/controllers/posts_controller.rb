@@ -42,7 +42,7 @@ class PostsController <  ApplicationController
     post = model.new(post_params)
     post.organization = current_organization
 
-    persister = ::Persister::PostPersister.new(post)
+    persister = ::Persister::PostPersister.new(post, current_organization)
 
     if persister.save
       redirect_to send("#{resource}_path", post)
@@ -72,7 +72,7 @@ class PostsController <  ApplicationController
     authorize post
     instance_variable_set("@#{resource}", post)
 
-    persister = ::Persister::PostPersister.new(post)
+    persister = ::Persister::PostPersister.new(post, current_organization)
 
     if persister.update_attributes(post_params)
       redirect_to post

@@ -4,7 +4,7 @@ describe Persister::MemberPersister do
   let(:organization) { Fabricate(:organization) }
   let(:user) { Fabricate(:user) }
   let(:member) { Fabricate.build(:member, user: user, organization: organization) }
-  let(:persister) { ::Persister::MemberPersister.new(member) }
+  let(:persister) { ::Persister::MemberPersister.new(member, organization) }
 
   describe '#save' do
     before { persister.save }

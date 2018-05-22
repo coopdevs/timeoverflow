@@ -10,6 +10,7 @@ class Organization < ActiveRecord::Base
   has_many :offers
   has_many :inquiries
   has_many :documents, as: :documentable
+  has_many :events
 
   validates :name, presence: true, uniqueness: true
 
