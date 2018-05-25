@@ -10,6 +10,7 @@ module Persister
       ::ActiveRecord::Base.transaction do
         post.save!
         create_save_event!
+        enqueue_push_notification_job!
         post
       end
     rescue ActiveRecord::RecordInvalid => _exception
@@ -20,6 +21,7 @@ module Persister
       ::ActiveRecord::Base.transaction do
         post.update_attributes!(params)
         create_update_event!
+        enqueue_push_notification_job!
         post
       end
     rescue ActiveRecord::RecordInvalid => _exception
@@ -28,12 +30,18 @@ module Persister
 
     private
 
+    attr_accessor :event
+
     def create_save_event!
-      ::Event.create! action: :created, post: post
+      @event = ::Event.create! action: :created, post: post
     end
 
     def create_update_event!
-      ::Event.create! action: :updated, post: post
+      @event = ::Event.create! action: :updated, post: post
+    end
+
+    def enqueue_push_notification_job!
+      CreatePushNotificationsJob.perform_later(event_id: event.id)
     end
   end
 end
