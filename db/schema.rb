@@ -158,6 +158,14 @@ ActiveRecord::Schema.define(version: 20180525141138) do
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "push_notifications", force: :cascade do |t|
+    t.integer  "event_id",        null: false
+    t.integer  "device_token_id", null: false
+    t.datetime "processed_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "transfers", force: :cascade do |t|
     t.integer  "post_id"
     t.text     "reason"
@@ -215,4 +223,6 @@ ActiveRecord::Schema.define(version: 20180525141138) do
   add_foreign_key "events", "members", name: "events_member_id_fkey"
   add_foreign_key "events", "posts", name: "events_post_id_fkey"
   add_foreign_key "events", "transfers", name: "events_transfer_id_fkey"
+  add_foreign_key "push_notifications", "device_tokens"
+  add_foreign_key "push_notifications", "events"
 end
