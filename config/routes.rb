@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get :give_time, on: :member
   end
 
-  resources :organizations, concerns: :accountable do
+  resources :organizations, concerns: :accountable, except: :destroy do
     member do
       post :set_current
     end

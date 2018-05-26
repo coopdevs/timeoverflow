@@ -15,7 +15,7 @@ class Transfer < ActiveRecord::Base
 
   belongs_to :post
   belongs_to :operator, class_name: "User"
-  has_many :movements
+  has_many :movements, dependent: :destroy
 
   validate :different_source_and_destination
 

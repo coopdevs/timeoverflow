@@ -100,15 +100,6 @@
           <% end %>
         </li>
       <% end %>
-      <% if superadmin? %>
-        <li>
-          <%= link_to organization_path(@organization),
-                      data: { method: :delete, confirm: t("are_you_sure") } do %>
-            <%= glyph :trash %>
-            <%= t "global.delete" %>
-          <% end %>
-        </li>
-      <% end %>
       <li>
         <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id) do %>
           <%= glyph :time %>
