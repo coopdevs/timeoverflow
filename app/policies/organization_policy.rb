@@ -6,7 +6,7 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def show?
-    user&.active?(organization)
+    user&.superadmin? || user&.active?(organization)
   end
 
   def create?
@@ -14,6 +14,6 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def update?
-    user&.admins?(organization)
+    user&.superadmin? || user&.admins?(organization)
   end
 end
