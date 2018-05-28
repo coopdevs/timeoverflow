@@ -6,13 +6,21 @@ describe OrganizationsController do
 
   describe 'GET #show' do
     context 'with a logged user (organization member)' do
-      it 'links to new_transfer_path' do
+      it 'displays the organization page' do
         login(member.user)
 
         get 'show', id: organization.id
-        expect(response.body).to include(
-          "<a href=\"/transfers/new?destination_account_id=#{organization.account.id}&amp;id=#{organization.id}\">"
-        )
+
+        expect(response.body).to include(organization.name)
+      end
+    end
+
+    context 'without a logged user' do
+      it 'redirects to the root path' do
+        get 'show', id: organization.id
+
+        expect(response).to redirect_to(root_path)
+        expect(flash[:error]).to eq('You are not authorized to perform this action.')
       end
     end
   end
