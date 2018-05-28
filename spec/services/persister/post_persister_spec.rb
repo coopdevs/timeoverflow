@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Persister::PostPersister do
+RSpec.describe Persister::PostPersister do
   let(:organization) { Fabricate(:organization) }
   let(:user) { Fabricate(:user) }
   let(:category) { Fabricate(:category) }
@@ -32,11 +32,12 @@ describe Persister::PostPersister do
     context 'background job' do
       before do
         allow(::Event).to receive(:create!).and_return(event)
-        persister.save
       end
 
       it 'enqueues a CreatePushNotificationsJob background job' do
-        expect(CreatePushNotificationsJob).to have_been_enqueued.with(event_id: 27)
+        expect {
+          persister.save
+        }.to enqueue_job(CreatePushNotificationsJob).with(event_id: 27)
       end
     end
   end
@@ -57,11 +58,12 @@ describe Persister::PostPersister do
     context 'background job' do
       before do
         allow(::Event).to receive(:create!).and_return(event)
-        persister.update_attributes(title: 'New title')
       end
 
       it 'enqueues a CreatePushNotificationsJob background job' do
-        expect(CreatePushNotificationsJob).to have_been_enqueued.with(event_id: 27)
+        expect {
+          persister.update_attributes(title: 'New title')
+        }.to enqueue_job(CreatePushNotificationsJob).with(event_id: 27)
       end
     end
   end
