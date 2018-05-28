@@ -31,7 +31,6 @@ describe Persister::PostPersister do
 
     context 'background job' do
       before do
-        ActiveJob::Base.queue_adapter = :test
         allow(::Event).to receive(:create!).and_return(event)
         persister.save
       end
@@ -57,7 +56,6 @@ describe Persister::PostPersister do
 
     context 'background job' do
       before do
-        ActiveJob::Base.queue_adapter = :test
         allow(::Event).to receive(:create!).and_return(event)
         persister.update_attributes(title: 'New title')
       end
