@@ -1,8 +1,4 @@
 class UserPolicy < ApplicationPolicy
-  def new?
-    user.admins?(organization)
-  end
-
   def create?
     user.admins?(organization)
   end
