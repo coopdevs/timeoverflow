@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525141138) do
+ActiveRecord::Schema.define(version: 20180529144243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(version: 20180525141138) do
     t.datetime "updated_at"
   end
 
-  add_index "events", ["member_id"], name: "index_events_on_member_id", unique: true, where: "(member_id IS NOT NULL)", using: :btree
-  add_index "events", ["post_id"], name: "index_events_on_post_id", unique: true, where: "(post_id IS NOT NULL)", using: :btree
-  add_index "events", ["transfer_id"], name: "index_events_on_transfer_id", unique: true, where: "(transfer_id IS NOT NULL)", using: :btree
+  add_index "events", ["member_id"], name: "index_events_on_member_id", where: "(member_id IS NOT NULL)", using: :btree
+  add_index "events", ["post_id"], name: "index_events_on_post_id", where: "(post_id IS NOT NULL)", using: :btree
+  add_index "events", ["transfer_id"], name: "index_events_on_transfer_id", where: "(transfer_id IS NOT NULL)", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id"
@@ -158,6 +158,14 @@ ActiveRecord::Schema.define(version: 20180525141138) do
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "push_notifications", force: :cascade do |t|
+    t.integer  "event_id",        null: false
+    t.integer  "device_token_id", null: false
+    t.datetime "processed_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "transfers", force: :cascade do |t|
     t.integer  "post_id"
     t.text     "reason"
@@ -215,4 +223,6 @@ ActiveRecord::Schema.define(version: 20180525141138) do
   add_foreign_key "events", "members", name: "events_member_id_fkey"
   add_foreign_key "events", "posts", name: "events_post_id_fkey"
   add_foreign_key "events", "transfers", name: "events_transfer_id_fkey"
+  add_foreign_key "push_notifications", "device_tokens"
+  add_foreign_key "push_notifications", "events"
 end
