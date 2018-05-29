@@ -5,23 +5,12 @@ describe OrganizationsController do
   let(:member) { Fabricate(:member, organization: organization) }
 
   describe 'GET #show' do
-    context 'with a logged user (organization member)' do
-      it 'displays the organization page' do
-        login(member.user)
+    it 'displays the organization page' do
+      get 'show', id: organization.id
 
-        get 'show', id: organization.id
-
-        expect(response.body).to include(organization.name)
-      end
-    end
-
-    context 'without a logged user' do
-      it 'redirects to the root path' do
-        get 'show', id: organization.id
-
-        expect(response).to redirect_to(root_path)
-        expect(flash[:error]).to eq('You are not authorized to perform this action.')
-      end
+      expect(assigns(:organization)).to eq(organization)
+      expect(response.status).to eq(200)
+      expect(response.body).to include(organization.name)
     end
   end
 

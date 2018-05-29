@@ -5,10 +5,6 @@ class OrganizationPolicy < ApplicationPolicy
     true
   end
 
-  def show?
-    user&.superadmin? || user&.active?(organization)
-  end
-
   def create?
     user&.superadmin?
   end

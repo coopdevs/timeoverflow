@@ -18,8 +18,8 @@ RSpec.describe 'organizations/show' do
       render template: 'organizations/show'
     end
 
-    it 'links to new_transfer_path' do
-      expect(rendered).to have_link(
+    it 'does not display link to new_transfer_path' do
+      expect(rendered).not_to have_link(
         t('global.give_time'),
           href: new_transfer_path(
           id: organization,
@@ -28,13 +28,14 @@ RSpec.describe 'organizations/show' do
       )
     end
 
-    it 'does not diplay the movements section' do
+    it 'does not display the movements section' do
       expect(rendered).not_to match t('organizations.movements')
     end
   end
 
-  context 'with a logged user' do
-    let(:user) { Fabricate(:user) }
+  context 'with a logged user (organization member)' do
+    let(:member) { Fabricate(:member, organization: organization) }
+    let(:user) { member.user }
 
     before do
       allow(view).to receive(:current_user).and_return(user)
@@ -53,7 +54,7 @@ RSpec.describe 'organizations/show' do
       )
     end
 
-    it 'diplays the movements' do
+    it 'diplays the movements section' do
       expect(rendered).to match t('shared.movements.movements')
     end
   end

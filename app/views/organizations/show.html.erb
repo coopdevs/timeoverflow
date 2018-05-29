@@ -100,12 +100,14 @@
           <% end %>
         </li>
       <% end %>
-      <li>
-        <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id) do %>
-          <%= glyph :time %>
-          <%= t "global.give_time" %>
-        <% end %>
-      </li>
+      <% if current_user&.active?(@organization) %>
+        <li>
+          <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id) do %>
+            <%= glyph :time %>
+            <%= t "global.give_time" %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
