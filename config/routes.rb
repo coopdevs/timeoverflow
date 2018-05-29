@@ -1,5 +1,11 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root to: "home#index"
+
+  authenticate :user, lambda { |u| Rails.env.development? || u.superadmin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   devise_for :users, controllers: { sessions: "sessions" }
 
