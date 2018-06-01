@@ -24,6 +24,10 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'skylight'
 gem 'sidekiq', '5.1.3'
+gem 'sidekiq-cron', '0.6.3'
+# TODO: remove this once the following issue has been addressed
+#       https://github.com/ondrejbartas/sidekiq-cron/issues/199
+gem 'rufus-scheduler', '~> 3.4.2'
 
 # Assets
 gem 'jquery-rails', '>= 4.2.0'
