@@ -5,6 +5,7 @@
 @import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap-custom";
+@import "to-categories-dropdown";
 
 html {
   font-size:62.5%;
@@ -25,6 +26,10 @@ html {
   float: left;
 }
 
+.actions-menu {
+  margin-bottom: 16px;
+}
+
 .actions-menu > .dropdown > .language b {
   display: inline-block;
   margin-left: 0.7rem;
@@ -32,10 +37,19 @@ html {
 
 .actions-menu > li > a {
   color: #101010;
+  padding: 10px 16px;
+
+  @media(max-width: $screen-sm-min) {
+    padding: 10px;
+  }
 }
 
-.actions-menu > li{
-  margin-right:5px;
+.actions-menu > li {
+  margin-right: 6px;
+
+  @media(max-width: $screen-sm-min) {
+    margin-right: 2px;
+  }
 }
 
 #login-box {
@@ -66,14 +80,6 @@ html {
     transition: background-color 100000s ease-in-out 0s;
   }
 
-  span.input-group-addon {
-    padding: 2rem 2rem 2rem 3rem;
-
-    @media (max-width: $screen-xs-min) {
-      display: none;
-    }
-  }
-
   span.show-password {
     border-radius: 0 0.3rem 0.3rem 0;
     cursor: pointer;
@@ -98,10 +104,6 @@ html {
   .panel-heading {
     color: darken($black, 5%);
     text-align: center;
-  }
-
-  .panel-body {
-    padding: 0 3rem 0 3rem;
   }
 
   .panel-footer {
@@ -136,7 +138,6 @@ html {
     color: $form-input-glyph;
     font-size: 2.24rem;
     letter-spacing: -0.0040rem;
-    padding: 2rem;
   }
 
   .form-control {
@@ -174,7 +175,7 @@ html {
   background-color: $white;
   border: 1px solid $border;
   border-radius: 5px;
-  margin: 10px;
+  margin: 14px 0;
   padding: 5px 20px;
 
   h4 {
@@ -192,6 +193,12 @@ html {
     margin-right: 10px;
   }
 
+  &__datetime {
+    color: $palette-grey;
+    padding: 4px 0 0;
+    font-size: 10px;
+    text-align: right;
+  }
 }
 
 .break-word {
@@ -385,8 +392,13 @@ label[required]::after{
 }
 
 .navbar-form {
-  padding: 0;
+  border: 0;
   background-color: transparent;
+  padding: 0;
+
+  @media(max-width: $screen-sm-min) {
+    padding: 10px 15px;
+  }
 }
 
 form .checkbox input[type="checkbox"] {
@@ -418,7 +430,11 @@ form .checkbox input[type="checkbox"] {
 }
 
 .navbar-static-top {
-  background-color: $palette-turkey;
+  background-color: rgba(39, 151, 175, 0.9); // @palette-turkey with opacity
+
+  .container-fluid {
+    padding: 4px 0;
+  }
 }
 
 .navbar-inverse {
@@ -432,7 +448,7 @@ form .checkbox input[type="checkbox"] {
 }
 
 .language-selector{
-  margin: 0.5rem 2rem 0 2rem;
+  margin: 0.6rem 2rem 0 2rem;
   width: 13.5rem;
 }
 
@@ -511,18 +527,15 @@ form .checkbox input[type="checkbox"] {
   .back-overlay {
     display: block;
     filter: alpha(opacity = 60); /* For IE8 and earlier */
-    opacity: 0.6;
+    opacity: 0.2;
   }
+
   .vertical-align {
     left: 50%;
     position: absolute;
-    top: 47%;
+    top: 52%;
     transform: translate(-50%, -50%);
-    width: 75%;
-  }
-  .container-fluid {
-    padding-bottom: 0.8rem;
-    padding-top: 0.8rem;
+    width: 82%;
   }
 
   .container-inner {
@@ -559,6 +572,7 @@ form .checkbox input[type="checkbox"] {
     font-weight: 700;
     letter-spacing: -0.073rem;
     margin: 0;
+    text-shadow: 1px 1px #333;
   }
 
   h3 {
@@ -567,6 +581,7 @@ form .checkbox input[type="checkbox"] {
     font-weight: 500;
     letter-spacing: -0.107rem;
     margin-top: 1rem;
+    text-shadow: 1px 1px #333;
   }
 
   .btn {
@@ -589,18 +604,6 @@ form .checkbox input[type="checkbox"] {
 }
 
 .login-page {
-  h1 {
-    font-size: 3.84rem;
-    font-weight: 600;
-    letter-spacing: 0.031rem;
-    margin-bottom: 2rem;
-    margin-top: 3rem;
-
-    @media (max-width: $screen-xs-min) {
-      display: none;
-    }
-  }
-
   .material-icons {
     font-size: 3rem;
   }
@@ -644,10 +647,6 @@ form .checkbox input[type="checkbox"] {
     border: none;
     margin-top: 3rem;
     padding: 0;
-  }
-
-  #login-box .panel-body {
-    padding: 3rem 3rem 2rem 3rem;
   }
 
   .panel-body h2 {
@@ -750,7 +749,7 @@ form .checkbox input[type="checkbox"] {
   }
 
   .banner {
-    background: image-url('home_back_overlay.jpg') no-repeat center center;
+    background: image-url('home_back.jpg') no-repeat center center;
     background-size: cover;
     margin: 8rem 0 3rem 0;
     padding: 8rem 1rem;
