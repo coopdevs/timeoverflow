@@ -3,4 +3,8 @@ class PushNotification < ActiveRecord::Base
   belongs_to :device_token, foreign_key: 'device_token_id'
 
   validates :event, :device_token, presence: true
+
+  def to
+    device_token.token
+  end
 end
