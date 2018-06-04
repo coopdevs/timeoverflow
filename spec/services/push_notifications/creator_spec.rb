@@ -16,7 +16,8 @@ RSpec.describe PushNotifications::Creator do
     it 'creates as many PushNotification resources as needed' do
       expect(PushNotification).to receive(:create!).with(
         event: event,
-        device_token: device_token
+        device_token: device_token,
+        title: 'A new post has been created.'
       ).once
 
       creator.create!
