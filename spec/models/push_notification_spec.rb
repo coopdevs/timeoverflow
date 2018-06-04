@@ -4,6 +4,7 @@ RSpec.describe PushNotification do
   describe 'Validations' do
     it { is_expected.to validate_presence_of(:event) }
     it { is_expected.to validate_presence_of(:device_token) }
+    it { is_expected.to validate_presence_of(:title) }
   end
 
   describe 'Associations' do
