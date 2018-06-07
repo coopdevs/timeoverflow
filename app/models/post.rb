@@ -46,6 +46,7 @@ class Post < ActiveRecord::Base
   has_many :user_members, class_name: "Member", through: :user, source: :members
   has_many :transfers
   has_many :movements, through: :transfers
+  has_many :events, dependent: :destroy
 
   delegate :name, to: :category, prefix: true, allow_nil: true
 

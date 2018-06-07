@@ -3,6 +3,7 @@ class Member < ActiveRecord::Base
   belongs_to :organization
   has_one :account, as: :accountable
   has_many :movements, through: :account
+  has_many :events, dependent: :destroy
 
   delegate :balance, to: :account, prefix: true, allow_nil: true
   delegate :gender, :date_of_birth, to: :user, prefix: true, allow_nil: true
