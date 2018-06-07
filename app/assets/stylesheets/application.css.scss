@@ -572,7 +572,7 @@ form .checkbox input[type="checkbox"] {
     font-weight: 700;
     letter-spacing: -0.073rem;
     margin: 0;
-    text-shadow: 1px 1px #333;
+    text-shadow: 1px 1px $palette-black;
   }
 
   h3 {
@@ -581,7 +581,7 @@ form .checkbox input[type="checkbox"] {
     font-weight: 500;
     letter-spacing: -0.107rem;
     margin-top: 1rem;
-    text-shadow: 1px 1px #333;
+    text-shadow: 1px 1px $palette-black;
   }
 
   .btn {
