@@ -39,11 +39,9 @@ class Post < ActiveRecord::Base
   attr_reader :member_id
 
   belongs_to :category
-
   belongs_to :user
   belongs_to :organization
   belongs_to :publisher, class_name: "User", foreign_key: "publisher_id"
-  has_many :user_members, class_name: "Member", through: :user, source: :members
   has_many :transfers
   has_many :movements, through: :transfers
   has_many :events, dependent: :destroy

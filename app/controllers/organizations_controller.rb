@@ -26,7 +26,7 @@ class OrganizationsController < ApplicationController
     authorize @organization
 
     if @organization.save
-      redirect_to @organization, status: :created
+      redirect_to @organization
     else
       render action: :new, status: :unprocessable_entity
     end

@@ -6,6 +6,7 @@ describe Member do
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:organization) }
   it { is_expected.to have_one(:account) }
+  it { is_expected.to have_many(:events) }
   it { is_expected.to delegate_method(:balance).to(:account).with_prefix }
   it { is_expected.to delegate_method(:gender).to(:user).with_prefix }
   it { is_expected.to delegate_method(:date_of_birth).to(:user).with_prefix }

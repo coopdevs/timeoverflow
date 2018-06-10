@@ -14,7 +14,6 @@ class Transfer < ActiveRecord::Base
   attr_accessor :source, :destination, :amount, :hours, :minutes
 
   belongs_to :post
-  belongs_to :operator, class_name: "User"
   has_many :movements, dependent: :destroy
   has_many :events, dependent: :destroy
 
