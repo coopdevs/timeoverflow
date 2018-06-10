@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApplicationHelper do
+RSpec.describe ApplicationHelper do
   it 'avatar_url returns url to gravatar' do
     user = Fabricate(:user)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase

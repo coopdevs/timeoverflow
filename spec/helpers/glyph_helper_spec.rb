@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GlyphHelper do
+RSpec.describe GlyphHelper do
   describe 'glyph helper' do
     it 'renders an span with glyphicon classes' do
       expect(helper.glyph('foo')).to match(/<span class=\"glyphicon glyphicon-foo\"><\/span>/)

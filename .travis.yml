@@ -1,5 +1,4 @@
 language: ruby
-sudo: required
 cache: bundler
 bundler_args: '--without production development'
 rvm:

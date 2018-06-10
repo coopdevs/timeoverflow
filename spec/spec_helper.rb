@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-ENV["ADMINS"] = "superadmin@example.com"
+ENV["ADMINS"] = "admin@timeoverflow.org"
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
@@ -67,6 +67,8 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
+
+  puts "Randomized with seed #{config.seed}."
 
   config.register_ordering(:global) do |items|
     items_by_type = items.group_by { |item| item.metadata[:type] === :feature ? :feature : :rest }
