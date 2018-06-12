@@ -1,0 +1,86 @@
+.language-selector {
+  & {
+    display: inline-block;
+
+    @media(max-width: $screen-sm-min) {
+      display: block;
+      position: relative;
+    }
+  }
+
+  a.btn-default.dropdown-toggle {
+    & {
+      background-color: transparent;
+      border: 1px solid white;
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &.open > a.btn-default.dropdown-toggle {
+    & {
+      background-color: transparent;
+      color: white;
+      border-color: #ddd;
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: white;
+      border-color: #ddd;
+    }
+  }
+}
+
+.footer {
+  padding: 8px 0;
+  line-height: 40px;
+  width: 100%;
+  background: rgba($palette-dark-turkey ,0.8);
+
+  @media(max-width: $screen-sm-min) {
+    padding: 0;
+  }
+
+  a {
+    margin: 0 1rem;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+
+    @media(max-width: $screen-sm-min) {
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+}
+
+.footer-left-col {
+  text-align: left;
+
+  @media(max-width: $screen-sm-min) {
+    text-align: center;
+  }
+}
+
+.footer-center-col {
+  text-align: center;
+}
+
+.footer-right-col {
+  text-align: right;
+
+  @media(max-width: $screen-sm-min) {
+    text-align: center;
+  }
+}
+
+.landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}

@@ -6,24 +6,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap-custom";
 @import "to-categories-dropdown";
+@import "footer";
 
 html {
-  font-size:62.5%;
+  font-size: 62.5%;
 }
 
-.content
-{
-  min-height:500px;
-  margin-bottom: 40px;
-}
-
-.language-selector{
-  margin: 1.2rem 3rem 1.2rem 1rem;
-}
-
-.language-selector a span {
-  display: block;
-  float: left;
+.content {
+  min-height: 500px;
+  margin-bottom: 36px;
 }
 
 .actions-menu {
@@ -33,11 +24,6 @@ html {
   @media(max-width: $screen-sm-min) {
     padding: 0;
   }
-}
-
-.actions-menu > .dropdown > .language b {
-  display: inline-block;
-  margin-left: 0.7rem;
 }
 
 .actions-menu > li > a {
@@ -219,36 +205,6 @@ html {
   padding: 20px;
 }
 
-.footer {
-  bottom: 0;
-  left: 0;
-  line-height: 40px;
-  padding: 0;
-  position: absolute;
-  vertical-align: middle;
-  width: 100%;
-
-  p {
-    font-size: 1.6rem;
-    letter-spacing: 0.013rem;
-    margin: 0;
-    text-align: center;
-  }
-
-  .row {
-    margin: 0;
-  }
-
-  a {
-    color: $pages-anchor;
-    font-weight: 500;
-    margin-left: 1.5rem;
-  }
-
-  a:hover {
-    color: $pages-anchor-hover;
-  }
-}
 
 .row.exports {
   padding: 10px;
@@ -273,7 +229,6 @@ table.users {
     background-color: $bg-color;
     font-family: 'Work Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: medium;
-    margin: 0 0 20px;
   }
 
   form {
@@ -422,7 +377,11 @@ form .checkbox input[type="checkbox"] {
   z-index: -1;
 }
 
-.navbar-block{
+.navbar .container-fluid {
+  padding: 0;
+}
+
+.navbar-block {
   margin-top: 0.2rem;
 }
 
@@ -448,79 +407,6 @@ form .checkbox input[type="checkbox"] {
   letter-spacing: 0.019rem;
 }
 
-.language-selector{
-  margin: 0.6rem 2rem 0 2rem;
-  width: 13.5rem;
-}
-
-.dropdown{
-  &.dropdown-language-selector{
-    .dropdown-toggle{
-      background: none;
-      border: 0.2rem solid $white;
-      border-radius: 0.3rem;
-      color: $white;
-      font-size: 1.6rem;
-      font-weight: 500;
-      min-width: 13.5rem;
-      text-align: left;
-
-      .caret{
-        display: block;
-        float: right;
-        margin-top: 1.1rem;
-      }
-      &:focus,
-      &:active{
-        box-shadow: none;
-        outline: none;
-      }
-    }
-    &.open>.btn-default.dropdown-toggle{
-      background: none;
-      border-color: $white;
-      border-bottom: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-      color: $white;
-
-      .caret{
-        -ms-transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
-      }
-    }
-    .dropdown-menu{
-      background: $palette-turkey;
-      border: 0.2rem solid $white;
-      border-top: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      box-shadow: none;
-      margin-top: 0;
-      min-width: 13.5rem;
-      li{
-        a{
-          color: $white;
-          font-size: 1.6rem;
-          font-weight: 500;
-          padding: 0.6rem 1.2rem;
-          &:hover{
-            background: $palette-dark-turkey;
-            opacity: 0.8;
-          }
-          &:focus,
-          &:active{
-            background: none;
-            box-shadow: none;
-            outline: none;
-          }
-        }
-      }
-    }
-  }
-}
-
 .landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -532,11 +418,11 @@ form .checkbox input[type="checkbox"] {
   }
 
   .vertical-align {
-    left: 50%;
     position: absolute;
-    top: 52%;
+    top: 48%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 82%;
+    width: 100%;
   }
 
   .container-inner {
@@ -795,78 +681,13 @@ form .checkbox input[type="checkbox"] {
   }
 }
 
-.footer-left-col, .footer-left-col p {
-  text-align: left;
-}
-
-.footer-center, .footer-center-col p {
-  text-align: center;
-}
-
-.footer-right-col, .footer-right-col p {
-  text-align: right;
-}
-
 @media(max-width:767px){
   html{
     font-size:55.5%;
   }
 
-  .footer-left-col, .footer-left-col p {
-    text-align: center;
-  }
-
-  .footer-center-col, .footer-center-col p {
-    text-align: center;
-  }
-
-  .footer-right-col, .footer-right-col p {
-    text-align: center;
-  }
-
   .navbar-nav > li > a{
     text-align: center;
-  }
-
-  .footer {
-    margin-top: 4rem;
-    position: static;
-  }
-
-  .landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
-    .language-selector{
-      margin: 0 auto;
-      width: 13.5rem;
-    }
-
-    .footer {
-      bottom: 1rem;
-      margin-top: 0;
-    }
-
-    .footer a{
-      margin-left: 0rem;
-    }
-
-    .footer-right-col a{
-      margin: 0 1rem;
-    }
-  }
-
-  .landing-page, .unlocks-page, .confirmations-page, .passwords-page {
-    .footer {
-      position: absolute;
-    }
-  }
-
-  .login-page {
-    .vertical-align{
-      height: auto;
-      position: static;
-      top: 0;
-      transform: none;
-      width: 100%;
-    }
   }
 }
 
