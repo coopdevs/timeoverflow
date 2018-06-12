@@ -10,10 +10,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+
             <% if current_user && current_organization %>
-            <a class="navbar-brand" href="<%= organization_path(current_organization) %>">TimeOverflow</a>
+              <a class="navbar-brand" href="<%= organization_path(current_organization) %>">TimeOverflow</a>
             <% else %>
-            <a class="navbar-brand" href="/">TimeOverflow</a>
+              <a class="navbar-brand" href="/">TimeOverflow</a>
             <% end %>
           </div>
         </div>
@@ -21,19 +22,19 @@
           <div id="navbar-collapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right hidden-xs">
               <% if current_user %>
-                  <%= render 'application/menus/user_admin_menu' %>
+                <%= render 'application/menus/user_admin_menu' %>
               <% else %>
-                  <%= render 'application/menus/visitor_menu' %>
+                <%= render 'application/menus/visitor_menu' %>
               <% end %>
             </ul>
 
             <ul class="nav navbar-nav navbar-right hidden-sm hidden-md hidden-lg">
               <% if current_user %>
-                  <li>
-                    <%= image_tag avatar_url(current_user) %>
-                    <%= current_user.email %>
-                  </li>
-                  <%= render 'application/menus/user_admin_menu_items' %>
+                <li>
+                  <%= image_tag avatar_url(current_user) %>
+                  <%= current_user.email %>
+                </li>
+                <%= render 'application/menus/user_admin_menu_items' %>
               <% else %>
                 <%= render 'application/menus/visitor_menu' %>
               <% end %>
@@ -46,23 +47,23 @@
 </nav>
 
 <% if current_user && current_organization %>
-<nav role="navigation">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <ul class="nav nav-pills actions-menu">
-          <%= render 'application/menus/user_list_link' %>
-          <%= render 'application/menus/offers_dashboard_link' %>
-          <%= render 'application/menus/inquiries_list_link' %>
-          <% if current_user.manages? current_organization %>
-            <%= render 'application/menus/offers_by_tag_link' %>
-            <%= render 'application/menus/organization_reports_menu' %>
-            <%= render 'application/menus/organization_statistics_menu' %>
-            <%= render 'application/menus/organization_listings_menu' %>
-          <% end %>
-        </ul>
+  <nav role="navigation">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="nav nav-pills actions-menu">
+            <%= render 'application/menus/user_list_link' %>
+            <%= render 'application/menus/offers_dashboard_link' %>
+            <%= render 'application/menus/inquiries_list_link' %>
+            <% if current_user.manages? current_organization %>
+              <%= render 'application/menus/offers_by_tag_link' %>
+              <%= render 'application/menus/organization_reports_menu' %>
+              <%= render 'application/menus/organization_statistics_menu' %>
+              <%= render 'application/menus/organization_listings_menu' %>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 <% end %>
