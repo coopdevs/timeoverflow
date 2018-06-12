@@ -2,6 +2,8 @@
 $palette-turkey: #2797af;
 $palette-dark-turkey: #165e6d;
 $palette-light-blue: #d9edf7;
+$palette-grey: #aaa;
+$palette-black: #333;
 
 // Old colors
 $bg-color: #f5f8fa;
@@ -14,7 +16,7 @@ $form-input-bg-color: #f5f5f5;
 $form-input-button: #2a292a;
 $form-input-button-hover: #3a393a;
 $form-a-color: gray;
-$form-a-hover-color: #333;
+$form-a-hover-color: $palette-black;
 $form-login-gray-text: #9b9b9b;
 $btn-landing: rgba(255, 255, 255, 0.7);
 $btn-landing-hover: rgba(255, 255, 255, 0.9);
