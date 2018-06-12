@@ -686,8 +686,9 @@ form .checkbox input[type="checkbox"] {
     font-size:55.5%;
   }
 
-  .navbar-nav > li > a{
+  .navbar-nav > li {
     text-align: center;
+    color: $palette-dark-turkey;
   }
 }
 
