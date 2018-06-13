@@ -499,6 +499,7 @@ en:
     give_time:
       give_time: Give time to
     index:
+      members: Members
       actions: Actions
       active_warning: You are going to change user account status for %{username}
       active_warning_angular: You are going to change user account status for {{username}}

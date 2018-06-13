@@ -499,6 +499,7 @@ es:
     give_time:
       give_time: Dar Tiempo a
     index:
+      members: Miembros
       actions: Acciones
       active_warning: Estás a punto de cambiar el estado del usuario %{username}
       active_warning_angular: Va a cambiar el estado de la cuenta del usuario {{username}}

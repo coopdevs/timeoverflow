@@ -23,6 +23,11 @@ gem 'prawn-table', '~> 0.2.2'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'skylight'
+gem 'sidekiq', '5.1.3'
+gem 'sidekiq-cron', '0.6.3'
+# TODO: remove this once the following issue has been addressed
+#       https://github.com/ondrejbartas/sidekiq-cron/issues/199
+gem 'rufus-scheduler', '~> 3.4.2'
 
 # Assets
 gem 'jquery-rails', '>= 4.2.0'
@@ -54,7 +59,7 @@ end
 
 group :test do
   gem "database_cleaner", '1.6.2'
-  gem 'shoulda', ">= 3.5"
+  gem 'shoulda-matchers', '~> 3.1.2'
   gem 'fabrication'
   gem 'faker'
   gem 'capybara', '~> 2.7'

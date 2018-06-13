@@ -1,19 +1,15 @@
-<li>
-  <div class="language-selector">
-    <div class="dropdown dropdown-language-selector">
-      <a class="btn btn-default dropdown-toggle language" type="button" id="dropdownLanguage" data-toggle="dropdown">
-        <span><%= t("locales.#{locale}") %></span>
-        <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
-        <% I18n.available_locales.each do |locale| %>
-          <% if I18n.locale != locale %>
-          <li>
-            <%= link_to t("locales.#{locale}"), switch_lang_path(locale: locale) %>
-          </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</li>
+<div class="dropup language-selector">
+  <a class="btn btn-default dropdown-toggle language" type="button" id="dropdownLanguage" data-toggle="dropdown">
+    <span><%= t("locales.#{locale}") %></span>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" >
+    <% I18n.available_locales.each do |locale| %>
+      <% if I18n.locale != locale %>
+        <li>
+          <%= link_to t("locales.#{locale}", locale: locale), switch_lang_path(locale: locale) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

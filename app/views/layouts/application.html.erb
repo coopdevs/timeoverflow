@@ -34,30 +34,9 @@
         <div class="modal-content"></div>
       </div>
     </div>
-    <div class="footer container-fluid">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-left-col">
-            <p>
-              <a href="http://community.coopdevs.org/" target="_blank"><%= t('layouts.application.help') %></a>
-            </p>
-          </div>
-          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-center-col">
-            <p>
-              <%= link_to t('application.terms_conditions'),
-                tnc_path,
-                data: { target: '#modal', toggle: 'modal' } %>
-            </p>
-          </div>
-          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 footer-right-col">
-            <p>
-              <a href="https://twitter.com/timeoverflow" target="_blank">Twitter</a>
-              <a href="https://github.com/coopdevs/timeoverflow" target="_blank">Github</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <%= render 'application/footer' %>
+
     <div class="back-overlay"></div>
     <!-- Piwik -->
     <script type="text/javascript">

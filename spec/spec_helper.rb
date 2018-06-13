@@ -10,6 +10,7 @@ require 'database_cleaner'
 require 'fabrication'
 require 'selenium/webdriver'
 require 'faker'
+require 'shoulda/matchers'
 I18n.reload!
 
 Capybara.register_driver :chrome do |app|
@@ -149,3 +150,10 @@ RSpec.shared_context 'stub browser locale' do
 end
 
 RSpec.configure(&:infer_spec_type_from_file_location!)
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end

@@ -499,6 +499,7 @@ ca:
     give_time:
       give_time: Donar Temps a
     index:
+      members: Membres
       actions: Accions
       active_warning: Estàs a punt de canviar l'estat de l'usuari %{username}
       active_warning_angular: Vas a canviar l'estat del compte de l'usuari {{username}}
