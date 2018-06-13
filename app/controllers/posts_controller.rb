@@ -1,4 +1,6 @@
 class PostsController <  ApplicationController
+  before_action :authenticate_user!
+
   has_scope :by_category, as: :cat
   has_scope :tagged_with, as: :tag
   has_scope :by_organization, as: :org
