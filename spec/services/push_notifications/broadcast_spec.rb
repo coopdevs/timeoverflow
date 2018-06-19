@@ -14,6 +14,7 @@ RSpec.describe PushNotifications::Broadcast do
         title: 'Hola'
       )
     end
+    let(:push_notifications) { PushNotification.all }
     let(:client) { instance_double(Exponent::Push::Client) }
     let(:notification) do
       {
@@ -26,7 +27,16 @@ RSpec.describe PushNotifications::Broadcast do
       expect(Exponent::Push::Client).to receive(:new).and_return(client)
       expect(client).to receive(:publish).with([notification])
 
-      described_class.new(push_notifications: [push_notification]).send
+      described_class.new(push_notifications: push_notifications).send
+    end
+
+    it 'flags the push_notification as processed' do
+      allow(Exponent::Push::Client).to receive(:new).and_return(client)
+      allow(client).to receive(:publish).with([notification])
+
+      described_class.new(push_notifications: push_notifications).send
+
+      expect(push_notification.reload.processed_at).to_not be_nil
     end
   end
 end
