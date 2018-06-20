@@ -64,7 +64,8 @@ en:
         gender: Gender
         identity_document: Identity Document
         last_sign_in_at: Last login
-        notifications: Receive notifications
+        notifications: Receive email notifications
+        push_notifications: Receive mobile notifications
         organization: Organization
         phone: Phone
         registration_date: Registration date
@@ -494,8 +495,7 @@ en:
     edit:
       edit_user: Update user
     form:
-      admin_warning: Warning!!! You are giving privileges to this user!!
-      superadmin_warning: Warning!!! You are giving GOD PRIVILEGES to this user!!
+      notifications: Notifications
     give_time:
       give_time: Give time to
     index:

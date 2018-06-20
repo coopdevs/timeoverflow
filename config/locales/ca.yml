@@ -494,8 +494,7 @@ ca:
     edit:
       edit_user: Canviar usuari
     form:
-      admin_warning: Atenció!!! Estàs atorgant poders a aquest usuari!!
-      superadmin_warning: Atenció!!! Estàs atorgant PODERS DIVINS a aquest usuari!!
+      notifications: Notificacions
     give_time:
       give_time: Donar Temps a
     index:

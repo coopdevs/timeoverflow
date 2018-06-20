@@ -494,8 +494,7 @@ pt-BR:
     edit:
       edit_user: Trocar usuário
     form:
-      admin_warning: Atenção!!! Você está dando poderes a este usuário!!
-      superadmin_warning: Atenção!!! Você está dando PODERES DIVINOS a este usuário!!
+      notifications: Notificações
     give_time:
       give_time: Dar Tempo a
     index:
