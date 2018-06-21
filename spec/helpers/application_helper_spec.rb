@@ -19,4 +19,11 @@ RSpec.describe ApplicationHelper do
       expect(helper.seconds_to_hm(3600)).to eq("1:00")
     end
   end
+
+  it 'alert_class returns specific error classes' do
+    expect(helper.alert_class('error')).to eq('alert-danger')
+    expect(helper.alert_class('alert')).to eq('alert-danger')
+    expect(helper.alert_class('notice')).to eq('alert-success')
+    expect(helper.alert_class('foo')).to eq('alert-info')
+  end
 end

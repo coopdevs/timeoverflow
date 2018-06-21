@@ -41,7 +41,7 @@ module ApplicationHelper
     messages = resource.errors.
                full_messages.map { |msg| content_tag(:li, msg) }.join
     html = <<-HTML
-    <div class="alert alert-error alert-block">
+    <div class="alert alert-danger">
       <button type="button" class="close" data-dismiss="alert">x</button>
       <ul>
         #{messages}
@@ -82,5 +82,16 @@ module ApplicationHelper
     }
 
     "#{classes[controller]}"
+  end
+
+  def alert_class(alert)
+    case alert
+    when 'error', 'alert'
+      'alert-danger'
+    when 'notice'
+      'alert-success'
+    else
+      'alert-info'
+    end
   end
 end
