@@ -45,6 +45,7 @@ html {
 
 #login-box {
   border-radius: 0.3rem;
+  margin-bottom: 40px;
 
   form {
     border: 0;
@@ -386,10 +387,10 @@ label[required]::after{
   }
 
   .vertical-align {
-    position: absolute;
-    top: 46%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: auto;
+    position: static;
+    top: 0;
+    transform: none;
     width: 100%;
   }
 
