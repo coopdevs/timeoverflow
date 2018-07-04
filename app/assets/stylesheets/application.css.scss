@@ -394,6 +394,7 @@ label[required]::after{
 
   @media(max-width: $screen-sm-min) {
     background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+    background-size: cover;
   }
 
   .back-overlay {
@@ -446,6 +447,7 @@ label[required]::after{
 
   @media(max-width: $screen-sm-min) {
     background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+    background-size: cover;
   }
 
   .back-overlay {
@@ -646,6 +648,7 @@ label[required]::after{
 
     @media(max-width: $screen-sm-min) {
       background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+      background-size: cover;
     }
 
     h2 {
