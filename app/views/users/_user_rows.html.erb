@@ -6,10 +6,10 @@
       <%= member.inactive_icon %>
       <%= member.link_to_self %>
     </td>
-    <td> <%= member.mail_to %> </td>
-    <td> <%= member.phone %> </td>
-    <td> <%= member.alt_phone %> </td>
-    <td> <%= member.account_balance %> </td>
+    <td class="hidden-xs"> <%= member.mail_to %> </td>
+    <td class="hidden-xs hidden-sm"> <%= member.phone %> </td>
+    <td class="hidden-xs hidden-sm"> <%= member.alt_phone %> </td>
+    <td class="hidden-xs hidden-sm"> <%= member.account_balance %> </td>
     <% if current_user.manages?(current_organization) %>
       <td class="hover-actions">
         <%= link_to member.edit_user_path, class: "action" do %>
