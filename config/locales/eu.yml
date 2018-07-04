@@ -253,8 +253,8 @@ eu:
         remember_me: Gogoratuarazi
         sign_in: Sartu
       user:
-        signed_in: 
-        signed_out: 
+        signed_in: Konektatu
+        signed_out: Irten
     shared:
       links:
         didnt_receive_confirmation_instructions: Baieztatze imeila berriz bidali
@@ -502,7 +502,7 @@ eu:
       edit_user: Erabiltzailea aldatu
     form:
       admin_warning: Kontuz!!! Erabiltzaile honi boterea ematen ari zara.
-      notifications: 
+      notifications: Jakinarazpen
       superadmin_warning: Kontuz!!! Erabiltzaile honi izugarrizko boterea ematen ari zara.
     give_time:
       give_time: honi denbora eman
