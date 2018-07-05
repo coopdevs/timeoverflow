@@ -112,6 +112,28 @@ RSpec.describe OffersController, type: :controller do
           end
         end
       end
+
+      context 'when the user pertains to multiple organizations' do
+        context 'and user\'s current organization is different than offer\'s organization' do
+          let(:another_organization) { Fabricate(:organization) }
+
+          before do
+            Fabricate(:member, user: another_member.user, organization: another_organization)
+            allow(controller).to receive(:@current_organization).and_return(another_organization)
+          end
+
+          it 'displays the offer\'s user details' do
+            get :show, id: offer.id
+            expect(response.body).to include(offer.user.email)
+          end
+
+          it 'sets the offer\'s organization as user\'s current organization' do
+            get :show, id: offer.id
+            expect(session[:current_organization_id]).to eq(offer.organization_id)
+            expect(assigns(:current_organization)).to eq(offer.organization)
+          end
+        end
+      end
     end
 
     context 'when the user is not a member of the organization where the offer is published' do

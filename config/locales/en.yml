@@ -404,7 +404,7 @@ en:
       title2: Time Banks
   posts:
     show:
-      info: "%{type} of %{organization} to see person's details you have to"
+      info: "This %{type} belongs to %{organization}."
   reports:
     cat_with_users:
       title: Offered Services
