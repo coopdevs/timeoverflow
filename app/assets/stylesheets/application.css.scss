@@ -13,7 +13,6 @@ html {
 }
 
 .content {
-  min-height: 500px;
   margin-bottom: 76px;
 }
 
@@ -31,7 +30,8 @@ html {
   padding: 10px 16px;
 
   @media(max-width: $screen-sm-min) {
-    padding: 10px;
+    padding: 8px;
+    font-size: 15px;
   }
 }
 
@@ -50,7 +50,7 @@ html {
     border: 0;
     border-radius: 0.3rem;
     margin: 0;
-    padding: 1rem 0 1.4rem 0;
+    padding: 0;
   }
 
   form .material-icons {
@@ -112,10 +112,15 @@ html {
 
   .input-group-addon {
     border-radius: 0.3rem 0 0 0.3rem;
+
+    @media(max-width: $screen-sm-min) {
+      padding: 10px;
+    }
   }
 
   .input-lg, #user_email {
     border-radius: 0 0.3rem 0.3rem 0;
+    padding: 0 4px;
   }
 
   #user_password {
@@ -129,12 +134,20 @@ html {
     color: $form-input-glyph;
     font-size: 2.24rem;
     letter-spacing: -0.0040rem;
+
+    @media(max-width: $screen-sm-min) {
+      font-size: 1.8rem;
+    }
   }
 
   .form-control {
     border: 0;
     font-weight: 400;
     height: 7.5rem;
+
+    @media(max-width: $screen-sm-min) {
+      height: 6rem;
+    }
   }
 
   .form-control:focus {
@@ -379,18 +392,36 @@ label[required]::after{
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-size: cover;
 
+  @media(max-width: $screen-sm-min) {
+    background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+
   .back-overlay {
     display: block;
     filter: alpha(opacity = 60); /* For IE8 and earlier */
     opacity: 0.2;
   }
 
-  .vertical-align {
+  .login-wrapper {
     position: absolute;
-    top: 46%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 0;
     width: 100%;
+    z-index: 1;
+
+    @media(max-width: $screen-sm-min) {
+      top: 60px;
+    }
+  }
+
+  .home-wrapper {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    padding: 26px;
+    width: 100%;
+    z-index: 1;
   }
 
   .container-inner {
@@ -413,6 +444,11 @@ label[required]::after{
   background-color: $palette-turkey;
   background-size: cover;
   text-align: center;
+
+  @media(max-width: $screen-sm-min) {
+    background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
 
   .back-overlay {
     filter: alpha(opacity = 15); /* For IE8 and earlier */
@@ -609,6 +645,11 @@ label[required]::after{
     margin: 8rem 0 3rem 0;
     padding: 8rem 1rem;
     text-align: center;
+
+    @media(max-width: $screen-sm-min) {
+      background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
 
     h2 {
       font-size: 2.88em;
