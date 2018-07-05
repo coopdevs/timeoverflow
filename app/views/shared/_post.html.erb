@@ -60,15 +60,17 @@
     </div>
   </div>
 </div>
-<% unless post.organization == current_organization %>
+<% if !current_user || post.organization != current_organization %>
   <div class="alert alert-info">
     <%= t 'posts.show.info',
       type: post.class.model_name.human,
       organization: post.organization.name %>
-    <% unless current_user %>
-      <%= link_to t("layouts.application.login"),
-        new_user_session_path,
-        class: "btn btn-primary" %>
-    <% end %>
+  </div>
+<% end %>
+<% unless current_user %>
+  <div class="alert alert-info">
+    <%= link_to t("layouts.application.login"),
+      new_user_session_path,
+      class: "btn btn-primary" %>
   </div>
 <% end %>
