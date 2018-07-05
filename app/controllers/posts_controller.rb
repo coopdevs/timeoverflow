@@ -57,6 +57,9 @@ class PostsController <  ApplicationController
     instance_variable_set("@#{resource}", post)
   end
 
+  # GET /offers/:id
+  # GET /inquiries/:id
+  #
   def show
     scope = if current_user.present?
               current_organization.posts.active.of_active_members
