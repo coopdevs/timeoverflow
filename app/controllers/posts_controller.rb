@@ -61,12 +61,8 @@ class PostsController <  ApplicationController
   # GET /inquiries/:id
   #
   def show
-    scope = if current_user.present?
-              current_organization.posts.active.of_active_members
-            else
-              model.all.active.of_active_members
-            end
-    post = scope.find params[:id]
+    post = Post.active.of_active_members.find(params[:id])
+
     instance_variable_set("@#{resource}", post)
   end
 
