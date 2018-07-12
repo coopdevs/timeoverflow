@@ -61,7 +61,7 @@
                 <%= sort_link @search, 'account_balance', Account.human_attribute_name(:balance) %>
               </th>
               <% if current_user.manages? current_organization %>
-                <th>
+                <th class="hidden-xs hidden-sm">
                   <span class="glyphicon glyphicon-hand-down"></span>
                   <%= t(".actions") %>
                 </th>

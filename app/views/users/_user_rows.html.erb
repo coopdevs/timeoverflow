@@ -11,7 +11,7 @@
     <td class="hidden-xs hidden-sm"> <%= member.alt_phone %> </td>
     <td class="hidden-xs hidden-sm"> <%= member.account_balance %> </td>
     <% if current_user.manages?(current_organization) %>
-      <td class="hover-actions">
+      <td class="hover-actions hidden-xs hidden-sm">
         <%= link_to member.edit_user_path, class: "action" do %>
           <%= glyph :pencil %>
           <%= t "global.edit" %>
