@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><%= t(".members") %></h1>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
+        <div class="form-group">
+          <%= f.search_field :user_username_or_user_email_contains, class: "form-control" %>
+        </div>
+        <button class="btn btn-default" type="submit">
+          <%= t 'global.search' %>
+        </button>
+      <% end %>
+      <ul class="nav navbar-nav pull-right">
+        <% if admin? %>
+          <li>
+            <a href="<%= new_user_path %>">
+              <span class="glyphicon glyphicon-plus"></span>
+              <%= t "helpers.submit.create", model: User.model_name.human %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>
+        <%= link_to current_organization.name,
+                    organization_path(current_organization) %>
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group" id="contact-list">
+        <%= render "user2_rows", members: @member_view_models %>
+      </ul>
+        <%= paginate @members %>
+    </div>
+  </div>
+</div>

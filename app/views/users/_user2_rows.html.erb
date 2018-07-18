@@ -1,0 +1,21 @@
+<% members.each do |member| %>
+<li class="list-group-item post">
+    <div class="col-xs-3 col-sm-1">
+        <%= member.avatar_img %>
+    </div>
+    <div class="col-xs-9 col-sm-11">
+        <span class="name"><%= member.link_to_self%> (<%= member.member_uid %>)</span><br/>                           
+        <span class="description"><%= member.user.description%></span><br/>  
+        <a href="tel:<%= member.phone %>"><span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="<%= member.phone %>"></span> <span class="hidden-xs"><%= member.phone %></span></a>
+
+        <a href="mailto:<%= member.user.email %>"><span class="glyphicon glyphicon-envelope text-muted c-info" data-toggle="tooltip" title="<%= member.user.email %>" ></span> <span class="hidden-xs"><%= member.user.email %></span></a>
+        
+        <span class="glyphicon glyphicon-time text-muted c-info" data-toggle="tooltip" title="<%= member.account_balance
+ %>"></span><span><%= member.account_balance %></span>
+
+    
+    </div>
+    <div class="clearfix"></div>
+</li>
+
+<% end %>
