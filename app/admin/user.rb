@@ -43,7 +43,7 @@ ActiveAdmin.register User do
     end
     f.inputs "Members" do
       f.has_many :members do |m|
-        m.input :organization
+        m.input :organization, collection: Organization.order(id: :asc).pluck(:name, :id)
         m.input :manager
       end
     end
