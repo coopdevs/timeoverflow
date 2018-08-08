@@ -1,42 +1,6 @@
-.language-selector {
-  & {
-    display: inline-block;
-
-    @media(max-width: $screen-sm-min) {
-      display: block;
-      position: relative;
-    }
-  }
-
-  a.btn-default.dropdown-toggle {
-    & {
-      background-color: transparent;
-      border: 1px solid white;
-    }
-
-    &:hover {
-      background-color: transparent;
-    }
-  }
-
-  &.open > a.btn-default.dropdown-toggle {
-    & {
-      background-color: transparent;
-      color: white;
-      border-color: #ddd;
-    }
-
-    &:hover {
-      background-color: transparent;
-      color: white;
-      border-color: #ddd;
-    }
-  }
-}
-
 .footer {
   padding: 8px 0;
-  line-height: 40px;
+  line-height: 34px;
   width: 100%;
   background: rgba($palette-dark-turkey ,0.8);
 
@@ -82,5 +46,42 @@
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+}
+
+.language-selector {
+  & {
+    display: inline-block;
+
+    @media(max-width: $screen-sm-min) {
+      display: block;
+      position: relative;
+    }
+  }
+
+  a.btn-default.dropdown-toggle {
+    & {
+      background-color: transparent;
+      border: 1px solid white;
+      padding: 4px 8px;
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &.open > a.btn-default.dropdown-toggle {
+    & {
+      background-color: transparent;
+      color: white;
+      border-color: #ddd;
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: white;
+      border-color: #ddd;
+    }
   }
 }

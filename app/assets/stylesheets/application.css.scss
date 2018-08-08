@@ -13,8 +13,7 @@ html {
 }
 
 .content {
-  min-height: 500px;
-  margin-bottom: 36px;
+  margin-bottom: 76px;
 }
 
 .actions-menu {
@@ -31,7 +30,8 @@ html {
   padding: 10px 16px;
 
   @media(max-width: $screen-sm-min) {
-    padding: 10px;
+    padding: 8px;
+    font-size: 15px;
   }
 }
 
@@ -50,7 +50,7 @@ html {
     border: 0;
     border-radius: 0.3rem;
     margin: 0;
-    padding: 1rem 0 1.4rem 0;
+    padding: 0;
   }
 
   form .material-icons {
@@ -112,10 +112,15 @@ html {
 
   .input-group-addon {
     border-radius: 0.3rem 0 0 0.3rem;
+
+    @media(max-width: $screen-sm-min) {
+      padding: 10px;
+    }
   }
 
   .input-lg, #user_email {
     border-radius: 0 0.3rem 0.3rem 0;
+    padding: 0 4px;
   }
 
   #user_password {
@@ -129,12 +134,20 @@ html {
     color: $form-input-glyph;
     font-size: 2.24rem;
     letter-spacing: -0.0040rem;
+
+    @media(max-width: $screen-sm-min) {
+      font-size: 1.8rem;
+    }
   }
 
   .form-control {
     border: 0;
     font-weight: 400;
     height: 7.5rem;
+
+    @media(max-width: $screen-sm-min) {
+      height: 6rem;
+    }
   }
 
   .form-control:focus {
@@ -294,36 +307,9 @@ ul.statistics li{
 }
 
 /*flash*/
-.alert > p, .alert > ul {
+.alert > ul {
+  list-style: none;
   padding-left: 1.5rem;
-}
-
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
-
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
 }
 
 // if not navbar hidden datepicker in small windows
@@ -359,11 +345,6 @@ label[required]::after{
   @media(max-width: $screen-sm-min) {
     padding: 10px 15px;
   }
-}
-
-form .checkbox input[type="checkbox"] {
-  margin-left: 5px;
-  position: relative;
 }
 
 .back-overlay {
@@ -411,18 +392,36 @@ form .checkbox input[type="checkbox"] {
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-size: cover;
 
+  @media(max-width: $screen-sm-min) {
+    background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+
   .back-overlay {
     display: block;
     filter: alpha(opacity = 60); /* For IE8 and earlier */
     opacity: 0.2;
   }
 
-  .vertical-align {
+  .login-wrapper {
     position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 0;
     width: 100%;
+    z-index: 1;
+
+    @media(max-width: $screen-sm-min) {
+      top: 60px;
+    }
+  }
+
+  .home-wrapper {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    padding: 26px;
+    width: 100%;
+    z-index: 1;
   }
 
   .container-inner {
@@ -445,6 +444,11 @@ form .checkbox input[type="checkbox"] {
   background-color: $palette-turkey;
   background-size: cover;
   text-align: center;
+
+  @media(max-width: $screen-sm-min) {
+    background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
 
   .back-overlay {
     filter: alpha(opacity = 15); /* For IE8 and earlier */
@@ -642,6 +646,11 @@ form .checkbox input[type="checkbox"] {
     padding: 8rem 1rem;
     text-align: center;
 
+    @media(max-width: $screen-sm-min) {
+      background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
     h2 {
       font-size: 2.88em;
       font-weight: 600;
@@ -686,8 +695,9 @@ form .checkbox input[type="checkbox"] {
     font-size:55.5%;
   }
 
-  .navbar-nav > li > a{
+  .navbar-nav > li {
     text-align: center;
+    color: $palette-dark-turkey;
   }
 }
 

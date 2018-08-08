@@ -75,7 +75,7 @@ describe UsersController do
 
       it 'shows data for her membership in the current organization' do
         get :index
-        expect(response.body).to include("<td> 13:33 </td>")
+        expect(response.body).to include("13:33")
       end
     end
 

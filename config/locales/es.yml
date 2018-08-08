@@ -67,6 +67,7 @@ es:
         notifications: Recibir notificaciones
         organization: Organización
         phone: Teléfono
+        push_notifications: Recibir notificaciones móviles
         registration_date: Fecha de alta
         registration_number: Código de usuario
         superadmin: Administrador de sistema
@@ -246,8 +247,8 @@ es:
         remember_me: Recordarme
         sign_in: Entrar
       user:
-        signed_in: Has iniciado la sesión
-        signed_out: Has cerrado la sesión
+        signed_in: Sesión iniciada
+        signed_out: Sesión cerrada
     shared:
       links:
         didnt_receive_confirmation_instructions: Volver a enviar correo de confirmación
@@ -377,7 +378,7 @@ es:
       banner-title: "¿Eres un Banco de Tiempo?"
       donate-text: Con el fin de apoyar a muchas comunidades la asociación ADBdT ofrece la plataforma TimeOverflow a todos los Bancos de Tiempo. Considera %{donate_link} para contribuir a los gastos de mantenimiento e innovación.
       donate-title: Participa con una donación
-      donate_link: donar 1€ al mes
+      donate-link: donar 1€ al mes
       empower-adbdt: ADBdT
       empower-adbdt-title: Asociación para el Desarrollo de los Bancos de Tiempo
       empower-coopdevs: CoopDevs
@@ -495,11 +496,11 @@ es:
       edit_user: Cambiar usuario
     form:
       admin_warning: Atención!!! Estás dando poderes a este usuario!!
+      notifications: Notificaciones
       superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
     give_time:
       give_time: Dar Tiempo a
     index:
-      members: Miembros
       actions: Acciones
       active_warning: Estás a punto de cambiar el estado del usuario %{username}
       active_warning_angular: Va a cambiar el estado de la cuenta del usuario {{username}}
@@ -508,6 +509,7 @@ es:
       create: Crear nuevo usuario
       manage_warning: Estás a punto de cambiar los permisos del usuario %{username}
       manage_warning_angular: Va a cambiar los privilegios del usuario {{username}}
+      members: Miembros
       user_created: Usuario %{uid} %{name} guardado
     new:
       cancel: Cancelar

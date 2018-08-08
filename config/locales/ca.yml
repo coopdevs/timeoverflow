@@ -67,6 +67,7 @@ ca:
         notifications: Rebre notificacions
         organization: Organització
         phone: Telèfon
+        push_notifications: Rebre notificacions al mòbil
         registration_date: Data d'alta
         registration_number: Codi d'usuari
         superadmin: SuperAdministrador del Sistema
@@ -146,7 +147,7 @@ ca:
       statistics_all_transfers: Totes les transferències
       stats: Estadístiques
       tags: Etiquetes
-      type_of_swaps: Tipus d'intecanvis
+      type_of_swaps: Tipus d'intercanvis
       users: Usuaris
       without_offers: Sense ofertes publicades
     organization_list:
@@ -246,8 +247,8 @@ ca:
         remember_me: Recorda'm
         sign_in: Entrar
       user:
-        signed_in: Has iniciat sessió
-        signed_out: Has tancat la sessió
+        signed_in: Inici de sessió
+        signed_out: S'ha tancat la sessió
     shared:
       links:
         didnt_receive_confirmation_instructions: Tornar a enviar correu de confirmació
@@ -328,14 +329,14 @@ ca:
     report:
       report_title: INFORME
   locales:
-    ar: 
+    ar: Àrab
     ca: Català
     en: Anglès
     es: Espanyol
-    eu: 
-    fr: 
-    gl: 
-    pt: 
+    eu: Basc
+    fr: Francès
+    gl: Gallec
+    pt: Portuguès
     pt-BR: Portuguès
   mailers_globals:
     footer:
@@ -377,7 +378,7 @@ ca:
       banner-title: Ets un Banc de Temps?
       donate-text: Amb la finalitat de donar suport a moltes comunitats la associació ADBdT ofereix la plataforma TimeOverflow a tots los Bancs de Temps. Considera %{donate_link} per contribuir a les despeses de manteniment i innovació.
       donate-title: Participa amb una donació
-      donate_link: donar 1€ al mes
+      donate-link: donar 1€ al mes
       empower-adbdt: ADBdT
       empower-adbdt-title: Associació pel Desenvolupament dels Bancs de Temps
       empower-coopdevs: CoopDevs
@@ -495,11 +496,11 @@ ca:
       edit_user: Canviar usuari
     form:
       admin_warning: Atenció!!! Estàs atorgant poders a aquest usuari!!
+      notifications: Notificacions
       superadmin_warning: Atenció!!! Estàs atorgant PODERS DIVINS a aquest usuari!!
     give_time:
       give_time: Donar Temps a
     index:
-      members: Membres
       actions: Accions
       active_warning: Estàs a punt de canviar l'estat de l'usuari %{username}
       active_warning_angular: Vas a canviar l'estat del compte de l'usuari {{username}}
@@ -508,6 +509,7 @@ ca:
       create: Crear nou usuari
       manage_warning: Estàs a punt de canviar els permisos de l'usuari %{username}
       manage_warning_angular: Vas a canviar els permisos de l'usuari {{username}}
+      members: Membres
       user_created: Usuari %{uid} %{name} guardat
     new:
       cancel: Cancel·lar
