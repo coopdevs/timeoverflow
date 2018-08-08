@@ -377,7 +377,7 @@ ca:
       banner-title: Ets un Banc de Temps?
       donate-text: Amb la finalitat de donar suport a moltes comunitats la associació ADBdT ofereix la plataforma TimeOverflow a tots los Bancs de Temps. Considera %{donate_link} per contribuir a les despeses de manteniment i innovació.
       donate-title: Participa amb una donació
-      donate_link: donar 1€ al mes
+      donate-link: donar 1€ al mes
       empower-adbdt: ADBdT
       empower-adbdt-title: Associació pel Desenvolupament dels Bancs de Temps
       empower-coopdevs: CoopDevs

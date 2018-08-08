@@ -378,7 +378,7 @@ en:
       banner-title: Are you a Time Bank?
       donate-text: In order to support many communities the ADBdT asociation offers TimeOverflow platform to all Time Banks. %{donate_link} to contribute to maintenance and innovation costs.
       donate-title: Participate with a donation
-      donate_link: Donate 1€ a month
+      donate-link: Donate 1€ a month
       empower-adbdt: ADBdT
       empower-adbdt-title: Association for the Development of Time Banks
       empower-coopdevs: CoopDevs
@@ -402,6 +402,9 @@ en:
       subtitle: TimeOverflow is open source, free and collaborative
       title: The software designed by and for
       title2: Time Banks
+      app-mobile: Mobile App
+      app-mobile-text: The mobile app TimeOverflow for Android and iOS is available for download. <br /> This app has been possible thanks to the collaboration of the municipality of Barcelona, program %{impulsem_link} (Barcelona Activa) 2017-2018
+      impulsem-link: "Impulsem el que fas"
   posts:
     show:
       info: "%{type} of %{organization} to see person's details you have to"
