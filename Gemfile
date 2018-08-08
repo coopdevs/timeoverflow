@@ -7,7 +7,7 @@ gem 'rails-i18n'
 gem "rdiscount"
 gem 'activeadmin', '~> 1.2.1'
 gem 'has_scope'
-gem 'pundit', '~> 1.1.0'
+gem 'pundit', '~> 2.0.0'
 gem 'pg', '0.17.1'
 gem 'hstore_translate'
 gem 'dalli'
