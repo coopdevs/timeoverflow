@@ -1,4 +1,9 @@
 class Member < ActiveRecord::Base
+  # Cast the member_uid integer to a string to allow pg ILIKE search (from Ransack *_contains)
+  ransacker :member_uid do
+    Arel.sql("to_char(member_uid, '9999999')")
+  end
+
   belongs_to :user
   belongs_to :organization
   has_one :account, as: :accountable

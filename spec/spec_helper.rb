@@ -84,7 +84,7 @@ RSpec.configure do |config|
     ]
   end
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerMacros, type: :controller
   config.include Features::SessionHelpers, type: :feature
 
