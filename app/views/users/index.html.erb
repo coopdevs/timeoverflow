@@ -42,27 +42,26 @@
       <div class="table-responsive">
         <table class="table table-hover table-condensed users panel">
           <thead>
-            <tr></tr>
             <tr>
               <th></th>
               <th>ID</th>
               <th>
                 <%= sort_link @search, :user_username, User.human_attribute_name(:username) %>
               </th>
-              <th>
+              <th class="hidden-xs">
                 <%= sort_link @search, :user_email, User.human_attribute_name(:email) %>
               </th>
-              <th>
+              <th class="hidden-xs hidden-sm">
                 <%= User.human_attribute_name(:phone) %>
               </th>
-              <th>
+              <th class="hidden-xs hidden-sm">
                 <%= User.human_attribute_name(:alt_phone) %>
               </th>
-              <th>
+              <th class="hidden-xs hidden-sm">
                 <%= sort_link @search, 'account_balance', Account.human_attribute_name(:balance) %>
               </th>
               <% if current_user.manages? current_organization %>
-                <th>
+                <th class="hidden-xs hidden-sm">
                   <span class="glyphicon glyphicon-hand-down"></span>
                   <%= t(".actions") %>
                 </th>
