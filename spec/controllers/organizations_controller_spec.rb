@@ -1,8 +1,9 @@
 require 'spec_helper'
 
-describe OrganizationsController do
+RSpec.describe OrganizationsController do
   let!(:organization) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: organization) }
+  let(:user) { member.user }
 
   describe 'GET #show' do
     it 'displays the organization page' do
@@ -53,6 +54,16 @@ describe OrganizationsController do
         expect(response).to redirect_to(root_path)
         expect(flash[:error]).to eq('You are not authorized to perform this action.')
       end
+    end
+  end
+
+  describe '#set_current' do
+    before { login(user) }
+
+    it 'stores the given organization as current organization in session' do
+      post 'set_current', id: organization.id
+
+      expect(session[:current_organization_id]).to eq(organization.id)
     end
   end
 end

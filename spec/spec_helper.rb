@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-ENV["ADMINS"] = "superadmin@example.com"
+ENV["ADMINS"] = "admin@timeoverflow.org"
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
@@ -11,6 +11,7 @@ require 'fabrication'
 require 'selenium/webdriver'
 require 'faker'
 require 'shoulda/matchers'
+
 I18n.reload!
 
 Capybara.register_driver :chrome do |app|
@@ -36,7 +37,7 @@ Capybara.default_driver = :headless_chrome
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-# Make sure schem persists when running tests.
+# Make sure schema persists when running tests.
 # We ran into an error that forced us to run rake db:migrate RAILS_ENV=test
 # before running tests. This kind of fixes it, although we should have a closer
 # look at this and find a better solution
@@ -75,7 +76,6 @@ RSpec.configure do |config|
     feature_specs = items_by_type[:feature] || []
     rest_of_specs = items_by_type[:rest] || []
 
-
     random = Random.new(config.seed)
 
     [
@@ -84,7 +84,7 @@ RSpec.configure do |config|
     ]
   end
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerMacros, type: :controller
   config.include Features::SessionHelpers, type: :feature
 

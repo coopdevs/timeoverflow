@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   def create
     authorize User
 
-    # New User
     email = user_params[:email]
     @user = User.find_or_initialize_by(email: email) do |u|
       u.attributes = user_params
@@ -70,11 +69,11 @@ class UsersController < ApplicationController
 
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone
-                          alt_phone active description notifications"
+                          alt_phone active description notifications push_notifications"
     fields_to_permit += %w"admin registration_number
                            registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
-    # params[:user].permit(*fields_to_permit).tap &method(:ap)
+
     params.require(:user).permit *fields_to_permit
   end
 

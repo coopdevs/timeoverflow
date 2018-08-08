@@ -1,63 +1,82 @@
-<div>
-  <h1>
-    <%= User.model_name.human.pluralize %>
-    —
-    <%= link_to current_organization.name,
-                organization_path(current_organization) %>
-  </h1>
-  <div class="navbar">
-    <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
-      <%= f.search_field :user_username_or_user_email_contains, class: "form-control" %>
-      <button class="btn btn-default" type="submit">
-        <%= t 'global.search' %>
-      </button>
-    <% end %>
-    <ul class="nav navbar-nav pull-right">
-      <% if admin? %>
-        <li>
-          <a href="<%= new_user_path %>">
-            <span class="glyphicon glyphicon-plus"></span>
-            <%= t "helpers.submit.create", model: User.model_name.human %>
-          </a>
-        </li>
-      <% end %>
-    </ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><%= t(".members") %></h1>
+    </div>
   </div>
-  <div class="table-responsive">
-    <table class="table table-hover table-condensed users panel">
-      <thead>
-        <tr></tr>
-        <tr>
-          <th></th>
-          <th>ID</th>
-          <th>
-            <%= sort_link @search, :user_username, User.human_attribute_name(:username) %>
-          </th>
-          <th>
-            <%= sort_link @search, :user_email, User.human_attribute_name(:email) %>
-          </th>
-          <th>
-            <%= User.human_attribute_name(:phone) %>
-          </th>
-          <th>
-            <%= User.human_attribute_name(:alt_phone) %>
-          </th>
-          <th>
-            <%= sort_link @search, 'account_balance', Account.human_attribute_name(:balance) %>
-          </th>
-          <% if current_user.manages? current_organization %>
-            <th>
-              <span class="glyphicon glyphicon-hand-down"></span>
-              <%= t(".actions") %>
-            </th>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render "user_rows", members: @member_view_models %>
-      </tbody>
-    </table>
+</div>
 
-    <%= paginate @members %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
+        <div class="form-group">
+          <%= f.search_field :user_username_or_user_email_or_member_uid_contains, class: "form-control" %>
+        </div>
+        <button class="btn btn-default" type="submit">
+          <%= t 'global.search' %>
+        </button>
+      <% end %>
+      <ul class="nav navbar-nav pull-right">
+        <% if admin? %>
+          <li>
+            <a href="<%= new_user_path %>">
+              <span class="glyphicon glyphicon-plus"></span>
+              <%= t "helpers.submit.create", model: User.model_name.human %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>
+        <%= link_to current_organization.name,
+                    organization_path(current_organization) %>
+      </h2>
+
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed users panel">
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                <%= sort_link @search, :member_uid, 'ID' %>
+              </th>
+              <th>
+                <%= sort_link @search, :user_username, User.human_attribute_name(:username) %>
+              </th>
+              <th class="hidden-xs">
+                <%= sort_link @search, :user_email, User.human_attribute_name(:email) %>
+              </th>
+              <th class="hidden-xs hidden-sm">
+                <%= User.human_attribute_name(:phone) %>
+              </th>
+              <th class="hidden-xs hidden-sm">
+                <%= User.human_attribute_name(:alt_phone) %>
+              </th>
+              <th class="hidden-xs hidden-sm">
+                <%= sort_link @search, 'account_balance', Account.human_attribute_name(:balance) %>
+              </th>
+              <% if current_user.manages? current_organization %>
+                <th class="hidden-xs hidden-sm">
+                  <span class="glyphicon glyphicon-hand-down"></span>
+                  <%= t(".actions") %>
+                </th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render "user_rows", members: @member_view_models %>
+          </tbody>
+        </table>
+
+        <%= paginate @members %>
+      </div>
+    </div>
   </div>
 </div>

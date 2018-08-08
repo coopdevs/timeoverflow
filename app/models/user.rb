@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
     :rememberable,
     :confirmable,
     :lockable,
-    :trackable
+    :trackable,
+    :timeoutable
   ]
 
   GENDERS = %w[male female]

@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_filter :load_resource, only: [:show, :edit, :update]
+  before_filter :load_resource, only: [:show, :edit, :update, :set_current]
 
   def new
     @organization = Organization.new
@@ -40,6 +40,8 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  # POST /organizations/:organization_id/set_current
+  #
   def set_current
     if current_user
       session[:current_organization_id] = @organization.id
