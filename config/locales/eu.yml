@@ -71,6 +71,7 @@ eu:
         notifications: Jasotako jakinarazpenak
         organization: Antolaketa
         phone: Telefono zenbakia
+        push_notifications: 
         registration_date: Erregistratze eguna
         registration_number: Erabiltzaile kodea
         superadmin: Sistemaren administratzailea
@@ -252,7 +253,7 @@ eu:
         remember_me: Gogoratuarazi
         sign_in: Sartu
       user:
-        signed_in: konektatu
+        signed_in: Konektatu
         signed_out: Irten
     shared:
       links:
@@ -432,7 +433,7 @@ eu:
           female: Emakumea
           male: Gizona
     required:
-      mark: 
+      mark: "*"
       text: Beharrezkoa
     'yes': Bai
   statistics:
@@ -500,7 +501,9 @@ eu:
     edit:
       edit_user: Erabiltzailea aldatu
     form:
+      admin_warning: Kontuz!!! Erabiltzaile honi boterea ematen ari zara.
       notifications: Jakinarazpen
+      superadmin_warning: Kontuz!!! Erabiltzaile honi izugarrizko boterea ematen ari zara.
     give_time:
       give_time: honi denbora eman
     index:
@@ -512,6 +515,7 @@ eu:
       create: Erabiltzaile berria sortu
       manage_warning: 
       manage_warning_angular: " {{username}} erabiltzailearen onurak, aldatuko diztuzu"
+      members: 
       user_created: "%{uid} %{name} erabiltzailea gorde da"
     new:
       cancel: Deuseztatu
@@ -523,7 +527,7 @@ eu:
       accounts: Kontuak
       balance: 'Balantzea:'
       categories: Eskainiriko zerbitzuak
-      change_your_image:
+      change_your_image: 
       created_at: 'Alta:'
       data: Erabiltzailearen datuak
       date: Eguna
