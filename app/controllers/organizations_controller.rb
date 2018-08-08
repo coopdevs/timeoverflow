@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_filter :load_resource, only: [:show, :edit, :update, :destroy]
+  before_filter :load_resource, only: [:show, :edit, :update, :destroy, :set_current]
 
   def new
     @organization = Organization.new
@@ -41,6 +41,8 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_path, notice: "deleted"
   end
 
+  # POST /organizations/:organization_id/set_current
+  #
   def set_current
     if current_user
       session[:current_organization_id] = @organization.id

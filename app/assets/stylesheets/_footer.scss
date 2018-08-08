@@ -1,6 +1,6 @@
 .footer {
   padding: 8px 0;
-  line-height: 40px;
+  line-height: 34px;
   width: 100%;
   background: rgba($palette-dark-turkey ,0.8);
 
@@ -63,6 +63,7 @@
     & {
       background-color: transparent;
       border: 1px solid white;
+      padding: 4px 8px;
     }
 
     &:hover {
