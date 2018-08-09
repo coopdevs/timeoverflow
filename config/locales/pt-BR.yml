@@ -373,12 +373,15 @@ pt-BR:
       contact_information: Informação de contato
   pages:
     about:
+      app-mobile: 
+      app-mobile-text: 
       banner-button: Pedir acesso
       banner-subtitle: Vamos ajudá-los a começar ou obter uma demonstração
       banner-title: Você é um Banco de Tempo?
+      donate-link: 
       donate-text: 
       donate-title: 
-      donate-link: 
+      donate_link: 
       empower-adbdt: ADBdt
       empower-adbdt-title: Associação para o Desenvolvimento dos Bancos de Tempo
       empower-coopdevs: CoopDevs
@@ -399,6 +402,7 @@ pt-BR:
       feature-text-4: Os membros de um Banco de Tempo podem acessar o sistema e entrar em contato com outros membros
       feature-text-5: Publicar ofertas e demandas
       feature-text-6: Pagar horas a outros membros
+      impulsem-link: 
       subtitle: TimeOverflow é livre, gratuito e colaborativo
       title: O software desenhado por e para
       title2: os Bancos de Tempo
