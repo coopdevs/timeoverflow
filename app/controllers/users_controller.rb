@@ -11,6 +11,16 @@ class UsersController < ApplicationController
       @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
   end
 
+  def index2
+    @search = current_organization.members.ransack(search_params)
+
+    @members =
+      @search.result.eager_load(:account, :user).page(params[:page]).per(25)
+
+    @member_view_models =
+      @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
+  end
+
   def show
     @user = find_user
     @member = @user.as_member_of(current_organization)

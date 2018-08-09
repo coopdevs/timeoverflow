@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/members/index2' => 'users#index2'
+
   resources :inquiries
   resources :device_tokens, only: :create
 
