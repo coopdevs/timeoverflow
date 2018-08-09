@@ -373,12 +373,15 @@ es:
       contact_information: Información de contacto
   pages:
     about:
+      app-mobile: App Móvil
+      app-mobile-text: La app móvil de TimeOverflow está disponible para Android y IOS<br /> Esta app ha sido posible gracias a la colaboración del Ayuntamiento de Barcelona, a través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Solicita acceso
       banner-subtitle: Os ayudaremos a ponerlo en marcha o a haceros una demostración
       banner-title: "¿Eres un Banco de Tiempo?"
+      donate-link: Donar 1€ al mes
       donate-text: Con el fin de apoyar a muchas comunidades la asociación ADBdT ofrece la plataforma TimeOverflow a todos los Bancos de Tiempo. Considera %{donate_link} para contribuir a los gastos de mantenimiento e innovación.
       donate-title: Participa con una donación
-      donate-link: donar 1€ al mes
+      donate_link: donar 1€ al mes
       empower-adbdt: ADBdT
       empower-adbdt-title: Asociación para el Desarrollo de los Bancos de Tiempo
       empower-coopdevs: CoopDevs
@@ -399,6 +402,7 @@ es:
       feature-text-4: Los miembros de un Banco de Tiempo pueden acceder al sistema y contactar con otros miembros
       feature-text-5: Publicar ofertas y demandas
       feature-text-6: Pagar horas a otros miembros
+      impulsem-link: Impulsem el que fas
       subtitle: TimeOverflow es libre, gratuito y colaborativo
       title: El software diseñado por y para
       title2: los Bancos de Tiempo
