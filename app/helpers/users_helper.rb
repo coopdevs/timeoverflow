@@ -1,6 +1,4 @@
 module UsersHelper
-  private
-
   def edit_user_path(user)
     can_edit_user?(user) ? super : ""
   end

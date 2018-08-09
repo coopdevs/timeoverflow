@@ -40,18 +40,20 @@ describe UsersController do
   describe "GET #index" do
     before { login(user) }
 
-    it 'sorts the users by their member_uid' do
-      member.update_attribute(:member_uid, 100)
+    it 'sorts the users by their member_uid asc by default' do
+      member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
 
       get :index
 
-      expect(assigns(:users)).to eq([
-        another_user,
-        admin_user,
-        wrong_user,
-        empty_email_user,
-        user,
-      ])
+      expect(assigns(:members).last).to eq(member)
+    end
+
+    it 'allows to sort by member_uid' do
+      member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
+
+      get :index, q: { s: "member_uid desc" }
+
+      expect(assigns(:members).first).to eq(member)
     end
 
     context 'when a user has many memberships' do
@@ -67,18 +69,13 @@ describe UsersController do
       it 'gets her membership in the current organization' do
         get :index
 
-        expect(assigns(:memberships)).to eq({
-          member.user_id => member,
-          another_member.user_id => another_member,
-          member_admin.user_id => member_admin,
-          wrong_email_member.user_id => wrong_email_member,
-          empty_email_member.user_id => empty_email_member
-        })
+        expect(assigns(:members))
+          .to eq([member, another_member, member_admin, wrong_email_member, empty_email_member])
       end
 
       it 'shows data for her membership in the current organization' do
         get :index
-        expect(response.body).to include("<td> 13:33 </td>")
+        expect(response.body).to include("13:33")
       end
     end
 
@@ -87,9 +84,9 @@ describe UsersController do
         login(user)
 
         get "index"
-        expect(assigns(:users)).to eq([user, another_user,
-                                       admin_user, wrong_user,
-                                       empty_email_user])
+
+        expect(assigns(:members).map(&:user))
+          .to eq([user, another_user, admin_user, wrong_user, empty_email_user])
       end
     end
 
@@ -98,9 +95,9 @@ describe UsersController do
         login(admin_user)
 
         get "index"
-        expect(assigns(:users)).to eq([user, another_user,
-                                       admin_user, wrong_user,
-                                       empty_email_user])
+
+        expect(assigns(:members).map(&:user))
+          .to eq([user, another_user, admin_user, wrong_user, empty_email_user])
       end
     end
 
@@ -114,18 +111,9 @@ describe UsersController do
         let(:direction) { 'desc' }
 
         it 'orders the rows by their balance' do
-          get :index, q: { s: "accounts_balance #{direction}" }
+          get :index, q: { s: "account_balance #{direction}" }
 
-          expect(assigns(:users).pluck(:id))
-            .to eq(
-              [
-                admin_user.id,
-                user.id,
-                another_user.id,
-                wrong_user.id,
-                empty_email_user.id
-              ]
-          )
+          expect(assigns(:members).pluck(:user_id).first).to eq(admin_user.id)
         end
       end
 
@@ -133,19 +121,21 @@ describe UsersController do
         let(:direction) { 'asc' }
 
         it 'orders the rows by their balance' do
-          get :index, q: { s: "accounts_balance #{direction}" }
+          get :index, q: { s: "account_balance #{direction}" }
 
-          expect(assigns(:users).pluck(:id))
-            .to eq(
-              [
-                user.id,
-                another_user.id,
-                wrong_user.id,
-                empty_email_user.id,
-                admin_user.id,
-              ]
-          )
+          expect(assigns(:members).pluck(:user_id).last).to eq(admin_user.id)
         end
+      end
+    end
+
+    context 'when searching' do
+      it 'allows to search by member_uid' do
+        user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
+        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
+
+        get :index, q: { user_username_or_user_email_or_member_uid_contains: 1000 }
+
+        expect(assigns(:members)).to include(member)
       end
     end
   end

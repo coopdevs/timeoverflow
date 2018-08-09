@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422162806) do
+ActiveRecord::Schema.define(version: 20180530180546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 20150422162806) do
     t.hstore   "name_translations"
   end
 
+  create_table "device_tokens", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "token",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "device_tokens", ["user_id", "token"], name: "index_device_tokens_on_user_id_and_token", unique: true, using: :btree
+
   create_table "documents", force: :cascade do |t|
     t.integer  "documentable_id"
     t.string   "documentable_type"
@@ -66,6 +75,19 @@ ActiveRecord::Schema.define(version: 20150422162806) do
 
   add_index "documents", ["documentable_id", "documentable_type"], name: "index_documents_on_documentable_id_and_documentable_type", using: :btree
   add_index "documents", ["label"], name: "index_documents_on_label", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "action",      null: false
+    t.integer  "post_id"
+    t.integer  "member_id"
+    t.integer  "transfer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["member_id"], name: "index_events_on_member_id", where: "(member_id IS NOT NULL)", using: :btree
+  add_index "events", ["post_id"], name: "index_events_on_post_id", where: "(post_id IS NOT NULL)", using: :btree
+  add_index "events", ["transfer_id"], name: "index_events_on_transfer_id", where: "(transfer_id IS NOT NULL)", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.integer  "user_id"
@@ -93,7 +115,7 @@ ActiveRecord::Schema.define(version: 20150422162806) do
   add_index "movements", ["transfer_id"], name: "index_movements_on_transfer_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                 limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "reg_number_seq"
@@ -108,6 +130,8 @@ ActiveRecord::Schema.define(version: 20150422162806) do
     t.string   "city"
     t.string   "domain"
   end
+
+  add_index "organizations", ["name"], name: "index_organizations_on_name", unique: true, using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -134,6 +158,14 @@ ActiveRecord::Schema.define(version: 20150422162806) do
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "push_notifications", force: :cascade do |t|
+    t.integer  "event_id",        null: false
+    t.integer  "device_token_id", null: false
+    t.datetime "processed_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "transfers", force: :cascade do |t|
     t.integer  "post_id"
     t.text     "reason"
@@ -153,7 +185,6 @@ ActiveRecord::Schema.define(version: 20150422162806) do
   create_table "users", force: :cascade do |t|
     t.string   "username",                              null: false
     t.string   "email",                                 null: false
-    t.string   "password_digest"
     t.date     "date_of_birth"
     t.string   "identity_document"
     t.string   "phone"
@@ -184,9 +215,15 @@ ActiveRecord::Schema.define(version: 20150422162806) do
     t.datetime "locked_at"
     t.string   "locale",                 default: "es"
     t.boolean  "notifications",          default: true
+    t.boolean  "push_notifications",     default: true, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
   add_foreign_key "accounts", "organizations"
+  add_foreign_key "events", "members", name: "events_member_id_fkey"
+  add_foreign_key "events", "posts", name: "events_post_id_fkey"
+  add_foreign_key "events", "transfers", name: "events_transfer_id_fkey"
+  add_foreign_key "push_notifications", "device_tokens"
+  add_foreign_key "push_notifications", "events"
 end

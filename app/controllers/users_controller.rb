@@ -2,22 +2,13 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @search = User.ransack(params[:q])
-    @search.sorts = 'members_member_uid asc' if @search.sorts.empty?
+    @search = current_organization.members.ransack(search_params)
 
-    @users = @search
-      .result(distinct: false)
-      .joins(members: :account)
-      .eager_load(members: :account)
-      .where(members: { organization: current_organization.id })
-      .page(params[:page])
-      .per(25)
+    @members =
+      @search.result.eager_load(:account, :user).page(params[:page]).per(25)
 
-    @memberships = current_organization.members.
-      where(user_id: @users.map(&:id)).
-      includes(:account).each_with_object({}) do |mem, ob|
-        ob[mem.user_id] = mem
-      end
+    @member_view_models =
+      @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
   end
 
   def show
@@ -39,7 +30,6 @@ class UsersController < ApplicationController
   def create
     authorize User
 
-    # New User
     email = user_params[:email]
     @user = User.find_or_initialize_by(email: email) do |u|
       u.attributes = user_params
@@ -69,17 +59,21 @@ class UsersController < ApplicationController
 
   private
 
+  def search_params
+    {s: 'member_uid asc'}.merge(params.fetch(:q, {}))
+  end
+
   def scoped_users
     current_organization.users
   end
 
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone
-                          alt_phone active description notifications"
+                          alt_phone active description notifications push_notifications"
     fields_to_permit += %w"admin registration_number
                            registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
-    # params[:user].permit(*fields_to_permit).tap &method(:ap)
+
     params.require(:user).permit *fields_to_permit
   end
 

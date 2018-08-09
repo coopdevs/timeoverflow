@@ -12,19 +12,19 @@
           <th><%= t '.last_movement' %></th>
         </tr>
       </thead>
-      <tbody></tbody>
-      <%# Por días sin movimientos %>
-      <% @members.includes(:account)
-                 .sort_by(&:days_without_swaps)
-                 .reverse
-                 .each do |mem| %>
-        <tr>
-          <td><%= mem.member_uid %></td>
-          <td><%= link_to mem.user.username, mem.user %></td>
-          <td><%= mem.days_without_swaps %></td>
-          <td><%= (mem.account.updated_at == mem.account.created_at) ? t(".no_movements") : l(mem.account.updated_at, format: :long) %></td>
-        </tr>
-      <% end %>
+      <tbody>
+        <% @members.includes(:account)
+                   .sort_by(&:days_without_swaps)
+                   .reverse
+                   .each do |mem| %>
+          <tr>
+            <td><%= mem.member_uid %></td>
+            <td><%= link_to mem.user.username, mem.user %></td>
+            <td><%= mem.days_without_swaps %></td>
+            <td><%= (mem.account.updated_at == mem.account.created_at) ? t(".no_movements") : l(mem.account.updated_at, format: :long) %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

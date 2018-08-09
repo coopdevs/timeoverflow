@@ -2,64 +2,45 @@
  *= require_self
  */
 
+@import "variables";
 @import "bootstrap-sprockets";
-@import "bootstrap";
-
-$bg-color: #f5f8fa;
-$navs-bg-color: #1e1e1e;
-$white: #ffffff;
-$border: #e1e8ed;
-$navs-hover-color: #aaa;
-$menu-drop: #333;
-$menu-drop-hover: #333;
-$menu-disabled: #ddd;
-$black: #000;
-$form-input-glyph: #555;
-$form-input-bg-color: #f5f5f5;
-$form-input-button: #2a292a;
-$form-input-button-hover: #3a393a;
-$form-a-color: gray;
-$form-a-hover-color: #333;
-$form-login-gray-text: #9b9b9b;
-$btn-landing: rgba(255, 255, 255, 0.7);
-$btn-landing-hover: rgba(255, 255, 255, 0.9);
-$pages-title: #4a4a4a;
-$pages-text: #4a4a4a;
-$pages-anchor: #4a4a4a;
-$pages-anchor-hover: #8a8a8a;
-$features-background: #f5f5f5;
-$features-separator: #d8d8d8;
+@import "bootstrap-custom";
+@import "to-categories-dropdown";
+@import "footer";
 
 html {
-  font-size:62.5%;
+  font-size: 62.5%;
 }
 
-.content
-{
-  min-height:500px;
-  margin-bottom: 40px;
+.content {
+  margin-bottom: 76px;
 }
 
-.language-selector{
-  margin: 1.2rem 3rem 1.2rem 1rem;
-}
+.actions-menu {
+  margin-bottom: 16px;
+  padding: 0 15px;
 
-.language-selector a span {
-  display: block;
-  float: left;
-}
-
-.actions-menu > .dropdown > .language b {
-  display: inline-block;
-  margin-left: 0.7rem;
+  @media(max-width: $screen-sm-min) {
+    padding: 0;
+  }
 }
 
 .actions-menu > li > a {
   color: #101010;
+  padding: 10px 16px;
+
+  @media(max-width: $screen-sm-min) {
+    padding: 8px;
+    font-size: 15px;
+  }
 }
 
-.actions-menu > li{
-  margin-right:5px;
+.actions-menu > li {
+  margin-right: 6px;
+
+  @media(max-width: $screen-sm-min) {
+    margin-right: 2px;
+  }
 }
 
 #login-box {
@@ -69,7 +50,7 @@ html {
     border: 0;
     border-radius: 0.3rem;
     margin: 0;
-    padding: 1rem 0 1.4rem 0;
+    padding: 0;
   }
 
   form .material-icons {
@@ -88,14 +69,6 @@ html {
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px $form-input-bg-color inset;
     transition: background-color 100000s ease-in-out 0s;
-  }
-
-  span.input-group-addon {
-    padding: 2rem 2rem 2rem 3rem;
-
-    @media (max-width: $screen-xs-min) {
-      display: none;
-    }
   }
 
   span.show-password {
@@ -124,10 +97,6 @@ html {
     text-align: center;
   }
 
-  .panel-body {
-    padding: 0 3rem 0 3rem;
-  }
-
   .panel-footer {
     padding: 2rem 3rem;
 
@@ -143,10 +112,15 @@ html {
 
   .input-group-addon {
     border-radius: 0.3rem 0 0 0.3rem;
+
+    @media(max-width: $screen-sm-min) {
+      padding: 10px;
+    }
   }
 
   .input-lg, #user_email {
     border-radius: 0 0.3rem 0.3rem 0;
+    padding: 0 4px;
   }
 
   #user_password {
@@ -160,13 +134,20 @@ html {
     color: $form-input-glyph;
     font-size: 2.24rem;
     letter-spacing: -0.0040rem;
-    padding: 2rem;
+
+    @media(max-width: $screen-sm-min) {
+      font-size: 1.8rem;
+    }
   }
 
   .form-control {
     border: 0;
     font-weight: 400;
     height: 7.5rem;
+
+    @media(max-width: $screen-sm-min) {
+      height: 6rem;
+    }
   }
 
   .form-control:focus {
@@ -198,7 +179,7 @@ html {
   background-color: $white;
   border: 1px solid $border;
   border-radius: 5px;
-  margin: 10px;
+  margin: 14px 0;
   padding: 5px 20px;
 
   h4 {
@@ -216,6 +197,12 @@ html {
     margin-right: 10px;
   }
 
+  &__datetime {
+    color: $palette-grey;
+    padding: 4px 0 0;
+    font-size: 10px;
+    text-align: right;
+  }
 }
 
 .break-word {
@@ -231,36 +218,6 @@ html {
   padding: 20px;
 }
 
-.footer {
-  bottom: 0;
-  left: 0;
-  line-height: 40px;
-  padding: 0;
-  position: absolute;
-  vertical-align: middle;
-  width: 100%;
-
-  p {
-    font-size: 1.6rem;
-    letter-spacing: 0.013rem;
-    margin: 0;
-    text-align: center;
-  }
-
-  .row {
-    margin: 0;
-  }
-
-  a {
-    color: $pages-anchor;
-    font-weight: 500;
-    margin-left: 1.5rem;
-  }
-
-  a:hover {
-    color: $pages-anchor-hover;
-  }
-}
 
 .row.exports {
   padding: 10px;
@@ -285,7 +242,6 @@ table.users {
     background-color: $bg-color;
     font-family: 'Work Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: medium;
-    margin: 0 0 20px;
   }
 
   form {
@@ -351,36 +307,9 @@ ul.statistics li{
 }
 
 /*flash*/
-.alert > p, .alert > ul {
+.alert > ul {
+  list-style: none;
   padding-left: 1.5rem;
-}
-
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
-
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
 }
 
 // if not navbar hidden datepicker in small windows
@@ -409,13 +338,13 @@ label[required]::after{
 }
 
 .navbar-form {
-  padding: 0;
+  border: 0;
   background-color: transparent;
-}
+  padding: 0;
 
-form .checkbox input[type="checkbox"] {
-  margin-left: 5px;
-  position: relative;
+  @media(max-width: $screen-sm-min) {
+    padding: 10px 15px;
+  }
 }
 
 .back-overlay {
@@ -429,7 +358,11 @@ form .checkbox input[type="checkbox"] {
   z-index: -1;
 }
 
-.navbar-block{
+.navbar .container-fluid {
+  padding: 0;
+}
+
+.navbar-block {
   margin-top: 0.2rem;
 }
 
@@ -442,23 +375,11 @@ form .checkbox input[type="checkbox"] {
 }
 
 .navbar-static-top {
-  background-color: $navs-bg-color;
+  background-color: rgba($palette-turkey, 0.9);
 }
 
 .navbar-inverse {
   border: 0;
-}
-
-.navbar-inverse .navbar-brand {
-  color: $white;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-  color: $white;
-}
-
-.navbar-inverse .navbar-brand a:hover, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-  color: $navs-hover-color;
 }
 
 .navbar-brand {
@@ -467,98 +388,40 @@ form .checkbox input[type="checkbox"] {
   letter-spacing: 0.019rem;
 }
 
-.language-selector{
-  margin: 0.5rem 2rem 0 2rem;
-  width: 13.5rem;
-}
-
-.dropdown{
-  &.dropdown-language-selector{
-    .dropdown-toggle{
-      background: none;
-      border: 0.2rem solid $white;
-      border-radius: 0.3rem;
-      color: $white;
-      font-size: 1.6rem;
-      font-weight: 500;
-      min-width: 13.5rem;
-      text-align: left;
-
-      .caret{
-        display: block;
-        float: right;
-        margin-top: 1.1rem;
-      }
-      &:focus,
-      &:active{
-        box-shadow: none;
-        outline: none;
-      }
-    }
-    &.open>.btn-default.dropdown-toggle{
-      background: none;
-      border-color: $white;
-      border-bottom: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-      color: $white;
-
-      .caret{
-        -ms-transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
-      }
-    }
-    .dropdown-menu{
-      background: $navs-bg-color;
-      border: 0.2rem solid $white;
-      border-top: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      box-shadow: none;
-      margin-top: 0;
-      min-width: 13.5rem;
-      li{
-        a{
-          color: $white;
-          font-size: 1.6rem;
-          font-weight: 500;
-          padding: 0.6rem 1.2rem;
-          &:hover{
-            background: $menu-drop-hover;
-            opacity: 0.8;
-          }
-          &:focus,
-          &:active{
-            background: none;
-            box-shadow: none;
-            outline: none;
-          }
-        }
-      }
-    }
-  }
-}
-
 .landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-size: cover;
 
+  @media(max-width: $screen-sm-min) {
+    background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+
   .back-overlay {
     display: block;
     filter: alpha(opacity = 60); /* For IE8 and earlier */
-    opacity: 0.6;
+    opacity: 0.2;
   }
-  .vertical-align {
-    left: 50%;
+
+  .login-wrapper {
     position: absolute;
-    top: 47%;
-    transform: translate(-50%, -50%);
-    width: 75%;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+
+    @media(max-width: $screen-sm-min) {
+      top: 60px;
+    }
   }
-  .container-fluid {
-    padding-bottom: 0.8rem;
-    padding-top: 0.8rem;
+
+  .home-wrapper {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    padding: 26px;
+    width: 100%;
+    z-index: 1;
   }
 
   .container-inner {
@@ -578,9 +441,14 @@ form .checkbox input[type="checkbox"] {
 
 .landing-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
-  background-color: $navs-bg-color;
+  background-color: $palette-turkey;
   background-size: cover;
   text-align: center;
+
+  @media(max-width: $screen-sm-min) {
+    background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
 
   .back-overlay {
     filter: alpha(opacity = 15); /* For IE8 and earlier */
@@ -595,6 +463,7 @@ form .checkbox input[type="checkbox"] {
     font-weight: 700;
     letter-spacing: -0.073rem;
     margin: 0;
+    text-shadow: 1px 1px $palette-black;
   }
 
   h3 {
@@ -603,6 +472,7 @@ form .checkbox input[type="checkbox"] {
     font-weight: 500;
     letter-spacing: -0.107rem;
     margin-top: 1rem;
+    text-shadow: 1px 1px $palette-black;
   }
 
   .btn {
@@ -625,18 +495,6 @@ form .checkbox input[type="checkbox"] {
 }
 
 .login-page {
-  h1 {
-    font-size: 3.84rem;
-    font-weight: 600;
-    letter-spacing: 0.031rem;
-    margin-bottom: 2rem;
-    margin-top: 3rem;
-
-    @media (max-width: $screen-xs-min) {
-      display: none;
-    }
-  }
-
   .material-icons {
     font-size: 3rem;
   }
@@ -680,10 +538,6 @@ form .checkbox input[type="checkbox"] {
     border: none;
     margin-top: 3rem;
     padding: 0;
-  }
-
-  #login-box .panel-body {
-    padding: 3rem 3rem 2rem 3rem;
   }
 
   .panel-body h2 {
@@ -786,11 +640,16 @@ form .checkbox input[type="checkbox"] {
   }
 
   .banner {
-    background: image-url('home_back_overlay.jpg') no-repeat center center;
+    background: image-url('home_back.jpg') no-repeat center center;
     background-size: cover;
     margin: 8rem 0 3rem 0;
     padding: 8rem 1rem;
     text-align: center;
+
+    @media(max-width: $screen-sm-min) {
+      background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
 
     h2 {
       font-size: 2.88em;
@@ -831,78 +690,14 @@ form .checkbox input[type="checkbox"] {
   }
 }
 
-.footer-left-col, .footer-left-col p {
-  text-align: left;
-}
-
-.footer-center, .footer-center-col p {
-  text-align: center;
-}
-
-.footer-right-col, .footer-right-col p {
-  text-align: right;
-}
-
 @media(max-width:767px){
   html{
     font-size:55.5%;
   }
 
-  .footer-left-col, .footer-left-col p {
+  .navbar-nav > li {
     text-align: center;
-  }
-
-  .footer-center-col, .footer-center-col p {
-    text-align: center;
-  }
-
-  .footer-right-col, .footer-right-col p {
-    text-align: center;
-  }
-
-  .navbar-nav > li > a{
-    text-align: center;
-  }
-
-  .footer {
-    margin-top: 4rem;
-    position: static;
-  }
-
-  .landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
-    .language-selector{
-      margin: 0 auto;
-      width: 13.5rem;
-    }
-
-    .footer {
-      bottom: 1rem;
-      margin-top: 0;
-    }
-
-    .footer a{
-      margin-left: 0rem;
-    }
-
-    .footer-right-col a{
-      margin: 0 1rem;
-    }
-  }
-
-  .landing-page, .unlocks-page, .confirmations-page, .passwords-page {
-    .footer {
-      position: absolute;
-    }
-  }
-
-  .login-page {
-    .vertical-align{
-      height: auto;
-      position: static;
-      top: 0;
-      transform: none;
-      width: 100%;
-    }
+    color: $palette-dark-turkey;
   }
 }
 

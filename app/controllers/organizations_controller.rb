@@ -1,20 +1,12 @@
 class OrganizationsController < ApplicationController
-  before_filter :load_resource
-
-  def load_resource
-    if params[:id]
-      @organization = Organization.find(params[:id])
-    else
-      @organizations = Organization.all
-    end
-  end
+  before_filter :load_resource, only: [:show, :edit, :update, :destroy, :set_current]
 
   def new
     @organization = Organization.new
   end
 
   def index
-    @organizations = @organizations.matching(params[:q]) if params[:q].present?
+    @organizations = Organization.all
   end
 
   def show
@@ -27,7 +19,8 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = @organizations.build organization_params
+    @organization = Organization.new(organization_params)
+
     if @organization.save
       redirect_to @organization, status: :created
     else
@@ -48,6 +41,8 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_path, notice: "deleted"
   end
 
+  # POST /organizations/:organization_id/set_current
+  #
   def set_current
     if current_user
       session[:current_organization_id] = @organization.id
@@ -56,6 +51,10 @@ class OrganizationsController < ApplicationController
   end
 
   private
+
+  def load_resource
+    @organization = Organization.find(params[:id])
+  end
 
   def organization_params
     params[:organization].permit(*%w[name theme email phone web

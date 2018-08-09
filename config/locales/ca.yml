@@ -67,6 +67,7 @@ ca:
         notifications: Rebre notificacions
         organization: Organització
         phone: Telèfon
+        push_notifications: Rebre notificacions al mòbil
         registration_date: Data d'alta
         registration_number: Codi d'usuari
         superadmin: SuperAdministrador del Sistema
@@ -146,7 +147,7 @@ ca:
       statistics_all_transfers: Totes les transferències
       stats: Estadístiques
       tags: Etiquetes
-      type_of_swaps: Tipus d'intecanvis
+      type_of_swaps: Tipus d'intercanvis
       users: Usuaris
       without_offers: Sense ofertes publicades
     organization_list:
@@ -246,8 +247,8 @@ ca:
         remember_me: Recorda'm
         sign_in: Entrar
       user:
-        signed_in: Has iniciat sessió
-        signed_out: Has tancat la sessió
+        signed_in: Inici de sessió
+        signed_out: S'ha tancat la sessió
     shared:
       links:
         didnt_receive_confirmation_instructions: Tornar a enviar correu de confirmació
@@ -328,14 +329,14 @@ ca:
     report:
       report_title: INFORME
   locales:
-    ar: 
+    ar: Àrab
     ca: Català
     en: Anglès
     es: Espanyol
-    eu: 
-    fr: 
-    gl: 
-    pt: 
+    eu: Basc
+    fr: Francès
+    gl: Gallec
+    pt: Portuguès
     pt-BR: Portuguès
   mailers_globals:
     footer:
@@ -372,9 +373,12 @@ ca:
       contact_information: Informació de contacte
   pages:
     about:
+      app-mobile: Aplicació Mòbil
+      app-mobile-text: L'aplicació mòbil de TimeOverflow està disponible per Android i IOS <br /> Aquesta app ha estat possible gràcies a la col·laboració de l'Ajuntament de Barcelona, a través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Sol·licita accés
       banner-subtitle: Us ajudarem a posar-lo en marxa o fer-vos una demostració
       banner-title: Ets un Banc de Temps?
+      donate-link: Dona 1€ al mes
       donate-text: Amb la finalitat de donar suport a moltes comunitats la associació ADBdT ofereix la plataforma TimeOverflow a tots los Bancs de Temps. Considera %{donate_link} per contribuir a les despeses de manteniment i innovació.
       donate-title: Participa amb una donació
       donate_link: donar 1€ al mes
@@ -398,6 +402,7 @@ ca:
       feature-text-4: Els membres d'un Banc de Temps poden accedir al sistema i contactar amb altres membres
       feature-text-5: Publicar ofertes i demandes
       feature-text-6: Pagar hores a altres membres
+      impulsem-link: Impulsem el que fas
       subtitle: TimeOverflow és lliure, gratuït i col·laboratiu
       title: El software disenyat per i per
       title2: als Bancs de Temps
@@ -495,6 +500,7 @@ ca:
       edit_user: Canviar usuari
     form:
       admin_warning: Atenció!!! Estàs atorgant poders a aquest usuari!!
+      notifications: Notificacions
       superadmin_warning: Atenció!!! Estàs atorgant PODERS DIVINS a aquest usuari!!
     give_time:
       give_time: Donar Temps a
@@ -507,6 +513,7 @@ ca:
       create: Crear nou usuari
       manage_warning: Estàs a punt de canviar els permisos de l'usuari %{username}
       manage_warning_angular: Vas a canviar els permisos de l'usuari {{username}}
+      members: Membres
       user_created: Usuari %{uid} %{name} guardat
     new:
       cancel: Cancel·lar

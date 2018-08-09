@@ -1,5 +1,12 @@
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
+
 Rails.application.routes.draw do
   root to: "home#index"
+
+  authenticate :user, lambda { |u| Rails.env.development? || u.superadmin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   devise_for :users, controllers: { sessions: "sessions" }
 
@@ -20,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :inquiries
+  resources :device_tokens, only: :create
 
   concern :accountable do
     get :give_time, on: :member

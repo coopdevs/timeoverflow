@@ -1,5 +1,4 @@
 language: ruby
-sudo: false
 cache: bundler
 bundler_args: '--without production development'
 rvm:
@@ -11,3 +10,5 @@ before_script:
   - sleep 10
 services:
   - elasticsearch
+addons:
+  chrome: stable

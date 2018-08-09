@@ -67,6 +67,7 @@ pt-BR:
         notifications: Receber notificações
         organization: 
         phone: Telefone
+        push_notifications: 
         registration_date: Data de ingresso
         registration_number: Código do usuário
         superadmin: Administrador do sistema
@@ -372,9 +373,12 @@ pt-BR:
       contact_information: Informação de contato
   pages:
     about:
+      app-mobile: 
+      app-mobile-text: 
       banner-button: Pedir acesso
       banner-subtitle: Vamos ajudá-los a começar ou obter uma demonstração
       banner-title: Você é um Banco de Tempo?
+      donate-link: 
       donate-text: 
       donate-title: 
       donate_link: 
@@ -398,6 +402,7 @@ pt-BR:
       feature-text-4: Os membros de um Banco de Tempo podem acessar o sistema e entrar em contato com outros membros
       feature-text-5: Publicar ofertas e demandas
       feature-text-6: Pagar horas a outros membros
+      impulsem-link: 
       subtitle: TimeOverflow é livre, gratuito e colaborativo
       title: O software desenhado por e para
       title2: os Bancos de Tempo
@@ -495,6 +500,7 @@ pt-BR:
       edit_user: Trocar usuário
     form:
       admin_warning: Atenção!!! Você está dando poderes a este usuário!!
+      notifications: Notificações
       superadmin_warning: Atenção!!! Você está dando PODERES DIVINOS a este usuário!!
     give_time:
       give_time: Dar Tempo a
@@ -507,6 +513,7 @@ pt-BR:
       create: Criar novo usuário
       manage_warning: 
       manage_warning_angular: Mudará os privilégios do usuário {{username}}
+      members: 
       user_created: Usuário %{uid} %{name} guardado
     new:
       cancel: Cancelar
@@ -518,7 +525,7 @@ pt-BR:
       accounts: Contas
       balance: 'Balanço:'
       categories: Serviços Oferecidos
-      change_your_image:
+      change_your_image: 
       created_at: 'Inscrição:'
       data: Dados do usuário
       date: Data

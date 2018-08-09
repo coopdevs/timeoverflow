@@ -44,4 +44,7 @@ Rails.application.configure do
 
   # Avoid seeing all that stuff in tests
   config.log_level = :warn
+
+  # ActiveJob configuration
+  config.active_job.queue_adapter = :test
 end
