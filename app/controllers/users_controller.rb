@@ -60,7 +60,14 @@ class UsersController < ApplicationController
   private
 
   def search_params
-    {s: 'member_uid asc'}.merge(params.fetch(:q, {}))
+    q = params.fetch(:q, {})
+
+    if params[:q].present?
+      q[:member_uid_eq] = q[:user_username_or_user_email_contains]
+      q[:m] = 'or'
+    end
+
+    { s: 'member_uid asc' }.merge(q)
   end
 
   def scoped_users
