@@ -28,14 +28,12 @@
     <form class="form-inline text-right">
       <div class="form-group">
         <input class="form-control"
-               id="datepicker_from"
+               type="date"
                name="ini"
-               placeholder="<%= t '.ini_date' %>"
                value="<%= params[:ini] %>">
         <input class="form-control"
-               id="datepicker_to"
+               type="date"
                name="fin"
-               placeholder="<%= t '.end_date' %>"
                value="<%= params[:fin] %>">
         <button class="btn btn-default" type="submit">
           <%= t '.show' %>

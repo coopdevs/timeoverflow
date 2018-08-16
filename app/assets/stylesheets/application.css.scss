@@ -1,7 +1,3 @@
-/*
- *= require_self
- */
-
 @import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap-custom";
@@ -310,11 +306,6 @@ ul.statistics li{
 .alert > ul {
   list-style: none;
   padding-left: 1.5rem;
-}
-
-// if not navbar hidden datepicker in small windows
-.ui-datepicker{
-  z-index: 1000 !important;
 }
 
 // fields that contain an error

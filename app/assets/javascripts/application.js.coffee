@@ -1,5 +1,3 @@
-#= require_self
-#= require datepicker
 #= require give_time
 #= require tags
 #= require mobile_app_libs
