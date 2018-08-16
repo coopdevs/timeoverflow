@@ -408,7 +408,7 @@ ca:
       title2: als Bancs de Temps
   posts:
     show:
-      info: Esta %{type} pertany a %{organization}.
+      info: Aquesta %{type} pertany a %{organization}.
   reports:
     cat_with_users:
       title: Serveis ofertats
