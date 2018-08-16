@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from ActiveRecord::RecordNotFound, with: :resource_not_found
 
   helper_method :current_organization, :admin?, :superadmin?
 
@@ -117,5 +118,9 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:error] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)
+  end
+
+  def resource_not_found
+    render 'errors/not_found', status: 404
   end
 end

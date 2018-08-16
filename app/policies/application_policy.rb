@@ -1,6 +1,10 @@
 class ApplicationPolicy
   attr_reader :member, :user, :organization, :record
 
+  # TODO: Investigate how to just pass current_user here.
+  #       Probably this will be solved by scoping the resources
+  #       under `/organization`.
+  #
   def initialize(member, record)
     @member = member
     @user = member.user if member

@@ -408,7 +408,7 @@ es:
       title2: los Bancos de Tiempo
   posts:
     show:
-      info: "%{type} de %{organization} para ver los datos de la persona tienes que"
+      info: Esta %{type} pertenece a %{organization}.
   reports:
     cat_with_users:
       title: Servicios ofrecidos

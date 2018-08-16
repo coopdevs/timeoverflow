@@ -1,15 +1,8 @@
-<p class="actions text-right">
-  <% if admin? || @inquiry.user == current_user %>
-    <%= link_to edit_inquiry_path(@inquiry), class: "btn btn-warning" do %>
-      <%= glyph :pencil %>
-      <%= t "global.edit" %>
+<% if @inquiry.organization == current_organization %>
+  <p class="actions text-right">
+    <% if admin? or @inquiry.user == current_user %>
+      <%= render 'shared/post_actions', post: @inquiry %>
     <% end %>
-    <%= link_to @inquiry,
-                data: { method: :delete, confirm: "sure?" },
-                class: "btn btn-danger" do %>
-      <%= glyph :trash %>
-      <%= t "global.delete" %>
-    <% end %>
-  <% end %>
-</p>
+  </p>
+<% end %>
 <%= render "shared/post", post: @inquiry %>
