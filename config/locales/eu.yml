@@ -414,7 +414,7 @@ eu:
       title2: Denbora bankuentzat
   posts:
     show:
-      info: "%{type}  %{organization}koaren datuak ikusteko, hau egin behar duzu"
+      info: 
   reports:
     cat_with_users:
       title: Eskaintzen diren zerbitzuak
