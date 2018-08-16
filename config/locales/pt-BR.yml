@@ -408,7 +408,7 @@ pt-BR:
       title2: os Bancos de Tempo
   posts:
     show:
-      info: "%{type} de %{organization} para ver os dados da pessoa é necessário que"
+      info: 
   reports:
     cat_with_users:
       title: Serviços oferecidos
