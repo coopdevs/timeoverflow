@@ -6,6 +6,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap-custom";
 @import "to-categories-dropdown";
+@import "to-member-card";
 @import "footer";
 
 html {
@@ -261,6 +262,11 @@ table.users {
     h1 {
       margin-bottom: 20px;
       margin-top: 0;
+      font-size: 32px;
+
+      @media(max-width: $screen-sm-min) {
+        font-size: 26px;
+      }
     }
 
     img {

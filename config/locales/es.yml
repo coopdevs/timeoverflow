@@ -542,6 +542,9 @@ es:
       cancel_warning: Va a eliminar del banco al usuario %{user}
       deactivate: Desactivar
       manage_warning: Va a cambiar los privilegios del usuario %{user}
+    member_card:
+      no_activity: Sin actividad
+      active_ago: Activo hace %{time}
   views:
     pagination:
       first: "&laquo; Primera"
