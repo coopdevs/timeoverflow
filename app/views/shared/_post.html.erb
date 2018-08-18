@@ -39,9 +39,9 @@
           <h3>
             <%= t "global.contact_details" %>
           </h3>
-          <% if post.user.email_if_real != "" %>
+          <% if post.user.has_valid_email? %>
             <dt><%= User.human_attribute_name :email %></dt>
-            <dd><%= post.user.email_if_real %></dd>
+            <dd><%= post.user.email %></dd>
           <% end %>
           <% phones = [post.user.phone, post.user.alt_phone].select(&:present?) %>
           <% if phones.present? %>

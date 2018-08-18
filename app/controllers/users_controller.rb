@@ -2,13 +2,11 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @search = current_organization.members.ransack(search_params)
+    search_and_load_members
+  end
 
-    @members =
-      @search.result.eager_load(:account, :user).page(params[:page]).per(25)
-
-    @member_view_models =
-      @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
+  def manage
+    search_and_load_members
   end
 
   def show
@@ -58,6 +56,16 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def search_and_load_members
+    @search = current_organization.members.ransack(search_params)
+
+    @members =
+      @search.result.eager_load(:account, :user).page(params[:page]).per(25)
+
+    @member_view_models =
+      @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
+  end
 
   def search_params
     {s: 'member_uid asc'}.merge(params.fetch(:q, {}))

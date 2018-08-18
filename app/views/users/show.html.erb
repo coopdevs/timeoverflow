@@ -1,5 +1,23 @@
 <div class="panel user-profile">
   <div class="panel-body">
+    <ul class="nav nav-pills pull-right">
+      <% if admin? || @user == current_user %>
+        <li>
+          <%= link_to edit_user_path(@user) do %>
+            <%= glyph :pencil, t('global.edit') %>
+            <span class="hidden-xs hidden-sm"><%= t "global.edit" %></span>
+          <% end %>
+        </li>
+      <% end %>
+      <% if admin? || @user != current_user %>
+        <li>
+          <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id) do %>
+            <%= glyph :time, t('global.give_time') %>
+            <span class="hidden-xs hidden-sm"><%= t "global.give_time" %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
     <h1>
       <small>
         <% unless  @member.active %>
@@ -19,45 +37,24 @@
       <div class="col-sm-3 col-xs-5 text-center">
         <% if @user == current_user %>
           <a href="https://www.gravatar.com" target="_blank">
-            <%= image_tag avatar_url(@user, 160) %>
+            <%= image_tag avatar_url(@user, 140) %>
           </a>
           <a href="https://www.gravatar.com" target="_blank" class="btn btn-link">
             <%= glyph :pencil %> <%= t ".change_your_image" %>
           </a>
         <% else %>
-          <%= image_tag avatar_url(@user, 160) %>
+          <%= image_tag avatar_url(@user, 140) %>
         <% end %>
       </div>
       <div class="col-sm-9 col-xs-7 break-word">
         <%= m @user.description %>
-        <ul class="nav nav-pills pull-right">
-          <% if @user == current_user %>
-            <li>
-              <%= link_to edit_user_path(@user) do %>
-                <%= glyph :pencil %>
-                <%= t "global.edit" %>
-              <% end %>
-            </li>
-          <% end %>
-          <% if admin? || @user != current_user %>
-            <li>
-              <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id) do %>
-                <%= glyph :time %>
-                <%= t "global.give_time" %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
         <dl class="dl-horizontal">
-          <h3>
-            <%= t "global.contact_details" %>
-          </h3>
-          <% if @user.email_if_real != "" %>
+          <% if @user.has_valid_email? %>
             <dt>
               <%= User.human_attribute_name(:email) %>
             </dt>
             <dd>
-              <%= @user.email_if_real %>
+              <%= mail_to @user.email %>
             </dd>
           <% end %>
           <% phones = [@user.phone, @user.alt_phone].select(&:present?) %>
@@ -66,7 +63,10 @@
               <%= t(".phone", count: phones.size) %>
             </dt>
             <dd>
-              <%= phones.map(&:to_s).join('—') %>
+              <% phones.each_with_index do |phone, index| %>
+                <%= "—" if index != 0 %>
+                <%= phone_to phone %>
+              <% end %>
             </dd>
           <% end %>
         </dl>
