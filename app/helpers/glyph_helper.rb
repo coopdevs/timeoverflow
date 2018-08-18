@@ -8,10 +8,11 @@ module GlyphHelper
     "organization" => "tower"
   }
 
-  def glyph(kind)
+  def glyph(kind, title=nil)
     kind = kind.to_s.underscore
     content_tag :span, "",
-                class: "glyphicon glyphicon-#{glyph_name(kind)}"
+                class: "glyphicon glyphicon-#{glyph_name(kind)}",
+                title: title
   end
 
   private

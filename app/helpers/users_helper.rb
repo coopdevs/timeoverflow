@@ -1,4 +1,8 @@
 module UsersHelper
+  def phone_to(phone)
+    link_to phone, "tel://#{phone}"
+  end
+
   def edit_user_path(user)
     can_edit_user?(user) ? super : ""
   end
