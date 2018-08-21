@@ -17,6 +17,16 @@
           <%= t 'global.search' %>
         </button>
       <% end %>
+      <ul class="nav navbar-nav pull-right">
+        <% if admin? %>
+          <li>
+            <a href="<%= new_user_path %>">
+              <span class="glyphicon glyphicon-plus"></span>
+              <%= t "helpers.submit.create", model: User.model_name.human %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
