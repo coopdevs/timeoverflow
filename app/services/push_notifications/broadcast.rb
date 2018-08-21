@@ -9,8 +9,8 @@ module PushNotifications
 
       client = Exponent::Push::Client.new
 
-      push_notifications.update_all(processed_at: Time.now.utc)
       client.publish(notifications)
+      push_notifications.update_all(processed_at: Time.now.utc)
     end
 
     private
