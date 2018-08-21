@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    search_and_load_members
+    search_and_load_members current_organization.members.active
   end
 
   def manage
-    search_and_load_members
+    search_and_load_members current_organization.members
   end
 
   def show
@@ -57,8 +57,8 @@ class UsersController < ApplicationController
 
   private
 
-  def search_and_load_members
-    @search = current_organization.members.ransack(search_params)
+  def search_and_load_members(members_scope)
+    @search = members_scope.ransack(search_params)
 
     @members =
       @search.result.eager_load(:account, :user).page(params[:page]).per(25)
