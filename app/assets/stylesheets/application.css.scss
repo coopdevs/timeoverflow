@@ -396,13 +396,14 @@ label[required]::after{
 
   .login-wrapper {
     position: absolute;
-    top: 20%;
+    top: 51%;
     left: 0;
+    transform: translateY(-50%);
     width: 100%;
     z-index: 1;
 
     @media(max-width: $screen-sm-min) {
-      top: 60px;
+      top: 47%;
     }
   }
 
