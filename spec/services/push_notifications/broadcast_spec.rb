@@ -15,24 +15,23 @@ RSpec.describe PushNotifications::Broadcast do
       )
     end
     let(:push_notifications) { PushNotification.all }
-    let(:client) { instance_double(Exponent::Push::Client) }
     let(:notification) do
       {
         to: push_notification.to,
-        title: push_notification.title
+        title: push_notification.title,
+        body: 'WAT!?'
       }
     end
+    let(:uri) { URI('https://exp.host/--/api/v2/push/send') }
 
     it 'calls Expo HTTP client to send notifications' do
-      expect(Exponent::Push::Client).to receive(:new).and_return(client)
-      expect(client).to receive(:publish).with([notification])
+      expect(Net::HTTP).to receive(:post_form).with(uri, [notification])
 
       described_class.new(push_notifications: push_notifications).send
     end
 
     it 'flags the push_notification as processed' do
-      allow(Exponent::Push::Client).to receive(:new).and_return(client)
-      allow(client).to receive(:publish).with([notification])
+      allow(Net::HTTP).to receive(:post_form).with(uri, [notification])
 
       described_class.new(push_notifications: push_notifications).send
 
