@@ -4,6 +4,8 @@ class SendPushNotificationsJob < ActiveJob::Base
   def perform
     push_notifications = PushNotification.where(processed_at: nil)
 
-    ::PushNotifications::Broadcast.new(push_notifications: push_notifications).send
+    ::PushNotifications::Broadcast.new(
+      push_notifications: push_notifications
+    ).send_notifications
   end
 end

@@ -7,7 +7,7 @@ module PushNotifications
     end
 
     # https://docs.expo.io/versions/latest/guides/push-notifications.html
-    def send
+    def send_notifications
       return unless push_notifications.any?
 
       uri = URI('https://exp.host/--/api/v2/push/send')

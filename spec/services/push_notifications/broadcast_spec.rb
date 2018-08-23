@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe PushNotifications::Broadcast do
-  describe '#send' do
+  describe '#send_notifications' do
     let(:user) { Fabricate(:user) }
     let(:device_token) { Fabricate(:device_token, user: user) }
     let(:post) { Fabricate(:post) }

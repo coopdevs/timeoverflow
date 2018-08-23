@@ -35,7 +35,7 @@ RSpec.describe SendPushNotificationsJob, type: :job do
       expect(::PushNotifications::Broadcast).to receive(:new)
         .with(push_notifications: [push_notification])
         .and_return(broadcast)
-      expect(broadcast).to receive(:send)
+      expect(broadcast).to receive(:send_notifications)
 
       described_class.new.perform
     end
