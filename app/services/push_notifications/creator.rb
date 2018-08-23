@@ -26,7 +26,7 @@ module PushNotifications
     # TODO: For now we only create push notifications for Post
     #
     def title
-      'A new post has been created.'
+      event.post.title
     end
   end
 end
