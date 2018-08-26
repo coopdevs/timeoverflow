@@ -89,11 +89,6 @@ describe MemberDecorator do
     end
   end
 
-  describe '#edit_user_path' do
-    subject { decorator.edit_user_path }
-    it { is_expected.to include("members/#{member.user.id}/edit")}
-  end
-
   describe '#toggle_manager_member_path' do
     subject { decorator.toggle_manager_member_path }
     it { is_expected.to include("members/#{member.id}/toggle_manager")}
