@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Account do
+RSpec.describe Account do
   let(:member) { Fabricate(:member) }
   let(:organization) { member.organization }
   let(:user) { member.user }

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe InquiriesController do
+RSpec.describe InquiriesController do
   let (:test_organization) { Fabricate(:organization) }
   let (:member) { Fabricate(:member, organization: test_organization) }
   let (:another_member) { Fabricate(:member, organization: test_organization) }
