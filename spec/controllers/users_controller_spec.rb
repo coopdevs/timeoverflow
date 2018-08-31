@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe UsersController do
+RSpec.describe UsersController do
   let(:test_organization) { Fabricate(:organization) }
   let(:member_admin) do
     Fabricate(:member,

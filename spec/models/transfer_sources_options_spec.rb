@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TransferSourcesOptions do
+RSpec.describe TransferSourcesOptions do
   let(:transfer_sources_options) do
     described_class.new(sources, destination_accountable)
   end

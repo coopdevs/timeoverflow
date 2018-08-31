@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ReportsController do
+RSpec.describe ReportsController do
   let (:test_organization) { Fabricate(:organization) }
   let (:member1) { Fabricate(:member, organization: test_organization) }
   let (:member2) { Fabricate(:member, organization: test_organization) }

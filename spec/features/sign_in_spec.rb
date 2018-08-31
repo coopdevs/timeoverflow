@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'sign in' do
+RSpec.feature 'sign in' do
   let(:user) do
     Fabricate(:user, email: 'user@timeoverflow.org', password: 'papapa22')
   end

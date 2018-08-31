@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SessionsController do
+RSpec.describe SessionsController do
   let(:user) do
     Fabricate(:user, password: 'papapa22', password_confirmation: 'papapa22')
   end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'time transfer' do
+RSpec.feature 'time transfer' do
   let(:user) do
     user = Fabricate(
       :user,

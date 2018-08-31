@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe MemberDecorator do
+RSpec.describe MemberDecorator do
   let(:org) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: org) }
   let(:view_context) { ApplicationController.new.view_context }

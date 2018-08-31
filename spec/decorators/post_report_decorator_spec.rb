@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe PostReportDecorator do
+RSpec.describe PostReportDecorator do
   let (:org) { Fabricate(:organization) }
   let (:member) { Fabricate(:member, organization: org) }
   let (:category) { Fabricate(:category) }
