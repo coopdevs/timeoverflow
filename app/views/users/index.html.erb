@@ -17,16 +17,6 @@
           <%= t 'global.search' %>
         </button>
       <% end %>
-      <ul class="nav navbar-nav pull-right">
-        <% if admin? %>
-          <li>
-            <a href="<%= new_user_path %>">
-              <span class="glyphicon glyphicon-plus"></span>
-              <%= t "helpers.submit.create", model: User.model_name.human %>
-            </a>
-          </li>
-        <% end %>
-      </ul>
     </div>
   </div>
 </div>
@@ -38,45 +28,20 @@
         <%= link_to current_organization.name,
                     organization_path(current_organization) %>
       </h2>
+    </div>
+  </div>
 
-      <div class="table-responsive">
-        <table class="table table-hover table-condensed users panel">
-          <thead>
-            <tr>
-              <th></th>
-              <th>
-                <%= sort_link @search, :member_uid, 'ID' %>
-              </th>
-              <th>
-                <%= sort_link @search, :user_username, User.human_attribute_name(:username) %>
-              </th>
-              <th class="hidden-xs">
-                <%= sort_link @search, :user_email, User.human_attribute_name(:email) %>
-              </th>
-              <th class="hidden-xs hidden-sm">
-                <%= User.human_attribute_name(:phone) %>
-              </th>
-              <th class="hidden-xs hidden-sm">
-                <%= User.human_attribute_name(:alt_phone) %>
-              </th>
-              <th class="hidden-xs hidden-sm">
-                <%= sort_link @search, 'account_balance', Account.human_attribute_name(:balance) %>
-              </th>
-              <% if current_user.manages? current_organization %>
-                <th class="hidden-xs hidden-sm">
-                  <span class="glyphicon glyphicon-hand-down"></span>
-                  <%= t(".actions") %>
-                </th>
-              <% end %>
-            </tr>
-          </thead>
-          <tbody>
-            <%= render "user_rows", members: @member_view_models %>
-          </tbody>
-        </table>
-
-        <%= paginate @members %>
+  <div class="row to-member-cards">
+    <% @member_view_models.each do |member| %>
+      <div class="col-lg-6 col-sm-12">
+        <%= render 'member_card', member: member %>
       </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= paginate @members %>
     </div>
   </div>
 </div>

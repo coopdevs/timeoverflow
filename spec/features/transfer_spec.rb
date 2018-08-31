@@ -54,7 +54,7 @@ feature 'time transfer' do
   end
 
   def members_list
-    find('.users tbody')
+    find('.to-member-cards')
   end
 
   def transfer_form
