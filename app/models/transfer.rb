@@ -17,6 +17,7 @@ class Transfer < ActiveRecord::Base
   has_many :movements, dependent: :destroy
   has_many :events, dependent: :destroy
 
+  validates :amount, numericality: { greater_than: 0 }
   validate :different_source_and_destination
 
   after_create :make_movements
@@ -24,14 +25,6 @@ class Transfer < ActiveRecord::Base
   def make_movements
     movements.create(account: Account.find(source_id), amount: -amount.to_i)
     movements.create(account: Account.find(destination_id), amount: amount.to_i)
-  end
-
-  def movement_from
-    movements.detect {|m| m.amount < 0 }
-  end
-
-  def movement_to
-    movements.detect {|m| m.amount > 0 }
   end
 
   def source_id
