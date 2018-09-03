@@ -20,7 +20,8 @@ module PushNotifications
         raise PostError, "HTTP response: #{response.code}, #{response.body}"
       end
 
-      push_notifications.update_all(processed_at: Time.now.utc)
+      now = Time.now.utc
+      push_notifications.update_all(processed_at: now, updated_at: now)
     end
 
     private
@@ -30,9 +31,10 @@ module PushNotifications
     def notifications
       push_notifications.map do |push_notification|
         {
-          to: push_notification.to,
+          to: push_notification.token,
           title: push_notification.title,
-          body: 'WAT!?'
+          body: push_notification.body,
+          data: push_notification.data
         }
       end
     end

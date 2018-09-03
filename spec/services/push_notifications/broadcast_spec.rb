@@ -9,9 +9,10 @@ RSpec.describe PushNotifications::Broadcast do
     let(:push_notifications) { PushNotification.all }
     let(:notification) do
       {
-        to: push_notification.to,
+        to: push_notification.token,
         title: push_notification.title,
-        body: 'WAT!?'
+        body: push_notification.body,
+        data: push_notification.data
       }
     end
     let(:uri) { URI('https://exp.host/--/api/v2/push/send') }
@@ -24,7 +25,9 @@ RSpec.describe PushNotifications::Broadcast do
           :push_notification,
           event: event_created,
           device_token: device_token,
-          title: 'Hola'
+          title: 'Hola',
+          body: 'Caracola',
+          data: {}
         )
       end
 

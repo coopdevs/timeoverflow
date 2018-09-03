@@ -15,12 +15,12 @@ RSpec.describe PushNotification do
     it { is_expected.to have_db_column(:device_token_id) }
   end
 
-  describe "#to" do
+  describe "#token" do
     let(:device_token) { Fabricate.build(:device_token, token: 'token') }
     let(:push_notification) { described_class.new(device_token: device_token) }
 
     it 'returns the associated DeviceToken\'s token' do
-      expect(push_notification.to).to eq('token')
+      expect(push_notification.token).to eq('token')
     end
   end
 end

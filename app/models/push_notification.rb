@@ -4,7 +4,5 @@ class PushNotification < ActiveRecord::Base
 
   validates :event, :device_token, :title, presence: true
 
-  def to
-    device_token.token
-  end
+  delegate :token, to: :device_token
 end
