@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180604145622) do
+ActiveRecord::Schema.define(version: 20180831161349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,12 +159,14 @@ ActiveRecord::Schema.define(version: 20180604145622) do
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "push_notifications", force: :cascade do |t|
-    t.integer  "event_id",        null: false
-    t.integer  "device_token_id", null: false
+    t.integer  "event_id",                     null: false
+    t.integer  "device_token_id",              null: false
     t.datetime "processed_at"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "title",           null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "title",           default: "", null: false
+    t.string   "body",            default: "", null: false
+    t.json     "data",            default: {}, null: false
   end
 
   create_table "transfers", force: :cascade do |t|
