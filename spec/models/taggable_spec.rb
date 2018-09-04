@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Taggable do
+RSpec.describe Taggable do
   let(:organization) { Fabricate(:organization) }
 
   let!(:offer) do

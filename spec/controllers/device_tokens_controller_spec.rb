@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DeviceTokensController do
+RSpec.describe DeviceTokensController do
   let (:organization) { Fabricate(:organization) }
   let (:member) { Fabricate(:member, organization: organization) }
 

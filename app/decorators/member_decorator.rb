@@ -1,6 +1,6 @@
 class MemberDecorator < ViewModel
   delegate :user, :member_uid, :active?, to: :object
-  delegate :phone, :alt_phone, :username, to: :user
+  delegate :phone, :alt_phone, :username, :description, :last_sign_in_at, to: :user
 
   def manager?
     !!object.manager
@@ -23,16 +23,12 @@ class MemberDecorator < ViewModel
     view.mail_to(email) if email && !email.end_with?('example.com')
   end
 
-  def avatar_img
-    view.image_tag(view.avatar_url(user, 32), width: 32, height: 32)
+  def avatar_img(size=32)
+    view.image_tag(view.avatar_url(user, size), width: size, height: size)
   end
 
   def account_balance
     view.seconds_to_hm(object.account.try(:balance) || 0)
-  end
-
-  def edit_user_path
-    routes.edit_user_path(user)
   end
 
   def toggle_manager_member_path

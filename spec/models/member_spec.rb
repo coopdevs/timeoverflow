@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Member do
+RSpec.describe Member do
   subject(:member) { Fabricate(:member) }
 
   it { is_expected.to belong_to(:user) }

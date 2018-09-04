@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe OrganizationNotifier do
+RSpec.describe OrganizationNotifier do
   let (:test_organization) { Fabricate(:organization) }
   let! (:offer) { Fabricate(:offer, organization: test_organization) }
   let! (:inquiry) { Fabricate(:inquiry, organization: test_organization) }
