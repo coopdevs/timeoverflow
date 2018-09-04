@@ -48,7 +48,7 @@ group :development do
   gem 'airbrussh', require: false
   gem 'localeapp', '2.1.1', require: false
   gem 'letter_opener', '1.4.1'
-  gem 'dotenv-rails', '1.0.2'
+  gem 'dotenv-rails', '2.5.0'
 end
 
 group :development, :test do
