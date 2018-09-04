@@ -1,3 +1,11 @@
+# A weekly digest email.
+#
+# Strategy: go throught all organizations and take latest active posts from last week
+# posted by active members. Send an email to all active and online members
+# with the email notifications enabled with those posts.
+
+# Schedule defined in config/schedule.yml file.
+
 class OrganizationNotifierJob < ActiveJob::Base
   queue_as :cron
 
