@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     @search = members_scope.ransack(search_params)
 
     @members =
-      @search.result.eager_load(:account, :user).page(params[:page]).per(25)
+      @search.result.eager_load(:account, :user).page(params[:page]).per(20)
 
     @member_view_models =
       @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
