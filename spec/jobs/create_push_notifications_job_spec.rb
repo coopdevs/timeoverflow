@@ -18,8 +18,8 @@ RSpec.describe CreatePushNotificationsJob, type: :job do
       let(:event_id) { event.id }
 
       it 'calls the PushNotification creator' do
-        creator = instance_double(::PushNotifications::Creator)
-        expect(::PushNotifications::Creator).to receive(:new)
+        creator = instance_double(::PushNotifications::Creator::Post)
+        expect(::PushNotifications::Creator::Post).to receive(:new)
           .with(event: event)
           .and_return(creator)
         expect(creator).to receive(:create!)

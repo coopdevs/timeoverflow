@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe PushNotifications::Creator do
+RSpec.describe PushNotifications::Creator::Post do
   let(:user) { Fabricate(:user) }
   let!(:device_token) { Fabricate(:device_token, user: user, token: 'aloha') }
   let(:organization) { Fabricate(:organization) }
@@ -14,12 +14,9 @@ RSpec.describe PushNotifications::Creator do
 
   describe '#create!' do
     it 'creates as many PushNotification resources as needed' do
-      expect(PushNotification).to receive(:create!).with(
-        event: event,
-        device_token: device_token
-      ).once
-
-      creator.create!
+      expect {
+        creator.create!
+      }.to change{PushNotification.count}.by(1)
     end
   end
 end
