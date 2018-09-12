@@ -379,12 +379,15 @@ eu:
       contact_information: kontaktuaren informazioa
   pages:
     about:
+      app-mobile: 
+      app-mobile-text: 
       banner-button: Sartzea eskatzen du
       banner-subtitle: Martxan jartzen edo erakustaldi bat eginez lagunduko dizugu
       banner-title: Denbora banku bat al zara?
+      donate-link: 
       donate-text: komunitate askori babesteko asmotan ADBdt elkarteak , TimeOverflow plataforma eskaintzen die Denbora Banku guztiei. Hausnar ezazu %{donate_link}  mantenu eta berritze lanetan laguntzeko.
       donate-title: Laguntzan parte hartu
-      donate-link: Hilean €1 ematea
+      donate_link: Hilean €1 ematea
       empower-adbdt: ADBdt
       empower-adbdt-title: Denbora Bankuen garapenerako elkartea
       empower-coopdevs: CoopDevs
@@ -405,12 +408,13 @@ eu:
       feature-text-4: Denbora bankuko partaideek, sistemaren bidez, beste partaideekin kontatua egin dezakete
       feature-text-5: Eskaintza eta eskariak argitaratu
       feature-text-6: Beste erabiltzaileei orduak ordaindu
+      impulsem-link: 
       subtitle: TimeOverflow librea dohakoa eta kolaborazio bidezkoa da
       title: Denbora  bankuek  diseinaturiko softwarea,
       title2: Denbora bankuentzat
   posts:
     show:
-      info: "%{type}  %{organization}koaren datuak ikusteko, hau egin behar duzu"
+      info: 
   reports:
     cat_with_users:
       title: Eskaintzen diren zerbitzuak

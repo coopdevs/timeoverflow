@@ -1,0 +1,4 @@
+send_push_notifications_job:
+  cron: '*/5 * * * *'
+  class: 'SendPushNotificationsJob'
+  queue: cron

@@ -39,7 +39,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, concerns: :accountable, except: :destroy, :path => "members"
+  resources :users, concerns: :accountable, except: :destroy, :path => "members" do
+    collection do
+      get 'manage'
+    end
+  end
 
   resources :transfers, only: [:create, :new] do
     member do

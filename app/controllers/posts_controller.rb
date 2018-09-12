@@ -57,13 +57,13 @@ class PostsController <  ApplicationController
     instance_variable_set("@#{resource}", post)
   end
 
+  # GET /offers/:id
+  # GET /inquiries/:id
+  #
   def show
-    scope = if current_user.present?
-              current_organization.posts.active.of_active_members
-            else
-              model.all.active.of_active_members
-            end
-    post = scope.find params[:id]
+    post = Post.active.of_active_members.find(params[:id])
+    update_current_organization!(post.organization)
+
     instance_variable_set("@#{resource}", post)
   end
 
@@ -114,5 +114,21 @@ class PostsController <  ApplicationController
     params.fetch(resource, {}).permit(*permitted_fields).tap do |p|
       set_user_id(p)
     end
+  end
+
+  # TODO: remove this horrible hack ASAP
+  #
+  # This hack set the current organization to the post's
+  # organization, both in session and controller instance variable.
+  #
+  # Before changing the current organization it's important to check that
+  # the current_user is an active member of the organization.
+  #
+  # @param organization [Organization]
+  def update_current_organization!(organization)
+    return unless current_user && current_user.active?(organization)
+
+    session[:current_organization_id] = organization.id
+    @current_organization = organization
   end
 end

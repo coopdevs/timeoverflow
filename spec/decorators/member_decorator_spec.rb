@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe MemberDecorator do
+RSpec.describe MemberDecorator do
   let(:org) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: org) }
   let(:view_context) { ApplicationController.new.view_context }
@@ -87,11 +87,6 @@ describe MemberDecorator do
       before { member.account.update_attribute(:balance, -7500) }
       it { is_expected.to eq('-2:05') }
     end
-  end
-
-  describe '#edit_user_path' do
-    subject { decorator.edit_user_path }
-    it { is_expected.to include("members/#{member.user.id}/edit")}
   end
 
   describe '#toggle_manager_member_path' do

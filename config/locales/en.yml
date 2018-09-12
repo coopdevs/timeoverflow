@@ -407,7 +407,7 @@ en:
       impulsem-link: "Impulsem el que fas"
   posts:
     show:
-      info: "%{type} of %{organization} to see person's details you have to"
+      info: "This %{type} belongs to %{organization}."
   reports:
     cat_with_users:
       title: Offered Services
@@ -543,6 +543,9 @@ en:
       cancel_warning: You are going to delete account from the Time Bank for user  %{user}
       deactivate: Deactivate
       manage_warning: You are going to change privileges for user %{user}
+    member_card:
+      no_activity: No activity
+      active_ago: Active %{time} ago
   views:
     pagination:
       first: 

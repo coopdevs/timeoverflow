@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe UsersController do
+RSpec.describe UsersController do
   let(:test_organization) { Fabricate(:organization) }
   let(:member_admin) do
     Fabricate(:member,
@@ -133,7 +133,7 @@ describe UsersController do
         user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
 
-        get :index, q: { user_username_or_user_email_or_member_uid_contains: 1000 }
+        get :index, q: { user_username_or_user_email_or_member_uid_search_contains: 1000 }
 
         expect(assigns(:members)).to include(member)
       end

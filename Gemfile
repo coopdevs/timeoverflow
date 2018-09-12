@@ -31,7 +31,6 @@ gem 'rufus-scheduler', '~> 3.4.2'
 
 # Assets
 gem 'jquery-rails', '>= 4.2.0'
-gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0.7'
 gem 'coffee-rails'
@@ -49,7 +48,7 @@ group :development do
   gem 'airbrussh', require: false
   gem 'localeapp', '2.1.1', require: false
   gem 'letter_opener', '1.4.1'
-  gem 'dotenv-rails', '1.0.2'
+  gem 'dotenv-rails', '2.5.0'
 end
 
 group :development, :test do

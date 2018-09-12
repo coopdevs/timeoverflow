@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TransferFactory do
+RSpec.describe TransferFactory do
   let(:transfer_factory) do
     described_class.new(
       organization,

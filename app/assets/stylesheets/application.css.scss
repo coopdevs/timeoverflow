@@ -1,11 +1,8 @@
-/*
- *= require_self
- */
-
 @import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap-custom";
 @import "to-categories-dropdown";
+@import "to-member-card";
 @import "footer";
 
 html {
@@ -261,6 +258,11 @@ table.users {
     h1 {
       margin-bottom: 20px;
       margin-top: 0;
+      font-size: 32px;
+
+      @media(max-width: $screen-sm-min) {
+        font-size: 26px;
+      }
     }
 
     img {
@@ -310,11 +312,6 @@ ul.statistics li{
 .alert > ul {
   list-style: none;
   padding-left: 1.5rem;
-}
-
-// if not navbar hidden datepicker in small windows
-.ui-datepicker{
-  z-index: 1000 !important;
 }
 
 // fields that contain an error
@@ -405,13 +402,14 @@ label[required]::after{
 
   .login-wrapper {
     position: absolute;
-    top: 20%;
+    top: 51%;
     left: 0;
+    transform: translateY(-50%);
     width: 100%;
     z-index: 1;
 
     @media(max-width: $screen-sm-min) {
-      top: 60px;
+      top: 47%;
     }
   }
 

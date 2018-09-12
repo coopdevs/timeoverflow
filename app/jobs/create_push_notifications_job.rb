@@ -6,6 +6,10 @@ class CreatePushNotificationsJob < ActiveJob::Base
 
     raise 'A valid Event must be provided' unless event
 
-    ::PushNotifications::Creator.new(event: event).create!
+    if event.post_id
+      ::PushNotifications::Creator::Post.new(event: event).create!
+    else
+      raise "You need to define a PushNotifications::Creator class for this event type ##{event.id}"
+    end
   end
 end

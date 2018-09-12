@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Persister::MemberPersister do
+RSpec.describe Persister::MemberPersister do
   let(:organization) { Fabricate(:organization) }
   let(:user) { Fabricate(:user) }
   let(:member) { Fabricate.build(:member, user: user, organization: organization) }

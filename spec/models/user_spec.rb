@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe User do
+RSpec.describe User do
   it { is_expected.to have_many :members }
   it { is_expected.to accept_nested_attributes_for :members }
   it { is_expected.to have_many :organizations }

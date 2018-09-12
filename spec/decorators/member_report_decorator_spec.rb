@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe MemberReportDecorator do
+RSpec.describe MemberReportDecorator do
   let (:member) { Fabricate(:member) }
   let (:org) { member.organization }
   let (:decorator) do

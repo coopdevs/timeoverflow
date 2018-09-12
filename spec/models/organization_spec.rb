@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Organization do
+RSpec.describe Organization do
   let(:organization) { Fabricate(:organization) }
 
   describe '#display_id' do

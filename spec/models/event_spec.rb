@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Event do
+RSpec.describe Event do
   describe 'Validations' do
     it { is_expected.to validate_presence_of(:action) }
     it do
