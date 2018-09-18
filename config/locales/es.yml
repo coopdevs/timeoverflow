@@ -374,7 +374,7 @@ es:
   pages:
     about:
       app-mobile: App Móvil
-      app-mobile-text: La app móvil de TimeOverflow está disponible para Android y IOS<br /> Esta app ha sido posible gracias a la colaboración del Ayuntamiento de Barcelona, a través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
+      app-mobile-text: La app móvil de TimeOverflow está disponible<br /> Esta app ha sido posible gracias a la colaboración del Ayuntamiento de Barcelona, a través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Solicita acceso
       banner-subtitle: Os ayudaremos a ponerlo en marcha o a haceros una demostración
       banner-title: "¿Eres un Banco de Tiempo?"
@@ -515,6 +515,9 @@ es:
       manage_warning_angular: Va a cambiar los privilegios del usuario {{username}}
       members: Miembros
       user_created: Usuario %{uid} %{name} guardado
+    member_card:
+      active_ago: 
+      no_activity: 
     new:
       cancel: Cancelar
       create_more_users_button: Crear e introducir otro usuario
