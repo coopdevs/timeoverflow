@@ -374,14 +374,13 @@ es:
   pages:
     about:
       app-mobile: App Móvil
-      app-mobile-text: La app móvil de TimeOverflow está disponible para Android y IOS<br /> Esta app ha sido posible gracias a la colaboración del Ayuntamiento de Barcelona, a través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
+      app-mobile-text: La app móvil de TimeOverflow está disponible<br /> Esta app ha sido posible gracias a la colaboración del Ayuntamiento de Barcelona, a través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Solicita acceso
       banner-subtitle: Os ayudaremos a ponerlo en marcha o a haceros una demostración
       banner-title: "¿Eres un Banco de Tiempo?"
       donate-link: Donar 1€ al mes
       donate-text: Con el fin de apoyar a muchas comunidades la asociación ADBdT ofrece la plataforma TimeOverflow a todos los Bancos de Tiempo. Considera %{donate_link} para contribuir a los gastos de mantenimiento e innovación.
       donate-title: Participa con una donación
-      donate_link: donar 1€ al mes
       empower-adbdt: ADBdT
       empower-adbdt-title: Asociación para el Desarrollo de los Bancos de Tiempo
       empower-coopdevs: CoopDevs
@@ -499,9 +498,7 @@ es:
     edit:
       edit_user: Cambiar usuario
     form:
-      admin_warning: Atención!!! Estás dando poderes a este usuario!!
       notifications: Notificaciones
-      superadmin_warning: Atención!!! Estás dando PODERES DIVINOS a este usuario!!
     give_time:
       give_time: Dar Tiempo a
     index:
@@ -515,6 +512,9 @@ es:
       manage_warning_angular: Va a cambiar los privilegios del usuario {{username}}
       members: Miembros
       user_created: Usuario %{uid} %{name} guardado
+    member_card:
+      active_ago: 
+      no_activity: 
     new:
       cancel: Cancelar
       create_more_users_button: Crear e introducir otro usuario
