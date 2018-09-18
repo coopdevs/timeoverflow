@@ -65,9 +65,9 @@ en:
         identity_document: Identity Document
         last_sign_in_at: Last login
         notifications: Receive email notifications
-        push_notifications: Receive mobile notifications
         organization: Organization
         phone: Phone
+        push_notifications: Receive mobile notifications
         registration_date: Registration date
         registration_number: User code
         superadmin: System Administrator
@@ -222,20 +222,20 @@ en:
     registrations:
       destroyed: Bye! Your account was successfully cancelled. We hope to see you again soon.
       edit:
-        cancel_account: 
-        current_password: 
-        edit_user: 
-        help_current_password: 
-        help_password: 
-        password: 
-        password_confirmation: 
-        unhappy: 
-        update: 
+        cancel_account: Cancel account
+        current_password: Current password
+        edit_user: Edit user
+        help_current_password: Help current password
+        help_password: Help Password
+        password: Password
+        password_confirmation: Password confirmation
+        unhappy: Unhappy
+        update: Update
       new:
-        password: 
-        password_confirmation: 
-        sign_me_up: 
-        sign_up: 
+        password: Password
+        password_confirmation: Password confirmation
+        sign_me_up: Sign me up
+        sign_up: Sign up
       signed_up: Welcome! You have signed up successfully.
       signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
       signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
@@ -329,14 +329,14 @@ en:
     report:
       report_title: REPORT
   locales:
-    ar: 
+    ar: Arabic
     ca: Catalan
     en: English
     es: Spanish
-    eu: 
-    fr: 
-    gl: 
-    pt: 
+    eu: Basque
+    fr: French
+    gl: Galician
+    pt: Portuguese
     pt-BR: Portuguese
   mailers_globals:
     footer:
@@ -373,12 +373,15 @@ en:
       contact_information: Contact information
   pages:
     about:
+      app-mobile: Mobile App
+      app-mobile-text: The mobile app TimeOverflow is available. <br /> This app has been possible thanks to the collaboration of the municipality of Barcelona, program %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Request access to TimeOverflow
       banner-subtitle: We will contact you to start it up or make you a demonstration
       banner-title: Are you a Time Bank?
+      donate-link: Donate 1€ a month
       donate-text: In order to support many communities the ADBdT asociation offers TimeOverflow platform to all Time Banks. %{donate_link} to contribute to maintenance and innovation costs.
       donate-title: Participate with a donation
-      donate-link: Donate 1€ a month
+      donate_link: Donate 1€ a month
       empower-adbdt: ADBdT
       empower-adbdt-title: Association for the Development of Time Banks
       empower-coopdevs: CoopDevs
@@ -399,15 +402,13 @@ en:
       feature-text-4: Members of a Time Bank can access the system and connect with other members
       feature-text-5: Posting of offers and inquiries
       feature-text-6: Pay hours to other members
+      impulsem-link: Impulsem el que fas
       subtitle: TimeOverflow is open source, free and collaborative
       title: The software designed by and for
       title2: Time Banks
-      app-mobile: Mobile App
-      app-mobile-text: The mobile app TimeOverflow for Android and iOS is available for download. <br /> This app has been possible thanks to the collaboration of the municipality of Barcelona, program %{impulsem_link} (Barcelona Activa) 2017-2018
-      impulsem-link: "Impulsem el que fas"
   posts:
     show:
-      info: "This %{type} belongs to %{organization}."
+      info: This %{type} belongs to %{organization}.
   reports:
     cat_with_users:
       title: Offered Services
@@ -498,11 +499,12 @@ en:
     edit:
       edit_user: Update user
     form:
+      admin_warning: Warning!!! You are giving privileges to this user!!
       notifications: Notifications
+      superadmin_warning: Warning!!! You are giving GOD PRIVILEGES to this user!!
     give_time:
       give_time: Give time to
     index:
-      members: Members
       actions: Actions
       active_warning: You are going to change user account status for %{username}
       active_warning_angular: You are going to change user account status for {{username}}
@@ -511,7 +513,11 @@ en:
       create: Create new user
       manage_warning: You are going to change privileges for user %{username}
       manage_warning_angular: You are going to change privileges for user {{username}}
+      members: Members
       user_created: User %{uid} %{name} saved
+    member_card:
+      active_ago: Active %{time} ago
+      no_activity: No activity
     new:
       cancel: Cancel
       create_more_users_button: Create and add another user
@@ -543,13 +549,10 @@ en:
       cancel_warning: You are going to delete account from the Time Bank for user  %{user}
       deactivate: Deactivate
       manage_warning: You are going to change privileges for user %{user}
-    member_card:
-      no_activity: No activity
-      active_ago: Active %{time} ago
   views:
     pagination:
-      first: 
-      last: 
-      next: 
-      previous: 
-      truncate: 
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: Truncate
