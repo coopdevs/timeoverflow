@@ -515,6 +515,9 @@ pt-BR:
       manage_warning_angular: Mudará os privilégios do usuário {{username}}
       members: 
       user_created: Usuário %{uid} %{name} guardado
+    member_card:
+      active_ago: 
+      no_activity: 
     new:
       cancel: Cancelar
       create_more_users_button: Criar e introduzir outro usuário

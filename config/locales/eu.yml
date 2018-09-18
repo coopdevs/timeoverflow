@@ -521,6 +521,9 @@ eu:
       manage_warning_angular: " {{username}} erabiltzailearen onurak, aldatuko diztuzu"
       members: 
       user_created: "%{uid} %{name} erabiltzailea gorde da"
+    member_card:
+      active_ago: 
+      no_activity: 
     new:
       cancel: Deuseztatu
       create_more_users_button: Beste erabiltzaile bat sortu eta sartu
