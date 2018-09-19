@@ -387,7 +387,6 @@ eu:
       donate-link: 
       donate-text: komunitate askori babesteko asmotan ADBdt elkarteak , TimeOverflow plataforma eskaintzen die Denbora Banku guztiei. Hausnar ezazu %{donate_link}  mantenu eta berritze lanetan laguntzeko.
       donate-title: Laguntzan parte hartu
-      donate_link: Hilean €1 ematea
       empower-adbdt: ADBdt
       empower-adbdt-title: Denbora Bankuen garapenerako elkartea
       empower-coopdevs: CoopDevs
@@ -505,9 +504,7 @@ eu:
     edit:
       edit_user: Erabiltzailea aldatu
     form:
-      admin_warning: Kontuz!!! Erabiltzaile honi boterea ematen ari zara.
       notifications: Jakinarazpen
-      superadmin_warning: Kontuz!!! Erabiltzaile honi izugarrizko boterea ematen ari zara.
     give_time:
       give_time: honi denbora eman
     index:
@@ -521,6 +518,9 @@ eu:
       manage_warning_angular: " {{username}} erabiltzailearen onurak, aldatuko diztuzu"
       members: 
       user_created: "%{uid} %{name} erabiltzailea gorde da"
+    member_card:
+      active_ago: 
+      no_activity: 
     new:
       cancel: Deuseztatu
       create_more_users_button: Beste erabiltzaile bat sortu eta sartu
