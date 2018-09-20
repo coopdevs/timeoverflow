@@ -381,7 +381,6 @@ pt-BR:
       donate-link: 
       donate-text: 
       donate-title: 
-      donate_link: 
       empower-adbdt: ADBdt
       empower-adbdt-title: Associação para o Desenvolvimento dos Bancos de Tempo
       empower-coopdevs: CoopDevs
@@ -499,9 +498,7 @@ pt-BR:
     edit:
       edit_user: Trocar usuário
     form:
-      admin_warning: Atenção!!! Você está dando poderes a este usuário!!
       notifications: Notificações
-      superadmin_warning: Atenção!!! Você está dando PODERES DIVINOS a este usuário!!
     give_time:
       give_time: Dar Tempo a
     index:
@@ -515,6 +512,9 @@ pt-BR:
       manage_warning_angular: Mudará os privilégios do usuário {{username}}
       members: 
       user_created: Usuário %{uid} %{name} guardado
+    member_card:
+      active_ago: 
+      no_activity: 
     new:
       cancel: Cancelar
       create_more_users_button: Criar e introduzir outro usuário

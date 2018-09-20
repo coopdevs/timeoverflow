@@ -1,15 +1,15 @@
 class Organization < ActiveRecord::Base
   has_many :members, dependent: :destroy
   has_many :users, -> { order "members.created_at DESC" }, through: :members
-  has_many :all_accounts, class_name: "Account", inverse_of: :organization
+  has_many :all_accounts, class_name: "Account", inverse_of: :organization, dependent: :destroy
   has_many :all_movements, class_name: "Movement", through: :all_accounts, source: :movements
   has_many :all_transfers, class_name: "Transfer", through: :all_movements, source: :transfer
-  has_one :account, as: :accountable
+  has_one :account, as: :accountable, dependent: :destroy
   has_many :member_accounts, through: :members, source: :account
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :offers
   has_many :inquiries
-  has_many :documents, as: :documentable
+  has_many :documents, as: :documentable, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 

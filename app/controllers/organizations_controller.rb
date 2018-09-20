@@ -1,12 +1,14 @@
 class OrganizationsController < ApplicationController
-  before_filter :load_resource, only: [:show, :edit, :update, :destroy, :set_current]
+  before_filter :load_resource, only: [:show, :edit, :update, :set_current]
 
   def new
     @organization = Organization.new
+
+    authorize @organization
   end
 
   def index
-    @organizations = Organization.all
+    @organizations = Organization.all.page(params[:page]).per(25)
   end
 
   def show
@@ -21,8 +23,10 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(organization_params)
 
+    authorize @organization
+
     if @organization.save
-      redirect_to @organization, status: :created
+      redirect_to @organization
     else
       render action: :new, status: :unprocessable_entity
     end
@@ -34,11 +38,6 @@ class OrganizationsController < ApplicationController
     else
       render action: :edit, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    @organization.destroy
-    redirect_to organizations_path, notice: "deleted"
   end
 
   # POST /organizations/:organization_id/set_current
@@ -54,6 +53,8 @@ class OrganizationsController < ApplicationController
 
   def load_resource
     @organization = Organization.find(params[:id])
+
+    authorize @organization
   end
 
   def organization_params

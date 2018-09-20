@@ -100,21 +100,14 @@
           <% end %>
         </li>
       <% end %>
-      <% if superadmin? %>
+      <% if current_user&.active?(@organization) %>
         <li>
-          <%= link_to organization_path(@organization),
-                      data: { method: :delete, confirm: t("are_you_sure") } do %>
-            <%= glyph :trash %>
-            <%= t "global.delete" %>
+          <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id) do %>
+            <%= glyph :time %>
+            <%= t "global.give_time" %>
           <% end %>
         </li>
       <% end %>
-      <li>
-        <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id) do %>
-          <%= glyph :time %>
-          <%= t "global.give_time" %>
-        <% end %>
-      </li>
     </ul>
   </div>
 </div>

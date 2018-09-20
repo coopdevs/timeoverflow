@@ -27,6 +27,19 @@ ActiveAdmin.register Organization do
     f.actions
   end
 
+  controller do
+    def destroy
+      resource.destroy
+
+      if resource == current_organization
+        sign_out(current_user)
+        redirect_to root_path
+      else
+        redirect_to admin_organizations_path
+      end
+    end
+  end
+
   filter :name
   filter :city, as: :select, collection: -> { Organization.pluck(:city).uniq }
   filter :neighborhood

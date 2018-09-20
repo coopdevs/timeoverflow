@@ -35,6 +35,7 @@ RSpec.describe Event do
     it { is_expected.to belong_to(:post) }
     it { is_expected.to belong_to(:member) }
     it { is_expected.to belong_to(:transfer) }
+    it { is_expected.to have_many(:push_notifications) }
 
     it { is_expected.to have_db_column(:post_id) }
     it { is_expected.to have_db_column(:member_id) }
