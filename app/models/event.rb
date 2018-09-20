@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   belongs_to :post
   belongs_to :member
   belongs_to :transfer
+  has_many :push_notifications, dependent: :destroy
 
   validates :action, presence: true
   validate :resource_presence
