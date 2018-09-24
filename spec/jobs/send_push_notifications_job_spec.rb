@@ -12,7 +12,8 @@ RSpec.describe SendPushNotificationsJob, type: :job do
         :push_notification,
         event: event_created,
         device_token: device_token,
-        title: 'A new Post hase been created.'
+        title: 'A new Post hase been created.',
+        body: 'A push notification body.'
       )
     end
     let(:processed_push_notification) do
@@ -21,6 +22,7 @@ RSpec.describe SendPushNotificationsJob, type: :job do
         event: event_updated,
         device_token: device_token,
         title: 'A new Post hase been created.',
+        body: 'A push notification body.',
         processed_at: Time.zone.now
       )
     end
