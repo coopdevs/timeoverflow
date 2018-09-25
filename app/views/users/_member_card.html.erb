@@ -16,7 +16,17 @@
     </div>
     <div class="to-member-card__body">
       <div class="to-member-card__body__description">
-        <%= member.description %>
+        <%= member.description&.truncate(124) %>
+      </div>
+      <div class="to-member-card__body__items">
+        <div class="to-member-card__body__item">
+          <span class="glyphicon glyphicon-earphone"></span>
+          <%= phone_to member.phone %>
+        </div>
+        <div class="to-member-card__body__item">
+          <span class="glyphicon glyphicon-envelope"></span>
+          <%= member.mail_to %>
+        </div>
       </div>
       <div class="to-member-card__body__items">
         <div class="to-member-card__body__item">
