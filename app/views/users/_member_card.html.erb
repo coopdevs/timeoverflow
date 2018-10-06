@@ -19,7 +19,7 @@
         <%= member.description&.truncate(124) %>
       </div>
       <div class="to-member-card__body__items">
-        <% if member.phone && !member.phone.blank? %>
+        <% if member.phone.present? && !member.phone.blank? %>
           <div class="to-member-card__body__item">
             <span class="glyphicon glyphicon-earphone"></span>
             <%= phone_to member.phone %>
