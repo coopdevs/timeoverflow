@@ -40,12 +40,16 @@ RSpec.describe UsersController do
   describe "GET #index" do
     before { login(user) }
 
-    it 'sorts the users by their member_uid asc by default' do
+    it 'sorts the users by their user_last_sign_in_at desc by default' do
       member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
+      member.user.update_attribute(
+        :last_sign_in_at,
+        DateTime.now
+      )
 
       get :index
 
-      expect(assigns(:members).last).to eq(member)
+      expect(assigns(:members).first).to eq(member)
     end
 
     it 'allows to sort by member_uid' do
