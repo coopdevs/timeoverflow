@@ -18,6 +18,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - redis
     volumes:
       - "./:/app"
     command: rails server -p 3000 -b '0.0.0.0'
@@ -30,6 +31,8 @@ services:
     build: .
     env_file: .env
     command: bundle exec sidekiq
+    depends_on:
+      - redis
     environment:
       DATABASE_HOST: db
       REDIS_URL: redis://redis:6379/0
