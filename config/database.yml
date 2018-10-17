@@ -11,6 +11,7 @@
 #
 
 defaults: &defaults
+  host: <%= ENV['DATABASE_HOST'] || "localhost" %>  # use localhost as fallback
   adapter: postgresql
   username: <%= ENV['DATABASE_USER'] %>  # default is null
   collation: 'es_ES.UTF-8'
