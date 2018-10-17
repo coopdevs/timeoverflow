@@ -24,13 +24,23 @@ services:
     environment:
       DATABASE_HOST: db
       REDIS_URL: redis://redis:6379/0
+      ELASTICSEARCH_URL: elasticsearch:9200
 
   sidekiq:
     build: .
     env_file: .env
     command: bundle exec sidekiq
     environment:
+      DATABASE_HOST: db
       REDIS_URL: redis://redis:6379/0
+      ELASTICSEARCH_URL: elasticsearch:9200
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.2
+    ports:
+      - 9200:9200
+    environment:
+      - "discovery.type=single-node"
 
 #  web:
 #    image: nginx
