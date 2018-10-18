@@ -1,0 +1,6 @@
+<li class="<%= "active" if current_page?(offers_path) %>">
+  <%= link_to offers_path do %>
+    <%= glyph :offer %>
+    <%= Offer.model_name.human(count: :many) %>
+  <% end %>
+</li>

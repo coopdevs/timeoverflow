@@ -32,11 +32,7 @@
   </div>
 
   <div class="row to-member-cards">
-    <% @member_view_models.each do |member| %>
-      <div class="col-lg-6 col-sm-12">
-        <%= render 'member_card', member: member %>
-      </div>
-    <% end %>
+    <%= render partial: 'member_card', collection: @member_view_models, as: :member %>
   </div>
 
   <div class="row">
