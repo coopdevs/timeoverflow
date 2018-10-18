@@ -1,8 +1,6 @@
 language: ruby
 cache: bundler
 bundler_args: '--without production development'
-rvm:
-  - 2.3.0
 env: DATABASE_URL=postgres://postgres@localhost/timeoverflow_test
 before_script:
   - bundle exec rake db:setup
