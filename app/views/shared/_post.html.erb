@@ -12,8 +12,8 @@
       <div class="panel-body">
         <%= l post.updated_at.to_date, format: :long %>
         <p></p>
-        <%= link_to get_index_path(post, cat: post.category) do %>
-          <%= glyph :folder_open %>
+        <%= link_to [post.class, cat: post.category] do %>
+          <%= glyph(:folder_open) %>
           <%= post.category %>
         <% end %>
         <p></p>
@@ -21,7 +21,9 @@
           <% post.tags.each do |tag| %>
             <span class="badge alert-success">
               <%= glyph(:tag) %>
-              <%= link_to tag, get_index_path(post, tag: tag) %>
+              <%= link_to [post.class, tag: tag] do %>
+                <%= tag %>
+              <% end %>
             </span>
           <% end %>
         <% end %>

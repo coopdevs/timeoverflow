@@ -1,0 +1,22 @@
+<%= content_tag(:tr, class: member.row_css_class) do %>
+  <td> <%= member.avatar_img %> </td>
+  <td> <%= member.member_uid %> </td>
+  <td>
+    <%= member.inactive_icon %>
+    <%= member.link_to_self %>
+  </td>
+  <td class="hidden-xs"> <%= member.mail_to %> </td>
+  <td class="hidden-xs hidden-sm"> <%= phone_to member.phone %> </td>
+  <td class="hidden-xs hidden-sm"> <%= member.account_balance %> </td>
+  <% if current_user.manages?(current_organization) %>
+    <td class="hover-actions hidden-xs hidden-sm">
+      <% if member.active? %>
+        <%= render 'toggle_manager_link', member: member if can_toggle_manager?(member) %>
+      <% else %>
+        <%= render 'cancel_membership_link', member: member if can_cancel_member?(member) %>
+      <% end %>
+
+      <%= render 'toggle_active_link', member: member if can_toggle_active?(member) %>
+    </td>
+  <% end %>
+<% end %>

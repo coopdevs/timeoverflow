@@ -20,12 +20,7 @@ Rails.application.routes.draw do
 
   get "/pages/:page" => "pages#show", as: :page
 
-  resources :offers do
-    collection do
-      get :dashboard
-    end
-  end
-
+  resources :offers
   resources :inquiries
   resources :device_tokens, only: :create
 

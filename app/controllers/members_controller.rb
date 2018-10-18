@@ -5,7 +5,7 @@ class MembersController < ApplicationController
     find_member
     toggle_active_posts
     @member.destroy
-    redirect_to users_path
+    redirect_to manage_users_path
   end
 
   def toggle_manager

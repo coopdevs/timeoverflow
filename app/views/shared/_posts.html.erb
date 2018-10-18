@@ -11,12 +11,16 @@
         <% if post.category %>
           <%= glyph :folder_open %>
           <span class="category">
-            <%= link_to post.category, get_index_path(post, cat: post.category) %>
+            <%= link_to [post.class, cat: post.category] do %>
+              <%= post.category %>
+            <% end %>
           </span>
         <% end %>
         <% (post.tags || []).each do |tag| %>
           <%= glyph :tag %>
-          <%= link_to tag, get_index_path(post,tag: tag) %>
+          <%= link_to [post.class, tag: tag] do %>
+            <%= tag %>
+          <% end %>
         <% end %>
       </small>
     </p>
