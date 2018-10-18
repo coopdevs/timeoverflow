@@ -11,7 +11,7 @@
               <div class="badge">
                 <%= count %>
               </div>
-              <%= link_to get_index_path(post_type.pluralize, tag: tag) do %>
+              <%= link_to [post_type.pluralize, tag: tag] do %>
                 <%= glyph count == 1 ? :tag : :tags %>
                 <%= tag %>
               <% end %>
