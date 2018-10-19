@@ -513,8 +513,8 @@ es:
       members: Miembros
       user_created: Usuario %{uid} %{name} guardado
     member_card:
-      active_ago: 
-      no_activity: 
+      active_ago: Actividad hace %{time}
+      no_activity: Sin actividad
     new:
       cancel: Cancelar
       create_more_users_button: Crear e introducir otro usuario

@@ -513,8 +513,8 @@ ca:
       members: Membres
       user_created: Usuari %{uid} %{name} guardat
     member_card:
-      active_ago: 
-      no_activity: 
+      active_ago: Activitat fa %{time}
+      no_activity: Sense activitat
     new:
       cancel: Cancel·lar
       create_more_users_button: Crear i introduir un nou usuari
