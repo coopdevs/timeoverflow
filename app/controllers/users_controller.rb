@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    # I would like nulls to go last but ransack... https://github.com/activerecord-hackery/ransack/issues/443
-    search_and_load_members current_organization.members.active, {s: 'user_last_sign_in_at desc'}
+    search_and_load_members current_organization.members.active, {s: 'member_uid asc'}
   end
 
   def manage
