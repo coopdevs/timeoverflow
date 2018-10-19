@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    search_and_load_members current_organization.members.active
+    search_and_load_members current_organization.members.active, {s: 'member_uid asc'}
   end
 
   def manage
-    search_and_load_members current_organization.members
+    search_and_load_members current_organization.members, {s: 'member_uid asc'}
   end
 
   def show
@@ -57,18 +57,14 @@ class UsersController < ApplicationController
 
   private
 
-  def search_and_load_members(members_scope)
-    @search = members_scope.ransack(search_params)
+  def search_and_load_members(members_scope, default_search_params)
+    @search = members_scope.ransack(default_search_params.merge(params.fetch(:q, {})))
 
     @members =
       @search.result.eager_load(:account, :user).page(params[:page]).per(20)
 
     @member_view_models =
       @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
-  end
-
-  def search_params
-    {s: 'member_uid asc'}.merge(params.fetch(:q, {}))
   end
 
   def scoped_users

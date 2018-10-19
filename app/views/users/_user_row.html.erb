@@ -5,11 +5,11 @@
     <%= member.inactive_icon %>
     <%= member.link_to_self %>
   </td>
-  <td class="hidden-xs"> <%= member.mail_to %> </td>
-  <td class="hidden-xs hidden-sm"> <%= phone_to member.phone %> </td>
-  <td class="hidden-xs hidden-sm"> <%= member.account_balance %> </td>
+  <td> <%= member.mail_to %> </td>
+  <td> <%= phone_to member.phone %> </td>
+  <td> <%= member.account_balance %> </td>
   <% if current_user.manages?(current_organization) %>
-    <td class="hover-actions hidden-xs hidden-sm">
+    <td class="hover-actions">
       <% if member.active? %>
         <%= render 'toggle_manager_link', member: member if can_toggle_manager?(member) %>
       <% else %>

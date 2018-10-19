@@ -16,17 +16,21 @@
     </div>
     <div class="to-member-card__body">
       <div class="to-member-card__body__description">
-        <%= member.description %>
+        <%= member.description&.truncate(124) %>
       </div>
       <div class="to-member-card__body__items">
-        <div class="to-member-card__body__item">
-          <span class="glyphicon glyphicon-earphone"></span>
-          <%= phone_to member.phone %>
-        </div>
-        <div class="to-member-card__body__item">
-          <span class="glyphicon glyphicon-envelope"></span>
-          <%= member.mail_to %>
-        </div>
+        <% if member.phone.present? && !member.phone.blank? %>
+          <div class="to-member-card__body__item">
+            <span class="glyphicon glyphicon-earphone"></span>
+            <%= phone_to member.phone %>
+          </div>
+        <% end %>
+        <% if member.mail_to.present? && !member.mail_to.blank? %>
+          <div class="to-member-card__body__item">
+            <span class="glyphicon glyphicon-envelope"></span>
+            <%= member.mail_to %>
+          </div>
+        <% end %>
         <div class="to-member-card__body__item">
           <%= "Balance: " %>
           <%= member.account_balance %>
