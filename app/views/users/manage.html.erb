@@ -68,7 +68,7 @@
             </tr>
           </thead>
           <tbody>
-            <%= render "user_rows", members: @member_view_models %>
+            <%= render partial: "user_row", collection: @member_view_models, as: :member %>
           </tbody>
         </table>
 
