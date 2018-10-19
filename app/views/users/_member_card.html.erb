@@ -25,10 +25,12 @@
             <%= phone_to member.phone %>
           </div>
         <% end %>
-        <div class="to-member-card__body__item">
-          <span class="glyphicon glyphicon-envelope"></span>
-          <%= member.mail_to %>
-        </div>
+        <% if member.mail_to.present? && !member.mail_to.blank? %>
+          <div class="to-member-card__body__item">
+            <span class="glyphicon glyphicon-envelope"></span>
+            <%= member.mail_to %>
+          </div>
+        <% end %>
         <div class="to-member-card__body__item">
           <%= "Balance: " %>
           <%= member.account_balance %>
