@@ -50,17 +50,17 @@
               <th>
                 <%= sort_link @search, :user_username, User.human_attribute_name(:username) %>
               </th>
-              <th class="hidden-xs">
+              <th>
                 <%= User.human_attribute_name(:email) %>
               </th>
-              <th class="hidden-xs hidden-sm">
+              <th>
                 <%= User.human_attribute_name(:phone) %>
               </th>
-              <th class="hidden-xs hidden-sm">
+              <th>
                 <%= sort_link @search, 'account_balance', Account.human_attribute_name(:balance) %>
               </th>
               <% if current_user.manages? current_organization %>
-                <th class="hidden-xs hidden-sm">
+                <th>
                   <span class="glyphicon glyphicon-hand-down"></span>
                   <%= t(".actions") %>
                 </th>
@@ -68,7 +68,7 @@
             </tr>
           </thead>
           <tbody>
-            <%= render "user_rows", members: @member_view_models %>
+            <%= render partial: "user_row", collection: @member_view_models, as: :member %>
           </tbody>
         </table>
 

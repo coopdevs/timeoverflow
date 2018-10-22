@@ -10,6 +10,7 @@ Fabricator(:user) do
   address { Faker::Address.street_address + " " + Faker::Address.zip_code + " " + Faker::Address.city + " (" + Faker::Address.state + ")"}
   gender { ["male", "female"].shuffle.first }
   description { Faker::Lorem.paragraph }
+  last_sign_in_at { DateTime.new(2018, 10, 1) }
 
   terms_accepted_at DateTime.now.utc
   confirmed_at DateTime.now.utc

@@ -1,34 +1,40 @@
-<div class="to-member-card">
-  <div class="to-member-card__header">
-    <div class="to-member-card__header__avatar"><%= member.avatar_img(48) %></div>
-    <div class="to-member-card__header__text">
-      <h4><%= member.link_to_self %></h4>
-      <div class="to-member-card__header__text__activity">
-        <%= "##{member.member_uid} — " %>
-        <% if member.last_sign_in_at %>
-          <%= t('.active_ago', time: distance_of_time_in_words(Time.now, member.last_sign_in_at)) %>
-        <% else %>
-          <%= t('.no_activity') %>
+<div class="col-lg-6 col-sm-12">
+  <div class="to-member-card">
+    <div class="to-member-card__header">
+      <div class="to-member-card__header__avatar"><%= member.avatar_img(48) %></div>
+      <div class="to-member-card__header__text">
+        <h4><%= member.link_to_self %></h4>
+        <div class="to-member-card__header__text__activity">
+          <%= "##{member.member_uid} — " %>
+          <% if member.last_sign_in_at %>
+            <%= t('.active_ago', time: distance_of_time_in_words(Time.now, member.last_sign_in_at)) %>
+          <% else %>
+            <%= t('.no_activity') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="to-member-card__body">
+      <div class="to-member-card__body__description">
+        <%= member.description&.truncate(124) %>
+      </div>
+      <div class="to-member-card__body__items">
+        <% if member.phone.present? && !member.phone.blank? %>
+          <div class="to-member-card__body__item">
+            <span class="glyphicon glyphicon-earphone"></span>
+            <%= phone_to member.phone %>
+          </div>
         <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="to-member-card__body">
-    <div class="to-member-card__body__description">
-      <%= member.description %>
-    </div>
-    <div class="to-member-card__body__items">
-      <div class="to-member-card__body__item">
-        <span class="glyphicon glyphicon-earphone"></span>
-        <%= phone_to member.phone %>
-      </div>
-      <div class="to-member-card__body__item">
-        <span class="glyphicon glyphicon-envelope"></span>
-        <%= member.mail_to %>
-      </div>
-      <div class="to-member-card__body__item">
-        <%= "Balance: " %>
-        <%= member.account_balance %>
+        <% if member.mail_to.present? && !member.mail_to.blank? %>
+          <div class="to-member-card__body__item">
+            <span class="glyphicon glyphicon-envelope"></span>
+            <%= member.mail_to %>
+          </div>
+        <% end %>
+        <div class="to-member-card__body__item">
+          <%= "Balance: " %>
+          <%= member.account_balance %>
+        </div>
       </div>
     </div>
   </div>
