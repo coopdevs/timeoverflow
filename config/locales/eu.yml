@@ -500,6 +500,8 @@ eu:
       minute:
         one: "%{count}minutu"
         other: "%{count} minutu"
+    new:
+      error_amount:
   users:
     edit:
       edit_user: Erabiltzailea aldatu

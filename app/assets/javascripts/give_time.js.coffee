@@ -11,7 +11,7 @@ giveTimeReadyFn = () ->
       if amount > 0
         form.submit()
       else
-        $(form).find('input:submit').after(' <label class="error">Time must be greater than 0</label>')
+        $(form).find('.form-actions .error').removeClass('invisible').show()
 
   $( "#new_transfer" ).validate(config)
 
