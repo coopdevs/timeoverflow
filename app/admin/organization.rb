@@ -32,7 +32,7 @@ ActiveAdmin.register Organization do
       resource.destroy
 
       if resource == current_organization
-        sign_out_and_redirect(current_user)
+        sign_out and redirect_to(root_path)
       else
         redirect_to admin_organizations_path
       end
