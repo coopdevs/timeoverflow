@@ -23,7 +23,7 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'skylight'
 gem 'sidekiq', '5.1.3'
-gem 'sidekiq-cron', '~> 1.0.4'
+gem 'sidekiq-cron', '~> 1.1.0'
 
 # Assets
 gem 'jquery-rails', '>= 4.2.0'
