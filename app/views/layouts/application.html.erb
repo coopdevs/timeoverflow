@@ -4,26 +4,17 @@
     <meta charset="utf-8">
     <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>
-      <% if content_for? :window_title %>
-        <%= content_for :window_title %>
-      <% else %>
-        <% if current_organization %>
-          <%= current_organization %> —
-        <% end %>
-        <%= yield :title %>
-      <% end %>
-    </title>
+    <title><%= page_title %></title>
     <%= csrf_meta_tags %>
     <link href="/favicon.ico" rel="shortcut icon">
     <%= stylesheet_link_tag 'libs', media: 'all' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' %>
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/icon?family=Material+Icons' %>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' %>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons' %>
     <%= javascript_include_tag 'libs' %>
     <%= javascript_include_tag 'application' %>
   </head>
-  <body class="<%= get_body_css_class(controller.controller_name) %>" data-action="<%= params[:controller] %>-<%= params[:action] %>">
+  <body class="<%= get_body_css_class(controller_name) %>">
     <%= render 'navbar' %>
     <div class="container content">
       <%= render 'layouts/messages' unless devise_controller? %>
@@ -38,19 +29,5 @@
     <%= render 'application/footer' %>
 
     <div class="back-overlay"></div>
-    <!-- Piwik -->
-    <script type="text/javascript">
-      var _paq = _paq || [];
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-        _paq.push(['setTrackerUrl',  'https://api-3d186b7b77a47155c00f114ddc52a2e7.fki.sandcats.io']);
-        _paq.push(['setSiteId', 1]);
-        _paq.push(['setApiToken', 'YIg1zq997dOFyvS5VTi4RZ0hnC0Ji3MkeYgHNvdky0c']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src='https://00cwpvzw77kc4cysvzdy.fki.sandcats.io/embed.js'; s.parentNode.insertBefore(g,s);
-      })();
-    </script>
-    <!-- End Piwik Code -->
   </body>
 </html>
