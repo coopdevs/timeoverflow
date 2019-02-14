@@ -60,10 +60,10 @@ group :test do
   gem "database_cleaner", '1.6.2'
   gem 'shoulda-matchers', '~> 3.1.2'
   gem 'fabrication'
-  gem 'faker'
-  gem 'capybara', '~> 2.7'
-  gem 'capybara-selenium', '~> 0.0.6'
-  gem 'chromedriver-helper', '~> 1.0'
+  gem 'faker', '~> 1.9'
+  gem 'capybara', '~> 3.13'
+  gem 'selenium-webdriver', '~> 3.141'
+  gem 'chromedriver-helper', '~> 2.1'
 end
 
 group :production do
