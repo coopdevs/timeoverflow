@@ -15,14 +15,14 @@ require 'shoulda/matchers'
 
 Capybara.server = :webrick
 Capybara.register_driver :headless_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w(headless disable-gpu) }
+  browser_options = Selenium::WebDriver::Chrome::Options.new(
+    args: %w(headless disable-gpu no-sandbox)
   )
 
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
-    desired_capabilities: capabilities
+    options: browser_options
   )
 end
 Capybara.default_driver = :headless_chrome
