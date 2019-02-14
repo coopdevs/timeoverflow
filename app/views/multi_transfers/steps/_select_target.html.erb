@@ -1,0 +1,29 @@
+<div class="alert alert-info" role="alert">
+  <%= t('multi_transfers.step.set_target.description') %>
+</div>
+
+<div class="form-group">
+  <%= select_tag('to[]',
+    options_for_select(
+      TransferSourcesOptions.new(@accounts).to_a,
+      selected: @to,
+    ), id: 'select2-multi-to', multiple: @type_of_transfer == :one_to_many, required: true)
+  %>
+</div>
+
+<script type="text/javascript">
+  (function () {
+    var options = <%= ({
+      from: @from,
+      value: @to
+    }).to_json.html_safe %>;
+
+    initializeSelect2(
+      "#select2-multi-to",
+      {
+        value: options.value,
+        disabledOptions: options.from,
+      }
+    );
+  })();
+</script>
