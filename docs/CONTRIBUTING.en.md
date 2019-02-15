@@ -3,7 +3,7 @@
 Did you find a bug? Do you want to collaborate?
 
 Process:
-* Open a thread in [discourse](http://community.coopdevs.org/) to make sure whether it's a bug or a feature :wink:
+* Open a thread in [discourse](https://community.coopdevs.org/c/timeoverflow) to make sure whether it's a bug or a feature :wink:
 * Once we understand what the bug is about and know the steps to reproduce we will create an issue in GitHub linking to the Discourse thread.
 * Create a pull request to solve the issue.
 * Report back to the discourse thread the bug has been solved linking to the pull request.
