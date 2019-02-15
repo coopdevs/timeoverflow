@@ -5,8 +5,8 @@
 ¿Has encontrado algún bug? ¿Quieres colaborar?
 
 Proceso:
-* Abrir un hilo en [discourse](http://community.coopdevs.org/) para aclarar si es un bug o una feature :wink:
-* Una vez aclarado el bug y detectado los pasos para reproducirlos se crearia una issue en GH con enlaze al hilo original en discourse.
+* Abrir un hilo en [discourse](https://community.coopdevs.org/c/timeoverflow) para aclarar si es un bug o una feature :wink:
+* Una vez aclarado, si se trata de un bug, abre una issue en Github indicando los pasos para reproducirlo y cómo debería funncionar correctamente, enlaza al hilo original en discourse.
 * Pull request que resuelve la issue.
 * Reportar en el hilo de discourse que el bug ha sido resuelto con enlace a PR.
 
