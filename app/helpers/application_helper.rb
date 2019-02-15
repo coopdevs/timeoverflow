@@ -3,6 +3,10 @@ module ApplicationHelper
   TEXT_SUCCESS = 'text-success'.freeze
   TEXT_DANGER = 'text-danger'.freeze
 
+  def page_title
+    current_organization || 'TimeOverflow'
+  end
+
   # from gravatar
   def avatar_url(user, size = 32)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
