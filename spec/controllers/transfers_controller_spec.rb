@@ -207,5 +207,22 @@ RSpec.describe TransfersController do
         end
       end
     end
+
+    context 'with invalid params' do
+      let(:user) { member_giver.user }
+      let(:referer) { "/transfers/new?destination_account_id=#{member_taker.account.id}" }
+
+      before do
+        request.env["HTTP_REFERER"] = referer
+      end
+
+      it 'does not create any Transfer and redirects to :back if the amount is 0' do
+        expect {
+          post(:create, transfer: { amount: 0, destination: member_taker.account.id })
+        }.not_to change(Transfer, :count)
+
+        expect(response).to redirect_to(referer)
+      end
+    end
   end
 end

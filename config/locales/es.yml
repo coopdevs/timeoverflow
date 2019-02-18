@@ -494,6 +494,8 @@ es:
       minute:
         one: "%{count} minuto"
         other: "%{count} minutos"
+    new:
+      error_amount:
   users:
     edit:
       edit_user: Cambiar usuario

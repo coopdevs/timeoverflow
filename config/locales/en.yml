@@ -494,6 +494,8 @@ en:
       minute:
         one: "%{count} minute"
         other: "%{count} minutes"
+    new:
+      error_amount: Time must be greater than 0
   users:
     edit:
       edit_user: Update user
