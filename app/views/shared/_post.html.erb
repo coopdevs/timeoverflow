@@ -43,12 +43,16 @@
           </h3>
           <% if post.user.has_valid_email? %>
             <dt><%= User.human_attribute_name :email %></dt>
-            <dd><%= post.user.email %></dd>
+            <dd><%= mail_to post.user.email %></dd>
           <% end %>
           <% phones = [post.user.phone, post.user.alt_phone].select(&:present?) %>
           <% if phones.present? %>
             <dt><%= User.human_attribute_name(:phone) %></dt>
-            <dd><%= phones.map(&:to_s).join(" — ") %></dd>
+            <dd>
+              <% phones.each do |phone| %>
+                <span><%= phone_to phone%></span>
+              <% end %>
+            </dd>
           <% end %>
         </div>
       </div>

@@ -12,7 +12,7 @@ class TransfersController < ApplicationController
     if persister.save
       redirect_to redirect_target
     else
-      flash[:error] = transfer.errors.full_messages.to_sentence
+      redirect_to :back, alert: transfer.errors.full_messages.to_sentence
     end
   end
 

@@ -494,6 +494,8 @@ ca:
       minute:
         one: "%{count} minut"
         other: "%{count} minuts"
+    new:
+      error_amount: El temps ha de ser més gran que 0
   users:
     edit:
       edit_user: Canviar usuari

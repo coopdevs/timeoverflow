@@ -8,7 +8,13 @@ module PushNotifications
       end
 
       def body
-        event.post.description&.truncate(20) || 'No description'
+        description = event.post.description
+
+        if description.blank?
+          'No description'
+        else
+          description.truncate(20)
+        end
       end
 
       def data
