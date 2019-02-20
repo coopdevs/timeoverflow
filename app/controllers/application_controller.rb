@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_locale
   before_filter :set_current_organization
-  after_filter :store_location
 
   rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
     redirect_to terms_path
@@ -21,7 +20,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_organization, :admin?, :superadmin?
 
-  protected
+  def switch_lang
+    redirect_to :back
+  end
+
+  private
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
@@ -35,17 +38,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def store_location
-    # store last url - this is needed for post-login redirect to whatever the
-    # user last visited.
-    return unless request.get?
-    paths = ["/", "/users/sign_in", "/users/sign_up", "/users/password/new",
-             "/users/password/edit", "/users/confirmation", "/users/sign_out"]
-    if !paths.include?(request.path) && !request.xhr?
-      session[:previous_url] = request.fullpath
-    end
-  end
-
   def after_sign_in_path_for(user)
     if user.members.present?
       users_path
@@ -53,8 +45,6 @@ class ApplicationController < ActionController::Base
       page_path("about")
     end
   end
-
-  private
 
   def check_for_terms_acceptance!
     if user_signed_in?
