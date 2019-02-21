@@ -4,5 +4,6 @@ bundler_args: '--without production development'
 env: DATABASE_URL=postgres://postgres@localhost/timeoverflow_test
 before_script:
   - bundle exec rake db:setup
+  - psql -U postgres timeoverflow_test -c 'create extension "unaccent";'
 addons:
   chrome: stable
