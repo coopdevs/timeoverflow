@@ -1,40 +1,10 @@
-require 'elasticsearch/model'
-
 class Post < ActiveRecord::Base
   include Taggable
+  include PgSearch
 
-  # Elasticsearch::Model doesn't work well with STI, so
-  # include it in subclasses directly.
-  def self.inherited(child)
-    super
-
-    child.instance_eval do
-      include Elasticsearch::Model
-
-      after_commit :index_document, on: :create
-      after_commit :update_or_delete_document, on: :update
-      after_commit :delete_document, on: :destroy
-
-      settings(
-        analysis: {
-          analyzer: {
-            normal: {
-              tokenizer: "standard",
-              # lowercase, unaccent
-              filter: %w[lowercase asciifolding]
-            }
-          }
-        }
-      ) do
-        mapping do
-          indexes :title, analyzer: "normal"
-          indexes :description, analyzer: "normal"
-          indexes :tags
-          indexes :organization_id, type: :integer
-        end
-      end
-    end
-  end
+  pg_search_scope :search_by_query,
+    :against => [:title, :description, :tags],
+    :ignoring => :accents
 
   attr_reader :member_id
 
@@ -71,30 +41,6 @@ class Post < ActiveRecord::Base
   validates :user, presence: true
   validates :category, presence: true
   validates :title, presence: true
-
-  def index_document
-    __elasticsearch__.index_document
-  end
-
-  # pass member when doing bulk things
-  def update_or_delete_document(member = nil)
-    member ||= self.member
-    if active && member.try(:active)
-      begin
-        __elasticsearch__.update_document
-      rescue # document was not in the index. TODO: more specifi exception class
-        __elasticsearch__.index_document
-      end
-    else
-      __elasticsearch__.delete_document
-    end
-  rescue # document was not in the index. TODO: more specifi exception class
-  end
-
-  def delete_document
-    __elasticsearch__.delete_document
-  rescue # document was not in the index. TODO: more specifi exception class
-  end
 
   def as_indexed_json(*)
     as_json(only: [:title, :description, :tags, :organization_id])
