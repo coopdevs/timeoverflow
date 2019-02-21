@@ -4,9 +4,5 @@ bundler_args: '--without production development'
 env: DATABASE_URL=postgres://postgres@localhost/timeoverflow_test
 before_script:
   - bundle exec rake db:setup
-  # allow elasticsearch to be ready - https://docs.travis-ci.com/user/database-setup/#ElasticSearch
-  - sleep 10
-services:
-  - elasticsearch
 addons:
   chrome: stable

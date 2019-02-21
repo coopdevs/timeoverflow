@@ -36,23 +36,11 @@ RSpec.describe OffersController, type: :controller do
   end
 
   describe "GET #index (search)" do
-    before do
-      Offer.__elasticsearch__.create_index!(force: true)
-
-      # Import any already existing model into the index
-      # for instance the ones that have been created in upper
-      # `let!` or `before` blocks
-      Offer.__elasticsearch__.import(force: true, refresh: true)
-    end
-
     it "populates an array of offers" do
       login(another_member.user)
 
       get "index", q: offer.title.split(/\s/).first
 
-      # @offers is a wrapper from Elasticsearch. It's iterator-equivalent to
-      # the underlying query from the database.
-      expect(assigns(:offers)).to be_a Elasticsearch::Model::Response::Records
       expect(assigns(:offers).size).to eq 1
       expect(assigns(:offers)[0]).to eq offer
       expect(assigns(:offers).to_a).to eq([offer])
