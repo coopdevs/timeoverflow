@@ -36,14 +36,20 @@ RSpec.describe OffersController, type: :controller do
   end
 
   describe "GET #index (search)" do
-    it "populates an array of offers" do
-      login(another_member.user)
+    before { login(another_member.user) }
 
+    it "populates an array of offers" do
       get "index", q: offer.title.split(/\s/).first
 
       expect(assigns(:offers).size).to eq 1
       expect(assigns(:offers)[0]).to eq offer
       expect(assigns(:offers).to_a).to eq([offer])
+    end
+
+    it "allows to search by partial word" do
+      get :index, q: offer.title.split(/\s/).first[0..-2]
+
+      expect(assigns(:offers)).to include offer
     end
   end
 
