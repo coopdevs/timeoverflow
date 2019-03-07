@@ -3,8 +3,11 @@ class Post < ActiveRecord::Base
   include PgSearch
 
   pg_search_scope :search_by_query,
-    :against => [:title, :description, :tags],
-    :ignoring => :accents
+    against: [:title, :description, :tags],
+    ignoring: :accents,
+    using: {
+      tsearch: { prefix: true }
+    }
 
   attr_reader :member_id
 
