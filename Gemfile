@@ -48,22 +48,22 @@ group :development do
   gem 'airbrussh', require: false
   gem 'localeapp', '2.1.1', require: false
   gem 'letter_opener', '1.4.1'
-  gem 'dotenv-rails', '2.5.0'
+  gem 'dotenv-rails', '~> 2.7.1'
 end
 
 group :development, :test do
-  gem "rspec-rails", '~> 3.7.2'
   gem "byebug"
 end
 
 group :test do
+  gem "rspec-rails", '~> 3.8.2'
   gem "database_cleaner", '1.6.2'
   gem 'shoulda-matchers', '~> 3.1.2'
   gem 'fabrication'
-  gem 'faker'
-  gem 'capybara', '~> 2.7'
-  gem 'capybara-selenium', '~> 0.0.6'
-  gem 'chromedriver-helper', '~> 1.0'
+  gem 'faker', '~> 1.9'
+  gem 'capybara', '~> 3.13'
+  gem 'selenium-webdriver', '~> 3.141'
+  gem 'chromedriver-helper', '~> 2.1'
   gem 'simplecov', '~> 0.16.1', require: false
 end
 

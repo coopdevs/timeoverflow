@@ -10,30 +10,25 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'database_cleaner'
 require 'fabrication'
+require 'chromedriver-helper'
 require 'selenium/webdriver'
 require 'faker'
 require 'shoulda/matchers'
 
-I18n.reload!
-
-Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
-end
-
+Capybara.server = :webrick
 Capybara.register_driver :headless_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w(headless disable-gpu) }
+  browser_options = Selenium::WebDriver::Chrome::Options.new(
+    args: %w(headless disable-gpu no-sandbox)
   )
 
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
-    desired_capabilities: capabilities
+    options: browser_options
   )
 end
-
-Capybara.javascript_driver = :headless_chrome
 Capybara.default_driver = :headless_chrome
+Capybara.javascript_driver = Capybara.default_driver
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

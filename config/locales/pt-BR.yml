@@ -494,6 +494,8 @@ pt-BR:
       minute:
         one: "%{count} minuto"
         other: "%{count} minutos"
+    new:
+      error_amount: 
   users:
     edit:
       edit_user: Trocar usuário

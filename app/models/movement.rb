@@ -18,6 +18,8 @@ class Movement < ActiveRecord::Base
           where(created_at: month.beginning_of_month..month.end_of_month)
         }
 
+  validates :amount, numericality: { other_than: 0 }
+
   after_create do
     account.update_balance
   end

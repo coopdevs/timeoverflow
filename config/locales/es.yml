@@ -494,6 +494,8 @@ es:
       minute:
         one: "%{count} minuto"
         other: "%{count} minutos"
+    new:
+      error_amount: 'El tiempo debe ser mayor que 0 '
   users:
     edit:
       edit_user: Cambiar usuario
