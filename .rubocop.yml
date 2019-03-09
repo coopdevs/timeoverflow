@@ -66,6 +66,9 @@ Style/Documentation:
 Layout/DotPosition:
   EnforcedStyle: trailing
 
+Layout/ConditionPosition:
+  Enabled: false
+
 Style/DoubleNegation:
   Enabled: false
 
@@ -82,9 +85,6 @@ Style/EvenOdd:
   Enabled: false
 
 Naming/FileName:
-  Enabled: false
-
-Style/FlipFlop:
   Enabled: false
 
 Style/FormatString:
@@ -187,16 +187,16 @@ Style/StringLiterals:
 Style/VariableInterpolation:
   Enabled: false
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
   Enabled: false
 
 Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/TrivialAccessors:
-  Enabled: false
-
-Style/VariableInterpolation:
   Enabled: false
 
 Style/WhenThen:
@@ -212,9 +212,6 @@ Lint/AmbiguousRegexpLiteral:
   Enabled: false
 
 Lint/AssignmentInCondition:
-  Enabled: false
-
-Lint/ConditionPosition:
   Enabled: false
 
 Lint/DeprecatedClassMethods:
@@ -242,4 +239,7 @@ Lint/UnderscorePrefixedVariableName:
   Enabled: false
 
 Lint/Void:
+  Enabled: false
+
+Lint/FlipFlop:
   Enabled: false

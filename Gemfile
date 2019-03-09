@@ -36,7 +36,7 @@ gem 'select2-rails'
 group :development do
   gem "binding_of_caller", '~> 0.8.0'
   gem "better_errors", '~> 2.4.0'
-  gem 'rubocop', '~> 0.52.1', require: false
+  gem 'rubocop', '~> 0.65.0', require: false
   gem 'web-console', '2.1.3'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
@@ -48,14 +48,14 @@ group :development do
 end
 
 group :development, :test do
-  gem "byebug"
+  gem "byebug", '~> 11.0'
 end
 
 group :test do
   gem "rspec-rails", '~> 3.8.2'
   gem "database_cleaner", '1.6.2'
   gem 'shoulda-matchers', '~> 3.1.2'
-  gem 'fabrication'
+  gem 'fabrication', '~> 2.20'
   gem 'faker', '~> 1.9'
   gem 'capybara', '~> 3.13'
   gem 'selenium-webdriver', '~> 3.141'
