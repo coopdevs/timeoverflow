@@ -35,7 +35,8 @@ gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0.7'
 gem 'coffee-rails'
 gem 'uglifier', '2.7.2'
-gem 'select2-rails'
+gem 'select2-rails', '~> 4.0.3'
+gem 'turbolinks', '~> 5.2.0'
 
 group :development do
   gem "binding_of_caller", '~> 0.8.0'

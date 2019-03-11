@@ -4,6 +4,6 @@
     options_for_select(
       TransferSourcesOptions.new(sources, accountable).to_a,
       selected: current_user.member(current_organization).account.id
-    ), {}, id: "select2-time", class: "form-control"
+    ), {}, id: "select2", class: "form-control"
   %>
 </div>

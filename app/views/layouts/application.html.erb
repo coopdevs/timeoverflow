@@ -7,12 +7,12 @@
     <title><%= page_title %></title>
     <%= csrf_meta_tags %>
     <link href="/favicon.ico" rel="shortcut icon">
-    <%= stylesheet_link_tag 'libs', media: 'all' %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag 'libs', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons' %>
-    <%= javascript_include_tag 'libs' %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'libs', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="<%= get_body_css_class(controller_name) %>">
     <%= render 'navbar' %>

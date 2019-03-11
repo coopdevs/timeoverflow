@@ -1,4 +1,4 @@
-$ ->
+$(document).on "turbolinks:load", ->
   $(".switch_offer-js").on "click", ->
     $.ajax '/tags/offers',
       type: 'GET'
@@ -32,3 +32,6 @@ $ ->
           id: item
           text: item
         )
+
+$(document).on "turbolinks:before-cache", ->
+  $('#tags-js').select2('destroy');

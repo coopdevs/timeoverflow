@@ -16,3 +16,9 @@ $(document).on 'click', 'span.show-password', (event) ->
     $(this).prev('input').attr('type', 'text');
     $(this).find('.material-icons').html("visibility_off")
   event.preventDefault()
+
+$(document).on "turbolinks:load", ->
+  $("#select2").select2()
+
+$(document).on "turbolinks:before-cache", ->
+  $('#select2').select2('destroy')

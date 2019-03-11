@@ -70,7 +70,7 @@ RSpec.describe TransfersController do
         it 'finds all accounts in the organization as sources' do
           get :new, params
 
-          expect(response.body).to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\"><option selected=\"selected\" value=\"#{member_admin.account.id}\">#{member_admin.member_uid} Member #{member_admin}</option>")
+          expect(response.body).to include("<select id=\"select2\" class=\"form-control\" name=\"transfer[source]\"><option selected=\"selected\" value=\"#{member_admin.account.id}\">#{member_admin.member_uid} Member #{member_admin}</option>")
           expect(response.body).to include("<option value=\"#{test_organization.account.id}\"> Organization #{test_organization}</option></select>")
         end
       end
@@ -79,7 +79,7 @@ RSpec.describe TransfersController do
         it 'does not assign :sources' do
           get :new, params
           expect(response.body)
-            .not_to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\">")
+            .not_to include("<select id=\"select2\" class=\"form-control\" name=\"transfer[source]\">")
         end
       end
     end
@@ -119,7 +119,7 @@ RSpec.describe TransfersController do
         it 'finds the transfer source' do
           get :new, params
 
-          expect(response.body).to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\"><option selected=\"selected\" value=\"#{member_admin.account.id}\">#{member_admin.member_uid} Member #{member_admin}</option>")
+          expect(response.body).to include("<select id=\"select2\" class=\"form-control\" name=\"transfer[source]\"><option selected=\"selected\" value=\"#{member_admin.account.id}\">#{member_admin.member_uid} Member #{member_admin}</option>")
           expect(response.body).to include("<option value=\"#{test_organization.account.id}\">#{test_organization.id} Organization #{test_organization}</option></select>")
           HTML
         end

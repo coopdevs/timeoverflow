@@ -710,3 +710,8 @@ label[required]::after{
     line-height: 1.6em;
   }
 }
+
+.turbolinks-progress-bar {
+  height: 3px;
+  background-color: $white;
+}
