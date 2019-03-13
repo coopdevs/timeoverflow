@@ -64,6 +64,7 @@ group :test do
   gem 'capybara', '~> 3.13'
   gem 'selenium-webdriver', '~> 3.141'
   gem 'chromedriver-helper', '~> 2.1'
+  gem 'simplecov', '~> 0.16.1', require: false
 end
 
 group :production do
