@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  get "global/switch_lang", as: :switch_lang
+  get :switch_lang, to: 'application#switch_lang'
 
   get "/pages/:page" => "pages#show", as: :page
 
