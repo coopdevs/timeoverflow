@@ -31,8 +31,6 @@ RSpec.feature 'create offer' do
 
       # TODO there are two i18n keys for getting "Crear oferta" copy ( one returns 'Crear oferta' and the other 'Crear Oferta' )
       click_on I18n.t('offers.new.submit', model: I18n.t('activerecord.models.offer.one'))
-
-      page.save_screenshot('create-offer-yolo.png')
     end
   end
 end
