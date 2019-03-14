@@ -7,6 +7,7 @@ module BrandLogoHelper
   private
 
   def should_render_logo?
+    return false unless current_user
     current_organization&.id == branded_organization_id
   end
 
