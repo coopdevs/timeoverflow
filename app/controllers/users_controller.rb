@@ -1,19 +1,14 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
-  def index
-    search_and_load_members current_organization.members.active, {s: 'member_uid asc'}
-  end
-
   def manage
     search_and_load_members current_organization.members, {s: 'member_uid asc'}
   end
 
   def show
-    @user = find_user
-    @member = @user.as_member_of(current_organization)
-    @movements = @member.movements.order("created_at DESC").page(params[:page]).
-                 per(10)
+    @user = User.find(params[:id])
+
+    authorize @user
   end
 
   def new

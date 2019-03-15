@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    redirect_to :users if current_user
+    redirect_to :members if current_user
   end
 end

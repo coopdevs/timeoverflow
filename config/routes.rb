@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, concerns: :accountable, except: :destroy, :path => "members" do
+  resources :users, concerns: :accountable, except: :destroy do
     collection do
       get 'manage'
     end
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
   resources :documents
 
-  resources :members, only: [:destroy] do
+  resources :members, param: :member_uid, only: [:index, :show, :destroy] do
     member do
       put :toggle_manager
       put :toggle_active

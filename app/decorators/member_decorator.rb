@@ -15,7 +15,7 @@ class MemberDecorator < ViewModel
   end
 
   def link_to_self
-    view.link_to(user.username, routes.user_path(user))
+    view.link_to(user.username, routes.member_path(member_uid: member_uid))
   end
 
   def mail_to
