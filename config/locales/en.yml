@@ -44,6 +44,7 @@ en:
         start_on: Start on
         tag_list: Tags
         title: Title
+        is_group: Group offer
         updated_at: Updated
       transfer:
         amount: Quantity

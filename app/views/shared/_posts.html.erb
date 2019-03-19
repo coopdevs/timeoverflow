@@ -2,6 +2,9 @@
   <div class="post">
     <h4>
       <%= link_to post.title, post %>
+      <% if post.is_group %>
+        <div class="post__group_label label label-default"><%= I18n.t('activerecord.attributes.post.is_group') %></div>
+      <% end %>
     </h4>
     <p>
       <%= strip_tags(post.rendered_description.to_html) %>
