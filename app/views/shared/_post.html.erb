@@ -7,6 +7,9 @@
       <div class="panel-heading">
         <h3 class="panel-title">
           <%= post.class.model_name.human %>
+          <% if post.is_group %>
+            <div class="pull-right label label-default"><%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %></div>
+          <% end %>
         </h3>
       </div>
       <div class="panel-body">
