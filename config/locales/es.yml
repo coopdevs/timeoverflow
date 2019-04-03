@@ -22,9 +22,9 @@ es:
         created_at: Creado
         updated_at: Actualizado
       inquiry:
-        is_group: Demanda Grupal
+        is_group: Demanda grupal
       offer:
-        is_group: Oferta Grupal
+        is_group: Oferta grupal
       organization:
         address: Dirección
         city: Ciudad
