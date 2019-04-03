@@ -21,6 +21,10 @@ eu:
       common:
         created_at: Sortua
         updated_at: Eguneratua
+      inquiry:
+        is_group: 
+      offer:
+        is_group: 
       organization:
         address: Helbidea
         city: Herria
@@ -425,6 +429,8 @@ eu:
       delete_reason: Zihur zaude , azalpen hau ezabatu nahi duzula?
       movements: Mugimenduak
     post_form:
+      group_inquiry: 
+      group_offer: 
       you_can_use: Erabil dezakezu
   simple_form:
     error_notification:

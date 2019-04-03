@@ -21,6 +21,10 @@ pt-BR:
       common:
         created_at: Criado
         updated_at: Atualizado
+      inquiry:
+        is_group: 
+      offer:
+        is_group: 
       organization:
         address: Endereço
         city: Cidade
@@ -419,6 +423,8 @@ pt-BR:
       delete_reason: Tem certeza de que quer apagar este comentário?
       movements: Movimentos
     post_form:
+      group_inquiry: 
+      group_offer: 
       you_can_use: Você pode usar
   simple_form:
     error_notification:
