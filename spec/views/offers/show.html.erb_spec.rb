@@ -4,6 +4,7 @@ RSpec.describe 'offers/show' do
   let(:organization) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: organization) }
   let(:offer) { Fabricate(:offer, user: member.user, organization: organization) }
+  let(:group_offer) { Fabricate(:offer, user: member.user, organization: organization, is_group: true) }
   let(:destination_account) { Fabricate(:account) }
 
   before do
@@ -151,6 +152,26 @@ RSpec.describe 'offers/show' do
       render template: 'offers/show'
 
       expect(rendered).to_not include(offer.user.email)
+    end
+
+    context 'when it is not a group offer' do
+      it 'displays a label' do
+        assign :offer, offer
+        assign :destination_account, destination_account
+        render template: 'offers/show'
+
+        expect(rendered).to_not include(I18n.t('activerecord.attributes.offer.is_group'))
+      end
+    end
+
+    context 'when it is a group offer' do
+      it 'displays a label' do
+        assign :offer, group_offer
+        assign :destination_account, destination_account
+        render template: 'offers/show'
+
+        expect(rendered).to include(I18n.t('activerecord.attributes.offer.is_group'))
+      end
     end
   end
 end

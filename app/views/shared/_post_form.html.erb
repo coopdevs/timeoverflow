@@ -25,6 +25,10 @@
                  class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= label :post, :is_group, I18n.t("shared.post_form.group_#{post.class.name.downcase}"), required: true %>
+    <%= f.check_box :is_group, class: 'inline-checkbox' %>
+  </div>
+  <div class="form-group">
     <%= f.label :tag_list %>
     <%= f.select :tag_list,
                  f.object.tags || [],

@@ -34,6 +34,10 @@ en:
         reg_number_seq: User sequence number
         theme: Theme
         updated_at: Updated
+      offer:
+        is_group: Group offer
+      inquiry:
+        is_group: Group inquiry
       post:
         category: Category
         created_at: Created
@@ -419,6 +423,8 @@ en:
       delete_reason: Are you sure to delete this comment?
       movements: Movements
     post_form:
+      group_offer: Is it a group offer?
+      group_inquiry: Is it a group inquiry?
       you_can_use: You can use
   simple_form:
     error_notification:

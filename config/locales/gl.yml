@@ -21,6 +21,10 @@ gl:
       common:
         created_at: Creado
         updated_at: Actualizado
+      inquiry:
+        is_group: Solicitude grupal
+      offer:
+        is_group: Oferta grupal
       organization:
         address: Dirección
         city: Cidade
@@ -96,8 +100,8 @@ gl:
         one: Comentario
         other: Comentarios
       inquiry:
-        one: Enquisa
-        other: Enquisas
+        one: Demanda
+        other: Demandas
       offer:
         one: Oferta
         other: Ofertas
@@ -137,9 +141,9 @@ gl:
       demographics: Datos demográficos
       global_activity: Actividade global
       inactive_users: Persoas suarias inactivas
-      inquiry_public_link: Consultas de enlace público
+      inquiry_public_link: Demandas de enlace público
       last_login: Último inicio de sesión
-      offer_public_link: Ofrece unha conexión pública
+      offer_public_link: Enlace público a ofertas
       organizations: Organizacións
       reports: Informes
       sign_out: Saír
@@ -316,7 +320,7 @@ gl:
     edit:
       submit: Cambiar consulta
     index:
-      new_inquiry: Nova consulta
+      new_inquiry: Nova Demanda
     new:
       submit: Crear consulta
   layouts:
@@ -394,13 +398,13 @@ gl:
       empower-text-3: O código fonte de TimeOverflow está dispoñible en base a unha licenza de código aberto e pode descargala en %{github_link}
       empower-title: Empoderando os bancos de tempo
       feature-group-1: Xestión de Banco de tempo con funcións de administración
-      feature-group-2: Rede social e banca en liña accesibles polas persoas membros
-      feature-text-1: Creación / eliminación / actualizacións das persoas membros do banco
+      feature-group-2: Rede social e banca en liña accesibles polas persoas usuarias
+      feature-text-1: Creación / eliminación / actualizacións das persoas usuarias do banco
       feature-text-2: Publicación de ofertas e consultas
       feature-text-3: Inclúe controis e xestión da contabilidade
-      feature-text-4: As persoas membros dun Banco de Tempo poden acceder ao sistema e conectarse con outras persoas membros
+      feature-text-4: As persoas usuarias dun Banco de Tempo poden acceder ao sistema e conectarse con outras persoas usuarias
       feature-text-5: Publicación de ofertas e consultas
-      feature-text-6: Pague horas a outras persoas membros
+      feature-text-6: Pague horas a outras persoas usuarias
       impulsem-link: Aumenta o que fas
       subtitle: TimeOverflow é de código aberto, gratuíto e colaborativo
       title: O software deseñado por e para
@@ -419,6 +423,8 @@ gl:
       delete_reason: Estás seguro/a de borrar este comentario?
       movements: Movementos
     post_form:
+      group_inquiry: É unha solicitude grupal?
+      group_offer: É unha oferta grupal?
       you_can_use: Podes usar
   simple_form:
     error_notification:
@@ -452,7 +458,7 @@ gl:
       num_people: "# de persoas"
       unknown: Descoñecido
     statistics_global_activity:
-      bank_activity: Actividade bancaria
+      bank_activity: Actividade do Peto
       end_date: final mm/aaaa
       global_activity: Actividade global
       ini_date: ini mm/aaaa
@@ -512,7 +518,7 @@ gl:
       create: Crea unha nova persoa usuaria
       manage_warning: Vas cambiar privilexios para o usuario/a %{username}
       manage_warning_angular: Vas cambiar privilexios para o usuario/a {{username}}
-      members: Persoas membros
+      members: Persoas usuarias
       user_created: O usuario/a %{uid} %{name} gardouse
     member_card:
       active_ago: Tempo activo %{time}

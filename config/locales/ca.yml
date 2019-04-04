@@ -21,6 +21,10 @@ ca:
       common:
         created_at: Creat
         updated_at: Actualitzat
+      inquiry:
+        is_group: Demanda grupal
+      offer:
+        is_group: Oferta grupal
       organization:
         address: Direcció
         city: Ciutat
@@ -419,6 +423,8 @@ ca:
       delete_reason: Esteu segur d'esborrar aquest comentari?
       movements: Moviments
     post_form:
+      group_inquiry: És una demanda grupal?
+      group_offer: És una oferta grupal?
       you_can_use: Pots fer servir
   simple_form:
     error_notification:

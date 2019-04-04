@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181004200104) do
+ActiveRecord::Schema.define(version: 20190319121401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,10 +146,11 @@ ActiveRecord::Schema.define(version: 20181004200104) do
     t.boolean  "global"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "tags",                           array: true
+    t.text     "tags",                            array: true
     t.integer  "publisher_id"
     t.integer  "organization_id"
     t.boolean  "active",          default: true
+    t.boolean  "is_group",        default: false
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
