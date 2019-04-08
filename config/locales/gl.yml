@@ -435,6 +435,8 @@ gl:
         gender:
           female: Muller
           male: Home
+          other:
+          prefer_not_to_answer:
     required:
       mark: "*"
       text: esixido

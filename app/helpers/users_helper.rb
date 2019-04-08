@@ -1,4 +1,8 @@
 module UsersHelper
+  def genders_collection
+    User::GENDERS.map(&:to_sym)
+  end
+
   def phone_to(phone)
     link_to phone, "tel://#{phone}"
   end

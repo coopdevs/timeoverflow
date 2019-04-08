@@ -17,6 +17,8 @@ RSpec.describe User do
 
   it { is_expected.to validate_presence_of :username }
 
+  it { is_expected.to validate_inclusion_of(:gender).in_array(User::GENDERS) }
+
   describe "#setup_and_save_user" do
     it "sets a fake email before attempting to save user" do
       user = Fabricate.build(:user, email: "")

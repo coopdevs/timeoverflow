@@ -435,6 +435,8 @@ ca:
         gender:
           female: Dona
           male: Home
+          other: Altre
+          prefer_not_to_answer: Prefereixo no contestar
     required:
       mark: "*"
       text: required

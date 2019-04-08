@@ -441,6 +441,8 @@ eu:
         gender:
           female: Emakumea
           male: Gizona
+          other:
+          prefer_not_to_answer:
     required:
       mark: "*"
       text: Beharrezkoa
