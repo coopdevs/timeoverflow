@@ -36,7 +36,7 @@ RSpec.describe Member do
   end
 
   describe '#display_id' do
-    subject { member.display_id(nil) }
+    subject { member.display_id }
 
     it { is_expected.to eq(member.member_uid) }
   end
