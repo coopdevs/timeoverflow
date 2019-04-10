@@ -435,6 +435,8 @@ pt-BR:
         gender:
           female: Mulher
           male: Homem
+          other:
+          prefer_not_to_answer:
     required:
       mark: "*"
       text: Necessário
