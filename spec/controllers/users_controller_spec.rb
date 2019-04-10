@@ -151,7 +151,7 @@ RSpec.describe UsersController do
         end
 
         it 'links to new_transfer_path for his individual offers' do
-          offer = Fabricate(:offer, user: user, publisher: user, organization: test_organization)
+          offer = Fabricate(:offer, user: user, organization: test_organization)
 
           get "show", id: user.id
           expect(response.body).to include(
@@ -176,7 +176,7 @@ RSpec.describe UsersController do
         end
 
         it 'links to new_transfer_path for his individual offers' do
-          offer = Fabricate(:offer, user: user, publisher: user, organization: test_organization)
+          offer = Fabricate(:offer, user: user, organization: test_organization)
 
           get "show", id: user.id
           expect(response.body).to include(
