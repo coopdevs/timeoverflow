@@ -66,7 +66,3 @@ group :test do
   gem 'chromedriver-helper', '~> 2.1'
   gem 'simplecov', '~> 0.16.1', require: false
 end
-
-group :production do
-  gem 'rails_12factor', '0.0.3'
-end
