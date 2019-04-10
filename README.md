@@ -1,4 +1,9 @@
-# TimeOverflow [![View performance data on Skylight](https://badges.skylight.io/problem/grDTNuzZRnyu.svg)](https://oss.skylight.io/app/applications/grDTNuzZRnyu) [![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow) [![Code Climate](https://codeclimate.com/github/timeoverflow/timeoverflow/badges/gpa.svg)](https://codeclimate.com/github/timeoverflow/timeoverflow)
+# TimeOverflow
+[![View performance data on Skylight](https://badges.skylight.io/problem/grDTNuzZRnyu.svg)](https://oss.skylight.io/app/applications/grDTNuzZRnyu)
+[![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/maintainability)](https://codeclimate.com/github/coopdevs/timeoverflow/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/test_coverage)](https://codeclimate.com/github/coopdevs/timeoverflow/test_coverage)
+
 #### www.timeoverflow.org
 
 :globe_with_meridians: Read this [in English](docs/README.en.md)
