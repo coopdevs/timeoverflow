@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190322180602) do
+ActiveRecord::Schema.define(version: 20190411192828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,9 +141,6 @@ ActiveRecord::Schema.define(version: 20190322180602) do
     t.text     "description"
     t.date     "start_on"
     t.date     "end_on"
-    t.boolean  "permanent"
-    t.boolean  "joinable"
-    t.boolean  "global"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "tags",                            array: true
