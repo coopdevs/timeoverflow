@@ -43,8 +43,6 @@ gl:
         created_at: Creado
         description: Descrición
         end_on: Termina en
-        joinable: Poden unirse outros
-        permanent: Permanente
         start_on: Comezar
         tag_list: Etiquetas
         title: Título

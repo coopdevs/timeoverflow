@@ -43,8 +43,6 @@ ca:
         created_at: Creat
         description: Descripció
         end_on: Finalitza al
-        joinable: Es poden afegir altres
-        permanent: Permanent
         start_on: Comença al
         tag_list: Etiquetes
         title: Títol

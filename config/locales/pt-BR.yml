@@ -43,8 +43,6 @@ pt-BR:
         created_at: Criado
         description: Descrição
         end_on: 'Terminar o '
-        joinable: É possível unir outros
-        permanent: Permanente
         start_on: Começa o
         tag_list: Etiquetas
         title: Título

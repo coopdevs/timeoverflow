@@ -45,8 +45,6 @@ eu:
         created_at: Sortua
         description: Deskribapena
         end_on: Bukatuko da.
-        joinable: Beste batzuk gehi litezke.
-        permanent: Iraunkorra
         start_on: Hasiko da
         tag_list: Etiketa
         title: Izenburua
