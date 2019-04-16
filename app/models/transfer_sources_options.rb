@@ -4,10 +4,8 @@ class TransferSourcesOptions
   # Constructor
   #
   # @param sources [Array<Account>]
-  # @param destination_accountable [Member | Organization]
-  def initialize(sources, destination_accountable)
+  def initialize(sources)
     @sources = sources
-    @destination_accountable = destination_accountable
   end
 
   # Returns the collection as an Array containing pairs of <option>'s text and
@@ -22,7 +20,7 @@ class TransferSourcesOptions
 
   private
 
-  attr_reader :sources, :destination_accountable
+  attr_reader :sources
 
   def to_accountable_type_and_uid(account)
     [account.accountable_type, account.accountable.try(:member_uid)]
@@ -32,12 +30,8 @@ class TransferSourcesOptions
     accountable = account.accountable
 
     [
-      "#{display_id(accountable)} #{accountable.class} #{accountable}",
+      "#{accountable.display_id} #{accountable.class} #{accountable}",
       account.id
     ]
-  end
-
-  def display_id(accountable)
-    accountable.display_id(destination_accountable)
   end
 end

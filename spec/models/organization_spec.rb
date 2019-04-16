@@ -4,17 +4,9 @@ RSpec.describe Organization do
   let(:organization) { Fabricate(:organization) }
 
   describe '#display_id' do
-    subject { organization.display_id(destination_accountable) }
+    subject { organization.display_id }
 
-    context 'when the destination_accountable is an organization' do
-      let(:destination_accountable) { Fabricate(:organization) }
-      it { is_expected.to eq(organization.account.accountable_id) }
-    end
-
-    context 'when the destination_accountable is not an organization' do
-      let(:destination_accountable) { Fabricate(:member) }
-      it { is_expected.to eq('') }
-    end
+    it { is_expected.to eq(organization.account.accountable_id) }
   end
 
   describe 'ensure_url validation' do
