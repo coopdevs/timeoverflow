@@ -43,8 +43,6 @@ en:
         created_at: Created
         description: Description
         end_on: Ends on
-        joinable: Can join others
-        permanent: Permanent
         start_on: Start on
         tag_list: Tags
         title: Title
