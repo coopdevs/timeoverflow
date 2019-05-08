@@ -1,0 +1,37 @@
+<div class="alert alert-info" role="alert">
+  <%= t('multi_transfers.step.set_params.description') %>
+</div>
+
+<div class="form-inputs">
+  <%= simple_fields_for :transfer do |f| %>
+    <%= f.input :hours,
+      required: false,
+      as: :integer,
+      input_html: {
+        value: @transfer_hours,
+        min: 0,
+        max: 20,
+        "data-rule-either-hours-minutes-informed" => "true",
+        "data-rule-range" => "[0,20]"
+      } %>
+    <%= f.input :minutes,
+      required: false,
+      as: :integer,
+      input_html: {
+        value: @transfer_minutes,
+        min: 0,
+        max: 59,
+        step: 15,
+        "data-rule-either-hours-minutes-informed" => "true",
+        "data-rule-range" => "[0,59]"
+      } %>
+    <%= f.input :amount, as: :hidden, input_html: { value: @transfer_amount } %>
+    <%= f.input :reason, required: false, input_html: { value: @transfer_reason } %>
+
+    <label class="js-error-amount error invisible"><%= t "transfers.new.error_amount" %></label>
+
+    <% if @should_render_offer_selector %>
+      <%= render partial: "transfers/#{@target_accountable.model_name.singular}_offer", locals: { form: f, offer: nil, accountable: @target_accountable, value: @transfer_post_id } %>
+    <% end %>
+  <% end %>
+</div>

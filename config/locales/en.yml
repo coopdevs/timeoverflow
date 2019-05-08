@@ -284,6 +284,10 @@ en:
       description: The page you were looking for doesn't exist. You may have mistyped the address or the page may have moved.
       title: Not found
   global:
+    from: From
+    to: To
+    next: Next
+    create: Create
     add_new: Create new
     all: All
     amount: Quantity
@@ -491,6 +495,25 @@ en:
     accept: Accept
     show:
       accept: Accept
+  multi_transfers:
+    multi_transfers: 'Multi transfers'
+    success: 'Transfers created successfully'
+    types:
+      one_to_many: 'One to many'
+      many_to_one: 'Many to one'
+      one_to_one: 'One to one'
+    step:
+      select_type:
+        description: 'Select the type of transfer'
+      set_source:
+        description: 'Select the account/s that will transfer time'
+      set_target:
+        description:  'Select the account/s that will receive time'
+      set_params:
+        description: 'Specify amount to transfer, reason, and post ( if any ).'
+      confirm:
+        description: 'Confirm the changes'
+        type_of_transfer: 'Type of transfer'
   transfers:
     computation:
       hour:

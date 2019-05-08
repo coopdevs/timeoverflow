@@ -1,4 +1,6 @@
 class TransfersController < ApplicationController
+  include WithTransferParams
+
   def create
     @source = find_source
     @account = Account.find(transfer_params[:destination])
@@ -63,15 +65,5 @@ class TransfersController < ApplicationController
     else
       raise ArgumentError
     end
-  end
-
-  def transfer_params
-    params.
-      require(:transfer).
-      permit(:destination,
-             :amount,
-             :reason,
-             :post_id,
-             *[*(:source if admin?)])
   end
 end
