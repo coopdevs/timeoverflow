@@ -456,6 +456,7 @@ gl:
         gender:
           female: Muller
           male: Home
+          others: Outros
           prefer_not_to_answer: Prefiro non contestar
     required:
       mark: "*"

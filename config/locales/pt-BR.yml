@@ -456,6 +456,7 @@ pt-BR:
         gender:
           female: Mulher
           male: Homem
+          others: Outro
           prefer_not_to_answer: Prefiro não responder
     required:
       mark: "*"

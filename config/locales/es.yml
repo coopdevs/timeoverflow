@@ -456,6 +456,7 @@ es:
         gender:
           female: Mujer
           male: Hombre
+          others: Otro
           prefer_not_to_answer: Prefiero no contestar
     required:
       mark: "*"

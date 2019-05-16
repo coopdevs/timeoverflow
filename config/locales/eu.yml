@@ -462,6 +462,7 @@ eu:
         gender:
           female: Emakumea
           male: Gizona
+          others: Beste
           prefer_not_to_answer: 
     required:
       mark: "*"

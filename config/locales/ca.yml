@@ -356,7 +356,7 @@ ca:
         description: Confirma els canvis
         type_of_transfer: Tipus de transferència
       select_type:
-        description: Selecciona  el tipus de transferència
+        description: Selecciona el tipus de transferència
       set_params:
         description: 'Especifica el total a transferir, comentaris, i la oferta (si existeix) '
       set_source:
@@ -456,6 +456,7 @@ ca:
         gender:
           female: Dona
           male: Home
+          others: Altre
           prefer_not_to_answer: Prefereixo no contestar
     required:
       mark: "*"
