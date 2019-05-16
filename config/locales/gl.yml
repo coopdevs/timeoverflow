@@ -292,11 +292,13 @@ gl:
     balance: 'Balance:'
     cancel_membership: Borrado permanente
     contact_details: Datos de contacto
+    create: Crea
     date: Datos
     delete: Eliminar
     demote: Degradar a usuario/a normal
     edit: Actualización
     filter: Filtro
+    from: Desde
     give_time: Transferencia de tempo
     home: Inicio
     information: Información
@@ -304,6 +306,7 @@ gl:
     member_count: 'Número de persoas usuarias:'
     more: Máis
     movements: Transaccións
+    next: Próximo
     promote: Promover á persoa administradora
     reason: Razón
     required_field: "* Campo obrigatorio"
@@ -314,6 +317,7 @@ gl:
     statistics: Estatísticas
     table:
       actions: Accións
+    to: A
   inquiries:
     edit:
       submit: Cambiar consulta
@@ -345,6 +349,25 @@ gl:
       text: "%{organization_name} de"
       text_donation: A asociación ADBdT ofrece TimeOverflow gratuitamente aos bancos de tempo. Cunha doazón de %{href} podes axudar a manter e mellorar a plataforma.
       text_donation_link: 1€ ao mes
+  multi_transfers:
+    multi_transfers: Multi Transferencias
+    step:
+      confirm:
+        description: Confirma os cambios
+        type_of_transfer: Tipo de transferencia
+      select_type:
+        description: Selecciona o tipo de transferencia
+      set_params:
+        description: Especifica a cantidade a transferir, razón, e correo ( se hai ).
+      set_source:
+        description: Selecciona a conta (ou contas) que transferirá o tempo
+      set_target:
+        description: Selecciona a conta (ou contas) que recibirá tempo
+    success: As transferencias fixéronse con éxito
+    types:
+      many_to_one: De moitas persoas a unha
+      one_to_many: De unha a moitas persoas
+      one_to_one: De unha persoa a unha
   offers:
     edit:
       submit: Cambiar oferta
@@ -433,8 +456,7 @@ gl:
         gender:
           female: Muller
           male: Home
-          other:
-          prefer_not_to_answer:
+          prefer_not_to_answer: Prefiro non contestar
     required:
       mark: "*"
       text: esixido
