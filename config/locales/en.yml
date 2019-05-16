@@ -437,7 +437,7 @@ en:
         gender:
           female: Female
           male: Male
-          other: Other
+          others: Other
           prefer_not_to_answer: I prefer not to answer
     required:
       mark: "*"
