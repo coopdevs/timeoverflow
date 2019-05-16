@@ -63,10 +63,6 @@ group :test do
   gem 'faker', '~> 1.9'
   gem 'capybara', '~> 3.13'
   gem 'selenium-webdriver', '~> 3.141'
-  gem 'chromedriver-helper', '~> 2.1'
+  gem 'webdrivers', '~> 3.0'
   gem 'simplecov', '~> 0.16.1', require: false
-end
-
-group :production do
-  gem 'rails_12factor', '0.0.3'
 end

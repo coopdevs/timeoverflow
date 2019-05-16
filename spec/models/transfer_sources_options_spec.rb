@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe TransferSourcesOptions do
   let(:transfer_sources_options) do
-    described_class.new(sources, destination_accountable)
+    described_class.new(sources)
   end
 
   describe '#to_a' do
@@ -13,8 +13,6 @@ RSpec.describe TransferSourcesOptions do
     let(:newer_member) do
       Fabricate(:member, organization: organization, member_uid: 1)
     end
-
-    let(:destination_accountable) { Fabricate(:organization) }
 
     let(:sources) do
       [organization.account, member.account, newer_member.account]

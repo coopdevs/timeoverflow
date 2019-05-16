@@ -1,6 +1,7 @@
 #= require give_time
 #= require tags
 #= require mobile_app_libs
+#= require multi_select2
 
 $(document).on 'click', 'a[data-popup]', (event) ->
   window.open($(this).attr('href'), 'popup', 'width=600,height=600')

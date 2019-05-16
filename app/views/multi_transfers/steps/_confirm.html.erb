@@ -1,0 +1,32 @@
+<div class="alert alert-info" role="alert">
+  <%= t('multi_transfers.step.confirm.description') %>
+</div>
+
+<table class="table">
+  <tr>
+    <td><%= t('multi_transfers.step.confirm.type_of_transfer') %></td>
+    <td><%= t("multi_transfers.types.#{@type_of_transfer}") %></td>
+  </tr>
+  <tr>
+    <td><%= t('global.from') %></td>
+    <td><%= @from_names.join(', ') %></td>
+  </tr>
+  <tr>
+    <td><%= t('global.to') %></td>
+    <td><%= @to_names.join(', ') %></td>
+  </tr>
+  <tr>
+    <td><%= t('global.amount') %></td>
+    <td><%= seconds_to_hm(@transfer_amount.to_i) %></td>
+  </tr>
+  <% if @transfer_post_id %>
+    <tr>
+      <td><%= t('activerecord.models.post.one') %></td>
+      <td><%= @post_title %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td><%= t('global.reason') %></td>
+    <td><%= @transfer_reason %></td>
+  </tr>
+</table>

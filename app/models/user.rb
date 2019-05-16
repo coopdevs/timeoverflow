@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 
   devise *[
     :database_authenticatable,
-    # :registerable,
     :recoverable,
     :rememberable,
     :confirmable,
@@ -12,7 +11,12 @@ class User < ActiveRecord::Base
     :timeoutable
   ]
 
-  GENDERS = %w[male female]
+  GENDERS = %w(
+    female
+    male
+    others
+    prefer_not_to_answer
+  )
 
   attr_accessor :empty_email
 
@@ -38,6 +42,7 @@ class User < ActiveRecord::Base
   # emails like 'without email'
   validates_format_of :email,
                       with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates :gender, inclusion: { in: GENDERS, allow_blank: true }
 
   def as_member_of(organization)
     organization && members.find_by(organization: organization)

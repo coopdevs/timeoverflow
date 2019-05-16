@@ -40,12 +40,14 @@ RSpec.describe UsersController do
   describe "GET #index" do
     before { login(user) }
 
-    it 'sorts the users by their member_uid asc by default' do
-      member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
+    it 'sorts the users by their last_sign_in_at desc by default' do
+      member.user.update_column(:last_sign_in_at, DateTime.now)
+      another_member.user.update_column(:last_sign_in_at, nil)
 
       get :index
 
-      expect(assigns(:members).last).to eq(member)
+      expect(assigns(:members).first).to eq(member)
+      expect(assigns(:members).last).to eq(another_member)
     end
 
     it 'allows to sort by member_uid' do
@@ -81,8 +83,6 @@ RSpec.describe UsersController do
 
     context "with an normal logged user" do
       it "populates and array of users" do
-        login(user)
-
         get "index"
 
         expect(assigns(:members).map(&:user))
@@ -101,9 +101,31 @@ RSpec.describe UsersController do
       end
     end
 
+    context 'when searching' do
+      it 'allows to search by member_uid' do
+        user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
+        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
+
+        get :index, q: { user_username_or_user_email_or_member_uid_search_contains: 1000 }
+
+        expect(assigns(:members)).to include(member)
+      end
+    end
+  end
+
+  describe "GET #manage" do
+    before { login(user) }
+
+    it 'sorts the users by their member_uid asc by default' do
+      member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
+
+      get :manage
+
+      expect(assigns(:members).last).to eq(member)
+    end
+
     context 'when sorting by balance' do
       before do
-        login(user)
         member_admin.account.update_attribute(:balance, 3600)
       end
 
@@ -111,7 +133,7 @@ RSpec.describe UsersController do
         let(:direction) { 'desc' }
 
         it 'orders the rows by their balance' do
-          get :index, q: { s: "account_balance #{direction}" }
+          get :manage, q: { s: "account_balance #{direction}" }
 
           expect(assigns(:members).pluck(:user_id).first).to eq(admin_user.id)
         end
@@ -121,21 +143,10 @@ RSpec.describe UsersController do
         let(:direction) { 'asc' }
 
         it 'orders the rows by their balance' do
-          get :index, q: { s: "account_balance #{direction}" }
+          get :manage, q: { s: "account_balance #{direction}" }
 
           expect(assigns(:members).pluck(:user_id).last).to eq(admin_user.id)
         end
-      end
-    end
-
-    context 'when searching' do
-      it 'allows to search by member_uid' do
-        user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
-        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
-
-        get :index, q: { user_username_or_user_email_or_member_uid_search_contains: 1000 }
-
-        expect(assigns(:members)).to include(member)
       end
     end
   end
@@ -151,7 +162,7 @@ RSpec.describe UsersController do
         end
 
         it 'links to new_transfer_path for his individual offers' do
-          offer = Fabricate(:offer, user: user, publisher: user, organization: test_organization)
+          offer = Fabricate(:offer, user: user, organization: test_organization)
 
           get "show", id: user.id
           expect(response.body).to include(
@@ -176,7 +187,7 @@ RSpec.describe UsersController do
         end
 
         it 'links to new_transfer_path for his individual offers' do
-          offer = Fabricate(:offer, user: user, publisher: user, organization: test_organization)
+          offer = Fabricate(:offer, user: user, organization: test_organization)
 
           get "show", id: user.id
           expect(response.body).to include(

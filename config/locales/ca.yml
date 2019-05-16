@@ -43,8 +43,6 @@ ca:
         created_at: Creat
         description: Descripció
         end_on: Finalitza al
-        joinable: Es poden afegir altres
-        permanent: Permanent
         start_on: Comença al
         tag_list: Etiquetes
         title: Títol
@@ -294,11 +292,13 @@ ca:
     balance: 'Balanç:'
     cancel_membership: Esborrar definitivament
     contact_details: Dades de contacte
+    create: Crear
     date: Data
     delete: Esborrar
     demote: Convertir en usuari normal
     edit: Modificar
     filter: Filtre
+    from: Des de
     give_time: Transferir temps
     home: Inici
     information: Informació
@@ -306,6 +306,7 @@ ca:
     member_count: 'Nombre d''usuaris:'
     more: Veure més
     movements: Moviments
+    next: Següent
     promote: Convertir en administrador
     reason: Raó
     required_field: "* Camp obligatori"
@@ -316,6 +317,7 @@ ca:
     statistics: Estadístiques
     table:
       actions: Accions
+    to: a
   inquiries:
     edit:
       submit: Canviar demanda
@@ -347,6 +349,25 @@ ca:
       text: "%{organization_name} en"
       text_donation: L'associació ADBdT ofereix TimeOverflow de forma gratuïta als Bancs de Temps. Amb una donació de %{href} pots ajudar a mantenir i millorar la plataforma.
       text_donation_link: 1€ al mes
+  multi_transfers:
+    multi_transfers: 'Transferències múltiples '
+    step:
+      confirm:
+        description: Confirma els canvis
+        type_of_transfer: Tipus de transferència
+      select_type:
+        description: Selecciona el tipus de transferència
+      set_params:
+        description: 'Especifica el total a transferir, comentaris, i la oferta (si existeix) '
+      set_source:
+        description: Selecciona els comptes on es transferirà el temps
+      set_target:
+        description: Selecciona els comptes on es rebrà el temps
+    success: Transferències realitzades amb éxit
+    types:
+      many_to_one: De moltes a una
+      one_to_many: De una a moltes
+      one_to_one: De una a una
   offers:
     edit:
       submit: Canviar Oferta
@@ -435,6 +456,8 @@ ca:
         gender:
           female: Dona
           male: Home
+          others: Altre
+          prefer_not_to_answer: Prefereixo no contestar
     required:
       mark: "*"
       text: required

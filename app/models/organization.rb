@@ -29,12 +29,8 @@ class Organization < ActiveRecord::Base
   #
   # @params destination_accountable [Organization | Object] target of a transfer
   # @return [Integer | String]
-  def display_id(destination_accountable)
-    if destination_accountable.is_a?(Organization)
-      account.accountable_id
-    else
-      ''
-    end
+  def display_id
+    account.accountable_id
   end
 
   def ensure_reg_number_seq!

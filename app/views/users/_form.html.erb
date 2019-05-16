@@ -14,6 +14,7 @@
 
     <%= f.input :phone %>
     <%= f.input :alt_phone %>
+    <%= f.input :gender, collection: genders_collection %>
     <%= f.input :date_of_birth,
                 start_year: Date.today.year - 90,
                 end_year: Date.today.year - 12,

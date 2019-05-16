@@ -41,7 +41,6 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   belongs_to :organization
-  belongs_to :publisher, class_name: "User", foreign_key: "publisher_id"
   has_many :transfers
   has_many :movements, through: :transfers
   has_many :events, dependent: :destroy

@@ -71,7 +71,7 @@ RSpec.describe TransfersController do
           get :new, params
 
           expect(response.body).to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\"><option selected=\"selected\" value=\"#{member_admin.account.id}\">#{member_admin.member_uid} Member #{member_admin}</option>")
-          expect(response.body).to include("<option value=\"#{test_organization.account.id}\"> Organization #{test_organization}</option></select>")
+          expect(response.body).to include("<option value=\"#{test_organization.account.id}\">#{test_organization.id} Organization #{test_organization}</option></select>")
         end
       end
 

@@ -22,9 +22,9 @@ pt-BR:
         created_at: Criado
         updated_at: Atualizado
       inquiry:
-        is_group: 
+        is_group: Consulta de grupo
       offer:
-        is_group: 
+        is_group: Oferta de grupo
       organization:
         address: Endereço
         city: Cidade
@@ -43,8 +43,6 @@ pt-BR:
         created_at: Criado
         description: Descrição
         end_on: 'Terminar o '
-        joinable: É possível unir outros
-        permanent: Permanente
         start_on: Começa o
         tag_list: Etiquetas
         title: Título
@@ -69,9 +67,9 @@ pt-BR:
         identity_document: Documento
         last_sign_in_at: Data do último login
         notifications: Receber notificações
-        organization: 
+        organization: Organização
         phone: Telefone
-        push_notifications: 
+        push_notifications: Receber notificações pelo celular
         registration_date: Data de ingresso
         registration_number: Código do usuário
         superadmin: Administrador do sistema
@@ -132,7 +130,7 @@ pt-BR:
       sing_out: Desconectar
     menus:
       offers_by_tag_link:
-        tags: 
+        tags: Etiqueta
     navbar:
       admin: Administrar
       administration: Administração
@@ -251,8 +249,8 @@ pt-BR:
         remember_me: Lembrar de mim
         sign_in: Entrar
       user:
-        signed_in: 
-        signed_out: 
+        signed_in: Entrar
+        signed_out: Sair
     shared:
       links:
         didnt_receive_confirmation_instructions: Enviar e-mail de confirmação novamente
@@ -271,8 +269,8 @@ pt-BR:
       unlocked: Tua conta foi desbloqueada. Por favor, entre para continuar.
   errors:
     internal_server_error:
-      description: 
-      title: 
+      description: Desculpem, parece que há um erro com esta solicitação. Uma notificação nos foi enviada automaticamente, e nós resolveremos isso assim que possível.
+      title: Erro do servidor interno
     messages:
       already_confirmed: já foi confirmado, por favor tente entrar
       confirmation_period_expired: É necessário se confirmar em %{period}, por favor, solicite um novo
@@ -283,8 +281,8 @@ pt-BR:
         one: '1 erro impede que este %{resource} se guarde:'
         other: "%{count} erros impedem que este %{resource} se guarde:"
     not_found:
-      description: 
-      title: 
+      description: A página que você estava procurando não existe. Você deve ter digitado o endereço errado ou a página mudou.
+      title: Não encontrado
   global:
     add_new: Criar novo
     all: Tudo
@@ -294,18 +292,21 @@ pt-BR:
     balance: 'Balanço:'
     cancel_membership: Apagar definitivamente
     contact_details: Dados de contato
+    create: Criar
     date: Data
     delete: Apagar
     demote: Converter em usuário normal
     edit: Modificar
     filter: Filtro
+    from: De
     give_time: Transferir tempo
-    home: 
+    home: Início
     information: Informação
     locales_header: Trocar idioma
     member_count: 'Número de usuários:'
     more: Ver mais
     movements: Movimentos
+    next: Próximo
     promote: Converter em administrador
     reason: Razão
     required_field: "* Campo obrigatório"
@@ -316,6 +317,7 @@ pt-BR:
     statistics: Estatísticas
     table:
       actions: Ações
+    to: Para
   inquiries:
     edit:
       submit: Trocar demanda
@@ -345,8 +347,27 @@ pt-BR:
   mailers_globals:
     footer:
       text: "%{organization_name} em"
-      text_donation: 
-      text_donation_link: 
+      text_donation: A associação ADBdT oferece TimeOverflow gratuitamente para Bancos de Tempo. Com a doação de %{href} você pode ajudar a manter e aprimorar a plataforma.
+      text_donation_link: 1€ ao mês
+  multi_transfers:
+    multi_transfers: Multi transferidores
+    step:
+      confirm:
+        description: Confirmar as mudanças
+        type_of_transfer: Tipo de transferência
+      select_type:
+        description: Selecione o tipo de transferência
+      set_params:
+        description: Especificar a quantia para transferir, razão, e cargo (se algum)
+      set_source:
+        description: Selecione a(s) conta(s) que transferirá tempo
+      set_target:
+        description: Selecione a(s) conta(s) que receberá tempo
+    success: Transferência feita com sucesso
+    types:
+      many_to_one: Muitos para um
+      one_to_many: Um para muitos
+      one_to_one: Um para um
   offers:
     edit:
       submit: Trocar oferta
@@ -377,14 +398,14 @@ pt-BR:
       contact_information: Informação de contato
   pages:
     about:
-      app-mobile: 
-      app-mobile-text: 
+      app-mobile: Aplicativo móvel
+      app-mobile-text: O aplicativo móvel TimeOverflow está disponível. <br /> Este aplicativo foi possível graças aos colaboradores da municipalidade de Barcelona, programa %{impulsem_link} (Barcelona Ativa) 2017-2018
       banner-button: Pedir acesso
       banner-subtitle: Vamos ajudá-los a começar ou obter uma demonstração
       banner-title: Você é um Banco de Tempo?
-      donate-link: 
-      donate-text: 
-      donate-title: 
+      donate-link: Doe 1€ ao mês
+      donate-text: A fim de apoiar muitas comunidades a associação ADBdT oferece a plataforma TimeOverflow para todos os Bancos de Tempo. Doe %{donate_link} para contribuir com os custos de manutenção e inovação.
+      donate-title: Participe com uma doação
       empower-adbdt: ADBdt
       empower-adbdt-title: Associação para o Desenvolvimento dos Bancos de Tempo
       empower-coopdevs: CoopDevs
@@ -405,13 +426,13 @@ pt-BR:
       feature-text-4: Os membros de um Banco de Tempo podem acessar o sistema e entrar em contato com outros membros
       feature-text-5: Publicar ofertas e demandas
       feature-text-6: Pagar horas a outros membros
-      impulsem-link: 
+      impulsem-link: Incentive quem faz
       subtitle: TimeOverflow é livre, gratuito e colaborativo
       title: O software desenhado por e para
       title2: os Bancos de Tempo
   posts:
     show:
-      info: 
+      info: Este %{type} pertence a %{organization}.
   reports:
     cat_with_users:
       title: Serviços oferecidos
@@ -423,8 +444,8 @@ pt-BR:
       delete_reason: Tem certeza de que quer apagar este comentário?
       movements: Movimentos
     post_form:
-      group_inquiry: 
-      group_offer: 
+      group_inquiry: É uma requisição de grupo?
+      group_offer: É uma oferta de grupo?
       you_can_use: Você pode usar
   simple_form:
     error_notification:
@@ -435,6 +456,8 @@ pt-BR:
         gender:
           female: Mulher
           male: Homem
+          others: Outro
+          prefer_not_to_answer: Prefiro não responder
     required:
       mark: "*"
       text: Necessário
@@ -490,7 +513,7 @@ pt-BR:
   terms:
     accept: Aceitar
     show:
-      accept: 
+      accept: Aceitar
   transfers:
     computation:
       hour:
@@ -501,7 +524,7 @@ pt-BR:
         one: "%{count} minuto"
         other: "%{count} minutos"
     new:
-      error_amount: 
+      error_amount: O tempo deve ser maior que 0
   users:
     edit:
       edit_user: Trocar usuário
@@ -511,18 +534,18 @@ pt-BR:
       give_time: Dar Tempo a
     index:
       actions: Ações
-      active_warning: 
+      active_warning: Você mudará o status da conta para %{username}
       active_warning_angular: Mudará o estado da conta do usuário {{username}}
-      cancel_warning: 
+      cancel_warning: Você deletará a conta do Banco de Tempo %{username}
       cancel_warning_angular: Eliminará o usuário do banco {{username}}
       create: Criar novo usuário
-      manage_warning: 
+      manage_warning: Você mudará privilégios para o usuário %{username}
       manage_warning_angular: Mudará os privilégios do usuário {{username}}
-      members: 
+      members: Membros
       user_created: Usuário %{uid} %{name} guardado
     member_card:
-      active_ago: 
-      no_activity: 
+      active_ago: Ativo %{time} anterior
+      no_activity: Inativo
     new:
       cancel: Cancelar
       create_more_users_button: Criar e introduzir outro usuário
@@ -533,7 +556,7 @@ pt-BR:
       accounts: Contas
       balance: 'Balanço:'
       categories: Serviços Oferecidos
-      change_your_image: 
+      change_your_image: Mudar sua imagem
       created_at: 'Inscrição:'
       data: Dados do usuário
       date: Data

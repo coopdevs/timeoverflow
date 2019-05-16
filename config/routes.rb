@@ -46,6 +46,9 @@ Rails.application.routes.draw do
     end
   end
 
+  match "multi/step/:step", to: "multi_transfers#step", via: [:get, :post], as: :multi_transfers_step
+  post "multi/create", to: "multi_transfers#create", as: :multi_transfers_create
+
   resources :documents
 
   resources :members, only: [:destroy] do

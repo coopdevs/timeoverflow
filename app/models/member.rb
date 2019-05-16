@@ -40,7 +40,7 @@ class Member < ActiveRecord::Base
   # @params _destination_accountable used to keep the same API as
   #   Organization#display_id
   # @return [Integer]
-  def display_id(_destination_accountable)
+  def display_id
     member_uid
   end
 
