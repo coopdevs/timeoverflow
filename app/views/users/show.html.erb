@@ -1,5 +1,126 @@
-<div class="panel user-profile">
-  <div class="panel-body">
+
+
+<div class="to-member-card">
+  <div class="to-member-card__header">
+    <div class="to-member-card__header__avatar">
+      <% if @user == current_user %>
+        <a href="https://www.gravatar.com" target="_blank" title="<%= t ".change_your_image" %>">
+          <%= image_tag avatar_url(@user, 100) %>
+        </a>      
+      <% else %>
+          <%= image_tag avatar_url(@user, 100) %>
+      <% end %>
+    </div>
+    <div class="to-member-card__header__text">
+      <h4><%= @member %></h4>
+      <div class="to-member-card__header__text__activity">
+      <% unless @member.active %>
+        <%= t ".inactive" %>
+      <% end %>
+      <% if @user.superadmin? %>
+        <%= t ".superadmin" %>
+      <% end %>
+        
+      </div>
+    </div>
+  </div>
+  <div class="to-member-card__body">
+    <div class="to-member-card__body__description">
+      <%= m @user.description  %>
+    </div>
+
+    <div class="to-member-card__body__items row">
+    
+      <div class="col-md-6">
+        <!--div class="to-member-card__body__item col-xs-12">
+          <i class="material-icons">access_time</i>
+          <%= seconds_to_hm(@member.account.try(:balance) || mdash) %>
+
+          <div class="transfer-action">
+            <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id) do %>
+              
+              <span><%= t "global.give_time" %></span>
+            <% end %>
+          </div>
+        </div-->  
+        <% if @user.has_valid_email? %>
+          <div class="to-member-card__body__item col-xs-12">
+            <i class="material-icons">email</i>            
+            <%= mail_to @user.email %>
+          </div>
+        <% end %>
+        <% phones = [@user.phone, @user.alt_phone].select(&:present?) %>
+        <% if phones.present? %>
+          <div class="to-member-card__body__item col-xs-12">
+            <i class="material-icons">phone</i>            
+            <% phones.each_with_index do |phone, index| %>
+              <%= "—" if index != 0 %>
+              <%= phone_to phone %>
+            <% end %>
+          </div>            
+        <% end %>
+        <% if @member.manager %>
+          <div class="to-member-card__body__item col-xs-12">
+            <i class="material-icons">supervisor_account</i>            
+            Admin
+          </div>
+        <% end %>
+        <div class="to-member-card__body__item col-xs-12">
+            <i class="material-icons">person</i>            
+            <%= t(".user_no") %> <%= @member.member_uid || mdash %>
+        </div>
+        
+        <div class="to-member-card__body__item col-xs-12">
+          <i class="material-icons">today</i>            
+          <%= t(".created_at") %> <%= @member.entry_date ? l(@member.entry_date, format: :long) : mdash %>
+        </div>      
+      </div>
+
+      <div class="col-md-6">
+        <div class="to-member-card__body__item col-xs-12">
+          <i class="material-icons">access_time</i>            
+          <%= t(".balance") %>
+          
+          <div class="super-balance <%= green_red(@member.account&.balance) %>">
+            <%= seconds_to_hm(@member.account.try(:balance) || mdash) %>
+          </div>
+          
+        </div>  
+        
+      </div>
+    </div>
+
+    <div class="to-member-card__body__actions row">
+      <ul class="pull-right">
+      <% if admin? || @user == current_user %>
+        <li class="pull-left">
+            <%= link_to edit_user_path(@user) do %>
+              <i class="material-icons">edit</i>
+              <span class="hidden-xs hidden-sm"><%= t "global.edit" %></span>
+            <% end %>
+          </li>
+        <% end %>
+        <% if admin? || @user != current_user %>
+        <li class="pull-left">
+            <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id) do %>
+              <i class="material-icons">access_time</i>
+              <span class="hidden-xs hidden-sm"><%= t "global.give_time" %></span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+
+<!--div class="panel user-profile">
+  <div class="panel-body zto-member-card">
     <ul class="nav nav-pills pull-right">
       <% if admin? || @user == current_user %>
         <li>
@@ -73,32 +194,35 @@
       </div>
     </div>
   </div>
-</div>
+</div-->
+
+
 <div class="row">
   <div class="col-sm-6 offers">
     <div class="panel panel-default break-word">
       <div class="panel-heading">
         <h2 class="panel-title">
           <%= Offer.model_name.human(count: :many) %>
-          <% if @user == current_user %>
+          <% if admin? || @user == current_user %>
             <a class="pull-right" href="<%= new_offer_path %>">
-              <%= glyph :plus %>
+              <i class="material-icons">add</i>
             </a>
           <% end %>
         </h2>
       </div>
         <% @member.offers.active.each do |post| %>
-          <div class="row panel-body">
-            <div class="col-sm-3">
+          <div class="panel-body body-item">
+            <div class="h3-title">
               <%= link_to post, post %>
             </div>
-            <div class="col-sm-8">
+            <div class="common-text">
               <%= strip_tags(post.rendered_description.to_html) %>
             </div>
-            <div class="col-sm-1">
-              <% if @user != current_user %>
+            <div class="common-text common-link">
+              <% if admin? || @user != current_user %>
                 <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id, offer: post.id) do %>
-                  <%= glyph :time %>
+                  <i class="material-icons icon-v7">access_time</i>
+                  <%= t "global.give_time" %>
                 <% end %>
               <% end %>
             </div>
@@ -112,19 +236,19 @@
       <div class="panel-heading">
         <h2 class="panel-title">
           <%= Inquiry.model_name.human(count: :many) %>
-          <% if @user == current_user %>
+          <% if admin? || @user == current_user %>
             <a class="pull-right" href="<%= new_inquiry_path %>">
-              <%= glyph :plus %>
+            <i class="material-icons">add</i>
             </a>
           <% end %>
         </h2>
       </div>
         <% @member.inquiries.active.each do |post| %>
-          <div class="row panel-body">
-            <div class="col-sm-3">
+          <div class="panel-body body-item">
+            <div class="h3-title">
               <%= link_to post, post %>
             </div>
-            <div class="col-sm-9">
+            <div class="common-text">
               <%= strip_tags(post.rendered_description.to_html) %>
             </div>
           </div>
@@ -133,7 +257,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<!--div class="row">
   <div class="col-sm-4">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -166,6 +290,6 @@
       </div>
     </div>
   </div>
-</div>
+</div-->
 
 <%= render 'shared/movements' %>

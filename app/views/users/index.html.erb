@@ -11,11 +11,11 @@
     <div class="col-md-12">
       <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
         <div class="form-group">
-          <%= f.search_field :user_username_or_user_email_or_member_uid_search_contains, class: "form-control" %>
-        </div>
-        <button class="btn btn-default" type="submit">
-          <%= t 'global.search' %>
-        </button>
+          <%= f.search_field :user_username_or_user_email_or_member_uid_search_contains, class: "form-control search-input" %>
+          <button class="btn-icon zbtn-default" type="submit">
+          <i class="material-icons search-icon" title="<%= t 'global.search' %>">search</i>          
+          </button>
+        </div>        
       <% end %>
     </div>
   </div>
@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div class="row to-member-cards">
+  <div class="row to-member-cards display-flex">
     <%= render partial: 'member_card', collection: @member_view_models, as: :member %>
   </div>
 

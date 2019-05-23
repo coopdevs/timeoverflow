@@ -1,8 +1,8 @@
-<li class="dropdown">
+<li class="dropdown user-menu">
   <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-    <%= image_tag avatar_url(current_user), style: "margin: -8px auto" %>
-    <%= current_user.email %>
-    <b class="caret"></b>
+    <%= image_tag avatar_url(current_user), class: "user-avatar" %>
+    <span class="user-name"><%= current_user.email %></span>
+    <i class="material-icons user-down">keyboard_arrow_down</i>
   </a>
   <ul class="dropdown-menu" role="menu">
     <%= render 'application/menus/user_admin_menu_items' %>

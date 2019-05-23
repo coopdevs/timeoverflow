@@ -19,15 +19,15 @@
             method="get"
             role="search">
         <div class="form-group">
-          <input class="form-control"
+          <input class="form-control search-input"
                  name="q"
                  placeholder="<%= t("global.search") %>"
                  type="text"
                  value="<%= params[:q] %>">
         </div>
-        <button class="btn btn-default" type="submit">
-          <%= t("global.search") %>
-        </button>
+        <button class="btn-icon zbtn-default" type="submit">
+          <i class="material-icons search-icon" title="<%= t 'global.search' %>">search</i>          
+          </button>
       </form>
 
       <ul class="to-categories-dropdown nav navbar-nav">
@@ -55,8 +55,8 @@
       <% if current_user && current_organization && !params[:org] %>
         <ul class="nav navbar-nav pull-right">
           <li>
-            <%= link_to new_inquiry_path do %>
-              <%= glyph :plus %>
+            <%= link_to new_inquiry_path, class: "mdc-button mdc-button--raised" do %>              
+              <i class="material-icons v-a-7">add</i>
               <%= t "helpers.submit.create", model: Inquiry.model_name.human %>
             <% end %>
           </li>
@@ -68,9 +68,7 @@
 
 <div class="container-fluid inquiries">
   <div class="row">
-    <div class="col-md-12">
-      <%= render "shared/posts", posts: @inquiries %>
-    </div>
+    <%= render "shared/posts", posts: @inquiries %>
   </div>
 </div>
 

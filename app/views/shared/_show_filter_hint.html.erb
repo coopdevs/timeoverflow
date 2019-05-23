@@ -1,18 +1,18 @@
 <% if @category.present? %>
   <small>
-    <%= glyph :category %>
+    <!-- %= glyph :category % -->
     <%= @category.name %>
   </small>
 <% end %>
 <% if params[:q].present? %>
   <small>
-    <%= glyph :search %>
+  <!-- %= glyph :search % -->
     <%= params[:q] %>
   </small>
 <% end %>
 <% if params[:tag].present? %>
   <small>
-    <%= glyph :tag %>
+    <!-- %= glyph :tag % -->
     <%= params[:tag] %>
   </small>
 <% end %>

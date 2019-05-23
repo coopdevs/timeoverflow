@@ -11,3 +11,9 @@ $navbar-inverse-toggle-border-color: $white;
 $navbar-inverse-toggle-hover-bg: $palette-dark-turkey;
 
 $navbar-inverse-bg: $palette-turkey;
+
+
+a:hover, a:focus{
+    color:grey;
+    text-decoration: none!important;
+}
