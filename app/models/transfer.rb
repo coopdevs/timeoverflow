@@ -1,7 +1,7 @@
 # A time transfer between accounts.
 #
 # When an amount of time is to be transferred between two accounts, a
-# Transfer object should be created with the followinf attributes:
+# Transfer object should be created with the following attributes:
 #
 # source: id or instance of the source account
 # destination: id or instance of the destination account

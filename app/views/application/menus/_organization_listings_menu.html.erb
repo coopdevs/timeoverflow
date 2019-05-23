@@ -30,5 +30,14 @@
         <%= t "application.navbar.inquiry_public_link" %>
       <% end %>
     </li>
+
+    <li role="presentation">
+      <%= link_to multi_transfers_step_path(step: 1) do %>
+        <%= glyph :transfer %>
+        <span>
+          <%= t('multi_transfers.multi_transfers') %>
+        </span>
+      <% end %>
+    </li>
   </ul>
 </li>

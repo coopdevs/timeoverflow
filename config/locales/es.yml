@@ -292,11 +292,13 @@ es:
     balance: 'Balance:'
     cancel_membership: Borrar definitivamente
     contact_details: Datos de contacto
+    create: Crear
     date: Fecha
     delete: Borrar
     demote: Convertir en usuario normal
     edit: Modificar
     filter: Filtro
+    from: De
     give_time: Transferir tiempo
     home: Inicio
     information: Información
@@ -304,6 +306,7 @@ es:
     member_count: 'Número de usuarios:'
     more: Ver más
     movements: Movimientos
+    next: Siguiente
     promote: Convertir en administrador
     reason: Razón
     required_field: "* Campo obligatorio"
@@ -314,6 +317,7 @@ es:
     statistics: Estadísticas
     table:
       actions: Acciones
+    to: a
   inquiries:
     edit:
       submit: Cambiar demanda
@@ -345,6 +349,25 @@ es:
       text: "%{organization_name} en"
       text_donation: La asociación ADBdT ofrece TimeOverflow de forma gratuita a los Bancos de Tiempo. Con una donación de %{href} puedes ayudar a mantener y mejorar la plataforma.
       text_donation_link: 1€ al mes
+  multi_transfers:
+    multi_transfers: Transferencias múltiples
+    step:
+      confirm:
+        description: Confirma los cambios
+        type_of_transfer: Tipo de transferencia
+      select_type:
+        description: Seleccionar el tipo de transferencia
+      set_params:
+        description: Especifica la cantidad a transferir, comentarios y oferta (si existe)
+      set_source:
+        description: Selecciona las cuentas dónde se va a transferir tiempo
+      set_target:
+        description: Selecciona las cuentas dónde se va recibir tiempo
+    success: Transferencias creadas con éxito
+    types:
+      many_to_one: De muchas a una
+      one_to_many: De una a muchas
+      one_to_one: De una a una
   offers:
     edit:
       submit: Cambiar oferta
@@ -433,7 +456,7 @@ es:
         gender:
           female: Mujer
           male: Hombre
-          other: Otro
+          others: Otro
           prefer_not_to_answer: Prefiero no contestar
     required:
       mark: "*"

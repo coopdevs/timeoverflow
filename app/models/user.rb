@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   GENDERS = %w(
     female
     male
-    other
+    others
     prefer_not_to_answer
   )
 

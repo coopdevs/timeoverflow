@@ -298,11 +298,13 @@ eu:
     balance: Balantzea
     cancel_membership: Betirako borratu
     contact_details: Kontaktuaren datuak
+    create: 
     date: Eguna.
     delete: Ezabatu
     demote: Ohiko erabiltzaile  biurtu
     edit: Aldaketak egin
     filter: Iragazkia
+    from: 
     give_time: Denbora eman
     home: 
     information: Informazioa
@@ -310,6 +312,7 @@ eu:
     member_count: Erabiltzaile zenbakia
     more: 'Gehiago ikusi  '
     movements: Mugimenduak
+    next: 
     promote: Administratzaile bihurtu
     reason: Arrazoia
     required_field: Derrigorrez bete beharrekoa
@@ -320,6 +323,7 @@ eu:
     statistics: Estatistika
     table:
       actions: Ekintzak
+    to: 
   inquiries:
     edit:
       submit: Eskaera aldatu
@@ -351,6 +355,25 @@ eu:
       text: "%{organization_name}"
       text_donation: ADBdt elkarteak TimeOverflow zerbitzua , dohainik eskaintzen die denbora bankuei. Plataforma mantendu eta hobetzeko lagun dezakete  %{href} ko emari batekin.
       text_donation_link: hilean €1ekin
+  multi_transfers:
+    multi_transfers: 
+    step:
+      confirm:
+        description: 
+        type_of_transfer: 
+      select_type:
+        description: 
+      set_params:
+        description: 
+      set_source:
+        description: 
+      set_target:
+        description: 
+    success: 
+    types:
+      many_to_one: 
+      one_to_many: 
+      one_to_one: 
   offers:
     edit:
       submit: Eskaintza aldatu
@@ -439,8 +462,8 @@ eu:
         gender:
           female: Emakumea
           male: Gizona
-          other:
-          prefer_not_to_answer:
+          others: Beste
+          prefer_not_to_answer: 
     required:
       mark: "*"
       text: Beharrezkoa

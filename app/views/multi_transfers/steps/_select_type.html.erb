@@ -1,0 +1,35 @@
+<div class="alert alert-info" role="alert">
+  <%= t('multi_transfers.step.select_type.description') %>
+</div>
+
+<div class="form-group">
+  <div class="radio">
+    <label>
+      <%= radio_button_tag :type_of_transfer, :many_to_one, @type_of_transfer == :many_to_one %>
+      <span class="small">
+        <%= glyph :user %>
+        <%= glyph :user %>
+        <%= glyph :user %>
+        <%= glyph :arrow_right %>
+        <%= glyph :user %>
+      </span>
+      <%= t('multi_transfers.types.many_to_one') %>
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="radio">
+    <label>
+      <%= radio_button_tag :type_of_transfer, :one_to_many, @type_of_transfer == :one_to_many %>
+      <span class="small">
+        <%= glyph :user %>
+        <%= glyph :arrow_right %>
+        <%= glyph :user %>
+        <%= glyph :user %>
+        <%= glyph :user %>
+      </span>
+      <%= t('multi_transfers.types.one_to_many') %>
+    </label>
+  </div>
+</div>
