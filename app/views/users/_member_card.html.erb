@@ -1,11 +1,10 @@
-<div class="col-lg-6 col-sm-12">
+<div class="col-lg-6 col-md-6 col-sm-12">
   <div class="to-member-card">
     <div class="to-member-card__header">
-      <div class="to-member-card__header__avatar"><%= member.avatar_img(48) %></div>
+      <div class="to-member-card__header__avatar"><%= member.avatar_img(58) %></div>
       <div class="to-member-card__header__text">
         <h4><%= member.link_to_self %></h4>
         <div class="to-member-card__header__text__activity">
-          <%= "##{member.member_uid} — " %>
           <% if member.last_sign_in_at %>
             <%= t('.active_ago', time: distance_of_time_in_words(Time.now, member.last_sign_in_at)) %>
           <% else %>
@@ -18,22 +17,29 @@
       <div class="to-member-card__body__description">
         <%= member.description&.truncate(124) %>
       </div>
-      <div class="to-member-card__body__items">
-        <% if member.phone.present? %>
-          <div class="to-member-card__body__item">
-            <span class="glyphicon glyphicon-earphone"></span>
-            <%= phone_to member.phone %>
+      <div class="to-member-card__body__items row">
+        <div class="to-member-card__body__item col-lg-12 col-xs-12" data-toggle="collapse" href="#collapseUserInfo-<%= member.member_uid %>" role="button" aria-expanded="false" aria-controls="collapseUserInfo">
+          <i class="material-icons v-a-6 m-r-20">keyboard_arrow_down</i>
+          <%= t('.show_all') %>          
+        </div>
+        <div class="collapse" id="collapseUserInfo-<%= member.member_uid %>">
+
+          <div class="to-member-card__body__item col-xs-12">
+            <i class="material-icons v-a-6 m-r-20">access_time</i>            
+            <%= member.account_balance %>
           </div>
-        <% end %>
-        <% if member.mail_to.present? %>
-          <div class="to-member-card__body__item">
-            <span class="glyphicon glyphicon-envelope"></span>
-            <%= member.mail_to %>
-          </div>
-        <% end %>
-        <div class="to-member-card__body__item">
-          <%= "Balance: " %>
-          <%= member.account_balance %>
+          <% if member.phone.present? %>
+            <div class="to-member-card__body__item col-xs-12">
+              <i class="material-icons v-a-6 m-r-20">local_phone</i>            
+              <%= phone_to member.phone %>
+            </div>
+          <% end %>
+          <% if member.mail_to.present? %>
+            <div class="to-member-card__body__item col-xs-12">
+              <i class="material-icons v-a-6 m-r-20">email</i>            
+              <%= member.mail_to %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+
 <%= show_error_messages!(@user) %>
 <%= simple_form_for @user do |f| %>
   <div class="form-inputs">
@@ -15,6 +16,8 @@
     <%= f.input :phone %>
     <%= f.input :alt_phone %>
     <%= f.input :gender, collection: genders_collection %>
+
+    
     <%= f.input :date_of_birth,
                 start_year: Date.today.year - 90,
                 end_year: Date.today.year - 12,
@@ -22,26 +25,30 @@
     <%= f.input :description, as: "text" %>
 
     <div class='form-group'>
-      <label><%= t('.notifications') %></label>
-      <div class="checkbox">
-        <%= f.label :notifications do %>
-          <%= f.check_box :notifications %>
-          <%= t('activerecord.attributes.user.notifications') %>
-        <% end %>
-      </div>
-      <div class="checkbox">
-        <%= f.label :push_notifications do %>
-          <%= f.check_box :push_notifications %>
-          <%= t('activerecord.attributes.user.push_notifications') %>
-        <% end %>
-      </div>
+
+    <label><%= t('.notifications') %></label>
+    <div class="checkbox">
+      <%= f.label :notifications do %>
+        <%= f.check_box :notifications %>
+        <%= t('activerecord.attributes.user.notifications') %>
+      <% end %>
+    </div>
+    <div class="checkbox">
+      <%= f.label :push_notifications do %>
+        <%= f.check_box :push_notifications %>
+        <%= t('activerecord.attributes.user.push_notifications') %>
+      <% end %>
+    </div>
+
     </div>
   </div>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'mdc-button mdc-button--raised' %>
+
     <% if @user.new_record? %>
-      <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more' %>
+      <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more', class: 'mdc-button mdc-button--raised' %>
     <% end %>
-    <%= link_to t('users.new.cancel'), users_path, class: "btn btn-default" %>
+    <%= link_to t('users.new.cancel'), users_path, class: "mdc-button mdc-button--raised" %>
   </div>
 <% end %>
+

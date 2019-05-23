@@ -1,9 +1,7 @@
-<%= link_to [:edit, post], class: "btn btn-warning" do %>
-  <%= glyph :pencil %>
+<%= link_to [:edit, post], class: "mdc-time mdc-button mdc-button--raised" do %>  
   <%= t "global.edit" %>
 <% end %>
 
-<%= link_to post, data: { method: :delete, confirm: "sure?" }, class: "btn btn-danger" do %>
-  <%= glyph :trash %>
+<%= link_to post, data: { method: :delete, confirm: "sure?" }, class: "mdc-time mdc-button mdc-button--raised" do %>  
   <%= t "global.delete" %>
 <% end %>
