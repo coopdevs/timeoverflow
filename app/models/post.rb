@@ -6,7 +6,10 @@ class Post < ActiveRecord::Base
     against: [:title, :description, :tags],
     ignoring: :accents,
     using: {
-      tsearch: { prefix: true }
+      tsearch: {
+        prefix: true,
+        tsvector_column: 'tsv'
+      }
     }
 
   attr_reader :member_id

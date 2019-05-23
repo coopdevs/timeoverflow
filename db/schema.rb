@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190412163011) do
+ActiveRecord::Schema.define(version: 20190523225323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
   enable_extension "pg_trgm"
+  enable_extension "unaccent"
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "accountable_id"
@@ -147,11 +148,13 @@ ActiveRecord::Schema.define(version: 20190412163011) do
     t.integer  "organization_id"
     t.boolean  "active",          default: true
     t.boolean  "is_group",        default: false
+    t.tsvector "tsv"
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
   add_index "posts", ["organization_id"], name: "index_posts_on_organization_id", using: :btree
   add_index "posts", ["tags"], name: "index_posts_on_tags", using: :gin
+  add_index "posts", ["tsv"], name: "index_posts_on_tsv", using: :gin
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "push_notifications", force: :cascade do |t|
