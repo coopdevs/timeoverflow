@@ -2,13 +2,13 @@
   <%= form.input :post, readonly: true %>
   <%= form.input :post_id, as: :hidden %>
 <% else %>
-  <%
-    input_options = { collection: accountable.offers.active }
+<%
+input_options = { collection: accountable.offers.active }
 
-    if local_assigns[:value]
-      input_options[:selected] = local_assigns[:value]
-    end
-  %>
+if local_assigns[:value]
+  input_options[:selected] = local_assigns[:value]
+end
+%>
 
-  <%= form.input :post_id, input_options %>
+<%= form.input :post_id, input_options %>
 <% end %>
