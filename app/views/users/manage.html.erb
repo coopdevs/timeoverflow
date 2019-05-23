@@ -20,8 +20,8 @@
       <ul class="nav navbar-nav pull-right">
         <% if admin? %>
           <li>
-            <a href="<%= new_user_path %>">
-              <span class="glyphicon glyphicon-plus"></span>
+            <a href="<%= new_user_path %>" class="mdc-button mdc-button--raised">
+              <i class="material-icons v-a-7">add</i>
               <%= t "helpers.submit.create", model: User.model_name.human %>
             </a>
           </li>
