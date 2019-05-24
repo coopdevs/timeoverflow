@@ -12,6 +12,12 @@ RSpec.describe OffersController, type: :controller do
               organization: organization,
               category: test_category)
   end
+  let!(:other_offer) do
+    Fabricate(:offer,
+              user: another_member.user,
+              organization: organization,
+              category: test_category)
+  end
 
   include_context "stub browser locale"
 
@@ -22,14 +28,47 @@ RSpec.describe OffersController, type: :controller do
       it "populates an array of offers" do
         login(another_member.user)
 
-        get "index"
-        expect(assigns(:offers)).to eq([offer])
+        get :index
+
+        expect(assigns(:offers)).to eq([other_offer, offer])
+      end
+
+      context "when one offer is not active" do
+        before do
+          other_offer.active = false
+          other_offer.save!
+        end
+
+        it "only returns active offers" do
+          login(another_member.user)
+
+          get :index
+
+          expect(assigns(:offers)).to eq([offer])
+        end
+      end
+
+      context "when one offer's user is not active" do
+        before do
+          member.active = false
+          member.save!
+        end
+
+        it "only returns offers from active users" do
+          login(another_member.user)
+
+          get :index
+
+          expect(assigns(:offers)).to eq([other_offer])
+        end
       end
     end
     context "with another organization" do
       it "skips the original org's offers" do
         login(yet_another_member.user)
-        get "index"
+
+        get :index
+
         expect(assigns(:offers)).to eq([])
       end
     end
@@ -37,19 +76,51 @@ RSpec.describe OffersController, type: :controller do
 
   describe "GET #index (search)" do
     before { login(another_member.user) }
+    before do
+     offer.title = "Queridos compañeros"
+     offer.save!
+    end
 
     it "populates an array of offers" do
-      get "index", q: offer.title.split(/\s/).first
+      get :index, q: 'compañeros'
 
-      expect(assigns(:offers).size).to eq 1
-      expect(assigns(:offers)[0]).to eq offer
-      expect(assigns(:offers).to_a).to eq([offer])
+      expect(assigns(:offers)).to eq([offer])
     end
 
     it "allows to search by partial word" do
-      get :index, q: offer.title.split(/\s/).first[0..-2]
+      get :index, q: 'compañ'
 
-      expect(assigns(:offers)).to include offer
+      expect(assigns(:offers)).to eq([offer])
+    end
+
+    context "when one offer is not active" do
+      before do
+        other_offer.active = false
+        other_offer.save!
+      end
+
+      it "only returns active offers" do
+        login(another_member.user)
+
+        get :index
+
+        expect(assigns(:offers)).to eq([offer])
+      end
+    end
+
+    context "when one offer's user is not active" do
+      before do
+        member.active = false
+        member.save!
+      end
+
+      it "only returns offers from active users" do
+        login(another_member.user)
+
+        get :index
+
+        expect(assigns(:offers)).to eq([other_offer])
+      end
     end
   end
 
