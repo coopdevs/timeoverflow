@@ -19,24 +19,24 @@
       </div>
       <div class="to-member-card__body__items row">
         <div class="to-member-card__body__item col-lg-12 col-xs-12" data-toggle="collapse" href="#collapseUserInfo-<%= member.member_uid %>" role="button" aria-expanded="false" aria-controls="collapseUserInfo">
-          <i class="material-icons v-a-6 m-r-20">keyboard_arrow_down</i>
+          <i class="material-icons u-va-6 u-mr-20">keyboard_arrow_down</i>
           <%= t('.show_all') %>          
         </div>
         <div class="collapse" id="collapseUserInfo-<%= member.member_uid %>">
 
           <div class="to-member-card__body__item col-xs-12">
-            <i class="material-icons v-a-6 m-r-20">access_time</i>            
+            <i class="material-icons u-va-6 u-mr-20">access_time</i>            
             <%= member.account_balance %>
           </div>
           <% if member.phone.present? %>
             <div class="to-member-card__body__item col-xs-12">
-              <i class="material-icons v-a-6 m-r-20">local_phone</i>            
+              <i class="material-icons u-va-6 u-mr-20">local_phone</i>            
               <%= phone_to member.phone %>
             </div>
           <% end %>
           <% if member.mail_to.present? %>
             <div class="to-member-card__body__item col-xs-12">
-              <i class="material-icons v-a-6 m-r-20">email</i>            
+              <i class="material-icons u-va-6 u-mr-20">email</i>            
               <%= member.mail_to %>
             </div>
           <% end %>

@@ -4,45 +4,48 @@
 <div class="row">
 
   <div class="col-md-8 lead">
-    <div class="panel panel-default panel-info break-word">
+    <div class="panel panel--default panel-info break-word">
       <div class="panel-body post-description">
         <%= m post.rendered_description.to_html.html_safe %>
       </div>
 
       <div class="to-member-card__body__items zrow">
-        <div class="to-member-card__body__item col-xs-12 m-b-10">
+        <div class="to-member-card__body__item col-xs-12 u-mb-10">
           <i class="material-icons">today</i>
           <%= l post.updated_at.to_date, format: :long %>
         </div>
         <% if post.is_group %>
-        <div class="to-member-card__body__item col-xs-12 m-b-10">
+        <div class="to-member-card__body__item col-xs-12 u-mb-10">
           <i class="material-icons">people</i>
           <%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %>
         </div>
         <% end %>        
-        <div class="to-member-card__body__item col-xs-12 m-b-10">
+        <div class="to-member-card__body__item col-xs-12 u-mb-10">
           <i class="material-icons">category</i>
           <%= link_to [post.class, cat: post.category] do %>
             <%= post.category %>
           <% end %>
         </div>          
         <% if post.tags.present? %>
-        <% post.tags.each do |tag| %>
-          <div class="to-member-card__body__item col-xs-12 m-b-10">
-            <i class="material-icons">more</i>
-            <%= link_to [post.class, tag: tag] do %>
+        <div class="to-member-card__body__item col-xs-12 u-mb-10">
+          <i class="material-icons u-va-6 u-mr-20">more</i>
+          <% post.tags.each_with_index do |tag, index| %>            
+            <%= link_to [post.class, tag: tag], class: "tag" do %>
+              <% if index != 0 %>
+                <span>/</span>
+              <% end %>
               <%= tag %>
-            <% end %>
-          </div>          
-        <% end %>
-        <% end %>
+            <% end %>            
+          <% end %>
+        </div>       
+        <% end %>        
       </div>
     </div>
 
   </div>
   <div class="sidebar col-md-4">
     <% if current_user && current_organization == post.organization %>
-    <div class="panel panel-default">
+    <div class="panel panel--default">
       <div class="panel-heading panel-heading-bg">
         <h3 class="panel-title panel-body-with-avatar">
         <%= link_to image_tag(avatar_url(post.user, 36)), post.user %>
@@ -50,14 +53,14 @@
         </h3>
       </div>
       <div class="panel-body panel-body-with-avatar">
-        <div class="to-member-card__body__item col-xs-12 m-b-10">
-          <i class="material-icons v-a-6">email</i>
+        <div class="to-member-card__body__item col-xs-12 u-mb-10">
+          <i class="material-icons u-va-6">email</i>
           <%= mail_to post.user.email %>
         </div>
         <% phones = [post.user.phone, post.user.alt_phone].select(&:present?) %>
         <% if phones.present? %>
-        <div class="to-member-card__body__item col-xs-12 m-b-10">
-          <i class="material-icons v-a-6">phone</i>            
+        <div class="to-member-card__body__item col-xs-12 u-mb-10">
+          <i class="material-icons u-va-6">phone</i>            
           <% phones.each do |phone| %>
             <span><%= phone_to phone%></span>
           <% end %>
