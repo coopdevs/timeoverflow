@@ -9,7 +9,10 @@ html {
   font-size: 62.5%;
 }
 
-h1, h2, h2 a, h2 a:hover{
+h1, h2{
+  color: #ABAAAB;
+}
+h2 a, h2 a:hover{
   color: #ABAAAB;
 }
 h2 a:hover, h1.grey{
@@ -767,21 +770,38 @@ label[required]::after{
   margin: 0 !important;
 }
 
-.user-menu img.user-avatar{
-  border-radius: 50%;
-  margin: -8px auto;
-  margin-right: 4px;
+.dropdown--user-menu {
+  img.user-avatar{
+    border-radius: 50%;
+    margin: -8px auto;
+    margin-right: 4px;
+  }
+  .user-name{
+    padding-right: 34px;
+    display: inline-block;
+  }
+  i.user-down{  
+    font-size: 32px;
+    position: absolute;
+    right: 0;
+    top:-4px;
+  }
 }
-.user-menu .user-name{
-  padding-right: 34px;
-  display: inline-block;
-}
-.user-menu i.user-down{  
-  font-size: 32px;
-  position: absolute;
-  right: 0;
-  top:-4px;
-}
+// .user-menu img.user-avatar{
+//   border-radius: 50%;
+//   margin: -8px auto;
+//   margin-right: 4px;
+// }
+// .user-menu .user-name{
+//   padding-right: 34px;
+//   display: inline-block;
+// }
+// .user-menu i.user-down{  
+//   font-size: 32px;
+//   position: absolute;
+//   right: 0;
+//   top:-4px;
+// }
 
 .navbar-inverse .navbar-nav > .open > .dropdown-menu a, .navbar-inverse .navbar-nav > .open > .dropdown-menu a:hover, .navbar-inverse .navbar-nav > .open > a.dropdown-menu a:focus{
   color:grey!important;
@@ -796,13 +816,18 @@ label[required]::after{
   color: #fff!important;
 }
 
-.search-input{
-  background-color: #6C6C6C;
-  background-color: #ddd;
-  border:0;
+.form-control--search-input{
+  background-color: #fff;
+  border: 0!important;
+  border-radius:0;
+  border-bottom: 2px solid #DBDBDB!important;
   color: #ABAAAB;
   padding-left:36px;
   font-size:18px;
+
+  &:focus, &:hover{
+    border-bottom: 2px solid #3BA0B5!important;
+  }
 }
 
 i.search-icon{
@@ -915,6 +940,11 @@ a{
   background: transparent!important;
 }
 
+.nav > li > a.mdc-button--raised:hover, .nav > li > a.mdc-button--raised:focus{  
+  color:#fff!important;
+  background: #3BA0B5 !important;
+}
+
 .simple_form {
   .form-control{
     border: 0!important;
@@ -927,7 +957,7 @@ a{
     box-shadow: none!important
   }
 
-  .form-control:focus{
+  .form-control:focus,.form-control:hover{
     border-bottom:2px solid #3BA0B5 !important
   }
 
@@ -1024,6 +1054,10 @@ a{
   display: none;
 }
 
+.panel-body-with-avatar a:hover{
+  color:#5C5B5C;
+}
+
 .panel-body-with-avatar > a > img{
   border-radius:50%;
   margin-right: 6px;
@@ -1060,16 +1094,21 @@ a.mdc-button--raised{
   border-color: grey!important;  
 }
 
-.panel-organizer strong{
+.panel--organizer dl{
+  color: #ABAAAB;  
+}
+.panel--organizer dd{
+  margin-bottom:10px;
+  display: block;
+}
+.panel--organizer dt{
   color: grey;
   font-size:18px;   
   font-weight: 600;
   margin-bottom:10px;
-  display: inline-block;
+  display: block;
 }
-.panel-organizer p{
-  color: #ABAAAB;  
-}
+
 
 .navbar-inverse .navbar-nav a:hover{
   color: #ffffff!important;
@@ -1080,31 +1119,25 @@ a.mdc-button--raised{
   background-color: transparent!important;
 }
 
-.m-b-30{
+.u-mb-30{
   margin-bottom:30px;
 }
-
-.m-b-10{
+.u-mb-10{
   margin-bottom:10px;
 }
-
-.v-a-5{
+.u-va-5{
   vertical-align:-5px
 } 
-.v-a-6{
+.u-va-6{
   vertical-align:-6px
 } 
-.v-a-7{
+.u-va-7{
   vertical-align:-7px
 } 
-.m-r-5 {
+.u-mr-5 {
   margin-right:5px;
 }
-.m-t-10 {
-  margin-top:10px;
-}
-
-.m-r-20 {
+.u-mr-20 {
   margin-right:20px;
 }
 
@@ -1112,9 +1145,7 @@ a.mdc-button--raised{
   color: #ABAAAB;
 }
 
-
 .nav-pills-xs-block{
-
   @media(max-width: $screen-sm-min) {
     margin-top:20px;
     margin-bottom:20px;
@@ -1135,4 +1166,12 @@ a.mdc-button--raised{
   }
 }
 
-
+.link--editable{
+  &::after{
+    font-family: 'Material Icons';
+    content: "edit";
+    margin-left: 30px;
+    vertical-align:-2px;
+    font-size: 24px;
+  }
+}

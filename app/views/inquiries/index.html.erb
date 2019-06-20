@@ -19,13 +19,13 @@
             method="get"
             role="search">
         <div class="form-group">
-          <input class="form-control search-input"
+          <input class="form-control form-control--search-input"
                  name="q"
                  placeholder="<%= t("global.search") %>"
                  type="text"
                  value="<%= params[:q] %>">
         </div>
-        <button class="btn-icon zbtn-default" type="submit">
+        <button class="btn-icon" type="submit">
           <i class="material-icons search-icon" title="<%= t 'global.search' %>">search</i>          
           </button>
       </form>
@@ -56,7 +56,7 @@
         <ul class="nav navbar-nav pull-right">
           <li>
             <%= link_to new_inquiry_path, class: "mdc-button mdc-button--raised" do %>              
-              <i class="material-icons v-a-7">add</i>
+              <i class="material-icons u-va-7">add</i>
               <%= t "helpers.submit.create", model: Inquiry.model_name.human %>
             <% end %>
           </li>

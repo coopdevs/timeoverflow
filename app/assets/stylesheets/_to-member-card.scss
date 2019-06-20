@@ -1,42 +1,37 @@
-.to-member-card, .panel-default, .simple_form {
-  & {
-    margin: 24px 0;
-    width: 100%;   
-    background-color: white;
-    box-shadow: 0 0 3px $palette-grey;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.14), 0 6px 6px rgba(0,0,0,0.20);
-    display: inline-block;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border: none;
+.to-member-card, .panel--default, .simple_form {
+  margin: 24px 0;
+  width: 100%;   
+  background-color: white;
+  box-shadow: 0 0 3px $palette-grey;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.14), 0 6px 6px rgba(0,0,0,0.20);
+  display: inline-block;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: none;
 
-    @media(max-width: $screen-sm-min) {
-      height: auto;
-      margin: 10px 0;
-    }
+  @media(max-width: $screen-sm-min) {
+    height: auto;
+    margin: 10px 0;
   }
 
   & .panel-heading{
     background-color: transparent;
     padding: 20px;
-    border-bottom: 2px solid #D5D5D5
+    border-bottom: 2px solid #D5D5D5;
   }
 
   & .panel-title{
     font-size: 18px;
-    color: #888888;
+    color: #888;
   }
 
   &__header {
-    & {
-      display: flex;
-      background-color: #ABAAAB;
-      background-color: #2797AF;
-      padding: 40px 20px 20px;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-      position: relative;
-    }
+    display: flex;
+    background-color: #2797AF;
+    padding: 40px 20px 20px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    position: relative;
 
     &__avatar {
       margin-right: 20px;      
@@ -52,11 +47,9 @@
         font-size: 24px;
         font-weight: 600;
 
-        & {
-          margin-top: 0px;
-          margin-bottom: 8px;
-          font-size:22px;
-        }
+        margin-top: 0px;
+        margin-bottom: 8px;
+        font-size:22px;
 
         a {
           color: white;
@@ -100,9 +93,7 @@
   }
 
   &__body {
-    & {
-      padding: 20px 20px;
-    }
+    padding: 20px;
 
     &__description {
       margin-bottom: 20px;
@@ -151,14 +142,9 @@
     }
 
     &__item {
-      & {
-        margin-top: 15px;
-        font-size: 18px;
-        color: grey;
-
-        
-
-      }
+      margin-top: 15px;
+      font-size: 18px;
+      color: grey;
 
       a {
         color: grey;
