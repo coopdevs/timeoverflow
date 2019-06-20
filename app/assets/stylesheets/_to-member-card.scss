@@ -145,6 +145,10 @@
       margin-top: 15px;
       font-size: 18px;
       color: grey;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100vw - 80px);
 
       a {
         color: grey;
