@@ -51,8 +51,8 @@ class ApplicationController < ActionController::Base
       accepted = current_user.terms_accepted_at
       if accepted.nil?
         raise MissingTOSAcceptance
-      #elsif accepted < Document.terms_and_conditions.updated_at
-        #raise OutadedTOSAcceptance
+       #elsif accepted < Document.terms_and_conditions.updated_at
+         #raise OutadedTOSAcceptance
       end
     end
   end
