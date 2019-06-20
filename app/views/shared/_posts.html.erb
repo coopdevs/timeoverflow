@@ -47,7 +47,7 @@
                 </div>
               
             <% end %>
-            <% if post.tags.count > 0 %>
+            <% if post.tags.present? %>
             <div class="to-member-card__body__item col-xs-12">
               <i class="material-icons u-va-6 u-mr-20">more</i>
               <% (post.tags || []).each_with_index do |tag, index| %>
