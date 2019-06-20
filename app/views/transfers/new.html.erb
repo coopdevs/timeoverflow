@@ -1,6 +1,6 @@
 <h1>
   <small><%= t ".give_time" %></small>
-  <%= link_to accountable.display_name_with_uid, accountable_path(accountable) %>
+  <%= link_to accountable.display_name_with_uid, accountable_path(accountable), class:"link--editable" %>
 </h1>
 <% if offer %>
   <h3><%= offer %></h3>

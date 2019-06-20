@@ -50,21 +50,17 @@
 }
 
 .language-selector {
-  & {
-    display: inline-block;
+  display: inline-block;
 
     @media(max-width: $screen-sm-min) {
       display: block;
       position: relative;
     }
-  }
 
   a.btn-default.dropdown-toggle {
-    & {
-      background-color: transparent;
-      border: 1px solid white;
-      padding: 4px 8px;
-    }
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 4px 8px;
 
     &:hover {
       background-color: transparent;
@@ -72,11 +68,9 @@
   }
 
   &.open > a.btn-default.dropdown-toggle {
-    & {
-      background-color: transparent;
-      color: white;
-      border-color: #ddd;
-    }
+    background-color: transparent;
+    color: white;
+    border-color: #ddd;
 
     &:hover {
       background-color: transparent;

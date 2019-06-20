@@ -4,94 +4,107 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <div class="panel panel-default">
+    <div class="panel panel--default">
       <div class="panel-heading">
         <h3 class="panel-title">
           <%= t '.contact_information' %>
         </h3>
       </div>
-      <div class="panel-body panel-organizer">
-        <p>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">email</i>
+      <div class="panel-body panel--organizer">
+        <dl>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">email</i>
             <%= Organization.human_attribute_name 'email' %>
-          </strong>
-          <%= @organization.email %>
-          <br/>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5" >phone</i>
+          </dt>
+          <dd>
+            <%= @organization.email %>
+          </dd>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5" >phone</i>
             <%= Organization.human_attribute_name 'phone' %>
-          </strong>
-          <%= @organization.phone %>
-          <br/>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">web</i>
+          </dt>
+          <dd>
+            <%= @organization.phone %>
+          </dd>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">web</i>
             Web
-          </strong>            
-          <%= link_to_if @organization.web.present?,
-                         @organization.web,
-                         @organization.web %>
-          <br/>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">timelapse</i>          
+          </dt>
+          <dd>
+            <%= link_to_if @organization.web.present?,
+                           @organization.web,
+                           @organization.web %>
+          </dd> 
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">timelapse</i>          
             <%= Organization.human_attribute_name 'public_opening_times' %>
-          </strong>          
-          <%= @organization.public_opening_times %>
-          <br/>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">location_on</i>
+          </dt>
+          <dd>
+            <%= @organization.public_opening_times %>
+          </dd>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">location_on</i>
             <%= Organization.human_attribute_name 'address' %>
-          </strong>
-          <%= @organization.address %>
-          <br/>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">people</i>
+          </dt>
+          <dd>
+            <%= @organization.address %>
+          </dd>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">people</i>
             <%= Organization.human_attribute_name 'neighborhood' %>
-          </strong>
-          <%= @organization.neighborhood %>
-          <br/>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">location_city</i>
+          </dt>
+          <dd>
+            <%= @organization.neighborhood %>
+          </dd>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">location_city</i>
             <%= Organization.human_attribute_name 'city' %>
-          </strong>
-          <%= @organization.city %>
-        </p>
+          </dt>
+          <dd>
+            <%= @organization.city %>
+          </dd>
+        </dl>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
-    <div class="panel panel-default">
+    <div class="panel panel--default">
       <div class="panel-heading">
         <h3 class="panel-title">
           <%= t 'global.information' %>
         </h3>
       </div>
-      <div class="panel-body panel-organizer">
-        <p>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">calendar_today</i>
+      <div class="panel-body panel--organizer">
+        <dl>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">calendar_today</i>
             <%= Organization.human_attribute_name 'created_at' %>
-          </strong>
-          <%= l @organization.created_at, format: :long %>
-          <br/>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">today</i>
+          </dt>
+          <dd>
+            <%= l @organization.created_at, format: :long %>
+          </dd>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">today</i>
             <%= Organization.human_attribute_name 'updated_at' %>
-          </strong>
+          </dt>
+          <dd>
           <%= l @organization.updated_at, format: :long %>
-          <br/>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">people</i>
+          </dd>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">people</i>
             <%= t 'global.member_count' %>
-          </strong>
+          </dt>
+          <dd>
           <%= @organization.members.count %>
-          <br/>
-          <strong>
-            <i class="material-icons v-a-5 m-r-5">access_time</i>
+          </dd>
+          <dt>
+            <i class="material-icons u-va-5 u-mr-5">access_time</i>
             <%= t 'global.balance' %>
-          </strong>
-          <%= seconds_to_hm(@organization.account.try(:balance) || '—') %>
-        </p>
+          </dt>
+          <dd>
+            <%= seconds_to_hm(@organization.account.try(:balance) || '—') %>
+          </dd>
+        </dl>
       </div>
     </div>
   </div>
@@ -104,7 +117,7 @@
       <% if superadmin? %>
         <li>
           <%= link_to organizations_path, class: "mdc-button mdc-button--raised" do %>            
-            <i class="material-icons v-a-5">arrow_back</i>
+            <i class="material-icons u-va-5">arrow_back</i>
             <%= t 'global.back' %>
           <% end %>
         </li>
@@ -112,7 +125,7 @@
       <% if admin? %>
         <li>
           <%= link_to edit_organization_path(@organization), class: "mdc-button mdc-button--raised" do %>
-            <i class="material-icons v-a-5">edit</i>
+            <i class="material-icons u-va-5">edit</i>
             <%= t "global.edit" %>
           <% end %>
         </li>
@@ -120,7 +133,7 @@
       <% if current_user&.active?(@organization) %>
         <li>
           <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id), class: "mdc-button mdc-button--raised" do %>
-            <i class="material-icons v-a-5">access_time</i>
+            <i class="material-icons u-va-5">access_time</i>
             <%= t "global.give_time" %>
           <% end %>
         </li>

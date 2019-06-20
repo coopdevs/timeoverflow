@@ -11,8 +11,8 @@
     <div class="col-md-12">
       <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
         <div class="form-group">
-          <%= f.search_field :user_username_or_user_email_or_member_uid_search_contains, class: "form-control search-input" %>
-          <button class="btn-icon zbtn-default" type="submit">
+          <%= f.search_field :user_username_or_user_email_or_member_uid_search_contains, class: "form-control form-control--search-input" %>
+          <button class="btn-icon" type="submit">
           <i class="material-icons search-icon" title="<%= t 'global.search' %>">search</i>          
           </button>
         </div>        
@@ -26,7 +26,7 @@
     <div class="col-md-12">
       <h2>
         <%= link_to current_organization.name,
-                    organization_path(current_organization) %>
+                    organization_path(current_organization), class:"link--editable" %>
       </h2>
     </div>
   </div>
