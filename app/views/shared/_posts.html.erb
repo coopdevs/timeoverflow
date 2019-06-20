@@ -2,68 +2,64 @@
   <div class="col-lg-6 col-md-6 col-sm-12">
     <div class="zpost to-member-card">
       <div class="to-member-card__header">      
-      <div class="to-member-card__header__text">
-        <h4>
-          <%= link_to post.title, post %>
-          <% if post.is_group %>
-            <div class="group">
-              <i class="material-icons v-a-6">people</i>
-              <%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %>
-            </div>            
-          <% end %>
-        </h4>
-        <div class="to-member-card__header__text__activity">          
-          <%= link_to post.member do %>
-            <%= post.member %>
-          <% end %>            
-        </div>          
-        
-      </div>
-    </div>
-
-    <div class="to-member-card__body">
-      <div class="to-member-card__body__description">
-        <%= strip_tags(post.rendered_description.to_html) %>
-      </div>
-      
-      <div class="to-member-card__body__items row">
-        <div class="to-member-card__body__item col-lg-12 col-xs-12" data-toggle="collapse" href="#collapseUserInfo-<%= post.id %>" role="button" aria-expanded="false" aria-controls="collapseUserInfo">
-          <i class="material-icons v-a-6 m-r-20">keyboard_arrow_down</i>
-          <span class="translation_missing" title="translation missing: es.users.member_card.show_all">Show All</span>          
-        </div>
-        <div class="collapse" id="collapseUserInfo-<%= post.id %>">
-
-          <% if post.type == "Inquiry" %>
-            <div class="to-member-card__body__item col-xs-12">
-            <i class="material-icons v-a-6 m-r-20">today</i>            
-            <%= l post.updated_at.to_date, format: :long %>
+        <div class="to-member-card__header__text">
+          <h4>
+            <%= link_to post.title, post %>
+            <% if post.is_group %>
+              <div class="group">
+                <i class="material-icons v-a-6">people</i>
+                <%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %>
+              </div>            
+            <% end %>
+          </h4>
+          <div class="to-member-card__header__text__activity">          
+            <%= link_to post.member do %>
+              <%= post.member %>
+            <% end %>            
           </div>
-          <% end %>        
-          <% if post.category %>          
-              <div class="to-member-card__body__item col-xs-12">
-                <i class="material-icons v-a-6 m-r-20">category</i>            
-                <%= link_to [post.class, cat: post.category] do %>
-                  <%= post.category %>
-                <% end %>
-              </div>
-            
-          <% end %>
-          <% (post.tags || []).each do |tag| %>
-            
-              <div class="to-member-card__body__item col-xs-12">
-                <i class="material-icons v-a-6 m-r-20">more</i>
-                <%= link_to [post.class, tag: tag] do %>
-                  <%= tag %>
-                <% end %>
-              </div>
-            
-          <% end %>
-
         </div>
       </div>
 
-    </div>
+      <div class="to-member-card__body">
+        <div class="to-member-card__body__description">
+          <%= strip_tags(post.rendered_description.to_html) %>
+        </div>
+        
+        <div class="to-member-card__body__items row">
+          <div class="to-member-card__body__item col-lg-12 col-xs-12" data-toggle="collapse" href="#collapseUserInfo-<%= post.id %>" role="button" aria-expanded="false" aria-controls="collapseUserInfo">
+            <i class="material-icons v-a-6 m-r-20">keyboard_arrow_down</i>
+            <span class="translation_missing" title="translation missing: es.users.member_card.show_all">Show All</span>          
+          </div>
+          <div class="collapse" id="collapseUserInfo-<%= post.id %>">
 
-  </div>      
+            <% if post.type == "Inquiry" %>
+              <div class="to-member-card__body__item col-xs-12">
+              <i class="material-icons v-a-6 m-r-20">today</i>            
+              <%= l post.updated_at.to_date, format: :long %>
+            </div>
+            <% end %>        
+            <% if post.category %>          
+                <div class="to-member-card__body__item col-xs-12">
+                  <i class="material-icons v-a-6 m-r-20">category</i>            
+                  <%= link_to [post.class, cat: post.category] do %>
+                    <%= post.category %>
+                  <% end %>
+                </div>
+              
+            <% end %>
+            <% (post.tags || []).each do |tag| %>
+              
+                <div class="to-member-card__body__item col-xs-12">
+                  <i class="material-icons v-a-6 m-r-20">more</i>
+                  <%= link_to [post.class, tag: tag] do %>
+                    <%= tag %>
+                  <% end %>
+                </div>
+              
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>  
 <% end %>
