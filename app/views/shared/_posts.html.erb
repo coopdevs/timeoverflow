@@ -26,20 +26,20 @@
         </div>
         
         <div class="to-member-card__body__items row">
-          <div class="to-member-card__body__item col-lg-12 col-xs-12" data-toggle="collapse" href="#collapseUserInfo-<%= post.id %>" role="button" aria-expanded="false" aria-controls="collapseUserInfo">
+          <div class="to-member-card__body__item col-lg-12 col-xs-12 u-p-15-xs" data-toggle="collapse" href="#collapseUserInfo-<%= post.id %>" role="button" aria-expanded="false" aria-controls="collapseUserInfo">
             <i class="material-icons u-va-6 u-mr-20">keyboard_arrow_down</i>
             <span class="translation_missing" title="translation missing: es.users.member_card.show_all">Show All</span>          
           </div>
           <div class="collapse" id="collapseUserInfo-<%= post.id %>">
 
             <% if post.type == "Inquiry" %>
-              <div class="to-member-card__body__item col-xs-12">
+              <div class="to-member-card__body__item col-xs-12 u-p-15-xs">
               <i class="material-icons u-va-6 u-mr-20">today</i>            
               <%= l post.updated_at.to_date, format: :long %>
             </div>
             <% end %>        
             <% if post.category %>          
-                <div class="to-member-card__body__item col-xs-12">
+                <div class="to-member-card__body__item col-xs-12 u-p-15-xs">
                   <i class="material-icons u-va-6 u-mr-20">category</i>            
                   <%= link_to [post.class, cat: post.category] do %>
                     <%= post.category %>
@@ -48,7 +48,7 @@
               
             <% end %>
             <% if post.tags.present? %>
-            <div class="to-member-card__body__item col-xs-12">
+            <div class="to-member-card__body__item col-xs-12 u-p-15-xs">
               <i class="material-icons u-va-6 u-mr-20">more</i>
               <% (post.tags || []).each_with_index do |tag, index| %>
                 <%= link_to [post.class, tag: tag], class: "tag" do %>

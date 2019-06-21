@@ -1064,7 +1064,7 @@ a{
 }
 
 .panel-body--with-avatar{
-  padding: 0;
+  padding: 5px;
 }
 
 a.mdc-button--raised{
@@ -1144,6 +1144,16 @@ a.mdc-button--raised{
 .u-mr-20 {
   margin-right:20px;
 }
+
+@media(max-width: $screen-sm-min) {
+  .u-p-0-xs{
+    padding:0;
+  }
+  .u-p-15-xs{
+    padding:0 15px;
+  }
+} 
+
 
 .select2-container--default .select2-selection--single .select2-selection__rendered{
   color: #ABAAAB;
