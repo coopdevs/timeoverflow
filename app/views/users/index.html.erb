@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 container-fluid--xs">
       <h1><%= t(".members") %></h1>
     </div>
   </div>
 </div>
 
-<div class="container-fluid container-fluid--xs">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
       <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
