@@ -18,9 +18,10 @@ gem 'kaminari', '~> 1.1.1'
 gem "simple_form", ">= 3.0.0"
 gem 'rollbar', '2.8.3'
 gem 'whenever', require: false
-gem 'pg_search', '2.1.4'
 gem 'prawn', '~> 2.2.0'
 gem 'prawn-table', '~> 0.2.2'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 gem 'skylight'
 gem 'sidekiq', '5.1.3'
 gem 'sidekiq-cron', '0.6.3'
