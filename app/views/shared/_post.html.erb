@@ -9,7 +9,7 @@
         <%= m post.rendered_description.to_html.html_safe %>
       </div>
 
-      <div class="to-member-card__body__items zrow">
+      <div class="to-member-card__body__items">
         <div class="to-member-card__body__item col-xs-12 u-mb-10">
           <i class="material-icons">today</i>
           <%= l post.updated_at.to_date, format: :long %>
