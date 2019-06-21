@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 container-fluid--xs">
       <h1>
         <% @category = Category.where(id: params[:cat]).first %>
         <%= Offer.model_name.human(count: :many) %>
