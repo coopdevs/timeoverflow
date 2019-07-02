@@ -423,7 +423,7 @@ en:
   shared:
     movements:
       delete_reason: Are you sure to delete this comment?
-      movements: Movements    
+      movements: Movements
     post_form:
       group_offer: Is it a group offer?
       group_inquiry: Is it a group inquiry?
