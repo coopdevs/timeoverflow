@@ -423,11 +423,13 @@ en:
   shared:
     movements:
       delete_reason: Are you sure to delete this comment?
-      movements: Movements
+      movements: Movements    
     post_form:
       group_offer: Is it a group offer?
       group_inquiry: Is it a group inquiry?
       you_can_use: You can use
+    posts:
+      show_all: Show all
   simple_form:
     error_notification:
       default_message: 'Please review the problems below:'
@@ -577,6 +579,7 @@ en:
     member_card:
       no_activity: No activity
       active_ago: Active %{time} ago
+      show_all: Show all
   views:
     pagination:
       first: 

@@ -447,6 +447,8 @@ pt-BR:
       group_inquiry: É uma requisição de grupo?
       group_offer: É uma oferta de grupo?
       you_can_use: Você pode usar
+    posts:
+      show_all: Mostrar tudo
   simple_form:
     error_notification:
       default_message: 'Por favor verifique os seguintes problemas:'
@@ -546,6 +548,7 @@ pt-BR:
     member_card:
       active_ago: Ativo %{time} anterior
       no_activity: Inativo
+      show_all: Mostrar tudo
     new:
       cancel: Cancelar
       create_more_users_button: Criar e introduzir outro usuário
