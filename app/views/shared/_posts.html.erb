@@ -12,10 +12,8 @@
               </div>            
             <% end %>
           </h4>
-          <div class="to-member-card__header__text__activity">          
-            <%= link_to post.member do %>
-              <%= post.member %>
-            <% end %>            
+          <div class="to-member-card__header__text__activity">
+            <%= link_to post.member, post.user  %>
           </div>
         </div>
       </div>
