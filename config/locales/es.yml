@@ -442,11 +442,13 @@ es:
   shared:
     movements:
       delete_reason: "¿Está seguro de borrar este comentario?"
-      movements: Movimientos
+      movements: Movimientos    
     post_form:
       group_inquiry: Es una demanda grupal?
       group_offer: Es una oferta grupal?
       you_can_use: Puedes usar
+    posts:
+      show_all: Mostrar todo
   simple_form:
     error_notification:
       default_message: 'Por favor revisa los siguientes problemas:'
@@ -546,6 +548,7 @@ es:
     member_card:
       active_ago: Actividad hace %{time}
       no_activity: Sin actividad
+      show_all: Mostrar todo
     new:
       cancel: Cancelar
       create_more_users_button: Crear e introducir otro usuario

@@ -447,6 +447,8 @@ ca:
       group_inquiry: És una demanda grupal?
       group_offer: És una oferta grupal?
       you_can_use: Pots fer servir
+    posts:
+      show_all: Mostrar tot
   simple_form:
     error_notification:
       default_message: 'Please review the problems below:'
@@ -546,6 +548,7 @@ ca:
     member_card:
       active_ago: Activitat fa %{time}
       no_activity: Sense activitat
+      show_all: Mostrar tot
     new:
       cancel: Cancel·lar
       create_more_users_button: Crear i introduir un nou usuari

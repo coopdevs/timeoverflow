@@ -455,6 +455,8 @@ eu:
       group_inquiry: 
       group_offer: 
       you_can_use: Erabil dezakezu
+    posts:
+      show_all: 
   simple_form:
     error_notification:
       default_message: Arazo hauek berraztertu, mesedez.
@@ -554,6 +556,7 @@ eu:
     member_card:
       active_ago: 
       no_activity: 
+      show_all:
     new:
       cancel: Deuseztatu
       create_more_users_button: Beste erabiltzaile bat sortu eta sartu
