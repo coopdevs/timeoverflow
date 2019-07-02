@@ -241,7 +241,7 @@ a:hover, a:focus{
   }
 }
 
-.break-word {
+.u-break-word {
   word-wrap: break-word;
 }
 
@@ -1098,14 +1098,14 @@ a.mdc-button--raised{
   border-color: grey!important;  
 }
 
-.panel--organizer dl{
+.panel-body--organizer dl{
   color: #ABAAAB;  
 }
-.panel--organizer dd{
+.panel-body--organizer dd{
   margin-bottom:10px;
   display: block;
 }
-.panel--organizer dt{
+.panel-body--organizer dt{
   color: grey;
   font-size:18px;   
   font-weight: 600;
