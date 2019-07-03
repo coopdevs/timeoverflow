@@ -99,7 +99,7 @@
       margin-bottom: 20px;
       color: #5C5B5C;
       font-size: 18px;
-
+      overflow: hidden;
       @media(max-width: $screen-sm-min) {
         height: auto;
       }
