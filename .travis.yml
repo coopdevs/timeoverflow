@@ -1,4 +1,5 @@
 language: ruby
+dist: trusty
 cache: bundler
 bundler_args: '--without development'
 env:
