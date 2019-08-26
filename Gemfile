@@ -60,8 +60,8 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1.2'
   gem 'fabrication'
   gem 'faker', '~> 1.9'
-  gem 'capybara', '~> 3.13'
-  gem 'selenium-webdriver', '~> 3.141'
-  gem 'webdrivers', '~> 3.0'
-  gem 'simplecov', '~> 0.16.1', require: false
+  gem 'capybara', '~> 3.15'
+  gem 'selenium-webdriver', '~> 3.142'
+  gem 'webdrivers', '~> 4.1.2'
+  gem 'simplecov', '~> 0.17', require: false
 end
