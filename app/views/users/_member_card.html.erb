@@ -5,6 +5,7 @@
       <div class="to-member-card__header__text">
         <h4><%= member.link_to_self %></h4>
         <div class="to-member-card__header__text__activity">
+          <%= "##{member.member_uid} — " %>
           <% if member.last_sign_in_at %>
             <%= t('.active_ago', time: distance_of_time_in_words(Time.now, member.last_sign_in_at)) %>
           <% else %>
