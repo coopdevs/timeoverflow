@@ -3,8 +3,10 @@ dist: bionic
 cache: bundler
 services:
   - postgresql
+  - elasticsearch
 addons:
   postgresql: "10.10"
+  chrome: stable
 bundler_args: '--without development'
 env:
   global:
@@ -21,7 +23,3 @@ before_script:
   - sleep 10
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-services:
-  - elasticsearch
-addons:
-  chrome: stable
