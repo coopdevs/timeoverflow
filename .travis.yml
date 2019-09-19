@@ -1,6 +1,10 @@
 language: ruby
 dist: bionic
 cache: bundler
+services:
+  - postgresql
+addons:
+  postgresql: "10.10"
 bundler_args: '--without development'
 env:
   global:
