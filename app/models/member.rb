@@ -44,6 +44,18 @@ class Member < ActiveRecord::Base
     member_uid
   end
 
+  def remove_all_posts_from_index
+    Post.with_member.where("members.id = ?", self.id).find_each do |post|
+      post.delete_document
+    end
+  end
+
+  def add_all_posts_to_index
+    Post.with_member.where("members.id = ?", self.id).find_each do |post|
+      post.update_or_delete_document(self)
+    end
+  end
+
   def assign_registration_number
     self.member_uid ||= organization.next_reg_number_seq
   end
