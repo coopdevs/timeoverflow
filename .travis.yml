@@ -5,11 +5,11 @@ services:
   - postgresql
   - elasticsearch
 addons:
-  postgresql: "10"
+  postgresql: "9.4"
   apt:
     packages:
-      - postgresql-10
-      - postgresql-client-10
+      - postgresql-9.4
+      - postgresql-client-9.4
   chrome: stable
 bundler_args: '--without development'
 env:
