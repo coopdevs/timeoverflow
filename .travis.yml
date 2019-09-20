@@ -1,13 +1,23 @@
 language: ruby
-dist: trusty
+dist: bionic
 cache: bundler
+services:
+  - postgresql
+  - elasticsearch
+addons:
+  postgresql: "9.4"
+  apt:
+    packages:
+      - postgresql-9.4
+      - postgresql-client-9.4
+  chrome: stable
 bundler_args: '--without development'
 env:
   global:
     - DATABASE_URL=postgres://postgres@localhost/timeoverflow_test
     - CC_TEST_REPORTER_ID=025bc15a0fa9afa52d86ee24fea845cf1d363f48a466bcf2cef8ab80c29acb28
 before_install:
-  - gem install bundler:1.17.0
+  - gem install bundler:1.17.3
 before_script:
   - bundle exec rake db:setup
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -17,7 +27,3 @@ before_script:
   - sleep 10
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-services:
-  - elasticsearch
-addons:
-  chrome: stable
