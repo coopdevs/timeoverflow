@@ -9,7 +9,7 @@ class StatisticsController < ApplicationController
     65..100 => "65+",
   }
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def statistics_global_activity
     @members = current_organization.members

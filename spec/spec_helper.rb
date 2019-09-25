@@ -157,20 +157,3 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
-
-# Rails 4.2 call `initialize` inside `recycle!`. However Ruby 2.6 doesn't allow calling `initialize` twice.
-# More info: https://github.com/rails/rails/issues/34790
-if Rails.version < "5"
-  module ActionController
-    class TestResponse < ActionDispatch::TestResponse
-      def recycle!
-        # hack to avoid MonitorMixin double-initialize error
-        @mon_mutex_owner_object_id = nil
-        @mon_mutex = nil
-        initialize
-      end
-    end
-  end
-else
-  puts "⚠ Monkeypatch for ActionController::TestResponse no longer needed! Remove me please!"
-end

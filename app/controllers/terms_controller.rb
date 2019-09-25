@@ -1,6 +1,6 @@
 class TermsController < ApplicationController
-  before_filter :authenticate_user!
-  skip_before_filter :check_for_terms_acceptance!
+  before_action :authenticate_user!
+  skip_before_action :check_for_terms_acceptance!
 
   def show
     @document = Document.terms_and_conditions

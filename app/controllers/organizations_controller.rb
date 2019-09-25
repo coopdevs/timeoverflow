@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_filter :load_resource, only: [:show, :edit, :update, :set_current]
+  before_action :load_resource, only: [:show, :edit, :update, :set_current]
 
   def new
     @organization = Organization.new

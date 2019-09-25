@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
   MissingTOSAcceptance = Class.new(Exception)
   OutadedTOSAcceptance = Class.new(Exception)
 
-  append_before_filter :check_for_terms_acceptance!, unless: :devise_controller?
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :set_locale
-  before_filter :set_current_organization
+  append_before_action :check_for_terms_acceptance!, unless: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
+  before_action :set_current_organization
 
   rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
     redirect_to terms_path
