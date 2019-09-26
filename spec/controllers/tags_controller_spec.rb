@@ -26,7 +26,7 @@ RSpec.describe TagsController do
     end
 
     it "with search term, returns filtered tags" do
-      get 'index', term: "foo"
+      get 'index', params: { term: "foo" }
       expect(assigns(:all_tags)).to eq(["foo"])
     end
   end

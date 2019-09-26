@@ -1,3 +1,5 @@
+require: rubocop-rails
+
 AllCops:
   Exclude:
     - db/schema.rb
@@ -5,8 +7,8 @@ AllCops:
 Naming/AccessorMethodName:
   Enabled: false
 
-Rails/ActionFilter:
-  Enabled: false
+Rails/HttpPositionalArguments:
+  Enabled: true
 
 Style/Alias:
   Enabled: false
@@ -57,9 +59,6 @@ Style/CommentAnnotation:
 Metrics/CyclomaticComplexity:
   Enabled: false
 
-Rails/Delegate:
-  Enabled: false
-
 Style/Documentation:
   Enabled: false
 
@@ -84,7 +83,7 @@ Style/EvenOdd:
 Naming/FileName:
   Enabled: false
 
-Style/FlipFlop:
+Lint/FlipFlop:
   Enabled: false
 
 Style/FormatString:
@@ -187,16 +186,16 @@ Style/StringLiterals:
 Style/VariableInterpolation:
   Enabled: false
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
   Enabled: false
 
 Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/TrivialAccessors:
-  Enabled: false
-
-Style/VariableInterpolation:
   Enabled: false
 
 Style/WhenThen:
@@ -214,7 +213,7 @@ Lint/AmbiguousRegexpLiteral:
 Lint/AssignmentInCondition:
   Enabled: false
 
-Lint/ConditionPosition:
+Layout/ConditionPosition:
   Enabled: false
 
 Lint/DeprecatedClassMethods:

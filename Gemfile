@@ -8,7 +8,7 @@ gem 'rdiscount', '~> 2.2.0.1'
 gem 'activeadmin', '~> 2.3.1'
 gem 'has_scope', '~> 0.7.2'
 gem 'pundit', '~> 2.0.0'
-gem 'pg', '1.1.4'
+gem 'pg', '~> 1.1.4'
 gem 'json_translate', '~> 4.0.0'
 gem 'dalli'
 gem 'devise', '~> 4.7.1'
@@ -23,7 +23,7 @@ gem 'prawn-table', '~> 0.2.2'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'skylight', '~> 4.1.2'
-gem 'sidekiq', '5.1.3'
+gem 'sidekiq', '~> 6.0.0'
 gem 'sidekiq-cron', '0.6.3'
 # TODO: remove this once the following issue has been addressed
 #       https://github.com/ondrejbartas/sidekiq-cron/issues/199
@@ -33,19 +33,20 @@ gem 'rufus-scheduler', '~> 3.4.2'
 gem 'jquery-rails', '~> 4.3.5'
 gem 'bootstrap-sass'
 gem 'sassc-rails', '~> 2.1.2'
-gem 'uglifier', '2.7.2'
+gem 'uglifier', '~> 4.1.20'
 gem 'select2-rails'
 
 group :development do
-  gem 'listen'
-  gem 'rubocop', '~> 0.52.1', require: false
-  gem 'web-console', '4.0.1'
+  gem 'listen', '~> 3.1.5'
+  gem 'rubocop', '~> 0.74.0', require: false
+  gem 'rubocop-rails', require: false
+  gem 'web-console', '~> 4.0.1'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.1'
   gem 'airbrussh', require: false
   gem 'localeapp', '2.1.1', require: false
-  gem 'letter_opener', '1.4.1'
+  gem 'letter_opener', '~> 1.7.0'
   gem 'dotenv-rails', '~> 2.7.1'
 end
 
@@ -56,11 +57,11 @@ end
 group :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rails-controller-testing'
-  gem "database_cleaner", '1.6.2'
+  gem 'database_cleaner', '~> 1.7.0'
   gem 'shoulda-matchers', '~> 4.1.2'
   gem 'fabrication'
   gem 'faker', '~> 1.9'
-  gem 'capybara', '~> 3.15'
+  gem 'capybara', '~> 3.29'
   gem 'selenium-webdriver', '~> 3.142'
   gem 'webdrivers', '~> 4.1.2'
   gem 'simplecov', '~> 0.17', require: false

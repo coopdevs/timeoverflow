@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_organization, :admin?, :superadmin?
 
   def switch_lang
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   private

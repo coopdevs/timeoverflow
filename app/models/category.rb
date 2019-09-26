@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   has_many :posts
 
   translates :name

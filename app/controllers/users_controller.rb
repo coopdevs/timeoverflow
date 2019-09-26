@@ -61,8 +61,8 @@ class UsersController < ApplicationController
     @search = members_scope.ransack(default_search_params.merge(params.to_unsafe_h.fetch(:q, {})))
 
     result = @search.result
-    orders = result.orders.map { |order| order.direction == :asc ? "#{order.to_sql} NULLS FIRST" : "#{order.to_sql} NULLS LAST" }
-    result = result.except(:order).order(orders.join(", ")) if orders.count > 0
+    # orders = result.orders.map { |order| order.direction == :asc ? "#{order.to_sql} NULLS FIRST" : "#{order.to_sql} NULLS LAST" }
+    # result = result.except(:order).order(orders.join(", ")) if orders.count > 0
 
     @members = result.eager_load(:account, :user).page(params[:page]).per(20)
 

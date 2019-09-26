@@ -14,7 +14,7 @@ class TransfersController < ApplicationController
     if persister.save
       redirect_to redirect_target
     else
-      redirect_to :back, alert: transfer.errors.full_messages.to_sentence
+      redirect_back fallback_location: redirect_target, alert: transfer.errors.full_messages.to_sentence
     end
   end
 
@@ -40,9 +40,10 @@ class TransfersController < ApplicationController
   def delete_reason
     @transfer = Transfer.find(params[:id])
     @transfer.update_columns(reason: nil)
+
     respond_to do |format|
       format.json { head :ok }
-      format.html { redirect_to :back }
+      format.html { redirect_back(fallback_location: request.referer) }
     end
   end
 

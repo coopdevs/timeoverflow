@@ -1,6 +1,6 @@
 module Report
   module PDF
-    MIME_TYPE = Mime::PDF
+    MIME_TYPE = Mime[:pdf]
 
     def self.run(headers, rows)
       pdf = Prawn::Document.new(options)

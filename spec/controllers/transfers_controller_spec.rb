@@ -27,18 +27,18 @@ RSpec.describe TransfersController do
       end
 
       it 'finds the accountable' do
-        get :new, params
+        get :new, params: params
         expect(response.body)
           .to include("<a href=\"/members/#{member_giver.user.id}\">#{member_giver.display_name_with_uid}</a>")
       end
 
       it 'finds the destination account' do
-        get :new, params
+        get :new, params: params
         expect(response.body).to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{user_account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       it 'builds a transfer with the id of the destination' do
-        get :new, params
+        get :new, params: params
         expect(response.body)
           .to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{user_account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
@@ -47,19 +47,19 @@ RSpec.describe TransfersController do
         let(:offer) { Fabricate(:offer, organization: user.organizations.first) }
 
         it 'finds the transfer offer' do
-          get :new, params.merge(offer: offer.id)
+          get :new, params: params.merge(offer: offer.id)
           expect(response.body).to include("<h3>#{offer}</h3>")
         end
 
         it 'builds a transfer with the offer as post' do
-          get :new, params.merge(offer: offer.id)
+          get :new, params: params.merge(offer: offer.id)
           expect(response.body).to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{offer.id}\" name=\"transfer[post_id]\" id=\"transfer_post_id\" />")
         end
       end
 
       context 'when the offer is not specified' do
         it 'does not find any offer' do
-          get :new, params
+          get :new, params: params
           expect(response.body).to include('<option value="">')
         end
       end
@@ -68,7 +68,7 @@ RSpec.describe TransfersController do
         let(:user) { member_admin.user }
 
         it 'finds all accounts in the organization as sources' do
-          get :new, params
+          get :new, params: params
 
           expect(response.body).to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\"><option selected=\"selected\" value=\"#{member_admin.account.id}\">#{member_admin.member_uid} Member #{member_admin}</option>")
           expect(response.body).to include("<option value=\"#{test_organization.account.id}\">#{test_organization.id} Organization #{test_organization}</option></select>")
@@ -77,7 +77,7 @@ RSpec.describe TransfersController do
 
       context 'when the user is not admin of the current organization' do
         it 'does not assign :sources' do
-          get :new, params
+          get :new, params: params
           expect(response.body)
             .not_to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\">")
         end
@@ -93,18 +93,18 @@ RSpec.describe TransfersController do
       end
 
       it 'finds the accountable' do
-        get :new, params
+        get :new, params: params
         expect(response.body)
           .to include("<a href=\"/organizations/#{test_organization.id}\">#{test_organization}</a>")
       end
 
       it 'finds the destination account' do
-        get :new, params
+        get :new, params: params
         expect(response.body).to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{test_organization.account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       it 'builds a transfer with the id of the destination' do
-        get :new, params
+        get :new, params: params
         expect(response.body)
           .to include("<input class=\"hidden form-control form-control\" type=\"hidden\" value=\"#{test_organization.account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
@@ -113,11 +113,11 @@ RSpec.describe TransfersController do
         let(:user) { member_admin.user }
 
         it 'renders the page successfully' do
-          expect(get :new, params).to be_ok
+          expect(get :new, params: params).to be_ok
         end
 
         it 'finds the transfer source' do
-          get :new, params
+          get :new, params: params
 
           expect(response.body).to include("<select id=\"select2-time\" class=\"form-control\" name=\"transfer[source]\"><option selected=\"selected\" value=\"#{member_admin.account.id}\">#{member_admin.member_uid} Member #{member_admin}</option>")
           expect(response.body).to include("<option value=\"#{test_organization.account.id}\">#{test_organization.id} Organization #{test_organization}</option></select>")
@@ -129,7 +129,7 @@ RSpec.describe TransfersController do
         let(:offer) { Fabricate(:offer, organization: test_organization) }
 
         it 'finds the transfer offer' do
-          get :new, params.merge(offer: offer.id)
+          get :new, params: params.merge(offer: offer.id)
           expect(response.body).to include("<h3>#{offer}</h3>")
         end
       end
@@ -142,11 +142,11 @@ RSpec.describe TransfersController do
     context 'with valid params' do
       context 'with an admin user logged' do
         subject(:post_create) do
-          post 'create', transfer: {
+          post 'create', params: { transfer: {
             source: member_giver.account.id,
             destination: member_taker.account.id,
             amount: 5
-          }
+          } }
         end
 
         let(:user) { member_admin.user }
@@ -174,10 +174,10 @@ RSpec.describe TransfersController do
 
       context 'with a regular user logged' do
         subject(:post_create) do
-          post 'create', transfer: {
+          post 'create', params: { transfer: {
             destination: member_taker.account.id,
             amount: 5
-          }
+          } }
         end
 
         let(:user) { member_giver.user }
@@ -216,9 +216,9 @@ RSpec.describe TransfersController do
         request.env["HTTP_REFERER"] = referer
       end
 
-      it 'does not create any Transfer and redirects to :back if the amount is 0' do
+      it 'does not create any Transfer and redirects to back if the amount is 0' do
         expect {
-          post(:create, transfer: { amount: 0, destination: member_taker.account.id })
+          post(:create, params: { transfer: { amount: 0, destination: member_taker.account.id } })
         }.not_to change(Transfer, :count)
 
         expect(response).to redirect_to(referer)

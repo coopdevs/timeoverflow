@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20190412163011) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.hstore   "name_translations"
+    t.jsonb    "name_translations"
   end
 
   create_table "device_tokens", force: :cascade do |t|

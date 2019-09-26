@@ -16,7 +16,7 @@ RSpec.describe ApplicationController do
       new_locale = (I18n.available_locales - [original_locale]).sample
 
       expect do
-        get :switch_lang, locale: new_locale
+        get :switch_lang, params: { locale: new_locale }
       end.to change(I18n, :locale).from(original_locale).to(new_locale)
 
       expect(response).to redirect_to(root_path)

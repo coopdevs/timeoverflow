@@ -6,7 +6,7 @@
 # The Account may also be flagged, if needed, when the balance overflows
 # some set limits
 #
-class Account < ActiveRecord::Base
+class Account < ApplicationRecord
   belongs_to :accountable, polymorphic: true
   belongs_to :organization, inverse_of: :all_accounts
   has_many :movements
@@ -18,7 +18,7 @@ class Account < ActiveRecord::Base
   def update_balance
     new_balance = movements.sum(:amount)
     self.balance = new_balance
-    self.flagged = !within_allowed_limits? if balance_changed?
+    self.flagged = !within_allowed_limits? if saved_change_to_balance?
     save
   end
 

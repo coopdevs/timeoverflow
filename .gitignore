@@ -33,11 +33,10 @@ rerun.txt
 pickle-email-*.html
 timeoverflow_development
 timeoverflow_test
-
+.byebug_history
 .env
 .DS_Store
 .idea/
-sgemset
 
 # Ignore .vagrant folder with images
 .vagrant

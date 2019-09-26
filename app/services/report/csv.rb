@@ -2,7 +2,7 @@ require "csv"
 
 module Report
   module CSV
-    MIME_TYPE = Mime::CSV
+    MIME_TYPE = Mime[:pdf]
 
     def self.run(headers, rows)
       ::CSV.generate do |csv|

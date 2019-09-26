@@ -7,7 +7,7 @@ RSpec.describe OrganizationsController do
 
   describe 'GET #show' do
     it 'displays the organization page' do
-      get 'show', id: organization.id
+      get 'show', params: { id: organization.id }
 
       expect(assigns(:organization)).to eq(organization)
       expect(response.status).to eq(200)
@@ -28,7 +28,7 @@ RSpec.describe OrganizationsController do
       login(member.user)
 
       expect {
-        post :create, organization: { name: 'New cool organization' }
+        post :create, params: { organization: { name: 'New cool organization' } }
       }.not_to change { Organization.count }
     end
   end
@@ -40,7 +40,7 @@ RSpec.describe OrganizationsController do
       it 'allows to update organization' do
         login(member.user)
 
-        post :update, id: organization.id, organization: { name: 'New org name' }
+        post :update, params: { id: organization.id, organization: { name: 'New org name' } }
 
         organization.reload
         expect(organization.name).to eq('New org name')
@@ -49,7 +49,7 @@ RSpec.describe OrganizationsController do
 
     context 'without a logged user' do
       it 'does not allow to update organization' do
-        post :update, id: organization.id, organization: { name: 'New org name' }
+        post :update, params: { id: organization.id, organization: { name: 'New org name' } }
 
         expect(response).to redirect_to(root_path)
         expect(flash[:error]).to eq('You are not authorized to perform this action.')
@@ -61,7 +61,7 @@ RSpec.describe OrganizationsController do
     before { login(user) }
 
     it 'stores the given organization as current organization in session' do
-      post 'set_current', id: organization.id
+      post 'set_current', params: { id: organization.id }
 
       expect(session[:current_organization_id]).to eq(organization.id)
     end
