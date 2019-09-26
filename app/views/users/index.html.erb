@@ -11,7 +11,7 @@
     <div class="col-md-12">
       <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
         <div class="form-group">
-          <%= f.search_field :user_username_or_user_email_or_member_uid_search_contains, class: "form-control form-control--search-input" %>
+          <%= f.search_field :user_username_or_user_email_or_member_uid_search_contains, class: "form-control form-control--search-input", placeholder: t('global.search') %>
           <button class="btn-icon" type="submit">
           <i class="material-icons search-icon" title="<%= t 'global.search' %>">search</i>          
           </button>
