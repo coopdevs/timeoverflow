@@ -1,5 +1,5 @@
 module Report
-  module PDF
+  module Pdf
     MIME_TYPE = Mime[:pdf]
 
     def self.run(headers, rows)
