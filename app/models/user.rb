@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  include LazyRecoverable
-
   devise *[
     :database_authenticatable,
     :recoverable,

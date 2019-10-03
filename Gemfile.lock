@@ -107,7 +107,6 @@ GEM
     concurrent-ruby (1.1.5)
     connection_pool (2.2.1)
     crass (1.0.4)
-    dalli (2.7.2)
     database_cleaner (1.6.2)
     debug_inspector (0.0.3)
     devise (4.5.0)
@@ -405,7 +404,6 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.1)
   capybara (~> 3.15)
   coffee-rails
-  dalli
   database_cleaner (= 1.6.2)
   devise (~> 4.5.0)
   dotenv-rails (~> 2.7.1)
