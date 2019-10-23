@@ -1,17 +1,19 @@
 require "spec_helper"
 
 RSpec.describe InquiriesController do
-  let (:test_organization) { Fabricate(:organization) }
-  let (:member) { Fabricate(:member, organization: test_organization) }
-  let (:another_member) { Fabricate(:member, organization: test_organization) }
-  let (:test_category) { Fabricate(:category) }
-  let! (:inquiry) do
+  let(:test_organization) { Fabricate(:organization) }
+  let(:member) { Fabricate(:member, organization: test_organization) }
+  let(:another_member) { Fabricate(:member, organization: test_organization) }
+  let(:test_category) { Fabricate(:category) }
+  let!(:inquiry) do
     Fabricate(:inquiry,
               user: member.user,
               organization: test_organization,
               category: test_category)
   end
+  
   include_context "stub browser locale"
+  
   before { set_browser_locale("ca") }
 
   describe "GET #index" do
@@ -27,7 +29,7 @@ RSpec.describe InquiriesController do
 
   describe "GET #show" do
     context "with valid params" do
-      context "with a logged user" do
+      context "with a logged user" do  
         it "assigns the requested inquiry to @inquiry" do
           login(another_member.user)
 
@@ -40,10 +42,10 @@ RSpec.describe InquiriesController do
 
   describe "POST #create" do
     context "with valid params" do
-      context "with a logged user" do
+      context "with a logged user" do  
         it "creates a new inquiry" do
           login(another_member.user)
-
+          
           expect do
             post "create", inquiry: { user: another_member.user,
                                       category_id: test_category.id,
@@ -57,16 +59,14 @@ RSpec.describe InquiriesController do
   describe "PUT #update" do
     context "with valid params" do
       context "with a logged user" do
+        before { login(another_member.user) }
+        
         it "located the requested @inquiry" do
-          login(member.user)
-
           put "update", id: inquiry.id, inquiry: Fabricate.to_params(:inquiry)
           expect(assigns(:inquiry)).to eq(inquiry)
         end
 
         it "changes @inquiry's attributes" do
-          login(member.user)
-
           put "update",
               id: inquiry.id,
               inquiry: Fabricate.to_params(:inquiry,
@@ -84,9 +84,9 @@ RSpec.describe InquiriesController do
     end
 
     context "with invalid params" do
-      context "with a logged user" do
+      context "with a logged user" do        
         it "does not change @inquiry's attributes" do
-          login(member.user)
+          login(another_member.user)
 
           put :update,
               id: inquiry.id,
@@ -103,9 +103,9 @@ RSpec.describe InquiriesController do
   end
 
   describe "DELETE destroy" do
+    before { login(another_member.user) }
+    
     it "toggle active field" do
-      login(member.user)
-
       delete :destroy, id: inquiry.id
 
       inquiry.reload
@@ -113,8 +113,6 @@ RSpec.describe InquiriesController do
     end
 
     it "redirects to inquiries#index" do
-      login(member.user)
-
       delete :destroy, id: inquiry.id
       expect(response).to redirect_to inquiries_url
     end
