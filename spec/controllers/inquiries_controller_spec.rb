@@ -59,7 +59,7 @@ RSpec.describe InquiriesController do
   describe "PUT #update" do
     context "with valid params" do
       context "with a logged user" do
-        before { login(another_member.user) }
+        before { login(member.user) }
         
         it "located the requested @inquiry" do
           put "update", id: inquiry.id, inquiry: Fabricate.to_params(:inquiry)
@@ -86,7 +86,7 @@ RSpec.describe InquiriesController do
     context "with invalid params" do
       context "with a logged user" do        
         it "does not change @inquiry's attributes" do
-          login(another_member.user)
+          login(member.user)
 
           put :update,
               id: inquiry.id,
@@ -103,7 +103,7 @@ RSpec.describe InquiriesController do
   end
 
   describe "DELETE destroy" do
-    before { login(another_member.user) }
+    before { login(member.user) }
     
     it "toggle active field" do
       delete :destroy, id: inquiry.id
