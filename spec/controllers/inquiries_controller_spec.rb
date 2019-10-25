@@ -29,7 +29,7 @@ RSpec.describe InquiriesController do
 
   describe "GET #show" do
     context "with valid params" do
-      context "with a logged user" do  
+      context "with a logged user" do
         it "assigns the requested inquiry to @inquiry" do
           login(another_member.user)
 
@@ -45,7 +45,6 @@ RSpec.describe InquiriesController do
       context "with a logged user" do  
         it "creates a new inquiry" do
           login(another_member.user)
-          
           expect do
             post "create", inquiry: { user: another_member.user,
                                       category_id: test_category.id,
