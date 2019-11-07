@@ -106,7 +106,7 @@ GEM
     columnize (0.9.0)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.1)
-    crass (1.0.4)
+    crass (1.0.5)
     dalli (2.7.2)
     database_cleaner (1.6.2)
     debug_inspector (0.0.3)
@@ -196,7 +196,7 @@ GEM
       i18n (~> 0.4)
       json
       rest-client
-    loofah (2.2.3)
+    loofah (2.3.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -213,7 +213,7 @@ GEM
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
     netrc (0.11.0)
-    nokogiri (1.10.3)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     parallel (1.12.1)
