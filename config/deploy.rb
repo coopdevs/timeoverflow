@@ -57,3 +57,14 @@ namespace :deploy do
     end
   end
 end
+
+task "deploy:db:load" do
+  on primary :db do
+    within release_path do
+      with rails_env: fetch(:rails_env) do
+        execute :rake, "db:schema:load"
+      end
+    end
+  end
+end
+before "deploy:migrate", "deploy:db:load" if ENV["COLD"]
