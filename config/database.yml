@@ -33,3 +33,7 @@ staging:
 production:
   # Set DATABASE_URL environment variable
   url: <%= ENV['DATABASE_URL'] %>
+
+next:
+  <<: *defaults
+  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_production') %>

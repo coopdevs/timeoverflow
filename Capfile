@@ -18,7 +18,7 @@ require 'capistrano/deploy'
 require 'capistrano/rails'
 
 stage = ARGV.first
-if stage == 'staging' # Sorry, production is not ready yet
+if stage != 'production' # Sorry, production is not ready yet
   require 'capistrano/rbenv'
 end
 
