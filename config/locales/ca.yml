@@ -347,8 +347,8 @@ ca:
   mailers_globals:
     footer:
       text: "%{organization_name} en"
-      text_donation: L'associació ADBdT ofereix TimeOverflow de forma gratuïta als Bancs de Temps. Amb una donació de %{href} pots ajudar a mantenir i millorar la plataforma.
-      text_donation_link: 1€ al mes
+      text_donation: L'associació ADBdT ofereix TimeOverflow de forma gratuïta als Bancs de Temps. Si vols contribuir a mantenir i millorar la plataforma, %{href}.
+      text_donation_link: visita aquesta web
   multi_transfers:
     multi_transfers: 'Transferències múltiples '
     step:

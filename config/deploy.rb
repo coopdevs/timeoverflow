@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.4.0'
+lock '3.4.1'
 
 set :application, 'timeoverflow'
 set :repo_url, 'git@github.com:coopdevs/timeoverflow.git'
@@ -57,3 +57,14 @@ namespace :deploy do
     end
   end
 end
+
+task "deploy:db:load" do
+  on primary :db do
+    within release_path do
+      with rails_env: fetch(:rails_env) do
+        execute :rake, "db:schema:load"
+      end
+    end
+  end
+end
+before "deploy:migrate", "deploy:db:load" if ENV["COLD"]
