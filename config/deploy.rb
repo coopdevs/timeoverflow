@@ -47,13 +47,20 @@ set :linked_dirs, fetch(:linked_dirs, []).push(
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :deploy do
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+namespace :unicorn do
+  desc 'reload Unicorn'
+  task :reload do
+    on roles(:app) do
+      execute "sudo systemctl reload timeoverflow"
+    end
+  end
+end
+
+namespace :sidekiq do
+  desc 'reload Sidekiq'
+  task :restart do
+    on roles(:app) do
+      execute "sudo systemctl restart sidekiq"
     end
   end
 end
@@ -67,4 +74,8 @@ task "deploy:db:load" do
     end
   end
 end
+
 before "deploy:migrate", "deploy:db:load" if ENV["COLD"]
+
+after "deploy:finishing", "unicorn:reload"
+after "deploy:finishing", "sidekiq:restart"
