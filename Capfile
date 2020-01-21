@@ -16,11 +16,7 @@ require 'capistrano/deploy'
 #   https://github.com/capistrano/passenger
 #
 require 'capistrano/rails'
-
-stage = ARGV.first
-if stage == 'staging' # Sorry, production is not ready yet
-  require 'capistrano/rbenv'
-end
+require 'capistrano/rbenv'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }

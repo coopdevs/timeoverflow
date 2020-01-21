@@ -16,7 +16,7 @@ defaults: &defaults
   collation: 'es_ES.UTF-8'
   ctype: 'es_ES.UTF-8'
   template: 'template0'
-  encoding: utf8
+  encoding: 'UTF8'
 
 development:
   <<: *defaults
@@ -31,5 +31,9 @@ staging:
   database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_staging') %>
 
 production:
-  # Set DATABASE_URL environment variable
-  url: <%= ENV['DATABASE_URL'] %>
+  <<: *defaults
+  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_production') %>
+
+next:
+  <<: *defaults
+  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_production') %>

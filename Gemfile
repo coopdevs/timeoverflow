@@ -8,9 +8,8 @@ gem "rdiscount"
 gem 'activeadmin', '~> 1.2.1'
 gem 'has_scope'
 gem 'pundit', '~> 2.0.0'
-gem 'pg', '0.17.1'
+gem 'pg', '0.21.0'
 gem 'hstore_translate'
-gem 'dalli'
 gem 'devise', '~> 4.5.0'
 gem "http_accept_language", '~> 2.1.1'
 gem 'unicorn'
@@ -57,8 +56,8 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1.2'
   gem 'fabrication', '~> 2.20'
   gem 'faker', '~> 1.9'
-  gem 'capybara', '~> 3.13'
-  gem 'selenium-webdriver', '~> 3.141'
-  gem 'webdrivers', '~> 3.0'
-  gem 'simplecov', '~> 0.16.1', require: false
+  gem 'capybara', '~> 3.15'
+  gem 'selenium-webdriver', '~> 3.142'
+  gem 'webdrivers', '~> 4.1.2'
+  gem 'simplecov', '~> 0.17', require: false
 end

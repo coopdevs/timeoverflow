@@ -22,9 +22,9 @@ eu:
         created_at: Sortua
         updated_at: Eguneratua
       inquiry:
-        is_group: 
+        is_group: Taldeko eskaera
       offer:
-        is_group: 
+        is_group: Taldeko eskaintza
       organization:
         address: Helbidea
         city: Herria
@@ -73,7 +73,7 @@ eu:
         notifications: Jasotako jakinarazpenak
         organization: Antolaketa
         phone: Telefono zenbakia
-        push_notifications: 
+        push_notifications: Mugikorrean mezuak jaso
         registration_date: Erregistratze eguna
         registration_number: Erabiltzaile kodea
         superadmin: Sistemaren administratzailea
@@ -97,7 +97,7 @@ eu:
     models:
       category:
         one: Gaia
-        other: ''
+        other: gaiak
       comment:
         one: Azalpena
         other: Azalpenak
@@ -235,10 +235,10 @@ eu:
         edit_user: Erabiltzailea editatu
         help_current_password: Zure pasahitza behar dugu aldaketak baieztatzeko
         help_password: Aldatu nahi ez baduzu, utzi zurian.
-        password: 
-        password_confirmation: 
-        unhappy: 
-        update: 
+        password: Pasahitza
+        password_confirmation: Pasahitza baieztatu
+        unhappy: Triste
+        update: Eguneratu
       new:
         password: Pasahitza
         password_confirmation: Pasahitza baieztatu.
@@ -275,8 +275,10 @@ eu:
       unlocked: Zure kontua desblokeatua izan da. Sartu jarraitzeko.
   errors:
     internal_server_error:
-      description: 
-      title: 
+      description: |-
+        Kontsulta honetan oker bat dagoela dirudi. Mezu bat bidali dugu , teknikarien sailera eta ahal bezain laxter konpontzen saiatuko gara.
+        Sentitzen dugu.
+      title: Zerbitzariaren barne akatsa.
     messages:
       already_confirmed: Baieztatu izan da , Saiatu sartzen.
       confirmation_period_expired: "%{period}an baieztatzea beharrezkoa da. Eskatu berria."
@@ -287,8 +289,8 @@ eu:
         one: Arazo batek ez du uzten  %{resource} gorde dadin.
         other: "%{count} arazok ez dute uzten %{resource}  gorde dadin"
     not_found:
-      description: 
-      title: 
+      description: Bila zabiltzan orrialdea ez da exititzen. Helbidea  oker idatzia egon daiteke edo  orrialdea lekuz aldatua izan da.
+      title: Ez da topatu
   global:
     add_new: Berria sortu
     all: Dena.
@@ -298,18 +300,21 @@ eu:
     balance: Balantzea
     cancel_membership: Betirako borratu
     contact_details: Kontaktuaren datuak
+    create: Sortu
     date: Eguna.
     delete: Ezabatu
     demote: Ohiko erabiltzaile  biurtu
     edit: Aldaketak egin
     filter: Iragazkia
+    from: tik
     give_time: Denbora eman
-    home: 
+    home: Etxea
     information: Informazioa
     locales_header: Hizkuntza aldatu
     member_count: Erabiltzaile zenbakia
     more: 'Gehiago ikusi  '
     movements: Mugimenduak
+    next: Hurrengoa
     promote: Administratzaile bihurtu
     reason: Arrazoia
     required_field: Derrigorrez bete beharrekoa
@@ -320,6 +325,7 @@ eu:
     statistics: Estatistika
     table:
       actions: Ekintzak
+    to: ra
   inquiries:
     edit:
       submit: Eskaera aldatu
@@ -337,20 +343,39 @@ eu:
     report:
       report_title: TXOSTENA
   locales:
-    ar: 
+    ar: Arabiera
     ca: Katalanera
-    en: Inglesa
+    en: Ingelesa
     es: Espainiera
-    eu: 
-    fr: 
-    gl: 
-    pt: 
-    pt-BR: Portugesa
+    eu: Euskara
+    fr: Fantsesa
+    gl: Galiziera
+    pt: Portugalera
+    pt-BR: Portugaldarra
   mailers_globals:
     footer:
       text: "%{organization_name}"
       text_donation: ADBdt elkarteak TimeOverflow zerbitzua , dohainik eskaintzen die denbora bankuei. Plataforma mantendu eta hobetzeko lagun dezakete  %{href} ko emari batekin.
       text_donation_link: hilean €1ekin
+  multi_transfers:
+    multi_transfers: Transferentzia ugariak
+    step:
+      confirm:
+        description: Aldaketak baieztatu
+        type_of_transfer: Transferentzia motak
+      select_type:
+        description: Transferentzia mota hautatu
+      set_params:
+        description: Transferitzera zoazen kantitatea zehaztu, iradokizunak , eskaintzak ( baldin badaude)
+      set_source:
+        description: Denbora  transferituko duzun  kontua, aukeratu.
+      set_target:
+        description: Denbora jasoko duten kontuak aukera itzazu.
+    success: Arrakastatsu eginiko transferentziak
+    types:
+      many_to_one: Ugaritik bakarrera
+      one_to_many: Bakarretik ugarira
+      one_to_one: Banaka
   offers:
     edit:
       submit: Eskaintza aldatu
@@ -381,12 +406,12 @@ eu:
       contact_information: kontaktuaren informazioa
   pages:
     about:
-      app-mobile: 
-      app-mobile-text: 
+      app-mobile: Mugikorrerako Appa
+      app-mobile-text: TimeOverflow  mugikorrean erabiltzeko Appa prest da<br /> App hau Bartzelonako udaletxearen laguntzari esker sortu da .  %{impulsem_link} (Barcelona Activa) 2017-2018 programaren bitartez.
       banner-button: Sartzea eskatzen du
       banner-subtitle: Martxan jartzen edo erakustaldi bat eginez lagunduko dizugu
       banner-title: Denbora banku bat al zara?
-      donate-link: 
+      donate-link: Eman ezazu hilean €1
       donate-text: komunitate askori babesteko asmotan ADBdt elkarteak , TimeOverflow plataforma eskaintzen die Denbora Banku guztiei. Hausnar ezazu %{donate_link}  mantenu eta berritze lanetan laguntzeko.
       donate-title: Laguntzan parte hartu
       empower-adbdt: ADBdt
@@ -409,7 +434,7 @@ eu:
       feature-text-4: Denbora bankuko partaideek, sistemaren bidez, beste partaideekin kontatua egin dezakete
       feature-text-5: Eskaintza eta eskariak argitaratu
       feature-text-6: Beste erabiltzaileei orduak ordaindu
-      impulsem-link: 
+      impulsem-link: Impulsem el que fas
       subtitle: TimeOverflow librea dohakoa eta kolaborazio bidezkoa da
       title: Denbora  bankuek  diseinaturiko softwarea,
       title2: Denbora bankuentzat
@@ -439,8 +464,8 @@ eu:
         gender:
           female: Emakumea
           male: Gizona
-          other:
-          prefer_not_to_answer:
+          others: Beste
+          prefer_not_to_answer: 
     required:
       mark: "*"
       text: Beharrezkoa
@@ -524,7 +549,7 @@ eu:
       create: Erabiltzaile berria sortu
       manage_warning: 
       manage_warning_angular: " {{username}} erabiltzailearen onurak, aldatuko diztuzu"
-      members: 
+      members: Kideak
       user_created: "%{uid} %{name} erabiltzailea gorde da"
     member_card:
       active_ago: 

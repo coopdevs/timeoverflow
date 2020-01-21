@@ -1,0 +1,19 @@
+<h1><%= t('multi_transfers.multi_transfers') %></h1>
+
+<%= form_tag(@form_action, method: :post, id: :multi_transfer) do %>
+  <% @steps.each do |step| %>
+    <div class="<%= 'hide' unless step == @step_name %>">
+      <%= render "multi_transfers/steps/#{step}" %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-md-offset-10">
+          <button class="btn btn-primary btn-lg"><%= @is_last_step ? t('global.create') : t('global.next') %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
