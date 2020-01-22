@@ -1,1 +1,1 @@
-server 'metal.timeoverflow.org', user: 'timeoverflow', roles: %w(app db web)
+server 'www.timeoverflow.org', user: 'timeoverflow', roles: %w(app db web)
