@@ -16,4 +16,4 @@ Visita [la guía para empezar a desarrollar para timeoverflow](https://github.co
 
 - Modifica las traducciones directamente en el proyecto [coopdevs/timeoverflow](https://www.localeapp.com/projects/10031) en Locale.
 - **Eso es todo!**
-- El mantenedor obtendrá las nuevas tradcciones del proyecto de Locale y las publicará en Github.
+- El mantenedor obtendrá las nuevas traducciones del proyecto de Locale y las publicará en Github.
