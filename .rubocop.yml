@@ -5,9 +5,6 @@ AllCops:
 Naming/AccessorMethodName:
   Enabled: false
 
-Rails/ActionFilter:
-  Enabled: false
-
 Style/Alias:
   Enabled: false
 
@@ -55,9 +52,6 @@ Style/CommentAnnotation:
   Enabled: false
 
 Metrics/CyclomaticComplexity:
-  Enabled: false
-
-Rails/Delegate:
   Enabled: false
 
 Style/Documentation:
@@ -114,7 +108,7 @@ Style/LambdaCall:
 Style/LineEndConcatenation:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 80
 
 Metrics/MethodLength:
@@ -154,7 +148,7 @@ Style/PerlBackrefs:
   Enabled: false
 
 Naming/PredicateName:
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
 
 Style/Proc:
@@ -220,7 +214,7 @@ Lint/DeprecatedClassMethods:
 Lint/ElseLayout:
   Enabled: false
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 
 Lint/LiteralInInterpolation:

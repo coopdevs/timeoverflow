@@ -13,7 +13,7 @@ class OrganizationNotifierJob < ActiveJob::Base
     Organization.all.find_each do |org|
       posts = org.posts.active.of_active_members.from_last_week
       if posts.present?
-        OrganizationNotifier.recent_posts(posts).deliver_later
+        OrganizationNotifier.recent_posts(posts).deliver_now
       end
     end
   end
