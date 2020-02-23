@@ -6,10 +6,6 @@ RSpec.describe TransfersController do
   let (:member_giver) { Fabricate(:member, organization: test_organization) }
   let (:member_taker) { Fabricate(:member, organization: test_organization) }
 
-  include_context 'stub browser locale'
-
-  before { set_browser_locale('ca') }
-
   describe '#new' do
     let(:user) { member_giver.user }
 

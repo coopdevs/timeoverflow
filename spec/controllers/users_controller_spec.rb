@@ -34,9 +34,6 @@ RSpec.describe UsersController do
   let!(:wrong_user) { wrong_email_member.user }
   let!(:empty_email_user) { empty_email_member.user }
 
-  include_context "stub browser locale"
-  before { set_browser_locale("ca") }
-
   describe "GET #index" do
     before { login(user) }
 

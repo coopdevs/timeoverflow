@@ -58,6 +58,6 @@ group :test do
   gem 'faker', '~> 1.9'
   gem 'capybara', '~> 3.15'
   gem 'selenium-webdriver', '~> 3.142'
-  gem 'webdrivers', '~> 4.1.2'
+  gem 'webdrivers', '~> 4.2.0'
   gem 'simplecov', '~> 0.17', require: false
 end
