@@ -65,6 +65,9 @@ Style/Documentation:
 Layout/DotPosition:
   EnforcedStyle: trailing
 
+Layout/ConditionPosition:
+  Enabled: false
+
 Style/DoubleNegation:
   Enabled: false
 
@@ -81,9 +84,6 @@ Style/EvenOdd:
   Enabled: false
 
 Naming/FileName:
-  Enabled: false
-
-Lint/FlipFlop:
   Enabled: false
 
 Style/FormatString:
@@ -113,7 +113,7 @@ Style/LambdaCall:
 Style/LineEndConcatenation:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 80
 
 Metrics/MethodLength:
@@ -153,7 +153,7 @@ Style/PerlBackrefs:
   Enabled: false
 
 Naming/PredicateName:
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
 
 Style/Proc:
@@ -213,16 +213,13 @@ Lint/AmbiguousRegexpLiteral:
 Lint/AssignmentInCondition:
   Enabled: false
 
-Layout/ConditionPosition:
-  Enabled: false
-
 Lint/DeprecatedClassMethods:
   Enabled: false
 
 Lint/ElseLayout:
   Enabled: false
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 
 Lint/LiteralInInterpolation:
@@ -241,4 +238,7 @@ Lint/UnderscorePrefixedVariableName:
   Enabled: false
 
 Lint/Void:
+  Enabled: false
+
+Lint/FlipFlop:
   Enabled: false

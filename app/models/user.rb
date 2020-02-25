@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  include LazyRecoverable
-
   devise *[
     :database_authenticatable,
     :recoverable,

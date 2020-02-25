@@ -12,7 +12,7 @@ RSpec.feature 'sign in' do
       sign_in_with(user.email, user.password)
 
       expect(Capybara.current_session.driver.browser.manage.cookie_named('_timeoverflow_session')).to be_truthy
-      expect(page).to have_no_content(I18n.t('devise.failure.invalid'))
+      expect(page).not_to have_selector('.alert-danger')
     end
   end
 
@@ -20,7 +20,7 @@ RSpec.feature 'sign in' do
     it 'shows an error' do
       sign_in_with(user.email, 'wrong_password')
 
-      expect(page).to have_content(I18n.t('devise.failure.invalid'))
+      expect(page).to have_selector('.alert-danger')
     end
   end
 end

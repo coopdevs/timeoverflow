@@ -15,29 +15,6 @@
 /log/*.log
 /tmp
 
-*.rbc
-*.sassc
-.sass-cache
-capybara-*.html
-.rspec
-/.bundle
-/vendor/bundle
-/log/*
-/tmp/*
-/db/*.sqlite3
-/public/system/*
-/coverage/
-/spec/tmp/*
-**.orig
-rerun.txt
-pickle-email-*.html
-timeoverflow_development
-timeoverflow_test
-.byebug_history
-.env
-.DS_Store
-.idea/
-
 # Ignore .vagrant folder with images
 .vagrant
 .metadata
@@ -46,4 +23,20 @@ timeoverflow_test
 .tags
 tags
 
+# Misc
+*.rbc
+*.sassc
+**.orig
+.sass-cache
+capybara-*.html
+.rspec
+/vendor/bundle
+/coverage/
+/spec/tmp/*
+timeoverflow_development
+timeoverflow_test
+.byebug_history
+.env
+.DS_Store
+.idea/
 .localeapp
