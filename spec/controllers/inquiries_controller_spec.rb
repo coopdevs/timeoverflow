@@ -11,10 +11,6 @@ RSpec.describe InquiriesController do
               organization: test_organization,
               category: test_category)
   end
-  
-  include_context "stub browser locale"
-  
-  before { set_browser_locale("ca") }
 
   describe "GET #index" do
     context "with a logged user" do
@@ -42,7 +38,7 @@ RSpec.describe InquiriesController do
 
   describe "POST #create" do
     context "with valid params" do
-      context "with a logged user" do  
+      context "with a logged user" do
         it "creates a new inquiry" do
           login(another_member.user)
           expect do
@@ -59,7 +55,7 @@ RSpec.describe InquiriesController do
     context "with valid params" do
       context "with a logged user" do
         before { login(member.user) }
-        
+
         it "located the requested @inquiry" do
           put "update", id: inquiry.id, inquiry: Fabricate.to_params(:inquiry)
           expect(assigns(:inquiry)).to eq(inquiry)
@@ -83,7 +79,7 @@ RSpec.describe InquiriesController do
     end
 
     context "with invalid params" do
-      context "with a logged user" do        
+      context "with a logged user" do
         it "does not change @inquiry's attributes" do
           login(member.user)
 
@@ -103,7 +99,7 @@ RSpec.describe InquiriesController do
 
   describe "DELETE destroy" do
     before { login(member.user) }
-    
+
     it "toggle active field" do
       delete :destroy, id: inquiry.id
 

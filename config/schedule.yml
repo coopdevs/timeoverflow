@@ -2,3 +2,7 @@ send_push_notifications_job:
   cron: '*/5 * * * *'
   class: 'SendPushNotificationsJob'
   queue: cron
+weekly_digest:
+  cron: '0 9 * * 1' # every monday at 9am
+  class: 'OrganizationNotifierJob'
+  queue: cron

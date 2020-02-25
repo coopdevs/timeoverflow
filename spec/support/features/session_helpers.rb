@@ -4,7 +4,7 @@ module Features
       visit '/login'
       fill_in 'user_email', with: email
       fill_in 'user_password', with: password
-      click_button I18n.t('application.login_form.button')
+      find('input[type=submit]').click
     end
   end
 end
