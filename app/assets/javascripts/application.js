@@ -1,7 +1,4 @@
-//= require give_time
-//= require tags
-//= require mobile_app_libs
-//= require multi_select2
+//= require_tree ./application
 
 $(document).on('click', 'a[data-popup]', function(event) {
   event.preventDefault();
