@@ -102,7 +102,7 @@ GEM
     coffee-script-source (1.8.0)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.1)
-    crass (1.0.4)
+    crass (1.0.6)
     database_cleaner (1.6.2)
     debug_inspector (0.0.3)
     devise (4.5.0)
@@ -195,7 +195,7 @@ GEM
       i18n (~> 0.4)
       json
       rest-client
-    loofah (2.2.3)
+    loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
