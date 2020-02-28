@@ -5,16 +5,6 @@ RSpec.describe OrganizationsController do
   let(:member) { Fabricate(:member, organization: organization) }
   let(:user) { member.user }
 
-  describe 'GET #show' do
-    it 'displays the organization page' do
-      get 'show', id: organization.id
-
-      expect(assigns(:organization)).to eq(organization)
-      expect(response.status).to eq(200)
-      expect(response.body).to include(organization.name)
-    end
-  end
-
   describe 'GET #index' do
     it 'populates and array of organizations' do
       get :index
