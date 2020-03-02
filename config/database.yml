@@ -33,7 +33,3 @@ staging:
 production:
   <<: *defaults
   database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_production') %>
-
-next:
-  <<: *defaults
-  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_production') %>

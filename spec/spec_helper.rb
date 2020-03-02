@@ -139,14 +139,12 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.before(:each, type: :feature) do
+    I18n.locale = I18n.default_locale
+  end
+
   # Controllers must render the content of the view
   config.render_views
-end
-
-RSpec.shared_context 'stub browser locale' do
-  def set_browser_locale(locale)
-    request.env["HTTP_ACCEPT_LANGUAGE"] = "#{locale}"
-  end
 end
 
 RSpec.configure(&:infer_spec_type_from_file_location!)

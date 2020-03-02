@@ -14,10 +14,6 @@ RSpec.describe MultiTransfersController, type: :controller do
               category: test_category)
   end
 
-  include_context "stub browser locale"
-
-  before { set_browser_locale("en") }
-
   it 'creates one to many transfers' do
     expect do
       login(admin.user)

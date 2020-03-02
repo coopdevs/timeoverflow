@@ -34,9 +34,6 @@ RSpec.describe UsersController do
   let!(:wrong_user) { wrong_email_member.user }
   let!(:empty_email_user) { empty_email_member.user }
 
-  include_context "stub browser locale"
-  before { set_browser_locale("ca") }
-
   describe "GET #index" do
     before { login(user) }
 
@@ -147,6 +144,17 @@ RSpec.describe UsersController do
 
           expect(assigns(:members).pluck(:user_id).last).to eq(admin_user.id)
         end
+      end
+    end
+
+    context 'when searching' do
+      it 'allows to search by phone' do
+        user = Fabricate(:user, phone: 123456789)
+        member = Fabricate(:member, user: user, organization: test_organization)
+
+        get :manage, q: { user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_uid_search_contains: 123456789 }
+
+        expect(assigns(:members)).to include(member)
       end
     end
   end

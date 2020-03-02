@@ -5,9 +5,6 @@ AllCops:
 Naming/AccessorMethodName:
   Enabled: false
 
-Rails/ActionFilter:
-  Enabled: false
-
 Style/Alias:
   Enabled: false
 
@@ -57,14 +54,14 @@ Style/CommentAnnotation:
 Metrics/CyclomaticComplexity:
   Enabled: false
 
-Rails/Delegate:
-  Enabled: false
-
 Style/Documentation:
   Enabled: false
 
 Layout/DotPosition:
   EnforcedStyle: trailing
+
+Layout/ConditionPosition:
+  Enabled: false
 
 Style/DoubleNegation:
   Enabled: false
@@ -82,9 +79,6 @@ Style/EvenOdd:
   Enabled: false
 
 Naming/FileName:
-  Enabled: false
-
-Style/FlipFlop:
   Enabled: false
 
 Style/FormatString:
@@ -114,7 +108,7 @@ Style/LambdaCall:
 Style/LineEndConcatenation:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 80
 
 Metrics/MethodLength:
@@ -154,7 +148,7 @@ Style/PerlBackrefs:
   Enabled: false
 
 Naming/PredicateName:
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
 
 Style/Proc:
@@ -187,16 +181,16 @@ Style/StringLiterals:
 Style/VariableInterpolation:
   Enabled: false
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
   Enabled: false
 
 Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/TrivialAccessors:
-  Enabled: false
-
-Style/VariableInterpolation:
   Enabled: false
 
 Style/WhenThen:
@@ -214,16 +208,13 @@ Lint/AmbiguousRegexpLiteral:
 Lint/AssignmentInCondition:
   Enabled: false
 
-Lint/ConditionPosition:
-  Enabled: false
-
 Lint/DeprecatedClassMethods:
   Enabled: false
 
 Lint/ElseLayout:
   Enabled: false
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 
 Lint/LiteralInInterpolation:
@@ -242,4 +233,7 @@ Lint/UnderscorePrefixedVariableName:
   Enabled: false
 
 Lint/Void:
+  Enabled: false
+
+Lint/FlipFlop:
   Enabled: false
