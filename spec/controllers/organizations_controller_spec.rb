@@ -13,6 +13,15 @@ RSpec.describe OrganizationsController do
     end
   end
 
+  describe 'GET #show' do
+    it 'displays the organization page' do  
+      get 'show', id: organization.id
+
+      expect(assigns(:organization)).to eq(organization)
+      expect(response.status).to eq(200)
+    end
+  end
+
   describe 'POST #create' do
     it 'only superdamins are authorized create to new organizations' do
       login(member.user)
