@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe 'users/show' do
     let(:test_organization) { Fabricate(:organization) }
@@ -28,7 +28,7 @@ RSpec.describe 'users/show' do
               manager: false)
     end
 
-    let(:offer) { Fabricate(:offer, user: member.user, organization: organization) }
+    let(:offer) { Fabricate(:offer, user: member.user) }
 
     let(:destination_account) { Fabricate(:account) }
 
@@ -37,10 +37,6 @@ RSpec.describe 'users/show' do
     let!(:admin_user) { member_admin.user }
     let!(:wrong_user) { wrong_email_member.user }
     let!(:empty_email_user) { empty_email_member.user }
-    
-    
-
-    before { login(user) }
 
     it 'renders a link to new_transfer_path for their individual offers' do
         assign :offer, offer
@@ -50,8 +46,8 @@ RSpec.describe 'users/show' do
         expect(rendered).to have_link(
             t('users.show.give_time'),
             href: new_transfer_path(
-                id: offer.user.id
-                destination_account_id: destination_account.id
+                id: offer.user.id,
+                destination_account_id: destination_account.id,
                 offer: offer.id
             )
         )
