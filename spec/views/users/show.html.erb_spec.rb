@@ -38,15 +38,23 @@ RSpec.describe 'users/show' do
     let!(:wrong_user) { wrong_email_member.user }
     let!(:empty_email_user) { empty_email_member.user }
 
+
+    let(:logged_user) { Fabricate(:user) }
+    before do
+        allow(view).to receive(:admin?).and_return(false)
+    end
+    
+
     it 'renders a link to new_transfer_path for their individual offers' do
         assign :offer, offer
         assign :destination_account, destination_account
+        allow(view).to receive(:current_user).and_return(logged_user)
         render template: 'users/show'
 
         expect(rendered).to have_link(
             t('users.show.give_time'),
             href: new_transfer_path(
-                id: offer.user.id,
+                id: user.id,
                 destination_account_id: destination_account.id,
                 offer: offer.id
             )
