@@ -51,7 +51,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "rspec-rails", '~> 3.8.2'
+  gem "rspec-rails", '~> 3.9'
   gem "database_cleaner", '1.6.2'
   gem 'shoulda-matchers', '~> 3.1.2'
   gem 'fabrication', '~> 2.20'
