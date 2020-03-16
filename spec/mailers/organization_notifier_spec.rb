@@ -24,7 +24,7 @@ RSpec.describe OrganizationNotifier do
     it "to should be null" do
       expect(mail.to).to be_nil
     end
-    it "assigns @organization_name" do
+    it "body contains organization name" do
       expect(mail.body.encoded).to match(test_organization.name)
     end
   end
