@@ -57,5 +57,9 @@ RSpec.describe 'organizations/show' do
     it 'diplays the movements section' do
       expect(rendered).to match t('shared.movements.movements')
     end
+
+    it 'displays the organization page' do
+      expect(rendered).to match(organization.name)
+    end
   end
 end

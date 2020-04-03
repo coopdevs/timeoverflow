@@ -50,7 +50,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 4.0.0.beta3'
+  gem 'rspec-rails', '~> 4.0.0'
   gem 'rails-controller-testing'
   gem 'database_cleaner', '~> 1.7.0'
   gem 'shoulda-matchers', '~> 4.1.2'

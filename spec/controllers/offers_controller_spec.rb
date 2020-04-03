@@ -100,11 +100,6 @@ RSpec.describe OffersController, type: :controller do
               get :show, params: { id: offer.id }
               expect(assigns(:destination_account)).to eq(member.account)
             end
-
-            it 'displays the offer\'s user details' do
-              get :show, params: { id: offer.id }
-              expect(response.body).to include(offer.user.email)
-            end
           end
         end
       end
@@ -118,11 +113,6 @@ RSpec.describe OffersController, type: :controller do
             allow(controller).to receive(:@current_organization).and_return(another_organization)
           end
 
-          it 'displays the offer\'s user details' do
-            get :show, params: { id: offer.id }
-            expect(response.body).to include(offer.user.email)
-          end
-
           it 'sets the offer\'s organization as user\'s current organization' do
             get :show, params: { id: offer.id }
             expect(session[:current_organization_id]).to eq(offer.organization_id)
@@ -132,26 +122,10 @@ RSpec.describe OffersController, type: :controller do
       end
     end
 
-    context 'when the user is not a member of the organization where the offer is published' do
-      let(:another_user) { Fabricate(:user) }
-
-      before { login(another_user) }
-
-      it 'doesn\'t display the offer\'s user details' do
-        get :show, params: { id: offer.id }
-        expect(response.body).to_not include(offer.user.email)
-      end
-    end
-
     context 'when the user is not logged in' do
       it 'assigns the requested offer to @offer' do
         get :show, params: { id: offer.id }
         expect(assigns(:offer)).to eq(offer)
-      end
-
-      it 'doesn\'t display the offer\'s user details' do
-        get :show, params: { id: offer.id }
-        expect(response.body).to_not include(offer.user.email)
       end
     end
   end

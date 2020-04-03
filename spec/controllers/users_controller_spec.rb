@@ -146,6 +146,17 @@ RSpec.describe UsersController do
         end
       end
     end
+
+    context 'when searching' do
+      it 'allows to search by phone' do
+        user = Fabricate(:user, phone: 123456789)
+        member = Fabricate(:member, user: user, organization: test_organization)
+
+        get :manage, q: { user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_uid_search_contains: 123456789 }
+
+        expect(assigns(:members)).to include(member)
+      end
+    end
   end
 
   describe "GET #show" do
