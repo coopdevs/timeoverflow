@@ -32,7 +32,7 @@ Rails.application.configure do
   # config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -49,6 +49,10 @@ Rails.application.configure do
 
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
+
+  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+  # yet still be able to expire them through the digest params.
+  config.assets.digest = true
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large

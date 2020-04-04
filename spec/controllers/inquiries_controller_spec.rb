@@ -11,8 +11,6 @@ RSpec.describe InquiriesController do
               organization: test_organization,
               category: test_category)
   end
-  include_context "stub browser locale"
-  before { set_browser_locale("ca") }
 
   describe "GET #index" do
     context "with a logged user" do
