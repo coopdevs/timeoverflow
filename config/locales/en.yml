@@ -347,8 +347,8 @@ en:
   mailers_globals:
     footer:
       text: "%{organization_name} from"
-      text_donation: The ADBdT association offers TimeOverflow for free to Time Banks. With a donation of %{href} you can help maintain and improve the platform.
-      text_donation_link: 1€ a month
+      text_donation: The ADBdT association offers TimeOverflow for free to Time Banks. If you want to help maintain and improve the platform %{href}.
+      text_donation_link: visit this website
   offers:
     edit:
       submit: Change offer
