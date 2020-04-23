@@ -100,11 +100,6 @@ RSpec.describe OffersController, type: :controller do
               get :show, id: offer.id
               expect(assigns(:destination_account)).to eq(member.account)
             end
-
-            it 'displays the offer\'s user details' do
-              get :show, id: offer.id
-              expect(response.body).to include(offer.user.email)
-            end
           end
         end
       end
@@ -116,11 +111,6 @@ RSpec.describe OffersController, type: :controller do
           before do
             Fabricate(:member, user: another_member.user, organization: another_organization)
             allow(controller).to receive(:@current_organization).and_return(another_organization)
-          end
-
-          it 'displays the offer\'s user details' do
-            get :show, id: offer.id
-            expect(response.body).to include(offer.user.email)
           end
 
           it 'sets the offer\'s organization as user\'s current organization' do
@@ -136,11 +126,6 @@ RSpec.describe OffersController, type: :controller do
       let(:another_user) { Fabricate(:user) }
 
       before { login(another_user) }
-
-      it 'doesn\'t display the offer\'s user details' do
-        get :show, id: offer.id
-        expect(response.body).to_not include(offer.user.email)
-      end
     end
 
     context 'when the user is not logged in' do
@@ -148,11 +133,7 @@ RSpec.describe OffersController, type: :controller do
         get :show, id: offer.id
         expect(assigns(:offer)).to eq(offer)
       end
-
-      it 'doesn\'t display the offer\'s user details' do
-        get :show, id: offer.id
-        expect(response.body).to_not include(offer.user.email)
-      end
+      
     end
   end
 
