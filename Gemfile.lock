@@ -118,7 +118,7 @@ GEM
     dotenv-rails (2.7.1)
       dotenv (= 2.7.1)
       railties (>= 3.2, < 6.1)
-    erubi (1.7.1)
+    erubi (1.9.0)
     erubis (2.7.0)
     et-orbi (1.1.7)
       tzinfo
