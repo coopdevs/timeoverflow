@@ -13,10 +13,11 @@
     <tbody>
       <% @posts.each do |cat, ps| %>
         <tr class="success">
-          <td colspan="2"><h4><%= cat || '—' %></h4></td>
+          <td colspan="3"><h4><%= cat || '—' %></h4></td>
         </tr>
         <% ps.each do |post| %>
           <tr>
+            <td style='max-width:5%'><%= post.id %></td>
             <td><strong><%= post.title %></strong></td>
             <td><%= "#{post.user} (#{post.member_uid})" %></td>
           </tr>
