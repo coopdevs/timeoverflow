@@ -7,8 +7,8 @@
 # some set limits
 #
 class Account < ApplicationRecord
-  belongs_to :accountable, polymorphic: true
-  belongs_to :organization, inverse_of: :all_accounts
+  belongs_to :accountable, polymorphic: true, optional: true
+  belongs_to :organization, inverse_of: :all_accounts, optional: true
   has_many :movements
 
   before_create :add_organization

@@ -152,7 +152,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user, phone: 123456789)
         member = Fabricate(:member, user: user, organization: test_organization)
 
-        get :manage, q: { user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_uid_search_contains: 123456789 }
+        get :manage, params: { q: { user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_uid_search_contains: 123456789 } }
 
         expect(assigns(:members)).to include(member)
       end

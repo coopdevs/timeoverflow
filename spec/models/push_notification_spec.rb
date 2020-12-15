@@ -6,8 +6,6 @@ RSpec.describe PushNotification do
   let!(:push_notification) { described_class.new(device_token: device_token) }
 
   describe 'Validations' do
-    it { is_expected.to validate_presence_of(:event) }
-    it { is_expected.to validate_presence_of(:device_token) }
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:body) }
   end

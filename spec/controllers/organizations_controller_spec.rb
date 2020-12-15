@@ -15,7 +15,7 @@ RSpec.describe OrganizationsController do
 
   describe 'GET #show' do
     it 'displays the organization page' do
-      get 'show', id: organization.id
+      get 'show', params: { id: organization.id }
 
       expect(assigns(:organization)).to eq(organization)
       expect(response.status).to eq(200)

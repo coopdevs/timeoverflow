@@ -32,8 +32,8 @@ gem 'select2-rails'
 
 group :development do
   gem 'listen', '~> 3.2.0'
-  gem 'rubocop', '~> 0.80.0', require: false
-  gem 'rubocop-rails', require: false
+  gem 'rubocop', '~> 1.6', require: false
+  gem 'rubocop-rails', '~> 2.9', require: false
   gem 'web-console', '~> 4.0.1'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
