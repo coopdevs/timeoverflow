@@ -16,8 +16,8 @@ RSpec.describe TagsController do
 
     it "returns http success" do
       get 'index'
-      expect(response).to be_success
-      expect(response.content_type).to eq("application/json")
+      expect(response).to have_http_status(:ok)
+      expect(response.content_type).to match("application/json")
     end
 
     it "with no search term, returns all tags" do

@@ -8,7 +8,7 @@ gem 'rdiscount', '~> 2.2.0.1'
 gem 'activeadmin', '~> 2.6.1'
 gem 'has_scope', '~> 0.7.2'
 gem 'pundit', '~> 2.1.0'
-gem 'pg', '~> 1.1.4'
+gem 'pg', '~> 1.2.1'
 gem 'json_translate', '~> 4.0.0'
 gem 'devise', '~> 4.7.1'
 gem "http_accept_language", '~> 2.1.1'
@@ -25,10 +25,10 @@ gem 'sidekiq-cron', '~> 1.1.0'
 
 # Assets
 gem 'jquery-rails', '~> 4.3.5'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.4'
 gem 'sassc-rails', '~> 2.1.2'
 gem 'uglifier', '~> 4.2.0'
-gem 'select2-rails'
+gem 'select2-rails', '~> 4.0.13'
 
 group :development do
   gem 'listen', '~> 3.2.0'

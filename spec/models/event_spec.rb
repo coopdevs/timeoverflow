@@ -5,7 +5,7 @@ RSpec.describe Event do
     it { is_expected.to validate_presence_of(:action) }
     it do
       is_expected.to define_enum_for(:action)
-        .with([:created, :updated])
+        .with_values([:created, :updated])
     end
 
     describe '#resource_presence validation' do

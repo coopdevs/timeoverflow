@@ -6,8 +6,8 @@
 class Movement < ApplicationRecord
   attr_readonly :account_id, :transfer_id, :amount
 
-  belongs_to :account
-  belongs_to :transfer
+  belongs_to :account, optional: true
+  belongs_to :transfer, optional: true
   has_one :other_side,
           (->(self_)  { where ["NOT movements.id = #{self_.id}"] }),
           through: :transfer,
