@@ -118,19 +118,6 @@ GEM
     dotenv-rails (2.7.1)
       dotenv (= 2.7.1)
       railties (>= 3.2, < 6.1)
-    elasticsearch (1.0.8)
-      elasticsearch-api (= 1.0.7)
-      elasticsearch-transport (= 1.0.7)
-    elasticsearch-api (1.0.7)
-      multi_json
-    elasticsearch-model (0.1.7)
-      activesupport (> 3)
-      elasticsearch (> 0.4)
-      hashie
-    elasticsearch-rails (0.1.7)
-    elasticsearch-transport (1.0.7)
-      faraday
-      multi_json
     erubi (1.9.0)
     erubis (2.7.0)
     et-orbi (1.1.7)
@@ -139,8 +126,6 @@ GEM
     fabrication (2.20.1)
     faker (1.9.6)
       i18n (>= 0.7)
-    faraday (0.9.1)
-      multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
@@ -154,7 +139,6 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
-    hashie (3.4.1)
     hstore_translate (1.0.0)
       activerecord (>= 3.1.0)
     http-cookie (1.0.3)
@@ -207,7 +191,6 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.0)
     multi_json (1.11.2)
-    multipart-post (2.0.0)
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
@@ -220,6 +203,9 @@ GEM
       ast (~> 2.4.0)
     pdf-core (0.7.0)
     pg (0.21.0)
+    pg_search (2.1.4)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
@@ -411,8 +397,6 @@ DEPENDENCIES
   database_cleaner (= 1.6.2)
   devise (~> 4.7.1)
   dotenv-rails (~> 2.7.1)
-  elasticsearch-model
-  elasticsearch-rails
   fabrication (~> 2.20)
   faker (~> 1.9)
   has_scope
@@ -423,6 +407,7 @@ DEPENDENCIES
   letter_opener (= 1.4.1)
   localeapp (= 2.1.1)
   pg (= 0.21.0)
+  pg_search (= 2.1.4)
   prawn (~> 2.2.0)
   prawn-table (~> 0.2.2)
   pundit (~> 2.0.0)

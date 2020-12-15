@@ -4,31 +4,22 @@ class PostsController <  ApplicationController
   has_scope :by_organization, as: :org
 
   def index
-    if (query = params[:q]).present?
-      # match query term on fields
-      must = [ { multi_match: {
-          query: query.to_s,
-          type: "phrase_prefix",
-          fields: ["title^2", "description", "tags^2"]
-        } } ]
-      if current_organization.present?
-        # filter by organization
-        must << { term: { organization_id: { value: current_organization.id } } }
-      end
-      posts = model.__elasticsearch__.search(
-        query: {
-          bool: {
-            must: must
-          }
-        }
-      ).page(params[:page]).per(25).records
-    else
-      posts = model.active.of_active_members
-      if current_organization.present?
-        posts = posts.merge(current_organization.posts)
-      end
-      posts = apply_scopes(posts).page(params[:page]).per(25)
+    context = model.active.of_active_members
+    if current_organization.present?
+      context = context.where(
+        organization_id: current_organization.id
+      )
     end
+
+    posts = if (query = params[:q]).present?
+              context.
+                search_by_query(query).
+                page(params[:page]).
+                per(25)
+            else
+              apply_scopes(context).page(params[:page]).per(25)
+            end
+
     instance_variable_set("@#{resources}", posts)
   end
 
