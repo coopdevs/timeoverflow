@@ -22,11 +22,6 @@ class MembersController < ApplicationController
   def toggle_active
     find_member
     @member.toggle(:active).save!
-    if @member.active
-      @member.add_all_posts_to_index
-    else
-      @member.remove_all_posts_from_index
-    end
 
     respond_to do |format|
       format.json { head :ok }

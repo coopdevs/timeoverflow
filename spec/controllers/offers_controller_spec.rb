@@ -12,46 +12,111 @@ RSpec.describe OffersController, type: :controller do
               organization: organization,
               category: test_category)
   end
+  let!(:other_offer) do
+    Fabricate(:offer,
+              user: another_member.user,
+              organization: organization,
+              category: test_category)
+  end
 
   describe "GET #index" do
     context "with a logged user" do
       it "populates an array of offers" do
         login(another_member.user)
 
-        get "index"
-        expect(assigns(:offers)).to eq([offer])
+        get :index
+
+        expect(assigns(:offers)).to eq([other_offer, offer])
+      end
+
+      context "when one offer is not active" do
+        before do
+          other_offer.active = false
+          other_offer.save!
+        end
+
+        it "only returns active offers" do
+          login(another_member.user)
+
+          get :index
+
+          expect(assigns(:offers)).to eq([offer])
+        end
+      end
+
+      context "when one offer's user is not active" do
+        before do
+          member.active = false
+          member.save!
+        end
+
+        it "only returns offers from active users" do
+          login(another_member.user)
+
+          get :index
+
+          expect(assigns(:offers)).to eq([other_offer])
+        end
       end
     end
     context "with another organization" do
       it "skips the original org's offers" do
         login(yet_another_member.user)
-        get "index"
+
+        get :index
+
         expect(assigns(:offers)).to eq([])
       end
     end
   end
 
   describe "GET #index (search)" do
+    before { login(another_member.user) }
     before do
-      Offer.__elasticsearch__.create_index!(force: true)
-
-      # Import any already existing model into the index
-      # for instance the ones that have been created in upper
-      # `let!` or `before` blocks
-      Offer.__elasticsearch__.import(force: true, refresh: true)
+     offer.title = "Queridos compañeros"
+     offer.save!
     end
 
     it "populates an array of offers" do
-      login(another_member.user)
+      get :index, q: 'compañeros'
 
-      get "index", params: { q: offer.title.split(/\s/).first }
+      expect(assigns(:offers)).to eq([offer])
+    end
 
-      # @offers is a wrapper from Elasticsearch. It's iterator-equivalent to
-      # the underlying query from the database.
-      expect(assigns(:offers)).to be_a Elasticsearch::Model::Response::Records
-      expect(assigns(:offers).size).to eq 1
-      expect(assigns(:offers)[0]).to eq offer
-      expect(assigns(:offers).to_a).to eq([offer])
+    it "allows to search by partial word" do
+      get :index, q: 'compañ'
+
+      expect(assigns(:offers)).to eq([offer])
+    end
+
+    context "when one offer is not active" do
+      before do
+        other_offer.active = false
+        other_offer.save!
+      end
+
+      it "only returns active offers" do
+        login(another_member.user)
+
+        get :index
+
+        expect(assigns(:offers)).to eq([offer])
+      end
+    end
+
+    context "when one offer's user is not active" do
+      before do
+        member.active = false
+        member.save!
+      end
+
+      it "only returns offers from active users" do
+        login(another_member.user)
+
+        get :index
+
+        expect(assigns(:offers)).to eq([other_offer])
+      end
     end
   end
 
@@ -67,7 +132,7 @@ RSpec.describe OffersController, type: :controller do
           end
 
           it 'renders the 404 page' do
-            get :show, params: { id: offer.id }
+            get :show, id: offer.id
             expect(response.status).to eq(404)
           end
         end
@@ -80,24 +145,24 @@ RSpec.describe OffersController, type: :controller do
             end
 
             it 'renders the 404 page' do
-              get :show, params: { id: offer.id }
+              get :show, id: offer.id
               expect(response.status).to eq(404)
             end
           end
 
           context 'and the user that created the offer is active' do
             it 'renders a successful response' do
-              get :show, params: { id: offer.id }
+              get :show, id: offer.id
               expect(response.status).to eq(200)
             end
 
             it 'assigns the requested offer to @offer' do
-              get :show, params: { id: offer.id }
+              get :show, id: offer.id
               expect(assigns(:offer)).to eq(offer)
             end
 
             it 'assigns the account destination of the transfer' do
-              get :show, params: { id: offer.id }
+              get :show, id: offer.id
               expect(assigns(:destination_account)).to eq(member.account)
             end
           end
@@ -114,7 +179,7 @@ RSpec.describe OffersController, type: :controller do
           end
 
           it 'sets the offer\'s organization as user\'s current organization' do
-            get :show, params: { id: offer.id }
+            get :show, id: offer.id
             expect(session[:current_organization_id]).to eq(offer.organization_id)
             expect(assigns(:current_organization)).to eq(offer.organization)
           end
@@ -122,11 +187,18 @@ RSpec.describe OffersController, type: :controller do
       end
     end
 
+    context 'when the user is not a member of the organization where the offer is published' do
+      let(:another_user) { Fabricate(:user) }
+
+      before { login(another_user) }
+    end
+
     context 'when the user is not logged in' do
       it 'assigns the requested offer to @offer' do
-        get :show, params: { id: offer.id }
+        get :show, id: offer.id
         expect(assigns(:offer)).to eq(offer)
       end
+
     end
   end
 
@@ -137,9 +209,9 @@ RSpec.describe OffersController, type: :controller do
           login(another_member.user)
 
           expect do
-            post "create", params: { offer: { user: another_member.user,
+            post "create", offer: { user: another_member.user,
                                     category_id: test_category,
-                                    title: "New title" } }
+                                    title: "New title" }
           end.to change(Offer, :count).by(1)
         end
       end
@@ -152,18 +224,20 @@ RSpec.describe OffersController, type: :controller do
         it "located the requested @offer" do
           login(member.user)
 
-          put "update", params: { id: offer.id, offer: Fabricate.to_params(:offer) }
+          put "update", id: offer.id, offer: Fabricate.to_params(:offer)
           expect(assigns(:offer)).to eq(offer)
         end
 
         it "changes @offer's attributes" do
           login(member.user)
 
-          put "update", params: { id: offer.id, offer: Fabricate.to_params(:offer,
+          put "update",
+              id: offer.id,
+              offer: Fabricate.to_params(:offer,
                                          user: member,
                                          title: "New title",
                                          description: "New description",
-                                         tag_list: ["foo"]) }
+                                         tag_list: ["foo"])
 
           offer.reload
           expect(offer.title).to eq("New title")
@@ -178,10 +252,12 @@ RSpec.describe OffersController, type: :controller do
         it "does not change @offer's attributes" do
           login(member.user)
 
-          put :update, params: { id: offer.id, offer: Fabricate.to_params(:offer,
+          put :update,
+              id: offer.id,
+              offer: Fabricate.to_params(:offer,
                                          user: nil,
                                          title: "New title",
-                                         description: "New description") }
+                                         description: "New description")
 
           expect(offer.title).not_to eq("New title")
           expect(offer.description).not_to eq("New description")
@@ -194,7 +270,7 @@ RSpec.describe OffersController, type: :controller do
     it "toggle active field" do
       login(member.user)
 
-      delete :destroy, params: { id: offer.id }
+      delete :destroy, id: offer.id
 
       offer.reload
       expect(offer.active).to be false
@@ -203,7 +279,7 @@ RSpec.describe OffersController, type: :controller do
     it "redirects to offers#index" do
       login(member.user)
 
-      delete :destroy, params: { id: offer.id }
+      delete :destroy, id: offer.id
       expect(response).to redirect_to offers_url
     end
   end

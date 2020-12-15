@@ -27,5 +27,9 @@ module Timeoverflow
 
     # ActiveJob configuration
     config.active_job.queue_adapter = :sidekiq
+
+    # Use db/structure.sql with SQL as schema format
+    # This is needed to store in the schema SQL statements not covered by the ORM
+    config.active_record.schema_format = :sql
   end
 end
