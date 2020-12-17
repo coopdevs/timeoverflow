@@ -13,7 +13,7 @@ env:
     - CC_TEST_REPORTER_ID=025bc15a0fa9afa52d86ee24fea845cf1d363f48a466bcf2cef8ab80c29acb28
 before_script:
   - psql -c 'create database timeoverflow_test;' -U postgres
-  - bundle exec rails db:setup
+  - psql -U postgres -q -d timeoverflow_test -f db/structure.sql
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
