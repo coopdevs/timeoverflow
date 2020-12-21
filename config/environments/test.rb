@@ -49,4 +49,7 @@ Rails.application.configure do
 
   # ActiveJob configuration
   config.active_job.queue_adapter = :test
+
+  # Allow local ip for Acceptance tests
+  config.hosts << "127.0.0.1"
 end
