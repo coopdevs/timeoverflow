@@ -51,12 +51,12 @@ end
 group :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'rails-controller-testing'
-  gem 'database_cleaner', '~> 1.7.0'
-  gem 'shoulda-matchers', '~> 4.1.2'
+  gem 'database_cleaner', '~> 1.8.5'
+  gem 'shoulda-matchers', '~> 4.4.0'
   gem 'fabrication', '~> 2.20'
   gem 'faker', '~> 1.9'
   gem 'capybara', '~> 3.29'
   gem 'selenium-webdriver', '~> 3.142'
-  gem 'webdrivers', '~> 4.2.0'
+  gem 'webdrivers', '~> 4.4.0'
   gem 'simplecov', '~> 0.17', require: false
 end
