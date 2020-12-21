@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe PagesController do
   describe '#show' do
     it 'renders the page successfully' do

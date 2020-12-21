@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe TransfersController do
   let (:test_organization) { Fabricate(:organization) }
   let (:member_admin) { Fabricate(:member, organization: test_organization, manager: true) }

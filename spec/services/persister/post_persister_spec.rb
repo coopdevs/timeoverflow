@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe Persister::PostPersister do
   let(:organization) { Fabricate(:organization) }
   let(:user) { Fabricate(:user) }

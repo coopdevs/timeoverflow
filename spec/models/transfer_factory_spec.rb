@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe TransferFactory do
   let(:transfer_factory) do
     described_class.new(

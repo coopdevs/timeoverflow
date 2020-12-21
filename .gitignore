@@ -29,7 +29,6 @@ tags
 **.orig
 .sass-cache
 capybara-*.html
-.rspec
 /vendor/bundle
 /coverage/
 /spec/tmp/*

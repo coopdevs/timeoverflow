@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe ApplicationController do
   describe '#switch_lang' do
     let(:original_locale) { I18n.locale }

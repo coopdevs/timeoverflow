@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe PushNotifications::EventNotifierFactory do
   describe '#build' do
     let(:user) { Fabricate.build(:user) }

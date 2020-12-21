@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe TagsController do
   let (:tags) { %w(foo bar baz) }
   let (:organization) { Fabricate(:organization) }

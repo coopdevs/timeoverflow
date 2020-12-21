@@ -1,5 +1,3 @@
-require "spec_helper"
-
 RSpec.describe MultiTransfersController, type: :controller do
   let(:organization) { Fabricate(:organization) }
   let(:admin) { Fabricate(:member, organization: organization, manager: true) }

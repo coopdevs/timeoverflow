@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe 'offers/show' do
   let(:organization) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: organization) }

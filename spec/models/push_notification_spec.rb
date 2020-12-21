@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe PushNotification do
   let!(:event) { Fabricate.build(:event) }
   let!(:device_token) { Fabricate.build(:device_token, token: 'token') }

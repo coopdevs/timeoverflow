@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe Operations::Transfers::ManyToOne do
   let(:source_accounts) { 5.times.map { Fabricate(:account) } }
   let(:destination_account) { Fabricate(:account) }
