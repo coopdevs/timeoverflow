@@ -31,5 +31,8 @@ module Timeoverflow
     # Use db/structure.sql with SQL as schema format
     # This is needed to store in the schema SQL statements not covered by the ORM
     config.active_record.schema_format = :sql
+
+    # Guard against DNS rebinding attacks by permitting hosts
+    config.hosts << /timeoverflow\.(local|org)/
   end
 end
