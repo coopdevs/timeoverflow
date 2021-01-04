@@ -223,7 +223,6 @@ html {
   padding: 20px;
 }
 
-
 .row.exports {
   padding: 10px;
 }
@@ -590,7 +589,7 @@ label[required]::after{
     display: none;
   }
 
-  .header, .banner, .empower, .donate {
+  .header, .banner, .section-block {
     text-align: center;
   }
 
@@ -672,7 +671,7 @@ label[required]::after{
     }
   }
 
-  .empower, .donate {
+  .section-block {
     h2 {
       margin-bottom: 4rem;
     }
