@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.feature 'sign out' do
   let!(:user) do
     Fabricate(

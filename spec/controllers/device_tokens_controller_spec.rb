@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe DeviceTokensController do
   let (:organization) { Fabricate(:organization) }
   let (:member) { Fabricate(:member, organization: organization) }
@@ -18,7 +16,7 @@ RSpec.describe DeviceTokensController do
         login(member.user)
 
         expect do
-          post :create, token: 'xxx'
+          post :create, params: { token: 'xxx' }
         end.to change(DeviceToken, :count).by(1)
       end
     end

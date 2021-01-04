@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe PushNotifications::Broadcast do
   describe '#send_notifications' do
     let(:user) { Fabricate(:user) }

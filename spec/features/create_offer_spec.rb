@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.feature 'create offer' do
   let(:user) do
     user = Fabricate(

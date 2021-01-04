@@ -1,4 +1,4 @@
-class Member < ActiveRecord::Base
+class Member < ApplicationRecord
   # Cast the member_uid integer to a string to allow pg ILIKE search (from Ransack *_contains)
   ransacker :member_uid_search do
     Arel.sql("member_uid::text")

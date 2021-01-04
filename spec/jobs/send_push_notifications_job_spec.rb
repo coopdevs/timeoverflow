@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe SendPushNotificationsJob, type: :job do
   describe '#perform' do
     let(:user) { Fabricate(:user) }

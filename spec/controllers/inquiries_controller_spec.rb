@@ -1,11 +1,9 @@
-require "spec_helper"
-
 RSpec.describe InquiriesController do
-  let(:test_organization) { Fabricate(:organization) }
-  let(:member) { Fabricate(:member, organization: test_organization) }
-  let(:another_member) { Fabricate(:member, organization: test_organization) }
-  let(:test_category) { Fabricate(:category) }
-  let!(:inquiry) do
+  let (:test_organization) { Fabricate(:organization) }
+  let (:member) { Fabricate(:member, organization: test_organization) }
+  let (:another_member) { Fabricate(:member, organization: test_organization) }
+  let (:test_category) { Fabricate(:category) }
+  let! (:inquiry) do
     Fabricate(:inquiry,
               user: member.user,
               organization: test_organization,
@@ -29,7 +27,7 @@ RSpec.describe InquiriesController do
         it "assigns the requested inquiry to @inquiry" do
           login(another_member.user)
 
-          get "show", id: inquiry.id
+          get "show", params: { id: inquiry.id }
           expect(assigns(:inquiry)).to eq(inquiry)
         end
       end
@@ -41,10 +39,11 @@ RSpec.describe InquiriesController do
       context "with a logged user" do
         it "creates a new inquiry" do
           login(another_member.user)
+
           expect do
-            post "create", inquiry: { user: another_member.user,
+            post "create", params: { inquiry: { user: another_member.user,
                                       category_id: test_category.id,
-                                      title: "New title" }
+                                      title: "New title" }}
           end.to change(Inquiry, :count).by(1)
         end
       end
@@ -54,21 +53,24 @@ RSpec.describe InquiriesController do
   describe "PUT #update" do
     context "with valid params" do
       context "with a logged user" do
-        before { login(member.user) }
-
         it "located the requested @inquiry" do
-          put "update", id: inquiry.id, inquiry: Fabricate.to_params(:inquiry)
+          login(member.user)
+
+          put "update", params: { id: inquiry.id, inquiry: Fabricate.to_params(:inquiry) }
           expect(assigns(:inquiry)).to eq(inquiry)
         end
 
         it "changes @inquiry's attributes" do
-          put "update",
-              id: inquiry.id,
-              inquiry: Fabricate.to_params(:inquiry,
-                                           user: member,
-                                           title: "New title",
-                                           description: "New description",
-                                           tag_list: ["foo"])
+          login(member.user)
+
+          put "update", params: {
+            id: inquiry.id,
+            inquiry: Fabricate.to_params(:inquiry,
+                                         user: member,
+                                         title: "New title",
+                                         description: "New description",
+                                         tag_list: ["foo"])
+          }
 
           inquiry.reload
           expect(inquiry.title).to eq("New title")
@@ -83,12 +85,13 @@ RSpec.describe InquiriesController do
         it "does not change @inquiry's attributes" do
           login(member.user)
 
-          put :update,
-              id: inquiry.id,
-              inquiry: Fabricate.to_params(:inquiry,
-                                           user: nil,
-                                           title: "New title",
-                                           description: "New description")
+          put :update, params: {
+            id: inquiry.id,
+            inquiry: Fabricate.to_params(:inquiry,
+                                         user: nil,
+                                         title: "New title",
+                                         description: "New description")
+          }
 
           expect(inquiry.title).not_to eq("New title")
           expect(inquiry.description).not_to eq("New description")
@@ -98,17 +101,19 @@ RSpec.describe InquiriesController do
   end
 
   describe "DELETE destroy" do
-    before { login(member.user) }
-
     it "toggle active field" do
-      delete :destroy, id: inquiry.id
+      login(member.user)
+
+      delete :destroy, params: { id: inquiry.id }
 
       inquiry.reload
       expect(inquiry.active).to be false
     end
 
     it "redirects to inquiries#index" do
-      delete :destroy, id: inquiry.id
+      login(member.user)
+
+      delete :destroy, params: { id: inquiry.id }
       expect(response).to redirect_to inquiries_url
     end
   end

@@ -10,10 +10,10 @@
 # Along with the transfer, two movements are created, one in each related
 # account, so the total sum of the system is zero
 #
-class Transfer < ActiveRecord::Base
+class Transfer < ApplicationRecord
   attr_accessor :source, :destination, :amount, :hours, :minutes
 
-  belongs_to :post
+  belongs_to :post, optional: true
   has_many :movements, dependent: :destroy
   has_many :events, dependent: :destroy
 

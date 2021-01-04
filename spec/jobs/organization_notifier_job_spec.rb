@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe OrganizationNotifierJob, type: :job do
   let!(:org) { Fabricate(:organization) }
   let!(:user) { Fabricate(:user, locale: :en, sign_in_count: 1) }

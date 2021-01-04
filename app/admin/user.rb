@@ -1,5 +1,3 @@
-# coding: utf-8
-
 ActiveAdmin.register User do
   action_item :upload_csv, only: :index do
     link_to I18n.t("active_admin.users.upload_from_csv"), action: "upload_csv"

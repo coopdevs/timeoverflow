@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe TagsController do
   let (:tags) { %w(foo bar baz) }
   let (:organization) { Fabricate(:organization) }
@@ -16,8 +14,8 @@ RSpec.describe TagsController do
 
     it "returns http success" do
       get 'index'
-      expect(response).to be_success
-      expect(response.content_type).to eq("application/json")
+      expect(response).to have_http_status(:ok)
+      expect(response.content_type).to match("application/json")
     end
 
     it "with no search term, returns all tags" do
@@ -26,7 +24,7 @@ RSpec.describe TagsController do
     end
 
     it "with search term, returns filtered tags" do
-      get 'index', term: "foo"
+      get 'index', params: { term: "foo" }
       expect(assigns(:all_tags)).to eq(["foo"])
     end
   end

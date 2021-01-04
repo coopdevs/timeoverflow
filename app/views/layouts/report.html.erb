@@ -7,7 +7,6 @@
     <title>
       <%= t('.report_title') %>
     </title>
-    <%= stylesheet_link_tag 'libs', media: 'all' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <link href="/favicon.ico" rel="shortcut icon">
   </head>
@@ -15,8 +14,8 @@
     <div class="container">
       <div class="row exports">
         <%= t 'reports.download' %>
-        <%= link_to 'CSV', url_for(params.merge(format: :csv)) %>
-        <%= link_to 'PDF', url_for(params.merge(format: :pdf)) %>
+        <%= link_to 'CSV', url_for(params.to_unsafe_h.merge(format: :csv)) %>
+        <%= link_to 'PDF', url_for(params.to_unsafe_h.merge(format: :pdf)) %>
       </div>
       <%= yield %>
     </div>

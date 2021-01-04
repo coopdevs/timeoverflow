@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.feature 'sign in' do
   let(:user) do
     user = Fabricate(

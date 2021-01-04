@@ -1,5 +1,3 @@
-require "spec_helper"
-
 RSpec.describe MemberDecorator do
   let(:org) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: org) }

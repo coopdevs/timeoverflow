@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe Operations::Transfers do
   describe 'create' do
     let(:operation) {

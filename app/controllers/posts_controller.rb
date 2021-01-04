@@ -92,7 +92,7 @@ class PostsController <  ApplicationController
     if current_user.manages?(current_organization)
       p.reverse_merge! user_id: current_user.id
     else
-      p.update user_id: current_user.id
+      p.merge! user_id: current_user.id
     end
   end
 

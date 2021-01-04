@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.feature 'time transfer' do
   let(:user) do
     user = Fabricate(

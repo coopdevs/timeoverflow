@@ -1,5 +1,5 @@
 module Report
-  module PDF
+  module Pdf
     class Member
       def initialize(org, collection)
         @collection = collection
@@ -11,11 +11,11 @@ module Report
       end
 
       def mime_type
-        Report::PDF::MIME_TYPE
+        Report::Pdf::MIME_TYPE
       end
 
       def run
-        Report::PDF.run(@decorator.headers, @decorator.rows)
+        Report::Pdf.run(@decorator.headers, @decorator.rows)
       end
     end
   end

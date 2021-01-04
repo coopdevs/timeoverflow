@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   layout "report"
 
@@ -11,11 +11,11 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        report = Report::CSV::Member.new(current_organization, @members)
+        report = Report::Csv::Member.new(current_organization, @members)
         send_data report.run, filename: report.name, type: report.mime_type
       end
       format.pdf do
-        report = Report::PDF::Member.new(current_organization, @members)
+        report = Report::Pdf::Member.new(current_organization, @members)
         send_data report.run, filename: report.name, type: report.mime_type
       end
     end
@@ -35,11 +35,11 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        report = Report::CSV::Post.new(current_organization, @posts, @post_type)
+        report = Report::Csv::Post.new(current_organization, @posts, @post_type)
         send_data report.run, filename: report.name, type: report.mime_type
       end
       format.pdf do
-        report = Report::PDF::Post.new(current_organization, @posts, @post_type)
+        report = Report::Pdf::Post.new(current_organization, @posts, @post_type)
         send_data report.run, filename: report.name, type: report.mime_type
       end
     end

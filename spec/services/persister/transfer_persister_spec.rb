@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe Persister::TransferPersister do
   let(:source_account) { Fabricate(:account) }
   let(:destination_account) { Fabricate(:account) }

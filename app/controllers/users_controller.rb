@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     search_and_load_members current_organization.members.active, { s: 'user_last_sign_in_at DESC' }
@@ -58,10 +58,10 @@ class UsersController < ApplicationController
   private
 
   def search_and_load_members(members_scope, default_search_params)
-    @search = members_scope.ransack(default_search_params.merge(params.fetch(:q, {})))
+    @search = members_scope.ransack(default_search_params.merge(params.to_unsafe_h.fetch(:q, {})))
 
     result = @search.result
-    orders = result.orders.map { |order| order.direction == :asc ? "#{order.to_sql} NULLS FIRST" : "#{order.to_sql} NULLS LAST" }
+    orders = result.order_values.map { |order| order.direction == :asc ? "#{order.to_sql} NULLS FIRST" : "#{order.to_sql} NULLS LAST" }
     result = result.except(:order).order(orders.join(", ")) if orders.count > 0
 
     @members = result.eager_load(:account, :user).page(params[:page]).per(20)

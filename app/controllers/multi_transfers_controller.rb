@@ -23,7 +23,7 @@ class MultiTransfersController < ApplicationController
     operation = Operations::Transfers.create(
       from: params[:from],
       to: params[:to],
-      transfer_params: params[:transfer].to_hash
+      transfer_params: params[:transfer].to_unsafe_h
     )
     operation.perform
   end
