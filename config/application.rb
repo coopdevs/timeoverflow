@@ -34,5 +34,6 @@ module Timeoverflow
 
     # Guard against DNS rebinding attacks by permitting hosts
     config.hosts << /timeoverflow\.(local|org)/
+    config.hosts << "staging.timeoverflow.org"
   end
 end
