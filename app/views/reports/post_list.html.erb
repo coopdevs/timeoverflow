@@ -6,6 +6,7 @@
     </colgroup>
     <thead>
       <tr>
+        <th></th>
         <th><%= @post_type.model_name.human %></th>
         <th><%= User.model_name.human %></th>
       </tr>
@@ -13,10 +14,11 @@
     <tbody>
       <% @posts.each do |cat, ps| %>
         <tr class="success">
-          <td colspan="2"><h4><%= cat || '—' %></h4></td>
+          <td colspan="3"><h4><%= cat || '—' %></h4></td>
         </tr>
         <% ps.each do |post| %>
           <tr>
+            <td><%= post.id %></td>
             <td><strong><%= post.title %></strong></td>
             <td><%= "#{post.user} (#{post.member_uid})" %></td>
           </tr>
