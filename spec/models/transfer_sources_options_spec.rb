@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe TransferSourcesOptions do
   let(:transfer_sources_options) do
     described_class.new(sources)

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe Taggable do
   let(:organization) { Fabricate(:organization) }
 

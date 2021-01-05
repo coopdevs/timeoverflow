@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe PushNotifications::Creator::Post do
   let(:user) { Fabricate(:user) }
   let!(:device_token) { Fabricate(:device_token, user: user, token: 'aloha') }

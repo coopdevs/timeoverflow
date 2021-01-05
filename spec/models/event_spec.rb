@@ -1,11 +1,9 @@
-require 'spec_helper'
-
 RSpec.describe Event do
   describe 'Validations' do
     it { is_expected.to validate_presence_of(:action) }
     it do
       is_expected.to define_enum_for(:action)
-        .with([:created, :updated])
+        .with_values([:created, :updated])
     end
 
     describe '#resource_presence validation' do
@@ -32,9 +30,9 @@ RSpec.describe Event do
   end
 
   describe 'Relations' do
-    it { is_expected.to belong_to(:post) }
-    it { is_expected.to belong_to(:member) }
-    it { is_expected.to belong_to(:transfer) }
+    it { is_expected.to belong_to(:post).optional }
+    it { is_expected.to belong_to(:member).optional }
+    it { is_expected.to belong_to(:transfer).optional }
     it { is_expected.to have_many(:push_notifications) }
 
     it { is_expected.to have_db_column(:post_id) }

@@ -1,13 +1,13 @@
 class DeviceTokensController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     @device_token = DeviceToken.new device_token_params.merge! user_id: current_user.id
 
     if @device_token.save
-      render nothing: true, status: :created
+      head :created
     else
-      render nothing: true, status: :unprocessable_entity
+      head :unprocessable_entity
     end
   end
 

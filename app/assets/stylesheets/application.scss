@@ -1,9 +1,13 @@
-@import "variables";
+/*
+*= require select2
+*/
+
+@import "application/variables";
 @import "bootstrap-sprockets";
-@import "bootstrap-custom";
-@import "to-categories-dropdown";
-@import "to-member-card";
-@import "footer";
+@import "application/bootstrap-custom";
+@import "application/to-categories-dropdown";
+@import "application/to-member-card";
+@import "application/footer";
 
 html {
   font-size: 62.5%;

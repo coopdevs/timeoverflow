@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe ::PushNotifications::EventNotifier::Post do
   let(:user) { Fabricate.build(:user) }
   let(:organization) { Fabricate(:organization) }

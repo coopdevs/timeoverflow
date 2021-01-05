@@ -1,5 +1,3 @@
-require "spec_helper"
-
 RSpec.describe Organization do
   let(:organization) { Fabricate(:organization) }
 

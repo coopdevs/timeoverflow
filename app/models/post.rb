@@ -1,6 +1,6 @@
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
   include Taggable
-  include PgSearch
+  include PgSearch::Model
 
   pg_search_scope :search_by_query,
     against: [:title, :description, :tags],
@@ -16,7 +16,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :category
   belongs_to :user
-  belongs_to :organization
+  belongs_to :organization, optional: true
   has_many :transfers
   has_many :movements, through: :transfers
   has_many :events, dependent: :destroy
@@ -44,8 +44,6 @@ class Post < ActiveRecord::Base
     where(created_at: (1.week.ago.beginning_of_day...DateTime.now.end_of_day))
   }
 
-  validates :user, presence: true
-  validates :category, presence: true
   validates :title, presence: true
 
   def as_indexed_json(*)

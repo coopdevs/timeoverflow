@@ -1,9 +1,9 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   enum action: { created: 0, updated: 1 }
 
-  belongs_to :post
-  belongs_to :member
-  belongs_to :transfer
+  belongs_to :post, optional: true
+  belongs_to :member, optional: true
+  belongs_to :transfer, optional: true
   has_many :push_notifications, dependent: :destroy
 
   validates :action, presence: true

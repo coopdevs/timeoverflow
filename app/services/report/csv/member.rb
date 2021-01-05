@@ -1,5 +1,5 @@
 module Report
-  module CSV
+  module Csv
     class Member
       def initialize(org, collection)
         @collection = collection
@@ -11,11 +11,11 @@ module Report
       end
 
       def mime_type
-        Report::CSV::MIME_TYPE
+        Report::Csv::MIME_TYPE
       end
 
       def run
-        Report::CSV.run(@decorator.headers, @decorator.rows)
+        Report::Csv.run(@decorator.headers, @decorator.rows)
       end
     end
   end

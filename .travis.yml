@@ -11,10 +11,9 @@ env:
   global:
     - DATABASE_URL=postgres://postgres@localhost/timeoverflow_test
     - CC_TEST_REPORTER_ID=025bc15a0fa9afa52d86ee24fea845cf1d363f48a466bcf2cef8ab80c29acb28
-before_install:
-  - gem install bundler:1.17.3
 before_script:
-  - bundle exec rake db:setup
+  - psql -c 'create database timeoverflow_test;' -U postgres
+  - psql -U postgres -q -d timeoverflow_test -f db/structure.sql
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build

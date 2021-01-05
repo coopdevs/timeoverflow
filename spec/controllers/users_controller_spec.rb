@@ -1,5 +1,3 @@
-require "spec_helper"
-
 RSpec.describe UsersController do
   let(:test_organization) { Fabricate(:organization) }
   let(:member_admin) do
@@ -50,7 +48,7 @@ RSpec.describe UsersController do
     it 'allows to sort by member_uid' do
       member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
 
-      get :index, q: { s: "member_uid desc" }
+      get :index, params: { q: { s: "member_uid desc" } }
 
       expect(assigns(:members).first).to eq(member)
     end
@@ -103,7 +101,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
 
-        get :index, q: { user_username_or_user_email_or_member_uid_search_contains: 1000 }
+        get :index, params: { q: { user_username_or_user_email_or_member_uid_search_contains: 1000 } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -130,7 +128,7 @@ RSpec.describe UsersController do
         let(:direction) { 'desc' }
 
         it 'orders the rows by their balance' do
-          get :manage, q: { s: "account_balance #{direction}" }
+          get :manage, params: { q: { s: "account_balance #{direction}" } }
 
           expect(assigns(:members).pluck(:user_id).first).to eq(admin_user.id)
         end
@@ -140,7 +138,7 @@ RSpec.describe UsersController do
         let(:direction) { 'asc' }
 
         it 'orders the rows by their balance' do
-          get :manage, q: { s: "account_balance #{direction}" }
+          get :manage, params: { q: { s: "account_balance #{direction}" } }
 
           expect(assigns(:members).pluck(:user_id).last).to eq(admin_user.id)
         end
@@ -152,7 +150,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user, phone: 123456789)
         member = Fabricate(:member, user: user, organization: test_organization)
 
-        get :manage, q: { user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_uid_search_contains: 123456789 }
+        get :manage, params: { q: { user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_uid_search_contains: 123456789 } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -165,14 +163,14 @@ RSpec.describe UsersController do
         before { login(another_user) }
 
         it "assigns the requested user to @user" do
-          get "show", id: user.id
+          get "show", params: { id: user.id }
           expect(assigns(:user)).to eq(user)
         end
 
         it 'links to new_transfer_path for his individual offers' do
           offer = Fabricate(:offer, user: user, organization: test_organization)
 
-          get "show", id: user.id
+          get "show", params: { id: user.id }
           expect(response.body).to include(
             "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}&amp;offer=#{offer.id}\">"
           )
@@ -183,12 +181,12 @@ RSpec.describe UsersController do
         before { login(admin_user) }
 
         it "assigns the requested user to @user" do
-          get "show", id: user.id
+          get "show", params: { id: user.id }
           expect(assigns(:user)).to eq(user)
         end
 
         it 'links to new_transfer_path' do
-          get "show", id: user.id
+          get "show", params: { id: user.id }
           expect(response.body).to include(
             "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}\">"
           )
@@ -197,7 +195,7 @@ RSpec.describe UsersController do
         it 'links to new_transfer_path for his individual offers' do
           offer = Fabricate(:offer, user: user, organization: test_organization)
 
-          get "show", id: user.id
+          get "show", params: { id: user.id }
           expect(response.body).to include(
             "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}&amp;offer=#{offer.id}\">"
           )
@@ -210,12 +208,11 @@ RSpec.describe UsersController do
     context "with empty email" do
 
       subject do
-        post "create",
-             user: Fabricate.to_params(:user,
+        post "create", params: { user: Fabricate.to_params(:user,
                                        username: user.username + "2",
                                        email: "",
                                        phone: "1234",
-                                       alt_phone: "4321")
+                                       alt_phone: "4321") }
       end
 
       before { login(admin_user) }
@@ -233,7 +230,7 @@ RSpec.describe UsersController do
     end
 
     context "with valid params" do
-      subject { post "create", user: Fabricate.to_params(:user) }
+      subject { post "create", params: { user: Fabricate.to_params(:user) } }
 
       context "with a normal logged user" do
         it "does not create a new user" do
@@ -252,28 +249,28 @@ RSpec.describe UsersController do
         end
 
         it "can create a user with a valid email" do
-          subject { post "create", user: user }
+          subject { post "create", params: { user: user } }
           user.valid?
           expect(user.errors[:email]).to be_empty
         end
 
         it "cannot create a user with invalid email" do
           wrong_user[:email] = "sin mail"
-          subject { post "create", user: wrong_user }
+          subject { post "create", params: { user: wrong_user } }
           wrong_user.valid?
           expect(wrong_user.errors[:email]).not_to be_empty
         end
 
         it "cannot create a user with dummy @example.com" do
           user[:email] = "@example.com"
-          subject { post "create", user: user }
+          subject { post "create", params: { user: user } }
           user.valid?
           expect(user.errors[:email]).not_to be_empty
         end
 
         it "cannot create a user with existing e-mail" do
           user[:email] = another_user[:email]
-          subject { post "create", user: user }
+          subject { post "create", params: { user: user } }
           user.valid?
           expect(user.errors[:email]).not_to be_empty
         end
@@ -288,18 +285,16 @@ RSpec.describe UsersController do
         context "normal user" do
           before { login(member.user) }
           it "locates the requested @user" do
-            put "update", id: user.id, user: Fabricate.to_params(:user)
+            put "update", params: { id: user.id, user: Fabricate.to_params(:user) }
             expect(assigns(:user)).to eq(user)
           end
 
           it "changes @user's own attributes" do
-            put "update",
-                id: user.id,
-                user: Fabricate.to_params(:user,
+            put "update", params: { id: user.id, user: Fabricate.to_params(:user,
                                           username: user.username,
                                           email: user.email,
                                           phone: "1234",
-                                          alt_phone: "4321")
+                                          alt_phone: "4321") }
 
             user.reload
             expect(user.phone).to eq("1234")
@@ -307,13 +302,11 @@ RSpec.describe UsersController do
           end
 
           it "cannot change another user's attributes" do
-            put "update",
-                id: another_user.id,
-                user: Fabricate.to_params(:user,
+            put "update", params: { id: another_user.id, user: Fabricate.to_params(:user,
                                           username: another_user.username,
                                           email: another_user.email,
                                           phone: "5678",
-                                          alt_phone: "8765")
+                                          alt_phone: "8765") }
 
             user.reload
             expect(user.phone).not_to eq("5678")
@@ -325,18 +318,16 @@ RSpec.describe UsersController do
           before { login(admin_user) }
 
           it "locates the requested @user" do
-            put "update", id: user.id, user: Fabricate.to_params(:user)
+            put "update", params: { id: user.id, user: Fabricate.to_params(:user) }
             expect(assigns(:user)).to eq(user)
           end
 
           it "changes @user's attributes" do
-            put "update",
-                id: user.id,
-                user: Fabricate.to_params(:user,
+            put "update", params: { id: user.id, user: Fabricate.to_params(:user,
                                           username: user.username,
                                           email: user.email,
                                           phone: "1234",
-                                          alt_phone: "4321")
+                                          alt_phone: "4321") }
 
             user.reload
             expect(user.phone).to eq("1234")
@@ -351,13 +342,11 @@ RSpec.describe UsersController do
         before { login(admin_user) }
 
         it "does not change @user's attributes" do
-          put :update,
-              id: user.id,
-              user: Fabricate.to_params(:user,
+          put :update, params: { id: user.id, user: Fabricate.to_params(:user,
                                         username: nil,
                                         email: nil,
                                         phone: "1234",
-                                        alt_phone: "4321")
+                                        alt_phone: "4321") }
 
           expect(user.phone).not_to eq("1234")
           expect(user.alt_phone).not_to eq("4321")

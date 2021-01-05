@@ -6,9 +6,9 @@
 # The Account may also be flagged, if needed, when the balance overflows
 # some set limits
 #
-class Account < ActiveRecord::Base
-  belongs_to :accountable, polymorphic: true
-  belongs_to :organization, inverse_of: :all_accounts
+class Account < ApplicationRecord
+  belongs_to :accountable, polymorphic: true, optional: true
+  belongs_to :organization, inverse_of: :all_accounts, optional: true
   has_many :movements
 
   before_create :add_organization

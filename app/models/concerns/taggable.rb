@@ -17,7 +17,6 @@ module Taggable
     self.tags = tag_list.reject(&:empty?)
   end
 
-  # class methods (stupid comment to make rubocop happy)
   module ClassMethods
     def all_tags
       pluck(:tags).flatten.compact.reject(&:empty?)

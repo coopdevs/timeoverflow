@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe Admin::OrganizationsController, type: :controller do
   let(:organization) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: organization) }
@@ -15,7 +13,7 @@ RSpec.describe Admin::OrganizationsController, type: :controller do
       session[:current_organization_id] = organization.id
 
       expect {
-        delete :destroy, id: organization.id
+        delete :destroy, params: { id: organization.id }
       }.to change { controller.current_user }.to(nil)
       .and change { session[:current_organization_id] }.to(nil)
     end

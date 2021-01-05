@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe CreatePushNotificationsJob, type: :job do
   describe '#perform' do
     context 'with an Event that doesn\'t exist' do

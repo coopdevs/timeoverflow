@@ -9,7 +9,7 @@ class StatisticsController < ApplicationController
     65..100 => "65+",
   }
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def statistics_global_activity
     @members = current_organization.members
@@ -103,7 +103,7 @@ class StatisticsController < ApplicationController
     @transfers = current_organization.all_transfers.
                  includes(movements: {account: :accountable}).
                  order("transfers.created_at DESC").
-                 uniq.
+                 distinct.
                  page(params[:page]).
                  per(20)
   end

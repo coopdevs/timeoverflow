@@ -1,9 +1,14 @@
+require: rubocop-rails
+
 AllCops:
   Exclude:
     - db/schema.rb
 
 Naming/AccessorMethodName:
   Enabled: false
+
+Rails/HttpPositionalArguments:
+  Enabled: true
 
 Style/Alias:
   Enabled: false
