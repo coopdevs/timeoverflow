@@ -33,7 +33,8 @@ module Timeoverflow
     config.active_record.schema_format = :sql
 
     # Guard against DNS rebinding attacks by permitting hosts
-    config.hosts << /timeoverflow\.(local|org)/
-    config.hosts << "staging.timeoverflow.org"
+    config.hosts << 'timeoverflow.local'
+    config.hosts << 'staging.timeoverflow.org'
+    config.hosts << 'www.timeoverflow.org'
   end
 end
