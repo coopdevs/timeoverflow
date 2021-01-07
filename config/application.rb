@@ -36,5 +36,6 @@ module Timeoverflow
     config.hosts << 'timeoverflow.local'
     config.hosts << 'staging.timeoverflow.org'
     config.hosts << 'www.timeoverflow.org'
+    config.hosts << 'timeoverflow.org'
   end
 end
