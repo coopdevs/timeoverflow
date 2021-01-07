@@ -6,48 +6,49 @@
 
 #### www.timeoverflow.org
 
-:globe_with_meridians: Read this [in English](docs/README.en.md)
+:bank: :hourglass: Time Bank management system. [Learn more about Time Banks](http://www.bdtonline.org/).
 
-:bank: :hourglass: Sistema de gestión de Banco de Tiempo. [Saber más sobre Bancos de Tiempo](http://www.bdtonline.org/)
+TimeOverflow is a software developed in an altruistic way to offer a system that
+facilitates the interaction of the members and the management of the Time Banks.
+The model on which we work is guided by the needs of the Time Banks that make use
+of it and is prepared to be able to accommodate several Time Banks in a single installation,
+for this account with three levels of privileges: superadmin, admin (only manages a bank)
+and members of a bank.
 
-TimeOverflow es un software desarrollado de manera altruista para ofrecer un sistema que facilite la interacción
-de los miembros y la gestión de los Bancos de Tiempo. El modelo sobre el que se trabaja está guiado por las necesidades de los Bancos de Tiempo
-que hacen uso de él y está preparado para poder albergar varios Bancos de Tiempo en una sola instalación, para ello cuenta
-con tres niveles de privilegios: superadmin, admin (solo gestiona un Banco) y miembros de un Banco.
+![Users list](docs/images/usuarios.png)
+![Offers list](docs/images/ofertas.png)
 
-![Lista de usuarios](docs/usuarios.png) ![Lista de ofertas](docs/ofertas.png)
+TimeOverflow is divided into 2 large blocks:
 
-TimeOverflow está dividido en 2 grandes bloques:
+* **Management system for administrators**
+* **Social network and online banking for users**
 
-* **Sistema de gestión para los administradores**
-* **Red social y banca on-line para los usuarios**
+> **NOTE** A physical Time Bank can work only with the management block, it could happen, for example, that the vast majority of its members do not use the Internet and may want to operate only with listings, checks and a management office.
 
-> **NOTA** Un Banco de Tiempo físico puede funcionar solo con el bloque de gestión, podría ocurrir, por ejemplo, que la inmensa mayoria de sus miembros no usen Internet y podrían querer funcionar solo con listados, cheques y una oficina de gestión.
+### Management system
 
-## Sistema de gestión
+Physical Time Banks (mainly focused on TimeOverflow) often work without the Internet, perform
+lists of services and members and pay the hours with heels that are finally entered in the office, therefore
+the management system allows us to manage the members and their services, draw lists and keep accounting.
+It is important that Bank managers (admin) have useful information about the community so that they can act on it
+(for example, statistics on weak users, incident management, balance of accounts, etc.)
 
-Los Bancos de Tiempo físicos (a los que principalmente se enfoca TimeOverflow) a menudo funcionan sin internet, se realizan
-unos listados de servicios y de miembros y se pagan las horas con talones que finalmente se ingresan en la oficina, por tanto
-el sistema de gestión nos permite gestionar los miembros y sus servicios, sacar listados y llevar la contabilidad. También
-es importante que los gestores del Banco (admin), tengan información útil sobre la comunidad para poder actuar sobre ella
-(por ejemplo, estadísticas sobre usuarios poco activos, gestión de incidencias, equilibrio de las cuentas, etc)
+### Social Network and Online Banking
 
-## Red social y banca on-line
+The social network makes it easy for members to meet and meet outside the events scheduled by the Time Bank,
+as well as being able to post offers / demand ads explained in detail.
 
-La red social facilita a los miembros encontrarse y conocerse fuera de los eventos programados por el Banco de Tiempo,
-así como poder publicar anuncios de ofertas/demandas explicados en detalle.
+On the other hand the members can be paid the services of virtual way to save the passage through the office of the Bank
+of Time and also have the possibility to consult the extract of their account.
 
-Por otro lado los miembros pueden pagarse los servicios de manera virtual para ahorrarse el paso por la oficina del Banco
-de Tiempo y también tienen la posibilidad de consultar el extracto de su cuenta.
+## Contributions
 
-# Contribuciones
+**Join our collaborators team!**
 
-**Únete al equipo de colaboradores!**
+:point_right: Further information [here](CONTRIBUTING.md).
 
-:point_right: Más información [aquí](CONTRIBUTING.md).
-
-# Licencia
+## License
 
 > The Unlicense
 
-Puedes consultar la licencia [aquí](UNLICENSE).
+You can find the license file [here](UNLICENSE).

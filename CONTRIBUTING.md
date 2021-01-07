@@ -1,19 +1,17 @@
-:globe_with_meridians: Read this [in English](docs/CONTRIBUTING.en.md)
+# Contributing
 
-# Contribuciones
+Did you find a bug? Do you want to collaborate?
 
-¿Has encontrado algún bug? ¿Quieres colaborar?
+Process:
+* Open a thread in [discourse](https://community.coopdevs.org/c/timeoverflow) to make sure whether it's a bug or a feature :wink:
+* Once we understand what the bug is about and know the steps to reproduce we will create an issue in GitHub linking to the Discourse thread.
+* Create a pull request to solve the issue.
+* Report back to the discourse thread the bug has been solved linking to the pull request.
 
-Proceso:
-* Abrir un hilo en [discourse](https://community.coopdevs.org/c/timeoverflow) para aclarar si es un bug o una feature :wink:
-* Una vez aclarado, si se trata de un bug, abre una issue en Github indicando los pasos para reproducirlo y cómo debería funncionar correctamente, enlaza al hilo original en discourse.
-* Pull request que resuelve la issue.
-* Reportar en el hilo de discourse que el bug ha sido resuelto con enlace a PR.
+Visit [the getting started guide to start developing](https://github.com/coopdevs/timeoverflow/wiki/Getting-started).
 
-Visita [la guía para empezar a desarrollar para timeoverflow](https://github.com/coopdevs/timeoverflow/wiki/Getting-started).
+## Contributing with translations
 
-## Contribuir con traducciones
-
-- Modifica las traducciones directamente en el proyecto [coopdevs/timeoverflow](https://www.localeapp.com/projects/10031) en Locale.
-- **Eso es todo!**
-- El mantenedor obtendrá las nuevas traducciones del proyecto de Locale y las publicará en Github.
+- Edit the translations directly on the [coopdevs/timeoverflow](https://www.localeapp.com/projects/10031) project on `Locale`.
+- **That's it!**
+- The maintainer will then pull translations from the `Locale` project and push to Github.
