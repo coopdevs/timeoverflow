@@ -37,6 +37,6 @@ class MembersController < ApplicationController
 
   def toggle_active_posts
     current_organization.posts.where(user_id: @member.user_id).
-      each { |post| post.update_attributes(active: false) }
+      each { |post| post.update(active: false) }
   end
 end

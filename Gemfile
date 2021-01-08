@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby File.read('.ruby-version').strip
 
-gem 'rails', '~> 6.0.2'
+gem 'rails', '~> 6.1.1'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'rdiscount', '~> 2.2.0.1'
 gem 'activeadmin', '~> 2.9.0'
@@ -19,9 +19,9 @@ gem 'rollbar', '~> 2.22.1'
 gem 'prawn', '~> 2.2.0'
 gem 'prawn-table', '~> 0.2.2'
 gem 'pg_search', '~> 2.3.5'
-gem 'skylight', '~> 4.1.2'
-gem 'sidekiq', '~> 6.0.0'
-gem 'sidekiq-cron', '~> 1.1.0'
+gem 'skylight', '~> 4.3.2'
+gem 'sidekiq', '~> 6.1.2'
+gem 'sidekiq-cron', '~> 1.2.0'
 
 # Assets
 gem 'jquery-rails', '~> 4.3.5'
@@ -39,7 +39,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.1'
   gem 'airbrussh', require: false
-  gem 'localeapp', '2.1.1', require: false
+  gem 'localeapp', '~> 3.1', require: false
   gem 'letter_opener', '~> 1.7.0'
   gem 'dotenv-rails', '~> 2.7.1'
 end
@@ -52,11 +52,11 @@ group :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'rails-controller-testing'
   gem 'database_cleaner', '~> 1.8.5'
-  gem 'shoulda-matchers', '~> 4.4.0'
+  gem 'shoulda-matchers', '~> 4.4'
   gem 'fabrication', '~> 2.20'
-  gem 'faker', '~> 1.9'
+  gem 'faker', '~> 2.15'
   gem 'capybara', '~> 3.29'
   gem 'selenium-webdriver', '~> 3.142'
-  gem 'webdrivers', '~> 4.4.0'
+  gem 'webdrivers', '~> 4.4'
   gem 'simplecov', '~> 0.17', require: false
 end

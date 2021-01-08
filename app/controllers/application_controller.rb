@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
     # read locale from params, the session or the Accept-Language header
     I18n.locale =
       if params[:locale]
-        current_user.update_attributes(locale: params[:locale]) if current_user
+        current_user.update(locale: params[:locale]) if current_user
         params[:locale]
       else
         options_locale

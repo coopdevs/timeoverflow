@@ -17,8 +17,8 @@ RSpec.describe Persister::MemberPersister do
     end
   end
 
-  describe '#update_attributes' do
-    before { persister.update_attributes(member_uid: 666) }
+  describe '#update' do
+    before { persister.update(member_uid: 666) }
 
     it 'updates the resource attributes' do
       expect(member.member_uid).to eq(666)

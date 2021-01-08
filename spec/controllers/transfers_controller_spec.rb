@@ -54,7 +54,7 @@ RSpec.describe TransfersController do
       context 'when the offer is not specified' do
         it 'does not find any offer' do
           get :new, params: params
-          expect(response.body).to include('<option value="">')
+          expect(response.body).to include('<option value="" label=" ">')
         end
       end
 

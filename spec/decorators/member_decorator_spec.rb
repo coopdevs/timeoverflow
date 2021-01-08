@@ -12,7 +12,7 @@ RSpec.describe MemberDecorator do
     end
 
     context 'inactive member' do
-      before { member.update_attributes(active: false) }
+      before { member.update(active: false) }
       it { is_expected.to eq('bg-danger') }
     end
   end
@@ -25,7 +25,7 @@ RSpec.describe MemberDecorator do
     end
 
     context 'inactive member' do
-      before { member.update_attributes(active: false) }
+      before { member.update(active: false) }
       it { is_expected.to match('icon') }
     end
   end
@@ -42,12 +42,12 @@ RSpec.describe MemberDecorator do
       let(:email) { 'foobar@gmail.com' }
 
       context 'unconfirmed' do
-        before { member.user.update_attributes(unconfirmed_email: email) }
+        before { member.user.update(unconfirmed_email: email) }
         it { is_expected.to include('mailto:foobar@gmail.com') }
       end
 
       context 'confirmed' do
-        before { member.user.update_attributes(email: email) }
+        before { member.user.update(email: email) }
         it { is_expected.to include('mailto:foobar@gmail.com') }
       end
     end
@@ -56,12 +56,12 @@ RSpec.describe MemberDecorator do
       let(:email) { 'foobar@example.com' }
 
       context 'unconfirmed' do
-        before { member.user.update_attributes(unconfirmed_email: email) }
+        before { member.user.update(unconfirmed_email: email) }
         it { is_expected.to be_nil }
       end
 
       context 'confirmed' do
-        before { member.user.update_attributes(email: email) }
+        before { member.user.update(email: email) }
         it { is_expected.to be_nil }
       end
     end
