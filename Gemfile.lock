@@ -385,7 +385,7 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (4.0.4)
+    web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
@@ -406,7 +406,6 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 2.9.0)
-  airbrussh
   bootstrap-sass (~> 3.4)
   byebug (~> 11.0)
   capistrano (~> 3.1)
@@ -450,7 +449,7 @@ DEPENDENCIES
   skylight (~> 4.3.2)
   uglifier (~> 4.2.0)
   unicorn (~> 5.5.1)
-  web-console (~> 4.0.1)
+  web-console (~> 4.1.0)
   webdrivers (~> 4.4)
 
 RUBY VERSION

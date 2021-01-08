@@ -34,11 +34,10 @@ group :development do
   gem 'listen', '~> 3.2.0'
   gem 'rubocop', '~> 1.6', require: false
   gem 'rubocop-rails', '~> 2.9', require: false
-  gem 'web-console', '~> 4.0.1'
+  gem 'web-console', '~> 4.1.0'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.1'
-  gem 'airbrussh', require: false
   gem 'localeapp', '~> 3.1', require: false
   gem 'letter_opener', '~> 1.7.0'
   gem 'dotenv-rails', '~> 2.7.1'
