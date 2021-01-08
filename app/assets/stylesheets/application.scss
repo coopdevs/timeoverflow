@@ -169,6 +169,7 @@ html {
     letter-spacing: -0.040rem;
     margin-top: 1rem;
     padding: 2rem;
+    border: none;
   }
 
   .btn:hover {
@@ -309,11 +310,6 @@ ul.statistics li{
   width: 100%;
   text-align: center;
 }
-.more {
-  display: block;
-  margin: 10px auto;
-  width: 100px;
-}
 
 /*flash*/
 .alert > ul {
@@ -388,19 +384,6 @@ label[required]::after{
   @media(max-width: $screen-sm-min) {
     background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
     background-size: cover;
-  }
-
-  .login-wrapper {
-    position: absolute;
-    top: 51%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    z-index: 1;
-
-    @media(max-width: $screen-sm-min) {
-      top: 47%;
-    }
   }
 
   .home-wrapper {
