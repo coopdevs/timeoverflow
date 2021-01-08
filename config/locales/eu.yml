@@ -411,9 +411,6 @@ eu:
       banner-button: Sartzea eskatzen du
       banner-subtitle: Martxan jartzen edo erakustaldi bat eginez lagunduko dizugu
       banner-title: Denbora banku bat al zara?
-      donate-link: Eman ezazu hilean €1
-      donate-text: komunitate askori babesteko asmotan ADBdt elkarteak , TimeOverflow plataforma eskaintzen die Denbora Banku guztiei. Hausnar ezazu %{donate_link}  mantenu eta berritze lanetan laguntzeko.
-      donate-title: Laguntzan parte hartu
       empower-adbdt: ADBdt
       empower-adbdt-title: Denbora Bankuen garapenerako elkartea
       empower-coopdevs: CoopDevs
@@ -440,7 +437,7 @@ eu:
       title2: Denbora bankuentzat
   posts:
     show:
-      info: 
+      info:
   reports:
     cat_with_users:
       title: Eskaintzen diren zerbitzuak
@@ -452,8 +449,8 @@ eu:
       delete_reason: Zihur zaude , azalpen hau ezabatu nahi duzula?
       movements: Mugimenduak
     post_form:
-      group_inquiry: 
-      group_offer: 
+      group_inquiry:
+      group_offer:
       you_can_use: Erabil dezakezu
   simple_form:
     error_notification:
@@ -465,7 +462,7 @@ eu:
           female: Emakumea
           male: Gizona
           others: Beste
-          prefer_not_to_answer: 
+          prefer_not_to_answer:
     required:
       mark: "*"
       text: Beharrezkoa
@@ -532,7 +529,7 @@ eu:
         one: "%{count}minutu"
         other: "%{count} minutu"
     new:
-      error_amount: 
+      error_amount:
   users:
     edit:
       edit_user: Erabiltzailea aldatu
@@ -542,18 +539,18 @@ eu:
       give_time: honi denbora eman
     index:
       actions: Ekintzak
-      active_warning: 
+      active_warning:
       active_warning_angular: " {{username}} erabiltzailearen kontuaren egoera, aldatuko duzu."
-      cancel_warning: 
+      cancel_warning:
       cancel_warning_angular: " {{username}} erabiltzailea D bankutik ezabatuko duzu."
       create: Erabiltzaile berria sortu
-      manage_warning: 
+      manage_warning:
       manage_warning_angular: " {{username}} erabiltzailearen onurak, aldatuko diztuzu"
       members: Kideak
       user_created: "%{uid} %{name} erabiltzailea gorde da"
     member_card:
-      active_ago: 
-      no_activity: 
+      active_ago:
+      no_activity:
     new:
       cancel: Deuseztatu
       create_more_users_button: Beste erabiltzaile bat sortu eta sartu
@@ -564,7 +561,7 @@ eu:
       accounts: Kontuak
       balance: 'Balantzea:'
       categories: Eskainiriko zerbitzuak
-      change_your_image: 
+      change_your_image:
       created_at: 'Alta:'
       data: Erabiltzailearen datuak
       date: Eguna
@@ -587,8 +584,8 @@ eu:
       manage_warning: "%{user} erabiltzailearen onurak aldatuko dituzu"
   views:
     pagination:
-      first: 
-      last: 
-      next: 
-      previous: 
-      truncate: 
+      first:
+      last:
+      next:
+      previous:
+      truncate:

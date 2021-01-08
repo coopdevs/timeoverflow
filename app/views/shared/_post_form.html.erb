@@ -58,10 +58,3 @@
   </p>
   <%= f.button label_button, class: "btn btn-default", style: "margin-bottom: 20px;" %>
 <% end %>
-<script>
-  $("#select2").select2({
-    formatNoMatches: function () {
-      return "<%= j t('application.tips.user_not_found') %>";
-    }
-  });
-</script>

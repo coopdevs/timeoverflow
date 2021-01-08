@@ -23,3 +23,7 @@ $(document).on('click', 'span.show-password', function(event) {
   $(this).prev('input').attr('type', inputType);
   $(this).find('.material-icons').html(icon);
 });
+
+$(function() {
+  $("#select2").select2();
+});

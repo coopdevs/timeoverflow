@@ -24,6 +24,7 @@ RSpec.describe PostReportDecorator do
 
   it "#headers" do
     expect(decorator.headers).to eq([
+      "",
       Offer.model_name.human,
       User.model_name.human
     ])
@@ -34,8 +35,8 @@ RSpec.describe PostReportDecorator do
     offer = org.offers.of_active_members.active.first
 
     expect(decorator.rows).to eq([
-      [category.name, ""],
-      [offer.title, "#{offer.user} (#{offer.member_uid})"]
+      ["", category.name, ""],
+      [offer.id, offer.title, "#{offer.user} (#{offer.member_uid})"]
     ])
   end
 end
