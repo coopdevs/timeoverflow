@@ -52,11 +52,31 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="nav nav-pills actions-menu">
-            <%= render 'application/menus/user_list_link' %>
-            <%= render 'application/menus/offers_list_link' %>
-            <%= render 'application/menus/inquiries_list_link' %>
+            <li class="<%= "active" if current_page?(users_path) %>">
+              <%= link_to users_path do %>
+                <%= glyph :user %>
+                <%= t("users.index.members") %>
+              <% end %>
+            </li>
+            <li class="<%= "active" if current_page?(offers_path) %>">
+              <%= link_to offers_path do %>
+                <%= glyph :offer %>
+                <%= Offer.model_name.human(count: :many) %>
+              <% end %>
+            </li>
+            <li class="<%= "active" if current_page?(inquiries_path) %>">
+              <%= link_to inquiries_path do %>
+                <%= glyph :inquiry %>
+                <%= Inquiry.model_name.human(count: :many) %>
+              <% end %>
+            </li>
             <% if current_user.manages? current_organization %>
-              <%= render 'application/menus/offers_by_tag_link' %>
+              <li class="<%= "active" if current_page?(alpha_grouped_index_tags_path(post_type: "offer")) %>">
+                <%= link_to alpha_grouped_index_tags_path(post_type: "offer") do %>
+                  <%= glyph :tags %>
+                  <%= t ".tags" %>
+                <% end %>
+              </li>
               <%= render 'application/menus/organization_reports_menu' %>
               <%= render 'application/menus/organization_statistics_menu' %>
               <%= render 'application/menus/organization_listings_menu' %>

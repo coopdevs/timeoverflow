@@ -14,6 +14,7 @@ class PostReportDecorator
 
   def headers
     [
+      "",
       @type.model_name.human,
       User.model_name.human
     ]
@@ -23,10 +24,11 @@ class PostReportDecorator
     grouped_rows = []
 
     @collection.each do |category, posts|
-      grouped_rows << [category.try(:name) || "-", ""]
+      grouped_rows << ["", category.try(:name) || "-", ""]
 
       posts.each do |post|
         grouped_rows << [
+          post.id,
           post.title,
           "#{post.user} (#{post.member_uid})"
         ]
