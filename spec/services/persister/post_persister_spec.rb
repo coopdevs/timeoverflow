@@ -40,9 +40,9 @@ RSpec.describe Persister::PostPersister do
     end
   end
 
-  describe '#update_attributes' do
+  describe '#update' do
     it 'updates the resource attributes' do
-      persister.update_attributes(title: 'New title')
+      persister.update(title: 'New title')
 
       expect(post.title).to eq('New title')
     end
@@ -50,7 +50,7 @@ RSpec.describe Persister::PostPersister do
     it 'creates an event' do
       expect(::Event).to receive(:create!).with(action: :updated, post: post).and_return(event)
 
-      persister.update_attributes(title: 'New title')
+      persister.update(title: 'New title')
     end
 
     context 'background job' do
@@ -60,7 +60,7 @@ RSpec.describe Persister::PostPersister do
 
       it 'enqueues a CreatePushNotificationsJob background job' do
         expect {
-          persister.update_attributes(title: 'New title')
+          persister.update(title: 'New title')
         }.to enqueue_job(CreatePushNotificationsJob).with(event_id: 27)
       end
     end

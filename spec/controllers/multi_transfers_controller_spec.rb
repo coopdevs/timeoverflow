@@ -124,7 +124,7 @@ RSpec.describe MultiTransfersController, type: :controller do
 
       post :create
 
-      response.should redirect_to('/')
+      expect(response).to redirect_to('/')
     end
   end
 end

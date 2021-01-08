@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     @user = scoped_users.find(params[:id])
     authorize @user
 
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       redirect_to @user
     else
       render action: :edit, status: :unprocessable_entity
