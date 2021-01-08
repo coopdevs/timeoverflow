@@ -224,20 +224,20 @@ en:
     registrations:
       destroyed: Bye! Your account was successfully cancelled. We hope to see you again soon.
       edit:
-        cancel_account: 
-        current_password: 
-        edit_user: 
-        help_current_password: 
-        help_password: 
-        password: 
-        password_confirmation: 
-        unhappy: 
-        update: 
+        cancel_account:
+        current_password:
+        edit_user:
+        help_current_password:
+        help_password:
+        password:
+        password_confirmation:
+        unhappy:
+        update:
       new:
-        password: 
-        password_confirmation: 
-        sign_me_up: 
-        sign_up: 
+        password:
+        password_confirmation:
+        sign_me_up:
+        sign_up:
       signed_up: Welcome! You have signed up successfully.
       signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
       signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
@@ -335,14 +335,14 @@ en:
     report:
       report_title: REPORT
   locales:
-    ar: 
+    ar:
     ca: Catalan
     en: English
     es: Spanish
-    eu: 
-    fr: 
-    gl: 
-    pt: 
+    eu:
+    fr:
+    gl:
+    pt:
     pt-BR: Portuguese
   mailers_globals:
     footer:
@@ -382,9 +382,6 @@ en:
       banner-button: Request access to TimeOverflow
       banner-subtitle: We will contact you to start it up or make you a demonstration
       banner-title: Are you a Time Bank?
-      donate-text: In order to support many communities the ADBdT asociation offers TimeOverflow platform to all Time Banks. %{donate_link} to contribute to maintenance and innovation costs.
-      donate-title: Participate with a donation
-      donate-link: Donate 1€ a month
       empower-adbdt: ADBdT
       empower-adbdt-title: Association for the Development of Time Banks
       empower-coopdevs: CoopDevs
@@ -579,8 +576,8 @@ en:
       active_ago: Active %{time} ago
   views:
     pagination:
-      first: 
-      last: 
-      next: 
-      previous: 
-      truncate: 
+      first:
+      last:
+      next:
+      previous:
+      truncate:

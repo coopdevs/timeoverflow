@@ -223,7 +223,6 @@ html {
   padding: 20px;
 }
 
-
 .row.exports {
   padding: 10px;
 }
@@ -352,17 +351,6 @@ label[required]::after{
   }
 }
 
-.back-overlay {
-  background-color: $black;
-  background-size: cover;
-  display: none;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
-}
-
 .navbar .container-fluid {
   padding: 0;
 }
@@ -400,12 +388,6 @@ label[required]::after{
   @media(max-width: $screen-sm-min) {
     background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
     background-size: cover;
-  }
-
-  .back-overlay {
-    display: block;
-    filter: alpha(opacity = 60); /* For IE8 and earlier */
-    opacity: 0.2;
   }
 
   .login-wrapper {
@@ -454,11 +436,6 @@ label[required]::after{
   @media(max-width: $screen-sm-min) {
     background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
     background-size: cover;
-  }
-
-  .back-overlay {
-    filter: alpha(opacity = 15); /* For IE8 and earlier */
-    opacity: 0.15;
   }
 }
 
@@ -586,11 +563,7 @@ label[required]::after{
     margin-top: 1.5rem;
   }
 
-  .back-overlay {
-    display: none;
-  }
-
-  .header, .banner, .empower, .donate {
+  .header, .banner, .section-block {
     text-align: center;
   }
 
@@ -672,7 +645,7 @@ label[required]::after{
     }
   }
 
-  .empower, .donate {
+  .section-block {
     h2 {
       margin-bottom: 4rem;
     }

@@ -36,7 +36,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 empower">
+    <div class="col-sm-10 col-sm-offset-1 section-block">
       <h2><%= t("pages.about.empower-title") %></h2>
       <p><%= t(
         "pages.about.empower-text-1",
@@ -70,19 +70,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 donate">
-      <h2><%= t("pages.about.donate-title") %></h2>
-      <p><%= t(
-        "pages.about.donate-text",
-        donate_link: link_to(
-          t("pages.about.donate-link"),
-          "https://www.teaming.net/poreldesarrollodelosbancosdetiempo",
-        )
-      ).html_safe %></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 donate">
+    <div class="col-sm-10 col-sm-offset-1 section-block">
       <h2><%= t("pages.about.app-mobile") %></h2>
       <p><%= t(
         "pages.about.app-mobile-text",
@@ -93,7 +81,7 @@
       ).html_safe %></p>
     </div>
    </div>
-    
+
    <div class="row">
     <div class="col-sm-12 text-center">
       <a href="http://www.barcelonactiva.cat" ><%= image_tag("ajuntament_bcn_activa.png", width: '400', class: "img-responsive center-block") %></a>
