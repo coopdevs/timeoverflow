@@ -17,9 +17,9 @@ module Persister
       false
     end
 
-    def update_attributes(params)
+    def update(params)
       ::ActiveRecord::Base.transaction do
-        post.update_attributes!(params)
+        post.update!(params)
         create_update_event!
         enqueue_push_notification_job!
         post

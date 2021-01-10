@@ -16,9 +16,9 @@ module Persister
       false
     end
 
-    def update_attributes(params)
+    def update(params)
       ::ActiveRecord::Base.transaction do
-        transfer.update_attributes!(params)
+        transfer.update!(params)
         create_update_event!
         transfer
       end

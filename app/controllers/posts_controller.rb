@@ -65,7 +65,7 @@ class PostsController <  ApplicationController
 
     persister = ::Persister::PostPersister.new(post)
 
-    if persister.update_attributes(post_params)
+    if persister.update(post_params)
       redirect_to post
     else
       render action: :edit, status: :unprocessable_entity

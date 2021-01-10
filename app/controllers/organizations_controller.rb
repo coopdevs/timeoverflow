@@ -33,7 +33,7 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    if @organization.update_attributes(organization_params)
+    if @organization.update(organization_params)
       redirect_to @organization
     else
       render action: :edit, status: :unprocessable_entity

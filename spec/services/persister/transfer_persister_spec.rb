@@ -26,8 +26,8 @@ RSpec.describe Persister::TransferPersister do
     end
   end
 
-  describe '#update_attributes' do
-    before { persister.update_attributes(amount: 666) }
+  describe '#update' do
+    before { persister.update(amount: 666) }
 
     it 'updates the resource attributes' do
       expect(transfer.amount).to eq(666)
