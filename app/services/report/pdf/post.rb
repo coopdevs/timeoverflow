@@ -1,22 +1,8 @@
 module Report
   module Pdf
-    class Post
+    class Post < Base
       def initialize(org, collection, type)
-        @collection = collection
-        @type = type
-        @decorator = PostReportDecorator.new(org, @collection, @type)
-      end
-
-      def name
-        @decorator.name(:pdf)
-      end
-
-      def mime_type
-        Report::Pdf::MIME_TYPE
-      end
-
-      def run
-        Report::Pdf.run(@decorator.headers, @decorator.rows)
+        @decorator = PostReportDecorator.new(org, collection, type)
       end
     end
   end
