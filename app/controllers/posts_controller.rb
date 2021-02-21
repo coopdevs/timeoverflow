@@ -5,20 +5,16 @@ class PostsController <  ApplicationController
 
   def index
     context = model.active.of_active_members
+
     if current_organization.present?
       context = context.where(
         organization_id: current_organization.id
       )
     end
 
-    posts = if (query = params[:q]).present?
-              context.
-                search_by_query(query).
-                page(params[:page]).
-                per(25)
-            else
-              apply_scopes(context).page(params[:page]).per(25)
-            end
+    posts = apply_scopes(context)
+    posts = posts.search_by_query(params[:q]) if params[:q].present?
+    posts = posts.page(params[:page]).per(25)
 
     instance_variable_set("@#{resources}", posts)
   end
