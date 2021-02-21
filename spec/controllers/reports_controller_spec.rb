@@ -23,12 +23,31 @@ RSpec.describe ReportsController do
     end
   end
 
-  describe 'GET #post_list' do
-    context 'with a logged user' do
-      it 'do NOT show the inactive members' do
-        login(member1.user)
+  context 'with a logged user' do
+    before { login(member1.user) }
 
-        get 'post_list', params: { type: 'offer' }
+    describe 'GET #user_list' do
+      it 'downloads a csv' do
+        get :user_list, params: { format: 'csv' }
+
+        report = Report::Csv::Member.new(test_organization, test_organization.members.active)
+        expect(response.body).to match(report.run)
+        expect(response.media_type).to eq("text/csv")
+      end
+
+      it 'downloads a pdf' do
+        get :user_list, params: { format: 'pdf' }
+
+        report = Report::Pdf::Member.new(test_organization, test_organization.members.active)
+        expect(response.body).to eq(report.run)
+        expect(response.media_type).to eq("application/pdf")
+      end
+    end
+
+    describe 'GET #post_list' do
+      it 'do NOT show the inactive members' do
+        get :post_list, params: { type: 'offer' }
+
         posts = assigns(:posts)[0][1]
         expect(posts.size).to eq(active_organization_offers.size)
         expect(posts.map(&:id)).to match_array(active_organization_offers.map(&:id))
