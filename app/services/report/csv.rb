@@ -2,8 +2,6 @@ require "csv"
 
 module Report
   module Csv
-    MIME_TYPE = Mime[:csv]
-
     def self.run(headers, rows)
       ::CSV.generate do |csv|
         csv << headers

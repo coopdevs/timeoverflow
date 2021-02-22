@@ -18,7 +18,7 @@
     <tr>
       <th><%= Organization.model_name.human(count: :one) %></th>
       <th><%= t '.member_count' %></th>
-      <th><%= glyph :wrench %><%= t 'global.table.actions' %></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +26,7 @@
       <tr>
         <td><%= link_to org.name, org %></td>
         <td><%= org.users.count %></td>
-        <td class="hover-actions">
+        <td>
           <% if current_user&.admins?(org) %>
             <%= link_to edit_organization_path(org), class: 'action' do %>
               <%= glyph :pencil %>

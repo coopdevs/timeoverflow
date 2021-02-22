@@ -19,9 +19,9 @@ RSpec.describe OffersController, type: :controller do
 
   describe "GET #index" do
     context "with a logged user" do
-      it "populates an array of offers" do
-        login(another_member.user)
+      before { login(another_member.user) }
 
+      it "populates an array of offers" do
         get :index
 
         expect(assigns(:offers)).to eq([other_offer, offer])
@@ -34,8 +34,6 @@ RSpec.describe OffersController, type: :controller do
         end
 
         it "only returns active offers" do
-          login(another_member.user)
-
           get :index
 
           expect(assigns(:offers)).to eq([offer])
@@ -49,14 +47,13 @@ RSpec.describe OffersController, type: :controller do
         end
 
         it "only returns offers from active users" do
-          login(another_member.user)
-
           get :index
 
           expect(assigns(:offers)).to eq([other_offer])
         end
       end
     end
+
     context "with another organization" do
       it "skips the original org's offers" do
         login(yet_another_member.user)
@@ -69,10 +66,11 @@ RSpec.describe OffersController, type: :controller do
   end
 
   describe "GET #index (search)" do
-    before { login(another_member.user) }
     before do
-     offer.title = "Queridos compañeros"
-     offer.save!
+      login(another_member.user)
+
+      offer.title = "Queridos compañeros"
+      offer.save!
     end
 
     it "populates an array of offers" do
@@ -85,6 +83,12 @@ RSpec.describe OffersController, type: :controller do
       get :index, params: { q: 'compañ' }
 
       expect(assigns(:offers)).to eq([offer])
+    end
+
+    it "applies organization filter if passed" do
+      get :index, params: { q: offer.title, org: 2 }
+
+      expect(assigns(:offers)).to eq([])
     end
 
     context "when one offer is not active" do
