@@ -9,7 +9,7 @@
   <td> <%= phone_to member.phone %> </td>
   <td> <%= member.account_balance %> </td>
   <% if current_user.manages?(current_organization) %>
-    <td class="hover-actions">
+    <td>
       <% if member.active? %>
         <%= render 'toggle_manager_link', member: member if can_toggle_manager?(member) %>
       <% else %>
