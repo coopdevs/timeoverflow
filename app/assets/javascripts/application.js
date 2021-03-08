@@ -3,7 +3,7 @@
 $(document).on('click', 'a[data-popup]', function(event) {
   event.preventDefault();
 
-  window.open($(this).attr('href'), 'popup', 'width=600,height=600');
+  window.open($(this).attr('href'), 'popup', 'width=800,height=600');
 });
 
 $(document).on('click', 'span.show-password', function(event) {
