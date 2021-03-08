@@ -4,7 +4,7 @@
       <tr>
         <th></th>
         <th><%= @post_type.model_name.human %></th>
-        <th><%= Post.human_attribute_name(:tag_list) %></th>
+        <th><%= Post.human_attribute_name :tag_list %></th>
         <th><%= User.model_name.human %></th>
         <th><%= Post.human_attribute_name :created_at %></th>
       </tr>
