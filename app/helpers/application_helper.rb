@@ -62,7 +62,6 @@ module ApplicationHelper
   def markdown(content)
     RDiscount.new(content || ''.freeze).to_html.html_safe
   end
-
   alias m markdown
 
   # Green or red CSS class depending on whether
