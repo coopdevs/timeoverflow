@@ -1,8 +1,10 @@
 module Report
   module Pdf
     class Base
+      attr_accessor :decorator
+
       def name
-        @decorator.name(:pdf)
+        decorator.name(:pdf)
       end
 
       def mime_type
@@ -10,7 +12,10 @@ module Report
       end
 
       def run
-        Report::Pdf.run(@decorator.headers, @decorator.rows)
+        pdf = Prawn::Document.new({ page_size: "A4", margin: 30 })
+        pdf.table [decorator.headers] + decorator.rows
+
+        pdf.render
       end
     end
   end

@@ -16,7 +16,9 @@ class PostReportDecorator
     [
       "",
       @type.model_name.human,
-      User.model_name.human
+      Post.human_attribute_name(:tag_list),
+      User.model_name.human,
+      Post.human_attribute_name(:created_at)
     ]
   end
 
@@ -24,13 +26,15 @@ class PostReportDecorator
     grouped_rows = []
 
     @collection.each do |category, posts|
-      grouped_rows << ["", category.try(:name) || "-", ""]
+      grouped_rows << ["", category.try(:name) || "-", "", "", ""]
 
       posts.each do |post|
         grouped_rows << [
           post.id,
           post.title,
-          "#{post.user} (#{post.member_uid})"
+          post.tag_list.to_s,
+          "#{post.user} (#{post.member_uid})",
+          post.created_at.to_s
         ]
       end
     end
