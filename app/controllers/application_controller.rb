@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
 
   append_before_action :check_for_terms_acceptance!, unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_locale
-  before_action :set_current_organization
+  before_action :set_locale,
+                :set_current_organization,
+                :store_user_location
 
   rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
     redirect_to terms_path
@@ -38,8 +39,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def store_user_location
+    if request.get? && !request.xhr? && is_navigational_format? && !devise_controller?
+      store_location_for(:user, request.fullpath)
+    end
+  end
+
   def after_sign_in_path_for(user)
-    if user.members.present?
+    stored_location = stored_location_for(user)
+
+    if stored_location.present?
+      stored_location
+    elsif user.members.present?
       users_path
     else
       page_path("about")
@@ -76,7 +87,6 @@ class ApplicationController < ActionController::Base
   def superadmin?
     current_user.try :superuser?
   end
-
   alias :superuser? :superadmin?
 
   def authenticate_superuser!
