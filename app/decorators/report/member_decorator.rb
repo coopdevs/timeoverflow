@@ -1,4 +1,4 @@
-class MemberReportDecorator
+class Report::MemberDecorator
   def initialize(org, collection)
     @org = org
     @collection = collection
