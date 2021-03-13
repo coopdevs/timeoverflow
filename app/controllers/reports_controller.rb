@@ -40,14 +40,13 @@ class ReportsController < ApplicationController
   def report_responder(report_class, *args)
     respond_to do |format|
       format.html
-      format.csv do
-        report = Report::Csv.const_get(report_class).new(*args)
-        send_data report.run, filename: report.name, type: report.mime_type
-      end
-      format.pdf do
-        report = Report::Pdf.const_get(report_class).new(*args)
-        send_data report.run, filename: report.name, type: report.mime_type
-      end
+      format.csv { download_report("Report::Csv::#{report_class}", *args) }
+      format.pdf { download_report("Report::Pdf::#{report_class}", *args) }
     end
+  end
+
+  def download_report(report_class, *args)
+    report = report_class.constantize.new(*args)
+    send_data report.run, filename: report.name, type: report.mime_type
   end
 end
