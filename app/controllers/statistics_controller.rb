@@ -12,46 +12,41 @@ class StatisticsController < ApplicationController
         |a| (a.amount > 0) ? a.amount : 0
       end.inject(0, :+)
     end
-
-    @num_swaps = (num_movements +
-                  current_organization.account.movements.count) / 2
-
     @total_hours += current_organization.account.movements.
                     map { |a| (a.amount > 0) ? a.amount : 0 }.inject(0, :+)
 
+    @num_swaps = (num_movements + current_organization.account.movements.count) / 2
+
     from = params[:from].presence.try(:to_date) || DateTime.now.to_date - 5.month
     to = params[:to].presence.try(:to_date) || DateTime.now.to_date
+    num_months = (to.year * 12 + to.month) - (from.year * 12 + from.month) + 1
+    date = from
 
-    if from.present?
-      num_months = (to.year * 12 + to.month) - (from.year * 12 + from.month) + 1
-      date = from
+    @months_names = []
+    @user_reg_months = []
+    @num_swaps_months = []
+    @hours_swaps_months = []
 
-      @months_names = []
-      @user_reg_months = []
-      @num_swaps_months = []
-      @hours_swaps_months = []
+    num_months.times do
+      @months_names << l(date, format: "%B %Y")
+      @user_reg_months << members.by_month(date).count
 
-      num_months.times do
-        @months_names << l(date, format: "%B %Y")
-        @user_reg_months << members.by_month(date).count
+      swaps_members = members.map { |a| a.account.movements.by_month(date) }
+      swaps_organization = current_organization.account.movements.by_month(date)
+      sum_swaps = (swaps_members.flatten.count + swaps_organization.count) / 2
+      @num_swaps_months.push(sum_swaps)
 
-        swaps_members = members.map { |a| a.account.movements.by_month(date) }
-        swaps_organization = current_organization.account.movements.by_month(date)
-        sum_swaps = (swaps_members.flatten.count + swaps_organization.count) / 2
-        @num_swaps_months.push(sum_swaps)
-
-        sum_hours = 0
-        swaps_members.flatten.each do |s|
-          sum_hours += (s.amount > 0) ? s.amount : 0
-        end
-        sum_hours += swaps_organization.map do
-          |a| (a.amount > 0) ? a.amount : 0
-        end.inject(0, :+)
-        sum_hours = sum_hours / 3600.0 if sum_hours > 0
-        @hours_swaps_months << sum_hours
-
-        date = date.next_month
+      sum_hours = 0
+      swaps_members.flatten.each do |s|
+        sum_hours += (s.amount > 0) ? s.amount : 0
       end
+      sum_hours += swaps_organization.map do
+        |a| (a.amount > 0) ? a.amount : 0
+      end.inject(0, :+)
+      sum_hours = sum_hours / 3600.0 if sum_hours > 0
+      @hours_swaps_months << sum_hours
+
+      date = date.next_month
     end
   end
 
@@ -60,9 +55,9 @@ class StatisticsController < ApplicationController
   end
 
   def demographics
-    @members = current_organization.members
-    @age_counts = age_counts
-    @gender_counts = gender_counts
+    members = current_organization.members
+    @age_counts = age_counts(members)
+    @gender_counts = gender_counts(members)
   end
 
   def last_login
@@ -97,13 +92,6 @@ class StatisticsController < ApplicationController
   end
 
   protected
-
-  def age(date_of_birth)
-    return unless date_of_birth
-
-    age_in_days = Date.today - date_of_birth
-    (age_in_days / 365.26).to_i
-  end
 
   def count_offers_by_label(offers)
     # Cannot use Hash.new([0, 0]) because then counters[key][0] += n
@@ -140,9 +128,9 @@ class StatisticsController < ApplicationController
     [category_label].product(tag_labels)
   end
 
-  def age_counts
-    @members.each_with_object(Hash.new(0)) do |member, counts|
-      age = age(member.user_date_of_birth)
+  def age_counts(members)
+    members.each_with_object(Hash.new(0)) do |member, counts|
+      age = compute_age(member.user_date_of_birth)
 
       age_label = age_group_labels.detect do |range, _|
         range.include? age
@@ -150,6 +138,13 @@ class StatisticsController < ApplicationController
 
       counts[age_label] += 1
     end
+  end
+
+  def compute_age(date_of_birth)
+    return unless date_of_birth
+
+    age_in_days = Date.today - date_of_birth
+    (age_in_days / 365.26).to_i
   end
 
   def age_group_labels
@@ -164,8 +159,8 @@ class StatisticsController < ApplicationController
     }
   end
 
-  def gender_counts
-    @members.each_with_object(Hash.new(0)) do |member, counts|
+  def gender_counts(members)
+    members.each_with_object(Hash.new(0)) do |member, counts|
       gender = member.user_gender
       gender_label = if gender.present?
         t("simple_form.options.user.gender.#{gender}")
