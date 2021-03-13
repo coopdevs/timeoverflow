@@ -26,11 +26,7 @@ class ReportsController < ApplicationController
   end
 
   def transfer_list
-    @transfers = current_organization.
-                 all_transfers.
-                 includes(movements: { account: :accountable }).
-                 order("transfers.created_at DESC").
-                 uniq
+    @transfers = current_organization.all_transfers_with_accounts
 
     report_responder('Transfer', current_organization, @transfers)
   end
