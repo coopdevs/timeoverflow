@@ -28,7 +28,7 @@ class MemberDecorator < ViewModel
   end
 
   def account_balance
-    view.seconds_to_hm(object.account.try(:balance) || 0)
+    view.seconds_to_hm(object.account.try(:balance))
   end
 
   def toggle_manager_member_path

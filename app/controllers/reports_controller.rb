@@ -44,4 +44,24 @@ class ReportsController < ApplicationController
       end
     end
   end
+
+  def transfer_list
+    @transfers = current_organization.
+                 all_transfers.
+                 includes(movements: { account: :accountable }).
+                 order("transfers.created_at DESC").
+                 uniq
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        report = Report::Csv::Transfer.new(current_organization, @transfers)
+        send_data report.run, filename: report.name, type: report.mime_type
+      end
+      format.pdf do
+        report = Report::Pdf::Transfer.new(current_organization, @transfers)
+        send_data report.run, filename: report.name, type: report.mime_type
+      end
+    end
+  end
 end

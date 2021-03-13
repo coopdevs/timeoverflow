@@ -71,5 +71,23 @@ RSpec.describe ReportsController do
         expect(response.media_type).to eq("application/pdf")
       end
     end
+
+    describe 'GET #transfer_list' do
+      it 'downloads a csv' do
+        get :transfer_list, params: { format: 'csv' }
+
+        report = Report::Csv::Transfer.new(test_organization, test_organization.all_transfers)
+        expect(response.body).to eq(report.run)
+        expect(response.media_type).to eq("text/csv")
+      end
+
+      it 'downloads a pdf' do
+        get :transfer_list, params: { format: 'pdf' }
+
+        report = Report::Pdf::Transfer.new(test_organization, test_organization.all_transfers)
+        expect(response.body).to eq(report.run)
+        expect(response.media_type).to eq("application/pdf")
+      end
+    end
   end
 end

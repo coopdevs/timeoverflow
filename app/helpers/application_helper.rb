@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   TEXT_SUCCESS = 'text-success'.freeze
   TEXT_DANGER = 'text-danger'.freeze
 
@@ -24,14 +23,15 @@ module ApplicationHelper
     raw "&mdash;"
   end
 
-  def seconds_to_hm(seconds)
+  def seconds_to_hm(seconds, default = mdash)
     sign = seconds <=> 0
+
     if sign.try :nonzero?
       minutes, _seconds = seconds.abs.divmod(60)
       hours, minutes = minutes.divmod(60)
-      raw format("%s%d:%02d", ("-" if sign < 0), hours, minutes)
+      format("%s%d:%02d", ("-" if sign < 0), hours, minutes)
     else
-      mdash
+      default
     end
   end
 

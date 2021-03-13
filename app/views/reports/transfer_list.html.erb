@@ -1,0 +1,25 @@
+<div class="row">
+  <table class="table table-condensed table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><%= t('statistics.statistics_all_transfers.date') %></th>
+        <th><%= t('statistics.statistics_all_transfers.from') %></th>
+        <th><%= t('statistics.statistics_all_transfers.to') %></th>
+        <th><%= t('statistics.statistics_all_transfers.post') %></th>
+        <th><%= t('statistics.statistics_all_transfers.quantity') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transfers.each do |transfer| %>
+        <tr>
+          <td><%= l(transfer.created_at, format: :long) %></td>
+          <% accounts_from_movements(transfer).each do |account| %>
+            <td><%= account %></td>
+          <% end %>
+          <td><%= transfer.post %></td>
+          <td><%= seconds_to_hm(transfer.movements.first.amount.abs) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
