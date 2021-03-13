@@ -34,7 +34,7 @@ class StatisticsController < ApplicationController
       swaps_members = members.map { |a| a.account.movements.by_month(date) }
       swaps_organization = current_organization.account.movements.by_month(date)
       sum_swaps = (swaps_members.flatten.count + swaps_organization.count) / 2
-      @num_swaps_months.push(sum_swaps)
+      @num_swaps_months << sum_swaps
 
       sum_hours = 0
       swaps_members.flatten.each do |s|
