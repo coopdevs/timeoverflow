@@ -460,7 +460,7 @@ ca:
       text: required
     'yes': 'Yes'
   statistics:
-    statistics_all_transfers:
+    all_transfers:
       date: Data
       delete_reason: Esteu segur d'esborrar aquest comentari?
       from: Origen
@@ -469,7 +469,7 @@ ca:
       reason: Raó
       to: Destí
       transfers: Totes les transferències
-    statistics_demographics:
+    demographics:
       by_ages: Per edats
       by_gender: Per gènere
       demographics: Dades demogràfiques
@@ -477,7 +477,7 @@ ca:
       male: Home
       num_people: núm. persones
       unknown: Desconegut
-    statistics_global_activity:
+    global_activity:
       bank_activity: Activitat del banc
       end_date: mm/aaaa final
       global_activity: Activitat global
@@ -487,19 +487,19 @@ ca:
       show: Mostrar
       total_hours: " Hores intercanviades"
       users_reg: " Altes usuaris"
-    statistics_inactive_users:
+    inactive_users:
       days_without_swaps: Dies sense intercanvis
       inactive_users: Usuaris inactius
       last_movement: Darrer intercanvi
       no_movements: Sense intercanvis
-    statistics_last_login:
+    last_login:
       last_login: Darrera connexió
       never_login: Mai connectat
-    statistics_type_swaps:
+    type_swaps:
       type_of_swaps: Tipus d'intercanvis
       without_category: Sense categoria
       without_tags: Sense etiquetes
-    statistics_without_offers:
+    without_offers:
       without_offers: Sense ofertas
   stats:
     min_balance:

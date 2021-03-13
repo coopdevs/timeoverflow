@@ -460,7 +460,7 @@ gl:
       text: esixido
     'yes': Si
   statistics:
-    statistics_all_transfers:
+    all_transfers:
       date: Data
       delete_reason: Estás seguro/a de borrar este comentario?
       from: De
@@ -469,7 +469,7 @@ gl:
       reason: Razón
       to: Para
       transfers: Todas as transferencias
-    statistics_demographics:
+    demographics:
       by_ages: Por idades
       by_gender: Por sexo
       demographics: Datos demográficos
@@ -477,7 +477,7 @@ gl:
       male: Home
       num_people: "# de persoas"
       unknown: Descoñecido
-    statistics_global_activity:
+    global_activity:
       bank_activity: Actividade do Peto
       end_date: final mm/aaaa
       global_activity: Actividade global
@@ -487,19 +487,19 @@ gl:
       show: Amosar
       total_hours: Horas transferidas
       users_reg: Persoas usuarias rexistradas
-    statistics_inactive_users:
+    inactive_users:
       days_without_swaps: Días sen transaccións
       inactive_users: Persoas usuarias inactivas
       last_movement: Última transacción
       no_movements: Sen transaccións
-    statistics_last_login:
+    last_login:
       last_login: Último inicio de sesión
       never_login: Nunca iniciou sesión
-    statistics_type_swaps:
+    type_swaps:
       type_of_swaps: Tipo de transaccións
       without_category: Sen categoría
       without_tags: Sen etiquetas
-    statistics_without_offers:
+    without_offers:
       without_offers: Sen ofertas
   stats:
     min_balance:

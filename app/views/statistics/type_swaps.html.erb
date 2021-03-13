@@ -8,12 +8,11 @@
         <tr>
           <th>%</th>
           <th><%= "#{Category.model_name.human} -> #{Offer.human_attribute_name(:tag_list)}" %></th>
-          <th><%= t 'statistics.statistics_global_activity.total_hours' %></th>
-          <th><%= t 'statistics.statistics_global_activity.num_swaps' %></th>
+          <th><%= t 'statistics.global_activity.total_hours' %></th>
+          <th><%= t 'statistics.global_activity.num_swaps' %></th>
         </tr>
       </thead>
       <tbody>
-        <%# [["Clases", "clases", 13020, 3, 0.30], ["Domestic", "coche", 2220, 1, 0.1],...] %>
         <% @offers.each do |offer| %>
           <tr>
             <td><%= number_to_percentage offer.last * 100, precision: 2 %></td>
