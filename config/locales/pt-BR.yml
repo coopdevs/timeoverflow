@@ -479,9 +479,7 @@ pt-BR:
       unknown: Desconhecido
     global_activity:
       bank_activity: Atividade do banco
-      end_date: mm/aaaa final
       global_activity: Atividade global
-      ini_date: mm/aaaa inicial
       num_swaps: Trocas
       per_month: Por meses
       show: Mostrar

@@ -460,9 +460,7 @@ en:
       unknown: Unknown
     global_activity:
       bank_activity: Bank Activity
-      end_date: end mm/yyyy
       global_activity: Global Activity
-      ini_date: ini mm/yyyy
       num_swaps: " Transactions"
       per_month: By Month
       show: Show

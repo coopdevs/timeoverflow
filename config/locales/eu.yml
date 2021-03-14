@@ -481,9 +481,7 @@ eu:
       unknown: Ezezaguna
     global_activity:
       bank_activity: D bankuaren ekintzak
-      end_date: hi/ urte bukaera
       global_activity: Ekintza orokorra
-      ini_date: hi/ urte hasiera
       num_swaps: Trukeak
       per_month: Hilabeteka
       show: Erakutsi

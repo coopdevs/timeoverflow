@@ -479,9 +479,7 @@ gl:
       unknown: Descoñecido
     global_activity:
       bank_activity: Actividade do Peto
-      end_date: final mm/aaaa
       global_activity: Actividade global
-      ini_date: ini mm/aaaa
       num_swaps: Transaccións
       per_month: Por mes
       show: Amosar

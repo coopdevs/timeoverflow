@@ -479,9 +479,7 @@ ca:
       unknown: Desconegut
     global_activity:
       bank_activity: Activitat del banc
-      end_date: mm/aaaa final
       global_activity: Activitat global
-      ini_date: mm/aaaa inicial
       num_swaps: " Intercanvis"
       per_month: Per mesos
       show: Mostrar
