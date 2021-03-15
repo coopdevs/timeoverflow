@@ -17,11 +17,11 @@ class Report::TransferDecorator
 
   def headers
     [
-      I18n.t('statistics.statistics_all_transfers.date'),
-      I18n.t('statistics.statistics_all_transfers.from'),
-      I18n.t('statistics.statistics_all_transfers.to'),
-      I18n.t('statistics.statistics_all_transfers.post'),
-      I18n.t('statistics.statistics_all_transfers.quantity')
+      I18n.t('statistics.all_transfers.date'),
+      I18n.t('statistics.all_transfers.from'),
+      I18n.t('statistics.all_transfers.to'),
+      I18n.t('statistics.all_transfers.post'),
+      I18n.t('statistics.all_transfers.quantity')
     ]
   end
 

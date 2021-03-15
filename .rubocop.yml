@@ -114,7 +114,7 @@ Style/LineEndConcatenation:
   Enabled: false
 
 Layout/LineLength:
-  Max: 80
+  Max: 100
 
 Metrics/MethodLength:
   Enabled: false
