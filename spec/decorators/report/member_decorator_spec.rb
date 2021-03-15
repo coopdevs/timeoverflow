@@ -1,8 +1,8 @@
-RSpec.describe MemberReportDecorator do
+RSpec.describe Report::MemberDecorator do
   let (:member) { Fabricate(:member) }
   let (:org) { member.organization }
   let (:decorator) do
-    MemberReportDecorator.new(org, org.members)
+    Report::MemberDecorator.new(org, org.members)
   end
 
   it "#name" do

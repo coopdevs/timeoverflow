@@ -16,6 +16,13 @@ class Organization < ApplicationRecord
   before_validation :ensure_url
   after_create :create_account
 
+  def all_transfers_with_accounts
+    all_transfers.
+      includes(movements: { account: :accountable }).
+      order("transfers.created_at DESC").
+      distinct
+  end
+
   def to_s
     "#{name}"
   end

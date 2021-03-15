@@ -1,4 +1,4 @@
-RSpec.describe PostReportDecorator do
+RSpec.describe Report::PostDecorator do
   let (:org) { Fabricate(:organization) }
   let (:member) { Fabricate(:member, organization: org) }
   let (:category) { Fabricate(:category) }
@@ -11,7 +11,7 @@ RSpec.describe PostReportDecorator do
   let (:decorator) do
     offers = org.offers.of_active_members.active.group_by(&:category)
 
-    PostReportDecorator.new(org, offers, Offer)
+    Report::PostDecorator.new(org, offers, Offer)
   end
 
   it "#name" do

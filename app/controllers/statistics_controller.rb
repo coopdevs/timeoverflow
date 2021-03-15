@@ -83,10 +83,8 @@ class StatisticsController < ApplicationController
   end
 
   def all_transfers
-    @transfers = current_organization.all_transfers.
-                 includes(movements: {account: :accountable}).
-                 order("transfers.created_at DESC").
-                 distinct.
+    @transfers = current_organization.
+                 all_transfers_with_accounts.
                  page(params[:page]).
                  per(20)
   end

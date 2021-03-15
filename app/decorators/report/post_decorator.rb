@@ -1,4 +1,4 @@
-class PostReportDecorator
+class Report::PostDecorator
   def initialize(org, collection, type)
     @org = org
     @collection = collection

@@ -8,17 +8,7 @@ class ReportsController < ApplicationController
                includes(:user).
                order("members.member_uid")
 
-    respond_to do |format|
-      format.html
-      format.csv do
-        report = Report::Csv::Member.new(current_organization, @members)
-        send_data report.run, filename: report.name, type: report.mime_type
-      end
-      format.pdf do
-        report = Report::Pdf::Member.new(current_organization, @members)
-        send_data report.run, filename: report.name, type: report.mime_type
-      end
-    end
+    report_responder('Member', current_organization, @members)
   end
 
   def post_list
@@ -32,16 +22,27 @@ class ReportsController < ApplicationController
              to_a.
              sort_by { |category, _| category.try(:name).to_s }
 
+    report_responder('Post', current_organization, @posts, @post_type)
+  end
+
+  def transfer_list
+    @transfers = current_organization.all_transfers_with_accounts
+
+    report_responder('Transfer', current_organization, @transfers)
+  end
+
+  private
+
+  def report_responder(report_class, *args)
     respond_to do |format|
       format.html
-      format.csv do
-        report = Report::Csv::Post.new(current_organization, @posts, @post_type)
-        send_data report.run, filename: report.name, type: report.mime_type
-      end
-      format.pdf do
-        report = Report::Pdf::Post.new(current_organization, @posts, @post_type)
-        send_data report.run, filename: report.name, type: report.mime_type
-      end
+      format.csv { download_report("Report::Csv::#{report_class}", *args) }
+      format.pdf { download_report("Report::Pdf::#{report_class}", *args) }
     end
+  end
+
+  def download_report(report_class, *args)
+    report = report_class.constantize.new(*args)
+    send_data report.run, filename: report.name, type: report.mime_type
   end
 end

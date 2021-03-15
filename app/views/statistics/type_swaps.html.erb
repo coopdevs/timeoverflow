@@ -17,7 +17,7 @@
           <tr>
             <td><%= number_to_percentage offer.last * 100, precision: 2 %></td>
             <td><%= "#{offer[0]} -> #{offer[1]}" %></td>
-            <td><%= seconds_to_hm offer[2] || '—' %></td>
+            <td><%= seconds_to_hm offer[2] %></td>
             <td><%= offer[3] %></td>
           </tr>
         <% end %>

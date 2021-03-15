@@ -6,8 +6,9 @@ RSpec.describe ApplicationHelper do
   end
 
   describe 'seconds_to_hm' do
-    it 'with 0 returns em dash' do
+    it 'with 0 returns the default value' do
       expect(helper.seconds_to_hm(0)).to eq("&mdash;")
+      expect(helper.seconds_to_hm(0, 0)).to eq(0)
     end
 
     it 'with non-zero returns specific format' do
