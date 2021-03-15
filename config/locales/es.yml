@@ -460,7 +460,7 @@ es:
       text: necesario
     'yes': Si
   statistics:
-    statistics_all_transfers:
+    all_transfers:
       date: Fecha
       delete_reason: "¿Está seguro de borrar este comentario?"
       from: Origen
@@ -469,7 +469,7 @@ es:
       reason: Razón
       to: Destino
       transfers: Todas las transferencias
-    statistics_demographics:
+    demographics:
       by_ages: Por edades
       by_gender: Por género
       demographics: Datos demográficos
@@ -477,29 +477,27 @@ es:
       male: Hombre
       num_people: Nº personas
       unknown: Desconocido
-    statistics_global_activity:
+    global_activity:
       bank_activity: Actividad del banco
-      end_date: mm/aaaa final
       global_activity: Actividad global
-      ini_date: mm/aaaa inicial
       num_swaps: " Intercambios"
       per_month: Por meses
       show: Mostrar
       total_hours: " Horas intercambiadas"
       users_reg: " Altas de usuario"
-    statistics_inactive_users:
+    inactive_users:
       days_without_swaps: Días sin intercambios
       inactive_users: Usuarios inactivos
       last_movement: Útimo intercambio
       no_movements: Sin intercambios
-    statistics_last_login:
+    last_login:
       last_login: Último login
       never_login: Nunca logueado
-    statistics_type_swaps:
+    type_swaps:
       type_of_swaps: Tipos de intercambios
       without_category: Sin categoría
       without_tags: Sin etiquetas
-    statistics_without_offers:
+    without_offers:
       without_offers: Sin ofertas
   stats:
     min_balance:
