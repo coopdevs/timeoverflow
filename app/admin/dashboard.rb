@@ -16,16 +16,20 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Recent Users" do
           ul do
-            User.last(5).map do |u|
-              li link_to(u, admin_user_path(u))
+            User.last(5).map do |user|
+              li link_to(user, admin_user_path(user))
             end
           end
         end
       end
 
       column do
-        panel "Info" do
-          para "Welcome to ActiveAdmin."
+        panel "Recent Posts" do
+          ul do
+            Post.last(5).map do |post|
+              li link_to(post, admin_post_path(post))
+            end
+          end
         end
       end
     end
