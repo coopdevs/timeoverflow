@@ -70,13 +70,13 @@
                 <%= Inquiry.model_name.human(count: :many) %>
               <% end %>
             </li>
+            <li class="<%= "active" if current_page?(alpha_grouped_index_tags_path(post_type: "offer")) %>">
+              <%= link_to alpha_grouped_index_tags_path(post_type: "offer") do %>
+                <%= glyph :tags %>
+                <%= t ".tags" %>
+              <% end %>
+            </li>
             <% if current_user.manages? current_organization %>
-              <li class="<%= "active" if current_page?(alpha_grouped_index_tags_path(post_type: "offer")) %>">
-                <%= link_to alpha_grouped_index_tags_path(post_type: "offer") do %>
-                  <%= glyph :tags %>
-                  <%= t ".tags" %>
-                <% end %>
-              </li>
               <%= render 'application/menus/organization_reports_menu' %>
               <%= render 'application/menus/organization_statistics_menu' %>
               <%= render 'application/menus/organization_listings_menu' %>
