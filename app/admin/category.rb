@@ -7,7 +7,7 @@ ActiveAdmin.register Category do
   end
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs do
       f.input :name
     end
     f.actions
@@ -18,17 +18,12 @@ ActiveAdmin.register Category do
       row :created_at
       row :updated_at
       row :name_translations do
-        cat.disable_fallback
-        content_tag :div do
-          I18n.available_locales.map do |loc|
-            next unless cat.send("name_#{loc}")
-            content_tag(:strong, "#{loc}: ") +
-              content_tag(:span, cat.send("name_#{loc}"))
-          end.compact.sum
-        end
+        cat.name_translations.map do |locale, translation|
+          tag.strong("#{I18n.t("locales.#{locale}", locale: locale)}: ") +
+          tag.span(translation)
+        end.join(" | ").html_safe
       end
     end
-    active_admin_comments
   end
 
   permit_params :name
