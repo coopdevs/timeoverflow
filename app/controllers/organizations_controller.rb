@@ -55,7 +55,6 @@ class OrganizationsController < ApplicationController
     @members.each do |member|
       @organizations << Organization.find(member.organization_id)
     end
-    
   end
 
   private

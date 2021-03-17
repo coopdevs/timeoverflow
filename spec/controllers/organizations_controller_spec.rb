@@ -20,6 +20,16 @@ RSpec.describe OrganizationsController do
     end
   end
 
+  describe 'GET #select_organization' do
+    it 'it shows the organizations in which the user is a member' do
+      login(member.user)
+      get :select_organization
+
+      expect(assigns(:organizations)).to eq([organization])
+      expect(response.status).to eq(200)
+    end
+  end
+
   describe 'POST #create' do
     it 'only superdamins are authorized create to new organizations' do
       login(member.user)
