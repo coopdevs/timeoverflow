@@ -12,7 +12,6 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    member_should_be_active
     @movements = @organization.
                  account.
                  movements.
