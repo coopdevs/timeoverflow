@@ -76,6 +76,7 @@ en:
         unconfirmed_email: Unconfirmed Email
         updated_at: Updated
         username: Name
+        deactivated: Deactivated
     errors:
       models:
         organization:
@@ -300,6 +301,7 @@ en:
     delete: Delete
     demote: Demote to normal user
     edit: Update
+    enter_to_timebank: Enter to timebank
     filter: Filter
     give_time: Time transfer
     home: Home
@@ -308,12 +310,14 @@ en:
     member_count: 'Number of users:'
     more: More
     movements: Transactions
+    no_information_available: No information available
     promote: Promote to administrator
     reason: Reason
     required_field: "* Required field"
     save: Save
     search: Search
     show: Show
+    see: See
     source_destination: From/to
     statistics: Statistics
     table:
@@ -537,6 +541,7 @@ en:
       cancel_warning: You are going to delete account from the Time Bank for user %{username}
       cancel_warning_angular: You are going to delete account from the Time Bank for user {{username}}
       create: Create new user
+      deactivated_warning: If you think your account might have been deactivated by mistake, please contact the administrator with the information provided below.
       manage_warning: You are going to change privileges for user %{username}
       manage_warning_angular: You are going to change privileges for user {{username}}
       user_created: User %{uid} %{name} saved
