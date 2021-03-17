@@ -85,9 +85,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index] do
     collection do
-      get "alpha_grouped_index"
-      get "inquiries"
-      get "offers"
+      get :alpha_grouped_index
     end
   end
 
