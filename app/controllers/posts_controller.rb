@@ -2,6 +2,8 @@ class PostsController <  ApplicationController
   has_scope :by_category, as: :cat
   has_scope :tagged_with, as: :tag
   has_scope :by_organization, as: :org
+  
+  before_action :member_should_be_active
 
   def index
     context = model.active.of_active_members

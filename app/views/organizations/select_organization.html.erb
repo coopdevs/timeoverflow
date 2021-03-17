@@ -1,0 +1,78 @@
+<div class="table-responsive">
+    <table class="table table-hover table-condensed users panel">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>         
+                    Information
+                </th>
+                <th>         
+                    Enter to timebank
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @organizations.each_with_index do |organization, index| %>
+            <tr>
+                <td><%= organization.name %></td>
+                <td><a href="" data-toggle="modal" data-target="#dialogo<%= index %>"> See<a></td>
+                <td>
+                <%if Member.where(organization_id:organization.id, user_id:current_user.id).first.active %> 
+                    <%= link_to set_current_organization_path(organization), method: :post do %>
+
+                    Enter
+                    <% end %>
+                <% else %>
+                    Deactivated
+                <% end %>
+                </td>
+                
+            </tr>
+        <div class="modal fade" id="dialogo<%= index %>">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+        
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal">X</button>
+                <h4 class="modal-title"><%= organization.name %></h4>
+            </div>
+        
+            <!-- cuerpo del diálogo -->
+            <div class="modal-body">
+                <strong>Adress:</strong> <% if organization.address? %><%= organization.address %>, <% end %>
+                        <% if organization.neighborhood? %><%= organization.neighborhood %>, <% end %>
+                        <% if organization.city? %> <%= organization.city %> <% end %>
+
+                        <% if !organization.city? && !organization.neighborhood? && !organization.address? %>
+                            No information available
+                        <% end %>
+                <br>
+                <strong>Phone:</strong> <% if organization.phone? %><%= organization.phone %> <%else%> No information available <% end %>
+                <br>
+                <strong>Email:</strong> <% if organization.email? %><%= organization.email %> <%else%> No information available <% end %>
+                <br>
+                <strong>Phone:</strong> <% if organization.phone? %><%= organization.phone %> <%else%> No information available <% end %>
+                <br>
+                <strong>Web:</strong> <% if organization.web? %><%= organization.web %> <%else%> No information available <% end %>
+            </div>
+        
+            <!-- pie del diálogo -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        
+            </div>
+        </div>
+        </div>
+        <% end %>
+        </tbody>
+        
+    </table>
+
+
+    *If you think your account might have been deactivated by mistake, please contact the administrator with the information provided below.
+
+</div>

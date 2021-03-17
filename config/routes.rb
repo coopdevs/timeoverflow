@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/select_organization", to: "organizations#select_organization"
+
   resources :users, concerns: :accountable, except: :destroy, :path => "members" do
     collection do
       get 'manage'

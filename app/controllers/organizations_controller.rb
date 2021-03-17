@@ -12,6 +12,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    member_should_be_active
     @movements = @organization.
                  account.
                  movements.
@@ -47,6 +48,15 @@ class OrganizationsController < ApplicationController
       session[:current_organization_id] = @organization.id
     end
     redirect_to root_path
+  end
+
+  def select_organization
+    @members = Member.where(user_id: current_user.id)
+    @organizations = Array.new
+    @members.each do |member|
+      @organizations << Organization.find(member.organization_id)
+    end
+    
   end
 
   private

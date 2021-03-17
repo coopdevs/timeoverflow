@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :member_should_be_active
 
   def index
     search_and_load_members current_organization.members.active, { s: 'user_last_sign_in_at DESC' }
