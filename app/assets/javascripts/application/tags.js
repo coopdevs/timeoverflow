@@ -1,15 +1,15 @@
 $(function() {
   $(".switch_offer-js").on("click", function() {
-    loadTags('/tags/offers');
+    loadTags('offer');
   });
 
   $(".switch_inquiry-js").on("click", function() {
-    loadTags('/tags/inquiries');
+    loadTags('inquiry');
   });
 
-  function loadTags(url){
+  function loadTags(type){
     $.get({
-      url: url,
+      url: `/tags/alpha_grouped_index.js?post_type=${type}`,
       dataType: 'html',
       error: function(jqXHR, textStatus, errorThrown) {
         $('.alpha_tag_list').html('AJAX Error: ' + textStatus);

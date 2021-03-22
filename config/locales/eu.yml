@@ -31,9 +31,7 @@ eu:
         created_at: Sortua
         description: Deskribapena
         email: Helbide elektronikoa
-        name: 'Izena
-
-'
+        name: Izena
         neighborhood: Auzoa
         phone: Telefono zenbakia
         public_opening_times: Hasiera orduak
@@ -53,9 +51,7 @@ eu:
         amount: kopurua
         created_at: Sortua
         hours: Orduak
-        minutes: 'Minutuak
-
-'
+        minutes: Minutuak
         post: Eskaintza
         reason: Oharrak
         source: Jatorria
@@ -176,9 +172,7 @@ eu:
       add: " Zerbitzua Gehitu"
       all: Denak
       global: Orokorrak
-      local: 'Bertakoak
-
-'
+      local: Bertakoak
       tree: Oinarrizkoa
   devise:
     confirmations:
@@ -293,7 +287,7 @@ eu:
       title: Ez da topatu
   global:
     add_new: Berria sortu
-    all: Dena.
+    all: Dena
     amount: Zenbat
     announcements: Iragarkia
     back: Atzera
@@ -468,7 +462,7 @@ eu:
       text: Beharrezkoa
     'yes': Bai
   statistics:
-    statistics_all_transfers:
+    all_transfers:
       date: Data
       delete_reason: Zihur zaude azalpen hau ezabatu nahi duzula?
       from: Jatorria
@@ -477,7 +471,7 @@ eu:
       reason: Arrazoia
       to: Helmuga, erabilera
       transfers: Transferentzia guztiak
-    statistics_demographics:
+    demographics:
       by_ages: Adinaren arabera
       by_gender: Generoaren arabera
       demographics: Demografia datuak
@@ -485,29 +479,27 @@ eu:
       male: Gizona
       num_people: Pertsona kantitatea
       unknown: Ezezaguna
-    statistics_global_activity:
+    global_activity:
       bank_activity: D bankuaren ekintzak
-      end_date: hi/ urte bukaera
       global_activity: Ekintza orokorra
-      ini_date: hi/ urte hasiera
       num_swaps: Trukeak
       per_month: Hilabeteka
       show: Erakutsi
       total_hours: Trukaturiko orduak
       users_reg: Erabiltzaileen altak
-    statistics_inactive_users:
+    inactive_users:
       days_without_swaps: Trukerik gabeko egunak
       inactive_users: Mugimendurik ez duten erabiltzaileak
       last_movement: Azken trukea
       no_movements: Trukerik gabe
-    statistics_last_login:
+    last_login:
       last_login: Azken konexioa
       never_login: Konektatu gabea
-    statistics_type_swaps:
+    type_swaps:
       type_of_swaps: Truke motak
       without_category: Categoriarik gabe
       without_tags: Etiketarik gabe
-    statistics_without_offers:
+    without_offers:
       without_offers: Eskaintzarik gabe
   stats:
     min_balance:

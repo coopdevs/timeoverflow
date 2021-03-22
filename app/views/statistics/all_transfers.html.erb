@@ -19,24 +19,8 @@
           <td>
             <%= l transfer.created_at, format: :long %>
           </td>
-          <% transfer.movements.sort_by(&:amount).each do |mv| %>
-            <td>
-              <% mv.account.tap do |account| %>
-                <% if account.accountable.present? %>
-                  <% if account.accountable_type == 'Organization' %>
-                    <%= link_to account,
-                                organization_path(account.accountable) %>
-                  <% elsif account.accountable.active %>
-                    <%= link_to account.accountable.display_name_with_uid,
-                                user_path(account.accountable.user) %>
-                  <% else %>
-                    <%= t '.inactive_user' %>
-                  <% end %>
-                <% else %>
-                  <%= t '.deleted_user' %>
-                <% end %>
-              <% end %>
-            </td>
+          <% accounts_from_movements(transfer, with_links: true).each do |account| %>
+            <td><%= account %></td>
           <% end %>
           <td>
             <%= link_to_if transfer.try(:post).try(:active?),

@@ -160,7 +160,7 @@
           <br/>
           <strong class="lead <%= green_red(@member.account&.balance) %>">
             <%= t(".balance") %>
-            <%= seconds_to_hm(@member.account.try(:balance) || mdash) %>
+            <%= seconds_to_hm(@member.account.try(:balance)) %>
           </strong>
         </p>
       </div>

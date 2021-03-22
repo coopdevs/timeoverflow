@@ -445,7 +445,7 @@ en:
       text: required
     'yes': 'Yes'
   statistics:
-    statistics_all_transfers:
+    all_transfers:
       date: Date
       delete_reason: Are you sure to delete this comment?
       from: From
@@ -454,7 +454,7 @@ en:
       reason: Reason
       to: To
       transfers: All transfers
-    statistics_demographics:
+    demographics:
       by_ages: By ages
       by_gender: By gender
       demographics: Demographics data
@@ -462,29 +462,27 @@ en:
       male: Male
       num_people: "# of people"
       unknown: Unknown
-    statistics_global_activity:
+    global_activity:
       bank_activity: Bank Activity
-      end_date: end mm/yyyy
       global_activity: Global Activity
-      ini_date: ini mm/yyyy
       num_swaps: " Transactions"
       per_month: By Month
       show: Show
       total_hours: " Hours transfered"
       users_reg: " Registered users"
-    statistics_inactive_users:
+    inactive_users:
       days_without_swaps: Days without transactions
       inactive_users: Inactive users
       last_movement: Last transaction
       no_movements: Without transactions
-    statistics_last_login:
+    last_login:
       last_login: Last login
       never_login: Never login
-    statistics_type_swaps:
+    type_swaps:
       type_of_swaps: Type of transactions
       without_category: Without category
       without_tags: Without tags
-    statistics_without_offers:
+    without_offers:
       without_offers: Without offers
   stats:
     min_balance:

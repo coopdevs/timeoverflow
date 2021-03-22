@@ -23,5 +23,11 @@
         <%= Inquiry.model_name.human(count: :many) %>
       <% end %>
     </li>
+    <li>
+      <%= link_to transfer_list_report_path, data: { popup: true } do %>
+        <%= glyph :list_alt %>
+        <%= Transfer.model_name.human(count: :many) %>
+      <% end %>
+    </li>
   </ul>
 </li>

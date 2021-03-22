@@ -65,18 +65,19 @@ Rails.application.routes.draw do
       get "user_list"
       get "offer_list" => :post_list, type: "offer"
       get "inquiry_list" => :post_list, type: "inquiry"
+      get "transfer_list"
     end
   end
 
   resource "statistics" do
     collection do
-      get "statistics_global_activity"
-      get "statistics_inactive_users"
-      get "statistics_demographics"
-      get "statistics_last_login"
-      get "statistics_without_offers"
-      get "statistics_type_swaps"
-      get "statistics_all_transfers"
+      get :global_activity
+      get :inactive_users
+      get :demographics
+      get :last_login
+      get :without_offers
+      get :type_swaps
+      get :all_transfers
     end
   end
 
@@ -86,9 +87,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index] do
     collection do
-      get "alpha_grouped_index"
-      get "inquiries"
-      get "offers"
+      get :alpha_grouped_index
     end
   end
 
