@@ -32,19 +32,7 @@
         <% end %>
       </div>
     </div>
-
-    <% if current_user %>
-      <% member = Member.where(user_id:current_user.id, organization_id: post.organization_id).first %>
-      <% if member %>
-        <% member_active = member.active %>
-      <% else %>
-        <% member_active = false %>
-      <% end %>
-    <% else %>
-      <% member_active = false %>
-    <% end %>
-
-    <% if current_user && current_organization == post.organization && member_active %>
+    <% if current_user && current_organization == post.organization && current_user.active?(current_organization) %>
       <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">
@@ -81,7 +69,7 @@
     </div>
   </div>
 </div>
-<% if !current_user || post.organization != current_organization || !member_active %>
+<% if !current_user || post.organization != current_organization || !current_user.active?(current_organization) %>
   <div class="alert alert-info">
     <%= t 'posts.show.info',
       type: post.class.model_name.human,

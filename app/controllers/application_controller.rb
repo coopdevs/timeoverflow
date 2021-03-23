@@ -126,9 +126,8 @@ class ApplicationController < ActionController::Base
   
   def member_should_be_active
     if !current_member.active
-      flash[:error] = "Your account have been deactivated from this timebank"
-      redirect_to "/select_organization"
+      flash[:error] = 'Your account have been deactivated from this timebank'
+      redirect_to '/select_organization'
     end
   end
-  
 end
