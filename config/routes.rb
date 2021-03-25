@@ -33,8 +33,7 @@ Rails.application.routes.draw do
       post :set_current
     end
   end
-
-  get '/select_organization', to: 'organizations#select_organization'
+  get :select_organization, to: 'organizations#select_organization'
 
   resources :users, concerns: :accountable, except: :destroy, :path => "members" do
     collection do
@@ -47,7 +46,6 @@ Rails.application.routes.draw do
       put :delete_reason
     end
   end
-
   match "multi/step/:step", to: "multi_transfers#step", via: [:get, :post], as: :multi_transfers_step
   post "multi/create", to: "multi_transfers#create", as: :multi_transfers_create
 

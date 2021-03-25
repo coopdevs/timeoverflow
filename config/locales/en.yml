@@ -310,14 +310,12 @@ en:
     member_count: 'Number of users:'
     more: More
     movements: Transactions
-    no_information_available: No information available
     promote: Promote to administrator
     reason: Reason
     required_field: "* Required field"
     save: Save
     search: Search
     show: Show
-    see: See
     source_destination: From/to
     statistics: Statistics
     table:

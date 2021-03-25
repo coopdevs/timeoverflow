@@ -5,6 +5,7 @@ class PostsController <  ApplicationController
 
   def index
     context = model.active.of_active_members
+
     if current_organization.present?
       context = context.where(
         organization_id: current_organization.id

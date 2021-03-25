@@ -23,6 +23,7 @@ RSpec.describe OrganizationsController do
   describe 'GET #select_organization' do
     it 'it shows the organizations in which the user is a member' do
       login(member.user)
+
       get :select_organization
 
       expect(assigns(:organizations)).to eq([organization])

@@ -6,11 +6,11 @@ RSpec.describe TagsController do
   let! (:offer) { Fabricate(:offer, user: member.user, organization: organization, tags: tags) }
   let! (:inquiry) { Fabricate(:inquiry, user: member.user, organization: organization, tags: more_tags) }
 
-  describe "GET index" do
-    before(:each) do
-      login(member.user)
-    end
+  before(:each) do
+    login(member.user)
+  end
 
+  describe "GET index" do
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:ok)

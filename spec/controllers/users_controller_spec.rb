@@ -106,10 +106,10 @@ RSpec.describe UsersController do
     context 'with a member deactivate' do
       it 'is redirected to select organization' do
         login(deactivate_user)
+
         get :index
 
-        expect(subject).to redirect_to('/select_organization')
-        assert_routing('/select_organization', controller: 'organizations', action: 'select_organization')
+        expect(response).to redirect_to('/select_organization')
       end
     end
 
