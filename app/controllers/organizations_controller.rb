@@ -50,11 +50,7 @@ class OrganizationsController < ApplicationController
   end
 
   def select_organization
-    @members = Member.where(user_id: current_user.id)
-    @organizations = Array.new
-    @members.each do |member|
-      @organizations << Organization.find(member.organization_id)
-    end
+    @organizations = current_user.organizations
   end
 
   private

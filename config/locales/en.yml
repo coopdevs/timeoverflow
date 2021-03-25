@@ -539,6 +539,7 @@ en:
       cancel_warning: You are going to delete account from the Time Bank for user %{username}
       cancel_warning_angular: You are going to delete account from the Time Bank for user {{username}}
       create: Create new user
+      account_deactivated: Your account have been deactivated from this timebank
       deactivated_warning: If you think your account might have been deactivated by mistake, please contact the administrator with the information provided below.
       manage_warning: You are going to change privileges for user %{username}
       manage_warning_angular: You are going to change privileges for user {{username}}
