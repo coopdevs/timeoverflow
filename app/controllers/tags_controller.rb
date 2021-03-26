@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  before_action :authenticate_user!, :member_should_be_active
+
   def index
     posts = Post.by_organization(current_organization)
     @all_tags = posts.find_like_tag(params[:term])

@@ -25,12 +25,19 @@ RSpec.describe UsersController do
               organization: test_organization,
               manager: false)
   end
+  let(:member_deactivate) do
+    Fabricate(:member,
+              organization: test_organization,
+              active: false,
+              manager: false)
+    end
 
   let!(:user) { member.user }
   let!(:another_user) { another_member.user }
   let!(:admin_user) { member_admin.user }
   let!(:wrong_user) { wrong_email_member.user }
   let!(:empty_email_user) { empty_email_member.user }
+  let!(:deactivate_user) { member_deactivate.user }
 
   describe "GET #index" do
     before { login(user) }
@@ -93,6 +100,16 @@ RSpec.describe UsersController do
 
         expect(assigns(:members).map(&:user))
           .to eq([user, another_user, admin_user, wrong_user, empty_email_user])
+      end
+    end
+
+    context 'with a member deactivate' do
+      it 'is redirected to select organization' do
+        login(deactivate_user)
+
+        get :index
+
+        expect(response).to redirect_to('/select_organization')
       end
     end
 

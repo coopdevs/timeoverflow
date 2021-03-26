@@ -49,6 +49,10 @@ class OrganizationsController < ApplicationController
     redirect_to root_path
   end
 
+  def select_organization
+    @organizations = current_user.organizations
+  end
+
   private
 
   def load_resource
