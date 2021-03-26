@@ -61,6 +61,7 @@ pt-BR:
         alt_phone: Telefone alternativo
         created_at: Criado
         date_of_birth: Data de nascimento
+        deactivated: 
         description: Descrição
         email: E-mail
         gender: Gênero
@@ -135,6 +136,7 @@ pt-BR:
       admin: Administrar
       administration: Administração
       adminshort: Admin
+      all_transfers: Todas as transferências
       categories: Serviços
       demographics: Dados demográficos
       global_activity: Atividade global
@@ -146,7 +148,7 @@ pt-BR:
       reports: Informes
       sign_out: Desconectar
       statistics: Estatísticas
-      statistics_all_transfers: Todas as transferências
+      statistics_all_transfers: 
       stats: Estatísticas
       tags: Etiquetas
       type_of_swaps: Tipos de trocas
@@ -297,6 +299,7 @@ pt-BR:
     delete: Apagar
     demote: Converter em usuário normal
     edit: Modificar
+    enter_to_timebank: 
     filter: Filtro
     from: De
     give_time: Transferir tempo
@@ -528,12 +531,14 @@ pt-BR:
     give_time:
       give_time: Dar Tempo a
     index:
+      account_deactivated: 
       actions: Ações
       active_warning: Você mudará o status da conta para %{username}
       active_warning_angular: Mudará o estado da conta do usuário {{username}}
       cancel_warning: Você deletará a conta do Banco de Tempo %{username}
       cancel_warning_angular: Eliminará o usuário do banco {{username}}
       create: Criar novo usuário
+      deactivated_warning: 
       manage_warning: Você mudará privilégios para o usuário %{username}
       manage_warning_angular: Mudará os privilégios do usuário {{username}}
       members: Membros
