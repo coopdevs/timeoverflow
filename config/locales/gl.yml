@@ -1,8 +1,5 @@
 gl:
   active_admin:
-    comments:
-      author_type: Tipo de autor/a
-      resource_type: Tipo de recurso
     users:
       organization: Banco de tempo
       upload_csv: Ficheiro
@@ -36,7 +33,6 @@ gl:
         phone: Teléfono
         public_opening_times: Horario de atención ao público
         reg_number_seq: Número de secuencia de persoa usuaria
-        theme: Tema visual
         updated_at: Actualizado
       post:
         category: Categoría
@@ -154,28 +150,10 @@ gl:
       type_of_swaps: Tipo de transaccións
       users: Persoas usuarias
       without_offers: Sen ofertas
-    organization_list:
-      address: Enderezo
-      city: Cidade
-      description: Descrición
-      email: Correo electrónico
-      neighborhood: Barrio
-      not_member: Neste momento non pertence a ningún banco de tempo, para poder utilizar esta plataforma debes estar en contacto cun dos bancos que teñen a plataforma
-      phone: Teléfono
-      public_opening_times: Horario de funcionamento
-      time_bank: Banco de tempo
-      welcome: Benvidos/as a Timeoverflow %{user}.
     terms_conditions: Condicións de servizo
     tips:
       entertag: Insira etiquetas separadas por comas
       user_not_found: Persoa suaria non atopada
-  categories:
-    index:
-      add: Engadir servizo
-      all: Todo
-      global: Global
-      local: Local
-      tree: Principal
   devise:
     confirmations:
       confirmed: A túa conta confirmouse con éxito.
@@ -534,13 +512,10 @@ gl:
       account_deactivated: 
       actions: Accións
       active_warning: Vas cambiar o estado da conta de usuario/a %{username}
-      active_warning_angular: Vas cambiar o estado da conta de usuario/a para {{username}}
       cancel_warning: Vas borrar a conta do Banco de tempo para o usuario/a %{username}
-      cancel_warning_angular: Vas borrar a conta do Banco de tempo para o usuario/a {{username}}
       create: Crea unha nova persoa usuaria
       deactivated_warning: 
       manage_warning: Vas cambiar privilexios para o usuario/a %{username}
-      manage_warning_angular: Vas cambiar privilexios para o usuario/a {{username}}
       members: Persoas usuarias
       user_created: O usuario/a %{uid} %{name} gardouse
     member_card:

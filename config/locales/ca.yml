@@ -1,8 +1,5 @@
 ca:
   active_admin:
-    comments:
-      author_type: Tipus d'autor
-      resource_type: Tipus de recurs
     users:
       organization: Banc de temps
       upload_csv: Fitxer
@@ -36,7 +33,6 @@ ca:
         phone: Telèfon
         public_opening_times: Horari d'atenció al públic
         reg_number_seq: Nombre de seqüència d'usuari
-        theme: Tema visual
         updated_at: Actualitzat
       post:
         category: Categoria
@@ -154,28 +150,10 @@ ca:
       type_of_swaps: Tipus d'intercanvis
       users: Usuaris
       without_offers: Sense ofertes publicades
-    organization_list:
-      address: Direcció
-      city: Ciutat
-      description: Descripció
-      email: Correu
-      neighborhood: Barri
-      not_member: No ets membre de cap Banc de Temps, per fer servir el sistema hauràs de posar-te en contacte amb un dels Bancs de Temps del sistema
-      phone: Telèfon
-      public_opening_times: Horari d'atenció al públic
-      time_bank: Banc de Temps
-      welcome: Benvingut a Timeoverflow %{user}.
     terms_conditions: Termes del servei
     tips:
       entertag: Introdueix etiquetes separades per comes
       user_not_found: Usuari no trobat.
-  categories:
-    index:
-      add: Afegir servei
-      all: Totes
-      global: Globals
-      local: Locals
-      tree: Principals
   devise:
     confirmations:
       confirmed: El teu compte ha estat confirmat amb èxit.
@@ -534,13 +512,10 @@ ca:
       account_deactivated: El teu compte ha estat desactivat per aquest Banc de Temps
       actions: Accions
       active_warning: Estàs a punt de canviar l'estat de l'usuari %{username}
-      active_warning_angular: Vas a canviar l'estat del compte de l'usuari {{username}}
       cancel_warning: Estàs a punt d'esborrar el compte de l'usuari %{username}
-      cancel_warning_angular: Vas a eliminar del banc a l'usuari {{username}}
       create: Crear nou usuari
       deactivated_warning: 'Si creus que el vostre compte es podria haver desactivat per error, poseu-vos en contacte amb l''administrador amb la informació que es proporciona a continuació. '
       manage_warning: Estàs a punt de canviar els permisos de l'usuari %{username}
-      manage_warning_angular: Vas a canviar els permisos de l'usuari {{username}}
       members: Membres
       user_created: Usuari %{uid} %{name} guardat
     member_card:
