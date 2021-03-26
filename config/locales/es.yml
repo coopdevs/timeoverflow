@@ -61,6 +61,7 @@ es:
         alt_phone: Teléfono alternativo
         created_at: Creado
         date_of_birth: Fecha de nacimiento
+        deactivated: Desactivado
         description: Descripción
         email: Correo
         gender: Género
@@ -135,6 +136,7 @@ es:
       admin: Administrar
       administration: Administración
       adminshort: Admin
+      all_transfers: Todas las transferencias
       categories: Servicios
       demographics: Datos demográficos
       global_activity: Actividad global
@@ -297,6 +299,7 @@ es:
     delete: Borrar
     demote: Convertir en usuario normal
     edit: Modificar
+    enter_to_timebank: Entrar al Banco de Tiempo
     filter: Filtro
     from: De
     give_time: Transferir tiempo
@@ -528,12 +531,14 @@ es:
     give_time:
       give_time: Dar Tiempo a
     index:
+      account_deactivated: Tu cuenta ha sido desactivada para este Banco de Tiempo
       actions: Acciones
       active_warning: Estás a punto de cambiar el estado del usuario %{username}
       active_warning_angular: Va a cambiar el estado de la cuenta del usuario {{username}}
       cancel_warning: Estás a punto de borrar la cuenta al usuario %{username}
       cancel_warning_angular: Va a eliminar del banco al usuario {{username}}
       create: Crear nuevo usuario
+      deactivated_warning: 'Si crees que tu cuenta podría haber sido desactivada por error, comunícate con el administrador con la información que se proporciona a continuación. '
       manage_warning: Estás a punto de cambiar los permisos del usuario %{username}
       manage_warning_angular: Va a cambiar los privilegios del usuario {{username}}
       members: Miembros

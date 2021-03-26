@@ -61,6 +61,7 @@ gl:
         alt_phone: Teléfono alternativo
         created_at: Creado
         date_of_birth: Data de nacemento
+        deactivated: 
         description: Descrición
         email: Correo electrónico
         gender: Xénero
@@ -135,6 +136,7 @@ gl:
       admin: Xestionar
       administration: Administración
       adminshort: Persona administradora
+      all_transfers: Todas as transferencias
       categories: Servizos
       demographics: Datos demográficos
       global_activity: Actividade global
@@ -146,7 +148,7 @@ gl:
       reports: Informes
       sign_out: Saír
       statistics: Estatísticas
-      statistics_all_transfers: Todas as transferencias
+      statistics_all_transfers: 
       stats: Estatísticas
       tags: Etiquetas
       type_of_swaps: Tipo de transaccións
@@ -297,6 +299,7 @@ gl:
     delete: Eliminar
     demote: Degradar a usuario/a normal
     edit: Actualización
+    enter_to_timebank: 
     filter: Filtro
     from: Desde
     give_time: Transferencia de tempo
@@ -528,12 +531,14 @@ gl:
     give_time:
       give_time: Dálle tempo
     index:
+      account_deactivated: 
       actions: Accións
       active_warning: Vas cambiar o estado da conta de usuario/a %{username}
       active_warning_angular: Vas cambiar o estado da conta de usuario/a para {{username}}
       cancel_warning: Vas borrar a conta do Banco de tempo para o usuario/a %{username}
       cancel_warning_angular: Vas borrar a conta do Banco de tempo para o usuario/a {{username}}
       create: Crea unha nova persoa usuaria
+      deactivated_warning: 
       manage_warning: Vas cambiar privilexios para o usuario/a %{username}
       manage_warning_angular: Vas cambiar privilexios para o usuario/a {{username}}
       members: Persoas usuarias
