@@ -41,6 +41,7 @@ ActiveAdmin.register User do
     f.inputs "Members" do
       f.has_many :members do |m|
         m.input :organization, collection: Organization.order(id: :asc).pluck(:name, :id)
+        m.input :active
         m.input :manager
       end
     end
@@ -59,6 +60,9 @@ ActiveAdmin.register User do
         panel "Memberships" do
           table_for user.members do
             column :organization
+            column :active do |member|
+              "✔" if member.active
+            end
             column :manager do |member|
               "✔" if member.manager
             end
