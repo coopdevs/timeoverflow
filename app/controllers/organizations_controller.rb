@@ -1,12 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :load_resource, only: [:show, :edit, :update, :set_current]
 
-  def new
-    @organization = Organization.new
-
-    authorize @organization
-  end
-
   def index
     @organizations = Organization.all.page(params[:page]).per(25)
   end
@@ -18,18 +12,6 @@ class OrganizationsController < ApplicationController
                  order("created_at DESC").
                  page(params[:page]).
                  per(10)
-  end
-
-  def create
-    @organization = Organization.new(organization_params)
-
-    authorize @organization
-
-    if @organization.save
-      redirect_to @organization
-    else
-      render action: :new, status: :unprocessable_entity
-    end
   end
 
   def update
