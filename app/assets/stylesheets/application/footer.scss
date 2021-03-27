@@ -41,12 +41,10 @@
   }
 }
 
-.landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
-  .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .language-selector {
@@ -65,23 +63,12 @@
       border: 1px solid white;
       padding: 4px 8px;
     }
-
-    &:hover {
-      background-color: transparent;
-    }
   }
 
   &.open > a.btn-default.dropdown-toggle {
     & {
       background-color: transparent;
-      color: white;
-      border-color: #ddd;
-    }
-
-    &:hover {
-      background-color: transparent;
-      color: white;
-      border-color: #ddd;
+      border: 1px solid white;
     }
   }
 }
