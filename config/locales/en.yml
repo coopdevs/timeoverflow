@@ -1,8 +1,5 @@
 en:
   active_admin:
-    comments:
-      author_type: Author type
-      resource_type: Resource type
     users:
       organization: Time bank
       upload_csv: File
@@ -21,6 +18,10 @@ en:
       common:
         created_at: Created
         updated_at: Updated
+      inquiry:
+        is_group: Group inquiry
+      offer:
+        is_group: Group offer
       organization:
         address: Address
         city: City
@@ -32,12 +33,7 @@ en:
         phone: Phone
         public_opening_times: Opening hours
         reg_number_seq: User sequence number
-        theme: Theme
         updated_at: Updated
-      offer:
-        is_group: Group offer
-      inquiry:
-        is_group: Group inquiry
       post:
         category: Category
         created_at: Created
@@ -61,22 +57,22 @@ en:
         alt_phone: Alternative Phone
         created_at: Created
         date_of_birth: Date of birth
+        deactivated: Deactivated
         description: Description
         email: Email
         gender: Gender
         identity_document: Identity Document
         last_sign_in_at: Last login
         notifications: Receive email notifications
-        push_notifications: Receive mobile notifications
         organization: Organization
         phone: Phone
+        push_notifications: Receive mobile notifications
         registration_date: Registration date
         registration_number: User code
         superadmin: System Administrator
         unconfirmed_email: Unconfirmed Email
         updated_at: Updated
         username: Name
-        deactivated: Deactivated
     errors:
       models:
         organization:
@@ -136,6 +132,7 @@ en:
       admin: Manage
       administration: Administration
       adminshort: Admin
+      all_transfers: All transfers
       categories: Services
       demographics: Demographics data
       global_activity: Global activity
@@ -153,28 +150,10 @@ en:
       type_of_swaps: Type of transactions
       users: Users
       without_offers: Without offers
-    organization_list:
-      address: Address
-      city: City
-      description: Description
-      email: Email
-      neighborhood: Neighborhood
-      not_member: You do not belong to any time bank at this moment, in order to use this platform you need to keep in touch with one of the time banks that have joint the platform
-      phone: Phone
-      public_opening_times: Opening hours
-      time_bank: Time Bank
-      welcome: Welcome to Timeoverflow %{user}.
     terms_conditions: Terms of service
     tips:
       entertag: Enter tags separated by commas
       user_not_found: User not found.
-  categories:
-    index:
-      add: Add service
-      all: All
-      global: Global
-      local: Local
-      tree: Main
   devise:
     confirmations:
       confirmed: Your account was successfully confirmed.
@@ -225,20 +204,20 @@ en:
     registrations:
       destroyed: Bye! Your account was successfully cancelled. We hope to see you again soon.
       edit:
-        cancel_account:
-        current_password:
-        edit_user:
-        help_current_password:
-        help_password:
-        password:
-        password_confirmation:
-        unhappy:
-        update:
+        cancel_account: Cancel account
+        current_password: Current password
+        edit_user: Edit user
+        help_current_password: Help current password
+        help_password: Help Password
+        password: Password
+        password_confirmation: Password confirmation
+        unhappy: Unhappy
+        update: Update
       new:
-        password:
-        password_confirmation:
-        sign_me_up:
-        sign_up:
+        password: Password
+        password_confirmation: Password confirmation
+        sign_me_up: Sign me up
+        sign_up: Sign up
       signed_up: Welcome! You have signed up successfully.
       signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
       signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
@@ -285,10 +264,6 @@ en:
       description: The page you were looking for doesn't exist. You may have mistyped the address or the page may have moved.
       title: Not found
   global:
-    from: From
-    to: To
-    next: Next
-    create: Create
     add_new: Create new
     all: All
     amount: Quantity
@@ -297,12 +272,14 @@ en:
     balance: 'Balance:'
     cancel_membership: Permanent deletion
     contact_details: Contact details
+    create: Create
     date: Data
     delete: Delete
     demote: Demote to normal user
     edit: Update
     enter_to_timebank: Enter to timebank
     filter: Filter
+    from: From
     give_time: Time transfer
     home: Home
     information: Information
@@ -310,6 +287,7 @@ en:
     member_count: 'Number of users:'
     more: More
     movements: Transactions
+    next: Next
     promote: Promote to administrator
     reason: Reason
     required_field: "* Required field"
@@ -320,6 +298,7 @@ en:
     statistics: Statistics
     table:
       actions: Actions
+    to: To
   inquiries:
     edit:
       submit: Change inquiry
@@ -337,20 +316,39 @@ en:
     report:
       report_title: REPORT
   locales:
-    ar:
+    ar: Arabic
     ca: Catalan
     en: English
     es: Spanish
-    eu:
-    fr:
-    gl:
-    pt:
+    eu: Basque
+    fr: French
+    gl: Galician
+    pt: Portuguese
     pt-BR: Portuguese
   mailers_globals:
     footer:
       text: "%{organization_name} from"
       text_donation: The ADBdT association offers TimeOverflow for free to Time Banks. If you want to help maintain and improve the platform %{href}.
       text_donation_link: visit this website
+  multi_transfers:
+    multi_transfers: Multi transfers
+    step:
+      confirm:
+        description: Confirm the changes
+        type_of_transfer: Type of transfer
+      select_type:
+        description: Select the type of transfer
+      set_params:
+        description: Specify amount to transfer, reason, and post ( if any ).
+      set_source:
+        description: Select the account/s that will transfer time
+      set_target:
+        description: Select the account/s that will receive time
+    success: Transfers created successfully
+    types:
+      many_to_one: Many to one
+      one_to_many: One to many
+      one_to_one: One to one
   offers:
     edit:
       submit: Change offer
@@ -381,6 +379,8 @@ en:
       contact_information: Contact information
   pages:
     about:
+      app-mobile: Mobile App
+      app-mobile-text: The mobile app TimeOverflow is available. <br /> This app has been possible thanks to the collaboration of the municipality of Barcelona, program %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Request access to TimeOverflow
       banner-subtitle: We will contact you to start it up or make you a demonstration
       banner-title: Are you a Time Bank?
@@ -404,15 +404,13 @@ en:
       feature-text-4: Members of a Time Bank can access the system and connect with other members
       feature-text-5: Posting of offers and inquiries
       feature-text-6: Pay hours to other members
+      impulsem-link: Impulsem el que fas
       subtitle: TimeOverflow is open source, free and collaborative
       title: The software designed by and for
       title2: Time Banks
-      app-mobile: Mobile App
-      app-mobile-text: The mobile app TimeOverflow is available. <br /> This app has been possible thanks to the collaboration of the municipality of Barcelona, program %{impulsem_link} (Barcelona Activa) 2017-2018
-      impulsem-link: "Impulsem el que fas"
   posts:
     show:
-      info: "This %{type} belongs to %{organization}."
+      info: This %{type} belongs to %{organization}.
   reports:
     cat_with_users:
       title: Offered Services
@@ -424,8 +422,8 @@ en:
       delete_reason: Are you sure to delete this comment?
       movements: Movements
     post_form:
-      group_offer: Is it a group offer?
       group_inquiry: Is it a group inquiry?
+      group_offer: Is it a group offer?
       you_can_use: You can use
   simple_form:
     error_notification:
@@ -492,25 +490,6 @@ en:
     accept: Accept
     show:
       accept: Accept
-  multi_transfers:
-    multi_transfers: 'Multi transfers'
-    success: 'Transfers created successfully'
-    types:
-      one_to_many: 'One to many'
-      many_to_one: 'Many to one'
-      one_to_one: 'One to one'
-    step:
-      select_type:
-        description: 'Select the type of transfer'
-      set_source:
-        description: 'Select the account/s that will transfer time'
-      set_target:
-        description:  'Select the account/s that will receive time'
-      set_params:
-        description: 'Specify amount to transfer, reason, and post ( if any ).'
-      confirm:
-        description: 'Confirm the changes'
-        type_of_transfer: 'Type of transfer'
   transfers:
     computation:
       hour:
@@ -530,18 +509,18 @@ en:
     give_time:
       give_time: Give time to
     index:
-      members: Members
+      account_deactivated: Your account have been deactivated from this timebank
       actions: Actions
       active_warning: You are going to change user account status for %{username}
-      active_warning_angular: You are going to change user account status for {{username}}
       cancel_warning: You are going to delete account from the Time Bank for user %{username}
-      cancel_warning_angular: You are going to delete account from the Time Bank for user {{username}}
       create: Create new user
-      account_deactivated: Your account have been deactivated from this timebank
       deactivated_warning: If you think your account might have been deactivated by mistake, please contact the administrator with the information provided below.
       manage_warning: You are going to change privileges for user %{username}
-      manage_warning_angular: You are going to change privileges for user {{username}}
+      members: Members
       user_created: User %{uid} %{name} saved
+    member_card:
+      active_ago: Active %{time} ago
+      no_activity: No activity
     new:
       cancel: Cancel
       create_more_users_button: Create and add another user
@@ -573,13 +552,10 @@ en:
       cancel_warning: You are going to delete account from the Time Bank for user  %{user}
       deactivate: Deactivate
       manage_warning: You are going to change privileges for user %{user}
-    member_card:
-      no_activity: No activity
-      active_ago: Active %{time} ago
   views:
     pagination:
-      first:
-      last:
-      next:
-      previous:
-      truncate:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: Truncate

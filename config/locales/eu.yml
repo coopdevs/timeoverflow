@@ -1,8 +1,5 @@
 eu:
   active_admin:
-    comments:
-      author_type: " Egile mota"
-      resource_type: Baliabide mota
     users:
       organization: Denbora Bankua
       upload_csv: Fitxategia
@@ -31,14 +28,11 @@ eu:
         created_at: Sortua
         description: Deskribapena
         email: Eposta
-        name: 'Izena
-
-'
+        name: Izena
         neighborhood: Auzoa
         phone: Telefonoa
         public_opening_times: Hasiera orduak
         reg_number_seq: Erbiltzailearen sekuentzia zenbakia.
-        theme: Itxura
         updated_at: Eguneratua
       post:
         category: Kategoria
@@ -53,9 +47,7 @@ eu:
         amount: Kopurua
         created_at: Sortua
         hours: Orduak
-        minutes: 'Minutuak
-
-'
+        minutes: Minutuak
         post: Iragarkia
         reason: Iruzkinak
         source: Jatorria
@@ -158,28 +150,10 @@ eu:
       type_of_swaps: Transferentzia motak
       users: Erabiltzaileak
       without_offers: Eskaintzarik ez
-    organization_list:
-      address: Helbidea
-      city: Herria
-      description: Deskribapena
-      email: Eposta
-      neighborhood: Auzoa
-      not_member: Une honetan ez zara denbora banku bateko partaide, beraz, plataforma hau erabili ahal izateko, plataforma honen parte den denbora banku batekin jarri behar duzu harremanetan.
-      phone: Telefonoa
-      public_opening_times: Harretarako ordutegia
-      time_bank: Denbora Bankua
-      welcome: "%{user}, ongi etorri Timeoverflow-era."
     terms_conditions: Zerbitzuaren baldintzak
     tips:
       entertag: Sartu etiketak komekin banatuta
       user_not_found: Erabiltzailea ez da aurkitu.
-  categories:
-    index:
-      add: Gehitu zerbitzua
-      all: Denak
-      global: Orokorrak
-      local: Tokikoa
-      tree: Oinarrizkoa
   devise:
     confirmations:
       confirmed: Zure kontua ondo baieztatu da.
@@ -540,13 +514,10 @@ eu:
       account_deactivated: 
       actions: Ekintzak
       active_warning: "%{username} erabiltzaile-kontua aldatuko duzu"
-      active_warning_angular: " {{username}} erabiltzailearen kontuaren egoera, aldatuko duzu."
       cancel_warning: Denbora Bankuan %{username} erabiltzaileak duen kontua ezabatuko duzu
-      cancel_warning_angular: " {{username}} erabiltzailea D bankutik ezabatuko duzu."
       create: Erabiltzaile berria sortu
       deactivated_warning: 
       manage_warning: "%{username} erabiltzailearentzako baimenak aldatuko dituzu"
-      manage_warning_angular: " {{username}} erabiltzailearen onurak, aldatuko diztuzu"
       members: Kideak
       user_created: "%{uid} %{name} erabiltzailea gorde da"
     member_card:
