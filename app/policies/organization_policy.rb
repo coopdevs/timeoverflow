@@ -5,10 +5,6 @@ class OrganizationPolicy < ApplicationPolicy
     true
   end
 
-  def create?
-    user&.superadmin?
-  end
-
   def update?
     user&.superadmin? || user&.admins?(organization)
   end

@@ -31,16 +31,6 @@ RSpec.describe OrganizationsController do
     end
   end
 
-  describe 'POST #create' do
-    it 'only superdamins are authorized create to new organizations' do
-      login(member.user)
-
-      expect {
-        post :create, params: { organization: { name: 'New cool organization' } }
-      }.not_to change { Organization.count }
-    end
-  end
-
   describe 'POST #update' do
     context 'with a logged user (admins organization)' do
       let(:member) { Fabricate(:member, organization: organization, manager: true) }

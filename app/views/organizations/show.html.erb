@@ -84,14 +84,6 @@
   </div>
   <div class="col-sm-5">
     <ul class="nav nav-pills pull-right">
-      <% if superadmin? %>
-        <li>
-          <%= link_to organizations_path do %>
-            <%= glyph :hand_left %>
-            <%= t 'global.back' %>
-          <% end %>
-        </li>
-      <% end %>
       <% if admin? %>
         <li>
           <%= link_to edit_organization_path(@organization) do %>

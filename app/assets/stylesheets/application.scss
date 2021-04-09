@@ -232,12 +232,7 @@ html {
   overflow-x: inherit;
 }
 
-table.users {
-  padding: 10px;
-}
-
 @media screen {
-
   html {
     min-height: 100%;
     position: relative;
@@ -280,7 +275,6 @@ table.users {
 }
 
 @media print {
-
   body {
     padding-top: 0px;
   }
@@ -288,9 +282,7 @@ table.users {
   .table {
     border-collapse: collapse;
   }
-
 }
-
 
 .error {
   color: red;
