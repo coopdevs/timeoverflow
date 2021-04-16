@@ -415,6 +415,7 @@ en:
     cat_with_users:
       title: Offered Services
     download: Download
+    download_all: Download all
     user_list:
       title: User List
   shared:
