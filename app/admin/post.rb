@@ -16,7 +16,7 @@ ActiveAdmin.register Post do
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs do
-      f.input :type, as: :select, collection: %w[Offer Inquiry]
+      f.input :type, as: :radio, collection: %w[Offer Inquiry]
       f.input :title
       f.input :organization
       f.input :user, hint: "* should be member of the selected organization"

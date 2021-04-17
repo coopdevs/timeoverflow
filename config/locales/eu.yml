@@ -249,9 +249,7 @@ eu:
       unlocked: Zure kontua desblokeatua izan da. Sartu jarraitzeko.
   errors:
     internal_server_error:
-      description: |-
-        Sentitzen dugu, kontsulta honetan oker bat dagoela dirudi. Mezu bat bidali dugu teknikarien sailera eta ahal bezain laister konpontzen saiatuko gara.
-        .
+      description: Sentitzen dugu, kontsulta honetan oker bat dagoela dirudi. Mezu bat bidali dugu teknikarien sailera eta ahal bezain laister konpontzen saiatuko gara.
       title: Zerbitzariaren barne akatsa
     messages:
       already_confirmed: Baieztatu da. Saia zaitez sartzen.
