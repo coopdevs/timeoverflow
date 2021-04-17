@@ -1,6 +1,6 @@
 # TimeOverflow
 [![View performance data on Skylight](https://badges.skylight.io/problem/grDTNuzZRnyu.svg)](https://oss.skylight.io/app/applications/grDTNuzZRnyu)
-[![Build Status](https://travis-ci.org/coopdevs/timeoverflow.svg)](https://travis-ci.org/coopdevs/timeoverflow)
+[![Build Status](https://travis-ci.com/coopdevs/timeoverflow.svg?branch=develop)](https://travis-ci.com/coopdevs/timeoverflow)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/maintainability)](https://codeclimate.com/github/coopdevs/timeoverflow/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/test_coverage)](https://codeclimate.com/github/coopdevs/timeoverflow/test_coverage)
 

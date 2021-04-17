@@ -2,7 +2,6 @@ ActiveAdmin.register Document do
   permit_params *Document.attribute_names
 
   index do
-    selectable_column
     id_column
     column :documentable
     column :label

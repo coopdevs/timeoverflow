@@ -32,13 +32,13 @@ ActiveAdmin.register User do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs "Admin Details" do
+    f.inputs do
       f.input :username
       f.input :email
       f.input :gender, as: :select, collection: User::GENDERS
       f.input :identity_document
     end
-    f.inputs "Members" do
+    f.inputs "Memberships" do
       f.has_many :members do |m|
         m.input :organization, collection: Organization.order(id: :asc).pluck(:name, :id)
         m.input :active

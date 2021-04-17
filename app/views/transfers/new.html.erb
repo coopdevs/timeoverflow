@@ -29,14 +29,22 @@
     <%= f.input :destination, as: :hidden %>
 
     <% if sources.present? %>
-      <%= render partial: 'sources', locals: { form: f, sources: sources, accountable: accountable } %>
+      <div class="form-group">
+        <%= f.label :source %>
+        <%= f.select :source,
+          options_for_select(
+            TransferSourcesOptions.new(sources).to_a,
+            selected: current_user.member(current_organization).account.id
+          ), {}, id: "select2", class: "form-control"
+        %>
+      </div>
     <% end %>
 
     <%= render partial: "#{accountable.model_name.singular}_offer", locals: { form: f, offer: offer, accountable: accountable } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-default" %>
+    <%= f.button :submit, class: "btn btn-default", data: { disable_with: "..." } %>
     <label class="js-error-amount error invisible"><%= t ".error_amount" %></label>
   </div>
 <% end %>

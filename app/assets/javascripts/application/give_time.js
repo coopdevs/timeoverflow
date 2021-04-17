@@ -24,13 +24,12 @@ $( document ).ready(function () {
     }
 
     if ($(form).valid()) {
-      form.submit();
+      // submit the form via Rails-UJS to fire data-disable-with
+      Rails.fire(form, 'submit');
     }
   }
 
-  var config = {
+  $("#multi_transfer, #new_transfer").validate({
     submitHandler: submitHandler
-  };
-
-  $("#multi_transfer, #new_transfer").validate(config);
+  });
 })
