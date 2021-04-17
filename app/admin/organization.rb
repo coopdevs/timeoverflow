@@ -39,7 +39,10 @@ ActiveAdmin.register Organization do
     end
   end
 
+  filter :id
   filter :name
+  filter :web
+  filter :phone
   filter :city, as: :select, collection: -> { Organization.pluck(:city).uniq }
   filter :neighborhood
 

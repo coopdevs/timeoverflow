@@ -48,9 +48,6 @@ class Account < ApplicationRecord
                         end
   end
 
-
-  private
-
   # Checks whether the balance falls within the max and min allowed balance,
   # none of these included
   #

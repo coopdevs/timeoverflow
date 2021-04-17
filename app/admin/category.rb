@@ -1,6 +1,5 @@
 ActiveAdmin.register Category do
   index do
-    selectable_column
     id_column
     column :name, sortable: false
     actions
@@ -13,7 +12,7 @@ ActiveAdmin.register Category do
     f.actions
   end
 
-  show(title: :name) do |cat|
+  show do |cat|
     attributes_table do
       row :created_at
       row :updated_at
