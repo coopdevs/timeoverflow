@@ -8,19 +8,16 @@ class Movement < ApplicationRecord
 
   belongs_to :account, optional: true
   belongs_to :transfer, optional: true
-  has_one :other_side,
-          (->(self_)  { where ["NOT movements.id = #{self_.id}"] }),
-          through: :transfer,
-          source: :movements
 
-  scope :by_month,
-        ->(month) {
-          where(created_at: month.beginning_of_month..month.end_of_month)
-        }
+  scope :by_month, -> (month) { where(created_at: month.beginning_of_month..month.end_of_month) }
 
   validates :amount, numericality: { other_than: 0 }
 
   after_create do
     account.update_balance
+  end
+
+  def other_side
+    transfer.movements.where.not(id: id).first
   end
 end

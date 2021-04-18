@@ -1,5 +1,3 @@
-# Managems of offer-type posts
-#
 class OffersController < PostsController
   def model
     Offer
