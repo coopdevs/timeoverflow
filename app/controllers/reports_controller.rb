@@ -35,13 +35,19 @@ class ReportsController < ApplicationController
   def all_list
     filename = "#{current_organization.name.gsub(' ', '_')}.zip"
     temp_file = Tempfile.new(filename)
-    Zip::File.open(temp_file.path, Zip::File::CREATE) do |zipfile|
-      add_csvs_to_zip(%w[Member Transfer Inquiries Offers], zipfile)
+    begin
+      Zip::OutputStream.open(temp_file) { |zos| }
+      Zip::File.open(temp_file.path, Zip::File::CREATE) do |zipfile|
+        add_csvs_to_zip(%w[Member Transfer Inquiries Offers], zipfile)
+      end
+      zip_data = File.read(temp_file.path)
+      send_data(zip_data, type: 'application/zip', disposition: 'attachment', filename: filename)
+    rescue Errno::ENOENT
+      redirect_to all_list_report_path
+    ensure
+      temp_file.close
+      temp_file.unlink
     end
-    zip_data = File.read(temp_file.path)
-    send_data(zip_data, type: 'application/zip', disposition: 'attachment', filename: filename)
-    temp_file.close
-    temp_file.unlink
   end
 
   private
