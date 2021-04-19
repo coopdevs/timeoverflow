@@ -29,10 +29,10 @@
                     <%= link_to account.accountable.display_name_with_uid,
                         user_path(account.accountable.user) %>
                   <% else %>
-                    <%= t(".inactive_user") %>
+                    <%= t("users.show.inactive_user") %>
                   <% end %>
                 <% else %>
-                  <%= t(".deleted_user") %>
+                  <%= t("users.show.deleted_user") %>
                 <% end %>
               <% end %>
             </td>

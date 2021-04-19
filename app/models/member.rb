@@ -13,9 +13,7 @@ class Member < ApplicationRecord
   delegate :balance, to: :account, prefix: true, allow_nil: true
   delegate :gender, :date_of_birth, to: :user, prefix: true, allow_nil: true
 
-  scope :by_month, -> (month) {
-    where(created_at: month.beginning_of_month..month.end_of_month)
-  }
+  scope :by_month, -> (month) { where(created_at: month.beginning_of_month..month.end_of_month) }
   scope :active, -> { where active: true }
 
   validates :organization_id, presence: true
