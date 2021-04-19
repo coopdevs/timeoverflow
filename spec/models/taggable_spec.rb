@@ -1,6 +1,7 @@
 RSpec.describe Taggable do
   let(:organization) { Fabricate(:organization) }
-
+  let(:tags) { %w(foo bar baz) }
+  let(:more_tags) { %w(foo baz qux) }
   let!(:offer) do
     Fabricate(
       :offer,
@@ -17,9 +18,6 @@ RSpec.describe Taggable do
   end
 
   context "class methods and scopes" do
-    let(:tags) { %w(foo bar baz) }
-    let(:more_tags) { %w(foo baz qux) }
-
     it "tagged_with" do
       expect(Offer.tagged_with("bar")).to eq [offer]
     end
@@ -33,18 +31,28 @@ RSpec.describe Taggable do
       expect(Offer.find_like_tag("Foo")).to eq ["foo"]
       expect(Offer.find_like_tag("none")).to eq []
     end
+
+    describe '.alphabetical_grouped_tags' do
+      let(:tags) { %w(foo bar baz Boo) }
+      let(:more_tags) { %w(foo baz qux) }
+
+      it 'sorts them by alphabetical order case insensitive' do
+        expect(Offer.alphabetical_grouped_tags).to eq({
+          'B' => [['bar', 1], ['baz', 2], ['Boo', 1]],
+          'F' => [['foo', 2]],
+          'Q' => [['qux', 1]]
+        })
+      end
+    end
   end
 
-  describe '.alphabetical_grouped_tags' do
-    let(:tags) { %w(foo bar baz Boo) }
-    let(:more_tags) { %w(foo baz qux) }
+  it "#tag_list= writter accepts string and array" do
+    offer = Offer.new
 
-    it 'sorts them by alphabetical order case insensitive' do
-      expect(Offer.alphabetical_grouped_tags).to eq({
-        'B' => [['bar', 1], ['baz', 2], ['Boo', 1]],
-        'F' => [['foo', 2]],
-        'Q' => [['qux', 1]]
-      })
-    end
+    offer.tag_list = ["a", "b"]
+    expect(offer.tag_list).to eq "a, b"
+
+    offer.tag_list = "c, d"
+    expect(offer.tag_list).to eq "c, d"
   end
 end

@@ -2,6 +2,7 @@ ActiveAdmin.register Post do
   index do
     id_column
     column :class
+    column :is_group
     column :title
     column :created_at do |post|
       l post.created_at.to_date, format: :long
@@ -19,10 +20,11 @@ ActiveAdmin.register Post do
       f.input :type, as: :radio, collection: %w[Offer Inquiry]
       f.input :title
       f.input :organization
-      f.input :user, hint: "* should be member of the selected organization"
+      f.input :user, hint: "Should be member of the selected organization"
       f.input :category
       f.input :description
-      f.input :tag_list
+      f.input :tag_list, hint: "Accepts comma separated values"
+      f.input :is_group
       f.input :active
     end
     f.actions
@@ -36,6 +38,7 @@ ActiveAdmin.register Post do
   filter :organization
   filter :user
   filter :category
+  filter :is_group
   filter :active
   filter :created_at
 end
