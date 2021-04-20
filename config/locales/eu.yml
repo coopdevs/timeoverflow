@@ -57,7 +57,7 @@ eu:
         alt_phone: Ordezko telefonoa
         created_at: Sortua
         date_of_birth: Jaiotze-data
-        deactivated: 
+        deactivated: Desaktibatuta
         description: Deskribapena
         email: Eposta
         gender: 'Generoa '
@@ -104,8 +104,8 @@ eu:
         one: Denbora Bankua
         other: Denbora Bankuak
       post:
-        one: Iragarkia
-        other: Iragarkiak
+        one: Sarrera
+        other: Sarrerak
       transfer:
         one: Transferentzia
         other: Transferentziak
@@ -116,10 +116,10 @@ eu:
     landing:
       button: Sartu
       slogan: Denbora aintzat hartzen dugu
-      sub_slogan: Zugandik gertu, denbora banku bat dago
+      sub_slogan: " Denbora banku bat dago zugandik gertu"
     login_form:
       button: Sartu
-      email: Eposta
+      email: E-posta
       password: Pasahitza
       remember_check: Gogora nazazu
     menu:
@@ -144,7 +144,7 @@ eu:
       reports: Txostenak
       sign_out: Itxi saioa
       statistics: Estatistikak
-      statistics_all_transfers: 
+      statistics_all_transfers: Transferentzia guztiak
       stats: Estatistikak
       tags: Etiketak
       type_of_swaps: Transferentzia motak
@@ -156,7 +156,7 @@ eu:
       user_not_found: Erabiltzailea ez da aurkitu.
   devise:
     confirmations:
-      confirmed: Zure kontua ondo baieztatu da.
+      confirmed: Zure kontua onartu da
       confirmed_and_signed_in: Zure kontua ondo baieztatu da. Izena eman duzu jada.
       new:
         resend_instructions: Baieztatze  argibideak berbidali
@@ -167,13 +167,13 @@ eu:
     failure:
       already_authenticated: Jadanik erregistraturik zaude.
       inactive: Zure kontua ez da aktibatu oraindik.
-      invalid: Eposta edo pasahitza baliogabea.
+      invalid: Helbide elektroniko edo pasahitza baliogabea.
       invalid_token: Autentikazio gako balioagabea.
       locked: Zure kontua blokeatuta dago.
-      not_found_in_database: Eposta edo pasahitza baliogabea.
+      not_found_in_database: Helbide elektroniko edo pasahitza baliogabea.
       timeout: Zure saioa iraungi da. Mesedez, jarraitzeko hasi saioa berriro.
-      unauthenticated: Jarraitu ahal izateko erregistratu egin behar duzu.
-      unconfirmed: Jarraitu ahal izateko, kontua baieztatu behar duzu.
+      unauthenticated: Jarraitu ahal izateko zeure burua erregistratu behar duzu.
+      unconfirmed: Kontua baieztatu behar duzu aurrera jarraitzeko
       user:
         last_attempt: Kontuz,saikera bakarra gelditzen zaizu kontua blokeatu baino lehen.
     mailer:
@@ -185,7 +185,7 @@ eu:
         subject: Kontua desblokeatzeko argibideak
     omniauth_callbacks:
       failure: Ezin izan da egiaztatu %{kind}etik  "%{reason}"gatik
-      success: "%{kind}kontutik egiaztatua izan da."
+      success: "%{kind}kontutik egiaztatu da"
     passwords:
       edit:
         change_password: Pasahitza aldatu
@@ -197,10 +197,10 @@ eu:
         forgot_question_description: Sartu lotuta dagoen helbide elektronikoa eta bertara bidaliko dizugu, pasahitza berreskuratzeko lotura.
         send_instructions: Lotura bidali
       no_token: Pasahitza berrezartzeko, mezu elektroniko batetik ez bazatoz, ezin zara orrialde honetara sartu. Pasahitza berrezartzeko mezu elektroniko batetik bazatoz,begiratu URL osoa idatzi duzula.
-      send_instructions: Segidan jasoko duzu, pasahitza nola berreskuratu azalduko dizun mezu elektronikoa.
-      send_paranoid_instructions: Zure helbide elektronikoa gure datu baseetan badago, segidan jasoko duzu  pasahitza berreskuaratu ahal izateko lotura, zure posta elektrikoan.
+      send_instructions: Segidan jasoko duzu pasahitza nola berreskuratu azalduko dizun mezu elektronikoa.
+      send_paranoid_instructions: Zure helbide elektronikoa gure datu baseetan badago, segidan jasoko duzu  pasahitza berreskuaratu ahal izateko lotura zure posta elektrikoan.
       updated: Zure pasahitza aldatua izan da. Konektaturik zaude?
-      updated_not_active: Pasahitza aldaketa egin da.
+      updated_not_active: Pasahitzaren aldaketa egin da
     registrations:
       destroyed: Zure kontua ezabatu egin da. Berriz laister ikusiko garelakoan, Agur!!
       edit:
@@ -249,22 +249,20 @@ eu:
       unlocked: Zure kontua desblokeatua izan da. Sartu jarraitzeko.
   errors:
     internal_server_error:
-      description: |-
-        Kontsulta honetan oker bat dagoela dirudi. Mezu bat bidali dugu , teknikarien sailera eta ahal bezain laxter konpontzen saiatuko gara.
-        Sentitzen dugu.
-      title: Zerbitzariaren barne akatsa.
+      description: Sentitzen dugu, kontsulta honetan oker bat dagoela dirudi. Mezu bat bidali dugu teknikarien sailera eta ahal bezain laister konpontzen saiatuko gara.
+      title: Zerbitzariaren barne akatsa
     messages:
-      already_confirmed: Baieztatu izan da , Saiatu sartzen.
+      already_confirmed: Baieztatu da. Saia zaitez sartzen.
       confirmation_period_expired: "%{period}an baieztatzea beharrezkoa da. Eskatu berria."
       expired: Zaharkitu egin da. Eskatu berria.
       not_found: Ez da aurkitu
       not_locked: Ez da blokeatu.
       not_saved:
-        one: Arazo batek ez du uzten  %{resource} gorde dadin.
-        other: "%{count} arazok ez dute uzten %{resource}  gorde dadin"
+        one: Arazo batek ez du uzten  %{resource} gordetzen.
+        other: "%{count} arazoek ez dute uzten %{resource}  gordetzen"
     not_found:
-      description: Bila zabiltzan orrialdea ez da exititzen. Helbidea  oker idatzia egon daiteke edo  orrialdea lekuz aldatua izan da.
-      title: Ez da topatu
+      description: Bila zabiltzan orrialdea ez da existitzen. Helbidea  oker idatzia egon daiteke edo  orrialdea lekuz aldatua izan da.
+      title: Ez da aurkitu
   global:
     add_new: Berria sortu
     all: Dena
@@ -275,15 +273,15 @@ eu:
     cancel_membership: Betirako borratu
     contact_details: Kontaktuaren datuak
     create: Sortu
-    date: Eguna.
+    date: Datuak
     delete: Ezabatu
-    demote: Ohiko erabiltzaile  biurtu
+    demote: Ohiko erabiltzaile  bihurtu
     edit: Aldaketak egin
-    enter_to_timebank: 
+    enter_to_timebank: Denbora Bankuan sartu
     filter: Iragazkia
     from: tik
     give_time: Denbora eman
-    home: Etxea
+    home: Hasiera
     information: Informazioa
     locales_header: Hizkuntza aldatu
     member_count: Erabiltzaile zenbakia
@@ -321,17 +319,17 @@ eu:
     ar: Arabiera
     ca: Katalanera
     en: Ingelesa
-    es: Espainiera
+    es: Gaztelera
     eu: Euskara
-    fr: Fantsesa
+    fr: Frantsesa
     gl: Galiziera
-    pt: Portugalera
-    pt-BR: Portugaldarra
+    pt: Portugesa
+    pt-BR: Portugesa
   mailers_globals:
     footer:
-      text: "%{organization_name}"
-      text_donation: ADBdt elkarteak TimeOverflow zerbitzua , dohainik eskaintzen die denbora bankuei. Plataforma mantendu eta hobetzeko lagun dezakete  %{href} ko emari batekin.
-      text_donation_link: hilean €1ekin
+      text: "%{organization_name}tik"
+      text_donation: ADBdt elkarteak TimeOverflow zerbitzua dohainik eskaintzen die denbora bankuei. Plataforma mantendu eta hobetzeko lagun dezakezu  %{href} ko emari bat eginez.
+      text_donation_link: sar zaitez gune honetan
   multi_transfers:
     multi_transfers: Transferentzia ugariak
     step:
@@ -341,30 +339,30 @@ eu:
       select_type:
         description: Transferentzia mota hautatu
       set_params:
-        description: Transferitzera zoazen kantitatea zehaztu, iradokizunak , eskaintzak ( baldin badaude)
+        description: Transferitzera zoazen kantitatea, iradokizunak eta eskaintzak (baldin eta badaude) zehaztu
       set_source:
-        description: Denbora  transferituko duzun  kontua, aukeratu.
+        description: Denbora  transferituko duzun  kontua aukeratu
       set_target:
-        description: Denbora jasoko duten kontuak aukera itzazu.
-    success: Arrakastatsu eginiko transferentziak
+        description: Denbora jasoko duten kontuak aukeratu
+    success: Ongi egin dira transferentziak
     types:
-      many_to_one: Ugaritik bakarrera
-      one_to_many: Bakarretik ugarira
-      one_to_one: Banaka
+      many_to_one: Askok bati
+      one_to_many: Batek askori
+      one_to_one: Batek beste bati
   offers:
     edit:
       submit: Eskaintza aldatu
     index:
       by_category: Gaika
       by_tag: Etiketaren arabera
-      filter: Filtratu
+      filter: Iragazia
       new_offer: Eskaintza berria
       offered_by: "%{size}pertsonak eskainia"
     new:
       submit: Eskaintza sortu
     show:
       give_time_for: Eskaintza honengatik denbora eman
-      offered_by: Eskaintzaren emaleak
+      offered_by: Eskaintzaren emaileak
   organization_notifier:
     recent_posts:
       subject: Asteroko buletina
@@ -372,9 +370,9 @@ eu:
       text2: Argitaraturiko azken eskaerak
   organizations:
     give_time:
-      give_time: Oni denbora eman.
+      give_time: Denbora eman honi
     index:
-      member_count: Erabiltzaile zenbakia
+      member_count: Erabiltzaile kopurua
     new:
       new: Banku berria
     show:
@@ -383,10 +381,10 @@ eu:
     about:
       app-mobile: Mugikorrerako Appa
       app-mobile-text: TimeOverflow mugikorrerako app-a prest dago. <br /> App hau Bartzelonako udaletxearen laguntzari esker sortu da,  %{impulsem_link} (Barcelona Activa) 2017-2018 programaren bitartez.
-      banner-button: Sartzea eskatzen du
+      banner-button: TimeOverFlowra sartzeko pasahitza behar da
       banner-subtitle: Martxan jartzen edo erakustaldi bat eginez lagunduko dizugu
       banner-title: Denbora banku bat al zara?
-      empower-adbdt: ADBdt
+      empower-adbdt: ADBdT
       empower-adbdt-title: Denbora Bankuen garapenerako elkartea
       empower-coopdevs: CoopDevs
       empower-coopdevs-title: CoopDevs
@@ -395,11 +393,11 @@ eu:
       empower-showmap: Mapa ikusi
       empower-showmap-title: Denbora bankuak
       empower-text-1: TimeOveflow denbora bankuentzat diseinaturik dago &mdash; %{showmap_link}. Bere helburua  hauek bultzatzea da.
-      empower-text-2: "%{abdt_link}  eta %{coopdevs_link}ren elkarlanari esker ,  TimeOverflow  softwarea eskain diezaiekegu, hala behar duten denbora banku guztiei, era libre eta dohakoan."
-      empower-text-3: TimeOverflowren oinarrizko kodea, eskuragarri dago, open source lizentziapean eta hemen %{github_link}  jaits daiteke
+      empower-text-2: "%{abdt_link}  eta %{coopdevs_link}ren elkarlanari esker ,  TimeOverflow  softwarea eskain diezaiekegu hala behar duten denbora banku guztiei, era libre eta dohainean."
+      empower-text-3: TimeOverflowren oinarrizko kodea eskuragarri dago, open source lizentziapean eta hemendik %{github_link}  jaitsi daiteke
       empower-title: Denbora bankuak enpoderatuz
       feature-group-1: Denbora bankuaren kudeaketa administrazio profilen bidez.
-      feature-group-2: Erabiltzaileek eskuragarri dituzte, on line-bankua eta sare sozialak
+      feature-group-2: Erabiltzaileek eskuragarri dituzte on-line bankua eta sare sozialak
       feature-text-1: Altak/bajak/erabiltzaileen aldaketak
       feature-text-2: Eskaitza eta eskaerak argitaratu
       feature-text-3: Txekeak sartu eta kontabilitatea kudeatu
@@ -418,10 +416,10 @@ eu:
       title: Eskaintzen diren zerbitzuak
     download: Jaitsi
     user_list:
-      title: Erabiltzaileen zerrenda
+      title: Erabiltzaile zerrenda
   shared:
     movements:
-      delete_reason: Zihur zaude , azalpen hau ezabatu nahi duzula?
+      delete_reason: Zihur zaude azalpen hau ezabatu nahi duzula?
       movements: Mugimenduak
     post_form:
       group_inquiry: Taldeko eskaera da?
@@ -461,7 +459,7 @@ eu:
       num_people: Pertsona kantitatea
       unknown: Ezezaguna
     global_activity:
-      bank_activity: D bankuaren ekintzak
+      bank_activity: Bankuaren eginkizunak
       global_activity: Ekintza orokorra
       num_swaps: Trukeak
       per_month: Hilabeteka
@@ -495,11 +493,11 @@ eu:
   transfers:
     computation:
       hour:
-        one: "%{count}ordu"
+        one: ordu %{count}
         other: "%{count}ordu"
       joiner: eta
       minute:
-        one: "%{count}minutu"
+        one: minutu %{count}
         other: "%{count} minutu"
     new:
       error_amount: Denbora 0 baino handiagoa izan behar da
@@ -507,17 +505,17 @@ eu:
     edit:
       edit_user: Erabiltzailea aldatu
     form:
-      notifications: Jakinarazpen
+      notifications: Jakinarazpenak
     give_time:
-      give_time: honi denbora eman
+      give_time: 'Denbora eman honi:'
     index:
-      account_deactivated: 
+      account_deactivated: Zure kontua desaktibatua izan da banku honetan
       actions: Ekintzak
-      active_warning: "%{username} erabiltzaile-kontua aldatuko duzu"
+      active_warning: "%{username} erabiltzaile-kontua aldatzera zoaz"
       cancel_warning: Denbora Bankuan %{username} erabiltzaileak duen kontua ezabatuko duzu
       create: Erabiltzaile berria sortu
-      deactivated_warning: 
-      manage_warning: "%{username} erabiltzailearentzako baimenak aldatuko dituzu"
+      deactivated_warning: Zure kontua okerren batengatik desaktibatua izan dela uste baduzu, mesedez, jar zaitez harremanetan administrariarekin, hor beheko  informazioarekin
+      manage_warning: "%{username} erabiltzailearentzako baimenak aldatzera zoaz"
       members: Kideak
       user_created: "%{uid} %{name} erabiltzailea gorde da"
     member_card:
@@ -525,7 +523,7 @@ eu:
       no_activity: Aktibitaterik ez
     new:
       cancel: Deuseztatu
-      create_more_users_button: Beste erabiltzaile bat sortu eta sartu
+      create_more_users_button: Beste erabiltzaile bat sortu eta gehitu
       new_user: Erabiltzaile berria
       user_created_add: "%{uid} %{name} erabiltzailea gorde da. Orain sartu berri bat"
     show:

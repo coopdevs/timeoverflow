@@ -7,6 +7,7 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'rdiscount', '~> 2.2.0.1'
 gem 'rubyzip', '~> 2.3.0'
 gem 'activeadmin', '~> 2.9.0'
+gem 'bootsnap', '~> 1.7.3', require: false
 gem 'has_scope', '~> 0.7.2'
 gem 'pundit', '~> 2.1.0'
 gem 'pg', '~> 1.2.1'

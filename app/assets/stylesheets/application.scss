@@ -1,12 +1,8 @@
-/*
-*= require select2
-*/
-
+@import "select2";
 @import "application/variables";
 @import "bootstrap-sprockets";
 @import "application/bootstrap-custom";
-@import "application/to-categories-dropdown";
-@import "application/to-member-card";
+@import "application/member-card";
 @import "application/footer";
 
 html {
