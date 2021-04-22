@@ -1,31 +1,13 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 9.5.14
--- Dumped by pg_dump version 9.5.14
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
+SET row_security = off;
 
 --
 -- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
@@ -88,7 +70,7 @@ CREATE FUNCTION public.posts_trigger() RETURNS trigger
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_table_access_method = heap;
 
 --
 -- Name: accounts; Type: TABLE; Schema: public; Owner: -
@@ -161,6 +143,18 @@ CREATE SEQUENCE public.active_admin_comments_id_seq
 --
 
 ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_comments.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
 
 
 --
@@ -588,98 +582,98 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: accounts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.accounts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_admin_comments ALTER COLUMN id SET DEFAULT nextval('public.active_admin_comments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: categories id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.categories ALTER COLUMN id SET DEFAULT nextval('public.categories_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: device_tokens id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.device_tokens ALTER COLUMN id SET DEFAULT nextval('public.device_tokens_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: documents id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.documents ALTER COLUMN id SET DEFAULT nextval('public.documents_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: events id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: members id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.members ALTER COLUMN id SET DEFAULT nextval('public.members_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: movements id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.movements ALTER COLUMN id SET DEFAULT nextval('public.movements_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: organizations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.organizations ALTER COLUMN id SET DEFAULT nextval('public.organizations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: posts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.posts ALTER COLUMN id SET DEFAULT nextval('public.posts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: push_notifications id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.push_notifications ALTER COLUMN id SET DEFAULT nextval('public.push_notifications_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: transfers id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.transfers ALTER COLUMN id SET DEFAULT nextval('public.transfers_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
--- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: accounts accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.accounts
@@ -687,7 +681,7 @@ ALTER TABLE ONLY public.accounts
 
 
 --
--- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: active_admin_comments active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_admin_comments
@@ -695,7 +689,15 @@ ALTER TABLE ONLY public.active_admin_comments
 
 
 --
--- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.categories
@@ -703,7 +705,7 @@ ALTER TABLE ONLY public.categories
 
 
 --
--- Name: device_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: device_tokens device_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.device_tokens
@@ -711,7 +713,7 @@ ALTER TABLE ONLY public.device_tokens
 
 
 --
--- Name: documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: documents documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.documents
@@ -719,7 +721,7 @@ ALTER TABLE ONLY public.documents
 
 
 --
--- Name: events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
@@ -727,7 +729,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: members_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: members members_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.members
@@ -735,7 +737,7 @@ ALTER TABLE ONLY public.members
 
 
 --
--- Name: movements_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: movements movements_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.movements
@@ -743,7 +745,7 @@ ALTER TABLE ONLY public.movements
 
 
 --
--- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: organizations organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.organizations
@@ -751,7 +753,7 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.posts
@@ -759,7 +761,7 @@ ALTER TABLE ONLY public.posts
 
 
 --
--- Name: push_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: push_notifications push_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.push_notifications
@@ -767,7 +769,15 @@ ALTER TABLE ONLY public.push_notifications
 
 
 --
--- Name: transfers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: transfers transfers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.transfers
@@ -775,7 +785,7 @@ ALTER TABLE ONLY public.transfers
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -958,14 +968,14 @@ CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING b
 
 
 --
--- Name: tsvectorupdate; Type: TRIGGER; Schema: public; Owner: -
+-- Name: posts tsvectorupdate; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON public.posts FOR EACH ROW EXECUTE PROCEDURE public.posts_trigger();
+CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON public.posts FOR EACH ROW EXECUTE FUNCTION public.posts_trigger();
 
 
 --
--- Name: events_member_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: events events_member_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
@@ -973,7 +983,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: events_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: events events_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
@@ -981,7 +991,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: events_transfer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: events events_transfer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
@@ -989,7 +999,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: fk_rails_1ceb778440; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: accounts fk_rails_1ceb778440; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.accounts
@@ -997,7 +1007,7 @@ ALTER TABLE ONLY public.accounts
 
 
 --
--- Name: fk_rails_36fb6ef1a8; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: push_notifications fk_rails_36fb6ef1a8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.push_notifications
@@ -1005,7 +1015,7 @@ ALTER TABLE ONLY public.push_notifications
 
 
 --
--- Name: fk_rails_79a395b2d7; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: push_notifications fk_rails_79a395b2d7; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.push_notifications
@@ -1018,123 +1028,66 @@ ALTER TABLE ONLY public.push_notifications
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('1');
+INSERT INTO "schema_migrations" (version) VALUES
+('1'),
+('2'),
+('20121019101022'),
+('20121104004639'),
+('20121104085711'),
+('20121121233818'),
+('20130214175758'),
+('20130214181128'),
+('20130222185624'),
+('20130425165150'),
+('20130508085004'),
+('20130513092219'),
+('20130514094755'),
+('20130618210236'),
+('20130621102219'),
+('20130621103053'),
+('20130621103501'),
+('20130621105452'),
+('20130703233851'),
+('20130703234011'),
+('20130703234042'),
+('20130723160206'),
+('20131017144321'),
+('20131025202608'),
+('20131027215517'),
+('20131029202724'),
+('20131103221044'),
+('20131104004235'),
+('20131104013634'),
+('20131104013829'),
+('20131104032622'),
+('20131220160257'),
+('20131227110122'),
+('20131227142805'),
+('20131227155440'),
+('20131231110424'),
+('20140119161433'),
+('20140513141718'),
+('20140514225527'),
+('20150329193421'),
+('20150330200315'),
+('20150422162806'),
+('20180221161343'),
+('20180501093846'),
+('20180514193153'),
+('20180524143938'),
+('20180525141138'),
+('20180529144243'),
+('20180530180546'),
+('20180604145622'),
+('20180828160700'),
+('20180831161349'),
+('20180924164456'),
+('20181004200104'),
+('20190319121401'),
+('20190322180602'),
+('20190411192828'),
+('20190412163011'),
+('20190523213421'),
+('20190523225323');
 
-INSERT INTO schema_migrations (version) VALUES ('2');
-
-INSERT INTO schema_migrations (version) VALUES ('20121019101022');
-
-INSERT INTO schema_migrations (version) VALUES ('20121104004639');
-
-INSERT INTO schema_migrations (version) VALUES ('20121104085711');
-
-INSERT INTO schema_migrations (version) VALUES ('20121121233818');
-
-INSERT INTO schema_migrations (version) VALUES ('20130214175758');
-
-INSERT INTO schema_migrations (version) VALUES ('20130214181128');
-
-INSERT INTO schema_migrations (version) VALUES ('20130222185624');
-
-INSERT INTO schema_migrations (version) VALUES ('20130425165150');
-
-INSERT INTO schema_migrations (version) VALUES ('20130508085004');
-
-INSERT INTO schema_migrations (version) VALUES ('20130513092219');
-
-INSERT INTO schema_migrations (version) VALUES ('20130514094755');
-
-INSERT INTO schema_migrations (version) VALUES ('20130618210236');
-
-INSERT INTO schema_migrations (version) VALUES ('20130621102219');
-
-INSERT INTO schema_migrations (version) VALUES ('20130621103053');
-
-INSERT INTO schema_migrations (version) VALUES ('20130621103501');
-
-INSERT INTO schema_migrations (version) VALUES ('20130621105452');
-
-INSERT INTO schema_migrations (version) VALUES ('20130703233851');
-
-INSERT INTO schema_migrations (version) VALUES ('20130703234011');
-
-INSERT INTO schema_migrations (version) VALUES ('20130703234042');
-
-INSERT INTO schema_migrations (version) VALUES ('20130723160206');
-
-INSERT INTO schema_migrations (version) VALUES ('20131017144321');
-
-INSERT INTO schema_migrations (version) VALUES ('20131025202608');
-
-INSERT INTO schema_migrations (version) VALUES ('20131027215517');
-
-INSERT INTO schema_migrations (version) VALUES ('20131029202724');
-
-INSERT INTO schema_migrations (version) VALUES ('20131103221044');
-
-INSERT INTO schema_migrations (version) VALUES ('20131104004235');
-
-INSERT INTO schema_migrations (version) VALUES ('20131104013634');
-
-INSERT INTO schema_migrations (version) VALUES ('20131104013829');
-
-INSERT INTO schema_migrations (version) VALUES ('20131104032622');
-
-INSERT INTO schema_migrations (version) VALUES ('20131220160257');
-
-INSERT INTO schema_migrations (version) VALUES ('20131227110122');
-
-INSERT INTO schema_migrations (version) VALUES ('20131227142805');
-
-INSERT INTO schema_migrations (version) VALUES ('20131227155440');
-
-INSERT INTO schema_migrations (version) VALUES ('20131231110424');
-
-INSERT INTO schema_migrations (version) VALUES ('20140119161433');
-
-INSERT INTO schema_migrations (version) VALUES ('20140513141718');
-
-INSERT INTO schema_migrations (version) VALUES ('20140514225527');
-
-INSERT INTO schema_migrations (version) VALUES ('20150329193421');
-
-INSERT INTO schema_migrations (version) VALUES ('20150330200315');
-
-INSERT INTO schema_migrations (version) VALUES ('20150422162806');
-
-INSERT INTO schema_migrations (version) VALUES ('20180221161343');
-
-INSERT INTO schema_migrations (version) VALUES ('20180501093846');
-
-INSERT INTO schema_migrations (version) VALUES ('20180514193153');
-
-INSERT INTO schema_migrations (version) VALUES ('20180524143938');
-
-INSERT INTO schema_migrations (version) VALUES ('20180525141138');
-
-INSERT INTO schema_migrations (version) VALUES ('20180529144243');
-
-INSERT INTO schema_migrations (version) VALUES ('20180530180546');
-
-INSERT INTO schema_migrations (version) VALUES ('20180604145622');
-
-INSERT INTO schema_migrations (version) VALUES ('20180828160700');
-
-INSERT INTO schema_migrations (version) VALUES ('20180831161349');
-
-INSERT INTO schema_migrations (version) VALUES ('20180924164456');
-
-INSERT INTO schema_migrations (version) VALUES ('20181004200104');
-
-INSERT INTO schema_migrations (version) VALUES ('20190319121401');
-
-INSERT INTO schema_migrations (version) VALUES ('20190322180602');
-
-INSERT INTO schema_migrations (version) VALUES ('20190411192828');
-
-INSERT INTO schema_migrations (version) VALUES ('20190412163011');
-
-INSERT INTO schema_migrations (version) VALUES ('20190523213421');
-
-INSERT INTO schema_migrations (version) VALUES ('20190523225323');
 
