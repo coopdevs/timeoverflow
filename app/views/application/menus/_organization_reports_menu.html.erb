@@ -29,9 +29,9 @@
         <%= Transfer.model_name.human(count: :many) %>
       <% end %>
     </li>
-    <hr class="hr-5">
+    <li class="divider" role="presentation"></li>
     <li>
-      <%= link_to all_list_report_path do %>
+      <%= link_to download_all_report_path do %>
         <%= glyph :download %>
         <%= t 'reports.download_all' %>
       <% end %>

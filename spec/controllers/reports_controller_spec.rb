@@ -43,23 +43,6 @@ RSpec.describe ReportsController do
         expect(response.media_type).to eq("application/pdf")
       end
     end
-    describe 'GET #all_list' do
-      it 'downloads a zip' do
-        get :all_list
-
-        expect(response.body).to include('Inquiries.csv')
-        expect(response.body).to include('Offers.csv')
-        expect(response.body).to include('Member.csv')
-        expect(response.body).to include('Transfer.csv')
-        expect(response.media_type).to eq('application/zip')
-      end
-      it 'redirect to all_list_report_path' do
-        allow(subject).to receive(:add_csvs_to_zip).and_raise(Errno::ENOENT)
-        get :all_list
-
-        expect(response).to redirect_to(all_list_report_path)
-      end
-    end
 
     describe 'GET #post_list' do
       let(:report_posts) { test_organization.posts.of_active_members.group_by(&:category) }
@@ -107,10 +90,22 @@ RSpec.describe ReportsController do
       end
     end
 
-    describe 'the return_collection method' do
-      it 'returns an empty array if the class is not defined' do
-        rc = ReportsController.new
-        expect(rc.send(:return_collection, 'noclass')).to eq []
+    describe 'GET #download_all' do
+      it 'downloads a zip' do
+        get :download_all
+
+        expect(response.media_type).to eq('application/zip')
+        expect(response.body).to include('Inquiries')
+        expect(response.body).to include('Offers')
+        expect(response.body).to include('Members')
+        expect(response.body).to include('Transfers')
+      end
+
+      it 'redirects to download_all_report_path (retry) if zip is not ready' do
+        allow(subject).to receive(:add_csv_to_zip).and_raise(Errno::ENOENT)
+        get :download_all
+
+        expect(response).to redirect_to(download_all_report_path)
       end
     end
   end
