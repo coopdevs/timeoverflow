@@ -20,6 +20,7 @@ RSpec.describe OrganizationsController do
         second_organization.address = "Calle gloria"
         second_organization.neighborhood = "La paz"
         second_organization.save!
+
         organization.neighborhood = "La paz"
         organization.save!
       end

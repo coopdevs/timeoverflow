@@ -293,6 +293,7 @@ es:
     required_field: "* Campo obligatorio"
     save: Guardar
     search: Buscar
+    search_location: 
     show: Mostrar
     source_destination: Origen/Destino
     statistics: Estadísticas
@@ -309,6 +310,7 @@ es:
   layouts:
     application:
       about: Sobre TimeOverflow
+      bdtnear: 
       edit_org: Modificar %{organization}
       edit_profile: Modificar mi perfil
       help: Ayuda
@@ -377,6 +379,7 @@ es:
       new: Nuevo banco
     show:
       contact_information: Información de contacto
+      join_timebank: 
   pages:
     about:
       app-mobile: App Móvil
@@ -412,11 +415,8 @@ es:
     show:
       info: Esta %{type} pertenece a %{organization}.
   reports:
-    cat_with_users:
-      title: Servicios ofrecidos
     download: Descargar
-    user_list:
-      title: Listado usuarios
+    download_all: Descargar todo
   shared:
     movements:
       delete_reason: "¿Está seguro de borrar este comentario?"

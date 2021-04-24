@@ -2,13 +2,13 @@ class Organization < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_query,
-                  against: %i[city neighborhood address name],
-                  ignoring: :accents,
-                  using: {
-                    tsearch: {
-                      prefix: true
-                    }
-                  }
+    against: %i[city neighborhood address name],
+    ignoring: :accents,
+    using: {
+      tsearch: {
+        prefix: true
+      }
+    }
 
   has_many :members, dependent: :destroy
   has_many :users, -> { order "members.created_at DESC" }, through: :members
