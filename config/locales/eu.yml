@@ -412,11 +412,8 @@ eu:
     show:
       info: "%{type} hau %{organization}(e)ri dagokio."
   reports:
-    cat_with_users:
-      title: Eskaintzen diren zerbitzuak
     download: Jaitsi
-    user_list:
-      title: Erabiltzaile zerrenda
+    download_all: 
   shared:
     movements:
       delete_reason: Zihur zaude azalpen hau ezabatu nahi duzula?
