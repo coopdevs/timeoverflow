@@ -13,8 +13,10 @@ module Taggable
     tags && tags.join(", ")
   end
 
-  def tag_list=(tag_list)
-    self.tags = tag_list.reject(&:empty?)
+  def tag_list=(new_tags)
+    new_tags = new_tags.split(",").map(&:strip) if new_tags.is_a?(String)
+
+    self.tags = new_tags.reject(&:empty?)
   end
 
   module ClassMethods
