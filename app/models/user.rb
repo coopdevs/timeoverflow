@@ -64,7 +64,7 @@ class User < ApplicationRecord
     self
   end
 
-  def add_to_organization(organization)
+  def add_to_organization(organization, tag_list = [])
     return unless organization
 
     member = members.where(organization: organization).first_or_initialize
@@ -72,7 +72,7 @@ class User < ApplicationRecord
     return member if member.persisted?
 
     member.entry_date = DateTime.now.utc
-
+    member.tags = tag_list
     persister = ::Persister::MemberPersister.new(member)
     persister.save
 
@@ -102,8 +102,8 @@ class User < ApplicationRecord
     save
   end
 
-  def tune_after_persisted(organization)
-    add_to_organization organization
+  def tune_after_persisted(organization, tag_list = [])
+    add_to_organization organization, tag_list
 
     # If email was empty, udpate again with user.id just generated
     set_dummy_email if empty_email

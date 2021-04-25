@@ -20,6 +20,8 @@
                 end_year: Date.today.year - 12,
                 include_blank: :true %>
     <%= f.input :description, as: "text" %>
+    <%= f.input :postcode %>
+    <%= render 'form_tags' %>
 
     <div class='form-group'>
       <label><%= t('.notifications') %></label>

@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label for="member_tag_list"><%= t 'application.navbar.tags' %></label>
+  <input name="member[tag_list][]" type="hidden" value="">
+    <select multiple="" data-placeholder="<%= t 'application.tips.entertag' %>" 
+            id="tags-js" class="form-control select2-hidden-accessible" 
+            name="member[tag_list][]" data-select2-id="tags-js" 
+            tabindex="-1" aria-hidden="true">
+      <% @member.tags.each_with_index do |tag, index| %>
+        <option selected="selected" value="<%= tag %>" data-select2-id="<%= index %>">
+          <%= tag %>
+        </option>
+      <% end %>
+    </select>
+</div>

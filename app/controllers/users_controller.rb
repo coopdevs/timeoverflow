@@ -18,11 +18,13 @@ class UsersController < ApplicationController
 
   def new
     authorize User
+    @member = Member.new
     @user = scoped_users.build
   end
 
   def edit
     @user = find_user
+    @member = @user.as_member_of(current_organization)
   end
 
   def create
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
     @user.setup_and_save_user
 
     if @user.persisted?
-      @user.tune_after_persisted(current_organization)
+      @user.tune_after_persisted(current_organization, get_tags)
       redirect_to_after_create
     else
       @user.email = "" if empty_email
@@ -46,9 +48,10 @@ class UsersController < ApplicationController
 
   def update
     @user = scoped_users.find(params[:id])
+    @member = @user.as_member_of(current_organization)
     authorize @user
 
-    if @user.update(user_params)
+    if @user.update(user_params) && @member.update(tags: get_tags)
       redirect_to @user
     else
       render action: :edit, status: :unprocessable_entity
@@ -76,7 +79,7 @@ class UsersController < ApplicationController
 
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone
-                          alt_phone active description notifications push_notifications"
+                          alt_phone active description notifications push_notifications postcode"
     fields_to_permit += %w"admin registration_number
                            registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
@@ -105,5 +108,9 @@ class UsersController < ApplicationController
                                  uid: id,
                                  name: @user.username)
     end
+  end
+
+  def get_tags
+    params.key?(:member) ? params.require(:member).permit([tag_list: []])[:tag_list][1..] : []
   end
 end
