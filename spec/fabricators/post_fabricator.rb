@@ -1,15 +1,12 @@
 Fabricator(:post) do
-
   title { Faker::Lorem.sentence }
   user { Fabricate(:user) }
   description { Faker::Lorem.paragraph }
   category { Fabricate(:category) }
   active { true }
-
 end
 
 Fabricator(:inquiry) do
-
   type "Inquiry"
 
   title { Faker::Lorem.sentence }
@@ -21,7 +18,6 @@ Fabricator(:inquiry) do
 end
 
 Fabricator(:offer) do
-
   type "Offer"
 
   title { Faker::Lorem.sentence }
@@ -29,5 +25,4 @@ Fabricator(:offer) do
   description { Faker::Lorem.paragraph }
   category { Fabricate(:category) }
   active { true }
-
 end

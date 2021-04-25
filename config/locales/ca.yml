@@ -293,6 +293,7 @@ ca:
     required_field: "* Camp obligatori"
     save: Desar
     search: Cercar
+    search_location: Cerca per localitat
     show: Mostrar
     source_destination: Origen/Destí
     statistics: Estadístiques
@@ -309,6 +310,7 @@ ca:
   layouts:
     application:
       about: Sobre TimeOverflow
+      bdtnear: Cerca Banc de Temps
       edit_org: Modificar %{organization}
       edit_profile: Modificar perfil
       help: Ajuda
@@ -377,6 +379,7 @@ ca:
       new: Nou banc
     show:
       contact_information: Informació de contacte
+      join_timebank: No dubtis en contactar amb el Banc de Temps per unir-te o per preguntar qualsevol dubte.
   pages:
     about:
       app-mobile: Aplicació Mòbil
@@ -412,11 +415,8 @@ ca:
     show:
       info: Aquesta %{type} pertany a %{organization}.
   reports:
-    cat_with_users:
-      title: Serveis ofertats
     download: Descarregar
-    user_list:
-      title: Llistat d'usuaris
+    download_all: Descarregar tot
   shared:
     movements:
       delete_reason: Esteu segur d'esborrar aquest comentari?

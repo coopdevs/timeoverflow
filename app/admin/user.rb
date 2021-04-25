@@ -29,12 +29,14 @@ ActiveAdmin.register User do
   filter :organizations
   filter :email
   filter :username
+  filter :phone
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs do
       f.input :username
       f.input :email
+      f.input :phone
       f.input :gender, as: :select, collection: User::GENDERS
       f.input :identity_document
     end
