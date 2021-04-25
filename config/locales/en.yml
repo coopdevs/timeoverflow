@@ -73,6 +73,7 @@ en:
         unconfirmed_email: Unconfirmed Email
         updated_at: Updated
         username: Name
+        postcode: Post code
     errors:
       models:
         organization:

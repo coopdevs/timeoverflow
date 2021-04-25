@@ -111,6 +111,6 @@ class UsersController < ApplicationController
   end
 
   def get_tags
-    params.key?(:member) ? params.require(:member).permit([tag_list: []])[:tag_list][1..] : []
+    params.key?(:tag_list) ? params.require(:tag_list) : []
   end
 end
