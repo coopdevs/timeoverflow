@@ -293,6 +293,7 @@ gl:
     required_field: "* Campo obrigatorio"
     save: Gardar
     search: Busca
+    search_location: 
     show: Amosar
     source_destination: Dende/ata
     statistics: Estatísticas
@@ -309,6 +310,7 @@ gl:
   layouts:
     application:
       about: Sobre TimeOverflow
+      bdtnear: 
       edit_org: Actualización %{organization}
       edit_profile: Actualiza o meu perfil
       help: Axuda
@@ -377,6 +379,7 @@ gl:
       new: Novo banco
     show:
       contact_information: Información de contacto
+      join_timebank: 
   pages:
     about:
       app-mobile: Aplicación móbil

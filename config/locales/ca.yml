@@ -293,6 +293,7 @@ ca:
     required_field: "* Camp obligatori"
     save: Desar
     search: Cercar
+    search_location: 
     show: Mostrar
     source_destination: Origen/Destí
     statistics: Estadístiques
@@ -309,6 +310,7 @@ ca:
   layouts:
     application:
       about: Sobre TimeOverflow
+      bdtnear: 
       edit_org: Modificar %{organization}
       edit_profile: Modificar perfil
       help: Ajuda
@@ -377,6 +379,7 @@ ca:
       new: Nou banc
     show:
       contact_information: Informació de contacte
+      join_timebank: 
   pages:
     about:
       app-mobile: Aplicació Mòbil

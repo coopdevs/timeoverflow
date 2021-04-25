@@ -293,6 +293,7 @@ en:
     required_field: "* Required field"
     save: Save
     search: Search
+    search_location: Search by location
     show: Show
     source_destination: From/to
     statistics: Statistics
@@ -309,6 +310,7 @@ en:
   layouts:
     application:
       about: About TimeOverflow
+      bdtnear: Search Timebank
       edit_org: Update %{organization}
       edit_profile: Update my profile
       help: Help
@@ -377,6 +379,7 @@ en:
       new: New bank
     show:
       contact_information: Contact information
+      join_timebank: Don't hesitate to contact the time bank to join it or ask any questions.
   pages:
     about:
       app-mobile: Mobile App

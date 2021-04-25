@@ -293,6 +293,7 @@ pt-BR:
     required_field: "* Campo obrigatório"
     save: Guardar
     search: Pesquisar
+    search_location: 
     show: Mostrar
     source_destination: Origem/Destino
     statistics: Estatísticas
@@ -309,6 +310,7 @@ pt-BR:
   layouts:
     application:
       about: Sobre TimeOverflow
+      bdtnear: 
       edit_org: Modificar %{organization}
       edit_profile: Modificar meu perfil
       help: Ajuda
@@ -377,6 +379,7 @@ pt-BR:
       new: Novo banco
     show:
       contact_information: Informação de contato
+      join_timebank: 
   pages:
     about:
       app-mobile: Aplicativo móvel

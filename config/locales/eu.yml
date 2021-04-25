@@ -293,6 +293,7 @@ eu:
     required_field: Derrigorrez bete beharrekoa
     save: Gorde
     search: Bilatu
+    search_location: 
     show: Erakutsi
     source_destination: Jatorria/ helmuga
     statistics: Estatistika
@@ -309,6 +310,7 @@ eu:
   layouts:
     application:
       about: TimeOverflowri buruz
+      bdtnear: 
       edit_org: " %{organization} aldaketak egin"
       edit_profile: Nire profila aldatu
       help: Laguntza
@@ -377,6 +379,7 @@ eu:
       new: Banku berria
     show:
       contact_information: kontaktuaren informazioa
+      join_timebank: 
   pages:
     about:
       app-mobile: Mugikorrerako Appa

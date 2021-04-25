@@ -2,7 +2,9 @@ class OrganizationsController < ApplicationController
   before_action :load_resource, only: [:show, :edit, :update, :set_current]
 
   def index
-    @organizations = Organization.all.page(params[:page]).per(25)
+    organizations  = Organization.all
+    organizations  = organizations.search_by_query(params[:q]) if params[:q].present?
+    @organizations = organizations.page(params[:page]).per(25)
   end
 
   def show
