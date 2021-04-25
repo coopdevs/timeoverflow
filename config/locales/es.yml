@@ -412,11 +412,8 @@ es:
     show:
       info: Esta %{type} pertenece a %{organization}.
   reports:
-    cat_with_users:
-      title: Servicios ofrecidos
     download: Descargar
-    user_list:
-      title: Listado usuarios
+    download_all: Descargar todo
   shared:
     movements:
       delete_reason: "¿Está seguro de borrar este comentario?"

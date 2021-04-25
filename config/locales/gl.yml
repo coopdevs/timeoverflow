@@ -412,11 +412,8 @@ gl:
     show:
       info: Este %{type} pertence a %{organization}.
   reports:
-    cat_with_users:
-      title: Servizos ofrecidos
     download: Descarga
-    user_list:
-      title: Lista de persoas usuarias
+    download_all: 
   shared:
     movements:
       delete_reason: Estás seguro/a de borrar este comentario?

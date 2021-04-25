@@ -412,11 +412,8 @@ ca:
     show:
       info: Aquesta %{type} pertany a %{organization}.
   reports:
-    cat_with_users:
-      title: Serveis ofertats
     download: Descarregar
-    user_list:
-      title: Llistat d'usuaris
+    download_all: Descarregar tot
   shared:
     movements:
       delete_reason: Esteu segur d'esborrar aquest comentari?

@@ -412,11 +412,8 @@ en:
     show:
       info: This %{type} belongs to %{organization}.
   reports:
-    cat_with_users:
-      title: Offered Services
     download: Download
-    user_list:
-      title: User List
+    download_all: Download all
   shared:
     movements:
       delete_reason: Are you sure to delete this comment?
