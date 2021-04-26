@@ -2,12 +2,64 @@ RSpec.describe OrganizationsController do
   let!(:organization) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: organization) }
   let(:user) { member.user }
+  let!(:second_organization) { Fabricate(:organization) }
 
   describe 'GET #index' do
-    it 'populates and array of organizations' do
-      get :index
+    context 'without parameters' do
+      it 'populates and array of organizations' do
+        get :index
 
-      expect(assigns(:organizations)).to eq([organization])
+        expect(assigns(:organizations)).to eq([organization, second_organization])
+      end
+    end
+
+    context 'a search is made' do
+      before do
+        second_organization.name = "Banco del tiempo Doe"
+        second_organization.city = "Sevilla"
+        second_organization.address = "Calle gloria"
+        second_organization.neighborhood = "La paz"
+        second_organization.save!
+
+        organization.neighborhood = "La paz"
+        organization.save!
+      end
+
+      it 'populates an array of organizations searching by city' do
+        get :index, params: { q: 'Sevilla' }
+
+        expect(assigns(:organizations)).to eq([second_organization])
+      end
+
+      it 'populates an array of organizations searching by name' do
+        get :index, params: { q: 'Doe' }
+
+        expect(assigns(:organizations)).to eq([second_organization])
+      end
+
+      it 'populates an array of organizations searching by address' do
+        get :index, params: { q: 'gloria' }
+
+        expect(assigns(:organizations)).to eq([second_organization])
+      end
+
+      it 'populates an array of organizations searching by neighborhood' do
+        get :index, params: { q: 'Paz' }
+
+        expect(assigns(:organizations)).to eq([organization, second_organization])
+      end
+
+      it 'allows to search by partial word' do
+        get :index, params: { q: 'Sev' }
+
+        expect(assigns(:organizations)).to eq([second_organization])
+      end
+
+      it 'populates an array of organizations ignoring accents' do
+        get :index, params: { q: 'Sevillá' }
+
+        expect(assigns(:organizations)).to eq([second_organization])
+      end
     end
   end
 

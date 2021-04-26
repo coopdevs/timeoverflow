@@ -5,6 +5,7 @@ ruby File.read('.ruby-version').strip
 gem 'rails', '~> 6.1.1'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'rdiscount', '~> 2.2.0.1'
+gem 'rubyzip', '~> 2.3.0'
 gem 'activeadmin', '~> 2.9.0'
 gem 'bootsnap', '~> 1.7.3', require: false
 gem 'has_scope', '~> 0.7.2'

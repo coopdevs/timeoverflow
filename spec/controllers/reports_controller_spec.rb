@@ -89,5 +89,24 @@ RSpec.describe ReportsController do
         expect(response.media_type).to eq("application/pdf")
       end
     end
+
+    describe 'GET #download_all' do
+      it 'downloads a zip' do
+        get :download_all
+
+        expect(response.media_type).to eq('application/zip')
+        expect(response.body).to include('Inquiries')
+        expect(response.body).to include('Offers')
+        expect(response.body).to include('Members')
+        expect(response.body).to include('Transfers')
+      end
+
+      it 'redirects to download_all_report_path (retry) if zip is not ready' do
+        allow(subject).to receive(:add_csv_to_zip).and_raise(Errno::ENOENT)
+        get :download_all
+
+        expect(response).to redirect_to(download_all_report_path)
+      end
+    end
   end
 end

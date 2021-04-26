@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       get "offer_list" => :post_list, type: "offer"
       get "inquiry_list" => :post_list, type: "inquiry"
       get "transfer_list"
+      get "download_all"
     end
   end
 

@@ -106,4 +106,8 @@
 
 <% if current_user %>
   <%= render "shared/movements" %>
+<% else %>
+  <div class='alert alert-info'>
+    <%= t ".join_timebank" %>
+  </div>
 <% end %>
