@@ -311,11 +311,14 @@ RSpec.describe UsersController do
                                           username: user.username,
                                           email: user.email,
                                           phone: "1234",
-                                          alt_phone: "4321") }
+                                          alt_phone: "4321",
+                                          postcode: "40000"), tag_list: %w"tag1 tag2" }
 
             user.reload
             expect(user.phone).to eq("1234")
             expect(user.alt_phone).to eq("4321")
+            expect(user.postcode).to eq("40000")
+            expect(user.as_member_of(test_organization).tags).to eq(%w"tag1 tag2")
           end
 
           it "cannot change another user's attributes" do
@@ -344,11 +347,14 @@ RSpec.describe UsersController do
                                           username: user.username,
                                           email: user.email,
                                           phone: "1234",
-                                          alt_phone: "4321") }
+                                          alt_phone: "4321",
+                                          postcode: "40000"), tag_list: %w"tag1 tag2" }
 
             user.reload
             expect(user.phone).to eq("1234")
             expect(user.alt_phone).to eq("4321")
+            expect(user.postcode).to eq("40000")
+            expect(user.as_member_of(test_organization).tags).to eq(%w"tag1 tag2")
           end
         end
       end
