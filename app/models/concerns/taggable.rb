@@ -6,7 +6,7 @@ module Taggable
   extend ActiveSupport::Concern
 
   included do
-    scope :tagged_with, ->(tag) { where("? = ANY (tags)", tag) }
+    scope :tagged_with, ->(tag) { where("? = ANY (posts.tags)", tag) }
   end
 
   def tag_list
