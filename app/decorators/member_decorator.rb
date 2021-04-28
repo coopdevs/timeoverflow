@@ -1,5 +1,5 @@
 class MemberDecorator < ViewModel
-  delegate :user, :member_uid, :active?, to: :object
+  delegate :user, :member_uid, :tags, :active?, to: :object
   delegate :phone, :alt_phone, :username, :description, :last_sign_in_at, to: :user
 
   def manager?

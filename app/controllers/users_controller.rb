@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :member_should_be_active
 
+  has_scope :tagged_with, as: :tag
+
   def index
-    search_and_load_members current_organization.members.active, { s: 'user_last_sign_in_at DESC' }
+    context = current_organization.members.active
+    members = apply_scopes(context)
+
+    search_and_load_members members, { s: 'user_last_sign_in_at DESC' }
   end
 
   def manage
