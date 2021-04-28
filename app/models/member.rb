@@ -20,6 +20,7 @@ class Member < ApplicationRecord
 
   scope :by_month, -> (month) { where(created_at: month.beginning_of_month..month.end_of_month) }
   scope :active, -> { where active: true }
+  scope :by_organization, ->(org) { where(organization_id: org) if org }
 
   validates :organization_id, presence: true
   validates :member_uid,

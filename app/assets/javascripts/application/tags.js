@@ -7,6 +7,10 @@ $(function() {
     loadTags('inquiry');
   });
 
+  $(".switch_member-js").on("click", function() {
+    loadTags('user');
+  });
+  
   function loadTags(type){
     $.get({
       url: `/tags/alpha_grouped_index.js?post_type=${type}`,
@@ -32,6 +36,28 @@ $(function() {
       },
       processResults: function(data, params) {
         // parse the data into the format expected by Select2
+        return {
+          results: $.map(data, item => ({
+            id: item,
+            text: item
+          }))
+        };
+      }
+    }
+  });
+
+  $('#tags-js-members').select2({
+    tags: true,
+    tokenSeparators: [','],
+    dataType: 'json',
+    delay: 250,
+    ajax: {
+      url: '/tags.json',
+      data: function(params) {
+        console.log(params);
+        return { term: params.term, member: "true" };
+      },
+      processResults: function(data, params) {
         return {
           results: $.map(data, item => ({
             id: item,

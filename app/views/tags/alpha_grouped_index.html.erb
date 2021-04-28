@@ -10,6 +10,10 @@
         <%= radio_button_tag 'switch_inquiry', 'inquiry' %>
         <%= Inquiry.model_name.human count: :many %>
       </label>
+      <label class="btn btn-primary switch_member-js">
+        <%= radio_button_tag 'switch_member', 'member' %>
+        <%= t "users.index.members" %>
+      </label>
     </div>
   <% end %>
 </h1>
