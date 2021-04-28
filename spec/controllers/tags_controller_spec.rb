@@ -1,8 +1,9 @@
 RSpec.describe TagsController do
   let (:tags) { %w(foo bar baz) }
   let (:more_tags) { %w(ruby rails js) }
+  let (:member_tags) { %w(html html css html5) }
   let (:organization) { Fabricate(:organization) }
-  let (:member) { Fabricate(:member, organization: organization) }
+  let (:member) { Fabricate(:member, organization: organization, tags: member_tags) }
   let! (:offer) { Fabricate(:offer, user: member.user, organization: organization, tags: tags) }
   let! (:inquiry) { Fabricate(:inquiry, user: member.user, organization: organization, tags: more_tags) }
 
@@ -26,6 +27,16 @@ RSpec.describe TagsController do
       get :index, params: { term: "foo" }
       expect(assigns(:all_tags)).to eq(["foo"])
     end
+
+    it "with no search term and with member param, returns all members tags" do
+      get :index, params: {  member: "true" }
+      expect(assigns(:all_tags)).to eq(%w(html css html5))
+    end
+
+    it "with search term and with member param, returns filtered members tags" do
+      get :index, params: {  term: "htm", member: "true" }
+      expect(assigns(:all_tags)).to eq(%w(html html5))
+    end
   end
 
   describe "GET alpha_grouped_index" do
@@ -46,6 +57,15 @@ RSpec.describe TagsController do
       expect(assigns(:alpha_tags)).to eq({
         "J" => [["js", 1]],
         "R" => [["rails", 1], ["ruby", 1]]
+      })
+    end
+
+    it "load member tags" do
+      get :alpha_grouped_index, params: { post_type: "user" }
+
+      expect(assigns(:alpha_tags)).to eq({
+          "H" => [["html", 2], ["html5", 1]],
+          "C" => [["css", 1]]
       })
     end
 
