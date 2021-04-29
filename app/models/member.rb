@@ -1,16 +1,22 @@
 class Member < ApplicationRecord
   include Taggable
+
   # Cast the member_uid integer to a string to allow pg ILIKE search (from Ransack *_contains)
   ransacker :member_uid_search do
     Arel.sql("member_uid::text")
   end
-
+  # Convert array of tags to string
   ransacker :member_tags do
     Arel.sql("array_to_string(tags, ',')")
   end
-
-  ransack_alias :member_search, :user_username_or_user_email_or_member_tags_or_member_uid_search_contains
-  ransack_alias :member_manage_search, :user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_tags_or_member_uid_search_contains
+  ransack_alias :member_search, %w(
+    user_username
+    user_email
+    user_phone
+    user_alt_phone
+    member_uid_search
+    member_tags
+  ).join("_or_")
 
   belongs_to :user
   belongs_to :organization

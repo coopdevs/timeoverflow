@@ -85,7 +85,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: accounts; Type: TABLE; Schema: public; Owner: - 
+-- Name: accounts; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.accounts (
@@ -122,7 +122,7 @@ ALTER SEQUENCE public.accounts_id_seq OWNED BY public.accounts.id;
 
 
 --
--- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: - 
+-- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.active_admin_comments (
@@ -158,7 +158,7 @@ ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_
 
 
 --
--- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: - 
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ar_internal_metadata (
@@ -170,7 +170,7 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: categories; Type: TABLE; Schema: public; Owner: - 
+-- Name: categories; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.categories (
@@ -201,7 +201,7 @@ ALTER SEQUENCE public.categories_id_seq OWNED BY public.categories.id;
 
 
 --
--- Name: device_tokens; Type: TABLE; Schema: public; Owner: - 
+-- Name: device_tokens; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.device_tokens (
@@ -233,7 +233,7 @@ ALTER SEQUENCE public.device_tokens_id_seq OWNED BY public.device_tokens.id;
 
 
 --
--- Name: documents; Type: TABLE; Schema: public; Owner: - 
+-- Name: documents; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.documents (
@@ -268,7 +268,7 @@ ALTER SEQUENCE public.documents_id_seq OWNED BY public.documents.id;
 
 
 --
--- Name: events; Type: TABLE; Schema: public; Owner: - 
+-- Name: events; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.events (
@@ -302,7 +302,7 @@ ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
 
 
 --
--- Name: members; Type: TABLE; Schema: public; Owner: - 
+-- Name: members; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.members (
@@ -339,7 +339,7 @@ ALTER SEQUENCE public.members_id_seq OWNED BY public.members.id;
 
 
 --
--- Name: movements; Type: TABLE; Schema: public; Owner: - 
+-- Name: movements; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.movements (
@@ -372,7 +372,7 @@ ALTER SEQUENCE public.movements_id_seq OWNED BY public.movements.id;
 
 
 --
--- Name: organizations; Type: TABLE; Schema: public; Owner: - 
+-- Name: organizations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.organizations (
@@ -414,7 +414,7 @@ ALTER SEQUENCE public.organizations_id_seq OWNED BY public.organizations.id;
 
 
 --
--- Name: posts; Type: TABLE; Schema: public; Owner: - 
+-- Name: posts; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.posts (
@@ -456,7 +456,7 @@ ALTER SEQUENCE public.posts_id_seq OWNED BY public.posts.id;
 
 
 --
--- Name: push_notifications; Type: TABLE; Schema: public; Owner: - 
+-- Name: push_notifications; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.push_notifications (
@@ -492,7 +492,7 @@ ALTER SEQUENCE public.push_notifications_id_seq OWNED BY public.push_notificatio
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: - 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.schema_migrations (
@@ -501,7 +501,7 @@ CREATE TABLE public.schema_migrations (
 
 
 --
--- Name: transfers; Type: TABLE; Schema: public; Owner: - 
+-- Name: transfers; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.transfers (
@@ -534,7 +534,7 @@ ALTER SEQUENCE public.transfers_id_seq OWNED BY public.transfers.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: - 
+-- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.users (
@@ -687,7 +687,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
--- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.accounts
@@ -695,7 +695,7 @@ ALTER TABLE ONLY public.accounts
 
 
 --
--- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_admin_comments
@@ -703,7 +703,7 @@ ALTER TABLE ONLY public.active_admin_comments
 
 
 --
--- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ar_internal_metadata
@@ -711,7 +711,7 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
--- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.categories
@@ -719,7 +719,7 @@ ALTER TABLE ONLY public.categories
 
 
 --
--- Name: device_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: device_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.device_tokens
@@ -727,7 +727,7 @@ ALTER TABLE ONLY public.device_tokens
 
 
 --
--- Name: documents_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.documents
@@ -735,7 +735,7 @@ ALTER TABLE ONLY public.documents
 
 
 --
--- Name: events_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
@@ -743,7 +743,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: members_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: members_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.members
@@ -751,7 +751,7 @@ ALTER TABLE ONLY public.members
 
 
 --
--- Name: movements_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: movements_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.movements
@@ -759,7 +759,7 @@ ALTER TABLE ONLY public.movements
 
 
 --
--- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.organizations
@@ -767,7 +767,7 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.posts
@@ -775,7 +775,7 @@ ALTER TABLE ONLY public.posts
 
 
 --
--- Name: push_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: push_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.push_notifications
@@ -783,7 +783,7 @@ ALTER TABLE ONLY public.push_notifications
 
 
 --
--- Name: transfers_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: transfers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.transfers
@@ -791,7 +791,7 @@ ALTER TABLE ONLY public.transfers
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -799,175 +799,175 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: index_accounts_on_accountable_type_and_accountable_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_accounts_on_accountable_type_and_accountable_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_accounts_on_accountable_type_and_accountable_id ON public.accounts USING btree (accountable_type, accountable_id);
 
 
 --
--- Name: index_accounts_on_organization_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_accounts_on_organization_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_accounts_on_organization_id ON public.accounts USING btree (organization_id);
 
 
 --
--- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON public.active_admin_comments USING btree (author_type, author_id);
 
 
 --
--- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_active_admin_comments_on_namespace ON public.active_admin_comments USING btree (namespace);
 
 
 --
--- Name: index_active_admin_comments_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_active_admin_comments_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON public.active_admin_comments USING btree (resource_type, resource_id);
 
 
 --
--- Name: index_device_tokens_on_user_id_and_token; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_device_tokens_on_user_id_and_token; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_device_tokens_on_user_id_and_token ON public.device_tokens USING btree (user_id, token);
 
 
 --
--- Name: index_documents_on_documentable_id_and_documentable_type; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_documents_on_documentable_id_and_documentable_type; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_documents_on_documentable_id_and_documentable_type ON public.documents USING btree (documentable_id, documentable_type);
 
 
 --
--- Name: index_documents_on_label; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_documents_on_label; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_documents_on_label ON public.documents USING btree (label);
 
 
 --
--- Name: index_events_on_member_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_events_on_member_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_events_on_member_id ON public.events USING btree (member_id) WHERE (member_id IS NOT NULL);
 
 
 --
--- Name: index_events_on_post_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_events_on_post_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_events_on_post_id ON public.events USING btree (post_id) WHERE (post_id IS NOT NULL);
 
 
 --
--- Name: index_events_on_transfer_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_events_on_transfer_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_events_on_transfer_id ON public.events USING btree (transfer_id) WHERE (transfer_id IS NOT NULL);
 
 
 --
--- Name: index_members_on_organization_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_members_on_organization_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_members_on_organization_id ON public.members USING btree (organization_id);
 
 
 --
--- Name: index_members_on_user_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_members_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_members_on_user_id ON public.members USING btree (user_id);
 
 
 --
--- Name: index_movements_on_account_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_movements_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_movements_on_account_id ON public.movements USING btree (account_id);
 
 
 --
--- Name: index_movements_on_transfer_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_movements_on_transfer_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_movements_on_transfer_id ON public.movements USING btree (transfer_id);
 
 
 --
--- Name: index_organizations_on_name; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_organizations_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_organizations_on_name ON public.organizations USING btree (name);
 
 
 --
--- Name: index_posts_on_category_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_posts_on_category_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_posts_on_category_id ON public.posts USING btree (category_id);
 
 
 --
--- Name: index_posts_on_organization_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_posts_on_organization_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_posts_on_organization_id ON public.posts USING btree (organization_id);
 
 
 --
--- Name: index_posts_on_tags; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_posts_on_tags; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_posts_on_tags ON public.posts USING gin (tags);
 
 
 --
--- Name: index_posts_on_tsv; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_posts_on_tsv; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_posts_on_tsv ON public.posts USING gin (tsv);
 
 
 --
--- Name: index_posts_on_user_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_posts_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_posts_on_user_id ON public.posts USING btree (user_id);
 
 
 --
--- Name: index_transfers_on_operator_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_transfers_on_operator_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_transfers_on_operator_id ON public.transfers USING btree (operator_id);
 
 
 --
--- Name: index_transfers_on_post_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_transfers_on_post_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_transfers_on_post_id ON public.transfers USING btree (post_id);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_users_on_email ON public.users USING btree (email);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: - 
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING btree (version);

@@ -118,7 +118,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
 
-        get :index, params: { q: { user_username_or_user_email_or_member_tags_or_member_uid_search_contains: 1000 } }
+        get :index, params: { q: { member_search_cont: 1000 } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -127,7 +127,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
 
-        get :index, params: { q: { user_username_or_user_email_or_member_tags_or_member_uid_search_contains: "Bos" } }
+        get :index, params: { q: { member_search_cont: "Bos" } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -185,7 +185,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user, phone: 123456789)
         member = Fabricate(:member, user: user, organization: test_organization)
 
-        get :manage, params: { q: { user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_tags_or_member_uid_search_contains: 123456789 } }
+        get :manage, params: { q: { member_search_cont: 123456789 } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -194,7 +194,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user)
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
 
-        get :index, params: { q: { user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_tags_or_member_uid_search_contains: "Bos" } }
+        get :index, params: { q: { member_search_cont: "Bos" } }
 
         expect(assigns(:members)).to include(member)
       end

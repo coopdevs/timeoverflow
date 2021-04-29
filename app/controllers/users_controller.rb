@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   has_scope :tagged_with, as: :tag
 
   def index
-    context = current_organization.members.active
-    members = apply_scopes(context)
+    members = current_organization.members.active
+    members = apply_scopes(members)
 
     search_and_load_members members, { s: 'user_last_sign_in_at DESC' }
   end
@@ -23,13 +23,11 @@ class UsersController < ApplicationController
 
   def new
     authorize User
-    @member = Member.new
     @user = scoped_users.build
   end
 
   def edit
     @user = find_user
-    @member = @user.as_member_of(current_organization)
   end
 
   def create
@@ -44,24 +42,25 @@ class UsersController < ApplicationController
 
     if @user.persisted?
       @user.tune_after_persisted(current_organization)
-      @user.add_tags(current_organization, get_tags)
+      @user.add_tags(current_organization, params[:tag_list] || [])
+
       redirect_to_after_create
     else
       @user.email = "" if empty_email
-      @member = Member.new
+
       render action: "new"
     end
   end
 
   def update
     @user = scoped_users.find(params[:id])
-    @user.add_tags(current_organization, get_tags)
     authorize @user
 
     if @user.update(user_params)
+      @user.add_tags(current_organization, params[:tag_list] || [])
+
       redirect_to @user
     else
-      @member = @user.as_member_of(current_organization)
       render action: :edit, status: :unprocessable_entity
     end
   end
@@ -116,9 +115,5 @@ class UsersController < ApplicationController
                                  uid: id,
                                  name: @user.username)
     end
-  end
-
-  def get_tags
-    params.key?(:tag_list) ? params.require(:tag_list) : []
   end
 end
