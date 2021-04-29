@@ -9,6 +9,9 @@ class Member < ApplicationRecord
     Arel.sql("array_to_string(tags, ',')")
   end
 
+  ransack_alias :member_search, :user_username_or_user_email_or_member_tags_or_member_uid_search_contains
+  ransack_alias :member_manage_search, :user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_tags_or_member_uid_search_contains
+
   belongs_to :user
   belongs_to :organization
   has_one :account, as: :accountable

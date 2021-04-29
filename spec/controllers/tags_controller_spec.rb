@@ -64,8 +64,8 @@ RSpec.describe TagsController do
       get :alpha_grouped_index, params: { post_type: "user" }
 
       expect(assigns(:alpha_tags)).to eq({
-          "H" => [["html", 2], ["html5", 1]],
-          "C" => [["css", 1]]
+        "H" => [["html", 2], ["html5", 1]],
+        "C" => [["css", 1]]
       })
     end
 

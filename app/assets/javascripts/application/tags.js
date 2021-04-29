@@ -32,32 +32,10 @@ $(function() {
     ajax: {
       url: '/tags.json',
       data: function(params) {
-        return { term: params.term };
+        return $(this).data("member") ? { term: params.term, member: "true"} : { term: params.term }
       },
       processResults: function(data, params) {
         // parse the data into the format expected by Select2
-        return {
-          results: $.map(data, item => ({
-            id: item,
-            text: item
-          }))
-        };
-      }
-    }
-  });
-
-  $('#tags-js-members').select2({
-    tags: true,
-    tokenSeparators: [','],
-    dataType: 'json',
-    delay: 250,
-    ajax: {
-      url: '/tags.json',
-      data: function(params) {
-        console.log(params);
-        return { term: params.term, member: "true" };
-      },
-      processResults: function(data, params) {
         return {
           results: $.map(data, item => ({
             id: item,

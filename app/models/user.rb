@@ -46,6 +46,12 @@ class User < ApplicationRecord
     organization && members.find_by(organization: organization)
   end
 
+  def add_tags(organization, tag_list)
+    m = as_member_of(organization)
+    m.tags = tag_list
+    m.save
+  end
+
   def admins?(organization)
     organization && !!(as_member_of(organization).try :manager)
   end
@@ -64,7 +70,7 @@ class User < ApplicationRecord
     self
   end
 
-  def add_to_organization(organization, tag_list = [])
+  def add_to_organization(organization)
     return unless organization
 
     member = members.where(organization: organization).first_or_initialize
@@ -72,7 +78,6 @@ class User < ApplicationRecord
     return member if member.persisted?
 
     member.entry_date = DateTime.now.utc
-    member.tags = tag_list
     persister = ::Persister::MemberPersister.new(member)
     persister.save
 
@@ -102,8 +107,8 @@ class User < ApplicationRecord
     save
   end
 
-  def tune_after_persisted(organization, tag_list = [])
-    add_to_organization organization, tag_list
+  def tune_after_persisted(organization)
+    add_to_organization organization
 
     # If email was empty, udpate again with user.id just generated
     set_dummy_email if empty_email

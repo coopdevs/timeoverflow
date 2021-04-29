@@ -26,8 +26,8 @@
       <%= select_tag  :tag_list, 
                       options_for_select(@member.tags, @member.tags),
                       multiple: true,
-                      data: { placeholder: t('application.tips.entertag')},
-                      id: "tags-js-members",
+                      data: { placeholder: t('application.tips.entertag'), member: "true"},
+                      id: "tags-js",
                       class: "form-control" %>
     </div>
 

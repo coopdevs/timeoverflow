@@ -43,22 +43,25 @@ class UsersController < ApplicationController
     @user.setup_and_save_user
 
     if @user.persisted?
-      @user.tune_after_persisted(current_organization, get_tags)
+      @user.tune_after_persisted(current_organization)
+      @user.add_tags(current_organization, get_tags)
       redirect_to_after_create
     else
       @user.email = "" if empty_email
+      @member = Member.new
       render action: "new"
     end
   end
 
   def update
     @user = scoped_users.find(params[:id])
-    @member = @user.as_member_of(current_organization)
+    @user.add_tags(current_organization, get_tags)
     authorize @user
 
-    if @user.update(user_params) && @member.update(tags: get_tags)
+    if @user.update(user_params)
       redirect_to @user
     else
+      @member = @user.as_member_of(current_organization)
       render action: :edit, status: :unprocessable_entity
     end
   end
