@@ -14,13 +14,13 @@ class TagsController < ApplicationController
 
     post_type = params[:post_type] || "offer"
     @tags = case post_type
-                  when "offer"
-                    Offer.by_organization(current_organization).active.of_active_members
-                  when "inquiry"
-                    Inquiry.by_organization(current_organization).active.of_active_members
-                  when "user"
-                    Member.by_organization(current_organization).active
-                  end.alphabetical_grouped_tags
+            when "offer"
+              Offer.by_organization(current_organization).active.of_active_members
+            when "inquiry"
+              Inquiry.by_organization(current_organization).active.of_active_members
+            when "user"
+              Member.by_organization(current_organization).active
+            end.alphabetical_grouped_tags
 
     respond_to do |format|
       format.html

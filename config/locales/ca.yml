@@ -66,6 +66,7 @@ ca:
         notifications: Rebre notificacions
         organization: Organització
         phone: Telèfon
+        postcode: Codi postal
         push_notifications: Rebre notificacions al mòbil
         registration_date: Data d'alta
         registration_number: Codi d'usuari
