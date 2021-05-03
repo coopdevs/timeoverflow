@@ -22,16 +22,6 @@ class Account < ApplicationRecord
     save
   end
 
-  # Return the maximum allowed amount of time that the acccount is able to
-  # spend without overflowing
-  def allowance
-    if min_allowed_balance
-      [0, balance - min_allowed_balance].min
-    else
-      Float::INFINITY
-    end
-  end
-
   # Print the account as its accountable reference
   def to_s
     accountable.to_s

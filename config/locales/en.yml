@@ -66,6 +66,7 @@ en:
         notifications: Receive email notifications
         organization: Organization
         phone: Phone
+        postcode: Postal code
         push_notifications: Receive mobile notifications
         registration_date: Registration date
         registration_number: User code

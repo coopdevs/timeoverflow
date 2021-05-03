@@ -2,27 +2,30 @@ class TagsController < ApplicationController
   before_action :authenticate_user!, :member_should_be_active
 
   def index
-    posts = Post.by_organization(current_organization)
-    @all_tags = posts.find_like_tag(params[:term])
+    model = params[:model].classify.constantize
+    posts = model.by_organization(current_organization)
+    @tags = posts.find_like_tag(params[:term])
 
-    render json: @all_tags
+    render json: @tags
   end
 
   def alpha_grouped_index
     redirect_to users_path && return unless current_organization
 
     post_type = params[:post_type] || "offer"
-    @alpha_tags = case post_type
-                  when "offer" then Offer
-                  when "inquiry" then Inquiry
-                  end.by_organization(current_organization).
-                  active.of_active_members.
-                  alphabetical_grouped_tags
+    @tags = case post_type
+            when "offer"
+              Offer.by_organization(current_organization).active.of_active_members
+            when "inquiry"
+              Inquiry.by_organization(current_organization).active.of_active_members
+            when "user"
+              Member.by_organization(current_organization).active
+            end.alphabetical_grouped_tags
 
     respond_to do |format|
       format.html
       format.js do
-        render partial: "grouped_index", locals: { alpha_tags: @alpha_tags, post_type: post_type }
+        render partial: "grouped_index", locals: { alpha_tags: @tags, post_type: post_type }
       end
     end
   end

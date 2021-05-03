@@ -7,6 +7,10 @@ $(function() {
     loadTags('inquiry');
   });
 
+  $(".switch_member-js").on("click", function() {
+    loadTags('user');
+  });
+
   function loadTags(type){
     $.get({
       url: `/tags/alpha_grouped_index.js?post_type=${type}`,
@@ -28,7 +32,7 @@ $(function() {
     ajax: {
       url: '/tags.json',
       data: function(params) {
-        return { term: params.term };
+        return { term: params.term, model: $(this).data("model") };
       },
       processResults: function(data, params) {
         // parse the data into the format expected by Select2

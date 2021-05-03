@@ -66,6 +66,7 @@ gl:
         notifications: Recibir notificacións por correo electrónico
         organization: Organización
         phone: Teléfono
+        postcode: 
         push_notifications: Recibir notificacións móbiles
         registration_date: Data de rexistro
         registration_number: Código de persoa usuaria
