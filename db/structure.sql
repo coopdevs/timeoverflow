@@ -542,7 +542,6 @@ CREATE TABLE public.users (
     username character varying NOT NULL,
     email character varying NOT NULL,
     date_of_birth date,
-    identity_document character varying,
     phone character varying,
     alt_phone character varying,
     address text,
@@ -1096,6 +1095,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190523213421'),
 ('20190523225323'),
 ('20210423193937'),
-('20210424174640');
+('20210424174640'),
+('20210503201944');
 
 

@@ -40,7 +40,6 @@ ActiveAdmin.register User do
       f.input :phone
       f.input :postcode
       f.input :gender, as: :select, collection: User::GENDERS
-      f.input :identity_document
     end
     f.inputs "Memberships" do
       f.has_many :members do |m|
