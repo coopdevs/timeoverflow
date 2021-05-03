@@ -118,7 +118,25 @@ RSpec.describe UsersController do
         user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
 
-        get :index, params: { q: { user_username_or_user_email_or_member_uid_search_contains: 1000 } }
+        get :index, params: { q: { member_search_cont: 1000 } }
+
+        expect(assigns(:members)).to include(member)
+      end
+
+      it 'allows to search by member tags in searcher' do
+        user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
+        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
+
+        get :index, params: { q: { member_search_cont: "Bos" } }
+
+        expect(assigns(:members)).to include(member)
+      end
+
+      it 'allows to search by member tags clicking on one' do
+        user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
+        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
+
+        get :index, params: { tag: "Boss" }
 
         expect(assigns(:members)).to include(member)
       end
@@ -167,7 +185,16 @@ RSpec.describe UsersController do
         user = Fabricate(:user, phone: 123456789)
         member = Fabricate(:member, user: user, organization: test_organization)
 
-        get :manage, params: { q: { user_username_or_user_email_or_user_phone_or_user_alt_phone_or_member_uid_search_contains: 123456789 } }
+        get :manage, params: { q: { member_search_cont: 123456789 } }
+
+        expect(assigns(:members)).to include(member)
+      end
+
+      it 'allows to search by member tags' do
+        user = Fabricate(:user)
+        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
+
+        get :index, params: { q: { member_search_cont: "Bos" } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -311,11 +338,14 @@ RSpec.describe UsersController do
                                           username: user.username,
                                           email: user.email,
                                           phone: "1234",
-                                          alt_phone: "4321") }
+                                          alt_phone: "4321",
+                                          postcode: "40000"), tag_list: %w"tag1 tag2" }
 
             user.reload
             expect(user.phone).to eq("1234")
             expect(user.alt_phone).to eq("4321")
+            expect(user.postcode).to eq("40000")
+            expect(user.as_member_of(test_organization).tags).to eq(%w"tag1 tag2")
           end
 
           it "cannot change another user's attributes" do
@@ -344,11 +374,14 @@ RSpec.describe UsersController do
                                           username: user.username,
                                           email: user.email,
                                           phone: "1234",
-                                          alt_phone: "4321") }
+                                          alt_phone: "4321",
+                                          postcode: "40000"), tag_list: %w"tag1 tag2" }
 
             user.reload
             expect(user.phone).to eq("1234")
             expect(user.alt_phone).to eq("4321")
+            expect(user.postcode).to eq("40000")
+            expect(user.as_member_of(test_organization).tags).to eq(%w"tag1 tag2")
           end
         end
       end

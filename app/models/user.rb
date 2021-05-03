@@ -110,6 +110,11 @@ class User < ApplicationRecord
     save
   end
 
+  def add_tags(organization, tag_list)
+    member = as_member_of(organization)
+    member.update(tag_list: tag_list)
+  end
+
   def has_valid_email?
     !email.include? "example.com"
   end

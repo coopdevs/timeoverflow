@@ -69,6 +69,29 @@
               <% end %>
             </dd>
           <% end %>
+          <% if @user.postcode.present? %>
+            <dt>
+              <%= t "activerecord.attributes.user.postcode" %>
+            </dt>
+            <dd>
+              <%= @user.postcode %>
+            </dd>
+          <% end %>
+          <% if @member.tags.present? %>
+            <dt>
+              <%= t "application.navbar.tags" %>
+            </dt>
+            <dd>
+              <% @member.tags.each do |tag| %>
+                <span class="badge alert-success">
+                  <%= link_to users_path tag: tag do %>
+                    <%= glyph(:tag) %>
+                    <%= tag %>
+                  <% end %>
+                </span>
+              <% end %>
+            </dd>
+          <% end %>
         </dl>
       </div>
     </div>

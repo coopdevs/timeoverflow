@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :member_should_be_active
 
+  has_scope :tagged_with, as: :tag
+
   def index
-    search_and_load_members current_organization.members.active, { s: 'user_last_sign_in_at DESC' }
+    members = current_organization.members.active
+    members = apply_scopes(members)
+
+    search_and_load_members members, { s: 'user_last_sign_in_at DESC' }
   end
 
   def manage
@@ -37,9 +42,12 @@ class UsersController < ApplicationController
 
     if @user.persisted?
       @user.tune_after_persisted(current_organization)
+      @user.add_tags(current_organization, params[:tag_list] || [])
+
       redirect_to_after_create
     else
       @user.email = "" if empty_email
+
       render action: "new"
     end
   end
@@ -49,6 +57,8 @@ class UsersController < ApplicationController
     authorize @user
 
     if @user.update(user_params)
+      @user.add_tags(current_organization, params[:tag_list] || [])
+
       redirect_to @user
     else
       render action: :edit, status: :unprocessable_entity
@@ -76,7 +86,7 @@ class UsersController < ApplicationController
 
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone
-                          alt_phone active description notifications push_notifications"
+                          alt_phone active description notifications push_notifications postcode"
     fields_to_permit += %w"admin registration_number
                            registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?

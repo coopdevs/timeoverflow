@@ -66,6 +66,7 @@ es:
         notifications: Recibir notificaciones
         organization: Organización
         phone: Teléfono
+        postcode: Código postal
         push_notifications: Recibir notificaciones móviles
         registration_date: Fecha de alta
         registration_number: Código de usuario
