@@ -58,21 +58,21 @@ RSpec.describe TagsController do
       })
     end
 
-    it "load tags by type" do
+    it "load offer tags" do
+      get :alpha_grouped_index, params: { post_type: "offer" }
+
+      expect(assigns(:tags)).to eq({
+        "B" => [["bar", 1], ["baz", 1]],
+        "F" => [["foo", 1]]
+      })
+    end
+
+    it "load inquiries tags" do
       get :alpha_grouped_index, params: { post_type: "inquiry" }
 
       expect(assigns(:tags)).to eq({
         "J" => [["js", 1]],
         "R" => [["rails", 1], ["ruby", 1]]
-      })
-    end
-
-    it "load member tags" do
-      get :alpha_grouped_index, params: { post_type: "user" }
-
-      expect(assigns(:tags)).to eq({
-        "H" => [["html", 2], ["html5", 1]],
-        "C" => [["css", 1]]
       })
     end
 
