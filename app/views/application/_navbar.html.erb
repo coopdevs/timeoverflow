@@ -70,8 +70,8 @@
                 <%= Inquiry.model_name.human(count: :many) %>
               <% end %>
             </li>
-            <li class="<%= "active" if current_page?(alpha_grouped_index_tags_path(post_type: "offer")) %>">
-              <%= link_to alpha_grouped_index_tags_path(post_type: "offer") do %>
+            <li class="<%= "active" if current_page?(alpha_grouped_index_tags_path(post_type: "user")) %>">
+              <%= link_to alpha_grouped_index_tags_path(post_type: "user") do %>
                 <%= glyph :tags %>
                 <%= t ".tags" %>
               <% end %>

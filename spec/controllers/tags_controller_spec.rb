@@ -49,12 +49,12 @@ RSpec.describe TagsController do
   describe "GET alpha_grouped_index" do
     before { session[:current_organization_id] = organization.id }
 
-    it "load offers tags by default if no type is passed" do
+    it "load users tags by default if no type is passed" do
       get :alpha_grouped_index
 
       expect(assigns(:tags)).to eq({
-        "B" => [["bar", 1], ["baz", 1]],
-        "F" => [["foo", 1]]
+        "H" => [["html", 2], ["html5", 1]],
+        "C" => [["css", 1]]
       })
     end
 

@@ -2,17 +2,17 @@
 
 <%= form_tag alpha_grouped_index_tags_path, method: :get do %>
   <div class="btn-group" data-toggle="buttons">
-    <label class="btn btn-primary active switch_offer-js">
-      <%= radio_button_tag 'switch_offer', 'offer', true %>
+    <label class="btn btn-primary active switch_member-js">
+      <%= radio_button_tag 'switch_member', 'user', true %>
+      <%= t "users.index.members" %>
+    </label>
+    <label class="btn btn-primary switch_offer-js">
+      <%= radio_button_tag 'switch_offer', 'offer' %>
       <%= Offer.model_name.human count: :many %>
     </label>
     <label class="btn btn-primary switch_inquiry-js">
       <%= radio_button_tag 'switch_inquiry', 'inquiry' %>
       <%= Inquiry.model_name.human count: :many %>
-    </label>
-    <label class="btn btn-primary switch_member-js">
-      <%= radio_button_tag 'switch_member', 'user' %>
-      <%= t "users.index.members" %>
     </label>
   </div>
 <% end %>
