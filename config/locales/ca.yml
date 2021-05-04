@@ -61,7 +61,6 @@ ca:
         description: Descripció
         email: Correu
         gender: Gènere
-        identity_document: DNI
         last_sign_in_at: Data darrera connexió
         notifications: Rebre notificacions
         organization: Organització

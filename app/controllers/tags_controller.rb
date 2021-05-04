@@ -12,7 +12,7 @@ class TagsController < ApplicationController
   def alpha_grouped_index
     redirect_to users_path && return unless current_organization
 
-    post_type = params[:post_type] || "offer"
+    post_type = params[:post_type] || "user"
     @tags = case post_type
             when "offer"
               Offer.by_organization(current_organization).active.of_active_members
