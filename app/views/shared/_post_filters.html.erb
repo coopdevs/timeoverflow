@@ -28,7 +28,7 @@
         <li>
           <%= link_to "× #{t("global.all")}", base_path %>
         </li>
-        <% Category.all.sort_by { |a| a.name.downcase }.each do |c| %>
+        <% all_categories.each do |c| %>
           <% next if c == @category %>
           <li>
             <%= link_to c.name, "#{base_path}?cat=#{c.id}" %>

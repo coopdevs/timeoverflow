@@ -61,7 +61,6 @@ gl:
         description: Descrición
         email: Correo electrónico
         gender: Xénero
-        identity_document: Documento de identidade
         last_sign_in_at: Último inicio de sesión
         notifications: Recibir notificacións por correo electrónico
         organization: Organización

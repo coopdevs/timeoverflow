@@ -12,12 +12,6 @@
       <% end %>
     </li>
     <li>
-      <%= link_to alpha_grouped_index_tags_path(post_type: "offer") do %>
-        <%= glyph :tags %>
-        <%= t "application.navbar.tags" %>
-      <% end %>
-    </li>
-    <li>
       <%= link_to offers_path(org: current_organization) do %>
         <%= glyph :link %>
         <%= glyph :eye_open %>
