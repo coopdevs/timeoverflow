@@ -31,7 +31,7 @@
             <ul class="nav navbar-nav navbar-right hidden-sm hidden-md hidden-lg">
               <% if current_user %>
                 <li>
-                  <%= image_tag avatar_url(current_user) %>
+                  <%= image_tag select_avatar(current_user) %>
                   <%= current_user.email %>
                 </li>
                 <%= render 'application/menus/user_admin_menu_items' %>

@@ -533,6 +533,8 @@ en:
       balance: 'Balance:'
       categories: Offered Services
       change_your_image: Change your image
+      crop_the_image: Crop the image
+      invalid_format: Invalid format, please choose a ".jpg", ".jpeg" or ".png".
       created_at: 'Registered:'
       data: User details
       date: Date

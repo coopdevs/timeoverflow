@@ -40,7 +40,7 @@
           </h3>
         </div>
         <div class="panel-body">
-          <%= link_to image_tag(avatar_url(post.user, 100)), post.user %>
+          <%= link_to image_tag(select_avatar(post.user, 100)), post.user %>
           <h3>
             <%= t "global.contact_details" %>
           </h3>

@@ -1,5 +1,5 @@
 <%= content_tag(:tr, class: member.row_css_class) do %>
-  <td> <%= member.avatar_img %> </td>
+  <td> <%= image_tag select_avatar(member.user) %> </td>
   <td> <%= member.member_uid %> </td>
   <td>
     <%= member.inactive_icon %>

@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     get :give_time, on: :member
   end
 
+  put :change_photo_profile, to: 'users#change_photo_profile'
+
   resources :organizations, except: [:new, :create, :destroy], concerns: :accountable do
     member do
       post :set_current

@@ -36,14 +36,52 @@
     <div class="row">
       <div class="col-sm-3 col-xs-5 text-center">
         <% if @user == current_user %>
-          <a href="https://www.gravatar.com" target="_blank">
-            <%= image_tag avatar_url(@user, 140) %>
-          </a>
-          <a href="https://www.gravatar.com" target="_blank" class="btn btn-link">
-            <%= glyph :pencil %> <%= t ".change_your_image" %>
-          </a>
+          <%= image_tag select_avatar(@user, 140) %>
+          <%= form_with url: change_photo_profile_path, id: "form_photo", method: :put do |f| %>
+            <%= label_tag "avatar-js", "avatar" do %>
+              <a class="btn btn-link">
+                <%= glyph :pencil %> 
+                <%= t ".change_your_image" %>
+              </a>
+            <% end %>
+            <%= f.file_field :avatar,
+                             id: "avatar-js",
+                             class: "hidden",
+                             accept: "image/*" %>
+            <div class="modal fade" id="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">
+                      <%= t ".crop_the_image" %>
+                    </h4>
+                  </div>
+                  <div class="modal-body">
+                    <div id="containerCrop" class="col-12">
+                      <div id="crop_panel"></div>
+                      <img id="foto" alt="" />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="form-actions">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <%= t 'users.new.cancel' %>
+                      </button>
+                      <%= f.hidden_field :height_width, value: 140 %>
+                      <%= f.hidden_field :width_offset, value: 1 %>
+                      <%= f.hidden_field :height_offset, value: 1 %>
+                      <%= f.hidden_field :original_width, value: 1 %>
+                      <%= f.button :submit, class:"btn btn-primary" do %>
+                        <%= t("global.save")  %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% else %>
-          <%= image_tag avatar_url(@user, 140) %>
+          <%= image_tag select_avatar(@user, 140) %>
         <% end %>
       </div>
       <div class="col-sm-9 col-xs-7 break-word">

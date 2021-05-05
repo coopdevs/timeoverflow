@@ -66,6 +66,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_photo_profile
+    avatar = params[:avatar]
+    @user = current_user
+    if content_type_permitted(avatar.content_type)
+      @user.avatar.purge if @user.avatar.attached?
+      crop_image_and_save(avatar)
+    else
+      flash[:error] = t 'users.show.invalid_format'
+    end
+    redirect_to @user
+  end
+
   private
 
   def search_and_load_members(members_scope, default_search_params)
@@ -116,6 +128,27 @@ class UsersController < ApplicationController
                                  uid: id,
                                  name: @user.username)
     end
+  end
+
+  def crop_image_and_save(avatar)
+    image = MiniMagick::Image.read(File.read(avatar.tempfile))
+    get_parameters_to_crop
+    image.resize "#{@or_width}x#{image.height / (image.width / @or_width)}"
+    image.crop "#{@width}x#{@width}+#{@left}+#{@top}!"
+    name = @user.username
+    content_type = avatar.content_type
+    @user.avatar.attach(io: File.open(image.path), filename: name, content_type: content_type)
+  end
+
+  def get_parameters_to_crop
+    @or_width = params[:original_width].to_i
+    @width = params[:height_width].to_i
+    @left = params[:width_offset].to_i
+    @top = params[:height_offset].to_i
+  end
+
+  def content_type_permitted(avatar_content_type)
+    %w[image/jpeg image/pjpeg image/png image/x-png].include? avatar_content_type
   end
 
   def get_tags
