@@ -68,7 +68,7 @@ class UsersController < ApplicationController
   def change_photo_profile
     avatar = params[:avatar]
     @user = current_user
-    if content_type_permitted(avatar.content_type)
+    if avatar && content_type_permitted(avatar.content_type)
       @user.avatar.purge if @user.avatar.attached?
       crop_image_and_save(avatar)
     else
