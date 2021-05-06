@@ -404,4 +404,25 @@ RSpec.describe UsersController do
       end
     end
   end
+
+  describe "PUT #change_photo_profile" do
+    context "with a normal logged user" do
+      before { login(user) }
+      it "change the photo attached @user" do
+        path = Rails.root.join("docs/images/ofertas.png")
+        uploaded_file = Rack::Test::UploadedFile.new(path, "image/png")
+        put "change_photo_profile", params: { avatar: uploaded_file, original_width: 500,
+                                              height_width: 140 }
+        expect(user.avatar.attached?).to eq true
+      end
+
+      it "don't change the photo attached if the format isn't valid" do
+        path = Rails.root.join("spec/controllers/users_controller_spec.rb")
+        uploaded_file = Rack::Test::UploadedFile.new(path)
+        put "change_photo_profile", params: { avatar: uploaded_file }
+
+        expect(flash[:error]).not_to be_empty
+      end
+    end
+  end
 end
