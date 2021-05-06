@@ -61,11 +61,11 @@ pt-BR:
         description: Descrição
         email: E-mail
         gender: Gênero
-        identity_document: Documento
         last_sign_in_at: Data do último login
         notifications: Receber notificações
         organization: Organização
         phone: Telefone
+        postcode: 
         push_notifications: Receber notificações pelo celular
         registration_date: Data de ingresso
         registration_number: Código do usuário

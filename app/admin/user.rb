@@ -30,6 +30,7 @@ ActiveAdmin.register User do
   filter :email
   filter :username
   filter :phone
+  filter :postcode
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
@@ -37,8 +38,8 @@ ActiveAdmin.register User do
       f.input :username
       f.input :email
       f.input :phone
+      f.input :postcode
       f.input :gender, as: :select, collection: User::GENDERS
-      f.input :identity_document
     end
     f.inputs "Memberships" do
       f.has_many :members do |m|

@@ -61,11 +61,11 @@ en:
         description: Description
         email: Email
         gender: Gender
-        identity_document: Identity Document
         last_sign_in_at: Last login
         notifications: Receive email notifications
         organization: Organization
         phone: Phone
+        postcode: Postal code
         push_notifications: Receive mobile notifications
         registration_date: Registration date
         registration_number: User code
@@ -73,7 +73,6 @@ en:
         unconfirmed_email: Unconfirmed Email
         updated_at: Updated
         username: Name
-        postcode: Post code
     errors:
       models:
         organization:

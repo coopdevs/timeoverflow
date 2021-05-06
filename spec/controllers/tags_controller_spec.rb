@@ -12,60 +12,67 @@ RSpec.describe TagsController do
   end
 
   describe "GET index" do
-    it "returns http success" do
-      get :index
+    it "returns json and http success" do
+      get :index, params: { model: "post" }
+
       expect(response).to have_http_status(:ok)
       expect(response.content_type).to match("application/json")
     end
 
     it "with no search term, returns all tags" do
-      get :index
-      expect(assigns(:all_tags)).to eq(more_tags + tags)
+      get :index, params: { model: "post" }
+
+      expect(assigns(:tags)).to eq(more_tags + tags)
     end
 
     it "with search term, returns filtered tags" do
-      get :index, params: { term: "foo" }
-      expect(assigns(:all_tags)).to eq(["foo"])
+      get :index, params: { model: "post", term: "foo" }
+
+      expect(assigns(:tags)).to eq(["foo"])
     end
 
-    it "with no search term and with member param, returns all members tags" do
-      get :index, params: {  member: "true" }
-      expect(assigns(:all_tags)).to eq(%w(html css html5))
-    end
+    context "for members" do
+      it "with no search term, returns all members tags" do
+        get :index, params: { model: "member" }
 
-    it "with search term and with member param, returns filtered members tags" do
-      get :index, params: {  term: "htm", member: "true" }
-      expect(assigns(:all_tags)).to eq(%w(html html5))
+        expect(assigns(:tags)).to eq(member_tags.uniq)
+      end
+
+      it "with search term, returns filtered members tags" do
+        get :index, params: { model: "member", term: "htm" }
+
+        expect(assigns(:tags)).to eq(%w(html html5))
+      end
     end
   end
 
   describe "GET alpha_grouped_index" do
     before { session[:current_organization_id] = organization.id }
 
-    it "load offers tags by default if no type is passed" do
+    it "load users tags by default if no type is passed" do
       get :alpha_grouped_index
 
-      expect(assigns(:alpha_tags)).to eq({
+      expect(assigns(:tags)).to eq({
+        "H" => [["html", 2], ["html5", 1]],
+        "C" => [["css", 1]]
+      })
+    end
+
+    it "load offer tags" do
+      get :alpha_grouped_index, params: { post_type: "offer" }
+
+      expect(assigns(:tags)).to eq({
         "B" => [["bar", 1], ["baz", 1]],
         "F" => [["foo", 1]]
       })
     end
 
-    it "load tags by type" do
+    it "load inquiries tags" do
       get :alpha_grouped_index, params: { post_type: "inquiry" }
 
-      expect(assigns(:alpha_tags)).to eq({
+      expect(assigns(:tags)).to eq({
         "J" => [["js", 1]],
         "R" => [["rails", 1], ["ruby", 1]]
-      })
-    end
-
-    it "load member tags" do
-      get :alpha_grouped_index, params: { post_type: "user" }
-
-      expect(assigns(:alpha_tags)).to eq({
-        "H" => [["html", 2], ["html5", 1]],
-        "C" => [["css", 1]]
       })
     end
 

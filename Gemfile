@@ -21,7 +21,7 @@ gem 'rollbar', '~> 2.22.1'
 gem 'prawn', '~> 2.4.0'
 gem 'prawn-table', '~> 0.2.2'
 gem 'pg_search', '~> 2.3.5'
-gem 'skylight', '~> 4.3.2'
+gem 'skylight', '~> 5.0'
 gem 'sidekiq', '~> 6.1.2'
 gem 'sidekiq-cron', '~> 1.2.0'
 
@@ -36,19 +36,19 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 group :development do
   gem 'listen', '~> 3.2.0'
-  gem 'rubocop', '~> 1.6', require: false
-  gem 'rubocop-rails', '~> 2.9', require: false
+  gem 'localeapp', '~> 3.1', require: false
+  gem 'letter_opener', '~> 1.7.0'
   gem 'web-console', '~> 4.1.0'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.1'
-  gem 'localeapp', '~> 3.1', require: false
-  gem 'letter_opener', '~> 1.7.0'
-  gem 'dotenv-rails', '~> 2.7.1'
 end
 
 group :development, :test do
   gem 'byebug', '~> 11.0'
+  gem 'rubocop', '~> 1.6', require: false
+  gem 'rubocop-rails', '~> 2.9', require: false
+  gem 'dotenv-rails', '~> 2.7.1'
 end
 
 group :test do
