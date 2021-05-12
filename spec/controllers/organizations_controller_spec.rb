@@ -126,7 +126,7 @@ RSpec.describe OrganizationsController do
       it 'does not allow to update organization if longitude is greater than 90' do
         login(member.user)
 
-        post :update, params: { id: organization.id, organization: { longitude: 91 } }
+        post :update, params: { id: organization.id, organization: { longitude: 181 } }
 
         organization.reload
         expect(organization.longitude).to eq(nil)
@@ -135,7 +135,7 @@ RSpec.describe OrganizationsController do
       it 'does not allow to update organization if longitude is less than 90' do
         login(member.user)
 
-        post :update, params: { id: organization.id, organization: { longitude: -91 } }
+        post :update, params: { id: organization.id, organization: { longitude: -181 } }
 
         organization.reload
         expect(organization.longitude).to eq(nil)

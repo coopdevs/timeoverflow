@@ -24,7 +24,7 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :latitude, numericality: { less_than_or_equal_to: 90, greater_than_or_equal_to: -90 }, allow_blank: true
-  validates :longitude, numericality: { less_than_or_equal_to: 90, greater_than_or_equal_to: -90 }, allow_blank: true
+  validates :longitude, numericality: { less_than_or_equal_to: 180, greater_than_or_equal_to: -180 }, allow_blank: true
 
   before_validation :ensure_url
   after_create :create_account
