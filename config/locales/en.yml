@@ -61,7 +61,6 @@ en:
         description: Description
         email: Email
         gender: Gender
-        identity_document: Identity Document
         last_sign_in_at: Last login
         notifications: Receive email notifications
         organization: Organization

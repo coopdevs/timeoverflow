@@ -61,7 +61,6 @@ es:
         description: Descripción
         email: Correo
         gender: Género
-        identity_document: DNI
         last_sign_in_at: Fecha último login
         notifications: Recibir notificaciones
         organization: Organización

@@ -61,7 +61,6 @@ pt-BR:
         description: Descrição
         email: E-mail
         gender: Gênero
-        identity_document: Documento
         last_sign_in_at: Data do último login
         notifications: Receber notificações
         organization: Organização

@@ -61,7 +61,6 @@ eu:
         description: Deskribapena
         email: Eposta
         gender: 'Generoa '
-        identity_document: Nortasun agiria
         last_sign_in_at: Azken saioa
         notifications: Jaso eposta jakinarazpenak
         organization: Erakundea
