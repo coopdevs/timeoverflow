@@ -2,7 +2,9 @@ class OrganizationsController < ApplicationController
   before_action :load_resource, only: [:show, :edit, :update, :set_current]
 
   def index
-    organizations  = Organization.all
+    @markers = []
+    organizations = Organization.all
+    organizations.each { |org| add_marker(org) if org.latitude && org.longitude }
     organizations  = organizations.search_by_query(params[:q]) if params[:q].present?
     @organizations = organizations.page(params[:page]).per(25)
   end
@@ -46,6 +48,11 @@ class OrganizationsController < ApplicationController
   def organization_params
     params[:organization].permit(*%w[name theme email phone web
                                      public_opening_times description address
-                                     neighborhood city domain])
+                                     neighborhood city domain latitude longitude])
+  end
+
+  def add_marker(org)
+    link_to_self = helpers.link_to(org, organization_path(org))
+    @markers << { latlng: [org.latitude, org.longitude], popup: link_to_self }
   end
 end

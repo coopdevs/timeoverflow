@@ -13,6 +13,7 @@
                value="<%= params[:q] %>">
       </div>
       <button class="btn btn-default" type="submit"><%= t "global.search" %></button>
+      <%= link_to(t('.search_map'), "#map") %>
     </form>
   </div>
 </div>
@@ -44,5 +45,26 @@
     <div class="paginate-align">
       <%= paginate @organizations %>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 text-center">
+    <h2>
+      <%= t '.search_map' %>
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= map(center: { latlng: [-8, -23], zoom: 3 },
+            markers: @markers,
+            tile_layer: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            max_zoom: 19); %>
+  </div>
+</div>
+<div id="map_text" class="row last_line">
+  <div class="col-12 text-center">
+    <%= t '.visit_bdt_online' %>
+    <%= link_to(t('.map'), 'http://www.bdtonline.org/#buscatubanco') %>.
   </div>
 </div>

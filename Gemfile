@@ -24,6 +24,7 @@ gem 'pg_search', '~> 2.3.5'
 gem 'skylight', '~> 4.3.2'
 gem 'sidekiq', '~> 6.1.2'
 gem 'sidekiq-cron', '~> 1.2.0'
+gem 'leaflet-rails', '~> 1.7.0'
 
 # Assets
 gem 'jquery-rails', '~> 4.3.5'

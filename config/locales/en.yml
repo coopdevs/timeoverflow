@@ -376,6 +376,9 @@ en:
       give_time: Give time to
     index:
       member_count: Number of users
+      search_map: Search on the map
+      visit_bdt_online: If you don't see any timebank here that you like you can look for another one on this
+      map: map 
     new:
       new: New bank
     show:
