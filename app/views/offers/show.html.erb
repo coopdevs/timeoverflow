@@ -11,5 +11,16 @@
       <% end %>
     <% end %>
   </p>
+<% else %>
+  <p class="actions text-right">
+    <% if current_user and @offer.user != current_user %>
+      <%= link_to new_transfer_path(id: @offer.user.id, offer: @offer.id, destination_account_id: @destination_account.id, 
+                                    organization_id: @offer.organization.id),
+                  class: "btn btn-success" do %>
+        <%= glyph :time %>
+        <%= t ".give_time_for" %>
+      <% end %>
+    <% end %>
+  </p>
 <% end %>
 <%= render "shared/post", post: @offer %>

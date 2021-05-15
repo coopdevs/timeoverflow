@@ -281,6 +281,7 @@ en:
     filter: Filter
     from: From
     give_time: Time transfer
+    global_balance: Global balance
     home: Home
     information: Information
     locales_header: change language
