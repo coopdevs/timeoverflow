@@ -3,6 +3,8 @@ RSpec.describe TransfersController do
   let (:member_admin) { Fabricate(:member, organization: test_organization, manager: true) }
   let (:member_giver) { Fabricate(:member, organization: test_organization) }
   let (:member_taker) { Fabricate(:member, organization: test_organization) }
+  let (:second_organization) { Fabricate(:organization) }
+  let (:second_member_taker) { Fabricate(:member, organization: second_organization) }
 
   describe '#new' do
     let(:user) { member_giver.user }
@@ -48,6 +50,28 @@ RSpec.describe TransfersController do
         it 'builds a transfer with the offer as post' do
           get :new, params: params.merge(offer: offer.id)
           expect(response.body).to include("<input class=\"form-control hidden form-control\" type=\"hidden\" value=\"#{offer.id}\" name=\"transfer[post_id]\" id=\"transfer_post_id\" />")
+        end
+      end
+
+      context 'when the offer is specified and belongs to another organization' do
+        let(:other_offer) { Fabricate(:offer, organization: second_organization) }
+
+        it 'finds the transfer offer' do
+          dest_acc_id = second_member_taker.user.accounts.first.id
+          get :new, params: params.merge(offer: other_offer.id,
+                                         organization_id: other_offer.organization.id,
+                                         destination_account_id: dest_acc_id)
+
+          expect(response.body).to include("<h3>#{other_offer}</h3>")
+        end
+
+        it 'builds a transfer with the offer as post' do
+          dest_acc_id = second_member_taker.user.accounts.first.id
+          get :new, params: params.merge(offer: other_offer.id,
+                                         organization_id: other_offer.organization.id,
+                                         destination_account_id: dest_acc_id)
+
+          expect(response.body).to include("<input class=\"form-control hidden form-control\" type=\"hidden\" value=\"#{other_offer.id}\" name=\"transfer[post_id]\" id=\"transfer_post_id\" />")
         end
       end
 
@@ -142,26 +166,68 @@ RSpec.describe TransfersController do
           } }
         end
 
+        subject(:create_between_orgs) do
+          post 'create', params: { transfer: {
+            source: member_giver.account.id,
+            destination: second_member_taker.account.id,
+            amount: 5
+          } }
+        end
+
         let(:user) { member_admin.user }
+        context 'the transfer is within the same organisation' do
+          it 'creates a new Transfer' do
+            expect { post_create }.to change(Transfer, :count).by 1
+          end
 
-        it 'creates a new Transfer' do
-          expect { post_create }.to change(Transfer, :count).by 1
+          it 'creates two Movements' do
+            expect { post_create }.to change { Movement.count }.by 2
+          end
+
+          it 'updates the balance of both accounts' do
+            expect do
+              post_create
+              member_giver.reload
+            end.to change { member_giver.account.balance.to_i }.by -5
+
+            expect do
+              post_create
+              member_taker.reload
+            end.to change { member_taker.account.balance.to_i }.by 5
+          end
         end
 
-        it 'creates two Movements' do
-          expect { post_create }.to change { Movement.count }.by 2
-        end
+        context 'the transfer is between members of different organisations' do
+          it 'creates three news Transfers' do
+            expect { create_between_orgs }.to change(Transfer, :count).by 3
+          end
 
-        it 'updates the balance of both accounts' do
-          expect do
-            post_create
-            member_giver.reload
-          end.to change { member_giver.account.balance.to_i }.by -5
+          it 'creates six Movements' do
+            expect { create_between_orgs }.to change { Movement.count }.by 6
+          end
 
-          expect do
-            post_create
-            member_taker.reload
-          end.to change { member_taker.account.balance.to_i }.by 5
+          it 'updates the balance of both accounts' do
+            expect do
+              create_between_orgs
+              member_giver.reload
+            end.to change { member_giver.account.balance.to_i }.by -5
+
+            expect do
+              create_between_orgs
+              second_member_taker.reload
+            end.to change { second_member_taker.account.balance.to_i }.by 5
+          end
+
+          it 'updates the global balance of both organizations' do
+            create_between_orgs
+
+            expect(test_organization.global_balance).to equal -5
+            expect(second_organization.global_balance).to equal 5
+          end
+
+          it 'redirects to source user' do
+            expect(create_between_orgs).to redirect_to(member_giver.user)
+          end
         end
       end
 
@@ -173,30 +239,71 @@ RSpec.describe TransfersController do
           } }
         end
 
+        subject(:create_between_orgs) do
+          post 'create', params: { transfer: {
+            destination: second_member_taker.account.id,
+            amount: 5
+          } }
+        end
+
         let(:user) { member_giver.user }
+        context 'the transfer is within the same organisation' do
+          it 'creates a new Transfer' do
+            expect { post_create }.to change(Transfer, :count).by 1
+          end
 
-        it 'creates a new Transfer' do
-          expect { post_create }.to change(Transfer, :count).by 1
+          it 'creates two Movements' do
+            expect { post_create }.to change { Movement.count }.by 2
+          end
+
+          it 'updates the balance of both accounts' do
+            expect do
+              post_create
+              member_giver.reload
+            end.to change { member_giver.account.balance.to_i }.by -5
+
+            expect do
+              post_create
+              member_taker.reload
+            end.to change { member_taker.account.balance.to_i }.by 5
+          end
+
+          it 'redirects to destination' do
+            expect(post_create).to redirect_to(member_taker.user)
+          end
         end
 
-        it 'creates two Movements' do
-          expect { post_create }.to change { Movement.count }.by 2
-        end
+        context 'the transfer is to a member of another organizations' do
+          it 'creates three news Transfers' do
+            expect { create_between_orgs }.to change(Transfer, :count).by 3
+          end
 
-        it 'updates the balance of both accounts' do
-          expect do
-            post_create
-            member_giver.reload
-          end.to change { member_giver.account.balance.to_i }.by -5
+          it 'creates six Movements' do
+            expect { create_between_orgs }.to change { Movement.count }.by 6
+          end
 
-          expect do
-            post_create
-            member_taker.reload
-          end.to change { member_taker.account.balance.to_i }.by 5
-        end
+          it 'updates the balance of both accounts' do
+            expect do
+              create_between_orgs
+              member_giver.reload
+            end.to change { member_giver.account.balance.to_i }.by -5
 
-        it 'redirects to destination' do
-          expect(post_create).to redirect_to(member_taker.user)
+            expect do
+              create_between_orgs
+              second_member_taker.reload
+            end.to change { second_member_taker.account.balance.to_i }.by 5
+          end
+
+          it 'updates the global balance of both organizations' do
+            create_between_orgs
+
+            expect(test_organization.global_balance).to equal -5
+            expect(second_organization.global_balance).to equal 5
+          end
+
+          it 'redirects to source' do
+            expect(create_between_orgs).to redirect_to(member_giver.user)
+          end
         end
       end
     end
@@ -204,17 +311,31 @@ RSpec.describe TransfersController do
     context 'with invalid params' do
       let(:user) { member_giver.user }
       let(:referer) { "/transfers/new?destination_account_id=#{member_taker.account.id}" }
+      let(:second_referer) { "/transfers/new?destination_account_id=#{member_taker.account.id}&organization_id=#{second_organization.id}" }
 
       before do
         request.env["HTTP_REFERER"] = referer
       end
 
-      it 'does not create any Transfer and redirects to back if the amount is 0' do
-        expect {
-          post(:create, params: { transfer: { amount: 0, destination: member_taker.account.id } })
-        }.not_to change(Transfer, :count)
+      context 'the transfer is to a member of the same organization' do
+        it 'does not create any Transfer and redirects to back if the amount is 0' do
+          expect {
+            post(:create, params: { transfer: { amount: 0, destination: member_taker.account.id } })
+          }.not_to change(Transfer, :count)
 
-        expect(response).to redirect_to(referer)
+          expect(response).to redirect_to(referer)
+        end
+      end
+
+      context 'the transfer is to a member of another organization' do
+        it 'does not create any Transfer and redirects to back if the amount is 0' do
+          request.env["HTTP_REFERER"] = second_referer
+          expect {
+            post(:create, params: { transfer: { amount: 0, destination: second_member_taker.account.id } })
+          }.not_to change(Transfer, :count)
+
+          expect(response).to redirect_to(second_referer)
+        end
       end
     end
   end
