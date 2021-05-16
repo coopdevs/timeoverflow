@@ -174,6 +174,14 @@ RSpec.describe TransfersController do
           } }
         end
 
+        subject(:create_between_src_org) do
+          post 'create', params: { transfer: {
+            source: test_organization.account.id,
+            destination: second_member_taker.account.id,
+            amount: 5
+          } }
+        end
+
         let(:user) { member_admin.user }
         context 'the transfer is within the same organisation' do
           it 'creates a new Transfer' do
@@ -197,36 +205,71 @@ RSpec.describe TransfersController do
           end
         end
 
-        context 'the transfer is between members of different organisations' do
-          it 'creates three news Transfers' do
-            expect { create_between_orgs }.to change(Transfer, :count).by 3
-          end
+        context 'the transfer is between different organisations' do
+          context 'the source is a member' do
+            it 'creates three news Transfers' do
+              expect { create_between_orgs }.to change(Transfer, :count).by 3
+            end
 
-          it 'creates six Movements' do
-            expect { create_between_orgs }.to change { Movement.count }.by 6
-          end
+            it 'creates six Movements' do
+              expect { create_between_orgs }.to change { Movement.count }.by 6
+            end
 
-          it 'updates the balance of both accounts' do
-            expect do
+            it 'updates the balance of both accounts' do
+              expect do
+                create_between_orgs
+                member_giver.reload
+              end.to change { member_giver.account.balance.to_i }.by -5
+
+              expect do
+                create_between_orgs
+                second_member_taker.reload
+              end.to change { second_member_taker.account.balance.to_i }.by 5
+            end
+
+            it 'updates the global balance of both organizations' do
               create_between_orgs
-              member_giver.reload
-            end.to change { member_giver.account.balance.to_i }.by -5
 
-            expect do
-              create_between_orgs
-              second_member_taker.reload
-            end.to change { second_member_taker.account.balance.to_i }.by 5
+              expect(test_organization.global_balance).to equal -5
+              expect(second_organization.global_balance).to equal 5
+            end
+
+            it 'redirects to destination organization' do
+              expect(create_between_orgs).to redirect_to(second_member_taker.organization)
+            end
           end
 
-          it 'updates the global balance of both organizations' do
-            create_between_orgs
+          context 'the source is a organization' do
+            it 'creates two news Transfers' do
+              expect { create_between_src_org }.to change(Transfer, :count).by 2
+            end
 
-            expect(test_organization.global_balance).to equal -5
-            expect(second_organization.global_balance).to equal 5
-          end
+            it 'creates four Movements' do
+              expect { create_between_src_org }.to change { Movement.count }.by 4
+            end
 
-          it 'redirects to source user' do
-            expect(create_between_orgs).to redirect_to(member_giver.user)
+            it 'updates the balance of both accounts' do
+              expect do
+                create_between_src_org
+                test_organization.reload
+              end.to change { test_organization.account.balance.to_i }.by -5
+
+              expect do
+                create_between_src_org
+                second_member_taker.reload
+              end.to change { second_member_taker.account.balance.to_i }.by 5
+            end
+
+            it 'updates the global balance of both organizations' do
+              create_between_src_org
+
+              expect(test_organization.global_balance).to equal -5
+              expect(second_organization.global_balance).to equal 5
+            end
+
+            it 'redirects to destination organization' do
+              expect(create_between_src_org).to redirect_to(second_member_taker.organization)
+            end
           end
         end
       end
@@ -301,8 +344,8 @@ RSpec.describe TransfersController do
             expect(second_organization.global_balance).to equal 5
           end
 
-          it 'redirects to source' do
-            expect(create_between_orgs).to redirect_to(member_giver.user)
+          it 'redirects to destination organization' do
+            expect(create_between_orgs).to redirect_to(second_member_taker.organization)
           end
         end
       end
