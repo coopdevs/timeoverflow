@@ -56,14 +56,15 @@ class TransfersController < ApplicationController
 
   def create_persisters
     source_organization = @source.organization.account
+    source_type = @source.accountable_type
     destination_organization = @account.organization.account
-
+    @persisters = Array.new
     if source_organization == destination_organization
-      @persister = transfer_persister_between(@source, @account)
+      transfer_persister_between(@source, @account)
     else
-      @pers_src_org = transfer_persister_between(@source, source_organization)
-      @pers_between_orgs = transfer_persister_between(source_organization, destination_organization)
-      @pers_org_acc = transfer_persister_between(destination_organization, @account)
+      transfer_persister_between(@source, source_organization) if source_type == "Member"
+      transfer_persister_between(source_organization, destination_organization)
+      transfer_persister_between(destination_organization, @account)
     end
   end
 
@@ -72,11 +73,11 @@ class TransfersController < ApplicationController
       transfer_params.merge(source: source, destination: destination)
     )
 
-    ::Persister::TransferPersister.new(@transfer)
+    @persisters << ::Persister::TransferPersister.new(@transfer)
   end
 
   def persisters_saved?
-    @persister&.save || @pers_src_org&.save && @pers_between_orgs&.save && @pers_org_acc&.save
+    @persisters.each { |persister| return false if !persister.save }
   end
 
   def redirect_target
@@ -84,7 +85,7 @@ class TransfersController < ApplicationController
     when Organization
       accountable
     when Member
-      accountable.organization == current_organization ? accountable.user : @source.accountable.user
+      accountable.organization == current_organization ? accountable.user : accountable.organization
     else
       raise ArgumentError
     end
