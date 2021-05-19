@@ -390,7 +390,9 @@ CREATE TABLE public.organizations (
     address text,
     neighborhood character varying,
     city character varying,
-    domain character varying
+    domain character varying,
+    latitude numeric,
+    longitude numeric
 );
 
 
@@ -1096,6 +1098,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190523225323'),
 ('20210423193937'),
 ('20210424174640'),
-('20210503201944');
+('20210503201944'),
+('20210510195022'),
+('20210511120417'),
+('20210511121353');
 
 

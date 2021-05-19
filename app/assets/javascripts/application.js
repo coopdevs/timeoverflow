@@ -1,4 +1,5 @@
 //= require_tree ./application
+//= require leaflet
 
 $(document).on('click', 'a[data-popup]', function(event) {
   event.preventDefault();

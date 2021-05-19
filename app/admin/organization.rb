@@ -23,6 +23,8 @@ ActiveAdmin.register Organization do
       f.input :address
       f.input :description
       f.input :public_opening_times
+      f.input :latitude
+      f.input :longitude
     end
     f.actions
   end

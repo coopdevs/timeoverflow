@@ -2,7 +2,7 @@ RSpec.describe OrganizationsController do
   let!(:organization) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: organization) }
   let(:user) { member.user }
-  let!(:second_organization) { Fabricate(:organization) }
+  let!(:second_organization) { Fabricate(:organization, latitude: 37.38, longitude: -6.98) }
 
   describe 'GET #index' do
     context 'without parameters' do
@@ -10,6 +10,14 @@ RSpec.describe OrganizationsController do
         get :index
 
         expect(assigns(:organizations)).to eq([organization, second_organization])
+      end
+
+      it 'assigns the markers' do
+        get :index
+        link = "<a href=\"/organizations/#{second_organization.id}\">#{second_organization}</a>"
+
+        expect(assigns(:markers)[0][:latlng]).to eq([37.38, -6.98])
+        expect(assigns(:markers)[0][:popup]).to eq(link)
       end
     end
 
@@ -94,6 +102,52 @@ RSpec.describe OrganizationsController do
 
         organization.reload
         expect(organization.name).to eq('New org name')
+      end
+
+      it 'allows to update organization if latitude and longitude are fine' do
+        login(member.user)
+        coords = { latitude: 37.38, longitude: -6.98 }
+        post :update, params: { id: organization.id, organization: coords }
+
+        organization.reload
+        expect(organization.latitude).to eq(37.38)
+        expect(organization.longitude).to eq(-6.98)
+      end
+
+      it 'does not allow to update organization if latitude is greater than 90' do
+        login(member.user)
+
+        post :update, params: { id: organization.id, organization: { latitude: 91 } }
+
+        organization.reload
+        expect(organization.latitude).to eq(nil)
+      end
+
+      it 'does not allow to update organization if longitude is greater than 90' do
+        login(member.user)
+
+        post :update, params: { id: organization.id, organization: { longitude: 181 } }
+
+        organization.reload
+        expect(organization.longitude).to eq(nil)
+      end
+
+      it 'does not allow to update organization if longitude is less than 90' do
+        login(member.user)
+
+        post :update, params: { id: organization.id, organization: { longitude: -181 } }
+
+        organization.reload
+        expect(organization.longitude).to eq(nil)
+      end
+
+      it 'does not allow to update organization if latitude is less than 90' do
+        login(member.user)
+
+        post :update, params: { id: organization.id, organization: { latitude: -91 } }
+
+        organization.reload
+        expect(organization.longitude).to eq(nil)
       end
     end
 

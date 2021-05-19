@@ -4,6 +4,7 @@
 @import "application/bootstrap-custom";
 @import "application/member-card";
 @import "application/footer";
+@import "application/leaflet";
 
 html {
   font-size: 62.5%;
@@ -667,4 +668,14 @@ label[required]::after{
   vertical-align: middle;
   display: inline;
   margin: 0 !important;
+}
+
+#map {
+  height: 650px;
+}
+
+.last_line {
+  @media(max-width: $screen-sm-min) {
+    margin-bottom: 50px;
+  }
 }
