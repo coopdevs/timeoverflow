@@ -32,7 +32,6 @@ gem 'sassc-rails', '~> 2.1.2'
 gem 'uglifier', '~> 4.2.0'
 gem 'select2-rails', '~> 4.0.13'
 gem 'aws-sdk-s3', require: false
-gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 group :development do
   gem 'listen', '~> 3.2.0'

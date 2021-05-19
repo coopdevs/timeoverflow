@@ -130,13 +130,18 @@ class UsersController < ApplicationController
   end
 
   def crop_image_and_save(avatar)
-    image = MiniMagick::Image.read(File.read(avatar.tempfile))
     get_parameters_to_crop
-    image.resize "#{@or_width}x#{image.height / (image.width / @or_width)}"
-    image.crop "#{@width}x#{@width}+#{@left}+#{@top}!"
+
+    image_processed = ImageProcessing::MiniMagick.
+                      source(avatar.tempfile).
+                      resize_to_fit(@or_width, nil).
+                      crop("#{@width}x#{@width}+#{@left}+#{@top}!").
+                      convert("png").
+                      call
+
     name = @user.username
     content_type = avatar.content_type
-    @user.avatar.attach(io: File.open(image.path), filename: name, content_type: content_type)
+    @user.avatar.attach(io: image_processed, filename: name, content_type: content_type)
   end
 
   def get_parameters_to_crop

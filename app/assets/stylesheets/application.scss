@@ -675,7 +675,7 @@ label[required]::after{
 
 #crop_panel::before {
   content: "";
-  border-right: 8px  dashed black;
+  border-right: 4px  dashed black;
   position: absolute;
   right: 0;
   width: 16px;
@@ -685,7 +685,7 @@ label[required]::after{
 
 #crop_panel::after {
   content: "";
-  border-bottom: 8px dashed black;
+  border-bottom: 4px dashed black;
   position: absolute;
   left: 0;
   bottom: 0;
