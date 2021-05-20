@@ -1,7 +1,7 @@
 <div class="col-lg-6 col-sm-12">
   <div class="to-member-card">
     <div class="to-member-card__header">
-      <div class="to-member-card__header__avatar"><%= image_tag select_avatar(member.user, 48) %></div>
+      <div class="to-member-card__header__avatar"><%= image_tag avatar_url(member.user, 48) %></div>
       <div class="to-member-card__header__text">
         <h4><%= member.link_to_self %></h4>
         <div class="to-member-card__header__text__activity">
@@ -14,7 +14,7 @@
           <% member.tags[0..2].each do |tag| %>
             <span class="to-member-card__header__text__tags">
               <%= link_to users_path tag: tag do %>
-                <%= glyph :tag %>   
+                <%= glyph :tag %>
                 <%= tag&.truncate(29) %>
               <% end %>
             </span>

@@ -428,7 +428,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 2.9.0)
-  aws-sdk-s3
+  aws-sdk-s3 (~> 1.94)
   bootsnap (~> 1.7.3)
   bootstrap-sass (~> 3.4)
   byebug (~> 11.0)

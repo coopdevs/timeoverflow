@@ -65,16 +65,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def change_photo_profile
+  def update_avatar
     avatar = params[:avatar]
-    @user = current_user
+
     if avatar && content_type_permitted(avatar.content_type)
-      @user.avatar.purge if @user.avatar.attached?
-      crop_image_and_save(avatar)
+      current_user.avatar.purge if current_user.avatar.attached?
+
+      crop_image_and_save(current_user, avatar)
     else
       flash[:error] = t 'users.show.invalid_format'
     end
-    redirect_to @user
+
+    redirect_to current_user
   end
 
   private
@@ -129,26 +131,24 @@ class UsersController < ApplicationController
     end
   end
 
-  def crop_image_and_save(avatar)
-    get_parameters_to_crop
+  def crop_image_and_save(user, avatar)
+    orig_width = params[:original_width].to_i
+    width      = params[:height_width].to_i
+    left       = params[:width_offset].to_i
+    top        = params[:height_offset].to_i
 
     image_processed = ImageProcessing::MiniMagick.
                       source(avatar.tempfile).
-                      resize_to_fit(@or_width, nil).
-                      crop("#{@width}x#{@width}+#{@left}+#{@top}!").
+                      resize_to_fit(orig_width, nil).
+                      crop("#{width}x#{width}+#{left}+#{top}!").
                       convert("png").
                       call
 
-    name = @user.username
-    content_type = avatar.content_type
-    @user.avatar.attach(io: image_processed, filename: name, content_type: content_type)
-  end
-
-  def get_parameters_to_crop
-    @or_width = params[:original_width].to_i
-    @width = params[:height_width].to_i
-    @left = params[:width_offset].to_i
-    @top = params[:height_offset].to_i
+    user.avatar.attach(
+      io: image_processed,
+      filename: user.username,
+      content_type: avatar.content_type
+    )
   end
 
   def content_type_permitted(avatar_content_type)

@@ -24,6 +24,8 @@ gem 'pg_search', '~> 2.3.5'
 gem 'skylight', '~> 5.0'
 gem 'sidekiq', '~> 6.1.2'
 gem 'sidekiq-cron', '~> 1.2.0'
+gem 'aws-sdk-s3', '~> 1.94', require: false
+gem 'image_processing', '~> 1.2'
 
 # Assets
 gem 'jquery-rails', '~> 4.3.5'
@@ -31,8 +33,7 @@ gem 'bootstrap-sass', '~> 3.4'
 gem 'sassc-rails', '~> 2.1.2'
 gem 'uglifier', '~> 4.2.0'
 gem 'select2-rails', '~> 4.0.13'
-gem 'aws-sdk-s3', require: false
-gem 'image_processing', '~> 1.2'
+
 group :development do
   gem 'listen', '~> 3.2.0'
   gem 'localeapp', '~> 3.1', require: false

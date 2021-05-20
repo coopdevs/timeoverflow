@@ -5,7 +5,7 @@ RSpec.describe ApplicationHelper do
     expect(helper.avatar_url(user, 50)).to eq("https://www.gravatar.com/avatar/#{gravatar_id}.png?d=identicon&gravatar=hashed&set=set1&size=50x50")
   end
 
-  describe 'select_avatar' do 
+  describe 'avatar_url' do
     it 'returns the avatar when it is attached' do
       user = Fabricate(:user)
       filename = "image.png"
@@ -13,7 +13,7 @@ RSpec.describe ApplicationHelper do
       user.avatar.attach(io: File.open(temp_file.path), filename: 'name.png', content_type: 'image/png')
       temp_file.close
       temp_file.unlink
-      img = helper.select_avatar(user, 50)
+      img = helper.avatar_url(user, 50)
 
       expect(img.class).to eq(ActiveStorage::VariantWithRecord)
       expect(img.variation.transformations[:resize]).to eq("50x50")
@@ -23,7 +23,8 @@ RSpec.describe ApplicationHelper do
     it 'returns url to gravatar when there is no avatar attached' do
       user = Fabricate(:user)
       gravatar_id = Digest::MD5::hexdigest(user.email).downcase
-      expect(helper.select_avatar(user, 50)).to eq("https://www.gravatar.com/avatar/#{gravatar_id}.png?d=identicon&gravatar=hashed&set=set1&size=50x50")
+
+      expect(helper.avatar_url(user, 50)).to include("www.gravatar.com")
     end
   end
 

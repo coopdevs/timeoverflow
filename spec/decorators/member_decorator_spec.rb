@@ -67,11 +67,6 @@ RSpec.describe MemberDecorator do
     end
   end
 
-  describe '#avatar_img' do
-    subject { decorator.avatar_img }
-    it { is_expected.to match(/gravatar/)}
-  end
-
   describe '#account_balance' do
     subject { decorator.account_balance }
     it { is_expected.to eq('&mdash;') }
