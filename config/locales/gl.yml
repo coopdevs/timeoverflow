@@ -533,12 +533,14 @@ gl:
       categories: Servizos ofrecidos
       change_your_image: Cambia a túa imaxe
       created_at: 'Rexistrado/a:'
+      crop_the_image: 
       data: Datos da persoa usuaria
       date: Data
       deleted_user: A persoa usuaria xa non existe
       from_to: De / Para
       inactive: "(Inactivo/a)"
       inactive_user: A persoa usuaria non está activa
+      invalid_format: 
       phone:
         one: Teléfono
         other: Teléfonos

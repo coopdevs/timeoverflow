@@ -1,10 +1,4 @@
 RSpec.describe ApplicationHelper do
-  it 'avatar_url returns url to gravatar' do
-    user = Fabricate(:user)
-    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
-    expect(helper.avatar_url(user, 50)).to eq("https://www.gravatar.com/avatar/#{gravatar_id}.png?d=identicon&gravatar=hashed&set=set1&size=50x50")
-  end
-
   describe 'avatar_url' do
     it 'returns the avatar when it is attached' do
       user = Fabricate(:user)
@@ -24,7 +18,7 @@ RSpec.describe ApplicationHelper do
       user = Fabricate(:user)
       gravatar_id = Digest::MD5::hexdigest(user.email).downcase
 
-      expect(helper.avatar_url(user, 50)).to include("www.gravatar.com")
+      expect(helper.avatar_url(user, 50)).to eq("https://www.gravatar.com/avatar/#{gravatar_id}.png?d=identicon&gravatar=hashed&set=set1&size=50x50")
     end
   end
 

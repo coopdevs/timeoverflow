@@ -533,12 +533,14 @@ ca:
       categories: Serveis Ofertats
       change_your_image: Canvia la teva imatge
       created_at: 'Alta:'
+      crop_the_image: 
       data: Dades de l'usuari
       date: Data
       deleted_user: L'usuari ja no existeix
       from_to: Origen/Destí
       inactive: "(Inactiu)"
       inactive_user: L'usuari no està actiu
+      invalid_format: Format invàlid, trieu ".jpg", ".jpeg" o ".png".
       phone:
         one: Telèfon
         other: Telèfons

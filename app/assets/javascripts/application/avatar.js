@@ -72,7 +72,10 @@ $(function () {
       pos4 = e.y;
 
       if (can_change(panel, pos1 + pos2, true)) {
-        panel.offset({ top: (panel.offset().top - pos2) , left: (panel.offset().left - pos1)});
+        panel.offset({
+          top: (panel.offset().top - pos2),
+          left: (panel.offset().left - pos1)
+        });
       }
     }
 
@@ -81,10 +84,9 @@ $(function () {
       let pos = dragging ? [el.css('top'), el.css('left'), el.css('bottom'), el.css('right')] : [el.css('bottom'), el.css('right')];
 
       pos.forEach((el, ix) => {
-        let next = dragging && (ix == 0 || ix == 1) ? parseInt(el) -  mov : parseInt(el) +  mov;
-        if( next < 14 ) {
-          canChange = false;
-        }
+        let next = dragging && (ix == 0 || ix == 1) ? parseInt(el) - mov : parseInt(el) +  mov;
+
+        if (next < 14) canChange = false;
       });
 
       return canChange;
@@ -99,11 +101,10 @@ $(function () {
         preview.src = reader.result;
       }
 
-      if (file) {
+      if (file)
         reader.readAsDataURL(file);
-      } else {
+      else
         preview.src = "";
-      }
     }
   });
 });

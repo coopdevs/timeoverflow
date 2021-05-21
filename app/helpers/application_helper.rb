@@ -7,7 +7,9 @@ module ApplicationHelper
   end
 
   def avatar_url(user, size = 32)
-    user.avatar.attached? ? user.avatar.variant(resize: "#{size}x#{size}") : gravatar_url(user, size)
+    user.avatar.attached? ?
+      user.avatar.variant(resize: "#{size}x#{size}") :
+      gravatar_url(user, size)
   end
 
   def gravatar_url(user, size = 32)

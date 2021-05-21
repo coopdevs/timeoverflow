@@ -533,12 +533,14 @@ pt-BR:
       categories: Serviços Oferecidos
       change_your_image: Mudar sua imagem
       created_at: 'Inscrição:'
+      crop_the_image: 
       data: Dados do usuário
       date: Data
       deleted_user: O usuário não existe mais
       from_to: Origem/Destino
       inactive: "(Inativo)"
       inactive_user: O usuário não está ativo
+      invalid_format: 
       phone:
         one: Telefone
         other: Telefones
