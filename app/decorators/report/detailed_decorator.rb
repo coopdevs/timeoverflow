@@ -7,9 +7,9 @@ class Report::DetailedDecorator
 
   def name(extension)
     "#{@org.name.parameterize}_"\
-    "#{Date.today}."\
     "#{I18n.t('global.detailed')}_"\
-    ".#{extension}"
+    "#{Date.today}."\
+    "#{extension}"
   end
 
   def headers
@@ -76,7 +76,7 @@ class Report::DetailedDecorator
   end
 
   def post_rows
-    make_rows(Post, %w[tsv], @org.posts.map)
+    make_rows(Post, %w[tsv], @org.posts)
   end
 
   def transfer_headers

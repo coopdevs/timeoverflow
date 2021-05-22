@@ -22,8 +22,6 @@ RSpec.describe Report::MemberDecorator do
       User.human_attribute_name(:alt_phone),
       User.human_attribute_name(:created_at),
       User.human_attribute_name(:last_sign_in_at),
-      User.human_attribute_name(:locale),
-      Account.human_attribute_name(:balance)
     ])
   end
 
@@ -37,8 +35,6 @@ RSpec.describe Report::MemberDecorator do
         member.user.alt_phone,
         member.user.created_at.to_s,
         member.user.last_sign_in_at.to_s,
-        member.user.locale,
-        member.account_balance.to_s
       ]
     ])
   end

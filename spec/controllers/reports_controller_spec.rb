@@ -90,6 +90,16 @@ RSpec.describe ReportsController do
       end
     end
 
+    describe 'GET #download_csv_detailed' do
+      it 'downloads a CSV' do
+        get :download_csv_detailed
+        report = Report::Csv::Detailed.new(test_organization)
+
+        expect(response.body).to eq(report.run)
+        expect(response.media_type).to eq("text/csv")
+      end
+    end
+
     describe 'GET #download_all' do
       it 'downloads a zip' do
         get :download_all
@@ -99,6 +109,7 @@ RSpec.describe ReportsController do
         expect(response.body).to include('Offers')
         expect(response.body).to include('Members')
         expect(response.body).to include('Transfers')
+        expect(response.body).to include('Detaileds')
       end
 
       it 'redirects to download_all_report_path (retry) if zip is not ready' do
