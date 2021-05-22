@@ -22,4 +22,20 @@ module TransfersHelper
       end
     end
   end
+
+  def accounts_from_movements_id(transfer)
+    transfer.movements.sort_by(&:amount).map do |movement|
+      account = movement.account
+
+      if account.accountable.blank?
+        I18n.t('users.show.deleted_user')
+      elsif account.accountable_type == 'Organization'
+        [account.accountable.id, account.accountable_type]
+      elsif account.accountable.active
+        [account.accountable.member_uid, account.accountable_type]
+      else
+        I18n.t('users.show.inactive_user')
+      end
+    end
+  end
 end

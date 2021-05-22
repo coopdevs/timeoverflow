@@ -276,6 +276,7 @@ en:
     date: Data
     delete: Delete
     demote: Demote to normal user
+    detailed: detailed
     edit: Update
     enter_to_timebank: Enter to timebank
     filter: Filter
@@ -450,6 +451,7 @@ en:
       reason: Reason
       to: To
       transfers: All transfers
+      type: type
     demographics:
       by_ages: By ages
       by_gender: By gender

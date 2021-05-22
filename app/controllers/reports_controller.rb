@@ -24,13 +24,17 @@ class ReportsController < ApplicationController
     report_responder('Transfer', current_organization, @transfers)
   end
 
+  def download_csv_detailed
+    download_report("Csv::Detailed", current_organization)
+  end
+
   def download_all
     filename = "#{current_organization.name.parameterize}_#{Date.today}.zip"
     temp_file = Tempfile.new(filename)
 
     begin
       Zip::File.open(temp_file.path, Zip::File::CREATE) do |zipfile|
-        %w(Member Transfer Inquiry Offer).each do |report_class|
+        %w(Member Transfer Inquiry Offer Detailed).each do |report_class|
           add_csv_to_zip(report_class, zipfile)
         end
       end
@@ -85,6 +89,8 @@ class ReportsController < ApplicationController
 
     report = if report_class.in? %w(Inquiry Offer)
       get_report("Csv::Post", current_organization, collection, report_class.constantize)
+    elsif report_class == "Detailed"
+      get_report("Csv::#{report_class}", current_organization)
     else
       get_report("Csv::#{report_class}", current_organization, collection)
     end

@@ -9,8 +9,6 @@
         <th><%= User.human_attribute_name :alt_phone %></th>
         <th><%= User.human_attribute_name :created_at %></th>
         <th><%= User.human_attribute_name :last_sign_in_at %></th>
-        <th><%= User.human_attribute_name :locale %></th>
-        <th><%= Account.human_attribute_name :balance %></th>
       </tr>
     </thead>
     <tbody>
@@ -23,8 +21,6 @@
           <td><%= member.user.alt_phone %></td>
           <td><%= l(member.user.created_at, format: :long) %></td>
           <td><%= l(member.user.last_sign_in_at, format: :long) if member.user.last_sign_in_at.present? %></td>
-          <td><%= member.user.locale %></td>
-          <td><%= member.account_balance %></td>
         </tr>
       <% end %>
     </tbody>

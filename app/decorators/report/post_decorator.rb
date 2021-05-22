@@ -14,7 +14,6 @@ class Report::PostDecorator
 
   def headers
     [
-      "",
       @type.model_name.human,
       Post.human_attribute_name(:tag_list),
       User.model_name.human,
@@ -30,7 +29,6 @@ class Report::PostDecorator
 
       posts.each do |post|
         grouped_rows << [
-          post.id,
           post.title,
           post.tag_list.to_s,
           "#{post.user} (#{post.member_uid})",
