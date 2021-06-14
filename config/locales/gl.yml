@@ -502,6 +502,9 @@ gl:
     new:
       error_amount: O tempo debe ser superior a 0
   users:
+    avatar:
+      change_your_image: 
+      crop_the_image: 
     edit:
       edit_user: Actualizar persoa usuaria
     form:
@@ -531,9 +534,7 @@ gl:
       accounts: Contas
       balance: 'Balance:'
       categories: Servizos ofrecidos
-      change_your_image: Cambia a túa imaxe
       created_at: 'Rexistrado/a:'
-      crop_the_image: 
       data: Datos da persoa usuaria
       date: Data
       deleted_user: A persoa usuaria xa non existe

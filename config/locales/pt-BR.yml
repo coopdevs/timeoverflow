@@ -502,6 +502,9 @@ pt-BR:
     new:
       error_amount: O tempo deve ser maior que 0
   users:
+    avatar:
+      change_your_image: 
+      crop_the_image: 
     edit:
       edit_user: Trocar usuário
     form:
@@ -531,9 +534,7 @@ pt-BR:
       accounts: Contas
       balance: 'Balanço:'
       categories: Serviços Oferecidos
-      change_your_image: Mudar sua imagem
       created_at: 'Inscrição:'
-      crop_the_image: 
       data: Dados do usuário
       date: Data
       deleted_user: O usuário não existe mais

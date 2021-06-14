@@ -502,6 +502,9 @@ ca:
     new:
       error_amount: El temps ha de ser més gran que 0
   users:
+    avatar:
+      change_your_image: Canvia la teva imatge
+      crop_the_image: Retalla la imatge
     edit:
       edit_user: Canviar usuari
     form:
@@ -531,9 +534,7 @@ ca:
       accounts: Comptes
       balance: 'Balanç:'
       categories: Serveis Ofertats
-      change_your_image: Canvia la teva imatge
       created_at: 'Alta:'
-      crop_the_image: 
       data: Dades de l'usuari
       date: Data
       deleted_user: L'usuari ja no existeix
