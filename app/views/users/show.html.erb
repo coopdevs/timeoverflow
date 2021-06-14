@@ -34,18 +34,8 @@
       </small>
     </h1>
     <div class="row">
-      <div class="col-sm-3 col-xs-5 text-center">
-        <% if @user == current_user %>
-          <a href="https://www.gravatar.com" target="_blank">
-            <%= image_tag avatar_url(@user, 140) %>
-          </a>
-          <a href="https://www.gravatar.com" target="_blank" class="btn btn-link">
-            <%= glyph :pencil %> <%= t ".change_your_image" %>
-          </a>
-        <% else %>
-          <%= image_tag avatar_url(@user, 140) %>
-        <% end %>
-      </div>
+      <%= render "users/avatar" %>
+
       <div class="col-sm-9 col-xs-7 break-word">
         <%= m @user.description %>
         <dl class="dl-horizontal">

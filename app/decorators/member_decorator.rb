@@ -23,10 +23,6 @@ class MemberDecorator < ViewModel
     view.mail_to(email) if email && !email.end_with?('example.com')
   end
 
-  def avatar_img(size=32)
-    view.image_tag(view.avatar_url(user, size), width: size, height: size)
-  end
-
   def account_balance
     view.seconds_to_hm(object.account.try(:balance))
   end

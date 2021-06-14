@@ -502,6 +502,9 @@ eu:
     new:
       error_amount: Denbora 0 baino handiagoa izan behar da
   users:
+    avatar:
+      change_your_image: 
+      crop_the_image: 
     edit:
       edit_user: Erabiltzailea aldatu
     form:
@@ -531,7 +534,6 @@ eu:
       accounts: Kontuak
       balance: 'Balantzea:'
       categories: Eskainiriko zerbitzuak
-      change_your_image: Aldartu zure irudia
       created_at: 'Alta:'
       data: Erabiltzailearen datuak
       date: Eguna
@@ -539,6 +541,7 @@ eu:
       from_to: Jatorria/ Helmuga
       inactive: "( Ez erabilgarri)"
       inactive_user: Erabiltzailea ez dago erabilgarri
+      invalid_format: 
       phone:
         one: Telefono zenbakia
         other: Telefono zenbakiak

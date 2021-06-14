@@ -26,6 +26,7 @@ tags
 .sass-cache
 capybara-*.html
 /vendor/bundle
+/storage/
 /coverage/
 /spec/tmp/*
 .byebug_history

@@ -502,6 +502,9 @@ es:
     new:
       error_amount: 'El tiempo debe ser mayor que 0 '
   users:
+    avatar:
+      change_your_image: Cambia tu imagen
+      crop_the_image: Recortar la imagen
     edit:
       edit_user: Cambiar usuario
     form:
@@ -531,7 +534,6 @@ es:
       accounts: Cuentas
       balance: 'Balance:'
       categories: Servicios Ofrecidos
-      change_your_image: Cambia tu imagen
       created_at: 'Alta:'
       data: Datos del usuario
       date: Fecha
@@ -539,6 +541,7 @@ es:
       from_to: Origen/Destino
       inactive: "(Inactivo)"
       inactive_user: El usuario no está activo
+      invalid_format: Formato inválido, elija ".jpg", ".jpeg" o ".png".
       phone:
         one: Teléfono
         other: Teléfonos

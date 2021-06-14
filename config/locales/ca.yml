@@ -502,6 +502,9 @@ ca:
     new:
       error_amount: El temps ha de ser més gran que 0
   users:
+    avatar:
+      change_your_image: Canvia la teva imatge
+      crop_the_image: Retalla la imatge
     edit:
       edit_user: Canviar usuari
     form:
@@ -531,7 +534,6 @@ ca:
       accounts: Comptes
       balance: 'Balanç:'
       categories: Serveis Ofertats
-      change_your_image: Canvia la teva imatge
       created_at: 'Alta:'
       data: Dades de l'usuari
       date: Data
@@ -539,6 +541,7 @@ ca:
       from_to: Origen/Destí
       inactive: "(Inactiu)"
       inactive_user: L'usuari no està actiu
+      invalid_format: Format invàlid, trieu ".jpg", ".jpeg" o ".png".
       phone:
         one: Telèfon
         other: Telèfons

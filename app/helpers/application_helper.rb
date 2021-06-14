@@ -6,8 +6,13 @@ module ApplicationHelper
     current_organization || 'TimeOverflow'
   end
 
-  # from gravatar
   def avatar_url(user, size = 32)
+    user.avatar.attached? ?
+      user.avatar.variant(resize: "#{size}x#{size}") :
+      gravatar_url(user, size)
+  end
+
+  def gravatar_url(user, size = 32)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
     gravatar_options = {
       set: "set1",
