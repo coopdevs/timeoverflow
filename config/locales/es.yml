@@ -533,12 +533,14 @@ es:
       categories: Servicios Ofrecidos
       change_your_image: Cambia tu imagen
       created_at: 'Alta:'
+      crop_the_image: Recortar la imagen
       data: Datos del usuario
       date: Fecha
       deleted_user: El usuario ya no existe
       from_to: Origen/Destino
       inactive: "(Inactivo)"
       inactive_user: El usuario no está activo
+      invalid_format: Formato inválido, elija ".jpg", ".jpeg" o ".png".
       phone:
         one: Teléfono
         other: Teléfonos

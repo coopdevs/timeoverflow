@@ -533,12 +533,14 @@ en:
       categories: Offered Services
       change_your_image: Change your image
       created_at: 'Registered:'
+      crop_the_image: Crop the image
       data: User details
       date: Date
       deleted_user: The user no longer exists
       from_to: From/To
       inactive: "(Inactive)"
       inactive_user: The user isn't active
+      invalid_format: Invalid format, please choose a ".jpg", ".jpeg" or ".png".
       phone:
         one: Phone
         other: Phones

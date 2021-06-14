@@ -1,8 +1,25 @@
 RSpec.describe ApplicationHelper do
-  it 'avatar_url returns url to gravatar' do
-    user = Fabricate(:user)
-    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
-    expect(helper.avatar_url(user, 50)).to eq("https://www.gravatar.com/avatar/#{gravatar_id}.png?d=identicon&gravatar=hashed&set=set1&size=50x50")
+  describe 'avatar_url' do
+    it 'returns the avatar when it is attached' do
+      user = Fabricate(:user)
+      filename = "image.png"
+      temp_file = Tempfile.new(filename)
+      user.avatar.attach(io: File.open(temp_file.path), filename: 'name.png', content_type: 'image/png')
+      temp_file.close
+      temp_file.unlink
+      img = helper.avatar_url(user, 50)
+
+      expect(img.class).to eq(ActiveStorage::VariantWithRecord)
+      expect(img.variation.transformations[:resize]).to eq("50x50")
+      expect(img.blob.filename).to eq("name.png")
+    end
+
+    it 'returns url to gravatar when there is no avatar attached' do
+      user = Fabricate(:user)
+      gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+
+      expect(helper.avatar_url(user, 50)).to eq("https://www.gravatar.com/avatar/#{gravatar_id}.png?d=identicon&gravatar=hashed&set=set1&size=50x50")
+    end
   end
 
   describe 'seconds_to_hm' do
