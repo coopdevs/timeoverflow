@@ -502,6 +502,9 @@ es:
     new:
       error_amount: 'El tiempo debe ser mayor que 0 '
   users:
+    avatar:
+      change_your_image: Cambia tu imagen
+      crop_the_image: Recortar la imagen
     edit:
       edit_user: Cambiar usuario
     form:
@@ -531,9 +534,7 @@ es:
       accounts: Cuentas
       balance: 'Balance:'
       categories: Servicios Ofrecidos
-      change_your_image: Cambia tu imagen
       created_at: 'Alta:'
-      crop_the_image: Recortar la imagen
       data: Datos del usuario
       date: Fecha
       deleted_user: El usuario ya no existe

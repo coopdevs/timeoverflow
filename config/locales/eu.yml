@@ -502,6 +502,9 @@ eu:
     new:
       error_amount: Denbora 0 baino handiagoa izan behar da
   users:
+    avatar:
+      change_your_image: 
+      crop_the_image: 
     edit:
       edit_user: Erabiltzailea aldatu
     form:
@@ -531,9 +534,7 @@ eu:
       accounts: Kontuak
       balance: 'Balantzea:'
       categories: Eskainiriko zerbitzuak
-      change_your_image: Aldartu zure irudia
       created_at: 'Alta:'
-      crop_the_image: 
       data: Erabiltzailearen datuak
       date: Eguna
       deleted_user: Erabiltzaile hau jada ez dago.
