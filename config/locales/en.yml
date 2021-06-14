@@ -526,14 +526,15 @@ en:
       create_more_users_button: Create and add another user
       new_user: New user
       user_created_add: User %{uid} %{name} saved, now create next one
+    avatar:
+      change_your_image: Change your image
+      crop_the_image: Crop the image
     show:
       account: Last transactions
       accounts: Accounts
       balance: 'Balance:'
       categories: Offered Services
-      change_your_image: Change your image
       created_at: 'Registered:'
-      crop_the_image: Crop the image
       data: User details
       date: Date
       deleted_user: The user no longer exists
