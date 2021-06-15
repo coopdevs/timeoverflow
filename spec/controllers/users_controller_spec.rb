@@ -409,18 +409,31 @@ RSpec.describe UsersController do
     context "with a normal logged user" do
       before { login(user) }
 
-      it "change the photo attached @user" do
-        path = Rails.root.join("docs/images/ofertas.png")
-        uploaded_file = Rack::Test::UploadedFile.new(path, "image/png")
+      let(:uploaded_file) do
+        Rack::Test::UploadedFile.new(
+          Rails.root.join("docs/images/ofertas.png"),
+          "image/png"
+        )
+      end
 
+      it "change the photo attached @user" do
         put :update_avatar, params: { avatar: uploaded_file, original_width: 500, height_width: 140 }
 
         expect(user.avatar.attached?).to eq true
       end
 
-      it "don't change the photo attached if the format isn't valid" do
-        path = Rails.root.join("spec/controllers/users_controller_spec.rb")
-        uploaded_file = Rack::Test::UploadedFile.new(path)
+      it "don't change the photo attached if the mime_type isn't valid" do
+        uploaded_file = Rack::Test::UploadedFile.new(
+          Rails.root.join("spec/controllers/users_controller_spec.rb")
+        )
+
+        put :update_avatar, params: { avatar: uploaded_file }
+
+        expect(flash[:error]).not_to be_empty
+      end
+
+      it "don't change the photo attached if the file size it too big" do
+        allow_any_instance_of(ActionDispatch::Http::UploadedFile).to receive(:size) { User::AVATAR_MAX_SIZE.megabytes + 1.megabyte }
 
         put :update_avatar, params: { avatar: uploaded_file }
 

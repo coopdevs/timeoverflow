@@ -38,14 +38,14 @@ $(function () {
 
     // on submit take the parameters of the box to crop the avatar
     $('#form_photo').on("submit", () => {
-      let total_width = parseInt(getComputedStyle(document.getElementById("containerCrop")).width);
-      let photo_width = parseInt(getComputedStyle(document.getElementById("foto")).width);
+      let total_width = parseInt(getComputedStyle(document.getElementById("container_crop")).width);
+      let photo_width = parseInt(getComputedStyle(document.getElementById("original_img")).width);
       let left_displacement = total_width - photo_width;
 
       $('#height_offset').val(parseInt(panel.css('top')) - 15);
       $('#width_offset').val(parseInt(panel.css('left'))  - 15 - (left_displacement/2));
       $('#height_width').val(parseInt(panel.css('width')));
-      $('#original_width').val($('#foto').width());
+      $('#original_width').val($('#original_img').width());
     });
 
     function resize(e) {
@@ -93,7 +93,7 @@ $(function () {
     }
 
     function preview_image_modal() {
-      var preview = document.querySelector('#foto');
+      var preview = document.querySelector('#original_img');
       var file = document.querySelector('#avatar-js').files[0];
       var reader = new FileReader();
 

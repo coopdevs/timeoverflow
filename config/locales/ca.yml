@@ -505,6 +505,7 @@ ca:
     avatar:
       change_your_image: Canvia la teva imatge
       crop_the_image: Retalla la imatge
+      max_size_warning: La imatge és massa gran, el màxim permès és de %{size}MB
     edit:
       edit_user: Canviar usuari
     form:

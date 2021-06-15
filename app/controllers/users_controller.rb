@@ -67,13 +67,13 @@ class UsersController < ApplicationController
 
   def update_avatar
     avatar = params[:avatar]
+    errors = validate_avatar(avatar)
 
-    if avatar && content_type_permitted(avatar.content_type)
+    if errors.blank?
       current_user.avatar.purge if current_user.avatar.attached?
-
       crop_image_and_save(current_user, avatar)
     else
-      flash[:error] = t 'users.show.invalid_format'
+      flash[:error] = errors.join("<br>")
     end
 
     redirect_to current_user
@@ -151,7 +151,17 @@ class UsersController < ApplicationController
     )
   end
 
-  def content_type_permitted(avatar_content_type)
-    %w[image/jpeg image/pjpeg image/png image/x-png].include? avatar_content_type
+  def validate_avatar(file)
+    errors = []
+
+    if User::AVATAR_CONTENT_TYPES.exclude?(file.content_type)
+      errors << t("users.show.invalid_format")
+    end
+
+    if file.size.to_f > User::AVATAR_MAX_SIZE.megabytes
+      errors << t("users.avatar.max_size_warning", size: User::AVATAR_MAX_SIZE)
+    end
+
+    errors
   end
 end
