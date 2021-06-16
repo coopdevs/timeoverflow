@@ -433,7 +433,7 @@ RSpec.describe UsersController do
       end
 
       it "don't change the photo attached if the file size it too big" do
-        allow_any_instance_of(ActionDispatch::Http::UploadedFile).to receive(:size) { User::AVATAR_MAX_SIZE.megabytes + 1.megabyte }
+        allow_any_instance_of(ActionDispatch::Http::UploadedFile).to receive(:size) { AvatarGenerator::MAX_SIZE.megabytes + 1.megabyte }
 
         put :update_avatar, params: { avatar: uploaded_file }
 

@@ -66,14 +66,12 @@ class UsersController < ApplicationController
   end
 
   def update_avatar
-    avatar = params[:avatar]
-    errors = validate_avatar(avatar)
+    operation = AvatarGenerator.new(current_user, params)
 
-    if errors.blank?
-      current_user.avatar.purge if current_user.avatar.attached?
-      crop_image_and_save(current_user, avatar)
+    if operation.errors.empty?
+      operation.call
     else
-      flash[:error] = errors.join("<br>")
+      flash[:error] = operation.errors.join("<br>")
     end
 
     redirect_to current_user
@@ -129,39 +127,5 @@ class UsersController < ApplicationController
                                  uid: id,
                                  name: @user.username)
     end
-  end
-
-  def crop_image_and_save(user, avatar)
-    orig_width = params[:original_width].to_i
-    width      = params[:height_width].to_i
-    left       = params[:width_offset].to_i
-    top        = params[:height_offset].to_i
-
-    image_processed = ImageProcessing::MiniMagick.
-                      source(avatar.tempfile).
-                      resize_to_fit(orig_width, nil).
-                      crop("#{width}x#{width}+#{left}+#{top}!").
-                      convert("png").
-                      call
-
-    user.avatar.attach(
-      io: image_processed,
-      filename: user.username,
-      content_type: avatar.content_type
-    )
-  end
-
-  def validate_avatar(file)
-    errors = []
-
-    if User::AVATAR_CONTENT_TYPES.exclude?(file.content_type)
-      errors << t("users.show.invalid_format")
-    end
-
-    if file.size.to_f > User::AVATAR_MAX_SIZE.megabytes
-      errors << t("users.avatar.max_size_warning", size: User::AVATAR_MAX_SIZE)
-    end
-
-    errors
   end
 end

@@ -9,8 +9,6 @@ class User < ApplicationRecord
     :timeoutable
   ]
 
-  AVATAR_MAX_SIZE = 5
-  AVATAR_CONTENT_TYPES = %w[image/jpeg image/pjpeg image/png image/x-png]
   GENDERS = %w(
     female
     male
