@@ -505,6 +505,7 @@ gl:
     avatar:
       change_your_image: 
       crop_the_image: 
+      max_size_warning: 
     edit:
       edit_user: Actualizar persoa usuaria
     form:

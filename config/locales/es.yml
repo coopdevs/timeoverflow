@@ -505,6 +505,7 @@ es:
     avatar:
       change_your_image: Cambia tu imagen
       crop_the_image: Recortar la imagen
+      max_size_warning: La imagen es demasiado grande, el máximo permitido es %{size}MB
     edit:
       edit_user: Cambiar usuario
     form:
