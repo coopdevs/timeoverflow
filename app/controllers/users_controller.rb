@@ -66,14 +66,12 @@ class UsersController < ApplicationController
   end
 
   def update_avatar
-    avatar = params[:avatar]
+    operation = AvatarGenerator.new(current_user, params)
 
-    if avatar && content_type_permitted(avatar.content_type)
-      current_user.avatar.purge if current_user.avatar.attached?
-
-      crop_image_and_save(current_user, avatar)
+    if operation.errors.empty?
+      operation.call
     else
-      flash[:error] = t 'users.show.invalid_format'
+      flash[:error] = operation.errors.join("<br>")
     end
 
     redirect_to current_user
@@ -129,29 +127,5 @@ class UsersController < ApplicationController
                                  uid: id,
                                  name: @user.username)
     end
-  end
-
-  def crop_image_and_save(user, avatar)
-    orig_width = params[:original_width].to_i
-    width      = params[:height_width].to_i
-    left       = params[:width_offset].to_i
-    top        = params[:height_offset].to_i
-
-    image_processed = ImageProcessing::MiniMagick.
-                      source(avatar.tempfile).
-                      resize_to_fit(orig_width, nil).
-                      crop("#{width}x#{width}+#{left}+#{top}!").
-                      convert("png").
-                      call
-
-    user.avatar.attach(
-      io: image_processed,
-      filename: user.username,
-      content_type: avatar.content_type
-    )
-  end
-
-  def content_type_permitted(avatar_content_type)
-    %w[image/jpeg image/pjpeg image/png image/x-png].include? avatar_content_type
   end
 end

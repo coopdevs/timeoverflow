@@ -502,6 +502,10 @@ en:
     new:
       error_amount: Time must be greater than 0
   users:
+    avatar:
+      change_your_image: Change your image
+      crop_the_image: Crop the image
+      max_size_warning: Image is too big, max allowed is %{size}MB
     edit:
       edit_user: Update user
     form:
@@ -526,9 +530,6 @@ en:
       create_more_users_button: Create and add another user
       new_user: New user
       user_created_add: User %{uid} %{name} saved, now create next one
-    avatar:
-      change_your_image: Change your image
-      crop_the_image: Crop the image
     show:
       account: Last transactions
       accounts: Accounts
