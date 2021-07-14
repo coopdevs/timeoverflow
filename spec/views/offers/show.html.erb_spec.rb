@@ -65,16 +65,18 @@ RSpec.describe 'offers/show' do
         allow(view).to receive(:current_organization) { another_organization }
       end
 
-      it 'doesn\'t render a link to the transfer page' do
+      it 'render a link to the transfer page with the id of the destination organisation' do
         assign :offer, offer
+        assign :destination_account, destination_account
         render template: 'offers/show'
 
-        expect(rendered).to_not have_link(
+        expect(rendered).to have_link(
           t('offers.show.give_time_for'),
           href: new_transfer_path(
             id: offer.user.id,
             offer: offer.id,
-            destination_account_id: destination_account.id
+            destination_account_id: destination_account.id,
+            organization_id: organization.id
           )
         )
       end
@@ -89,6 +91,7 @@ RSpec.describe 'offers/show' do
 
       it 'displays the offer\'s organization' do
         assign :offer, offer
+        assign :destination_account, destination_account
         render template: 'offers/show'
 
         expect(rendered).to include(

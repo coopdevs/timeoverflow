@@ -1,16 +1,22 @@
 class TransferFactory
-  def initialize(current_organization, current_user, offer_id, destination_account_id)
+  def initialize(current_organization, current_user, offer_id, destination_account_id,
+                 destination_organization_id)
     @current_organization = current_organization
     @current_user = current_user
     @offer_id = offer_id
     @destination_account_id = destination_account_id
+    @destination_organization_id = destination_organization_id.to_i
+  end
+
+  def destination_organization
+    Organization.find(@destination_organization_id)
   end
 
   # Returns the offer that is the subject of the transfer
   #
   # @return [Maybe<Offer>]
   def offer
-    current_organization.offers.find_by_id(offer_id)
+    destination_organization.offers.find_by_id(offer_id)
   end
 
   # Returns a new instance of Transfer with the data provided
@@ -73,7 +79,7 @@ class TransferFactory
   #
   # @return [Account]
   def destination_account
-    @destination_account ||= current_organization
+    @destination_account ||= destination_organization
       .all_accounts
       .find(destination_account_id)
   end
