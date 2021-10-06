@@ -22,7 +22,7 @@ gem 'prawn', '~> 2.4.0'
 gem 'prawn-table', '~> 0.2.2'
 gem 'pg_search', '~> 2.3.5'
 gem 'skylight', '~> 5.0'
-gem 'sidekiq', '~> 6.1.2'
+gem 'sidekiq', '~> 6.2.1'
 gem 'sidekiq-cron', '~> 1.2.0'
 gem 'aws-sdk-s3', '~> 1.94', require: false
 gem 'image_processing', '~> 1.2'
