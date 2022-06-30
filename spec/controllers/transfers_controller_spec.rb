@@ -28,13 +28,13 @@ RSpec.describe TransfersController do
 
       it 'finds the destination account' do
         get :new, params: params
-        expect(response.body).to include("<input class=\"form-control hidden form-control\" type=\"hidden\" value=\"#{user_account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
+        expect(response.body).to include("<input class=\"form-control hidden form-control\" autocomplete=\"off\" type=\"hidden\" value=\"#{user_account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       it 'builds a transfer with the id of the destination' do
         get :new, params: params
         expect(response.body)
-          .to include("<input class=\"form-control hidden form-control\" type=\"hidden\" value=\"#{user_account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
+          .to include("<input class=\"form-control hidden form-control\" autocomplete=\"off\" type=\"hidden\" value=\"#{user_account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       context 'when the offer is specified' do
@@ -47,7 +47,7 @@ RSpec.describe TransfersController do
 
         it 'builds a transfer with the offer as post' do
           get :new, params: params.merge(offer: offer.id)
-          expect(response.body).to include("<input class=\"form-control hidden form-control\" type=\"hidden\" value=\"#{offer.id}\" name=\"transfer[post_id]\" id=\"transfer_post_id\" />")
+          expect(response.body).to include("<input class=\"form-control hidden form-control\" autocomplete=\"off\" type=\"hidden\" value=\"#{offer.id}\" name=\"transfer[post_id]\" id=\"transfer_post_id\" />")
         end
       end
 
@@ -94,13 +94,13 @@ RSpec.describe TransfersController do
 
       it 'finds the destination account' do
         get :new, params: params
-        expect(response.body).to include("<input class=\"form-control hidden form-control\" type=\"hidden\" value=\"#{test_organization.account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
+        expect(response.body).to include("<input class=\"form-control hidden form-control\" autocomplete=\"off\" type=\"hidden\" value=\"#{test_organization.account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       it 'builds a transfer with the id of the destination' do
         get :new, params: params
         expect(response.body)
-          .to include("<input class=\"form-control hidden form-control\" type=\"hidden\" value=\"#{test_organization.account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
+          .to include("<input class=\"form-control hidden form-control\" autocomplete=\"off\" type=\"hidden\" value=\"#{test_organization.account.id}\" name=\"transfer[destination]\" id=\"transfer_destination\" />")
       end
 
       context 'when the user is the admin of the current organization' do
