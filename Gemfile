@@ -25,7 +25,7 @@ gem 'skylight', '~> 5.0'
 gem 'sidekiq', '~> 6.2.1'
 gem 'sidekiq-cron', '~> 1.2.0'
 gem 'aws-sdk-s3', '~> 1.94', require: false
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 # Assets
 gem 'jquery-rails', '~> 4.3.5'
