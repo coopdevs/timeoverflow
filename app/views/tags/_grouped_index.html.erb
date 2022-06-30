@@ -11,7 +11,7 @@
               <div class="badge">
                 <%= count %>
               </div>
-              <%= link_to [post_type.pluralize, tag: tag] do %>
+              <%= link_to [post_type.pluralize.to_sym, tag: tag] do %>
                 <%= glyph count == 1 ? :tag : :tags %>
                 <%= tag %>
               <% end %>
