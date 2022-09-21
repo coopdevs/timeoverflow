@@ -7,7 +7,7 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'rdiscount', '~> 2.2.0.1'
 gem 'rubyzip', '~> 2.3.0'
 gem 'activeadmin', '~> 2.9.0'
-gem 'bootsnap', '~> 1.7.3', require: false
+gem 'bootsnap', '~> 1.12.0', require: false
 gem 'has_scope', '~> 0.7.2'
 gem 'pundit', '~> 2.1.0'
 gem 'pg', '~> 1.2.1'
@@ -22,10 +22,10 @@ gem 'prawn', '~> 2.4.0'
 gem 'prawn-table', '~> 0.2.2'
 gem 'pg_search', '~> 2.3.5'
 gem 'skylight', '~> 5.0'
-gem 'sidekiq', '~> 6.1.2'
+gem 'sidekiq', '~> 6.4.0'
 gem 'sidekiq-cron', '~> 1.2.0'
 gem 'aws-sdk-s3', '~> 1.94', require: false
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 # Assets
 gem 'jquery-rails', '~> 4.3.5'
