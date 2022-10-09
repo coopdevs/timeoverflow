@@ -3,4 +3,4 @@
   <small><%= t ".edit_user" %></small>
 </h1>
 
-<%= render "form", member: @user.as_member_of(current_organization) %>
+<%= render "form", member: @user.as_member_of(current_organization), short: false %>

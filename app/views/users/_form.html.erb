@@ -3,13 +3,24 @@
   <div class="form-inputs">
     <%= f.input :username %>
 
-    <% if admin? %>
+    <% if admin? || short %>
       <%= f.input :email %>
       <% if @user.unconfirmed_email.present? %>
         <%= f.input :unconfirmed_email, readonly: true %>
       <% end %>
     <% else %>
       <%= f.input :email, readonly: true %>
+    <% end %>
+
+    <% if short %>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="material-icons">lock</i>
+          </span>
+          <%= f.password_field :password, required: true, autofocus: true, placeholder: t("application.login_form.password"), class: "form-control input-lg" %>
+        </div>
+      </div>
     <% end %>
 
     <%= f.input :phone %>
@@ -49,9 +60,12 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit %>
-    <% if @user.new_record? %>
-      <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more' %>
+
+    <% if !short %>
+      <% if @user.new_record? %>
+        <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more' %>
+      <% end %>
+      <%= link_to t('users.new.cancel'), users_path, class: "btn btn-default" %>
     <% end %>
-    <%= link_to t('users.new.cancel'), users_path, class: "btn btn-default" %>
   </div>
 <% end %>

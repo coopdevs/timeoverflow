@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   resources :users, concerns: :accountable, except: :destroy, :path => "members" do
     collection do
+      get 'signup'
       get 'manage'
     end
   end
