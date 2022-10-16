@@ -27,6 +27,7 @@
           <th><%= t '.neighborhood' %></th>
           <th><%= t '.web' %></th>
           <th><%= t '.member_count' %></th>
+          <%= '<th></th>'.html_safe if current_user %>
         </tr>
       </thead>
       <tbody>
@@ -37,6 +38,15 @@
             <td><%= org.neighborhood %></td>
             <td><%= link_to(org.web, org.web) if org.web.present? %></td>
             <td><%= org.members.count %></td>
+            <% if current_user %>
+              <td>
+                <% if petition = current_user.petitions.where(organization_id: org.id).last %>
+                  <%= Petition::STATUS[petition.status] %>
+                <% else %>
+                  <%= link_to 'Apply to join', petition_index_path(user_id: current_user.id, organization_id: org.id, status: 0), method: :post %>
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
