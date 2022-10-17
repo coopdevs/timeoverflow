@@ -12,6 +12,12 @@
       <% end %>
     </li>
     <li>
+      <%= link_to manage_petitions_path do %>
+        <%= glyph 'list-alt' %>
+        <%= 'Manage Applications' %>
+      <% end %>
+    </li>
+    <li>
       <%= link_to offers_path(org: current_organization) do %>
         <%= glyph :link %>
         <%= glyph :eye_open %>

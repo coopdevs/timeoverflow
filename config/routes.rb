@@ -42,7 +42,12 @@ Rails.application.routes.draw do
     end
   end
   put :update_avatar, to: 'users#update_avatar'
-  resources :petition, only: %i[create update]
+
+  resources :petitions, only: [:create, :update] do
+    collection do
+      get 'manage'
+    end
+  end
 
   resources :transfers, only: [:new, :create] do
     member do

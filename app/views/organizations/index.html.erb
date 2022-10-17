@@ -43,7 +43,7 @@
                 <% if petition = current_user.petitions.where(organization_id: org.id).last %>
                   <%= Petition::STATUS[petition.status] %>
                 <% else %>
-                  <%= link_to 'Apply to join', petition_index_path(user_id: current_user.id, organization_id: org.id, status: 0), method: :post %>
+                  <%= link_to 'Apply to join', petitions_path(user_id: current_user.id, organization_id: org.id, status: 0), method: :post %>
                 <% end %>
               </td>
             <% end %>
