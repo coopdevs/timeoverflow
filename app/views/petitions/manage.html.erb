@@ -12,20 +12,20 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <ul class="nav nav-pills actions-menu">
-      <li class="<%= "active" if @status == 0 %>">
-        <%= link_to manage_petitions_path(status: 0) do %>
+      <li class="<%= "active" if @status == 'pending' %>">
+        <%= link_to manage_petitions_path(status: 'pending') do %>
           <%= glyph :minus %>
           <%= 'Pending applications' %>
         <% end %>
       </li>
-      <li class="<%= "active" if @status == 1 %>">
-        <%= link_to manage_petitions_path(status: 1) do %>
+      <li class="<%= "active" if @status == 'accepted' %>">
+        <%= link_to manage_petitions_path(status: 'accepted') do %>
           <%= glyph :ok %>
           <%= 'Accepted applications' %>
         <% end %>
       </li>
-      <li class="<%= "active" if  @status == 2 %>">
-        <%= link_to manage_petitions_path(status: 2) do %>
+      <li class="<%= "active" if  @status == 'declined' %>">
+        <%= link_to manage_petitions_path(status: 'declined') do %>
           <%= glyph :remove %>
           <%= 'Declined applications' %>
         <% end %>
@@ -46,7 +46,7 @@
               <th><%= 'username' %></th>
               <th><%= User.human_attribute_name(:email) %></th>
               <th><%= User.human_attribute_name(:phone) %></th>
-              <% if current_user.manages?(current_organization) && @status == 0 %>
+              <% if current_user.manages?(current_organization) && @status == 'pending' %>
                 <th>
                   <span class="glyphicon glyphicon-hand-down"></span>
                   <%= t(".actions") %>
@@ -63,10 +63,10 @@
                 <td><%= user.username %></td>
                 <td><%= user.email %></td>
                 <td><%= phone_to user.phone %></td>
-                <% if current_user.manages?(current_organization) && @status == 0  %>
+                <% if current_user.manages?(current_organization) && @status == 'pending'  %>
                   <td>
-                    <%= link_to 'Accept', petition_path(id: petition.id, user_id: user.id, status: 1), class: 'btn btn-primary', method: :put %>
-                    <%= link_to 'Decline', petition_path(id: petition.id, user_id: user.id, status: 2), class: 'btn btn-danger', method: :put %>
+                    <%= link_to 'Accept', petition_path(id: petition.id, user_id: user.id, status: 'accepted'), class: 'btn btn-primary', method: :put %>
+                    <%= link_to 'Decline', petition_path(id: petition.id, user_id: user.id, status: 'declined'), class: 'btn btn-danger', method: :put %>
                   </td>
                 <% end %>
               <% end %>

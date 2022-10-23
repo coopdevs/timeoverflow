@@ -12,16 +12,7 @@
       <%= f.input :email, readonly: true %>
     <% end %>
 
-    <% if short %>
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="material-icons">lock</i>
-          </span>
-          <%= f.password_field :password, required: true, autofocus: true, placeholder: t("application.login_form.password"), class: "form-control input-lg" %>
-        </div>
-      </div>
-    <% end %>
+    <%= f.input :password, label: t("application.login_form.password"), required: true if short %>
 
     <%= f.input :phone %>
     <%= f.input :alt_phone %>

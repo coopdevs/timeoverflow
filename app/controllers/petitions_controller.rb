@@ -13,11 +13,11 @@ class PetitionsController < ApplicationController
   
   def update
     petition = Petition.find params[:id]
-    status = params[:status].to_i
+    status = params[:status]
     
     if petition.update(status: status)
-      User.find(params[:user_id]).add_to_organization(current_organization) if status == 1
-      flash[:notice] = "Application #{Petition::STATUS[status]}"
+      User.find(params[:user_id]).add_to_organization(current_organization) if status == 'accepted'
+      flash[:notice] = "Application #{status}"
     else
       flash[:error] = 'Something went wrong'
     end
@@ -26,7 +26,7 @@ class PetitionsController < ApplicationController
   end
  
   def manage
-    @status = params[:status].to_i
+    @status = params[:status] || 'pending'
     @users = User.joins(:petitions).where(petitions: { organization_id: current_organization.id, status: @status }).page(params[:page]).per(20)
   end
 
