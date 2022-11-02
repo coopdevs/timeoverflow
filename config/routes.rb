@@ -37,10 +37,17 @@ Rails.application.routes.draw do
 
   resources :users, concerns: :accountable, except: :destroy, :path => "members" do
     collection do
+      get 'signup'
       get 'manage'
     end
   end
   put :update_avatar, to: 'users#update_avatar'
+
+  resources :petitions, only: [:create, :update] do
+    collection do
+      get 'manage'
+    end
+  end
 
   resources :transfers, only: [:new, :create] do
     member do

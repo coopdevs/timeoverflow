@@ -27,6 +27,7 @@ class User < ApplicationRecord
   has_many :offers
   has_many :inquiries
   has_many :device_tokens
+  has_many :petitions, dependent: :delete_all
 
   accepts_nested_attributes_for :members
 

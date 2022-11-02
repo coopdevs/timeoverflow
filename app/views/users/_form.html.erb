@@ -3,7 +3,7 @@
   <div class="form-inputs">
     <%= f.input :username %>
 
-    <% if admin? %>
+    <% if admin? || short %>
       <%= f.input :email %>
       <% if @user.unconfirmed_email.present? %>
         <%= f.input :unconfirmed_email, readonly: true %>
@@ -11,6 +11,8 @@
     <% else %>
       <%= f.input :email, readonly: true %>
     <% end %>
+
+    <%= f.input :password, label: t("application.login_form.password"), required: true if short %>
 
     <%= f.input :phone %>
     <%= f.input :alt_phone %>
@@ -49,9 +51,12 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit %>
-    <% if @user.new_record? %>
-      <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more' %>
+
+    <% if !short %>
+      <% if @user.new_record? %>
+        <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more' %>
+      <% end %>
+      <%= link_to t('users.new.cancel'), users_path, class: "btn btn-default" %>
     <% end %>
-    <%= link_to t('users.new.cancel'), users_path, class: "btn btn-default" %>
   </div>
 <% end %>

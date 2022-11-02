@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :member_should_be_active
+  before_action :authenticate_user!, :member_should_be_active, except: [:signup, :create]
 
   has_scope :tagged_with, as: :tag
 
@@ -41,8 +41,10 @@ class UsersController < ApplicationController
     @user.setup_and_save_user
 
     if @user.persisted?
-      @user.tune_after_persisted(current_organization)
-      @user.add_tags(current_organization, params[:tag_list] || [])
+      unless request.referer.include?(signup_users_path)
+        @user.tune_after_persisted(current_organization)
+        @user.add_tags(current_organization, params[:tag_list] || [])
+      end
 
       redirect_to_after_create
     else
@@ -63,6 +65,10 @@ class UsersController < ApplicationController
     else
       render action: :edit, status: :unprocessable_entity
     end
+  end
+
+  def signup
+    @user = User.new
   end
 
   def update_avatar
@@ -102,6 +108,7 @@ class UsersController < ApplicationController
     fields_to_permit += %w"admin registration_number
                            registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
+    fields_to_permit += %w"password" if request.referer.include?(signup_users_path)
 
     params.require(:user).permit *fields_to_permit
   end
@@ -115,17 +122,22 @@ class UsersController < ApplicationController
   end
 
   def redirect_to_after_create
-    id = @user.member(current_organization).member_uid
-    if params[:more]
-      redirect_to new_user_path,
-                  notice: I18n.t("users.new.user_created_add",
-                                 uid: id,
-                                 name: @user.username)
+    if request.referer.include?(signup_users_path)
+      sign_in(@user)
+      redirect_to terms_path
     else
-      redirect_to users_path,
-                  notice: I18n.t("users.index.user_created",
-                                 uid: id,
-                                 name: @user.username)
+      id = @user.member(current_organization).member_uid
+      if params[:more]
+        redirect_to new_user_path,
+                    notice: I18n.t("users.new.user_created_add",
+                                  uid: id,
+                                  name: @user.username)
+      else
+        redirect_to users_path,
+                    notice: I18n.t("users.index.user_created",
+                                  uid: id,
+                                  name: @user.username)
+      end
     end
   end
 end

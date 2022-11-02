@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <%= link_to current_organization.name, current_organization %>
+        <%= 'Applications' %>
+      </h1>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <ul class="nav nav-pills actions-menu">
+      <li class="<%= "active" if @status == 'pending' %>">
+        <%= link_to manage_petitions_path(status: 'pending') do %>
+          <%= glyph :minus %>
+          <%= 'Pending applications' %>
+        <% end %>
+      </li>
+      <li class="<%= "active" if @status == 'accepted' %>">
+        <%= link_to manage_petitions_path(status: 'accepted') do %>
+          <%= glyph :ok %>
+          <%= 'Accepted applications' %>
+        <% end %>
+      </li>
+      <li class="<%= "active" if  @status == 'declined' %>">
+        <%= link_to manage_petitions_path(status: 'declined') do %>
+          <%= glyph :remove %>
+          <%= 'Declined applications' %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed panel">
+          <thead>
+            <tr>
+              <th></th>
+              <th><%= 'ID' %></th>
+              <th><%= 'username' %></th>
+              <th><%= User.human_attribute_name(:email) %></th>
+              <th><%= User.human_attribute_name(:phone) %></th>
+              <% if current_user.manages?(current_organization) && @status == 'pending' %>
+                <th>
+                  <span class="glyphicon glyphicon-hand-down"></span>
+                  <%= t(".actions") %>
+                </th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <%= content_tag(:tr) do %>
+                <% petition = user.petitions.where(organization_id: current_organization.id).last %>
+                <td><%= image_tag avatar_url(user.user) %></td>
+                <td><%= user.id %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%= phone_to user.phone %></td>
+                <% if current_user.manages?(current_organization) && @status == 'pending'  %>
+                  <td>
+                    <%= link_to 'Accept', petition_path(id: petition.id, user_id: user.id, status: 'accepted'), class: 'btn btn-primary', method: :put %>
+                    <%= link_to 'Decline', petition_path(id: petition.id, user_id: user.id, status: 'declined'), class: 'btn btn-danger', method: :put %>
+                  </td>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="paginate-align">
+        <%= paginate @users %>
+      </div>
+    </div>
+  </div>
+</div>

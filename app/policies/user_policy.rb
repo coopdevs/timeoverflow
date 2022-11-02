@@ -1,6 +1,6 @@
 class UserPolicy < ApplicationPolicy
   def create?
-    user.admins?(organization)
+    !user || user.admins?(organization)
   end
 
   def update?

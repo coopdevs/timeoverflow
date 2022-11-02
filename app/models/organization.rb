@@ -21,6 +21,7 @@ class Organization < ApplicationRecord
   has_many :offers
   has_many :inquiries
   has_many :documents, as: :documentable, dependent: :destroy
+  has_many :petitions, dependent: :delete_all
 
   validates :name, presence: true, uniqueness: true
 
