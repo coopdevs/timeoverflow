@@ -31,24 +31,8 @@
         </tr>
       </thead>
       <tbody>
-        <% @organizations.each do |org| %>
-          <tr>
-            <td><%= link_to(org.name, org) %></td>
-            <td><%= org.city %></td>
-            <td><%= org.neighborhood %></td>
-            <td><%= link_to(org.web, org.web) if org.web.present? %></td>
-            <td><%= org.members.count %></td>
-            <td>
-              <% if current_user %>
-                <% if petition = current_user.petitions.where(organization_id: org.id).last %>
-                  <%= petition.status %>
-                <% else %>
-                  <%= link_to 'Apply to join', petitions_path(user_id: current_user.id, organization_id: org.id, status: 'pending'), method: :post %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+        <%= render 'organizations_row', organizations: @user_organizations if !params[:page] || params[:page] == '1' %>
+        <%= render 'organizations_row', organizations: @organizations %>
       </tbody>
     </table>
     <div class="paginate-align">
