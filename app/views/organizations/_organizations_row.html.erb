@@ -1,26 +1,25 @@
-<% organizations.each do |org| %>
-  <tr>
-    <td><%= link_to(org.name, org) %></td>
-    <td><%= org.city %></td>
-    <td><%= org.neighborhood %></td>
-    <td><%= link_to(org.web, org.web) if org.web.present? %></td>
-    <td><%= org.members.count %></td>
-    <td>
-      <% if current_user %>
-        <% if petition = current_user.petitions.where(organization_id: org.id).last %>
-          <% if petition.status == 'accepted' && member = Member.where(user: current_user, organization: org).first %>
-            <%= link_to 'Delete membership',
-                        member_path(member),
-                        method: :delete,
-                        data: { confirm: "Are you sure you want to delete your membership from #{org.name}?" },
-                        class: 'btn btn-danger' %>
-          <% else %>
-            <%= petition.status %>
-          <% end %>
+<tr>
+  <td><%= link_to(org.name, org) %></td>
+  <td><%= org.city %></td>
+  <td><%= org.neighborhood %></td>
+  <td><%= link_to(org.web, org.web) if org.web.present? %></td>
+  <td><%= org.members.count %></td>
+  <td>
+    <% if current_user %>
+      <% petition = current_user.petitions.where(organization_id: org.id).last %>
+      <% if petition && !current_user.was_member?(petition) %>
+        <% if petition.status == 'accepted' && member = Member.where(user: current_user, organization: org).first %>
+          <%= link_to 'Delete membership',
+                      member_path(member),
+                      method: :delete,
+                      data: { confirm: "Are you sure you want to delete your membership from #{org.name}?" },
+                      class: 'btn btn-danger' %>
         <% else %>
-          <%= link_to 'Apply to join', petitions_path(user_id: current_user.id, organization_id: org.id, status: 'pending'), method: :post %>
+          <%= petition.status %>
         <% end %>
+      <% else %>
+        <%= link_to 'Apply to join', petitions_path(user_id: current_user.id, organization_id: org.id, status: 'pending'), method: :post %>
       <% end %>
-    </td>
-  </tr>
-<% end %>
+    <% end %>
+  </td>
+</tr>

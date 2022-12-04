@@ -6,7 +6,7 @@ class MembersController < ApplicationController
     toggle_active_posts
     @member.destroy
 
-    redirect_to manage_users_path
+    redirect_to request.referer.include?(organizations_path) ? organizations_path : manage_users_path
   end
 
   def toggle_manager

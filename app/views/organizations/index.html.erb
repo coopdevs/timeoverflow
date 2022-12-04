@@ -31,8 +31,8 @@
         </tr>
       </thead>
       <tbody>
-        <%= render 'organizations_row', organizations: @user_organizations if !params[:page] || params[:page] == '1' %>
-        <%= render 'organizations_row', organizations: @organizations %>
+        <%= render partial: 'organizations_row', collection: @user_organizations, as: :org if !params[:page] || params[:page] == '1' %>
+        <%= render partial: 'organizations_row', collection: @organizations, as: :org %>
       </tbody>
     </table>
     <div class="paginate-align">
