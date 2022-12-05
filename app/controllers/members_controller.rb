@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   before_action :authenticate_user!
 
   def destroy
-    find_member
+    @member = Member.find(params[:id])
     toggle_active_posts
     @member.destroy
 
