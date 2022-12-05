@@ -124,4 +124,8 @@ class User < ApplicationRecord
   def email_if_real
     has_valid_email? ? email : ""
   end
+
+  def was_member?(petition)
+    petition.status == 'accepted' && Member.where(organization: petition.organization, user: self).none?
+  end
 end
