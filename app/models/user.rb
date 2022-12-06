@@ -17,6 +17,7 @@ class User < ApplicationRecord
   )
 
   attr_accessor :empty_email
+  attr_accessor :from_signup
 
   has_one_attached :avatar
   has_many :members, dependent: :destroy
@@ -38,6 +39,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, if: :from_signup?
   # Allows @domain.com for dummy emails but does not allow pure invalid
   # emails like 'without email'
   validates_format_of :email,
@@ -99,7 +101,7 @@ class User < ApplicationRecord
     # temporary valid email with current time milliseconds
     # this will be updated to user.id@example.com later on
     self.empty_email = email.strip.empty?
-    self.email = "user#{DateTime.now.strftime('%Q')}@example.com" if empty_email
+    self.email = "user#{DateTime.now.strftime('%Q')}@example.com" if empty_email && !from_signup
     skip_confirmation! # auto-confirm, not sending confirmation email
     save
   end
@@ -127,5 +129,9 @@ class User < ApplicationRecord
 
   def was_member?(petition)
     petition.status == 'accepted' && Member.where(organization: petition.organization, user: self).none?
+  end
+
+  def from_signup?
+    from_signup
   end
 end

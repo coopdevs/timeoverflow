@@ -669,3 +669,16 @@ label[required]::after{
   display: inline;
   margin: 0 !important;
 }
+
+.input__password-eye {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+
+  .show-password {
+    position: absolute;
+    display: flex;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+}

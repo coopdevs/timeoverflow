@@ -65,8 +65,8 @@
                 <td><%= phone_to user.phone %></td>
                 <% if current_user.manages?(current_organization) && @status == 'pending'  %>
                   <td>
-                    <%= link_to 'Accept', petition_path(id: petition.id, user_id: user.id, status: 'accepted'), class: 'btn btn-primary', method: :put %>
-                    <%= link_to 'Decline', petition_path(id: petition.id, user_id: user.id, status: 'declined'), class: 'btn btn-danger', method: :put %>
+                    <%= link_to 'Accept', petition_path(id: petition.id, status: 'accepted'), class: 'btn btn-primary', method: :put %>
+                    <%= link_to 'Decline', petition_path(id: petition.id, status: 'declined'), class: 'btn btn-danger', method: :put %>
                   </td>
                 <% end %>
               <% end %>
