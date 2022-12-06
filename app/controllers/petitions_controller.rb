@@ -16,7 +16,7 @@ class PetitionsController < ApplicationController
     status = params[:status]
 
     if petition.update(status: status)
-      User.find(params[:user_id]).add_to_organization(current_organization) if status == 'accepted'
+      petition.user.add_to_organization(petition.organization) if status == 'accepted'
       flash[:notice] = "Application #{status}"
     else
       flash[:error] = 'Something went wrong'

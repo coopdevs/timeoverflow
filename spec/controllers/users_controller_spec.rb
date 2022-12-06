@@ -249,6 +249,8 @@ RSpec.describe UsersController do
   end
 
   describe "POST #create" do
+    before { allow_any_instance_of(ActionController::TestRequest).to receive(:referer).and_return('/edit') }
+
     context "with empty email" do
 
       subject do
@@ -320,10 +322,21 @@ RSpec.describe UsersController do
         end
 
       end
+
+      context 'with no logged user' do
+        before { allow_any_instance_of(ActionController::TestRequest).to receive(:referer).and_return(signup_users_path) }
+
+        it 'creates the user' do
+          expect { post :create, params: { user: Fabricate.to_params(:user, password: '1234test') } }.to change(User, :count).by(1)
+          expect(subject).to redirect_to(terms_path)
+        end
+      end
     end
   end
 
   describe "PUT #update" do
+    before { allow_any_instance_of(ActionController::TestRequest).to receive(:referer).and_return('/edit') }
+
     context "with valid params" do
       context "with a logged" do
         context "normal user" do
