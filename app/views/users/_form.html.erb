@@ -12,7 +12,17 @@
       <%= f.input :email, readonly: true %>
     <% end %>
 
-    <%= f.input :password, label: t("application.login_form.password"), required: true if short %>
+    <% if short %>
+      <div class="form-group password required user_password">
+        <label class="password required control-label" for="user_password"><abbr title="required">*</abbr> Password</label>
+        <div class="input__password-eye">
+          <input class="form-control password required form-control" required="required" aria-required="true" type="password" name="user[password]" id="user_password">
+          <span class="show-password">
+            <i class="material-icons">visibility</i>
+          </span>
+        </div>
+      </div>
+    <% end %>
 
     <%= f.input :phone %>
     <%= f.input :alt_phone %>
