@@ -33,15 +33,17 @@ class UsersController < ApplicationController
   def create
     authorize User
 
+    from_signup = params[:from_signup].present?
     email = user_params[:email]
     @user = User.find_or_initialize_by(email: email) do |u|
       u.attributes = user_params
     end
     empty_email = @user.email.empty?
+    @user.from_signup = from_signup
     @user.setup_and_save_user
 
     if @user.persisted?
-      unless request.referer.include?(signup_users_path)
+      unless from_signup
         @user.tune_after_persisted(current_organization)
         @user.add_tags(current_organization, params[:tag_list] || [])
       end
@@ -50,7 +52,7 @@ class UsersController < ApplicationController
     else
       @user.email = "" if empty_email
 
-      render action: "new"
+      render action: from_signup ? 'signup' : 'new'
     end
   end
 
@@ -108,7 +110,7 @@ class UsersController < ApplicationController
     fields_to_permit += %w"admin registration_number
                            registration_date" if admin?
     fields_to_permit += %w"organization_id superadmin" if superadmin?
-    fields_to_permit += %w"password" if request.referer.include?(signup_users_path)
+    fields_to_permit += %w"password" if params[:from_signup].present?
 
     params.require(:user).permit *fields_to_permit
   end
@@ -122,7 +124,7 @@ class UsersController < ApplicationController
   end
 
   def redirect_to_after_create
-    if request.referer.include?(signup_users_path)
+    if params[:from_signup].present?
       sign_in(@user)
       redirect_to terms_path
     else
