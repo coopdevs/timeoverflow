@@ -34,15 +34,18 @@
                 include_blank: :true %>
     <%= f.input :description, as: "text" %>
     <%= f.input :postcode %>
-    <%= label_tag :tag_list, t('activerecord.attributes.post.tag_list') %>
-    <div class='form-group'>
-      <%= select_tag :tag_list,
-                     options_for_select(member.tags, member.tags),
-                     multiple: true,
-                     data: { placeholder: t("application.tips.entertag"), model: "member" },
-                     id: "tags-js",
-                     class: "form-control" %>
-    </div>
+
+    <% if current_organization %>
+      <%= label_tag :tag_list, t('activerecord.attributes.post.tag_list') %>
+      <div class='form-group'>
+        <%= select_tag :tag_list,
+                      options_for_select(member.tags, member.tags),
+                      multiple: true,
+                      data: { placeholder: t("application.tips.entertag"), model: "member" },
+                      id: "tags-js",
+                      class: "form-control" %>
+      </div>
+    <% end %>
 
     <div class='form-group'>
       <label><%= t('.notifications') %></label>
