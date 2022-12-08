@@ -121,8 +121,10 @@ class ApplicationController < ActionController::Base
     render 'errors/not_found', status: 404
   end
 
-  def member_should_be_active
-    if !current_member.active
+  def member_should_exist_and_be_active
+    if !current_member
+      redirect_to organizations_path
+    elsif !current_member.active
       flash[:error] = I18n.t('users.index.account_deactivated')
       redirect_to select_organization_path
     end

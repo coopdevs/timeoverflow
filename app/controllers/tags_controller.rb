@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :authenticate_user!, :member_should_be_active
+  before_action :authenticate_user!, :member_should_exist_and_be_active
 
   def index
     model = params[:model].classify.constantize

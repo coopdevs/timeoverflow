@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :member_should_be_active, except: [:signup, :create]
+  before_action :authenticate_user!, except: %i[signup create]
+  before_action :member_should_exist_and_be_active, except: %i[signup create edit show update]
 
   has_scope :tagged_with, as: :tag
 
@@ -16,6 +17,8 @@ class UsersController < ApplicationController
 
   def show
     @user = find_user
+    redirect_to edit_user_path(@user) and return if !current_organization
+
     @member = @user.as_member_of(current_organization)
     @movements = @member.movements.order("created_at DESC").page(params[:page]).
                  per(10)
@@ -57,11 +60,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = scoped_users.find(params[:id])
-    authorize @user
+    @user = User.find(params[:id])
+    authorize @user unless @user == current_user
 
     if @user.update(user_params)
-      @user.add_tags(current_organization, params[:tag_list] || [])
+      @user.add_tags(current_organization, params[:tag_list] || []) if current_organization
 
       redirect_to @user
     else
