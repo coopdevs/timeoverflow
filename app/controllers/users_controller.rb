@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: %i[signup create]
-  before_action :member_should_exist_and_be_active, except: %i[signup create edit show update]
+  before_action :user_should_be_confirmed, except: %i[signup create please_confirm]
+  before_action :member_should_exist_and_be_active, except: %i[signup create edit show update please_confirm]
 
   has_scope :tagged_with, as: :tag
 
@@ -36,17 +37,16 @@ class UsersController < ApplicationController
   def create
     authorize User
 
-    from_signup = params[:from_signup].present?
     email = user_params[:email]
     @user = User.find_or_initialize_by(email: email) do |u|
       u.attributes = user_params
     end
     empty_email = @user.email.empty?
-    @user.from_signup = from_signup
+    @user.from_signup = params[:from_signup].present?
     @user.setup_and_save_user
 
     if @user.persisted?
-      unless from_signup
+      unless @user.from_signup
         @user.tune_after_persisted(current_organization)
         @user.add_tags(current_organization, params[:tag_list] || [])
       end
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     else
       @user.email = "" if empty_email
 
-      render action: from_signup ? 'signup' : 'new'
+      render action: @user.from_signup ? 'signup' : 'new'
     end
   end
 
@@ -73,6 +73,8 @@ class UsersController < ApplicationController
   end
 
   def signup
+    redirect_to root_path and return if current_user
+
     @user = User.new
   end
 
@@ -87,6 +89,8 @@ class UsersController < ApplicationController
 
     redirect_to current_user
   end
+
+  def please_confirm; end
 
   private
 

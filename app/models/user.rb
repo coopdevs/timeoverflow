@@ -102,7 +102,7 @@ class User < ApplicationRecord
     # this will be updated to user.id@example.com later on
     self.empty_email = email.strip.empty?
     self.email = "user#{DateTime.now.strftime('%Q')}@example.com" if empty_email && !from_signup
-    skip_confirmation! # auto-confirm, not sending confirmation email
+    skip_confirmation! unless from_signup?
     save
   end
 
