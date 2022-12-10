@@ -1,8 +1,13 @@
 class PetitionsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     petition = Petition.new petition_params
 
     if petition.save
+      OrganizationNotifier.new_petition(petition).deliver_now
+      OrganizationNotifier.petition_sent(petition).deliver_now
+
       flash[:notice] = 'Application sent'
     else
       flash[:error] = 'Something went wrong'

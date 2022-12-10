@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     collection do
       get 'signup'
       get 'manage'
+      get 'please_confirm'
     end
   end
   put :update_avatar, to: 'users#update_avatar'

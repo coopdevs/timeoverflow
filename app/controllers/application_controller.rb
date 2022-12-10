@@ -129,4 +129,10 @@ class ApplicationController < ActionController::Base
       redirect_to select_organization_path
     end
   end
+
+  def user_should_be_confirmed
+    return if current_user.confirmed?
+
+    redirect_to please_confirm_users_path
+  end
 end

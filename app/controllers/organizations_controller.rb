@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :load_resource, only: [:show, :edit, :update, :set_current]
+  before_action :user_should_be_confirmed
 
   def index
     if current_user
