@@ -1,7 +1,7 @@
 RSpec.describe PetitionsController do
   let!(:organization) { Fabricate(:organization) }
   let(:user) { Fabricate(:user) }
-  let(:admin) { Fabricate(:member, organization: organization, manager: true) }
+  let!(:admin) { Fabricate(:member, organization: organization, manager: true) }
 
   describe 'POST #create' do
     before { login(user) }

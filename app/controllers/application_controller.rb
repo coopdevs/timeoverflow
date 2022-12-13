@@ -131,7 +131,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_should_be_confirmed
-    return if current_user.confirmed?
+    return if !current_user || current_user.confirmed?
 
     redirect_to please_confirm_users_path
   end

@@ -12,7 +12,7 @@
         <%= link_to t('users.user_rows.delete_membership'),
               member,
               method: :delete,
-              data: { confirm: t('users.user_rows.sure_delete'), organization_name: org.name },
+              data: { confirm: t('users.user_rows.sure_delete', organization_name: org.name) },
               class: 'btn btn-danger' %>
       <% elsif petition && !current_user.was_member?(petition) %>
         <%= petition.status %>
