@@ -302,6 +302,7 @@ en:
     to: To
     here: here
     decline: decline
+    or: or
   inquiries:
     edit:
       submit: Change inquiry
