@@ -274,6 +274,7 @@ en:
     contact_details: Contact details
     create: Create
     date: Data
+    decline: decline
     delete: Delete
     demote: Demote to normal user
     edit: Update
@@ -281,6 +282,7 @@ en:
     filter: Filter
     from: From
     give_time: Time transfer
+    here: here
     home: Home
     information: Information
     locales_header: change language
@@ -288,6 +290,7 @@ en:
     more: More
     movements: Transactions
     next: Next
+    or: or
     promote: Promote to administrator
     reason: Reason
     required_field: "* Required field"
@@ -300,9 +303,6 @@ en:
     table:
       actions: Actions
     to: To
-    here: here
-    decline: decline
-    or: or
   inquiries:
     edit:
       submit: Change inquiry
@@ -316,9 +316,9 @@ en:
       bdtnear: Search Timebank
       edit_org: Update %{organization}
       edit_profile: Update my profile
-      manage_memberships: Manage memberships
       help: Help
       login: Login
+      manage_memberships: Manage memberships
     report:
       report_title: REPORT
   locales:
@@ -415,6 +415,20 @@ en:
       subtitle: TimeOverflow is open source, free and collaborative
       title: The software designed by and for
       title2: Time Banks
+  petitions:
+    application_sent: Application sent correctly
+    application_sent_body: Hello! your application to %{organization_name} has been sent correctly.
+    application_status: Application %{status}
+    applications: Applications
+    apply: Apply to join
+    new: New Application
+    new_body: Hello! New petition from user %{username}. Manage your applications %{here_link}.
+    status:
+      accepted: accepted
+      declined: declined
+      pending: pending
+      sent: sent
+    status_applications: "%{status} applications"
   posts:
     show:
       info: This %{type} belongs to %{organization}.
@@ -506,13 +520,13 @@ en:
     new:
       error_amount: Time must be greater than 0
   users:
-    confirm_email:
-      please: Please, confirm the email
-      email_sent: An email has been sent to %{email}. After confirm you will be able to apply to any organization.
     avatar:
       change_your_image: Change your image
       crop_the_image: Crop the image
       max_size_warning: Image is too big, max allowed is %{size}MB
+    confirm_email:
+      email_sent: An email has been sent to %{email}. After confirm you will be able to apply to any organization.
+      please: Please, confirm the email
     edit:
       edit_user: Update user
     form:
@@ -562,8 +576,8 @@ en:
       active_warning: You are going to change user account status for %{user}
       cancel_warning: You are going to delete account from the Time Bank for user  %{user}
       deactivate: Deactivate
-      manage_warning: You are going to change privileges for user %{user}
       delete_membership: Delete membership
+      manage_warning: You are going to change privileges for user %{user}
       sure_delete: Are you sure you want to delete your membership from %{organization_name}?
   views:
     pagination:
@@ -572,18 +586,3 @@ en:
       next: Next
       previous: Previous
       truncate: Truncate
-  petitions:
-    status:
-      pending: pending
-      accepted: accepted
-      declined: declined
-      sent: sent
-    application_status: Application %{status}
-    status_applications: "%{status} applications"
-    application_sent: Application sent correctly
-    application_sent_body: Hello! your application to %{organization_name} has been sent correctly.
-    new: New Application
-    new_body: Hello! New petition from user %{username}. Manage your applications %{here_link}.
-    apply: Apply to join
-    applications: Applications
-    

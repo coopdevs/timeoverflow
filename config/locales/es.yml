@@ -274,6 +274,7 @@ es:
     contact_details: Datos de contacto
     create: Crear
     date: Fecha
+    decline: 
     delete: Borrar
     demote: Convertir en usuario normal
     edit: Modificar
@@ -281,6 +282,7 @@ es:
     filter: Filtro
     from: De
     give_time: Transferir tiempo
+    here: 
     home: Inicio
     information: Información
     locales_header: cambiar idioma
@@ -288,6 +290,7 @@ es:
     more: Ver más
     movements: Movimientos
     next: Siguiente
+    or: 
     promote: Convertir en administrador
     reason: Razón
     required_field: "* Campo obligatorio"
@@ -315,6 +318,7 @@ es:
       edit_profile: Modificar mi perfil
       help: Ayuda
       login: Entra
+      manage_memberships: 
     report:
       report_title: INFORME
   locales:
@@ -411,6 +415,20 @@ es:
       subtitle: TimeOverflow es libre, gratuito y colaborativo
       title: El software diseñado por y para
       title2: los Bancos de Tiempo
+  petitions:
+    application_sent: 
+    application_sent_body: 
+    application_status: 
+    applications: 
+    apply: 
+    new: 
+    new_body: 
+    status:
+      accepted: 
+      declined: 
+      pending: 
+      sent: 
+    status_applications: 
   posts:
     show:
       info: Esta %{type} pertenece a %{organization}.
@@ -506,6 +524,9 @@ es:
       change_your_image: Cambia tu imagen
       crop_the_image: Recortar la imagen
       max_size_warning: La imagen es demasiado grande, el máximo permitido es %{size}MB
+    confirm_email:
+      email_sent: 
+      please: 
     edit:
       edit_user: Cambiar usuario
     form:
@@ -555,7 +576,9 @@ es:
       active_warning: Va a cambiar el estado de la cuenta del usuario %{user}
       cancel_warning: Va a eliminar del banco al usuario %{user}
       deactivate: Desactivar
+      delete_membership: 
       manage_warning: Va a cambiar los privilegios del usuario %{user}
+      sure_delete: 
   views:
     pagination:
       first: "&laquo; Primera"

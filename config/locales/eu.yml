@@ -274,6 +274,7 @@ eu:
     contact_details: Kontaktuaren datuak
     create: Sortu
     date: Datuak
+    decline: 
     delete: Ezabatu
     demote: Ohiko erabiltzaile  bihurtu
     edit: Aldaketak egin
@@ -281,6 +282,7 @@ eu:
     filter: Iragazkia
     from: tik
     give_time: Denbora eman
+    here: 
     home: Hasiera
     information: Informazioa
     locales_header: Hizkuntza aldatu
@@ -288,6 +290,7 @@ eu:
     more: 'Gehiago ikusi  '
     movements: Mugimenduak
     next: Hurrengoa
+    or: 
     promote: Administratzaile bihurtu
     reason: Arrazoia
     required_field: Derrigorrez bete beharrekoa
@@ -315,6 +318,7 @@ eu:
       edit_profile: Nire profila aldatu
       help: Laguntza
       login: Sartu
+      manage_memberships: 
     report:
       report_title: TXOSTENA
   locales:
@@ -411,6 +415,20 @@ eu:
       subtitle: TimeOverflow librea dohakoa eta kolaborazio bidezkoa da
       title: Denbora  bankuek  diseinaturiko softwarea,
       title2: Denbora bankuentzat
+  petitions:
+    application_sent: 
+    application_sent_body: 
+    application_status: 
+    applications: 
+    apply: 
+    new: 
+    new_body: 
+    status:
+      accepted: 
+      declined: 
+      pending: 
+      sent: 
+    status_applications: 
   posts:
     show:
       info: "%{type} hau %{organization}(e)ri dagokio."
@@ -506,6 +524,9 @@ eu:
       change_your_image: 
       crop_the_image: 
       max_size_warning: 
+    confirm_email:
+      email_sent: 
+      please: 
     edit:
       edit_user: Erabiltzailea aldatu
     form:
@@ -555,7 +576,9 @@ eu:
       active_warning: " %{user} erabiltzailearen kontuaren egoera aldatuko duzu"
       cancel_warning: " %{user} erabiltzailea D bankutik ezabatuko duzu"
       deactivate: Desaktibatu
+      delete_membership: 
       manage_warning: "%{user} erabiltzailearen onurak aldatuko dituzu"
+      sure_delete: 
   views:
     pagination:
       first: Lehenengoa

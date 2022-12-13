@@ -274,6 +274,7 @@ gl:
     contact_details: Datos de contacto
     create: Crea
     date: Datos
+    decline: 
     delete: Eliminar
     demote: Degradar a usuario/a normal
     edit: Actualización
@@ -281,6 +282,7 @@ gl:
     filter: Filtro
     from: Desde
     give_time: Transferencia de tempo
+    here: 
     home: Inicio
     information: Información
     locales_header: cambiar o idioma
@@ -288,6 +290,7 @@ gl:
     more: Máis
     movements: Transaccións
     next: Próximo
+    or: 
     promote: Promover á persoa administradora
     reason: Razón
     required_field: "* Campo obrigatorio"
@@ -315,6 +318,7 @@ gl:
       edit_profile: Actualiza o meu perfil
       help: Axuda
       login: Acceder
+      manage_memberships: 
     report:
       report_title: INFORME
   locales:
@@ -411,6 +415,20 @@ gl:
       subtitle: TimeOverflow é de código aberto, gratuíto e colaborativo
       title: O software deseñado por e para
       title2: Bancos de tempo
+  petitions:
+    application_sent: 
+    application_sent_body: 
+    application_status: 
+    applications: 
+    apply: 
+    new: 
+    new_body: 
+    status:
+      accepted: 
+      declined: 
+      pending: 
+      sent: 
+    status_applications: 
   posts:
     show:
       info: Este %{type} pertence a %{organization}.
@@ -506,6 +524,9 @@ gl:
       change_your_image: 
       crop_the_image: 
       max_size_warning: 
+    confirm_email:
+      email_sent: 
+      please: 
     edit:
       edit_user: Actualizar persoa usuaria
     form:
@@ -555,7 +576,9 @@ gl:
       active_warning: Vas cambiar o estado da conta de usuario/a para %{user}
       cancel_warning: Vas borrar a conta do Banco de tempo para o usuario/a %{user}
       deactivate: Desactivar
+      delete_membership: 
       manage_warning: Vas cambiar privilexios para o usuario/a %{user}
+      sure_delete: 
   views:
     pagination:
       first: Primeira

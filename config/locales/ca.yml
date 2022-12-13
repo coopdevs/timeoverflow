@@ -274,6 +274,7 @@ ca:
     contact_details: Dades de contacte
     create: Crear
     date: Data
+    decline: 
     delete: Esborrar
     demote: Convertir en usuari normal
     edit: Modificar
@@ -281,6 +282,7 @@ ca:
     filter: Filtre
     from: Des de
     give_time: Transferir temps
+    here: 
     home: Inici
     information: Informació
     locales_header: canviar llengua
@@ -288,6 +290,7 @@ ca:
     more: Veure més
     movements: Moviments
     next: Següent
+    or: 
     promote: Convertir en administrador
     reason: Raó
     required_field: "* Camp obligatori"
@@ -315,6 +318,7 @@ ca:
       edit_profile: Modificar perfil
       help: Ajuda
       login: Entra
+      manage_memberships: 
     report:
       report_title: INFORME
   locales:
@@ -411,6 +415,20 @@ ca:
       subtitle: TimeOverflow és lliure, gratuït i col·laboratiu
       title: El software disenyat per i per
       title2: als Bancs de Temps
+  petitions:
+    application_sent: 
+    application_sent_body: 
+    application_status: 
+    applications: 
+    apply: 
+    new: 
+    new_body: 
+    status:
+      accepted: 
+      declined: 
+      pending: 
+      sent: 
+    status_applications: 
   posts:
     show:
       info: Aquesta %{type} pertany a %{organization}.
@@ -506,6 +524,9 @@ ca:
       change_your_image: Canvia la teva imatge
       crop_the_image: Retalla la imatge
       max_size_warning: La imatge és massa gran, el màxim permès és de %{size}MB
+    confirm_email:
+      email_sent: 
+      please: 
     edit:
       edit_user: Canviar usuari
     form:
@@ -555,7 +576,9 @@ ca:
       active_warning: Vas a canviar l'estat del compte de l'usuari %{user}
       cancel_warning: Vas a eliminar del banc a l'usuari %{user}
       deactivate: Desactivar
+      delete_membership: 
       manage_warning: Vas a canviar els privilegis de l'usuari %{user}
+      sure_delete: 
   views:
     pagination:
       first: "&laquo; Primera"
