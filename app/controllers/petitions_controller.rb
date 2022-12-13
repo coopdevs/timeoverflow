@@ -8,9 +8,9 @@ class PetitionsController < ApplicationController
       OrganizationNotifier.new_petition(petition).deliver_now
       OrganizationNotifier.petition_sent(petition).deliver_now
 
-      flash[:notice] = 'Application sent'
+      flash[:notice] = t('petitions.application_status', status: t("petitions.status.sent"))
     else
-      flash[:error] = 'Something went wrong'
+      flash[:error] = t('errors.internal_server_error.description')
     end
 
     redirect_to organizations_path
@@ -22,9 +22,9 @@ class PetitionsController < ApplicationController
 
     if petition.update(status: status)
       petition.user.add_to_organization(petition.organization) if status == 'accepted'
-      flash[:notice] = "Application #{status}"
+      flash[:notice] = t('petitions.application_status', status: t("petitions.status.#{status}"))
     else
-      flash[:error] = 'Something went wrong'
+      flash[:error] = t('errors.internal_server_error.description')
     end
 
     redirect_to manage_petitions_path

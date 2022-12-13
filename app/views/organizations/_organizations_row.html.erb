@@ -9,15 +9,15 @@
       <% petition = current_user.petitions.where(organization_id: org.id).last %>
 
       <% if member = Member.where(user: current_user, organization: org).first %>
-        <%= link_to 'Delete membership',
+        <%= link_to t('users.user_rows.delete_membership'),
               member,
               method: :delete,
-              data: { confirm: "Are you sure you want to delete your membership from #{org.name}?" },
+              data: { confirm: t('users.user_rows.sure_delete', organization_name: org.name) },
               class: 'btn btn-danger' %>
       <% elsif petition && !current_user.was_member?(petition) %>
         <%= petition.status %>
       <% else %>
-        <%= link_to 'Apply to join', petitions_path(user_id: current_user.id, organization_id: org.id, status: 'pending'), method: :post %>
+        <%= link_to t('petitions.apply'), petitions_path(user_id: current_user.id, organization_id: org.id, status: 'pending'), method: :post %>
       <% end %>
     <% end %>
   </td>
