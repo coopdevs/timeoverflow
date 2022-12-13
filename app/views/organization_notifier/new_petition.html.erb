@@ -1,1 +1,1 @@
-Hello! New petition from user <%= @user.username %>. manage your applications <%= link_to 'here', manage_petitions_url %>.
+<%= t('petitions.new_body', username: @user.username, here_link: link_to(t('global.here'), manage_petitions_url)).html_safe %>

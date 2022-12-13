@@ -1,2 +1,2 @@
-<h1>Please, confirm the email</h1>
-An email has been sent to <%= current_user.email %>. After confirm you will be able to apply to any organization.
+<h1><%= t('users.confirm_email.please') %></h1>
+<%= t('users.confirm_email.email_sent', email: current_user.email) %>

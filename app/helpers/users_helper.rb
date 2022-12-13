@@ -38,4 +38,8 @@ module UsersHelper
   def can_toggle_active?(_member)
     superadmin? || admin?
   end
+
+  def status_applications(status)
+    t('petitions.status_applications', status: t("petitions.status.#{status}").humanize)
+  end
 end
