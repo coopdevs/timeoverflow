@@ -13,10 +13,10 @@
     <% end %>
 
     <% if short %>
-      <div class="form-group password required user_password">
-        <label class="password required control-label" for="user_password"><abbr title="required">*</abbr> <%= t('application.login_form.password') %></label>
+      <div class="form-group">
+        <label class="control-label" for="user_password"><abbr title="required">*</abbr> <%= t('application.login_form.password') %></label>
         <div class="input__password-eye">
-          <input class="form-control password required form-control" required="required" aria-required="true" type="password" name="user[password]" id="user_password">
+          <input class="form-control" required type="password" name="user[password]" id="user_password">
           <span class="show-password">
             <i class="material-icons">visibility</i>
           </span>

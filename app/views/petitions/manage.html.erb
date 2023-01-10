@@ -1,10 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <h1>
-        <%= link_to current_organization.name, current_organization %>
-        <%= t('petitions.applications') %>
-      </h1>
+      <h1><%= t('petitions.applications') %></h1>
     </div>
   </div>
 </div>
@@ -14,7 +11,7 @@
     <ul class="nav nav-pills actions-menu">
       <li class="<%= "active" if @status == 'pending' %>">
         <%= link_to manage_petitions_path(status: 'pending') do %>
-          <%= glyph :minus %>
+          <%= glyph :time %>
           <%= status_applications('pending') %>
         <% end %>
       </li>
