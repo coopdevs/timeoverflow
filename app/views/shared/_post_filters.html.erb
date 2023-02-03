@@ -31,7 +31,10 @@
         <% all_categories.each do |c| %>
           <% next if c == @category %>
           <li>
-            <%= link_to c.name, "#{base_path}?cat=#{c.id}" %>
+            <%= link_to "#{base_path}?cat=#{c.id}" do %>
+              <%= category_icon(c) %>
+              <%= c.name %>
+            <% end %>
           </li>
         <% end %>
       </ul>

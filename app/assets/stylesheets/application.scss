@@ -190,14 +190,14 @@ html {
     display: block;
   }
 
-  .glyphicon-folder-open {
-    font-size: 140%;
-    margin: 0 5px;
-  }
-
   .category {
     font-weight: bold;
     margin-right: 10px;
+
+    .glyphicon {
+      font-size: 140%;
+      margin-right: 4px;
+    }
   }
 
   &__datetime {
