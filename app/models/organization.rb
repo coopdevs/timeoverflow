@@ -10,6 +10,8 @@ class Organization < ApplicationRecord
       }
     }
 
+  has_one_attached :logo
+
   has_many :members, dependent: :destroy
   has_many :users, -> { order "members.created_at DESC" }, through: :members
   has_many :all_accounts, class_name: "Account", inverse_of: :organization, dependent: :destroy

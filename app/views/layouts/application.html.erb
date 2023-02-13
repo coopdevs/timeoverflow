@@ -18,14 +18,13 @@
     <div class="container content">
       <%= render 'layouts/messages' unless devise_controller? %>
       <%= yield %>
+      <%= organization_logo %>
     </div>
     <div class="modal fade" id="modal">
       <div class="modal-dialog">
         <div class="modal-content"></div>
       </div>
     </div>
-
-    <%= render_brand_logo %>
     <%= render 'application/footer' %>
   </body>
 </html>

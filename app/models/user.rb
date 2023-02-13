@@ -20,6 +20,7 @@ class User < ApplicationRecord
   attr_accessor :from_signup
 
   has_one_attached :avatar
+
   has_many :members, dependent: :destroy
   has_many :organizations, through: :members
   has_many :accounts, through: :members
