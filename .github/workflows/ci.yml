@@ -1,6 +1,10 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
   test:
@@ -15,18 +19,15 @@ jobs:
           POSTGRES_PASSWORD: password
           POSTGRES_DB: timeoverflow_test
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-
       - name: Set up database
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:password@localhost/timeoverflow_test
         run: bundle exec rails db:setup
-
       - name: Run tests
         run: bundle exec rspec
