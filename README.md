@@ -49,6 +49,6 @@ of Time and also have the possibility to consult the extract of their account.
 
 ## License
 
-> The Unlicense
+> AGPL3
 
-You can find the license file [here](UNLICENSE).
+You can find the license file [here](LICENSE).
