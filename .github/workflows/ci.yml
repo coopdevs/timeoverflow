@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:14
+        image: postgres:9.4
         ports: ["5432:5432"]
         env:
           POSTGRES_USER: postgres
@@ -24,7 +24,6 @@ jobs:
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: timeoverflow_test
         run: |
           bundle exec rails db:setup
           bundle exec rspec
