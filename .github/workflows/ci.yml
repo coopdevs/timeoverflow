@@ -21,9 +21,6 @@ jobs:
         with:
           bundler-cache: true
       - name: Set up database
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:password@localhost/timeoverflow_test
         run: bundle exec rails db:setup
       - name: Run tests
         run: bundle exec rspec
