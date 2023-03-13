@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new"
   end
 
-  ActiveAdmin.routes(self)
+  # ActiveAdmin.routes(self)
 
   get :switch_lang, to: 'application#switch_lang'
 
