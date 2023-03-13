@@ -13,7 +13,7 @@ development:
 test:
   <<: *defaults
   database: timeoverflow_test
-  host: <%= ENV['DATABASE_HOST'] || ENV["POSTGRES_HOST"] %>
+  host: localhost
   username: <%= ENV['DATABASE_USER'] || ENV["POSTGRES_USER"] %>
   password: <%= ENV['DATABASE_PASSWORD'] || ENV["POSTGRES_PASSWORD"] %>
 
