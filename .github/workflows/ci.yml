@@ -2,6 +2,13 @@ name: CI
 
 on: [push, pull_request]
 
+env:
+  RAILS_ENV: test
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: password
+  POSTGRES_DB: timeoverflow_test
+  POSTGRES_HOST: localhost
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -9,11 +16,6 @@ jobs:
       postgres:
         image: postgres:14
         ports: ["5432:5432"]
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: timeoverflow_test
-          POSTGRES_HOST: localhost
     steps:
       - uses: actions/checkout@v3
       - name: Set up Ruby
@@ -21,9 +23,6 @@ jobs:
         with:
           bundler-cache: true
       - name: Set up database
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:password@localhost:5432/timeoverflow_test
         run: bundle exec rails db:setup
       - name: Run tests
         run: bundle exec rspec
