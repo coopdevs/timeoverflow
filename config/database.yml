@@ -1,7 +1,6 @@
 defaults: &defaults
   adapter: postgresql
-  username: <%= ENV['DATABASE_USER'] || ENV['POSTGRES_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] || ENV['POSTGRES_PASSWORD'] %>
+  username: <%= ENV['DATABASE_USER'] %>
   # collation: 'es_ES.UTF-8'
   # ctype: 'es_ES.UTF-8'
   template: 'template0'
@@ -13,7 +12,10 @@ development:
 
 test:
   <<: *defaults
-  database: 'timeoverflow_test'
+  database: timeoverflow_test
+  host: <%= ENV['DATABASE_HOST'] || ENV["POSTGRES_HOST"] %>
+  username: <%= ENV['DATABASE_USER'] || ENV["POSTGRES_USER"] %>
+  password: <%= ENV['DATABASE_PASSWORD'] || ENV["POSTGRES_PASSWORD"] %>
 
 staging:
   <<: *defaults

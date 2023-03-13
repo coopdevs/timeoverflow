@@ -13,6 +13,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: timeoverflow_test
+          POSTGRES_HOST: localhost
     steps:
       - uses: actions/checkout@v3
       - name: Set up Ruby
