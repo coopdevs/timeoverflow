@@ -158,7 +158,7 @@ ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_
 
 
 --
--- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: - 
+-- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.active_storage_attachments (
@@ -191,7 +191,7 @@ ALTER SEQUENCE public.active_storage_attachments_id_seq OWNED BY public.active_s
 
 
 --
--- Name: active_storage_blobs; Type: TABLE; Schema: public; Owner: - 
+-- Name: active_storage_blobs; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.active_storage_blobs (
@@ -227,7 +227,7 @@ ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage
 
 
 --
--- Name: active_storage_variant_records; Type: TABLE; Schema: public; Owner: - 
+-- Name: active_storage_variant_records; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.active_storage_variant_records (
@@ -257,7 +257,7 @@ ALTER SEQUENCE public.active_storage_variant_records_id_seq OWNED BY public.acti
 
 
 --
--- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: - 
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ar_internal_metadata (
@@ -276,7 +276,7 @@ CREATE TABLE public.categories (
     id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    name_translations public.hstore
+    name_translations jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
 
@@ -822,7 +822,7 @@ ALTER TABLE ONLY public.active_admin_comments
 
 
 --
--- Name: active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_attachments
@@ -830,7 +830,7 @@ ALTER TABLE ONLY public.active_storage_attachments
 
 
 --
--- Name: active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_blobs
@@ -838,7 +838,7 @@ ALTER TABLE ONLY public.active_storage_blobs
 
 
 --
--- Name: active_storage_variant_records_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: active_storage_variant_records_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_variant_records
@@ -846,7 +846,7 @@ ALTER TABLE ONLY public.active_storage_variant_records
 
 
 --
--- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: - 
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ar_internal_metadata
@@ -977,28 +977,28 @@ CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON pub
 
 
 --
--- Name: index_active_storage_attachments_on_blob_id; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_active_storage_attachments_on_blob_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_active_storage_attachments_on_blob_id ON public.active_storage_attachments USING btree (blob_id);
 
 
 --
--- Name: index_active_storage_attachments_uniqueness; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_active_storage_attachments_uniqueness; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_active_storage_attachments_uniqueness ON public.active_storage_attachments USING btree (record_type, record_id, name, blob_id);
 
 
 --
--- Name: index_active_storage_blobs_on_key; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_active_storage_blobs_on_key; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_blobs USING btree (key);
 
 
 --
--- Name: index_active_storage_variant_records_uniqueness; Type: INDEX; Schema: public; Owner: - 
+-- Name: index_active_storage_variant_records_uniqueness; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_active_storage_variant_records_uniqueness ON public.active_storage_variant_records USING btree (blob_id, variation_digest);
@@ -1285,6 +1285,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210423193937'),
 ('20210424174640'),
 ('20210502160343'),
-('20210503201944');
+('20210503201944'),
+('20230312231058');
 
 
