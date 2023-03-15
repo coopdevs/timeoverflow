@@ -276,7 +276,8 @@ CREATE TABLE public.categories (
     id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    name_translations jsonb DEFAULT '{}'::jsonb NOT NULL
+    name_translations jsonb DEFAULT '{}'::jsonb NOT NULL,
+    icon_name character varying
 );
 
 
@@ -1365,6 +1366,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210502160343'),
 ('20210503201944'),
 ('20221016192111'),
-('20230312231058');
+('20230312231058'),
+('20230314233504');
 
 

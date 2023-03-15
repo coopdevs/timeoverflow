@@ -1,13 +1,16 @@
 ActiveAdmin.register Category do
   index do
     id_column
-    column :name, sortable: false
+    column :name do |category|
+      "#{tag.span(nil, class: "glyphicon glyphicon-#{category.icon_name}")} #{category.name}".html_safe
+    end
     actions
   end
 
   form do |f|
     f.inputs do
       f.input :name
+      f.input :icon_name, hint: "See all available <a href='https://getbootstrap.com/docs/3.3/components/#glyphicons' target='_blank'>icons here</a>".html_safe
     end
     f.actions
   end
@@ -16,6 +19,7 @@ ActiveAdmin.register Category do
     attributes_table do
       row :created_at
       row :updated_at
+      row :icon_name
       row :name_translations do
         cat.name_translations.map do |locale, translation|
           tag.strong("#{I18n.t("locales.#{locale}", locale: locale)}: ") +
@@ -25,5 +29,5 @@ ActiveAdmin.register Category do
     end
   end
 
-  permit_params :name
+  permit_params :name, :icon_name
 end
