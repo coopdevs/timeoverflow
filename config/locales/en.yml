@@ -19,7 +19,7 @@ en:
         created_at: Created
         updated_at: Updated
       inquiry:
-        is_group: Group inquiry
+        is_group: Group request
       offer:
         is_group: Group offer
       organization:
@@ -95,8 +95,8 @@ en:
         one: Comment
         other: Comments
       inquiry:
-        one: Inquiry
-        other: Inquiries
+        one: Request
+        other: Requests
       offer:
         one: Offer
         other: Offers
@@ -137,7 +137,7 @@ en:
       demographics: Demographics data
       global_activity: Global activity
       inactive_users: Inactive users
-      inquiry_public_link: Inquiries public link
+      inquiry_public_link: Requests public link
       last_login: Last login
       offer_public_link: Offers public link
       organizations: Organizations
@@ -305,11 +305,11 @@ en:
     to: To
   inquiries:
     edit:
-      submit: Change inquiry
+      submit: Change request
     index:
-      new_inquiry: New inquiry
+      new_inquiry: New request
     new:
-      submit: Create inquiry
+      submit: Create request
   layouts:
     application:
       about: About TimeOverflow
@@ -440,7 +440,7 @@ en:
       delete_reason: Are you sure to delete this comment?
       movements: Movements
     post_form:
-      group_inquiry: Is it a group inquiry?
+      group_inquiry: Is it a group request?
       group_offer: Is it a group offer?
       you_can_use: You can use
   simple_form:
