@@ -27,18 +27,12 @@
           <th><%= t '.neighborhood' %></th>
           <th><%= t '.web' %></th>
           <th><%= t '.member_count' %></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <% @organizations.each do |org| %>
-          <tr>
-            <td><%= link_to(org.name, org) %></td>
-            <td><%= org.city %></td>
-            <td><%= org.neighborhood %></td>
-            <td><%= link_to(org.web, org.web) if org.web.present? %></td>
-            <td><%= org.members.count %></td>
-          </tr>
-        <% end %>
+        <%= render partial: 'organizations_row', collection: @user_organizations, as: :org if !params[:page] || params[:page] == '1' %>
+        <%= render partial: 'organizations_row', collection: @organizations, as: :org %>
       </tbody>
     </table>
     <div class="paginate-align">

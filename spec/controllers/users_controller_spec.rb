@@ -320,10 +320,23 @@ RSpec.describe UsersController do
         end
 
       end
+
+      context 'with no logged user' do
+        before { allow_any_instance_of(ActionController::TestRequest).to receive(:referer).and_return(signup_users_path) }
+
+        it 'creates the user' do
+          expect do
+            post :create, params: { user: Fabricate.to_params(:user, password: '1234test'), from_signup: 'true' } 
+          end.to change(User, :count).by(1)
+          expect(subject).to redirect_to(terms_path)
+        end
+      end
     end
   end
 
   describe "PUT #update" do
+    before { allow_any_instance_of(ActionController::TestRequest).to receive(:referer).and_return('/edit') }
+
     context "with valid params" do
       context "with a logged" do
         context "normal user" do

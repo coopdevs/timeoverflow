@@ -21,6 +21,13 @@
   <% end %>
 </li>
 
+<li role="presentation">
+  <%= link_to organizations_path do %>
+    <%= glyph :list %>
+    <%= t('layouts.application.manage_memberships') %>
+  <% end %>
+</li>
+
 <% current_user.members.where(manager: true).each do |m| %>
   <li role="presentation">
     <%= link_to m.organization do %>

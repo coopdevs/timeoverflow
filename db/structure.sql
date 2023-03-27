@@ -276,7 +276,8 @@ CREATE TABLE public.categories (
     id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    name_translations jsonb DEFAULT '{}'::jsonb NOT NULL
+    name_translations jsonb DEFAULT '{}'::jsonb NOT NULL,
+    icon_name character varying
 );
 
 
@@ -510,6 +511,39 @@ CREATE SEQUENCE public.organizations_id_seq
 --
 
 ALTER SEQUENCE public.organizations_id_seq OWNED BY public.organizations.id;
+
+
+--
+-- Name: petitions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.petitions (
+    id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    organization_id bigint NOT NULL,
+    status integer,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: petitions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.petitions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: petitions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.petitions_id_seq OWNED BY public.petitions.id;
 
 
 --
@@ -781,6 +815,13 @@ ALTER TABLE ONLY public.organizations ALTER COLUMN id SET DEFAULT nextval('publi
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY public.petitions ALTER COLUMN id SET DEFAULT nextval('public.petitions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY public.posts ALTER COLUMN id SET DEFAULT nextval('public.posts_id_seq'::regclass);
 
 
@@ -907,6 +948,14 @@ ALTER TABLE ONLY public.movements
 
 ALTER TABLE ONLY public.organizations
     ADD CONSTRAINT organizations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: petitions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.petitions
+    ADD CONSTRAINT petitions_pkey PRIMARY KEY (id);
 
 
 --
@@ -1082,6 +1131,20 @@ CREATE UNIQUE INDEX index_organizations_on_name ON public.organizations USING bt
 
 
 --
+-- Name: index_petitions_on_organization_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_petitions_on_organization_id ON public.petitions USING btree (organization_id);
+
+
+--
+-- Name: index_petitions_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_petitions_on_user_id ON public.petitions USING btree (user_id);
+
+
+--
 -- Name: index_posts_on_category_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1173,6 +1236,22 @@ ALTER TABLE ONLY public.events
 
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_transfer_id_fkey FOREIGN KEY (transfer_id) REFERENCES public.transfers(id);
+
+
+--
+-- Name: fk_rails_0f0c5fe120; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.petitions
+    ADD CONSTRAINT fk_rails_0f0c5fe120 FOREIGN KEY (organization_id) REFERENCES public.organizations(id);
+
+
+--
+-- Name: fk_rails_148f563e25; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.petitions
+    ADD CONSTRAINT fk_rails_148f563e25 FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -1286,6 +1365,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210424174640'),
 ('20210502160343'),
 ('20210503201944'),
-('20230312231058');
+('20221016192111'),
+('20230312231058'),
+('20230314233504');
 
 

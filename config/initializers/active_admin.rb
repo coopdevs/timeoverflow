@@ -1,6 +1,7 @@
 ActiveAdmin.setup do |config|
   config.site_title = "TimeOverflow"
   config.site_title_link = "/"
+  config.breadcrumb = false
   config.footer = "TimeOverflow Admin | www.timeoverflow.org"
   config.authentication_method = :authenticate_superuser!
   config.current_user_method = :current_user

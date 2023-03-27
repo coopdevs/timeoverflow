@@ -6,4 +6,9 @@ module CategoriesHelper
   def categories_for_select
     all_categories.map { |cat| [cat.name, cat.id] }
   end
+
+  def category_icon(category)
+    icon_name = category.icon_name
+    glyph(icon_name) if icon_name
+  end
 end

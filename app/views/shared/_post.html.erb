@@ -16,7 +16,7 @@
         <%= l post.updated_at.to_date, format: :long %>
         <p></p>
         <%= link_to [post.class, cat: post.category] do %>
-          <%= glyph(:folder_open) %>
+          <%= category_icon(post.category) %>
           <%= post.category %>
         <% end %>
         <p></p>

@@ -1,0 +1,27 @@
+<tr>
+  <td><%= link_to(org.name, org) %></td>
+  <td><%= org.city %></td>
+  <td><%= org.neighborhood %></td>
+  <td><%= link_to(org.web, org.web) if org.web.present? %></td>
+  <td><%= org.members.count %></td>
+  <td>
+    <% if current_user %>
+      <% petition = current_user.petitions.where(organization_id: org.id).last %>
+
+      <% if member = Member.where(user: current_user, organization: org).first %>
+        <%= link_to t('users.user_rows.delete_membership'),
+              member,
+              method: :delete,
+              data: { confirm: t('users.user_rows.sure_delete', organization_name: org.name) },
+              class: 'btn btn-danger' %>
+      <% elsif petition && !current_user.was_member?(petition) %>
+        <span class="badge"><%= petition.status %></span>
+      <% else %>
+        <%= link_to t('petitions.apply'),
+              petitions_path(user_id: current_user.id, organization_id: org.id, status: 'pending'),
+              method: :post,
+              class: 'btn btn-default' %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

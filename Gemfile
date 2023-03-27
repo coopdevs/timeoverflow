@@ -36,7 +36,7 @@ gem 'select2-rails', '~> 4.0.13'
 
 group :development do
   gem 'listen', '~> 3.2.0'
-  gem 'localeapp', '~> 3.1', require: false
+  gem 'localeapp', '~> 3.3', require: false
   gem 'letter_opener', '~> 1.7.0'
   gem 'web-console', '~> 4.1.0'
   gem 'capistrano', '~> 3.1'
