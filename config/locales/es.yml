@@ -274,7 +274,7 @@ es:
     contact_details: Datos de contacto
     create: Crear
     date: Fecha
-    decline: 
+    decline: rechazar
     delete: Borrar
     demote: Convertir en usuario normal
     edit: Modificar
@@ -282,7 +282,7 @@ es:
     filter: Filtro
     from: De
     give_time: Transferir tiempo
-    here: 
+    here: aquí
     home: Inicio
     information: Información
     locales_header: cambiar idioma
@@ -290,7 +290,7 @@ es:
     more: Ver más
     movements: Movimientos
     next: Siguiente
-    or: 
+    or: o
     promote: Convertir en administrador
     reason: Razón
     required_field: "* Campo obligatorio"
@@ -318,7 +318,7 @@ es:
       edit_profile: Modificar mi perfil
       help: Ayuda
       login: Entra
-      manage_memberships: 
+      manage_memberships: Gestionar membresia
     report:
       report_title: INFORME
   locales:
@@ -416,19 +416,19 @@ es:
       title: El software diseñado por y para
       title2: los Bancos de Tiempo
   petitions:
-    application_sent: 
-    application_sent_body: 
-    application_status: 
-    applications: 
-    apply: 
-    new: 
-    new_body: 
+    application_sent: Solicitud enviada correctamente
+    application_sent_body: 'Hola! Tu solicitud a %{organization_name}  se ha enviado correctamente. '
+    application_status: Solicitud %{status}
+    applications: Solicitudes
+    apply: Solicita unirte
+    new: Nueva solicitud
+    new_body: Hola! Nueva petición del usuario %{username}. Gestiona las solicitudes %{here_link}.
     status:
-      accepted: 
-      declined: 
-      pending: 
-      sent: 
-    status_applications: 
+      accepted: aceptada
+      declined: rechazada
+      pending: pendiente
+      sent: enviada
+    status_applications: "%{status} solicitudes"
   posts:
     show:
       info: Esta %{type} pertenece a %{organization}.
@@ -525,8 +525,8 @@ es:
       crop_the_image: Recortar la imagen
       max_size_warning: La imagen es demasiado grande, el máximo permitido es %{size}MB
     confirm_email:
-      email_sent: 
-      please: 
+      email_sent: Un email se ha enviado a %{email}. Cuando lo hayas confirmado podrás solicitar unirte a cualquier organización.
+      please: Por favor, confirma el correo electrónico
     edit:
       edit_user: Cambiar usuario
     form:
@@ -576,9 +576,9 @@ es:
       active_warning: Va a cambiar el estado de la cuenta del usuario %{user}
       cancel_warning: Va a eliminar del banco al usuario %{user}
       deactivate: Desactivar
-      delete_membership: 
+      delete_membership: Borrar membresia
       manage_warning: Va a cambiar los privilegios del usuario %{user}
-      sure_delete: 
+      sure_delete: Estás seguro de que quieres dejar de ser miembro de %{organization_name}?
   views:
     pagination:
       first: "&laquo; Primera"
