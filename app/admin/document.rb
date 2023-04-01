@@ -17,7 +17,7 @@ ActiveAdmin.register Document do
       end
       row :label
       row :title_translations do
-        render_translations(t.title_translations, " | ")
+        render_translations(t.title_translations)
       end
       row :content_translations do
         render_translations(t.content_translations, "<br>")

@@ -21,7 +21,7 @@ ActiveAdmin.register Category do
       row :updated_at
       row :icon_name
       row :name_translations do
-        render_translations(cat.name_translations, " | ")
+        render_translations(cat.name_translations)
       end
     end
   end
