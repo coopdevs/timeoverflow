@@ -17,16 +17,10 @@ ActiveAdmin.register Document do
       end
       row :label
       row :title_translations do
-        t.title_translations.map do |locale, translation|
-          tag.strong("#{I18n.t("locales.#{locale}", locale: locale)}: ") +
-          tag.span(translation)
-        end.join(" | ").html_safe
+        render_translations(t.title_translations, " | ")
       end
       row :content_translations do
-        t.content_translations.map do |locale, translation|
-          tag.strong("#{I18n.t("locales.#{locale}", locale: locale)}: ") +
-          tag.span(translation)
-        end.join("<br>").html_safe
+        render_translations(t.content_translations, "<br>")
       end
     end
   end
