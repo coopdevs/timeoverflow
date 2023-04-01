@@ -25,8 +25,8 @@ ActiveAdmin.register Document do
       row :content_translations do
         t.content_translations.map do |locale, translation|
           tag.strong("#{I18n.t("locales.#{locale}", locale: locale)}: ") +
-          tag.span(raw RDiscount.new(translation).to_html)
-        end.join("\n").html_safe
+          tag.span(translation)
+        end.join("<br>").html_safe
       end
     end
   end
