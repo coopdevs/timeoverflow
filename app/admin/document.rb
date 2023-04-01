@@ -17,9 +17,7 @@ ActiveAdmin.register Document do
       end
       row :label
       row :title
-      row :content do
-        raw RDiscount.new(t.content).to_html
-      end
+      row :content
     end
   end
 

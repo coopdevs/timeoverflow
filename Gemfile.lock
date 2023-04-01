@@ -312,7 +312,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    rdiscount (2.2.0.2)
+    rdiscount (2.2.7)
     redis (4.5.1)
     regexp_parser (2.1.1)
     responders (3.0.1)
@@ -472,7 +472,7 @@ DEPENDENCIES
   rails (~> 6.1.1)
   rails-controller-testing
   rails-i18n (~> 6.0.0)
-  rdiscount (~> 2.2.0.1)
+  rdiscount (~> 2.2.7)
   rollbar (~> 2.22.1)
   rspec-rails (~> 4.0.0)
   rubocop (~> 1.6)
@@ -491,9 +491,6 @@ DEPENDENCIES
   unicorn (~> 5.5.1)
   web-console (~> 4.1.0)
   webdrivers (~> 4.4)
-
-RUBY VERSION
-   ruby 2.6.3p62
 
 BUNDLED WITH
    2.1.4
