@@ -274,7 +274,7 @@ ca:
     contact_details: Dades de contacte
     create: Crear
     date: Data
-    decline: 
+    decline: rebutjar
     delete: Esborrar
     demote: Convertir en usuari normal
     edit: Modificar
@@ -282,7 +282,7 @@ ca:
     filter: Filtre
     from: Des de
     give_time: Transferir temps
-    here: 
+    here: aquí
     home: Inici
     information: Informació
     locales_header: canviar llengua
@@ -290,7 +290,7 @@ ca:
     more: Veure més
     movements: Moviments
     next: Següent
-    or: 
+    or: o
     promote: Convertir en administrador
     reason: Raó
     required_field: "* Camp obligatori"
@@ -318,7 +318,7 @@ ca:
       edit_profile: Modificar perfil
       help: Ajuda
       login: Entra
-      manage_memberships: 
+      manage_memberships: Gestiona membres
     report:
       report_title: INFORME
   locales:
@@ -416,19 +416,19 @@ ca:
       title: El software disenyat per i per
       title2: als Bancs de Temps
   petitions:
-    application_sent: 
-    application_sent_body: 
-    application_status: 
-    applications: 
-    apply: 
-    new: 
-    new_body: 
+    application_sent: Sol·licitud enviada correctament
+    application_sent_body: Hola! La teva sol·licitud a %{organization_name} s'ha enviat correctament.
+    application_status: Sol·licitud %{status}
+    applications: Sol·licituds
+    apply: Sol·licita unir-te
+    new: Nova sol·licitud
+    new_body: Hola! Nova petició de l'usuari %{username}. Gestiona les sol·licituds %{here_link}.
     status:
-      accepted: 
-      declined: 
-      pending: 
-      sent: 
-    status_applications: 
+      accepted: acceptada
+      declined: rebutjada
+      pending: pendent
+      sent: enviada
+    status_applications: "%{status} sol·licituds"
   posts:
     show:
       info: Aquesta %{type} pertany a %{organization}.
@@ -525,8 +525,8 @@ ca:
       crop_the_image: Retalla la imatge
       max_size_warning: La imatge és massa gran, el màxim permès és de %{size}MB
     confirm_email:
-      email_sent: 
-      please: 
+      email_sent: T'hem enviat un correu electrònic a %{email}. Un cop confirmis el teu compte de correu podràs sol·licitar unir-te a qualsevol organització.
+      please: Si us plau, confirma el teu correu electrònic.
     edit:
       edit_user: Canviar usuari
     form:
@@ -576,9 +576,9 @@ ca:
       active_warning: Vas a canviar l'estat del compte de l'usuari %{user}
       cancel_warning: Vas a eliminar del banc a l'usuari %{user}
       deactivate: Desactivar
-      delete_membership: 
+      delete_membership: Elimina pertinença
       manage_warning: Vas a canviar els privilegis de l'usuari %{user}
-      sure_delete: 
+      sure_delete: Estàs segur que vols sortir de %{organization_name}?
   views:
     pagination:
       first: "&laquo; Primera"
