@@ -1,5 +1,5 @@
 ActiveAdmin.register Document do
-  permit_params *Document.attribute_names, :title, :content
+  permit_params :label, :title, :content
 
   index do
     id_column
