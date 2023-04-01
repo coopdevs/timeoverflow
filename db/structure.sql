@@ -340,11 +340,11 @@ CREATE TABLE public.documents (
     id integer NOT NULL,
     documentable_id integer,
     documentable_type character varying,
-    title_translations jsonb DEFAULT '{}'::jsonb NOT NULL,
-    content_translations jsonb DEFAULT '{}'::jsonb NOT NULL,
     label character varying,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    title_translations jsonb DEFAULT '{}'::jsonb NOT NULL,
+    content_translations jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
 
