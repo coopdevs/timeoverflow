@@ -1,5 +1,5 @@
 ActiveAdmin.register Document do
-  permit_params *Document.attribute_names
+  permit_params :label, :title, :content
 
   index do
     id_column
@@ -16,16 +16,20 @@ ActiveAdmin.register Document do
         t.documentable
       end
       row :label
-      row :title
-      row :content
+      row :title_translations do
+        render_translations(t.title_translations)
+      end
+      row :content_translations do
+        render_translations(t.content_translations, "<br>")
+      end
     end
   end
 
   form do |f|
     f.inputs do
       f.input :label
-      f.input :title, as: :string
-      f.input :content
+      f.input :title, as: :text
+      f.input :content, as: :text
     end
     f.actions
   end

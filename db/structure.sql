@@ -340,11 +340,11 @@ CREATE TABLE public.documents (
     id integer NOT NULL,
     documentable_id integer,
     documentable_type character varying,
-    title text,
-    content text,
     label character varying,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    title_translations jsonb DEFAULT '{}'::jsonb NOT NULL,
+    content_translations jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
 
@@ -1367,6 +1367,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210503201944'),
 ('20221016192111'),
 ('20230312231058'),
-('20230314233504');
+('20230314233504'),
+('20230401114456');
 
 

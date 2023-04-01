@@ -21,10 +21,7 @@ ActiveAdmin.register Category do
       row :updated_at
       row :icon_name
       row :name_translations do
-        cat.name_translations.map do |locale, translation|
-          tag.strong("#{I18n.t("locales.#{locale}", locale: locale)}: ") +
-          tag.span(translation)
-        end.join(" | ").html_safe
+        render_translations(cat.name_translations)
       end
     end
   end
