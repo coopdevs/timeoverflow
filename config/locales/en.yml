@@ -113,14 +113,6 @@ en:
         one: User
         other: Users
   application:
-    term_conditions:
-      title: TimeOverflow Terms of Service
-      content: "TimeOverflow is a free software developed by volunteers with the aim of facilitating the functional processes of a Time Bank through information technologies. TimeOverflow allows Time Bank management by administrative users and facilitates contact among all users of a Time Bank.
-        \n\nThe Association for the Development of Time Banks, hereinafter ADBdT, is a non-profit association that works to develop Time Banks. The ADBdT offers an online installation of TimeOverflow and does so for free for any Time Bank that requests it. The use of this online application implies the prior acceptance, by the administrators who will manage the Time Bank and all its users, of these terms of service as well as their future modifications.
-        \n\nWe offer this online application hoping it will be very useful for Time Banks. However, we cannot offer ANY WARRANTY regarding its correct operation. The ADBdT maintains this online installation thanks to the contributions of its members and will continue to offer this service as long as it is possible. In this regard, the ADBdT is exempt from any type of responsibility regarding the operation, as well as access or availability of the download of said program.
-        \n\nThe ADBdT regularly backs up the TimeOverflow database to prevent possible accidental data loss and is committed to addressing any incident. Therefore, with the use of this application and inherent acceptance of these terms of service, Time Banks acknowledge having obtained the express consent of any of their members and/or users for the purposes of transfer and/or access to their data by third parties in order to provide the services derived from the use of TimeOverflow. Without prejudice to the foregoing, the ADBdT will only access the data punctually for statistical or technical purposes, always maintaining the anonymity of users.
-        \n\nThe ADBdT is not responsible for the privacy and protection of the data of users of a Time Bank. The responsible parties for personal data in a Time Bank are its administrators, who must have the express consent of their users and comply with Organic Law 15/1999 of December 13, on the protection of personal data. Any divergence that may arise with the ADBdT will be subject to Spanish regulations and will be dealt with before the Courts and Tribunals of Barcelona, with express waiver of any other jurisdiction or rule that may be applicable.
-        \n\nThis service is offered by the ADBdT with VAT number: G65875031 which can be contacted at its postal address Carrer de la Providència, 42 (Hotel Entitats) 08024 Barcelona or by email at adbdt.info@gmail.com."
     landing:
       button: Enter
       slogan: Let's value our time
