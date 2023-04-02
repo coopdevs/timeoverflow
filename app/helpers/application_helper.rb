@@ -24,6 +24,17 @@ module ApplicationHelper
     "https://www.gravatar.com/avatar/#{gravatar_id}.png?#{gravatar_options.to_param}"
   end
 
+  def organization_logo
+    org = @organization || @current_organization
+
+    return unless org && org.logo.attached?
+    return if "#{controller_name}##{action_name}".in? %w(organizations#index pages#show)
+
+    content_tag(:div, class: "row organization-logo") do
+      image_tag(org.logo.variant(resize: "x200^"), class: 'img-responsive center-block')
+    end
+  end
+
   def mdash
     raw "&mdash;"
   end

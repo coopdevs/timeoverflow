@@ -71,12 +71,13 @@ ActiveAdmin.register User do
             end
             column :entry_date
             column :member_uid
+            column :tag_list
           end
         end
       end
     end
   end
 
-  permit_params *User.attribute_names,
-                members_attributes: Member.attribute_names
+  permit_params :username, :email, :phone, :postcode, :gender,
+    members_attributes: [:organization_id, :active, :manager]
 end

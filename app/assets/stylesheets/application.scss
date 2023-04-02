@@ -11,12 +11,12 @@ html {
 }
 
 .content {
-  margin-bottom: 76px;
+  margin-bottom: 120px;
 }
 
 .actions-menu {
-  margin-bottom: 16px;
-  padding: 0 15px;
+  margin-bottom: 10px;
+  padding: 0 10px;
 
   @media(max-width: $screen-sm-min) {
     padding: 0;
@@ -190,14 +190,14 @@ html {
     display: block;
   }
 
-  .glyphicon-folder-open {
-    font-size: 140%;
-    margin: 0 5px;
-  }
-
   .category {
     font-weight: bold;
     margin-right: 10px;
+
+    .glyphicon {
+      font-size: 140%;
+      margin-right: 4px;
+    }
   }
 
   &__datetime {
@@ -668,4 +668,21 @@ label[required]::after{
   vertical-align: middle;
   display: inline;
   margin: 0 !important;
+}
+
+.organization-logo {
+  padding-top: 120px;
+}
+
+.input__password-eye {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+
+  .show-password {
+    position: absolute;
+    display: flex;
+    margin-right: 12px;
+    cursor: pointer;
+  }
 }

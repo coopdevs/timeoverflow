@@ -128,8 +128,8 @@ end
 unless Category.exists?
   Category.connection.execute "ALTER SEQUENCE categories_id_seq RESTART;"
   [
-    "Acompañamiento", "Salud", "Tareas domésticas", "Tareas administrativas",
-    "Clases", "Ocio", "Asesoramiento", "Otro"
+    "Acompañamiento", "Salud", "Tareas domésticas", "Tareas administrativas", "Estética", "Clases",
+    "Ocio", "Asesoramiento", "Otros", "Préstamo de herramientas, material, libros, ...", "Tareas domésticas"
   ].each do |name|
     unless Category.with_name_translation(name).exists?
       Category.create { |c| c.name = name }

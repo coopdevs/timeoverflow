@@ -1,37 +1,31 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <%= link_to current_organization.name, current_organization %>
-        <%= t(".members") %>
-      </h1>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <%= link_to current_organization.name, current_organization %>
+      <%= t(".members") %>
+    </h1>
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
-        <div class="form-group">
-          <%= f.search_field :member_search_cont, class: "form-control" %>
-        </div>
-        <button class="btn btn-default" type="submit">
-          <%= t 'global.search' %>
-        </button>
-      <% end %>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
+      <div class="form-group">
+        <%= f.search_field :member_search_cont, value: params.dig(:q, :member_search_cont), class: "form-control" %>
+      </div>
+      <button class="btn btn-default" type="submit">
+        <%= t 'global.search' %>
+      </button>
+    <% end %>
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row to-member-cards">
-    <%= render partial: 'member_card', collection: @member_view_models, as: :member %>
-  </div>
+<div class="row to-member-cards">
+  <%= render partial: 'member_card', collection: @member_view_models, as: :member %>
+</div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <%= paginate @members %>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <%= paginate @members %>
   </div>
 </div>

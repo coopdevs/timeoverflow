@@ -1,5 +1,5 @@
 <% if @offer.organization == current_organization %>
-  <p class="actions text-right">
+  <div class="actions text-right">
     <% if admin? or @offer.user == current_user %>
       <%= render 'shared/post_actions', post: @offer %>
     <% end %>
@@ -10,6 +10,6 @@
         <%= t ".give_time_for" %>
       <% end %>
     <% end %>
-  </p>
+  </div>
 <% end %>
 <%= render "shared/post", post: @offer %>

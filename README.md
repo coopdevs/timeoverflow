@@ -1,6 +1,6 @@
 # TimeOverflow
 [![View performance data on Skylight](https://badges.skylight.io/problem/grDTNuzZRnyu.svg)](https://oss.skylight.io/app/applications/grDTNuzZRnyu)
-[![Build Status](https://travis-ci.com/coopdevs/timeoverflow.svg?branch=develop)](https://travis-ci.com/coopdevs/timeoverflow)
+[![Build Status](https://github.com/coopdevs/timeoverflow/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/coopdevs/timeoverflow/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/maintainability)](https://codeclimate.com/github/coopdevs/timeoverflow/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/test_coverage)](https://codeclimate.com/github/coopdevs/timeoverflow/test_coverage)
 
@@ -49,6 +49,6 @@ of Time and also have the possibility to consult the extract of their account.
 
 ## License
 
-> The Unlicense
+> AGPL3
 
-You can find the license file [here](UNLICENSE).
+You can find the license file [here](LICENSE).

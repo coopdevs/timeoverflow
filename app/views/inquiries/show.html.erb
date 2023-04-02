@@ -1,8 +1,8 @@
 <% if @inquiry.organization == current_organization %>
-  <p class="actions text-right">
+  <div class="actions text-right">
     <% if admin? or @inquiry.user == current_user %>
       <%= render 'shared/post_actions', post: @inquiry %>
     <% end %>
-  </p>
+  </div>
 <% end %>
 <%= render "shared/post", post: @inquiry %>

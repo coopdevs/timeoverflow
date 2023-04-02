@@ -1,8 +1,15 @@
-require 'simplecov'
-SimpleCov.start 'rails'
-
 ENV["RAILS_ENV"] ||= 'test'
 ENV["ADMINS"] = "admin@timeoverflow.org"
+
+require 'simplecov'
+
+SimpleCov.formatter = if ENV["CI"]
+  require "simplecov_json_formatter"
+  SimpleCov::Formatter::JSONFormatter
+else
+  SimpleCov::Formatter::HTMLFormatter
+end
+SimpleCov.start 'rails'
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'

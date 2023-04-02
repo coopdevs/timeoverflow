@@ -61,6 +61,17 @@ RSpec.describe OrganizationsController do
         expect(assigns(:organizations)).to eq([second_organization])
       end
     end
+
+    context 'a user is logged' do
+      before { login(member.user) }
+
+      it 'populates an array of user organizations' do
+        get :index
+
+        expect(assigns(:user_organizations)).to include(member.organization)
+        expect(assigns(:organizations)).to eq([second_organization])
+      end
+    end
   end
 
   describe 'GET #show' do

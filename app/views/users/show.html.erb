@@ -73,7 +73,7 @@
             </dt>
             <dd>
               <% @member.tags.each do |tag| %>
-                <span class="badge alert-success">
+                <span class="badge alert-info">
                   <%= link_to users_path tag: tag do %>
                     <%= glyph(:tag) %>
                     <%= tag %>
