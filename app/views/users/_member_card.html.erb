@@ -12,7 +12,7 @@
             <%= t('.no_activity') %>
           <% end %>
           <% member.tags[0..2].each do |tag| %>
-            <span class="to-member-card__header__text__tags">
+            <span class="badge alert-info">
               <%= link_to users_path tag: tag do %>
                 <%= glyph :tag %>
                 <%= tag&.truncate(29) %>

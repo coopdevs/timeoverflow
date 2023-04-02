@@ -1,13 +1,7 @@
 <header class="page-header">
-  <h1>
-    <%= @document.title %>
-  </h1>
+  <h1><%= @document.title %></h1>
 </header>
 
 <%= m @document.content %>
 
-<%= form_tag accept_terms_path, method: :post do %>
-  <button class="btn" type="submit">
-    <%= t '.accept' %>
-  </button>
-<% end %>
+<%= button_to t('.accept'), accept_terms_path, class: "btn btn-primary" %>
