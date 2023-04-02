@@ -22,7 +22,7 @@
         <p></p>
         <% if post.tags.present? %>
           <% post.tags.each do |tag| %>
-            <span class="badge alert-success">
+            <span class="badge alert-info">
               <%= glyph(:tag) %>
               <%= link_to [post.class, tag: tag] do %>
                 <%= tag %>

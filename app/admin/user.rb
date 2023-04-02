@@ -71,6 +71,7 @@ ActiveAdmin.register User do
             end
             column :entry_date
             column :member_uid
+            column :tag_list
           end
         end
       end

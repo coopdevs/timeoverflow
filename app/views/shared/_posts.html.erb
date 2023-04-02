@@ -20,10 +20,12 @@
           </span>
         <% end %>
         <% (post.tags || []).each do |tag| %>
-          <%= glyph :tag %>
-          <%= link_to [post.class, tag: tag] do %>
-            <%= tag %>
-          <% end %>
+          <span class="badge alert-info">
+            <%= glyph :tag %>
+            <%= link_to [post.class, tag: tag] do %>
+              <%= tag %>
+            <% end %>
+          </span>
         <% end %>
       </small>
     </p>
