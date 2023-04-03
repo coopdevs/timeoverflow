@@ -9,19 +9,12 @@ $(document).on('click', 'a[data-popup]', function(event) {
 $(document).on('click', 'span.show-password', function(event) {
   event.preventDefault();
 
-  var inputType = 'text';
-  var icon = 'visibility_off';
+  var input = $(this).prev('input');
+  var icon = $(this).find('.glyphicon');
 
-  if ($(this).hasClass('checked')) {
-    $(this).removeClass('checked');
-    inputType = 'password';
-    icon = 'visibility';
-  } else {
-    $(this).addClass('checked');
-  }
-
-  $(this).prev('input').attr('type', inputType);
-  $(this).find('.material-icons').html(icon);
+  $(input).attr('type', input[0].type === 'password' ? 'text' : 'password');
+  $(icon).toggleClass('glyphicon-eye-close');
+  $(icon).toggleClass('glyphicon-eye-open');
 });
 
 $(function() {
