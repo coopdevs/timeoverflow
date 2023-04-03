@@ -51,10 +51,6 @@ html {
     padding: 0;
   }
 
-  form .material-icons {
-    color: $form-input-glyph;
-  }
-
   input {
     background-color: $form-input-bg-color;
     border-radius: 0.3rem;
@@ -450,10 +446,6 @@ label[required]::after{
 }
 
 .login-page {
-  .material-icons {
-    font-size: 3rem;
-  }
-
   .checkbox {
     color: $form-login-gray-text;
     font-size: 1.6rem;
@@ -568,6 +560,7 @@ label[required]::after{
 
   .feature-icon {
     float: left;
+    margin-right: 2rem;
   }
 
   .features .first {
@@ -582,12 +575,6 @@ label[required]::after{
   .feature-group {
     font-weight: 500;
     padding-top: 3.5rem;
-  }
-
-  .features .material-icons {
-    margin-right: 2rem;
-    position: relative;
-    top: 0.2rem;
   }
 
   .banner {
@@ -671,7 +658,13 @@ label[required]::after{
 }
 
 .organization-logo {
-  padding-top: 120px;
+  padding-top: 100px;
+
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 600px;
+  }
 }
 
 .input__password-eye {

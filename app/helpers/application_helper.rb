@@ -31,7 +31,7 @@ module ApplicationHelper
     return if "#{controller_name}##{action_name}".in? %w(organizations#index pages#show)
 
     content_tag(:div, class: "row organization-logo") do
-      image_tag(org.logo.variant(resize: "x200^"), class: 'img-responsive center-block')
+      image_tag org.logo.variant(resize: "x200^")
     end
   end
 

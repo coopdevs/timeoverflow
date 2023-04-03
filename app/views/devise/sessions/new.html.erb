@@ -8,7 +8,7 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon">
-                <i class="material-icons">email</i>
+                <%= glyph(:envelope) %>
               </span>
               <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control input-lg" %>
             </div>
@@ -16,11 +16,11 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon">
-                <i class="material-icons">lock</i>
+                <%= glyph(:lock) %>
               </span>
               <%= f.password_field :password, required: false, autofocus: true, placeholder: t("application.login_form.password"), class: "form-control input-lg" %>
               <span class="input-group-addon show-password">
-                <i class="material-icons">visibility</i>
+                <%= glyph(:eye_close) %>
               </span>
             </div>
           </div>
