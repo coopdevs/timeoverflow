@@ -20,6 +20,9 @@ ActiveAdmin.register Organization do
     column :members do |organization|
       organization.members.count
     end
+    column :posts do |organization|
+      organization.posts.count
+    end
     actions
   end
 

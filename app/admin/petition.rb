@@ -6,7 +6,9 @@ ActiveAdmin.register Petition do
     column :user
     column :organization
     column :created_at
-    column :status
+    column :status do |petition|
+      petition.status.upcase
+    end
   end
 
   filter :status, as: :select, collection: -> { Petition.statuses }

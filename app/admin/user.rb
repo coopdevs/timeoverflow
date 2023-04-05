@@ -34,6 +34,7 @@ ActiveAdmin.register User do
   filter :username
   filter :phone
   filter :postcode
+  filter :locale
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
@@ -43,6 +44,7 @@ ActiveAdmin.register User do
       f.input :phone
       f.input :postcode
       f.input :gender, as: :select, collection: User::GENDERS
+      f.input :locale, as: :select, collection: I18n.available_locales
     end
     f.inputs "Memberships" do
       f.has_many :members do |m|
