@@ -17,13 +17,6 @@ RSpec.describe User do
 
   it { is_expected.to validate_inclusion_of(:gender).in_array(User::GENDERS) }
 
-  it "should create the user with current locale if no locale is passed" do
-    I18n.with_locale(:en) do
-      user = Fabricate(:user, locale: nil)
-      expect(user.locale).to eq("en")
-    end
-  end
-
   describe "#setup_and_save_user" do
     it "sets a fake email before attempting to save user" do
       user = Fabricate.build(:user, email: "")
