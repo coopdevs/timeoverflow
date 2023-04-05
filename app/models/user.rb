@@ -47,6 +47,8 @@ class User < ApplicationRecord
                       with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates :gender, inclusion: { in: GENDERS, allow_blank: true }
 
+  before_create :set_locale
+
   def as_member_of(organization)
     organization && members.find_by(organization: organization)
   end
@@ -134,5 +136,11 @@ class User < ApplicationRecord
 
   def from_signup?
     from_signup
+  end
+
+  private
+
+  def set_locale
+    self.locale = locale.presence || I18n.locale
   end
 end
