@@ -23,6 +23,9 @@ ActiveAdmin.register User do
     column :organizations do |u|
       u.organizations.map(&:to_s).join(", ")
     end
+    column :posts do |u|
+      u.posts.count
+    end
     actions
   end
 
