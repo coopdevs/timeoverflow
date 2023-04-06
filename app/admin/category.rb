@@ -15,11 +15,14 @@ ActiveAdmin.register Category do
     f.actions
   end
 
-  show title: -> (cat) { "#{category_icon(cat)} #{cat.name}".html_safe } do |cat|
+  show do |cat|
     attributes_table do
+      row :name do
+        "#{category_icon(cat)} #{cat.name}".html_safe
+      end
+      row :icon_name
       row :created_at
       row :updated_at
-      row :icon_name
       row :name_translations do
         render_translations(cat.name_translations)
       end
