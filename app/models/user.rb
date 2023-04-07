@@ -31,7 +31,7 @@ class User < ApplicationRecord
   has_many :device_tokens
   has_many :petitions, dependent: :delete_all
 
-  accepts_nested_attributes_for :members
+  accepts_nested_attributes_for :members, allow_destroy: true
 
   default_scope { order("users.id ASC") }
   scope :actives, -> { references(:members).where(members: { active: true }) }

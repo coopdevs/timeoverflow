@@ -32,6 +32,16 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
+
+      column do
+        panel "Recent Petitions" do
+          ul do
+            Petition.last(5).map do |petition|
+              li "#{petition.user} #{glyph(:arrow_right)} #{petition.organization}".html_safe
+            end
+          end
+        end
+      end
     end
   end
 end

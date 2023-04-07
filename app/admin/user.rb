@@ -23,6 +23,9 @@ ActiveAdmin.register User do
     column :organizations do |u|
       u.organizations.map(&:to_s).join(", ")
     end
+    column :posts do |u|
+      u.posts.count
+    end
     actions
   end
 
@@ -31,6 +34,7 @@ ActiveAdmin.register User do
   filter :username
   filter :phone
   filter :postcode
+  filter :locale
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
@@ -40,9 +44,10 @@ ActiveAdmin.register User do
       f.input :phone
       f.input :postcode
       f.input :gender, as: :select, collection: User::GENDERS
+      f.input :locale, as: :select, collection: I18n.available_locales
     end
     f.inputs "Memberships" do
-      f.has_many :members do |m|
+      f.has_many :members, allow_destroy: true do |m|
         m.input :organization, collection: Organization.order(id: :asc).pluck(:name, :id)
         m.input :active
         m.input :manager
@@ -79,5 +84,5 @@ ActiveAdmin.register User do
   end
 
   permit_params :username, :email, :phone, :postcode, :gender,
-    members_attributes: [:organization_id, :active, :manager]
+    members_attributes: [:id, :organization_id, :active, :manager, :_destroy]
 end

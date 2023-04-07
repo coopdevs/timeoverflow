@@ -1,7 +1,15 @@
 ActiveAdmin.register Organization do
   index do
     id_column
-    column :name
+    column :name do |organization|
+      output = tag.p organization.name
+
+      if organization.logo.attached?
+        output << image_tag(organization.logo.variant(resize: "40^x"))
+      end
+
+      output.html_safe
+    end
     column :created_at do |organization|
       l organization.created_at.to_date, format: :long
     end
@@ -9,7 +17,22 @@ ActiveAdmin.register Organization do
     column :neighborhood
     column :email
     column :phone
+    column :members do |organization|
+      organization.members.count
+    end
+    column :posts do |organization|
+      organization.posts.count
+    end
     actions
+  end
+
+  show do
+    div do
+      if organization.logo.attached?
+        image_tag(organization.logo.variant(resize: "100^x"))
+      end
+    end
+    default_main_content
   end
 
   form do |f|
@@ -23,6 +46,7 @@ ActiveAdmin.register Organization do
       f.input :address
       f.input :description
       f.input :public_opening_times
+      f.input :logo, as: :file
     end
     f.actions
   end
@@ -47,5 +71,5 @@ ActiveAdmin.register Organization do
   filter :neighborhood
 
   permit_params :name, :email, :web, :phone, :city, :neighborhood,
-    :address, :description, :public_opening_times
+    :address, :description, :public_opening_times, :logo
 end

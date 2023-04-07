@@ -2,7 +2,7 @@ ActiveAdmin.register Category do
   index do
     id_column
     column :name do |category|
-      "#{tag.span(nil, class: "glyphicon glyphicon-#{category.icon_name}")} #{category.name}".html_safe
+      "#{category_icon(category)} #{category.name}".html_safe
     end
     actions
   end
@@ -17,9 +17,12 @@ ActiveAdmin.register Category do
 
   show do |cat|
     attributes_table do
+      row :name do
+        "#{category_icon(cat)} #{cat.name}".html_safe
+      end
+      row :icon_name
       row :created_at
       row :updated_at
-      row :icon_name
       row :name_translations do
         render_translations(cat.name_translations)
       end
