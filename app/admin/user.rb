@@ -83,6 +83,6 @@ ActiveAdmin.register User do
     end
   end
 
-  permit_params :username, :email, :phone, :postcode, :gender,
+  permit_params :username, :email, :phone, :postcode, :gender, :locale,
     members_attributes: [:id, :organization_id, :active, :manager, :_destroy]
 end

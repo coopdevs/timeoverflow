@@ -3,6 +3,16 @@ ActiveAdmin.register_page "Dashboard" do
 
   content title: proc { I18n.t("active_admin.dashboard") } do
     columns do
+      panel "Global Stats", class: "global_stats_panel" do
+        div { "#{glyph(:home)} Time Banks <b>#{Organization.count}</b>".html_safe }
+        div { "#{glyph(:user)} Users <b>#{User.count}</b>".html_safe }
+        div { "#{glyph(:hand_up)} Offers <b>#{Offer.count}</b>".html_safe }
+        div { "#{glyph(:bell)} Inquiries <b>#{Inquiry.count}</b>".html_safe }
+        div { "#{glyph(:transfer)} Transfers <b>#{Transfer.count}</b>".html_safe }
+      end
+    end
+
+    columns do
       column do
         panel "Recent Organizations" do
           ul do
