@@ -1,5 +1,7 @@
 <%= show_error_messages!(@user) %>
 <%= simple_form_for @user do |f| %>
+  <%= f.hidden_field :locale, value: I18n.locale %>
+
   <div class="form-inputs">
     <%= f.input :username %>
 
@@ -18,7 +20,7 @@
         <div class="input__password-eye">
           <input class="form-control" required type="password" name="user[password]" id="user_password">
           <span class="show-password">
-            <i class="material-icons">visibility</i>
+            <%= glyph(:eye_close) %>
           </span>
         </div>
       </div>

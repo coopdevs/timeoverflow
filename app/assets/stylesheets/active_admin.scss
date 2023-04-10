@@ -8,3 +8,15 @@ $table-stripe-color: #f5f5f5;
 @import "bootstrap-sprockets";
 @import "bootstrap/variables";
 @import "bootstrap/glyphicons";
+
+.global_stats_panel div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 18px;
+
+  b {
+    font-size: 20px;
+  }
+}

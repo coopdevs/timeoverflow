@@ -10,7 +10,7 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon">
-                <i class="material-icons">lock</i>
+                <%= glyph(:lock) %>
               </span>
               <%= f.password_field :password, required: true, autofocus: true, placeholder: t(".new_password"), class: "form-control input-lg" %>
             </div>
@@ -18,7 +18,7 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon">
-                <i class="material-icons">lock</i>
+                <%= glyph(:lock) %>
               </span>
               <%= f.password_field :password_confirmation, required: true, placeholder: t(".confirm_password"), oninput: "this.setCustomValidity(this.value != form.user_password.value ? '#{t(".passwords_not_match")}' : '')", class: "form-control input-lg" %>
             </div>

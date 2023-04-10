@@ -20,7 +20,7 @@ ActiveAdmin.register Document do
         render_translations(t.title_translations)
       end
       row :content_translations do
-        render_translations(t.content_translations, "<br>")
+        render_translations(t.content_translations, "<hr>")
       end
     end
   end
