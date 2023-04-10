@@ -21,7 +21,8 @@ class UserImporter
         email: email,
         phone: phone,
         alt_phone: alt_phone,
-        gender: gender
+        gender: gender,
+        locale: I18n.locale
       )
     end
   end
