@@ -27,7 +27,7 @@
     </div>
     <div class="to-member-card__body">
       <div class="to-member-card__body__description">
-        <%= member.description&.truncate(124) %>
+        <%= sanitize strip_tags(markdown(member.description&.truncate(124))) %>
       </div>
       <div class="to-member-card__body__items">
         <% if member.phone.present? %>

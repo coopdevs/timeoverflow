@@ -7,7 +7,7 @@
       <% end %>
     </h4>
     <p>
-      <%= strip_tags(post.rendered_description.to_html) %>
+      <%= sanitize strip_tags(post.rendered_description.to_html) %>
     </p>
     <p>
       <small>
