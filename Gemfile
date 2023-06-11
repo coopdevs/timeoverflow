@@ -27,7 +27,7 @@ gem 'aws-sdk-s3', '~> 1.94', require: false
 gem 'image_processing', '~> 1.12'
 
 # Assets
-gem 'jquery-rails', '~> 4.3.5'
+gem 'jquery-rails', '~> 4.4.0'
 gem 'bootstrap-sass', '~> 3.4'
 gem 'sassc-rails', '~> 2.1.2'
 gem 'uglifier', '~> 4.2.0'
