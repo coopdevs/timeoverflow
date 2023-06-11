@@ -106,7 +106,7 @@
               <%= link_to post, post %>
             </div>
             <div class="col-sm-8">
-              <%= strip_tags(post.rendered_description.to_html) %>
+              <%= sanitize strip_tags(post.rendered_description.to_html) %>
             </div>
             <div class="col-sm-1">
               <% if @user != current_user %>
@@ -138,7 +138,7 @@
               <%= link_to post, post %>
             </div>
             <div class="col-sm-9">
-              <%= strip_tags(post.rendered_description.to_html) %>
+              <%= sanitize strip_tags(post.rendered_description.to_html) %>
             </div>
           </div>
         <% end %>

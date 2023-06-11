@@ -373,7 +373,7 @@ en:
     recent_posts:
       subject: Newsletter
       text1: 'Latest offers published:'
-      text2: 'Lastest inquiries published:'
+      text2: 'Latest requests published:'
   organizations:
     give_time:
       give_time: Give time to
@@ -438,7 +438,7 @@ en:
   shared:
     movements:
       delete_reason: Are you sure to delete this comment?
-      movements: Movements
+      movements: Exchanges
     post_form:
       group_inquiry: Is it a group request?
       group_offer: Is it a group offer?
