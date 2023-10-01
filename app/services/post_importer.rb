@@ -1,4 +1,4 @@
-# Used in the Admin section to import users and members
+# Used in the Admin section to import posts
 # to a specific organization, from a CSV file.
 
 require "csv"
