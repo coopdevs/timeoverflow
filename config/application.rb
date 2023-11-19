@@ -15,7 +15,7 @@ module Timeoverflow
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.default_locale = :es
-    config.i18n.available_locales = [:es, :ca, :eu, :gl, :en, :'pt-BR']
+    config.i18n.available_locales = [:es, :ca, :eu, :gl, :en, :'pt-BR', :fr]
     config.i18n.fallbacks = true
 
     # This tells Rails to serve error pages from the app itself, rather than using static error pages in public/
