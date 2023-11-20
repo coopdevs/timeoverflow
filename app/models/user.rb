@@ -9,6 +9,10 @@ class User < ApplicationRecord
     :timeoutable
   ]
 
+  ransacker :username do
+    Arel.sql('unaccent(users.username)')
+  end
+
   GENDERS = %w(
     female
     male
@@ -34,7 +38,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :members, allow_destroy: true
 
   default_scope { order("users.id ASC") }
-  scope :actives, -> { references(:members).where(members: { active: true }) }
+  scope :actives, -> { joins(:members).where(members: { active: true }) }
   scope :online_active, -> { where("sign_in_count > 0") }
   scope :notifications, -> { where(notifications: true) }
 

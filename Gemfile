@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 6.1.1'
-gem 'rails-i18n', '~> 6.0.0'
+gem 'rails-i18n', '~> 7.0'
 gem 'rdiscount', '~> 2.2.7'
 gem 'rubyzip', '~> 2.3.0'
 gem 'activeadmin', '~> 2.9.0'
@@ -21,8 +21,8 @@ gem 'prawn', '~> 2.4.0'
 gem 'prawn-table', '~> 0.2.2'
 gem 'pg_search', '~> 2.3.5'
 gem 'skylight', '~> 5.0'
-gem 'sidekiq', '~> 6.4.0'
-gem 'sidekiq-cron', '~> 1.2.0'
+gem 'sidekiq', '~> 6.5'
+gem 'sidekiq-cron', '~> 1.9.1'
 gem 'aws-sdk-s3', '~> 1.94', require: false
 gem 'image_processing', '~> 1.12'
 
@@ -58,7 +58,7 @@ group :test do
   gem 'fabrication', '~> 2.20'
   gem 'faker', '~> 2.15'
   gem 'capybara', '~> 3.29'
-  gem 'selenium-webdriver', '~> 3.142'
-  gem 'webdrivers', '~> 4.4'
-  gem 'simplecov', '~> 0.17', require: false
+  gem 'selenium-webdriver', '~> 4.1.0'
+  gem 'webdrivers', '~> 5.3'
+  gem 'simplecov', '~> 0.22', require: false
 end

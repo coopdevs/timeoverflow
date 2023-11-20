@@ -56,8 +56,7 @@ RSpec.describe User do
   end
 
   describe ".actives" do
-    skip "should list users with active members" do
-      # The join at User.actives is failing
+    it "should list users with active members" do
       user_w_inactive = Fabricate(:user)
       user_w_active = Fabricate(:user)
       inactive_member = Fabricate(:member, user: user_w_inactive, active: false)

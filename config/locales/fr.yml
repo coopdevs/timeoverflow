@@ -1,0 +1,588 @@
+fr:
+  active_admin:
+    users:
+      organization: Banque de temps
+      upload_csv: Fichier
+      upload_from_csv: Uploader un CSV
+  activerecord:
+    attributes:
+      account:
+        balance: Solde
+        organization: Organisation
+      category:
+        created_at: Créée le
+        name: Nom
+        name_translations: Nom (traductions)
+        parent: Catégorie parente
+        updated_at: Mise à jour le
+      common:
+        created_at: Créé·e le
+        updated_at: Mis·e à jour le
+      inquiry:
+        is_group: Demande de groupe
+      offer:
+        is_group: Offre de groupe
+      organization:
+        address: Adresse
+        city: Ville
+        created_at: Créée le
+        description: Description
+        email: Adresse email
+        name: Nom
+        neighborhood: Quartier
+        phone: Téléphone
+        public_opening_times: Horaires d'ouverture
+        reg_number_seq: Numéro de séquence utilisateur
+        updated_at: Mise à jour le
+      post:
+        category: Catégorie
+        created_at: Créée le
+        description: Description
+        end_on: Termine le
+        start_on: Commence le
+        tag_list: Tags
+        title: Titre
+        updated_at: Mise à jour le
+      transfer:
+        amount: Quantité
+        created_at: Créé le
+        hours: Heures
+        minutes: Minutes
+        post: Annonce
+        reason: Commentaires
+        source: Origine
+        updated_at: Mis à jour le
+      user:
+        admin: Administrateur de l'organisation
+        alt_phone: Téléphone (secondaire)
+        created_at: Créé·e le
+        date_of_birth: Date de naissance
+        deactivated: Désactivé·e
+        description: Description
+        email: Adresse email
+        gender: Genre
+        last_sign_in_at: Dernière connexion
+        notifications: Recevoir des notifications
+        organization: Organisation
+        phone: Téléphone
+        postcode: Code postal
+        push_notifications: Recevoir des notifications sur mon téléphone
+        registration_date: Date d'inscription
+        registration_number: Numéro d'inscription
+        superadmin: Administrateur système
+        unconfirmed_email: Adresse email non-confirmée
+        updated_at: Mis·e à jour le
+        username: Nom
+    errors:
+      models:
+        organization:
+          attributes:
+            web:
+              url_format_invalid: format du lien invalide
+        transfer:
+          attributes:
+            base:
+              same_account: Un tranfert ne peut pas être fait vers le même compte.
+        user:
+          attributes:
+            email:
+              invalid: invalide
+    models:
+      category:
+        one: Catégorie
+        other: Catégories
+      comment:
+        one: Commentaire
+        other: Commentaires
+      inquiry:
+        one: Demande
+        other: Demandes
+      offer:
+        one: Offre
+        other: Offres
+      organization:
+        one: Banque de temps
+        other: Banques de temps
+      post:
+        one: Annonce
+        other: Annonces
+      transfer:
+        one: Transfert
+        other: Transferts
+      user:
+        one: Utilisateur·rice
+        other: Utilisateurs·rices
+  application:
+    landing:
+      button: Entrer
+      slogan: Valorisons notre temps
+      sub_slogan: Il y a une banque de temps près de chez vous
+    login_form:
+      button: Se connecter
+      email: Adresse email
+      password: Mot de passe
+      remember_check: Se souvenir de moi
+    menu:
+      sign_in: Se connecter
+      sing_out: Se déconnecter
+    menus:
+      offers_by_tag_link:
+        tags: Tags
+    navbar:
+      admin: Administrer
+      administration: Administration
+      adminshort: Admin
+      all_transfers: Tous les transferts
+      categories: Services
+      demographics: Données démographiques
+      global_activity: Activité globale
+      inactive_users: Utilisateurs·rices inactifs·ives
+      inquiry_public_link: Lien public des demandes
+      last_login: Dernière connexion le
+      offer_public_link: Lien public des offres
+      organizations: Organisations
+      reports: Rapports
+      sign_out: Se déconnecter
+      statistics: Statistiques
+      statistics_all_transfers: Tous les transferts
+      stats: Statistiques
+      tags: Tags
+      type_of_swaps: Type d'échanges
+      users: Utilisateurs·ices
+      without_offers: Sans offres
+    terms_conditions: Conditions d'utilisation
+    tips:
+      entertag: Saisir des tags séparés par des virgules
+      user_not_found: Utilisateur·rice non trouvé·e
+  devise:
+    confirmations:
+      confirmed: Votre compte a bien été confirmé.
+      confirmed_and_signed_in: Votre compte a bien été confirmé. Vous êtes maintenant connecté.
+      new:
+        resend_instructions: Envoyer de nouveau les instructions de confirmation
+        resend_instructions_button: Renvoyer
+        resend_instructions_description: Si vous avez changé d'adresse email, vous devez réaliser cette étape pour valider le changement
+      send_instructions: Vous allez recevoir un email avec des instructions pour confirmer votre compte dans quelques instants.
+      send_paranoid_instructions: Si votre adresse email existe, vous allez recevoir un email avec des instructions pour confirmer votre compte dans quelques instants.
+    failure:
+      already_authenticated: Vous êtes déjà connecté.
+      inactive: Votre compte n'est pas encore activé.
+      invalid: Adresse email ou mot de passe invalide.
+      invalid_token: Jeton d'authentification invalide.
+      locked: Votre compte est bloqué.
+      not_found_in_database: Adresse email ou mot de passe invalide.
+      timeout: Votre session est expirée. Veuillez vous reconnecter pour continuer.
+      unauthenticated: Vous devez vous connecter ou vous inscrire pour continuer.
+      unconfirmed: Vous devez valider votre compte pour continuer.
+      user:
+        last_attempt: Attention, plus qu'un essai avant le blocage de votre compte
+    mailer:
+      confirmation_instructions:
+        subject: Instructions de confirmation
+      reset_password_instructions:
+        subject: Instructions de réinitialisation de mot de passe
+      unlock_instructions:
+        subject: Instructions de déblocage
+    omniauth_callbacks:
+      failure: Impossible de vous connecter par %{kind} à cause de "%{reason}".
+      success: Connexion réussie par votre compte %{kind}.
+    passwords:
+      edit:
+        change_password: Modifier mon mot de passe
+        confirm_password: Confirmer votre nouveau mot de passe
+        new_password: Nouveau mot de passe
+        passwords_not_match: Les mots de passe ne correspondent pas
+      new:
+        forgot_question: Créer un nouveau mot de passe
+        forgot_question_description: Saisissez l'adresse email associée à votre compte et nous vous enverrons un email avec un lien pour définir un nouveau mot de passe.
+        send_instructions: Envoyer le lien
+      no_token: Vous ne pouvez pas accéder à cette page si vous n'arrivez pas d'un email de réinitialisation de mot de passe. Si vous venez d'un email de réinitialisation de mot de passe, assurez-vous d'avoir bien copier le lien en entier.
+      send_instructions: Vous allez recevoir un email avec les instructions de réinitialisation de mot de passe dans quelques instants.
+      send_paranoid_instructions: Si votre adresse email existe, vous allez recevoir un lien par email pour récupérer votre mot de passe dans quelques instants.
+      updated: Votre mot de passe a été changé avec succès. Vous êtes maintenant connecté.
+      updated_not_active: Votre mot de passe a été changé avec succès.
+    registrations:
+      destroyed: Au revoir! Votre compte a bien été supprimé. On espère vous revoir bientôt.
+      edit:
+        cancel_account: Supprimer mon compte
+        current_password: Mot de passe actuel
+        edit_user: Modifier mes paramètres
+        help_current_password: Saisissez votre mot de passe actuel
+        help_password: Laissez vide si vous ne voulez pas le changer
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        unhappy: Pas content ?
+        update: Mettre à jour
+      new:
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        sign_me_up: Créez-moi un compte
+        sign_up: Créer un compte
+      signed_up: Bienvenue! Compte créé avec succès.
+      signed_up_but_inactive: Compte créé avec succès. Cependant, vous ne pouvez pas encore vous connecter tant que votre compte n'est pas activé.
+      signed_up_but_locked: Compte créé avec succès. Cependant, vous ne pouvez pas encore vous connecter car votre compte est bloqué.
+      signed_up_but_unconfirmed: Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour activer votre compte.
+      update_needs_confirmation: Compte mis à jour avec succès, mais nous devons vérifier votre adresse email. Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour valider votre adresse email.
+      updated: Compte mis à jour avec succès.
+    sessions:
+      new:
+        remember_me: Se souvenir de moi
+        sign_in: Se connecter
+      user:
+        signed_in: Connecté
+        signed_out: Déconnecté
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: Envoyer de nouveau les instructions de confirmation
+        didnt_receive_unlock_instructions: Recevoir les instructions de déblocage
+        forgot_your_password: J'ai oublié mon mot de passe
+        sign_in: Se connecter
+        sign_in_with: Se connecter avec %{provider}
+        sign_up: Créer un compte
+    unlocks:
+      new:
+        resend_instructions: Recevoir les instructions de déblocage
+        resend_instructions_button: Renvoyer
+        resend_instructions_description: Si vous avez échoué à vous connecter plus de 5 fois, vous devez débloquer votre compte
+      send_instructions: Vous allez recevoir un email avec des instructions pour débloquer votre compte dans quelques instants.
+      send_paranoid_instructions: Si votre compte existe, vous allez recevoir un email avec des instructions pour débloquer votre compte dans quelques instants.
+      unlocked: Votre compte a été débloqué avec succès. Merci de vous connecter pour continuer.
+  errors:
+    internal_server_error:
+      description: Nous sommes désolé, il semble que cette requête ait provoqué une erreur. Une notification nous a été envoyé afin de résoudre le problème rapidement.
+      title: Erreur serveur interne
+    messages:
+      already_confirmed: a déjà été confirmé, merci d'essayer de vous connecter
+      confirmation_period_expired: doit être confirmé en %{period}, merci de renouveler votre demande
+      expired: est expiré, merci de renouveler votre demande
+      not_found: non trouvé
+      not_locked: n'était pas bloqué
+      not_saved:
+        one: Une erreur a empêché cet·te %{resource} d'être sauvegardé·e.
+        other: "%{count} erreurs ont empêché cet·te %{resource} d'être sauvegardé·e."
+    not_found:
+      description: La page que vous cherchez n'existe pas. L'adresse est peut-être incorrecte ou la page a été déplacée.
+      title: Non trouvé
+  global:
+    add_new: Créer nouveau·elle
+    all: Tous·tes
+    amount: Quantité
+    announcements: Annonce
+    back: Retour
+    balance: 'Solde :'
+    cancel_membership: Suppression définitive
+    contact_details: Informations de contact
+    create: Créer
+    date: Données
+    decline: décliner
+    delete: Supprimer
+    demote: Convertir en utilisateur·rice normal·e
+    edit: Mettre à jour
+    enter_to_timebank: Entrer dans la banque de temps
+    filter: Filtrer
+    from: Depuis
+    give_time: Donner du temps
+    here: Ici
+    home: Accueil
+    information: Informations
+    locales_header: changer de langue
+    member_count: 'Nombre d''utilisateurs·rices :'
+    more: Plus
+    movements: Échanges
+    next: Suivant
+    or: ou
+    promote: Convertir en administrateur
+    reason: Raison
+    required_field: "* Champ requis"
+    save: Enregistrer
+    search: Rechercher
+    search_location: Rechercher par localisation
+    show: Voir
+    source_destination: Depuis/vers
+    statistics: Statistiques
+    table:
+      actions: Actions
+    to: Vers
+  inquiries:
+    edit:
+      submit: Modifier la demande
+    index:
+      new_inquiry: Nouvelle demande
+    new:
+      submit: Créer la demande
+  layouts:
+    application:
+      about: À propos de TimeOverflow
+      bdtnear: Chercher une Banque de temps
+      edit_org: Mettre à jour %{organization}
+      edit_profile: Mettre à jour mon profil
+      help: Aide
+      login: Connexion
+      manage_memberships: Gérer les inscriptions
+    report:
+      report_title: RAPPORT
+  locales:
+    ar: Arabe
+    ca: Catalan
+    en: Anglais
+    es: Espagnol
+    eu: Basque
+    fr: Français
+    gl: Galicien
+    pt: Portugais
+    pt-BR: Portugais
+  mailers_globals:
+    footer:
+      text: "%{organization_name} de"
+      text_donation: L'association ADBdT offre TimeOverflow gratuitement aux Banques de temps. Si vous voulez aider à maintenir et améliorer l'application %{href}.
+      text_donation_link: Visiter le site web
+  multi_transfers:
+    multi_transfers: Multi transferts
+    step:
+      confirm:
+        description: Confirmer les changements
+        type_of_transfer: Type de transfert
+      select_type:
+        description: Sélectionner le type de transfert
+      set_params:
+        description: Spécifier la quantité à transférer, la raison et l'annonce (si elle existe).
+      set_source:
+        description: Sélectionner le compte qui donne le temps
+      set_target:
+        description: Sélectionner le compte qui reçoit le temps
+    success: Transferts créés avec succès
+    types:
+      many_to_one: Plusieurs vers un·e
+      one_to_many: Un·e vers plusieurs
+      one_to_one: un·e vers un·e
+  offers:
+    edit:
+      submit: Modifier l'offre
+    index:
+      by_category: Par catégorie
+      by_tag: Par tag
+      filter: Filtrer
+      new_offer: Nouvelle offre
+      offered_by: Offert par %{size} personnes
+    new:
+      submit: Créer l'offre
+    show:
+      give_time_for: Donner du temps pour cette offre
+      offered_by: Offert par
+  organization_notifier:
+    recent_posts:
+      subject: Newsletter
+      text1: 'Dernières offres publiées :'
+      text2: 'Dernières demandes publiées :'
+  organizations:
+    give_time:
+      give_time: Donner du temps à
+    index:
+      member_count: Nombre d'utilisateurs·rices
+    new:
+      new: Nouvelle Banque
+    show:
+      contact_information: Informations de contact
+      join_timebank: N'hésitez pas à contacter la Banque de temps pour la rejoindre ou poser des questions.
+  pages:
+    about:
+      app-mobile: Application Mobile
+      app-mobile-text: L'application mobile TimeOverflow est disponible. <br /> Cette application a été réalisée grâce à la collaboration de la municipalité de Barcelone, programe %{impulsem_link} (Barcelona Activa) 2017-2018
+      banner-button: Demander un accès à TimeOverflow
+      banner-subtitle: Nous vous contacterons pour démarrer ou vous faire une démonstration
+      banner-title: Êtes-vous une Banque de temps ?
+      empower-adbdt: ADBdT
+      empower-adbdt-title: Association pour le développement des Banques de temps
+      empower-coopdevs: CoopDevs
+      empower-coopdevs-title: CoopDevs
+      empower-github: Github
+      empower-github-title: Github
+      empower-showmap: Voir la map
+      empower-showmap-title: Banques de temps
+      empower-text-1: TimeOverflow est spécialement conçu par et pour les Banques de temps qui existent physiquement &mdash; %{showmap_link}, son but est de les propulser à l'aide d'internet.
+      empower-text-2: Grâce au travail d'équipe de %{coopdevs_link} et %{abdt_link}, nous pouvons aujourd'hui offrir l'application TimeOverflow à toutes les Banques de temps qui le désirent, de manière ouverte et gratuite.
+      empower-text-3: Le code source de TimeOverflow est disponible via une licence open-source et vous pouvez le télécharger sur %{github_link}
+      empower-title: Donnons du pouvoir aux Banques de temps
+      feature-group-1: Gestion de la Banque de temps avec des rôles d'administration
+      feature-group-2: Réseaux sociaux et échanges de temps accessibles par les membres
+      feature-text-1: Création/Suppression/Mise à jour des membres
+      feature-text-2: Publication d'offres et de demandes
+      feature-text-3: Entrer des chèques et gérer la comptabilité
+      feature-text-4: Les membres de la Banque de temps peuvent avoir accès au système et se connecter avec d'autres membres.
+      feature-text-5: Publication d'offres et de demandes
+      feature-text-6: Donner des heures à d'autres membres
+      impulsem-link: Impulsem el que fas
+      subtitle: TimeOverflow est open-source, gratuit et collaboratif
+      title: L'application conçue par et pour
+      title2: Banques de temps
+  petitions:
+    application_sent: Demande envoyée avec succès
+    application_sent_body: Bonjour! votre demande à %{organization_name} a bien été envoyée.
+    application_status: Demande %{status}
+    applications: Applications
+    apply: Demande à nous rejoindre
+    new: Nouvelle demande
+    new_body: Bonjour! Nouvelle demande de %{username}. Gérer vos demandes %{here_link}.
+    status:
+      accepted: acceptée
+      declined: déclinée
+      pending: en attente
+      sent: envoyée
+    status_applications: "%{status} demandes"
+  posts:
+    show:
+      info: Cette %{type} appartient à %{organization}.
+  reports:
+    download: Télécharger
+    download_all: Tout télécharger
+  shared:
+    movements:
+      delete_reason: Êtes-vous sûr de vouloir supprimer ce commentaire ?
+      movements: Échanges
+    post_form:
+      group_inquiry: Est-une demande de groupe ?
+      group_offer: Est-ce une offre de groupe ?
+      you_can_use: Vous pouvez utiliser
+  simple_form:
+    error_notification:
+      default_message: 'Merci de vérifier les problèmes ci-dessous :'
+    'no': Non
+    options:
+      user:
+        gender:
+          female: Femme
+          male: Homme
+          others: Autre
+          prefer_not_to_answer: Je préfère ne pas répondre
+    required:
+      mark: "*"
+      text: Requis
+    'yes': Oui
+  statistics:
+    all_transfers:
+      date: Date
+      delete_reason: Êtes-vous sur de vouloir supprimer ce commentaire ?
+      from: Depuis
+      post: Annonce
+      quantity: Quantité
+      reason: Raison
+      to: Vers
+      transfers: Tous les transferts
+    demographics:
+      by_ages: Par âges
+      by_gender: Par genre
+      demographics: Données démographiques
+      female: Femme
+      male: Homme
+      num_people: Nb de personnes
+      unknown: Non connu
+    global_activity:
+      bank_activity: Activité de la Banque
+      global_activity: Activité globale
+      num_swaps: Transferts
+      per_month: Par mois
+      show: Voir
+      total_hours: Heures transférées
+      users_reg: Inscriptions
+    inactive_users:
+      days_without_swaps: Jours sans transferts
+      inactive_users: Utilisateurs·rices inactifs·ives
+      last_movement: Dernier transfert
+      no_movements: Sans échanges
+    last_login:
+      last_login: Dernière connexion
+      never_login: Jamais connecté
+    type_swaps:
+      type_of_swaps: Type de transferts
+      without_category: Sans catégorie
+      without_tags: Sans tags
+    without_offers:
+      without_offers: Sans offres
+  stats:
+    min_balance:
+      title: Solde minimum des utilisateurs·rices
+  tags:
+    alpha_grouped_index:
+      maintitle: Tags disponibles
+  terms:
+    accept: Accept
+    show:
+      accept: Accept
+  transfers:
+    computation:
+      hour:
+        one: "%{count} heure"
+        other: "%{count} heures"
+      joiner: et
+      minute:
+        one: "%{count} minute"
+        other: "%{count} minutes"
+    new:
+      error_amount: Le temps doit être supérieur à 0
+  users:
+    avatar:
+      change_your_image: Changer l'image
+      crop_the_image: Redimensionner l'image
+      max_size_warning: L'image est trop lourde, la taille maximum est %{size}MB
+    confirm_email:
+      email_sent: Un email a été envoyé à %{email}. Après votre confirmation, vous pourrez faire une demande à une organisation.
+      please: Merci de confirmer votre adresse email
+    edit:
+      edit_user: Mise à jour de mon compte
+    form:
+      notifications: Notifications
+    give_time:
+      give_time: Donner du temps à
+    index:
+      account_deactivated: Votre compte a été désactivé de cette Banque de temps
+      actions: Actions
+      active_warning: Vous êtes sur le point de changer le statut du compte de %{username}
+      cancel_warning: Vous êtes sur le point de supprimer le compte %{username}
+      create: Créer un·e nouveau·elle utilisateur·rice
+      deactivated_warning: Si vous pensez que votre compte a été désactivé par erreur, merci de contacter l'administrateur·rice avec les informations ci-dessous.
+      manage_warning: Vous êtes sur le point de changer les privilèges de %{username}
+      members: Membres
+      user_created: Utilisateur·rice %{uid} %{name} sauvegardé·e
+    member_card:
+      active_ago: Actif·ive il y a %{time}
+      no_activity: Pas d'activité
+    new:
+      cancel: Annuler
+      create_more_users_button: Créer et ajouter un·e autre utilisateur·rice
+      new_user: Nouveau·elle utilisateur·rice
+      user_created_add: Utilisateur·rice %{uid} %{name} sauvegardé·e, maintenant créer un·e autre
+    show:
+      account: Derniers échanges
+      accounts: Comptes
+      balance: 'Solde :'
+      categories: Services
+      created_at: 'Inscription le :'
+      data: Détails de l'utilisateur·rice
+      date: Date
+      deleted_user: Cet·te utilisateur·rice n'existe plus
+      from_to: Depuis/Vers
+      inactive: "(Inactif·ive)"
+      inactive_user: L'utilisateur·rice n'est pas actif·ive
+      invalid_format: Format invalide, merci de choisir ".jpg", ".jpeg" ou ".png".
+      phone:
+        one: Téléphone
+        other: Téléphones
+      post: Annonce
+      quantity: Quantité
+      reason: Raison
+      user_no: 'Utilisateur·rice # :'
+    user_rows:
+      activate: Activer
+      active_warning: Vous êtes sur le point de changer le statut du compte de %{user}
+      cancel_warning: Vous êtes sur le point de supprimer le compte de %{user}
+      deactivate: Désactiver
+      delete_membership: Supprimer l'inscription
+      manage_warning: Vous êtes sur le point modifier les privilèges de %{user}
+      sure_delete: Êtes-vous de vouloir supprimer votre inscription à %{organization_name} ?
+  views:
+    pagination:
+      first: "&laquo; Première"
+      last: Dernière &raquo;
+      next: Suivante &rsaquo;
+      previous: "&lsaquo; Précédente"
+      truncate: "&hellip;"

@@ -87,8 +87,14 @@ RSpec.describe UsersController do
       it "populates and array of users" do
         get "index"
 
+        expected_users = [user, another_user, admin_user, wrong_user, empty_email_user]
+
+        expected_users.each_with_index do |user, i|
+          user.update!(last_sign_in_at: Time.current - i.days)
+        end
+
         expect(assigns(:members).map(&:user))
-          .to eq([user, another_user, admin_user, wrong_user, empty_email_user])
+          .to eq(expected_users)
       end
     end
 
@@ -137,6 +143,15 @@ RSpec.describe UsersController do
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
 
         get :index, params: { tag: "Boss" }
+
+        expect(assigns(:members)).to include(member)
+      end
+
+      it 'allows to search a member ignoring accents of user\'s username' do
+        user = Fabricate(:user, username: 'fôô', email: 'test@email.com')
+        member = Fabricate(:member, user: user, organization: test_organization)
+
+        get :index, params: { q: { member_search_cont: "foo" } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -326,7 +341,7 @@ RSpec.describe UsersController do
 
         it 'creates the user' do
           expect do
-            post :create, params: { user: Fabricate.to_params(:user, password: '1234test'), from_signup: 'true' } 
+            post :create, params: { user: Fabricate.to_params(:user, password: '1234test'), from_signup: 'true' }
           end.to change(User, :count).by(1)
           expect(subject).to redirect_to(terms_path)
         end
