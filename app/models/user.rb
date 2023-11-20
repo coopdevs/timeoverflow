@@ -9,6 +9,10 @@ class User < ApplicationRecord
     :timeoutable
   ]
 
+  ransacker :username do
+    Arel.sql('unaccent(users.username)')
+  end
+
   GENDERS = %w(
     female
     male

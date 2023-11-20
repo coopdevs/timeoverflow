@@ -146,6 +146,15 @@ RSpec.describe UsersController do
 
         expect(assigns(:members)).to include(member)
       end
+
+      it 'allows to search a member ignoring accents of user\'s username' do
+        user = Fabricate(:user, username: 'fôô', email: 'test@email.com')
+        member = Fabricate(:member, user: user, organization: test_organization)
+
+        get :index, params: { q: { member_search_cont: "foo" } }
+
+        expect(assigns(:members)).to include(member)
+      end
     end
   end
 
