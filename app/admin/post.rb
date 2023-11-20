@@ -1,4 +1,19 @@
 ActiveAdmin.register Post do
+  action_item :upload_csv, only: :index do
+    link_to I18n.t("active_admin.users.upload_from_csv"), action: "upload_csv"
+  end
+
+  collection_action :upload_csv do
+    render "admin/csv/upload_csv"
+  end
+
+  collection_action :import_csv, method: :post do
+    errors = PostImporter.call(params[:dump][:organization_id], params[:dump][:file])
+    flash[:error] = errors.join("<br/>").html_safe if errors.present?
+
+    redirect_to action: :index
+  end
+
   index do
     id_column
     column :class
