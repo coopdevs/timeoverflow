@@ -11,9 +11,7 @@ module Timeoverflow
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    # I18n configuration
     config.i18n.default_locale = :es
     config.i18n.available_locales = [:es, :ca, :eu, :gl, :en, :'pt-BR', :fr]
     config.i18n.fallbacks = true
