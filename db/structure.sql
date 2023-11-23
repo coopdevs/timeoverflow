@@ -413,7 +413,7 @@ CREATE TABLE public.members (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     entry_date date,
-    member_uid integer,
+    member_uid integer NOT NULL,
     active boolean DEFAULT true,
     tags text[] DEFAULT '{}'::text[]
 );
@@ -728,126 +728,126 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: accounts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.accounts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_admin_comments ALTER COLUMN id SET DEFAULT nextval('public.active_admin_comments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: active_storage_attachments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_attachments ALTER COLUMN id SET DEFAULT nextval('public.active_storage_attachments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: active_storage_blobs id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval('public.active_storage_blobs_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: active_storage_variant_records id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_variant_records ALTER COLUMN id SET DEFAULT nextval('public.active_storage_variant_records_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: categories id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.categories ALTER COLUMN id SET DEFAULT nextval('public.categories_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: device_tokens id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.device_tokens ALTER COLUMN id SET DEFAULT nextval('public.device_tokens_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: documents id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.documents ALTER COLUMN id SET DEFAULT nextval('public.documents_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: events id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: members id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.members ALTER COLUMN id SET DEFAULT nextval('public.members_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: movements id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.movements ALTER COLUMN id SET DEFAULT nextval('public.movements_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: organizations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.organizations ALTER COLUMN id SET DEFAULT nextval('public.organizations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: petitions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.petitions ALTER COLUMN id SET DEFAULT nextval('public.petitions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: posts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.posts ALTER COLUMN id SET DEFAULT nextval('public.posts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: push_notifications id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.push_notifications ALTER COLUMN id SET DEFAULT nextval('public.push_notifications_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: transfers id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.transfers ALTER COLUMN id SET DEFAULT nextval('public.transfers_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
--- Name: accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: accounts accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.accounts
@@ -855,7 +855,7 @@ ALTER TABLE ONLY public.accounts
 
 
 --
--- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: active_admin_comments active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_admin_comments
@@ -863,7 +863,7 @@ ALTER TABLE ONLY public.active_admin_comments
 
 
 --
--- Name: active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: active_storage_attachments active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_attachments
@@ -871,7 +871,7 @@ ALTER TABLE ONLY public.active_storage_attachments
 
 
 --
--- Name: active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: active_storage_blobs active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_blobs
@@ -879,7 +879,7 @@ ALTER TABLE ONLY public.active_storage_blobs
 
 
 --
--- Name: active_storage_variant_records_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: active_storage_variant_records active_storage_variant_records_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_variant_records
@@ -887,7 +887,7 @@ ALTER TABLE ONLY public.active_storage_variant_records
 
 
 --
--- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ar_internal_metadata
@@ -895,7 +895,7 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
--- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.categories
@@ -903,7 +903,7 @@ ALTER TABLE ONLY public.categories
 
 
 --
--- Name: device_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: device_tokens device_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.device_tokens
@@ -911,7 +911,7 @@ ALTER TABLE ONLY public.device_tokens
 
 
 --
--- Name: documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: documents documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.documents
@@ -919,7 +919,7 @@ ALTER TABLE ONLY public.documents
 
 
 --
--- Name: events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
@@ -927,7 +927,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: members_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: members members_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.members
@@ -935,7 +935,7 @@ ALTER TABLE ONLY public.members
 
 
 --
--- Name: movements_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: movements movements_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.movements
@@ -943,7 +943,7 @@ ALTER TABLE ONLY public.movements
 
 
 --
--- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: organizations organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.organizations
@@ -951,7 +951,7 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- Name: petitions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: petitions petitions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.petitions
@@ -959,7 +959,7 @@ ALTER TABLE ONLY public.petitions
 
 
 --
--- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.posts
@@ -967,7 +967,7 @@ ALTER TABLE ONLY public.posts
 
 
 --
--- Name: push_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: push_notifications push_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.push_notifications
@@ -975,7 +975,7 @@ ALTER TABLE ONLY public.push_notifications
 
 
 --
--- Name: transfers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: transfers transfers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.transfers
@@ -983,7 +983,7 @@ ALTER TABLE ONLY public.transfers
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -1103,6 +1103,13 @@ CREATE INDEX index_members_on_organization_id ON public.members USING btree (org
 
 
 --
+-- Name: index_members_on_organization_id_and_member_uid; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_members_on_organization_id_and_member_uid ON public.members USING btree (organization_id, member_uid);
+
+
+--
 -- Name: index_members_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1208,14 +1215,14 @@ CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING b
 
 
 --
--- Name: tsvectorupdate; Type: TRIGGER; Schema: public; Owner: -
+-- Name: posts tsvectorupdate; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON public.posts FOR EACH ROW EXECUTE PROCEDURE public.posts_trigger();
 
 
 --
--- Name: events_member_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: events events_member_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
@@ -1223,7 +1230,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: events_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: events events_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
@@ -1231,7 +1238,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: events_transfer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: events events_transfer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.events
@@ -1239,7 +1246,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: fk_rails_0f0c5fe120; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: petitions fk_rails_0f0c5fe120; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.petitions
@@ -1247,7 +1254,7 @@ ALTER TABLE ONLY public.petitions
 
 
 --
--- Name: fk_rails_148f563e25; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: petitions fk_rails_148f563e25; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.petitions
@@ -1255,7 +1262,7 @@ ALTER TABLE ONLY public.petitions
 
 
 --
--- Name: fk_rails_1ceb778440; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: accounts fk_rails_1ceb778440; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.accounts
@@ -1263,7 +1270,7 @@ ALTER TABLE ONLY public.accounts
 
 
 --
--- Name: fk_rails_36fb6ef1a8; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: push_notifications fk_rails_36fb6ef1a8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.push_notifications
@@ -1271,7 +1278,7 @@ ALTER TABLE ONLY public.push_notifications
 
 
 --
--- Name: fk_rails_79a395b2d7; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: push_notifications fk_rails_79a395b2d7; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.push_notifications
@@ -1279,7 +1286,7 @@ ALTER TABLE ONLY public.push_notifications
 
 
 --
--- Name: fk_rails_993965df05; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: active_storage_variant_records fk_rails_993965df05; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_variant_records
@@ -1287,7 +1294,7 @@ ALTER TABLE ONLY public.active_storage_variant_records
 
 
 --
--- Name: fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: active_storage_attachments fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_storage_attachments
@@ -1368,6 +1375,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20221016192111'),
 ('20230312231058'),
 ('20230314233504'),
-('20230401114456');
-
-
+('20230401114456'),
+('20231120164231'),
+('20231120164346');
