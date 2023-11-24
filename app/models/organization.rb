@@ -26,6 +26,7 @@ class Organization < ApplicationRecord
   has_many :petitions, dependent: :delete_all
 
   validates :name, presence: true, uniqueness: true
+  validates :logo, content_type: /\Aimage\/.*\z/
 
   before_validation :ensure_url
   after_create :create_account

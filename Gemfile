@@ -25,6 +25,7 @@ gem 'sidekiq', '~> 6.5'
 gem 'sidekiq-cron', '~> 1.9.1'
 gem 'aws-sdk-s3', '~> 1.94', require: false
 gem 'image_processing', '~> 1.12'
+gem 'active_storage_validations', '~> 1.1.3'
 
 # Assets
 gem 'jquery-rails', '~> 4.4.0'
