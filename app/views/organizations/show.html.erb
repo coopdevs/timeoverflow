@@ -84,7 +84,7 @@
   </div>
   <div class="col-sm-5">
     <ul class="nav nav-pills pull-right">
-      <% if admin? %>
+      <% if current_user&.manages?(@organization) %>
         <li>
           <%= link_to edit_organization_path(@organization) do %>
             <%= glyph :pencil %>
@@ -101,6 +101,7 @@
         </li>
       <% end %>
     </ul>
+    <%= render "organizations/petition_button", organization: @organization %>
   </div>
 </div>
 
