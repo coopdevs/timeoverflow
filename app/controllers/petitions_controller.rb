@@ -3,6 +3,7 @@ class PetitionsController < ApplicationController
 
   def create
     petition = Petition.new petition_params
+    petition.status = "pending"
 
     if petition.save
       OrganizationNotifier.new_petition(petition).deliver_now
@@ -13,7 +14,7 @@ class PetitionsController < ApplicationController
       flash[:error] = t('errors.internal_server_error.description')
     end
 
-    redirect_to organizations_path
+    redirect_back fallback_location: organization_path(petition.organization)
   end
 
   def update
@@ -38,6 +39,6 @@ class PetitionsController < ApplicationController
   private
 
   def petition_params
-    params.permit(%i[organization_id user_id status])
+    params.permit(%i[organization_id user_id])
   end
 end

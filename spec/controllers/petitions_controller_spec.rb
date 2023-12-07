@@ -7,9 +7,12 @@ RSpec.describe PetitionsController do
     before { login(user) }
 
     it 'creates the petition' do
+      request.env['HTTP_REFERER'] = organizations_path
+
       expect do
         post :create, params: { user_id: user.id, organization_id: organization.id }
       end.to change(Petition, :count).by(1)
+      expect(response).to redirect_to(organizations_path)
     end
   end
 
@@ -35,7 +38,7 @@ RSpec.describe PetitionsController do
 
   describe 'GET #manage' do
     before do
-      allow(controller).to receive(:current_organization) { organization } 
+      allow(controller).to receive(:current_organization) { organization }
       login(admin.user)
     end
     let!(:petition) { Petition.create(user: user, organization: organization, status: 'pending') }
