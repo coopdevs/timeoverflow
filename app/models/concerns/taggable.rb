@@ -42,7 +42,8 @@ module Taggable
     end
 
     def find_like_tag(pattern)
-      all_tags.uniq.select { |t| t =~ /#{pattern}/i }
+      transliterated_pattern = pattern.present? ? ActiveSupport::Inflector.transliterate(pattern) : ""
+      all_tags.uniq.select { |t| ActiveSupport::Inflector.transliterate(t) =~ /#{transliterated_pattern}/i }
     end
 
     # Builds a hash where the keys are the capital letters of the tags and the

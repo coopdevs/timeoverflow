@@ -124,7 +124,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
 
-        get :index, params: { q: { member_search_cont: 1000 } }
+        get :index, params: { q: { member_search_unaccent_cont: 1000 } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -133,7 +133,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
 
-        get :index, params: { q: { member_search_cont: "Bos" } }
+        get :index, params: { q: { member_search_unaccent_cont: "Bos" } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -151,8 +151,10 @@ RSpec.describe UsersController do
         user = Fabricate(:user, username: 'fôô', email: 'test@email.com')
         member = Fabricate(:member, user: user, organization: test_organization)
 
-        get :index, params: { q: { member_search_cont: "foo" } }
+        get :index, params: { q: { member_search_unaccent_cont: "foo" } }
+        expect(assigns(:members)).to include(member)
 
+        get :index, params: { q: { member_search_unaccent_cont: "föö" } }
         expect(assigns(:members)).to include(member)
       end
     end
@@ -200,7 +202,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user, phone: 123456789)
         member = Fabricate(:member, user: user, organization: test_organization)
 
-        get :manage, params: { q: { member_search_cont: 123456789 } }
+        get :manage, params: { q: { member_search_unaccent_cont: 123456789 } }
 
         expect(assigns(:members)).to include(member)
       end
@@ -209,7 +211,7 @@ RSpec.describe UsersController do
         user = Fabricate(:user)
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
 
-        get :index, params: { q: { member_search_cont: "Bos" } }
+        get :index, params: { q: { member_search_unaccent_cont: "Bos" } }
 
         expect(assigns(:members)).to include(member)
       end
