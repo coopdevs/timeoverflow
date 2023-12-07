@@ -1,7 +1,7 @@
 RSpec.describe Taggable do
   let(:organization) { Fabricate(:organization) }
-  let(:tags) { %w(foo bar baz) }
-  let(:more_tags) { %w(foo baz qux) }
+  let(:tags) { %w(foo bar baz test) }
+  let(:more_tags) { %w(foo baz qux têst) }
   let!(:offer) do
     Fabricate(
       :offer,
@@ -30,6 +30,8 @@ RSpec.describe Taggable do
       expect(Offer.find_like_tag("foo")).to eq ["foo"]
       expect(Offer.find_like_tag("Foo")).to eq ["foo"]
       expect(Offer.find_like_tag("none")).to eq []
+      expect(Offer.find_like_tag("test")).to match_array ["test", "têst"]
+      expect(Offer.find_like_tag("têst")).to match_array ["test", "têst"]
     end
 
     describe '.alphabetical_grouped_tags' do
