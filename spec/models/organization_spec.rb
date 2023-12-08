@@ -9,7 +9,7 @@ RSpec.describe Organization do
       expect(organization).to be_invalid
 
       temp_file = Tempfile.new('test.svg')
-      organization.logo.attach(io: File.open(temp_file.path), filename: 'test.txt')
+      organization.logo.attach(io: File.open(temp_file.path), filename: 'test.svg')
 
       expect(organization).to be_invalid
 
