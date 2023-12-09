@@ -27,7 +27,7 @@ module ApplicationHelper
   def organization_logo
     org = @organization || @current_organization
 
-    return unless org && org.logo.attached?
+    return unless org && org.logo.attached? && org.errors.details[:logo].blank?
     return if "#{controller_name}##{action_name}".in? %w(organizations#index pages#show)
 
     content_tag(:div, class: "row organization-logo") do

@@ -9,6 +9,6 @@
   <%= f.input :address %>
   <%= f.input :neighborhood %>
   <%= f.input :city %>
-  <%= f.input :logo %>
+  <%= f.input :logo, input_html: { accept: Organization::LOGO_CONTENT_TYPES.join(',') } %>
   <%= f.button :submit %>
 <% end %>

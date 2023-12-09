@@ -27,6 +27,9 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  LOGO_CONTENT_TYPES = %w(image/jpeg image/png image/gif)
+  validates :logo, content_type: LOGO_CONTENT_TYPES
+
   before_validation :ensure_url
   after_create :create_account
 
