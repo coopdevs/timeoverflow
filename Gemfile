@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1.1'
+gem 'rails', '~> 7.0.8'
 gem 'rails-i18n', '~> 7.0'
 gem 'rdiscount', '~> 2.2.7'
 gem 'rubyzip', '~> 2.3.0'
-gem 'activeadmin', '~> 2.9.0'
+gem 'activeadmin', '~> 2.14'
 gem 'bootsnap', '~> 1.12', require: false
 gem 'has_scope', '~> 0.7.2'
 gem 'pundit', '~> 2.1.0'
@@ -51,9 +51,9 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 4.0.0'
+  gem 'rspec-rails', '~> 6.0'
   gem 'rails-controller-testing'
-  gem 'database_cleaner', '~> 1.8.5'
+  gem 'database_cleaner', '~> 2.0'
   gem 'shoulda-matchers', '~> 4.4'
   gem 'fabrication', '~> 2.20'
   gem 'faker', '~> 2.15'
