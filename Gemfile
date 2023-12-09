@@ -58,8 +58,7 @@ group :test do
   gem 'fabrication', '~> 2.20'
   gem 'faker', '~> 2.15'
   gem 'capybara', '~> 3.29'
-  gem 'selenium-webdriver', '~> 4.1.0'
-  gem 'webdrivers', '~> 5.3'
+  gem 'selenium-webdriver', '~> 4.16'
   gem 'simplecov', '~> 0.22', require: false
   gem 'webrick'
 end
