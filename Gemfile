@@ -4,7 +4,7 @@ gem 'rails', '~> 6.1.1'
 gem 'rails-i18n', '~> 7.0'
 gem 'rdiscount', '~> 2.2.7'
 gem 'rubyzip', '~> 2.3.0'
-gem 'activeadmin', '~> 2.9.0'
+gem 'activeadmin', '~> 2.12.0'
 gem 'bootsnap', '~> 1.12.0', require: false
 gem 'has_scope', '~> 0.7.2'
 gem 'pundit', '~> 2.1.0'
