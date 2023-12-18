@@ -10,6 +10,7 @@ class TransferImporter
     :destination_id,
     :destination_type,
     :amount,
+    :created_at,
     :reason,
     :post_id
   ) do
@@ -22,6 +23,7 @@ class TransferImporter
         source: source,
         destination: destination,
         amount: amount,
+        created_at: created_at,
         reason: reason,
         post_id: post_id,
       )
@@ -57,7 +59,8 @@ class TransferImporter
           data_row[3],
           data_row[4],
           data_row[5],
-          data_row[6]
+          data_row[6],
+          data_row[7]
         )
         process_row(row, organization_id, errors)
       end
