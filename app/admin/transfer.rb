@@ -1,4 +1,8 @@
 ActiveAdmin.register Transfer do
+  includes :post, movements: { account: [:accountable, :organization] }
+
+  actions :index, :destroy
+
   action_item :upload_csv, only: :index do
     link_to I18n.t("active_admin.users.upload_from_csv"), action: "upload_csv"
   end
@@ -18,16 +22,11 @@ ActiveAdmin.register Transfer do
     id_column
     column :post
     column :reason
-    column :source do |transfer|
-      acc = transfer.movements.find_by('amount < 0').account.accountable
-      acc.class.name == "Member" ? acc.user : acc
-    end
-    column :destination do |transfer|
-      acc = transfer.movements.find_by('amount > 0').account.accountable
-      acc.class.name == "Member" ? acc.user : acc
+    column "From - To" do |transfer|
+      accounts_from_movements(transfer, with_links: true).join(" #{glyph(:arrow_right)} ").html_safe
     end
     column :amount do |transfer|
-      transfer.movements.find_by('amount > 0').amount
+      seconds_to_hm(transfer.movements.first.amount.abs)
     end
     column :created_at do |transfer|
       l transfer.created_at.to_date, format: :long
