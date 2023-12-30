@@ -7,6 +7,9 @@ ActiveAdmin.register Category do
     actions
   end
 
+  filter :created_at
+  filter :updated_at
+
   form do |f|
     f.inputs do
       f.input :name

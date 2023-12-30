@@ -57,4 +57,5 @@ ActiveAdmin.register Post do
   filter :is_group
   filter :active
   filter :created_at
+  filter :updated_at
 end
