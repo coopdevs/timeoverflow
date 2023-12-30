@@ -11,6 +11,8 @@ ActiveAdmin.register Petition do
     end
   end
 
+  filter :organization
   filter :status, as: :select, collection: -> { Petition.statuses }
   filter :created_at
+  filter :updated_at
 end

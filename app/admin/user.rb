@@ -35,6 +35,7 @@ ActiveAdmin.register User do
   filter :phone
   filter :postcode
   filter :locale
+  filter :created_at
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
