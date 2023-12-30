@@ -36,4 +36,8 @@ ActiveAdmin.register Transfer do
     end
     actions
   end
+
+  filter :post
+  filter :reason
+  filter :created_at
 end
