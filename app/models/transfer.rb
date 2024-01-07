@@ -23,8 +23,8 @@ class Transfer < ApplicationRecord
   after_create :make_movements
 
   def make_movements
-    movements.create(account: Account.find(source_id), amount: -amount.to_i)
-    movements.create(account: Account.find(destination_id), amount: amount.to_i)
+    movements.create(account: Account.find(source_id), amount: -amount.to_i, created_at: created_at)
+    movements.create(account: Account.find(destination_id), amount: amount.to_i, created_at: created_at)
   end
 
   def source_id
