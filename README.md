@@ -73,6 +73,11 @@ In order to configure the application you can use the following ENV variables:
 | `RAILS_SERVE_STATIC_FILES` | Tell the application to serve static files (you might want to turn this off if you are using an external web server to serve files from the `public` folder) | `true` |
 | `RAILS_LOG_TO_STDOUT` | Tell the application to log to STDOUT (useful for Docker) | `true` |
 | `RAILS_LOG_LEVEL` | Log level for the application (use `debug` for maximum information) | `info` |
+| `RAILS_MAX_THREADS` | Maximum number of threads to use in the application (use `1` if multithreading is not desired) | `5` |
+| `RAILS_MIN_THREADS` | Minimum number of threads to use in the application | `RAILS_MAX_THREADS` value |
+| `WEB_CONCURRENCY` | Number of web server processes to use | `2` |
+| `RUN_SIDEKIQ` | Run Sidekiq worker process in the docker instance (you might want to change this if want to run different docker instances for Sidekiq and Rails) | `true` |
+| `RUN_RAILS` | Run Rails web server process in the docker instance | `true` |
 | `QUEUE_ADAPTER` | Adapter to use for background jobs (currently the application is using exclusively Sidekiq, so no other options here right now) | `sidekiq` |
 | `SIDEKIQ_CONCURRENCY` | Number of threads to use in Sidekiq | `5` |
 | `STORAGE_PROVIDER` | Storage provider for the application (currently the application supports `local` and `amazon`) | `local` |
