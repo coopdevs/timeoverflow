@@ -22,7 +22,7 @@ require 'selenium/webdriver'
 require 'faker'
 require 'shoulda/matchers'
 
-Capybara.server = :webrick
+Capybara.server = :puma
 Capybara.register_driver :headless_chrome do |app|
   browser_options = Selenium::WebDriver::Chrome::Options.new(
     args: %w(headless disable-gpu no-sandbox)
