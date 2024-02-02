@@ -66,7 +66,7 @@ In order to configure the application you can use the following ENV variables:
 > Make sure to configure at least the ones without a default value (empty).
 
 | ENV | Description | Default |
-| --- | --- |
+| --- | --- | --- |
 | `RAILS_ENV` | Define the rails environment (not necessary to setup unless you have some special requirements) | `production` |
 | `SECRET_KEY_BASE` | Secret key for the application, generate a new one with the command `rails secret` | |
 | `DATABASE_URL` | Database URL, the format is `postgresql://user:password@host:port/database` | |
