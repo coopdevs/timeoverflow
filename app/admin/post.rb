@@ -46,7 +46,7 @@ ActiveAdmin.register Post do
   end
 
   permit_params :type, :tag_list, :title, :category_id, :user_id,
-    :description, :organization_id, :active, :is_group
+                :description, :organization_id, :active, :is_group
 
   filter :type, as: :select, collection: -> { Post.subclasses }
   filter :id

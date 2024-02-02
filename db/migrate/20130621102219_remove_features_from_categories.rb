@@ -11,4 +11,3 @@ class RemoveFeaturesFromCategories < ActiveRecord::Migration
     drop_table :category_hierarchies
   end
 end
-

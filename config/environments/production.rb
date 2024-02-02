@@ -57,10 +57,16 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = %w(debug info warn error fatal).include?(ENV.fetch("RAILS_LOG_LEVEL", nil)) ? ENV["RAILS_LOG_LEVEL"] : :info
+  config.log_level = if %w(debug info warn error
+                           fatal).include?(ENV.fetch("RAILS_LOG_LEVEL",
+                                                     nil))
+                       ENV["RAILS_LOG_LEVEL"]
+                     else
+                       :info
+                     end
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -78,10 +84,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = {
     host: ENV["MAIL_LINK_HOST"],
-    protocol: (ENV["MAIL_LINK_PROTO"] || "https")
+    protocol: ENV["MAIL_LINK_PROTO"] || "https"
   }
 
-  smtp_env = Hash[ENV.map do |k,v|
+  smtp_env = Hash[ENV.map do |k, v|
     if /^SMTP_(.*)$/ === k
       [$1.downcase.to_sym, YAML.load(v)]
     end

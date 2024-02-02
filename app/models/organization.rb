@@ -2,13 +2,13 @@ class Organization < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_query,
-    against: %i[city neighborhood address name],
-    ignoring: :accents,
-    using: {
-      tsearch: {
-        prefix: true
-      }
-    }
+                  against: %i[city neighborhood address name],
+                  ignoring: :accents,
+                  using: {
+                    tsearch: {
+                      prefix: true
+                    }
+                  }
 
   has_one_attached :logo
 
@@ -73,7 +73,7 @@ class Organization < ApplicationRecord
 
   def ensure_url
     return if web.blank? || URI.parse(web).is_a?(URI::HTTP)
-  rescue
+  rescue StandardError
     errors.add(:web, :url_format_invalid)
   else
     if URI.parse("http://#{web}").is_a?(URI::HTTP)

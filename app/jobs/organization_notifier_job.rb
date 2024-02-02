@@ -27,8 +27,8 @@ class OrganizationNotifierJob < ActiveJob::Base
     with_notifications = organization.users.online_active.actives.notifications
     org_locales = with_notifications.pluck(:locale).uniq
 
-    org_locales.each_with_object({}) do |locale, hash|
-      hash[locale] = with_notifications.where(locale: locale)
+    org_locales.index_with do |locale|
+      with_notifications.where(locale: locale)
     end
   end
 end

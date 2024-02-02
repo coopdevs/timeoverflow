@@ -24,7 +24,8 @@ class Transfer < ApplicationRecord
 
   def make_movements
     movements.create(account: Account.find(source_id), amount: -amount.to_i, created_at: created_at)
-    movements.create(account: Account.find(destination_id), amount: amount.to_i, created_at: created_at)
+    movements.create(account: Account.find(destination_id), amount: amount.to_i,
+                     created_at: created_at)
   end
 
   def source_id
@@ -37,6 +38,7 @@ class Transfer < ApplicationRecord
 
   def different_source_and_destination
     return unless source == destination
+
     errors.add(:base, :same_account)
   end
 end

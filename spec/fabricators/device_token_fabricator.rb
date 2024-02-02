@@ -1,3 +1,3 @@
 Fabricator(:device_token) do
-  token 'token'
+  token "token"
 end

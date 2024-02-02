@@ -144,7 +144,7 @@ Offer.find_or_create_by(title: "Ruby on Rails nivel principiante") do |post|
   EOF
   post.category_id = 5
   post.user_id = 1
-  post.tags = ["Rails", "Ruby", "programación"]
+  post.tags = %w[Rails Ruby programación]
   post.organization_id = 1
 end
 
@@ -154,7 +154,7 @@ Offer.find_or_create_by(title: "Cocina low cost") do |post|
   EOF
   post.category_id = 7
   post.user_id = 1
-  post.tags = ["Cocinar", "Cocina"]
+  post.tags = %w[Cocinar Cocina]
   post.organization_id = 1
 end
 
@@ -165,7 +165,7 @@ Offer.find_or_create_by(title: "Yoga para principiantes") do |post|
   EOF
   post.category_id = 5
   post.user_id = 2
-  post.tags = ["Yoga", "Estiramientos", "Respiración", "Meditación"]
+  post.tags = %w[Yoga Estiramientos Respiración Meditación]
   post.organization_id = 1
 end
 
@@ -175,7 +175,7 @@ Offer.find_or_create_by(title: "English conversation") do |post|
   EOF
   post.category_id = 5
   post.user_id = 2
-  post.tags = ["Inglés", "English", "Conversación"]
+  post.tags = %w[Inglés English Conversación]
   post.organization_id = 1
 end
 
@@ -203,7 +203,7 @@ Offer.find_or_create_by(title: "Te enseño a escribir con Markdown") do |post|
   EOF
   post.category_id = 5
   post.user_id = 1
-  post.tags = ["Markdown", "programación"]
+  post.tags = %w[Markdown programación]
   post.organization_id = 1
 end
 
@@ -213,7 +213,7 @@ Offer.find_or_create_by(title: "Pequeñas reparaciones de casa") do |post|
   EOF
   post.category_id = 3
   post.user_id = 3
-  post.tags = ["casa", "manitas"]
+  post.tags = %w[casa manitas]
   post.organization_id = 1
 end
 
@@ -223,7 +223,7 @@ Inquiry.find_or_create_by(title: "Ayuda a organizarme con los tupper") do |post|
   EOF
   post.category_id = 7
   post.user_id = 1
-  post.tags = ["Cocinar", "Cocina", "Tupper"]
+  post.tags = %w[Cocinar Cocina Tupper]
   post.organization_id = 1
 end
 
@@ -233,14 +233,14 @@ Inquiry.find_or_create_by(title: "Quiero aprender a programar") do |post|
   EOF
   post.category_id = 5
   post.user_id = 1
-  post.tags = ["Rails", "Ruby", "programación"]
+  post.tags = %w[Rails Ruby programación]
   post.organization_id = 1
 end
 
 Inquiry.find_or_create_by(title: "Cocina Tailandesa") do |post|
   post.category_id = 7
   post.user_id = 1
-  post.tags = ["Tailandesa", "Cocina"]
+  post.tags = %w[Tailandesa Cocina]
   post.organization_id = 1
 end
 
@@ -250,7 +250,7 @@ Inquiry.find_or_create_by(title: "Cocinar Sushi") do |post|
   EOF
   post.category_id = 7
   post.user_id = 3
-  post.tags = ["Cocinar", "Cocina", "Tupper"]
+  post.tags = %w[Cocinar Cocina Tupper]
   post.organization_id = 1
 end
 
@@ -260,7 +260,7 @@ Inquiry.find_or_create_by(title: "Aprender cocina Libanesa") do |post|
   EOF
   post.category_id = 7
   post.user_id = 3
-  post.tags = ["Cocinar", "Cocina", "Tupper"]
+  post.tags = %w[Cocinar Cocina Tupper]
   post.organization_id = 1
 end
 
@@ -270,7 +270,7 @@ Inquiry.find_or_create_by(title: "Conversación en Inglés") do |post|
   EOF
   post.category_id = 5
   post.user_id = 1
-  post.tags = ["Inglés", "gramática", "Conversación"]
+  post.tags = %w[Inglés gramática Conversación]
   post.organization_id = 1
 end
 
@@ -288,7 +288,7 @@ Inquiry.find_or_create_by(title: "Clases de Italiano") do |post|
   EOF
   post.category_id = 5
   post.user_id = 1
-  post.tags = ["Italiano", "clases", "Conversación"]
+  post.tags = %w[Italiano clases Conversación]
   post.organization_id = 1
 end
 
@@ -308,7 +308,7 @@ Inquiry.find_or_create_by(title: "Quiero hacer Yoga") do |post|
   EOF
   post.category_id = 5
   post.user_id = 2
-  post.tags = ["Yoga", "Estiramientos", "Respiración", "flexibilidad"]
+  post.tags = %w[Yoga Estiramientos Respiración flexibilidad]
   post.organization_id = 1
 end
 
@@ -318,7 +318,7 @@ Inquiry.find_or_create_by(title: "Practicar Meditación transcendental") do |pos
   EOF
   post.category_id = 5
   post.user_id = 2
-  post.tags = ["Meditación", "Estiramientos", "Respiración", "flexibilidad"]
+  post.tags = %w[Meditación Estiramientos Respiración flexibilidad]
   post.organization_id = 1
 end
 
@@ -328,7 +328,7 @@ Inquiry.find_or_create_by(title: "Clases de Alemán") do |post|
   EOF
   post.category_id = 5
   post.user_id = 1
-  post.tags = ["Aleman", "Deutsche", "Conversación"]
+  post.tags = %w[Aleman Deutsche Conversación]
   post.organization_id = 1
 end
 

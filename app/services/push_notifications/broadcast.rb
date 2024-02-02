@@ -46,7 +46,7 @@ module PushNotifications
     end
 
     def uri
-      URI('https://exp.host/--/api/v2/push/send')
+      URI("https://exp.host/--/api/v2/push/send")
     end
 
     def headers

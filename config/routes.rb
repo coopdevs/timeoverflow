@@ -1,11 +1,11 @@
-require 'sidekiq/web'
-require 'sidekiq/cron/web'
+require "sidekiq/web"
+require "sidekiq/cron/web"
 
 Rails.application.routes.draw do
   root to: "home#index"
 
   authenticate :user, lambda { |u| Rails.env.development? || u.superadmin? } do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
   end
 
   devise_for :users, controllers: { sessions: "sessions" }
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  get :switch_lang, to: 'application#switch_lang'
+  get :switch_lang, to: "application#switch_lang"
 
   get "/pages/:page" => "pages#show", as: :page
 
@@ -28,34 +28,35 @@ Rails.application.routes.draw do
     get :give_time, on: :member
   end
 
-  resources :organizations, except: [:new, :create, :destroy], concerns: :accountable do
+  resources :organizations, except: %i[new create destroy], concerns: :accountable do
     member do
       post :set_current
     end
   end
-  get :select_organization, to: 'organizations#select_organization'
+  get :select_organization, to: "organizations#select_organization"
 
-  resources :users, concerns: :accountable, except: :destroy, :path => "members" do
+  resources :users, concerns: :accountable, except: :destroy, path: "members" do
     collection do
-      get 'signup'
-      get 'manage'
-      get 'please_confirm'
+      get "signup"
+      get "manage"
+      get "please_confirm"
     end
   end
-  put :update_avatar, to: 'users#update_avatar'
+  put :update_avatar, to: "users#update_avatar"
 
-  resources :petitions, only: [:create, :update] do
+  resources :petitions, only: %i[create update] do
     collection do
-      get 'manage'
+      get "manage"
     end
   end
 
-  resources :transfers, only: [:new, :create] do
+  resources :transfers, only: %i[new create] do
     member do
       put :delete_reason
     end
   end
-  match "multi/step/:step", to: "multi_transfers#step", via: [:get, :post], as: :multi_transfers_step
+  match "multi/step/:step", to: "multi_transfers#step", via: %i[get post],
+                            as: :multi_transfers_step
   post "multi/create", to: "multi_transfers#create", as: :multi_transfers_create
 
   resources :documents
@@ -99,6 +100,6 @@ Rails.application.routes.draw do
     end
   end
 
-  match '/404', to: 'errors#not_found', via: :all
-  match '/500', to: 'errors#internal_server_error', via: :all
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
 end

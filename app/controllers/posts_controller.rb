@@ -1,4 +1,4 @@
-class PostsController <  ApplicationController
+class PostsController < ApplicationController
   has_scope :by_category, as: :cat
   has_scope :tagged_with, as: :tag
   has_scope :by_organization, as: :org
@@ -94,7 +94,7 @@ class PostsController <  ApplicationController
 
   def post_params
     permitted_fields = [:description, :end_on, :start_on, :title, :category_id,
-                        :user_id, :is_group, :active, tag_list: []]
+                        :user_id, :is_group, :active, { tag_list: [] }]
 
     params.fetch(resource, {}).permit(*permitted_fields).tap do |p|
       set_user_id(p)

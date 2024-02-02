@@ -3,14 +3,14 @@ class Post < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_query,
-    against: [:title, :description, :tags],
-    ignoring: :accents,
-    using: {
-      tsearch: {
-        prefix: true,
-        tsvector_column: 'tsv'
-      }
-    }
+                  against: %i[title description tags],
+                  ignoring: :accents,
+                  using: {
+                    tsearch: {
+                      prefix: true,
+                      tsvector_column: "tsv"
+                    }
+                  }
 
   attr_reader :member_id
 
@@ -47,7 +47,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
 
   def as_indexed_json(*)
-    as_json(only: [:title, :description, :tags, :organization_id])
+    as_json(only: %i[title description tags organization_id])
   end
 
   def to_s
@@ -71,6 +71,6 @@ class Post < ApplicationRecord
   end
 
   def rendered_description
-    RDiscount.new(description || '', :autolink)
+    RDiscount.new(description || "", :autolink)
   end
 end

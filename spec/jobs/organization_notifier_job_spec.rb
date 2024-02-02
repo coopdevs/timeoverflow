@@ -7,11 +7,11 @@ RSpec.describe OrganizationNotifierJob, type: :job do
   let!(:offer) { Fabricate(:offer, organization: org, user: user) }
   let!(:inquiry) { Fabricate(:inquiry, organization: org, user: user2) }
 
-  describe '#perform' do
+  describe "#perform" do
     it "should send emails in user's locale" do
-      expect {
+      expect do
         OrganizationNotifierJob.perform_now
-      }.to change { ActionMailer::Base.deliveries.count }.by(2)
+      end.to change { ActionMailer::Base.deliveries.count }.by(2)
     end
   end
 end

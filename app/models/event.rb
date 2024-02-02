@@ -16,6 +16,6 @@ class Event < ApplicationRecord
   def resource_presence
     return if post_id.present? ^ member_id.present? ^ transfer_id.present?
 
-    errors.add(:base, 'Specify only one resource id: `post_id`, `member_id` or `transfer_id`')
+    errors.add(:base, "Specify only one resource id: `post_id`, `member_id` or `transfer_id`")
   end
 end

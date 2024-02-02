@@ -1,10 +1,10 @@
 module WithTransferParams
   def transfer_params
-    permitted_transfer_params = [
-      :destination,
-      :amount,
-      :reason,
-      :post_id,
+    permitted_transfer_params = %i[
+      destination
+      amount
+      reason
+      post_id
     ]
 
     permitted_transfer_params.push(:source) if admin?

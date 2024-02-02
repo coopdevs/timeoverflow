@@ -1,26 +1,26 @@
-ENV["RAILS_ENV"] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 ENV["ADMINS"] = "admin@timeoverflow.org"
 
-require 'simplecov'
+require "simplecov"
 
 SimpleCov.formatter = if ENV["CI"]
-  require "simplecov_json_formatter"
-  SimpleCov::Formatter::JSONFormatter
-else
-  SimpleCov::Formatter::HTMLFormatter
-end
-SimpleCov.start 'rails'
+                        require "simplecov_json_formatter"
+                        SimpleCov::Formatter::JSONFormatter
+                      else
+                        SimpleCov::Formatter::HTMLFormatter
+                      end
+SimpleCov.start "rails"
 
-require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
-require 'capybara/rails'
-require 'capybara/rspec'
-require 'database_cleaner'
-require 'fabrication'
-require 'webdrivers'
-require 'selenium/webdriver'
-require 'faker'
-require 'shoulda/matchers'
+require File.expand_path("../config/environment", __dir__)
+require "rspec/rails"
+require "capybara/rails"
+require "capybara/rspec"
+require "database_cleaner"
+require "fabrication"
+require "webdrivers"
+require "selenium/webdriver"
+require "faker"
+require "shoulda/matchers"
 
 Capybara.server = :puma
 Capybara.register_driver :headless_chrome do |app|

@@ -12,7 +12,7 @@ module Persister
         create_save_event!
         member
       end
-    rescue ActiveRecord::RecordInvalid => _exception
+    rescue ActiveRecord::RecordInvalid => _e
       false
     end
 
@@ -22,7 +22,7 @@ module Persister
         create_update_event!
         member
       end
-    rescue ActiveRecord::RecordInvalid => _exception
+    rescue ActiveRecord::RecordInvalid => _e
       false
     end
 

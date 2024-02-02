@@ -1,18 +1,18 @@
 RSpec.describe SessionsController do
-  let(:user) { Fabricate(:user, password: 'papapa22', password_confirmation: 'papapa22') }
+  let(:user) { Fabricate(:user, password: "papapa22", password_confirmation: "papapa22") }
 
   before do
     request.env["devise.mapping"] = Devise.mappings[:user]
   end
 
-  describe '#create' do
-    it 'does not show a notice flash message' do
+  describe "#create" do
+    it "does not show a notice flash message" do
       post :create, params: { user: { email: user.email, password: user.password } }
 
       expect(flash[:notice]).to be_nil
     end
 
-    it 'redirects to the previous page' do
+    it "redirects to the previous page" do
       session["user_return_to"] = offers_path
 
       post :create, params: { user: { email: user.email, password: user.password } }
@@ -21,12 +21,12 @@ RSpec.describe SessionsController do
     end
   end
 
-  describe '#destroy' do
+  describe "#destroy" do
     before do
       post :create, params: { user: { email: user.email, password: user.password } }
     end
 
-    it 'does not show a notice flash message' do
+    it "does not show a notice flash message" do
       delete :destroy
 
       expect(flash[:notice]).to be_nil

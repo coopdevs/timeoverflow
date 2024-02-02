@@ -1,7 +1,8 @@
 class Report::TransferDecorator
   include Rails.application.routes.url_helpers
   include ActionView::Helpers
-  include ApplicationHelper, TransfersHelper
+  include TransfersHelper
+  include ApplicationHelper
 
   def initialize(org, collection)
     @org = org
@@ -17,11 +18,11 @@ class Report::TransferDecorator
 
   def headers
     [
-      I18n.t('statistics.all_transfers.date'),
-      I18n.t('statistics.all_transfers.from'),
-      I18n.t('statistics.all_transfers.to'),
-      I18n.t('statistics.all_transfers.post'),
-      I18n.t('statistics.all_transfers.quantity')
+      I18n.t("statistics.all_transfers.date"),
+      I18n.t("statistics.all_transfers.from"),
+      I18n.t("statistics.all_transfers.to"),
+      I18n.t("statistics.all_transfers.post"),
+      I18n.t("statistics.all_transfers.quantity")
     ]
   end
 

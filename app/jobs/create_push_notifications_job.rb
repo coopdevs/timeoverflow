@@ -4,7 +4,7 @@ class CreatePushNotificationsJob < ActiveJob::Base
   def perform(event_id:)
     event = ::Event.find_by_id(event_id)
 
-    raise 'A valid Event must be provided' unless event
+    raise "A valid Event must be provided" unless event
 
     if event.post_id
       ::PushNotifications::Creator::Post.new(event: event).create!

@@ -5,7 +5,9 @@ RSpec.describe TagsController do
   let (:organization) { Fabricate(:organization) }
   let (:member) { Fabricate(:member, organization: organization, tags: member_tags) }
   let! (:offer) { Fabricate(:offer, user: member.user, organization: organization, tags: tags) }
-  let! (:inquiry) { Fabricate(:inquiry, user: member.user, organization: organization, tags: more_tags) }
+  let! (:inquiry) do
+    Fabricate(:inquiry, user: member.user, organization: organization, tags: more_tags)
+  end
 
   before(:each) do
     login(member.user)
@@ -53,27 +55,27 @@ RSpec.describe TagsController do
       get :alpha_grouped_index
 
       expect(assigns(:tags)).to eq({
-        "H" => [["html", 2], ["html5", 1]],
-        "C" => [["css", 1]]
-      })
+                                     "H" => [["html", 2], ["html5", 1]],
+                                     "C" => [["css", 1]]
+                                   })
     end
 
     it "load offer tags" do
       get :alpha_grouped_index, params: { post_type: "offer" }
 
       expect(assigns(:tags)).to eq({
-        "B" => [["bar", 1], ["baz", 1]],
-        "F" => [["foo", 1]]
-      })
+                                     "B" => [["bar", 1], ["baz", 1]],
+                                     "F" => [["foo", 1]]
+                                   })
     end
 
     it "load inquiries tags" do
       get :alpha_grouped_index, params: { post_type: "inquiry" }
 
       expect(assigns(:tags)).to eq({
-        "J" => [["js", 1]],
-        "R" => [["rails", 1], ["ruby", 1]]
-      })
+                                     "J" => [["js", 1]],
+                                     "R" => [["rails", 1], ["ruby", 1]]
+                                   })
     end
 
     it "renders a partial with format js" do

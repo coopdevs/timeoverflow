@@ -1,5 +1,5 @@
 class Petition < ApplicationRecord
-  enum status: %i[pending accepted declined]
+  enum status: { pending: 0, accepted: 1, declined: 2 }
 
   belongs_to :user
   belongs_to :organization

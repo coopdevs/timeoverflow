@@ -30,7 +30,7 @@ RSpec.describe UsersController do
               organization: test_organization,
               active: false,
               manager: false)
-    end
+  end
 
   let!(:user) { member.user }
   let!(:another_user) { another_member.user }
@@ -42,7 +42,7 @@ RSpec.describe UsersController do
   describe "GET #index" do
     before { login(user) }
 
-    it 'sorts the users by their last_sign_in_at desc by default' do
+    it "sorts the users by their last_sign_in_at desc by default" do
       member.user.update_column(:last_sign_in_at, DateTime.now)
       another_member.user.update_column(:last_sign_in_at, nil)
 
@@ -52,7 +52,7 @@ RSpec.describe UsersController do
       expect(assigns(:members).last).to eq(another_member)
     end
 
-    it 'allows to sort by member_uid' do
+    it "allows to sort by member_uid" do
       member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
 
       get :index, params: { q: { s: "member_uid desc" } }
@@ -60,24 +60,24 @@ RSpec.describe UsersController do
       expect(assigns(:members).first).to eq(member)
     end
 
-    context 'when a user has many memberships' do
+    context "when a user has many memberships" do
       let!(:member_in_another_organization) { Fabricate(:member, user: user) }
 
       before do
         member.account.update_attribute(
           :balance,
-          Time.parse('13:33').seconds_since_midnight
+          Time.parse("13:33").seconds_since_midnight
         )
       end
 
-      it 'gets her membership in the current organization' do
+      it "gets her membership in the current organization" do
         get :index
 
-        expect(assigns(:members))
-          .to eq([member, another_member, member_admin, wrong_email_member, empty_email_member])
+        expect(assigns(:members)).
+          to eq([member, another_member, member_admin, wrong_email_member, empty_email_member])
       end
 
-      it 'shows data for her membership in the current organization' do
+      it "shows data for her membership in the current organization" do
         get :index
         expect(response.body).to include("13:33")
       end
@@ -93,8 +93,8 @@ RSpec.describe UsersController do
           user.update!(last_sign_in_at: Time.current - i.days)
         end
 
-        expect(assigns(:members).map(&:user))
-          .to eq(expected_users)
+        expect(assigns(:members).map(&:user)).
+          to eq(expected_users)
       end
     end
 
@@ -104,24 +104,24 @@ RSpec.describe UsersController do
 
         get "index"
 
-        expect(assigns(:members).map(&:user))
-          .to eq([user, another_user, admin_user, wrong_user, empty_email_user])
+        expect(assigns(:members).map(&:user)).
+          to eq([user, another_user, admin_user, wrong_user, empty_email_user])
       end
     end
 
-    context 'with a member deactivate' do
-      it 'is redirected to select organization' do
+    context "with a member deactivate" do
+      it "is redirected to select organization" do
         login(deactivate_user)
 
         get :index
 
-        expect(response).to redirect_to('/select_organization')
+        expect(response).to redirect_to("/select_organization")
       end
     end
 
-    context 'when searching' do
-      it 'allows to search by member_uid' do
-        user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
+    context "when searching" do
+      it "allows to search by member_uid" do
+        user = Fabricate(:user, username: "foo", email: "foo@email.com")
         member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000)
 
         get :index, params: { q: { member_search_unaccent_cont: 1000 } }
@@ -129,26 +129,28 @@ RSpec.describe UsersController do
         expect(assigns(:members)).to include(member)
       end
 
-      it 'allows to search by member tags in searcher' do
-        user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
-        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
+      it "allows to search by member tags in searcher" do
+        user = Fabricate(:user, username: "foo", email: "foo@email.com")
+        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000,
+                                    tags: ["Boss"])
 
         get :index, params: { q: { member_search_unaccent_cont: "Bos" } }
 
         expect(assigns(:members)).to include(member)
       end
 
-      it 'allows to search by member tags clicking on one' do
-        user = Fabricate(:user, username: 'foo', email: 'foo@email.com')
-        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
+      it "allows to search by member tags clicking on one" do
+        user = Fabricate(:user, username: "foo", email: "foo@email.com")
+        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000,
+                                    tags: ["Boss"])
 
         get :index, params: { tag: "Boss" }
 
         expect(assigns(:members)).to include(member)
       end
 
-      it 'allows to search a member ignoring accents of user\'s username' do
-        user = Fabricate(:user, username: 'fôô', email: 'test@email.com')
+      it "allows to search a member ignoring accents of user's username" do
+        user = Fabricate(:user, username: "fôô", email: "test@email.com")
         member = Fabricate(:member, user: user, organization: test_organization)
 
         get :index, params: { q: { member_search_unaccent_cont: "foo" } }
@@ -163,7 +165,7 @@ RSpec.describe UsersController do
   describe "GET #manage" do
     before { login(user) }
 
-    it 'sorts the users by their member_uid asc by default' do
+    it "sorts the users by their member_uid asc by default" do
       member.increment!(:member_uid, Member.maximum(:member_uid) + 1)
 
       get :manage
@@ -171,25 +173,25 @@ RSpec.describe UsersController do
       expect(assigns(:members).last).to eq(member)
     end
 
-    context 'when sorting by balance' do
+    context "when sorting by balance" do
       before do
         member_admin.account.update_attribute(:balance, 3600)
       end
 
-      context 'desc' do
-        let(:direction) { 'desc' }
+      context "desc" do
+        let(:direction) { "desc" }
 
-        it 'orders the rows by their balance' do
+        it "orders the rows by their balance" do
           get :manage, params: { q: { s: "account_balance #{direction}" } }
 
           expect(assigns(:members).pluck(:user_id).first).to eq(admin_user.id)
         end
       end
 
-      context 'asc' do
-        let(:direction) { 'asc' }
+      context "asc" do
+        let(:direction) { "asc" }
 
-        it 'orders the rows by their balance' do
+        it "orders the rows by their balance" do
           get :manage, params: { q: { s: "account_balance #{direction}" } }
 
           expect(assigns(:members).pluck(:user_id).last).to eq(admin_user.id)
@@ -197,8 +199,8 @@ RSpec.describe UsersController do
       end
     end
 
-    context 'when searching' do
-      it 'allows to search by phone' do
+    context "when searching" do
+      it "allows to search by phone" do
         user = Fabricate(:user, phone: 123456789)
         member = Fabricate(:member, user: user, organization: test_organization)
 
@@ -207,9 +209,10 @@ RSpec.describe UsersController do
         expect(assigns(:members)).to include(member)
       end
 
-      it 'allows to search by member tags' do
+      it "allows to search by member tags" do
         user = Fabricate(:user)
-        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000, tags: ["Boss"])
+        member = Fabricate(:member, user: user, organization: test_organization, member_uid: 1000,
+                                    tags: ["Boss"])
 
         get :index, params: { q: { member_search_unaccent_cont: "Bos" } }
 
@@ -228,7 +231,7 @@ RSpec.describe UsersController do
           expect(assigns(:user)).to eq(user)
         end
 
-        it 'links to new_transfer_path for his individual offers' do
+        it "links to new_transfer_path for his individual offers" do
           offer = Fabricate(:offer, user: user, organization: test_organization)
 
           get "show", params: { id: user.id }
@@ -246,14 +249,14 @@ RSpec.describe UsersController do
           expect(assigns(:user)).to eq(user)
         end
 
-        it 'links to new_transfer_path' do
+        it "links to new_transfer_path" do
           get "show", params: { id: user.id }
           expect(response.body).to include(
             "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}\">"
           )
         end
 
-        it 'links to new_transfer_path for his individual offers' do
+        it "links to new_transfer_path for his individual offers" do
           offer = Fabricate(:offer, user: user, organization: test_organization)
 
           get "show", params: { id: user.id }
@@ -267,19 +270,17 @@ RSpec.describe UsersController do
 
   describe "POST #create" do
     context "with empty email" do
-
       subject do
         post "create", params: { user: Fabricate.to_params(:user,
-                                       username: user.username + "2",
-                                       email: "",
-                                       phone: "1234",
-                                       alt_phone: "4321") }
+                                                           username: user.username + "2",
+                                                           email: "",
+                                                           phone: "1234",
+                                                           alt_phone: "4321") }
       end
 
       before { login(admin_user) }
 
       it "can create a user with empty email and generates dummy email" do
-
         expect { subject }.to change(User, :count).by(1)
 
         u = User.find_by(username: user.username + "2")
@@ -335,15 +336,18 @@ RSpec.describe UsersController do
           user.valid?
           expect(user.errors[:email]).not_to be_empty
         end
-
       end
 
-      context 'with no logged user' do
-        before { allow_any_instance_of(ActionController::TestRequest).to receive(:referer).and_return(signup_users_path) }
+      context "with no logged user" do
+        before do
+          allow_any_instance_of(ActionController::TestRequest).to receive(:referer).and_return(signup_users_path)
+        end
 
-        it 'creates the user' do
+        it "creates the user" do
           expect do
-            post :create, params: { user: Fabricate.to_params(:user, password: '1234test'), from_signup: 'true' }
+            post :create,
+                 params: { user: Fabricate.to_params(:user, password: "1234test"),
+                           from_signup: "true" }
           end.to change(User, :count).by(1)
           expect(subject).to redirect_to(terms_path)
         end
@@ -352,7 +356,9 @@ RSpec.describe UsersController do
   end
 
   describe "PUT #update" do
-    before { allow_any_instance_of(ActionController::TestRequest).to receive(:referer).and_return('/edit') }
+    before do
+      allow_any_instance_of(ActionController::TestRequest).to receive(:referer).and_return("/edit")
+    end
 
     context "with valid params" do
       context "with a logged" do
@@ -365,11 +371,11 @@ RSpec.describe UsersController do
 
           it "changes @user's own attributes" do
             put "update", params: { id: user.id, user: Fabricate.to_params(:user,
-                                          username: user.username,
-                                          email: user.email,
-                                          phone: "1234",
-                                          alt_phone: "4321",
-                                          postcode: "40000"), tag_list: %w"tag1 tag2" }
+                                                                           username: user.username,
+                                                                           email: user.email,
+                                                                           phone: "1234",
+                                                                           alt_phone: "4321",
+                                                                           postcode: "40000"), tag_list: %w"tag1 tag2" }
 
             user.reload
             expect(user.phone).to eq("1234")
@@ -380,10 +386,10 @@ RSpec.describe UsersController do
 
           it "cannot change another user's attributes" do
             put "update", params: { id: another_user.id, user: Fabricate.to_params(:user,
-                                          username: another_user.username,
-                                          email: another_user.email,
-                                          phone: "5678",
-                                          alt_phone: "8765") }
+                                                                                   username: another_user.username,
+                                                                                   email: another_user.email,
+                                                                                   phone: "5678",
+                                                                                   alt_phone: "8765") }
 
             user.reload
             expect(user.phone).not_to eq("5678")
@@ -401,11 +407,11 @@ RSpec.describe UsersController do
 
           it "changes @user's attributes" do
             put "update", params: { id: user.id, user: Fabricate.to_params(:user,
-                                          username: user.username,
-                                          email: user.email,
-                                          phone: "1234",
-                                          alt_phone: "4321",
-                                          postcode: "40000"), tag_list: %w"tag1 tag2" }
+                                                                           username: user.username,
+                                                                           email: user.email,
+                                                                           phone: "1234",
+                                                                           alt_phone: "4321",
+                                                                           postcode: "40000"), tag_list: %w"tag1 tag2" }
 
             user.reload
             expect(user.phone).to eq("1234")
@@ -423,10 +429,10 @@ RSpec.describe UsersController do
 
         it "does not change @user's attributes" do
           put :update, params: { id: user.id, user: Fabricate.to_params(:user,
-                                        username: nil,
-                                        email: nil,
-                                        phone: "1234",
-                                        alt_phone: "4321") }
+                                                                        username: nil,
+                                                                        email: nil,
+                                                                        phone: "1234",
+                                                                        alt_phone: "4321") }
 
           expect(user.phone).not_to eq("1234")
           expect(user.alt_phone).not_to eq("4321")
@@ -447,7 +453,8 @@ RSpec.describe UsersController do
       end
 
       it "change the photo attached @user" do
-        put :update_avatar, params: { avatar: uploaded_file, original_width: 500, height_width: 140 }
+        put :update_avatar,
+            params: { avatar: uploaded_file, original_width: 500, height_width: 140 }
 
         expect(user.avatar.attached?).to eq true
       end
@@ -463,7 +470,9 @@ RSpec.describe UsersController do
       end
 
       it "don't change the photo attached if the file size it too big" do
-        allow_any_instance_of(ActionDispatch::Http::UploadedFile).to receive(:size) { AvatarGenerator::MAX_SIZE.megabytes + 1.megabyte }
+        allow_any_instance_of(ActionDispatch::Http::UploadedFile).to receive(:size) {
+                                                                       AvatarGenerator::MAX_SIZE.megabytes + 1.megabyte
+                                                                     }
 
         put :update_avatar, params: { avatar: uploaded_file }
 

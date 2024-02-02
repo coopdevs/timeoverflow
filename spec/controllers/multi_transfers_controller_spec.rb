@@ -12,7 +12,7 @@ RSpec.describe MultiTransfersController, type: :controller do
               category: test_category)
   end
 
-  it 'creates one to many transfers' do
+  it "creates one to many transfers" do
     expect do
       login(admin.user)
 
@@ -37,14 +37,14 @@ RSpec.describe MultiTransfersController, type: :controller do
 
       post :step, params: params.merge!(
         step: 5,
-        transfer: {amount: 3600, reason: 'because of reasons'}
+        transfer: { amount: 3600, reason: "because of reasons" }
       )
 
       post :create, params: params
     end.to change { Transfer.count }.by(2)
   end
 
-  it 'creates many to one transfers' do
+  it "creates many to one transfers" do
     expect do
       login(admin.user)
 
@@ -69,15 +69,15 @@ RSpec.describe MultiTransfersController, type: :controller do
 
       post :step, params: params.merge!(
         step: 5,
-        transfer: {amount: 3600, reason: 'because of reasons'}
+        transfer: { amount: 3600, reason: "because of reasons" }
       )
 
       post :create, params: params
     end.to change { Transfer.count }.by(2)
   end
 
-  context 'when only one source and one target is selected' do
-    it 'creates one to one transfers' do
+  context "when only one source and one target is selected" do
+    it "creates one to one transfers" do
       expect do
         login(admin.user)
 
@@ -102,7 +102,7 @@ RSpec.describe MultiTransfersController, type: :controller do
 
         post :step, params: params.merge!(
           step: 5,
-          transfer: {amount: 3600, reason: 'because of reasons'}
+          transfer: { amount: 3600, reason: "because of reasons" }
         )
 
         post :create, params: params
@@ -110,8 +110,8 @@ RSpec.describe MultiTransfersController, type: :controller do
     end
   end
 
-  context 'non admins' do
-    it 'cannot access step route' do
+  context "non admins" do
+    it "cannot access step route" do
       login(member.user)
 
       get :step, params: { step: 1 }
@@ -119,13 +119,12 @@ RSpec.describe MultiTransfersController, type: :controller do
       expect(response).not_to have_http_status(:success)
     end
 
-    it 'cannot access create route' do
+    it "cannot access create route" do
       login(member.user)
 
       post :create
 
-      expect(response).to redirect_to('/')
+      expect(response).to redirect_to("/")
     end
   end
 end
-

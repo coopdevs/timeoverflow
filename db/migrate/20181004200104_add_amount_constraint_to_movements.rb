@@ -5,6 +5,6 @@ class AddAmountConstraintToMovements < ActiveRecord::Migration
       movement.transfer&.destroy
     end
 
-    execute 'ALTER TABLE movements ADD CONSTRAINT non_zero_amount CHECK(amount != 0)'
+    execute "ALTER TABLE movements ADD CONSTRAINT non_zero_amount CHECK(amount != 0)"
   end
 end

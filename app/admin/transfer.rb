@@ -1,5 +1,5 @@
 ActiveAdmin.register Transfer do
-  includes :post, movements: { account: [:accountable, :organization] }
+  includes :post, movements: { account: %i[accountable organization] }
 
   actions :index, :destroy
 

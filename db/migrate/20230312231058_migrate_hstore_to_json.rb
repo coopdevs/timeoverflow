@@ -1,7 +1,8 @@
 class MigrateHstoreToJson < ActiveRecord::Migration[6.1]
   def up
     rename_column :categories, :name_translations, :name_translations_hstore
-    add_column    :categories, :name_translations, :jsonb, default: {}, null: false, index: { using: 'gin' }
+    add_column    :categories, :name_translations, :jsonb, default: {}, null: false,
+                                                           index: { using: "gin" }
     execute       'UPDATE "categories" SET "name_translations" = json_object(hstore_to_matrix("name_translations_hstore"))::jsonb'
     remove_column :categories, :name_translations_hstore
   end

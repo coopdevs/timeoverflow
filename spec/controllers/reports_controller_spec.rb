@@ -23,20 +23,20 @@ RSpec.describe ReportsController do
     end
   end
 
-  context 'with a logged user' do
+  context "with a logged user" do
     before { login(member1.user) }
 
-    describe 'GET #user_list' do
-      it 'downloads a csv' do
-        get :user_list, params: { format: 'csv' }
+    describe "GET #user_list" do
+      it "downloads a csv" do
+        get :user_list, params: { format: "csv" }
 
         report = Report::Csv::Member.new(test_organization, test_organization.members.active)
         expect(response.body).to match(report.run)
         expect(response.media_type).to eq("text/csv")
       end
 
-      it 'downloads a pdf' do
-        get :user_list, params: { format: 'pdf' }
+      it "downloads a pdf" do
+        get :user_list, params: { format: "pdf" }
 
         report = Report::Pdf::Member.new(test_organization, test_organization.members.active)
         expect(response.body).to eq(report.run)
@@ -44,27 +44,27 @@ RSpec.describe ReportsController do
       end
     end
 
-    describe 'GET #post_list' do
+    describe "GET #post_list" do
       let(:report_posts) { test_organization.posts.of_active_members.group_by(&:category) }
 
-      it 'do NOT show the inactive members' do
-        get :post_list, params: { type: 'offer' }
+      it "do NOT show the inactive members" do
+        get :post_list, params: { type: "offer" }
 
         posts = assigns(:posts)[0][1]
         expect(posts.size).to eq(active_organization_offers.size)
         expect(posts.map(&:id)).to match_array(active_organization_offers.map(&:id))
       end
 
-      it 'downloads a csv' do
-        get :post_list, params: { type: 'offer', format: 'csv' }
+      it "downloads a csv" do
+        get :post_list, params: { type: "offer", format: "csv" }
 
         report = Report::Csv::Post.new(test_organization, report_posts, Offer)
         expect(response.body).to eq(report.run)
         expect(response.media_type).to eq("text/csv")
       end
 
-      it 'downloads a pdf' do
-        get :post_list, params: { type: 'offer', format: 'pdf' }
+      it "downloads a pdf" do
+        get :post_list, params: { type: "offer", format: "pdf" }
 
         report = Report::Pdf::Post.new(test_organization, report_posts, Offer)
         expect(response.body).to eq(report.run)
@@ -72,17 +72,17 @@ RSpec.describe ReportsController do
       end
     end
 
-    describe 'GET #transfer_list' do
-      it 'downloads a csv' do
-        get :transfer_list, params: { format: 'csv' }
+    describe "GET #transfer_list" do
+      it "downloads a csv" do
+        get :transfer_list, params: { format: "csv" }
 
         report = Report::Csv::Transfer.new(test_organization, test_organization.all_transfers)
         expect(response.body).to eq(report.run)
         expect(response.media_type).to eq("text/csv")
       end
 
-      it 'downloads a pdf' do
-        get :transfer_list, params: { format: 'pdf' }
+      it "downloads a pdf" do
+        get :transfer_list, params: { format: "pdf" }
 
         report = Report::Pdf::Transfer.new(test_organization, test_organization.all_transfers)
         expect(response.body).to eq(report.run)
@@ -90,18 +90,18 @@ RSpec.describe ReportsController do
       end
     end
 
-    describe 'GET #download_all' do
-      it 'downloads a zip' do
+    describe "GET #download_all" do
+      it "downloads a zip" do
         get :download_all
 
-        expect(response.media_type).to eq('application/zip')
-        expect(response.body).to include('Inquiries')
-        expect(response.body).to include('Offers')
-        expect(response.body).to include('Members')
-        expect(response.body).to include('Transfers')
+        expect(response.media_type).to eq("application/zip")
+        expect(response.body).to include("Inquiries")
+        expect(response.body).to include("Offers")
+        expect(response.body).to include("Members")
+        expect(response.body).to include("Transfers")
       end
 
-      it 'redirects to download_all_report_path (retry) if zip is not ready' do
+      it "redirects to download_all_report_path (retry) if zip is not ready" do
         allow(subject).to receive(:add_csv_to_zip).and_raise(Errno::ENOENT)
         get :download_all
 

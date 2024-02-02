@@ -6,7 +6,7 @@ class AddTagsToPosts < ActiveRecord::Migration
     say "Tag column added"
 
     ActiveRecord::Base.connection.execute(
-    <<-SQL
+      <<-SQL
     WITH prepared_tags AS (
       SELECT "posts"."id" AS "id", array_agg("tags"."name") AS "tags"
       FROM "posts"
@@ -28,7 +28,6 @@ class AddTagsToPosts < ActiveRecord::Migration
     drop_table :tags
 
     say "acts_as_taggable_on tables removed"
-
   end
 
   def down
@@ -43,23 +42,20 @@ class AddTagsToPosts < ActiveRecord::Migration
 
       # You should make sure that the column created is
       # long enough to store the required class names.
-      t.references :taggable, :polymorphic => true
-      t.references :tagger, :polymorphic => true
+      t.references :taggable, polymorphic: true
+      t.references :tagger, polymorphic: true
 
       # Limit is created to prevent MySQL error on index
       # length for MyISAM table type: http://bit.ly/vgW2Ql
-      t.string :context, :limit => 128
+      t.string :context, limit: 128
 
       t.datetime :created_at
     end
 
     add_index :taggings, :tag_id
-    add_index :taggings, [:taggable_id, :taggable_type, :context]
-
+    add_index :taggings, %i[taggable_id taggable_type context]
 
     remove_column :posts, :tags
     remove_index :posts, :tags
   end
 end
-
-

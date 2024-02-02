@@ -29,12 +29,12 @@ module PushNotifications
       #
       # @return <User::ActiveRecord_AssociationRelation>
       def user_ids
-        post
-          .organization
-          .users
-          .select(:id)
-          .where('members.active = true')
-          .where('users.push_notifications = true')
+        post.
+          organization.
+          users.
+          select(:id).
+          where("members.active = true").
+          where("users.push_notifications = true")
       end
     end
   end

@@ -8,60 +8,60 @@ RSpec.describe Persister::PostPersister do
       organization: organization,
       user: user,
       category: category,
-      title: 'Title'
+      title: "Title"
     )
   end
   let(:persister) { ::Persister::PostPersister.new(post) }
   let(:event) { Fabricate.build(:event, id: 27) }
 
-  describe '#save' do
-    it 'saves the post' do
+  describe "#save" do
+    it "saves the post" do
       persister.save
 
       expect(post).to be_persisted
     end
 
-    it 'creates an event' do
+    it "creates an event" do
       expect(::Event).to receive(:create!).with(action: :created, post: post).and_return(event)
 
       persister.save
     end
 
-    context 'background job' do
+    context "background job" do
       before do
         allow(::Event).to receive(:create!).and_return(event)
       end
 
-      it 'enqueues a CreatePushNotificationsJob background job' do
-        expect {
+      it "enqueues a CreatePushNotificationsJob background job" do
+        expect do
           persister.save
-        }.to enqueue_job(CreatePushNotificationsJob).with(event_id: 27)
+        end.to enqueue_job(CreatePushNotificationsJob).with(event_id: 27)
       end
     end
   end
 
-  describe '#update' do
-    it 'updates the resource attributes' do
-      persister.update(title: 'New title')
+  describe "#update" do
+    it "updates the resource attributes" do
+      persister.update(title: "New title")
 
-      expect(post.title).to eq('New title')
+      expect(post.title).to eq("New title")
     end
 
-    it 'creates an event' do
+    it "creates an event" do
       expect(::Event).to receive(:create!).with(action: :updated, post: post).and_return(event)
 
-      persister.update(title: 'New title')
+      persister.update(title: "New title")
     end
 
-    context 'background job' do
+    context "background job" do
       before do
         allow(::Event).to receive(:create!).and_return(event)
       end
 
-      it 'enqueues a CreatePushNotificationsJob background job' do
-        expect {
-          persister.update(title: 'New title')
-        }.to enqueue_job(CreatePushNotificationsJob).with(event_id: 27)
+      it "enqueues a CreatePushNotificationsJob background job" do
+        expect do
+          persister.update(title: "New title")
+        end.to enqueue_job(CreatePushNotificationsJob).with(event_id: 27)
       end
     end
   end

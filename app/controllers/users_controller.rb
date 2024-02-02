@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: %i[signup create]
   before_action :user_should_be_confirmed, except: %i[signup create please_confirm]
-  before_action :member_should_exist_and_be_active, except: %i[signup create edit show update please_confirm]
+  before_action :member_should_exist_and_be_active,
+                except: %i[signup create edit show update please_confirm]
 
   has_scope :tagged_with, as: :tag
 
@@ -9,11 +10,11 @@ class UsersController < ApplicationController
     members = current_organization.members.active
     members = apply_scopes(members)
 
-    search_and_load_members members, { s: 'user_last_sign_in_at DESC' }
+    search_and_load_members members, { s: "user_last_sign_in_at DESC" }
   end
 
   def manage
-    search_and_load_members current_organization.members, { s: 'member_uid ASC' }
+    search_and_load_members current_organization.members, { s: "member_uid ASC" }
   end
 
   def show
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
     else
       @user.email = "" if empty_email
 
-      render action: @user.from_signup ? 'signup' : 'new'
+      render action: @user.from_signup ? "signup" : "new"
     end
   end
 
@@ -98,7 +99,9 @@ class UsersController < ApplicationController
     @search = members_scope.ransack(default_search_params.merge(params.to_unsafe_h.fetch(:q, {})))
 
     result = @search.result
-    orders = result.order_values.map { |order| order.direction == :asc ? "#{order.to_sql} NULLS FIRST" : "#{order.to_sql} NULLS LAST" }
+    orders = result.order_values.map do |order|
+      order.direction == :asc ? "#{order.to_sql} NULLS FIRST" : "#{order.to_sql} NULLS LAST"
+    end
     result = result.except(:order).order(orders.join(", ")) if orders.count > 0
 
     @members = result.eager_load(:account, :user).page(params[:page]).per(20)
@@ -114,8 +117,10 @@ class UsersController < ApplicationController
   def user_params
     fields_to_permit = %w"gender username email date_of_birth phone alt_phone active
                           locale description notifications push_notifications postcode"
-    fields_to_permit += %w"admin registration_number
-                           registration_date" if admin?
+    if admin?
+      fields_to_permit += %w"admin registration_number
+                             registration_date"
+    end
     fields_to_permit += %w"organization_id superadmin" if superadmin?
     fields_to_permit += %w"password" if params[:from_signup].present?
 
@@ -139,13 +144,13 @@ class UsersController < ApplicationController
       if params[:more]
         redirect_to new_user_path,
                     notice: I18n.t("users.new.user_created_add",
-                                  uid: id,
-                                  name: @user.username)
+                                   uid: id,
+                                   name: @user.username)
       else
         redirect_to users_path,
                     notice: I18n.t("users.index.user_created",
-                                  uid: id,
-                                  name: @user.username)
+                                   uid: id,
+                                   name: @user.username)
       end
     end
   end

@@ -40,6 +40,6 @@ module UsersHelper
   end
 
   def status_applications(status)
-    t('petitions.status_applications', status: t("petitions.status.#{status}").humanize)
+    t("petitions.status_applications", status: t("petitions.status.#{status}").humanize)
   end
 end

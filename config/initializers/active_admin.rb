@@ -13,7 +13,9 @@ ActiveAdmin.setup do |config|
     admin.build_menu :utility_navigation do |menu|
       menu.add id: :languages, label: -> { "Languages (#{I18n.t("locales.#{locale}")})" } do |lang|
         I18n.available_locales.each do |locale|
-          lang.add label: I18n.t("locales.#{locale}", locale: locale), url: ->{ url_for(locale: locale) }
+          lang.add label: I18n.t("locales.#{locale}", locale: locale), url: -> {
+                                                                              url_for(locale: locale)
+                                                                            }
         end
       end
       admin.add_current_user_to_menu menu

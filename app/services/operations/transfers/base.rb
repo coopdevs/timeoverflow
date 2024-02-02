@@ -37,9 +37,9 @@ module Operations
 
       def build_transfer(source:, destination:)
         ::Transfer.new(transfer_params_for(
-          source: source,
-          destination: destination
-        ))
+                         source: source,
+                         destination: destination
+                       ))
       end
 
       def transfer_params_for(source:, destination:)

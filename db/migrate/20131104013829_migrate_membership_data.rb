@@ -1,5 +1,4 @@
 class MigrateMembershipData < ActiveRecord::Migration
-
   class User < ActiveRecord::Base
     has_one :account, as: :accountable
     has_many :members

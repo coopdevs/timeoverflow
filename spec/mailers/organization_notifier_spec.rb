@@ -7,9 +7,9 @@ RSpec.describe OrganizationNotifier do
 
   describe "send an email" do
     it "should send an email" do
-      expect {
+      expect do
         OrganizationNotifier.recent_posts(test_organization.posts, :en, [user]).deliver_now
-      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
   end
 
