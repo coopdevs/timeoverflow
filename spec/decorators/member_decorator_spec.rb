@@ -4,96 +4,96 @@ RSpec.describe MemberDecorator do
   let(:view_context) { ApplicationController.new.view_context }
   let(:decorator) { MemberDecorator.new(member, view_context) }
 
-  describe "#row_css_class" do
+  describe '#row_css_class' do
     subject { decorator.row_css_class }
 
-    context "active member" do
+    context 'active member' do
       it { is_expected.to be_nil }
     end
 
-    context "inactive member" do
+    context 'inactive member' do
       before { member.update(active: false) }
-      it { is_expected.to eq("bg-danger") }
+      it { is_expected.to eq('bg-danger') }
     end
   end
 
-  describe "#inactive_icon" do
+  describe '#inactive_icon' do
     subject { decorator.inactive_icon }
 
-    context "active member" do
+    context 'active member' do
       it { is_expected.to be_nil }
     end
 
-    context "inactive member" do
+    context 'inactive member' do
       before { member.update(active: false) }
-      it { is_expected.to match("icon") }
+      it { is_expected.to match('icon') }
     end
   end
 
-  describe "#link_to_self" do
+  describe '#link_to_self' do
     subject { decorator.link_to_self }
-    it { is_expected.to match("members/#{member.user.id}") }
+    it { is_expected.to match("members/#{member.user.id}")}
   end
 
-  describe "#mail_to" do
+  describe '#mail_to' do
     subject { decorator.mail_to }
 
-    context "with standard email" do
-      let(:email) { "foobar@gmail.com" }
+    context 'with standard email' do
+      let(:email) { 'foobar@gmail.com' }
 
-      context "unconfirmed" do
+      context 'unconfirmed' do
         before { member.user.update(unconfirmed_email: email) }
-        it { is_expected.to include("mailto:foobar@gmail.com") }
+        it { is_expected.to include('mailto:foobar@gmail.com') }
       end
 
-      context "confirmed" do
+      context 'confirmed' do
         before { member.user.update(email: email) }
-        it { is_expected.to include("mailto:foobar@gmail.com") }
+        it { is_expected.to include('mailto:foobar@gmail.com') }
       end
     end
 
-    context "with placeholder email" do
-      let(:email) { "foobar@example.com" }
+    context 'with placeholder email' do
+      let(:email) { 'foobar@example.com' }
 
-      context "unconfirmed" do
+      context 'unconfirmed' do
         before { member.user.update(unconfirmed_email: email) }
         it { is_expected.to be_nil }
       end
 
-      context "confirmed" do
+      context 'confirmed' do
         before { member.user.update(email: email) }
         it { is_expected.to be_nil }
       end
     end
   end
 
-  describe "#account_balance" do
+  describe '#account_balance' do
     subject { decorator.account_balance }
-    it { is_expected.to eq("&mdash;") }
+    it { is_expected.to eq('&mdash;') }
 
-    context "with positive balance" do
+    context 'with positive balance' do
       before { member.account.update_attribute(:balance, 3600) }
-      it { is_expected.to eq("1:00") }
+      it { is_expected.to eq('1:00') }
     end
 
-    context "with negative balance" do
+    context 'with negative balance' do
       before { member.account.update_attribute(:balance, -7500) }
-      it { is_expected.to eq("-2:05") }
+      it { is_expected.to eq('-2:05') }
     end
   end
 
-  describe "#toggle_manager_member_path" do
+  describe '#toggle_manager_member_path' do
     subject { decorator.toggle_manager_member_path }
-    it { is_expected.to include("members/#{member.id}/toggle_manager") }
+    it { is_expected.to include("members/#{member.id}/toggle_manager")}
   end
 
-  describe "#cancel_member_path" do
+  describe '#cancel_member_path' do
     subject { decorator.cancel_member_path }
-    it { is_expected.to include("members/#{member.id}") }
+    it { is_expected.to include("members/#{member.id}")}
   end
 
-  describe "#toggle_active_member_path" do
+  describe '#toggle_active_member_path' do
     subject { decorator.toggle_active_member_path }
-    it { is_expected.to include("members/#{member.id}/toggle_active") }
+    it { is_expected.to include("members/#{member.id}/toggle_active")}
   end
 end

@@ -1,32 +1,33 @@
 RSpec.describe Operations::Transfers do
-  describe "create" do
-    let(:operation) do
+  describe 'create' do
+    let(:operation) {
       Operations::Transfers.create(
         from: from,
         to: to,
         transfer_params: {}
       )
-    end
+    }
 
-    context "when there is one source and many targets" do
+    context 'when there is one source and many targets' do
       let(:from) { [1] }
       let(:to) { [2, 3] }
 
-      it "instantiates a OneToMany operation" do
+      it 'instantiates a OneToMany operation' do
         expect(operation).to be_a(Operations::Transfers::OneToMany)
       end
     end
 
-    context "when there many sources and one target" do
+
+    context 'when there many sources and one target' do
       let(:from) { [1, 2] }
       let(:to) { [3] }
 
-      it "instantiates a ManyToOne operation" do
+      it 'instantiates a ManyToOne operation' do
         expect(operation).to be_a(Operations::Transfers::ManyToOne)
       end
     end
 
-    context "when weird shit is passed" do
+    context 'when weird shit is passed' do
       let(:from) { [] }
       let(:to) { [] }
 
@@ -36,3 +37,4 @@ RSpec.describe Operations::Transfers do
     end
   end
 end
+

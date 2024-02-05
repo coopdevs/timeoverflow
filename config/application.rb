@@ -1,6 +1,6 @@
-require File.expand_path("boot", __dir__)
+require File.expand_path('../boot', __FILE__)
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -13,11 +13,11 @@ module Timeoverflow
 
     # I18n configuration
     config.i18n.default_locale = :es
-    config.i18n.available_locales = %i[es ca eu gl en pt-BR fr]
+    config.i18n.available_locales = [:es, :ca, :eu, :gl, :en, :'pt-BR', :fr]
     config.i18n.fallbacks = true
 
     # This tells Rails to serve error pages from the app itself, rather than using static error pages in public/
-    config.exceptions_app = routes
+    config.exceptions_app = self.routes
 
     # Activate the Skylight agent in staging. You need to provision the
     # SKYLIGHT_AUTHENTICATION env var for this to work.
@@ -31,10 +31,10 @@ module Timeoverflow
     config.active_record.schema_format = :sql
 
     # Guard against DNS rebinding attacks by permitting hosts
-    config.hosts << "localhost"
-    config.hosts << "timeoverflow.local"
-    config.hosts << "staging.timeoverflow.org"
-    config.hosts << "www.timeoverflow.org"
-    config.hosts << "timeoverflow.org"
+    config.hosts << 'localhost'
+    config.hosts << 'timeoverflow.local'
+    config.hosts << 'staging.timeoverflow.org'
+    config.hosts << 'www.timeoverflow.org'
+    config.hosts << 'timeoverflow.org'
   end
 end

@@ -24,12 +24,12 @@ RSpec.describe Report::PostDecorator do
 
   it "#headers" do
     expect(decorator.headers).to eq([
-                                      "",
-                                      Offer.model_name.human,
-                                      Post.human_attribute_name(:tag_list),
-                                      User.model_name.human,
-                                      Post.human_attribute_name(:created_at)
-                                    ])
+      "",
+      Offer.model_name.human,
+      Post.human_attribute_name(:tag_list),
+      User.model_name.human,
+      Post.human_attribute_name(:created_at)
+    ])
   end
 
   it "#rows" do
@@ -37,9 +37,8 @@ RSpec.describe Report::PostDecorator do
     offer = org.offers.of_active_members.active.first
 
     expect(decorator.rows).to eq([
-                                   ["", category.name, "", "", ""],
-                                   [offer.id, offer.title, offer.tag_list.to_s, "#{offer.user} (#{offer.member_uid})",
-                                    offer.created_at.to_s]
-                                 ])
+      ["", category.name, "", "", ""],
+      [offer.id, offer.title, offer.tag_list.to_s, "#{offer.user} (#{offer.member_uid})", offer.created_at.to_s]
+    ])
   end
 end

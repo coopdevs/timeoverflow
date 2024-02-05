@@ -12,12 +12,10 @@ RSpec.describe Admin::OrganizationsController, type: :controller do
     it "sign out if current user is logged to organization deleted" do
       session[:current_organization_id] = organization.id
 
-      expect do
+      expect {
         delete :destroy, params: { id: organization.id }
-      end.to change { controller.current_user }.to(nil).
-        and change {
-              session[:current_organization_id]
-            }.to(nil)
+      }.to change { controller.current_user }.to(nil)
+      .and change { session[:current_organization_id] }.to(nil)
     end
   end
 end

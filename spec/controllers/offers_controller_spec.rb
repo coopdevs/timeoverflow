@@ -74,13 +74,13 @@ RSpec.describe OffersController, type: :controller do
     end
 
     it "populates an array of offers" do
-      get :index, params: { q: "compañeros" }
+      get :index, params: { q: 'compañeros' }
 
       expect(assigns(:offers)).to eq([offer])
     end
 
     it "allows to search by partial word" do
-      get :index, params: { q: "compañ" }
+      get :index, params: { q: 'compañ' }
 
       expect(assigns(:offers)).to eq([offer])
     end
@@ -122,48 +122,48 @@ RSpec.describe OffersController, type: :controller do
     end
   end
 
-  describe "GET #show" do
-    context "when the user is logged in" do
+  describe 'GET #show' do
+    context 'when the user is logged in' do
       before { login(another_member.user) }
 
-      context "when the requested offer" do
-        context "is not active" do
+      context 'when the requested offer' do
+        context 'is not active' do
           before do
             offer.active = false
             offer.save!
           end
 
-          it "renders the 404 page" do
+          it 'renders the 404 page' do
             get :show, params: { id: offer.id }
             expect(response.status).to eq(404)
           end
         end
 
-        context "is active" do
-          context "and the user that created the offer is not active anymore" do
+        context 'is active' do
+          context 'and the user that created the offer is not active anymore' do
             before do
               member.active = false
               member.save!
             end
 
-            it "renders the 404 page" do
+            it 'renders the 404 page' do
               get :show, params: { id: offer.id }
               expect(response.status).to eq(404)
             end
           end
 
-          context "and the user that created the offer is active" do
-            it "renders a successful response" do
+          context 'and the user that created the offer is active' do
+            it 'renders a successful response' do
               get :show, params: { id: offer.id }
               expect(response.status).to eq(200)
             end
 
-            it "assigns the requested offer to @offer" do
+            it 'assigns the requested offer to @offer' do
               get :show, params: { id: offer.id }
               expect(assigns(:offer)).to eq(offer)
             end
 
-            it "assigns the account destination of the transfer" do
+            it 'assigns the account destination of the transfer' do
               get :show, params: { id: offer.id }
               expect(assigns(:destination_account)).to eq(member.account)
             end
@@ -171,8 +171,8 @@ RSpec.describe OffersController, type: :controller do
         end
       end
 
-      context "when the user pertains to multiple organizations" do
-        context "and user's current organization is different than offer's organization" do
+      context 'when the user pertains to multiple organizations' do
+        context 'and user\'s current organization is different than offer\'s organization' do
           let(:another_organization) { Fabricate(:organization) }
 
           before do
@@ -180,7 +180,7 @@ RSpec.describe OffersController, type: :controller do
             allow(controller).to receive(:@current_organization).and_return(another_organization)
           end
 
-          it "sets the offer's organization as user's current organization" do
+          it 'sets the offer\'s organization as user\'s current organization' do
             get :show, params: { id: offer.id }
             expect(session[:current_organization_id]).to eq(offer.organization_id)
             expect(assigns(:current_organization)).to eq(offer.organization)
@@ -189,17 +189,18 @@ RSpec.describe OffersController, type: :controller do
       end
     end
 
-    context "when the user is not a member of the organization where the offer is published" do
+    context 'when the user is not a member of the organization where the offer is published' do
       let(:another_user) { Fabricate(:user) }
 
       before { login(another_user) }
     end
 
-    context "when the user is not logged in" do
-      it "assigns the requested offer to @offer" do
+    context 'when the user is not logged in' do
+      it 'assigns the requested offer to @offer' do
         get :show, params: { id: offer.id }
         expect(assigns(:offer)).to eq(offer)
       end
+
     end
   end
 
@@ -211,8 +212,8 @@ RSpec.describe OffersController, type: :controller do
 
           expect do
             post "create", params: { offer: { user: another_member.user,
-                                              category_id: test_category,
-                                              title: "New title" } }
+                                    category_id: test_category,
+                                    title: "New title" } }
           end.to change(Offer, :count).by(1)
         end
       end
@@ -233,10 +234,10 @@ RSpec.describe OffersController, type: :controller do
           login(member.user)
 
           put "update", params: { id: offer.id, offer: Fabricate.to_params(:offer,
-                                                                           user: member,
-                                                                           title: "New title",
-                                                                           description: "New description",
-                                                                           tag_list: ["foo"]) }
+                                         user: member,
+                                         title: "New title",
+                                         description: "New description",
+                                         tag_list: ["foo"]) }
 
           offer.reload
           expect(offer.title).to eq("New title")
@@ -252,9 +253,9 @@ RSpec.describe OffersController, type: :controller do
           login(member.user)
 
           put :update, params: { id: offer.id, offer: Fabricate.to_params(:offer,
-                                                                          user: nil,
-                                                                          title: "New title",
-                                                                          description: "New description") }
+                                         user: nil,
+                                         title: "New title",
+                                         description: "New description") }
 
           expect(offer.title).not_to eq("New title")
           expect(offer.description).not_to eq("New description")

@@ -1,10 +1,8 @@
-RSpec.describe "offers/show" do
+RSpec.describe 'offers/show' do
   let(:organization) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: organization) }
   let(:offer) { Fabricate(:offer, user: member.user, organization: organization) }
-  let(:group_offer) do
-    Fabricate(:offer, user: member.user, organization: organization, is_group: true)
-  end
+  let(:group_offer) { Fabricate(:offer, user: member.user, organization: organization, is_group: true) }
   let(:destination_account) { Fabricate(:account) }
 
   before do
@@ -12,7 +10,7 @@ RSpec.describe "offers/show" do
     allow(offer).to receive(:member).and_return(member)
   end
 
-  context "when the user is logged in" do
+  context 'when the user is logged in' do
     let(:logged_user) { Fabricate(:user) }
 
     before do
@@ -25,18 +23,18 @@ RSpec.describe "offers/show" do
       allow(view).to receive(:current_user).and_return(logged_user)
     end
 
-    context "when the current organization is the same as offer's organization" do
+    context 'when the current organization is the same as offer\'s organization' do
       before do
         allow(view).to receive(:current_organization) { offer.organization }
       end
 
-      it "renders a link to the transfer page" do
+      it 'renders a link to the transfer page' do
         assign :offer, offer
         assign :destination_account, destination_account
-        render template: "offers/show"
+        render template: 'offers/show'
 
         expect(rendered).to have_link(
-          t("offers.show.give_time_for"),
+          t('offers.show.give_time_for'),
           href: new_transfer_path(
             id: offer.user.id,
             offer: offer.id,
@@ -45,16 +43,16 @@ RSpec.describe "offers/show" do
         )
       end
 
-      it "displays offer's user details" do
+      it 'displays offer\'s user details' do
         assign :offer, offer
         assign :destination_account, destination_account
-        render template: "offers/show"
+        render template: 'offers/show'
 
         expect(rendered).to include(offer.user.email)
       end
     end
 
-    context "when the current organization is not the same as offer's organization" do
+    context 'when the current organization is not the same as offer\'s organization' do
       let(:another_organization) { Fabricate(:organization) }
 
       before do
@@ -67,12 +65,12 @@ RSpec.describe "offers/show" do
         allow(view).to receive(:current_organization) { another_organization }
       end
 
-      it "doesn't render a link to the transfer page" do
+      it 'doesn\'t render a link to the transfer page' do
         assign :offer, offer
-        render template: "offers/show"
+        render template: 'offers/show'
 
         expect(rendered).to_not have_link(
-          t("offers.show.give_time_for"),
+          t('offers.show.give_time_for'),
           href: new_transfer_path(
             id: offer.user.id,
             offer: offer.id,
@@ -81,40 +79,41 @@ RSpec.describe "offers/show" do
         )
       end
 
-      it "doesn't display offer's user details" do
+      it 'doesn\'t display offer\'s user details' do
         assign :offer, offer
         assign :destination_account, destination_account
-        render template: "offers/show"
+        render template: 'offers/show'
 
         expect(rendered).to_not include(offer.user.email)
       end
 
-      it "displays the offer's organization" do
+      it 'displays the offer\'s organization' do
         assign :offer, offer
-        render template: "offers/show"
+        render template: 'offers/show'
 
         expect(rendered).to include(
-          t("posts.show.info",
+          t('posts.show.info',
             type: offer.class.model_name.human,
-            organization: offer.organization.name)
+            organization: offer.organization.name
+           )
         )
       end
     end
   end
 
-  context "when the user is not logged in" do
+  context 'when the user is not logged in' do
     before do
       allow(view).to receive(:current_user).and_return(nil)
       allow(view).to receive(:current_organization).and_return(nil)
     end
 
-    it "does not render a link to the transfer page" do
+    it 'does not render a link to the transfer page' do
       assign :offer, offer
       assign :destination_account, destination_account
-      render template: "offers/show"
+      render template: 'offers/show'
 
       expect(rendered).not_to have_link(
-        t("offers.show.give_time_for"),
+        t('offers.show.give_time_for'),
         href: new_transfer_path(
           id: offer.user.id,
           offer: offer.id,
@@ -123,52 +122,53 @@ RSpec.describe "offers/show" do
       )
     end
 
-    it "renders a link to the login page" do
+    it 'renders a link to the login page' do
       assign :offer, offer
-      render template: "offers/show"
+      render template: 'offers/show'
 
       expect(rendered).to have_link(
-        t("layouts.application.login"),
+        t('layouts.application.login'),
         href: new_user_session_path
       )
     end
 
-    it "displays the offer's organization" do
+    it 'displays the offer\'s organization' do
       assign :offer, offer
-      render template: "offers/show"
+      render template: 'offers/show'
 
       expect(rendered).to include(
-        t("posts.show.info",
+        t('posts.show.info',
           type: offer.class.model_name.human,
-          organization: offer.organization.name)
+          organization: offer.organization.name
+         )
       )
     end
 
-    it "doesn't display offer's user details" do
+    it 'doesn\'t display offer\'s user details' do
       assign :offer, offer
       assign :destination_account, destination_account
-      render template: "offers/show"
+      render template: 'offers/show'
 
       expect(rendered).to_not include(offer.user.email)
     end
 
-    context "when it is not a group offer" do
-      it "displays a label" do
+    context 'when it is not a group offer' do
+      it 'displays a label' do
         assign :offer, offer
         assign :destination_account, destination_account
-        render template: "offers/show"
+        render template: 'offers/show'
 
-        expect(rendered).to_not include(I18n.t("activerecord.attributes.offer.is_group"))
+        expect(rendered).to_not include(I18n.t('activerecord.attributes.offer.is_group'))
       end
     end
 
-    context "when it is a group offer" do
-      it "displays a label" do
+    context 'when it is a group offer' do
+      it 'displays a label' do
         assign :offer, group_offer
         assign :destination_account, destination_account
-        render template: "offers/show"
+        render template: 'offers/show'
 
-        expect(rendered).to include(I18n.t("activerecord.attributes.offer.is_group"))
+        expect(rendered).to include(I18n.t('activerecord.attributes.offer.is_group'))
       end
     end
   end

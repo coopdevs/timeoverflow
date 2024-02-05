@@ -37,23 +37,23 @@ RSpec.describe Account do
     expect(organization.account.organization).to eq organization
   end
 
-  describe "#update_balance" do
+  describe '#update_balance' do
     let(:account) { member.account }
 
-    context "when the balance did not change since last balance update" do
+    context 'when the balance did not change since last balance update' do
       before do
         account.movements << Movement.new(amount: 5)
         account.save
       end
 
-      it "updates the account balance" do
+      it 'updates the account balance' do
         # a callback in Movement already called #update_balance after creating
         # the movement above
         account.update_balance
         expect(account.balance).to eq(5)
       end
 
-      it "does not flag the account" do
+      it 'does not flag the account' do
         # a callback in Movement already called #update_balance after creating
         # the movement above
         account.update_balance
@@ -61,8 +61,8 @@ RSpec.describe Account do
       end
     end
 
-    context "when the balance changed since last balance update" do
-      context "and the new balance falls within the limits allowed" do
+    context 'when the balance changed since last balance update' do
+      context 'and the new balance falls within the limits allowed' do
         before do
           account.max_allowed_balance = 100
           account.min_allowed_balance = 0
@@ -71,20 +71,20 @@ RSpec.describe Account do
           account.save
         end
 
-        it "updates the account balance" do
+        it 'updates the account balance' do
           # a callback in Movement calls #update_balance after creating the
           # movement above
           expect(account.balance).to eq(5)
         end
 
-        it "does not flag the account" do
+        it 'does not flag the account' do
           # a callback in Movement calls #update_balance after creating the
           # movement above
           expect(account.flagged).to be_falsy
         end
       end
 
-      context "and the new balance does not fall within the limits allowed" do
+      context 'and the new balance does not fall within the limits allowed' do
         before do
           account.max_allowed_balance = 0
           account.min_allowed_balance = 0
@@ -93,7 +93,7 @@ RSpec.describe Account do
           account.save
         end
 
-        it "does not flag the account" do
+        it 'does not flag the account' do
           # a callback in Movement calls #update_balance after creating the
           # movement above
           expect(account.flagged).to be_truthy

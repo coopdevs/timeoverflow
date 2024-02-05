@@ -1,5 +1,5 @@
 RSpec.describe SendPushNotificationsJob, type: :job do
-  describe "#perform" do
+  describe '#perform' do
     let(:user) { Fabricate(:user) }
     let(:device_token) { Fabricate(:device_token, user: user) }
     let(:post) { Fabricate(:post) }
@@ -10,8 +10,8 @@ RSpec.describe SendPushNotificationsJob, type: :job do
         :push_notification,
         event: event_created,
         device_token: device_token,
-        title: "A new Post hase been created.",
-        body: "A push notification body."
+        title: 'A new Post hase been created.',
+        body: 'A push notification body.'
       )
     end
     let(:processed_push_notification) do
@@ -19,8 +19,8 @@ RSpec.describe SendPushNotificationsJob, type: :job do
         :push_notification,
         event: event_updated,
         device_token: device_token,
-        title: "A new Post hase been created.",
-        body: "A push notification body.",
+        title: 'A new Post hase been created.',
+        body: 'A push notification body.',
         processed_at: Time.zone.now
       )
     end
@@ -30,11 +30,11 @@ RSpec.describe SendPushNotificationsJob, type: :job do
       processed_push_notification
     end
 
-    it "calls Broadcast to send the notifications" do
+    it 'calls Broadcast to send the notifications' do
       broadcast = instance_double(::PushNotifications::Broadcast)
-      expect(::PushNotifications::Broadcast).to receive(:new).
-        with(push_notifications: [push_notification]).
-        and_return(broadcast)
+      expect(::PushNotifications::Broadcast).to receive(:new)
+        .with(push_notifications: [push_notification])
+        .and_return(broadcast)
       expect(broadcast).to receive(:send_notifications)
 
       described_class.new.perform

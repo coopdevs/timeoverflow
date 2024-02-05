@@ -13,13 +13,11 @@ RSpec.describe Member do
   it { is_expected.to validate_presence_of(:member_uid) }
 
   describe "#offers" do
-    let(:member_offer) do
-      Fabricate(
-        :offer,
-        user: member.user,
-        organization: member.organization
-      )
-    end
+    let(:member_offer) { Fabricate(
+      :offer,
+      user: member.user,
+      organization: member.organization)
+    }
 
     it "should be a list of Offers matching user and organization" do
       another_member_offer = Fabricate(:offer)
@@ -35,7 +33,7 @@ RSpec.describe Member do
     end
   end
 
-  describe "#display_id" do
+  describe '#display_id' do
     subject { member.display_id }
 
     it { is_expected.to eq(member.member_uid) }

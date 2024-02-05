@@ -3,7 +3,7 @@ RSpec.describe TransferSourcesOptions do
     described_class.new(sources)
   end
 
-  describe "#to_a" do
+  describe '#to_a' do
     let(:organization) { Fabricate(:organization) }
     let(:member) do
       Fabricate(:member, organization: organization, member_uid: 2)
@@ -16,9 +16,9 @@ RSpec.describe TransferSourcesOptions do
       [organization.account, member.account, newer_member.account]
     end
 
-    it "returns an array of option tags order by the acccountable type and its member_uid" do
-      expect(transfer_sources_options.to_a).
-        to eq(
+    it 'returns an array of option tags order by the acccountable type and its member_uid' do
+      expect(transfer_sources_options.to_a)
+        .to eq(
           [
             [
               "#{newer_member.member_uid} #{newer_member.class} #{newer_member}",
@@ -33,7 +33,7 @@ RSpec.describe TransferSourcesOptions do
               organization.account.id
             ]
           ]
-        )
+      )
     end
   end
 end
