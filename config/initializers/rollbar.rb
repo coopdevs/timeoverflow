@@ -1,14 +1,15 @@
-require "rollbar/rails"
+require 'rollbar/rails'
 Rollbar.configure do |config|
   # Without configuration, Rollbar is enabled in all environments.
   # To disable in specific environments, set config.enabled=false.
-
-  config.access_token = ENV["ROLLBAR_ACCESS_TOKEN"]
+  
+  config.access_token = ENV['ROLLBAR_ACCESS_TOKEN']
 
   # Here we'll disable in 'test':
-  if Rails.env.test? or ENV["ROLLBAR_ACCESS_TOKEN"].blank?
+  if Rails.env.test? or ENV['ROLLBAR_ACCESS_TOKEN'].blank?
     config.enabled = false
   end
+  
 
   # By default, Rollbar will try to call the `current_user` controller method
   # to fetch the logged-in user object, and then call that object's `id`,
@@ -33,13 +34,13 @@ Rollbar.configure do |config|
   # You can also specify a callable, which will be called with the exception instance.
 
   # Ignore the typical "attacks..."
-  config.exception_level_filters.merge!("ActionController::RoutingError" => lambda { |e|
+  config.exception_level_filters.merge!('ActionController::RoutingError' => lambda { |e|
     e.message =~ %r(No route matches \[[A-Z]+\] "/(.+)")
     case $1.split("/").first.to_s.downcase
-    when "myadmin", "phpmyadmin", "w00tw00t", "pma", "cgi-bin", "xmlrpc.php", "wp", "wordpress", "cfide"
-      "ignore"
+    when *%w(myadmin phpmyadmin w00tw00t pma cgi-bin xmlrpc.php wp wordpress cfide)
+      'ignore'
     else
-      "warning"
+      'warning'
     end
   })
 
