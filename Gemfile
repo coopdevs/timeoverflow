@@ -26,6 +26,7 @@ gem 'aws-sdk-s3', '~> 1.94', require: false
 gem 'image_processing', '~> 1.12'
 gem 'active_storage_validations', '~> 1.1.3'
 gem "puma", ">= 5.0.0"
+gem 'matrix', '~> 0.4.1'
 
 # Assets
 gem 'jquery-rails', '~> 4.4.0'

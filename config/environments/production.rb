@@ -1,3 +1,4 @@
+# Uglifier is only used on the precompile phase, so we can require it conditionally
 require "uglifier" if ENV["SECRET_KEY_BASE"] == "dummy"
 
 Rails.application.configure do
@@ -57,9 +58,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = if %w(debug info warn error
-                           fatal).include?(ENV.fetch("RAILS_LOG_LEVEL",
-                                                     nil))
+  config.log_level = if %w(debug info warn error fatal).include?(ENV.fetch("RAILS_LOG_LEVEL", nil))
                        ENV["RAILS_LOG_LEVEL"]
                      else
                        :info

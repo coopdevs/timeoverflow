@@ -31,6 +31,7 @@ module Timeoverflow
     config.active_record.schema_format = :sql
 
     # Guard against DNS rebinding attacks by permitting hosts
+    # localhost is necessary for the docker image
     config.hosts << 'localhost'
     config.hosts << 'timeoverflow.local'
     config.hosts << 'staging.timeoverflow.org'

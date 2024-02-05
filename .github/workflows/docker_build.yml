@@ -1,0 +1,15 @@
+name: Docker Build
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build docker
+        run: docker build .
+      - name: Test docker compose
+        run: docker-compose up -d
+      - name: Check server is up
+        run: curl -s http://localhost:3000

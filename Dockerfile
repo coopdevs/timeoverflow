@@ -1,4 +1,4 @@
-FROM ruby:2.7 AS builder
+FROM ruby:3.2 AS builder
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
     curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
@@ -64,7 +64,7 @@ RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 RUN rm -rf tmp/cache vendor/bundle test spec .git
 
 # This image is for production env only
-FROM ruby:2.7-slim AS final
+FROM ruby:3.2-slim AS final
 
 RUN apt-get update && \
     apt-get install -y postgresql-client \

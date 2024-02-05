@@ -452,6 +452,7 @@ DEPENDENCIES
   kaminari (~> 1.2.1)
   letter_opener (~> 1.7.0)
   localeapp (~> 3.3)
+  matrix (~> 0.4.1)
   pg (~> 1.4)
   pg_search (~> 2.3.5)
   prawn (~> 2.4.0)
