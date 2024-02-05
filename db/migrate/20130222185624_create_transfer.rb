@@ -1,5 +1,7 @@
 class CreateTransfer < ActiveRecord::Migration
-  def up; end
+  def up
+  end
 
-  def down; end
+  def down
+  end
 end

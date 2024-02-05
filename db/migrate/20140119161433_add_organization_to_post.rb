@@ -10,7 +10,6 @@ class AddOrganizationToPost < ActiveRecord::Migration
       end
     end
   end
-
   def down
     remove_reference :posts, :organization, index: true
   end

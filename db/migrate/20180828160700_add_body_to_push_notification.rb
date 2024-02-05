@@ -1,6 +1,6 @@
 class AddBodyToPushNotification < ActiveRecord::Migration
   def up
-    add_column :push_notifications, :body, :string, null: false, default: ""
+    add_column :push_notifications, :body, :string, null: false, default: ''
   end
 
   def down

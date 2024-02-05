@@ -1,6 +1,6 @@
 class AddTitleToPushNotification < ActiveRecord::Migration
   def up
-    add_column :push_notifications, :title, :string, null: false, default: ""
+    add_column :push_notifications, :title, :string, null: false, default: ''
   end
 
   def down

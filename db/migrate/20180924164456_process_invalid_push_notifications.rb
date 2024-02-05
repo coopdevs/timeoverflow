@@ -12,6 +12,6 @@ class ProcessInvalidPushNotifications < ActiveRecord::Migration
   end
 
   def down
-    puts "no."
+    puts 'no.'
   end
 end

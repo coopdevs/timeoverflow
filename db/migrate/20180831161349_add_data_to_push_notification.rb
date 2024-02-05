@@ -1,6 +1,6 @@
 class AddDataToPushNotification < ActiveRecord::Migration
   def up
-    add_column :push_notifications, :data, :json, null: false, default: "{}"
+    add_column :push_notifications, :data, :json, null: false, default: '{}'
   end
 
   def down
