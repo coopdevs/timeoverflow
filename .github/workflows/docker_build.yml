@@ -11,5 +11,6 @@ jobs:
         run: docker build .
       - name: Test docker compose
         run: docker-compose up -d
+      - run: sleep 15 # wait for the server to start
       - name: Check server is up
         run: curl -s http://localhost:3000
