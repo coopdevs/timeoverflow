@@ -8,16 +8,16 @@ class StatisticsController < ApplicationController
     @total_hours = num_movements = 0
     members.each do |m|
       num_movements += m.account.movements.count
-      @total_hours += m.account.movements.map do |a|
-        a.amount > 0 ? a.amount : 0
+      @total_hours += m.account.movements.map do
+        |a| (a.amount > 0) ? a.amount : 0
       end.inject(0, :+)
     end
     @total_hours += current_organization.account.movements.
-                    map { |a| a.amount > 0 ? a.amount : 0 }.inject(0, :+)
+                    map { |a| (a.amount > 0) ? a.amount : 0 }.inject(0, :+)
 
     @num_swaps = (num_movements + current_organization.account.movements.count) / 2
 
-    from = params[:from].presence.try(:to_date) || DateTime.now.to_date - 5.months
+    from = params[:from].presence.try(:to_date) || DateTime.now.to_date - 5.month
     to = params[:to].presence.try(:to_date) || DateTime.now.to_date
     num_months = (to.year * 12 + to.month) - (from.year * 12 + from.month) + 1
     date = from
@@ -38,10 +38,10 @@ class StatisticsController < ApplicationController
 
       sum_hours = 0
       swaps_members.flatten.each do |s|
-        sum_hours += s.amount > 0 ? s.amount : 0
+        sum_hours += (s.amount > 0) ? s.amount : 0
       end
-      sum_hours += swaps_organization.map do |a|
-        a.amount > 0 ? a.amount : 0
+      sum_hours += swaps_organization.map do
+        |a| (a.amount > 0) ? a.amount : 0
       end.inject(0, :+)
       sum_hours = sum_hours / 3600.0 if sum_hours > 0
       @hours_swaps_months << sum_hours
@@ -147,12 +147,12 @@ class StatisticsController < ApplicationController
 
   def age_group_labels
     {
-      0..17 => "-17",
-      18..24 => "18-24",
-      25..34 => "25-34",
-      35..44 => "35-44",
-      45..54 => "45-54",
-      55..64 => "55-64",
+      0..17   => "-17",
+      18..24  => "18-24",
+      25..34  => "25-34",
+      35..44  => "35-44",
+      45..54  => "45-54",
+      55..64  => "55-64",
       65..100 => "65+",
     }
   end
@@ -161,10 +161,10 @@ class StatisticsController < ApplicationController
     members.each_with_object(Hash.new(0)) do |member, counts|
       gender = member.user_gender
       gender_label = if gender.present?
-                       t("simple_form.options.user.gender.#{gender}")
-                     else
-                       t("statistics.demographics.unknown")
-                     end
+        t("simple_form.options.user.gender.#{gender}")
+      else
+        t("statistics.demographics.unknown")
+      end
       counts[gender_label] += 1
     end
   end

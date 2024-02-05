@@ -1,9 +1,16 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :recoverable, :rememberable, :confirmable, :lockable,
-         :trackable, :timeoutable
+  devise *[
+    :database_authenticatable,
+    :recoverable,
+    :rememberable,
+    :confirmable,
+    :lockable,
+    :trackable,
+    :timeoutable
+  ]
 
   ransacker :username do
-    Arel.sql("unaccent(users.username)")
+    Arel.sql('unaccent(users.username)')
   end
 
   GENDERS = %w(
@@ -13,7 +20,8 @@ class User < ApplicationRecord
     prefer_not_to_answer
   )
 
-  attr_accessor :empty_email, :from_signup
+  attr_accessor :empty_email
+  attr_accessor :from_signup
 
   has_one_attached :avatar
 
@@ -39,8 +47,8 @@ class User < ApplicationRecord
   validates :password, presence: true, if: :from_signup?
   # Allows @domain.com for dummy emails but does not allow pure invalid
   # emails like 'without email'
-  validates :email,
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  validates_format_of :email,
+                      with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates :gender, inclusion: { in: GENDERS, allow_blank: true }
 
   def as_member_of(organization)
@@ -77,7 +85,7 @@ class User < ApplicationRecord
     persister = ::Persister::MemberPersister.new(member)
     persister.save
 
-    member if member.persisted?
+    return member if member.persisted?
   end
 
   def active?(organization)
@@ -125,8 +133,7 @@ class User < ApplicationRecord
   end
 
   def was_member?(petition)
-    petition.status == "accepted" && Member.where(organization: petition.organization,
-                                                  user: self).none?
+    petition.status == 'accepted' && Member.where(organization: petition.organization, user: self).none?
   end
 
   def from_signup?

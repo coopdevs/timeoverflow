@@ -114,18 +114,18 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:error] = "You are not authorized to perform this action."
-    redirect_to(request.referer || root_path)
+    redirect_to(request.referrer || root_path)
   end
 
   def resource_not_found
-    render "errors/not_found", status: :not_found
+    render 'errors/not_found', status: 404
   end
 
   def member_should_exist_and_be_active
     if !current_member
       redirect_to organizations_path
     elsif !current_member.active
-      flash[:error] = I18n.t("users.index.account_deactivated")
+      flash[:error] = I18n.t('users.index.account_deactivated')
       redirect_to select_organization_path
     end
   end

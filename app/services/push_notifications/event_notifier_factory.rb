@@ -7,7 +7,7 @@ module PushNotifications
     def build
       return EventNotifier::Post.new(event: event) if event.post_id
 
-      raise "The resource associated to the Event is not supported"
+      raise 'The resource associated to the Event is not supported'
     end
 
     private

@@ -68,10 +68,9 @@ class UserImporter
                                            entry_date: row.entry_date,
                                            user_id: user.id)
 
-      if member.errors.present?
-        errors.push(member_id: row.member_id, email: row.email,
-                    errors: member.errors.full_messages)
-      end
+      errors.push(member_id: row.member_id, email: row.email,
+                  errors: member.errors.full_messages
+                 ) if member.errors.present?
     end
   end
 end

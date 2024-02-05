@@ -85,5 +85,5 @@ ActiveAdmin.register User do
   end
 
   permit_params :username, :email, :phone, :postcode, :gender, :locale,
-                members_attributes: %i[id organization_id active manager _destroy]
+    members_attributes: [:id, :organization_id, :active, :manager, :_destroy]
 end

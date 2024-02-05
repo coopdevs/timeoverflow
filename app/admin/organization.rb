@@ -73,5 +73,5 @@ ActiveAdmin.register Organization do
   filter :updated_at
 
   permit_params :name, :email, :web, :phone, :city, :neighborhood,
-                :address, :description, :public_opening_times, :logo
+    :address, :description, :public_opening_times, :logo
 end

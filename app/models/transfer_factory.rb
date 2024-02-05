@@ -73,8 +73,8 @@ class TransferFactory
   #
   # @return [Account]
   def destination_account
-    @destination_account ||= current_organization.
-                             all_accounts.
-                             find(destination_account_id)
+    @destination_account ||= current_organization
+      .all_accounts
+      .find(destination_account_id)
   end
 end

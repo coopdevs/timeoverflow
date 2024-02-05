@@ -14,8 +14,7 @@ class TransfersController < ApplicationController
     if persister.save
       redirect_to redirect_target
     else
-      redirect_back fallback_location: redirect_target,
-                    alert: transfer.errors.full_messages.to_sentence
+      redirect_back fallback_location: redirect_target, alert: transfer.errors.full_messages.to_sentence
     end
   end
 

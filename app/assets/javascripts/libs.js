@@ -1,7 +1,7 @@
 //= require jquery2
 //= require jquery_ujs
-//= require vendor/jquery.validate
+//= require jquery.validate
 //= require bootstrap
-//= require ./vendor/highcharts
-//= require ./vendor/highcharts-exporting
+//= require highcharts
+//= require highcharts-exporting
 //= require select2

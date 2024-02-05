@@ -7,11 +7,11 @@ class MemberDecorator < ViewModel
   end
 
   def row_css_class
-    "bg-danger" unless active?
+    'bg-danger' unless active?
   end
 
   def inactive_icon
-    view.glyph("time") unless active?
+    view.glyph('time') unless active?
   end
 
   def link_to_self
@@ -20,7 +20,7 @@ class MemberDecorator < ViewModel
 
   def mail_to
     email = user.unconfirmed_email || user.email
-    view.mail_to(email) if email && !email.end_with?("example.com")
+    view.mail_to(email) if email && !email.end_with?('example.com')
   end
 
   def account_balance

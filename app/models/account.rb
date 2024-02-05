@@ -23,7 +23,9 @@ class Account < ApplicationRecord
   end
 
   # Print the account as its accountable reference
-  delegate :to_s, to: :accountable
+  def to_s
+    accountable.to_s
+  end
 
   protected
 

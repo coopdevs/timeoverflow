@@ -11,16 +11,16 @@ module PushNotifications
         description = event.post.description
 
         if description.blank?
-          "No description"
+          'No description'
         else
           description.truncate(20)
         end
       end
 
       def data
-        if event.post.class.to_s == "Offer"
+        if event.post.class.to_s == 'Offer'
           { url: Rails.application.routes.url_helpers.offer_path(event.post) }
-        elsif event.post.class.to_s == "Inquiry"
+        elsif event.post.class.to_s == 'Inquiry'
           { url: Rails.application.routes.url_helpers.inquiry_path(event.post) }
         else
           {}

@@ -11,11 +11,12 @@ module Operations
     end
 
     def transfer_klass(from:, to:)
-      if from.length == 1 && to.length == 1
+      case
+      when from.length == 1 && to.length == 1
         OneToOne
-      elsif from.length > 1 && to.length == 1
+      when from.length > 1 && to.length == 1
         ManyToOne
-      elsif from.length == 1 && to.length > 1
+      when from.length == 1 && to.length > 1
         OneToMany
       else
         raise ArgumentError, "Unknown type of transfer"

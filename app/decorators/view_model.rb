@@ -26,7 +26,7 @@
 #
 # From controllers, one can pass `self.class.helpers`, and from tests it is
 # enough to use ApplicationController.new.view_context.
-#
+# 
 class ViewModel
   attr_reader :object, :view, :routes
 
@@ -36,3 +36,4 @@ class ViewModel
     @routes = Rails.application.routes.url_helpers
   end
 end
+

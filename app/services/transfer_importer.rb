@@ -15,9 +15,8 @@ class TransferImporter
     :post_id
   ) do
     def transfer_from_row(organization_id, errors)
-      source = find_account(source_id, source_type, organization_id, errors, "source")
-      destination = find_account(destination_id, destination_type, organization_id, errors,
-                                 "destination")
+      source = find_account(source_id, source_type, organization_id, errors, 'source')
+      destination = find_account(destination_id, destination_type, organization_id, errors, 'destination')
       return unless source && destination
 
       Transfer.new(
@@ -33,15 +32,14 @@ class TransferImporter
     private
 
     def find_account(id, type, organization_id, errors, direction)
-      acc = if type.downcase == "organization"
+      acc = if type.downcase == 'organization'
               Organization.find(organization_id).account
             else
               Member.find_by(member_uid: id, organization_id: organization_id)&.account
             end
 
       unless acc
-        errors.push(account_id: id,
-                    errors: "#{direction}_id #{id} not found in organization #{organization_id}")
+        errors.push(account_id: id, errors: "#{direction}_id #{id} not found in organization #{organization_id}")
         return false
       end
       acc

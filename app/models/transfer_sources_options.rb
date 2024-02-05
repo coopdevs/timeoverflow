@@ -13,9 +13,9 @@ class TransferSourcesOptions
   #
   # @return [Array<String, Integer>]
   def to_a
-    sources.
-      sort_by { |account| to_accountable_type_and_uid(account) }.
-      map { |account| to_text_and_value(account) }
+    sources
+      .sort_by { |account| to_accountable_type_and_uid(account) }
+      .map { |account| to_text_and_value(account) }
   end
 
   private

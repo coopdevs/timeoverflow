@@ -27,15 +27,15 @@ module PushNotifications
       attr_accessor :event
 
       def title
-        raise "implement the private method `title`"
+        raise 'implement the private method `title`'
       end
 
       def body
-        raise "implement the private method `body`"
+        raise 'implement the private method `body`'
       end
 
       def data
-        raise "implement the private method `data`"
+        raise 'implement the private method `data`'
       end
     end
   end

@@ -13,7 +13,7 @@ module Persister
         enqueue_push_notification_job!
         post
       end
-    rescue ActiveRecord::RecordInvalid => _e
+    rescue ActiveRecord::RecordInvalid => _exception
       false
     end
 
@@ -24,7 +24,7 @@ module Persister
         enqueue_push_notification_job!
         post
       end
-    rescue ActiveRecord::RecordInvalid => _e
+    rescue ActiveRecord::RecordInvalid => _exception
       false
     end
 

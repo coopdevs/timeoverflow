@@ -1,17 +1,15 @@
 module ApplicationHelper
-  TEXT_SUCCESS = "text-success".freeze
-  TEXT_DANGER = "text-danger".freeze
+  TEXT_SUCCESS = 'text-success'.freeze
+  TEXT_DANGER = 'text-danger'.freeze
 
   def page_title
-    current_organization || "TimeOverflow"
+    current_organization || 'TimeOverflow'
   end
 
   def avatar_url(user, size = 32)
-    if user.avatar.attached?
-      user.avatar.variant(resize: "#{size}x#{size}")
-    else
+    user.avatar.attached? ?
+      user.avatar.variant(resize: "#{size}x#{size}") :
       gravatar_url(user, size)
-    end
   end
 
   def gravatar_url(user, size = 32)
@@ -78,7 +76,7 @@ module ApplicationHelper
   # Content can be nil, in that case
   # it will be the same as an empty string.
   def markdown(content)
-    RDiscount.new(content || "".freeze).to_html.html_safe
+    RDiscount.new(content || ''.freeze).to_html.html_safe
   end
   alias m markdown
 
@@ -94,12 +92,12 @@ module ApplicationHelper
 
   def get_body_css_class(controller)
     classes = {
-      "home" => "landing-page",
-      "sessions" => "login-page",
-      "pages" => "pages",
-      "unlocks" => "unlocks-page",
-      "passwords" => "passwords-page",
-      "confirmations" => "confirmations-page"
+      'home' => 'landing-page',
+      'sessions' => 'login-page',
+      'pages' => 'pages',
+      'unlocks' => 'unlocks-page',
+      'passwords' => 'passwords-page',
+      'confirmations' => 'confirmations-page'
     }
 
     "#{classes[controller]}"
@@ -107,12 +105,12 @@ module ApplicationHelper
 
   def alert_class(alert)
     case alert
-    when "error", "alert"
-      "alert-danger"
-    when "notice"
-      "alert-success"
+    when 'error', 'alert'
+      'alert-danger'
+    when 'notice'
+      'alert-success'
     else
-      "alert-info"
+      'alert-info'
     end
   end
 end

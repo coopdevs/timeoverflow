@@ -1,12 +1,12 @@
 class MultiTransfersController < ApplicationController
   include WithTransferParams
 
-  STEPS = %w[
-    select_type
-    select_source
-    select_target
-    set_params
-    confirm
+  STEPS = [
+    'select_type',
+    'select_source',
+    'select_target',
+    'set_params',
+    'confirm'
   ]
 
   def step
@@ -60,10 +60,11 @@ class MultiTransfersController < ApplicationController
       @target_accountable = Account.find(@to.first).accountable
     end
 
-    @should_render_offer_selector =
+    @should_render_offer_selector = (
       @type_of_transfer.to_sym == :many_to_one &&
       @target_accountable &&
       @target_accountable.offers.length > 0
+    )
 
     @from_names = Account.find(@from).map(&:accountable).map(&:to_s)
     @to_names = Account.find(@to).map(&:accountable).map(&:to_s)
