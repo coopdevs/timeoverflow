@@ -69,6 +69,7 @@ FROM ruby:3.2-slim AS final
 RUN apt-get update && \
     apt-get install -y postgresql-client \
     imagemagick \
+    libvips \
     curl \
     supervisor && \
     apt-get clean
