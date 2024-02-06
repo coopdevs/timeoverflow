@@ -8,7 +8,7 @@ module ApplicationHelper
 
   def avatar_url(user, size = 32)
     user.avatar.attached? ?
-      user.avatar.variant(resize: "#{size}x#{size}") :
+      user.avatar.variant(resize_to_fit: [size, size]) :
       gravatar_url(user, size)
   end
 
@@ -31,7 +31,7 @@ module ApplicationHelper
     return if "#{controller_name}##{action_name}".in? %w(organizations#index pages#show)
 
     content_tag(:div, class: "row organization-logo") do
-      image_tag org.logo.variant(resize: "x200^")
+      image_tag org.logo.variant(resize_to_fit: [200, nil])
     end
   end
 
