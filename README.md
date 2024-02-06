@@ -67,6 +67,7 @@ In order to configure the application you can use the following ENV variables:
 
 | ENV | Description | Default |
 | --- | --- | --- |
+| `ALLOWED_HOSTS` | Put here the list of hosts allowed to access the application. Separate with spaces, for instance: `www.timeoverflow.org timeoverflow.org` | `localhost` |
 | `RAILS_ENV` | Define the rails environment (not necessary to setup unless you have some special requirements) | `production` |
 | `SECRET_KEY_BASE` | Secret key for the application, generate a new one with the command `rails secret` | |
 | `DATABASE_URL` | Database URL, the format is `postgresql://user:password@host:port/database` | |

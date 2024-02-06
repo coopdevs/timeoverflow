@@ -32,10 +32,10 @@ module Timeoverflow
 
     # Guard against DNS rebinding attacks by permitting hosts
     # localhost is necessary for the docker image
-    config.hosts << 'localhost'
-    config.hosts << 'timeoverflow.local'
-    config.hosts << 'staging.timeoverflow.org'
-    config.hosts << 'www.timeoverflow.org'
-    config.hosts << 'timeoverflow.org'
+    config.hosts = ENV.fetch('ALLOWED_HOSTS', 'localhost').split(' ')
+    # config.hosts << 'timeoverflow.local'
+    # config.hosts << 'staging.timeoverflow.org'
+    # config.hosts << 'www.timeoverflow.org'
+    # config.hosts << 'timeoverflow.org'
   end
 end
