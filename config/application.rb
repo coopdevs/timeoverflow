@@ -23,17 +23,16 @@ module Timeoverflow
     # SKYLIGHT_AUTHENTICATION env var for this to work.
     config.skylight.environments += ["staging"]
 
-    # ActiveJob configuration
-    config.active_job.queue_adapter = :sidekiq
-
     # Use db/structure.sql with SQL as schema format
     # This is needed to store in the schema SQL statements not covered by the ORM
     config.active_record.schema_format = :sql
 
     # Guard against DNS rebinding attacks by permitting hosts
-    config.hosts << 'timeoverflow.local'
-    config.hosts << 'staging.timeoverflow.org'
-    config.hosts << 'www.timeoverflow.org'
-    config.hosts << 'timeoverflow.org'
+    # localhost is necessary for the docker image
+    config.hosts = ENV.fetch('ALLOWED_HOSTS', 'localhost').split(' ')
+    # config.hosts << 'timeoverflow.local'
+    # config.hosts << 'staging.timeoverflow.org'
+    # config.hosts << 'www.timeoverflow.org'
+    # config.hosts << 'timeoverflow.org'
   end
 end

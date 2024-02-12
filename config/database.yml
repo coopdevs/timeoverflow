@@ -1,8 +1,14 @@
 defaults: &defaults
   adapter: postgresql
-  username: <%= ENV['DATABASE_USER'] || ENV["POSTGRES_USER"] %>
+  username: <%= ENV['DATABASE_USER'] || ENV["POSTGRES_USER"] || ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV['DATABASE_PASSWORD'] || ENV["POSTGRES_PASSWORD"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
+  port: <%= ENV.fetch("DATABASE_PORT") { "5432" } %>
   template: 'template0'
-  encoding: 'UTF8'
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
 
 development:
   <<: *defaults
@@ -16,12 +22,9 @@ test:
 
 staging:
   <<: *defaults
-  collation: 'es_ES.UTF-8'
-  ctype: 'es_ES.UTF-8'
   database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_staging') %>
 
 production:
   <<: *defaults
-  collation: 'es_ES.UTF-8'
-  ctype: 'es_ES.UTF-8'
-  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_production') %>
+  <%= "url: #{ENV['DATABASE_URL']}" if ENV['DATABASE_URL'].present? %>
+  <%= "database: #{ENV.fetch('DATABASE_NAME', 'timeoverflow_production')}" unless ENV['DATABASE_URL'].present? %>

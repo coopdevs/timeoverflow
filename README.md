@@ -41,6 +41,65 @@ as well as being able to post offers / demand ads explained in detail.
 On the other hand the members can be paid the services of virtual way to save the passage through the office of the Bank
 of Time and also have the possibility to consult the extract of their account.
 
+## Docker deploying
+
+This site is ready to be deployed in production with an optimized Docker image which uses two stages in order to minimize the final image size.
+
+You can locally test the production deployment by the include docker-compose.yml file:
+
+```bash
+docker-compose up
+```
+
+The first time running it will build the image and setup the database along with some seeds in it (testing data). If the database already exists, it will run migrations (if needed) and just start the application.
+
+Go to `http://localhost:3000` to see the application running.
+
+> Note that the current docker-compose.yml is not suitable for a real production deployment, it's just for testing the production Dockerfile locally.
+> For production deployment you should use a real database and a reverse proxy like Nginx or Apache (with SSL enabled).
+> Refer to the next section in order to see the relevant ENV variables to configure the application.
+
+### ENV variables
+
+In order to configure the application you can use the following ENV variables:
+
+> Make sure to configure at least the ones without a default value (empty).
+
+| ENV | Description | Default |
+| --- | --- | --- |
+| `ALLOWED_HOSTS` | Put here the list of hosts allowed to access the application. Separate with spaces, for instance: `www.timeoverflow.org timeoverflow.org` | `localhost` |
+| `RAILS_ENV` | Define the rails environment (not necessary to setup unless you have some special requirements) | `production` |
+| `SECRET_KEY_BASE` | Secret key for the application, generate a new one with the command `rails secret` | |
+| `DATABASE_URL` | Database URL, the format is `postgresql://user:password@host:port/database` | |
+| `RAILS_SERVE_STATIC_FILES` | Tell the application to serve static files (you might want to turn this off if you are using an external web server to serve files from the `public` folder) | `true` |
+| `RAILS_LOG_TO_STDOUT` | Tell the application to log to STDOUT (useful for Docker) | `true` |
+| `RAILS_LOG_LEVEL` | Log level for the application (use `debug` for maximum information) | `info` |
+| `RAILS_MAX_THREADS` | Maximum number of threads to use in the application (use `1` if multithreading is not desired) | `5` |
+| `RAILS_MIN_THREADS` | Minimum number of threads to use in the application | `RAILS_MAX_THREADS` value |
+| `WEB_CONCURRENCY` | Number of web server processes to use | `2` |
+| `RUN_SIDEKIQ` | Run Sidekiq worker process in the docker instance (you might want to change this if want to run different docker instances for Sidekiq and Rails) | `true` |
+| `RUN_RAILS` | Run Rails web server process in the docker instance | `true` |
+| `QUEUE_ADAPTER` | Adapter to use for background jobs (currently the application is using exclusively Sidekiq, so no other options here right now) | `sidekiq` |
+| `SIDEKIQ_CONCURRENCY` | Number of threads to use in Sidekiq | `5` |
+| `STORAGE_PROVIDER` | Storage provider for the application (currently the application supports `local` and `amazon`) | `local` |
+| `FORCE_SSL` | Force SSL connections | `false` |
+| `MAIL_LINK_HOST` | Host to use in the links sent by email (use your domain without protocol `mydomain.tld`) | |
+| `MAIL_LINK_PROTOCOL` | Protocol to use in the previous host defined for links sent by email | `https` |
+| `SMTP_ADDRESS` | SMTP server address (ie: `smtp.mailgun.org`) | |
+| `SMTP_PORT` | SMTP server port (ie: `587`) | |
+| `SMTP_DOMAIN` | SMTP domain (usually the application's domain) | |
+| `SMTP_USER_NAME` | SMTP username | |
+| `SMTP_PASSWORD` | SMTP password | |
+| `SMTP_AUTHENTICATION` | SMTP authentication method | `plain` |
+| `SMTP_ENABLE_STARTTLS_AUTO` | Enable STARTTLS | `true` |
+| `SMTP_OPENSSL_VERIFY_MODE` | OpenSSL verify mode | `none` |
+| `AWS_ACCESS_KEY_ID` | AWS access key ID (only if `STORAGE_PROVIDER` is `amazon`) | |
+| `AWS_SECRET_ACCESS_KEY` | AWS secret access key (only if `STORAGE_PROVIDER` is `amazon`) | |
+| `AWS_BUCKET` | AWS bucket name (only if `STORAGE_PROVIDER` is `amazon`) | |
+| `AWS_REGION` | AWS region (only if `STORAGE_PROVIDER` is `amazon`) | |
+| `ADMINS` | Space separated list of emails for the superadmins (ie: `admin@timeoverflow.org` | | 
+
+
 ## Contributions
 
 **Join our collaborators team!**

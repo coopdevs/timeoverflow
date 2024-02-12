@@ -13,7 +13,6 @@ gem 'json_translate', '~> 4.0.0'
 gem 'devise', '~> 4.9.1'
 gem 'devise-i18n', '~> 1.11.0'
 gem 'http_accept_language', '~> 2.1.1'
-gem 'unicorn', '~> 6.1.0'
 gem 'kaminari', '~> 1.2.1'
 gem 'simple_form', '~> 5.0.2'
 gem 'rollbar', '~> 3.4'
@@ -26,21 +25,24 @@ gem 'sidekiq-cron', '~> 1.9.1'
 gem 'aws-sdk-s3', '~> 1.94', require: false
 gem 'image_processing', '~> 1.12'
 gem 'active_storage_validations', '~> 1.1.3'
+gem "puma", ">= 5.0.0"
+gem 'matrix', '~> 0.4.1'
 
 # Assets
 gem 'jquery-rails', '~> 4.4.0'
 gem 'bootstrap-sass', '~> 3.4'
 gem 'sassc-rails', '~> 2.1.2'
-gem 'uglifier', '~> 4.2.0'
 gem 'select2-rails', '~> 4.0.13'
+
+group :production do
+  # we are using an ExecJS runtime only on the precompilation phase
+  gem "uglifier", "~> 4.2.0", require: false
+end
 
 group :development do
   gem 'localeapp', '~> 3.3', require: false
   gem 'letter_opener', '~> 1.7.0'
   gem 'web-console', '~> 4.1.0'
-  gem 'capistrano', '~> 3.15.0'
-  gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano-rbenv', '~> 2.1'
 end
 
 group :development, :test do
@@ -60,5 +62,4 @@ group :test do
   gem 'capybara', '~> 3.29'
   gem 'selenium-webdriver', '~> 4.16'
   gem 'simplecov', '~> 0.22', require: false
-  gem 'webrick'
 end
