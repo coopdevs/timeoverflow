@@ -3,12 +3,7 @@
 # Run rails by default if sidekiq is specified
 if [ -z "$RUN_RAILS" ] && [ -z "$RUN_SIDEKIQ" ]; then
 	RUN_RAILS=true
-	echo "⚠️ RUN_RAILS and RUN_SIDEKIQ are not set, defaulting to RUN_RAILS=true"
-fi
-
-if [ "$QUEUE_ADAPTER" != "sidekiq" ]; then
-	RUN_SIDEKIQ=false
-	echo "⚠️ Sidekiq is disabled because QUEUE_ADAPTER is not set to sidekiq"
+	echo "⚠️ RUN_RAILS and RUN_SIDEKIQ are not set, defaulting to RUN_RAILS=true, RUN_SIDEKIQ=false"
 fi
 
 # ensure booleans

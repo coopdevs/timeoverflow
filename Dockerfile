@@ -41,13 +41,11 @@ COPY ./public/*.* /app/public/
 COPY ./config.ru /app/config.ru
 COPY ./Rakefile /app/Rakefile
 
-# Compile assets with Webpacker or Sprockets
+# Compile assets
 #
-# Notes:
-#   1. Executing "assets:precompile" runs "webpacker:compile", too
-#   2. For an app using encrypted credentials, Rails raises a `MissingKeyError`
-#      if the master key is missing. Because on CI there is no master key,
-#      we hide the credentials while compiling assets (by renaming them before and after)
+#  For an app using encrypted credentials, Rails raises a `MissingKeyError`
+#  if the master key is missing. Because on CI there is no master key,
+#  we hide the credentials while compiling assets (by renaming them before and after)
 #
 RUN mv config/credentials.yml.enc config/credentials.yml.enc.bak 2>/dev/null || true
 RUN mv config/credentials config/credentials.bak 2>/dev/null || true

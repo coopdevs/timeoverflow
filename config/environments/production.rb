@@ -71,7 +71,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  config.active_job.queue_adapter = ENV.fetch("QUEUE_ADAPTER", nil) if ENV["QUEUE_ADAPTER"].present?
+  config.active_job.queue_adapter = :sidekiq
   # config.active_job.queue_name_prefix = "timeoverflow_production"
 
   config.action_mailer.perform_caching = false

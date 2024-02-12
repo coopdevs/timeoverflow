@@ -22,13 +22,9 @@ test:
 
 staging:
   <<: *defaults
-  # collation: 'es_ES.UTF-8'
-  # ctype: 'es_ES.UTF-8'
   database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_staging') %>
 
 production:
   <<: *defaults
-  # collation: 'es_ES.UTF-8'
-  # ctype: 'es_ES.UTF-8'
   <%= "url: #{ENV['DATABASE_URL']}" if ENV['DATABASE_URL'].present? %>
   <%= "database: #{ENV.fetch('DATABASE_NAME', 'timeoverflow_production')}" unless ENV['DATABASE_URL'].present? %>
