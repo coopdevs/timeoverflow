@@ -228,7 +228,7 @@ GEM
     mime-types-data (3.2023.1205)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    minitest (5.22.0)
+    minitest (5.22.2)
     msgpack (1.7.2)
     net-imap (0.4.10)
       date
@@ -241,6 +241,8 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
+    nokogiri (1.16.2-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -425,9 +427,10 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.12)
+    zeitwerk (2.6.13)
 
 PLATFORMS
+  arm64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -457,7 +460,7 @@ DEPENDENCIES
   pg_search (~> 2.3.5)
   prawn (~> 2.4.0)
   prawn-table (~> 0.2.2)
-  puma (>= 5.0.0)
+  puma (~> 6.4)
   pundit (~> 2.1.0)
   rails (~> 7.0.8)
   rails-controller-testing

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 7.0.8'
 gem 'rails-i18n', '~> 7.0'
+gem 'puma', '~> 6.4'
 gem 'rdiscount', '~> 2.2.7'
 gem 'rubyzip', '~> 2.3.0'
 gem 'activeadmin', '~> 2.14'
@@ -18,6 +19,7 @@ gem 'simple_form', '~> 5.0.2'
 gem 'rollbar', '~> 3.4'
 gem 'prawn', '~> 2.4.0'
 gem 'prawn-table', '~> 0.2.2'
+gem 'matrix', '~> 0.4.1' # Ruby 3.1+ support for Prawn, see more: https://github.com/prawnpdf/prawn/issues/1195
 gem 'pg_search', '~> 2.3.5'
 gem 'skylight', '~> 6.0'
 gem 'sidekiq', '~> 6.5'
@@ -25,8 +27,6 @@ gem 'sidekiq-cron', '~> 1.9.1'
 gem 'aws-sdk-s3', '~> 1.94', require: false
 gem 'image_processing', '~> 1.12'
 gem 'active_storage_validations', '~> 1.1.3'
-gem "puma", ">= 5.0.0"
-gem 'matrix', '~> 0.4.1'
 
 # Assets
 gem 'jquery-rails', '~> 4.4.0'

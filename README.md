@@ -79,9 +79,8 @@ In order to configure the application you can use the following ENV variables:
 | `WEB_CONCURRENCY` | Number of web server processes to use | `2` |
 | `RUN_SIDEKIQ` | Run Sidekiq worker process in the docker instance (you might want to change this if want to run different docker instances for Sidekiq and Rails) | `true` |
 | `RUN_RAILS` | Run Rails web server process in the docker instance | `true` |
-| `QUEUE_ADAPTER` | Adapter to use for background jobs (currently the application is using exclusively Sidekiq, so no other options here right now) | `sidekiq` |
 | `SIDEKIQ_CONCURRENCY` | Number of threads to use in Sidekiq | `5` |
-| `STORAGE_PROVIDER` | Storage provider for the application (currently the application supports `local` and `amazon`) | `local` |
+| `STORAGE_PROVIDER` | Storage provider for the application (currently the application supports `local` and `amazon`) | `amazon` |
 | `FORCE_SSL` | Force SSL connections | `false` |
 | `MAIL_LINK_HOST` | Host to use in the links sent by email (use your domain without protocol `mydomain.tld`) | |
 | `MAIL_LINK_PROTOCOL` | Protocol to use in the previous host defined for links sent by email | `https` |
