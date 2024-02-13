@@ -7,8 +7,6 @@ defaults: &defaults
   port: <%= ENV.fetch("DATABASE_PORT") { "5432" } %>
   template: 'template0'
   encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
 
 development:
   <<: *defaults
@@ -19,10 +17,6 @@ test:
   database: timeoverflow_test
   host: localhost
   password: <%= ENV['DATABASE_PASSWORD'] || ENV["POSTGRES_PASSWORD"] %>
-
-staging:
-  <<: *defaults
-  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_staging') %>
 
 production:
   <<: *defaults

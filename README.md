@@ -67,6 +67,7 @@ In order to configure the application you can use the following ENV variables:
 
 | ENV | Description | Default |
 | --- | --- | --- |
+| `ADMINS` | Space separated list of emails for the superadmins (ie: `admin@timeoverflow.org` | |
 | `ALLOWED_HOSTS` | Put here the list of hosts allowed to access the application. Separate with spaces, for instance: `www.timeoverflow.org timeoverflow.org` | `localhost` |
 | `RAILS_ENV` | Define the rails environment (not necessary to setup unless you have some special requirements) | `production` |
 | `SECRET_KEY_BASE` | Secret key for the application, generate a new one with the command `rails secret` | |
@@ -96,8 +97,6 @@ In order to configure the application you can use the following ENV variables:
 | `AWS_SECRET_ACCESS_KEY` | AWS secret access key (only if `STORAGE_PROVIDER` is `amazon`) | |
 | `AWS_BUCKET` | AWS bucket name (only if `STORAGE_PROVIDER` is `amazon`) | |
 | `AWS_REGION` | AWS region (only if `STORAGE_PROVIDER` is `amazon`) | |
-| `ADMINS` | Space separated list of emails for the superadmins (ie: `admin@timeoverflow.org` | | 
-
 
 ## Contributions
 

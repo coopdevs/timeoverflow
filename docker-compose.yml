@@ -13,6 +13,7 @@ services:
       - RAILS_LOG_LEVEL=debug
       - REDIS_URL=redis://redis:6379/0
       - ADMINS=admin@timeoverflow.org
+      - STORAGE_PROVIDER=local
     ports:
       - 3000:3000
     depends_on:
@@ -30,6 +31,7 @@ services:
       - RAILS_LOG_LEVEL=debug
       - REDIS_URL=redis://redis:6379/0
       - ADMINS=admin@timeoverflow.org
+      - STORAGE_PROVIDER=local
       - RUN_SIDEKIQ=true
     depends_on:
       - db
