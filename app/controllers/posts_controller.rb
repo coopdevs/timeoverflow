@@ -44,9 +44,6 @@ class PostsController <  ApplicationController
     instance_variable_set("@#{resource}", post)
   end
 
-  # GET /offers/:id
-  # GET /inquiries/:id
-  #
   def show
     post = Post.active.of_active_members.find(params[:id])
     update_current_organization!(post.organization)

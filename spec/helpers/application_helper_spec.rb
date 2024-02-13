@@ -10,7 +10,7 @@ RSpec.describe ApplicationHelper do
       img = helper.avatar_url(user, 50)
 
       expect(img.class).to eq(ActiveStorage::VariantWithRecord)
-      expect(img.variation.transformations[:resize]).to eq("50x50")
+      expect(img.variation.transformations[:resize_to_fit]).to eq([50, 50])
       expect(img.blob.filename).to eq("name.png")
     end
 
