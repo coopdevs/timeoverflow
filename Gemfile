@@ -16,12 +16,9 @@ gem 'devise-i18n', '~> 1.11.0'
 gem 'http_accept_language', '~> 2.1.1'
 gem 'kaminari', '~> 1.2.1'
 gem 'simple_form', '~> 5.0.2'
-gem 'rollbar', '~> 3.4'
-gem 'prawn', '~> 2.4.0'
+gem 'prawn', '~> 2.5.0'
 gem 'prawn-table', '~> 0.2.2'
-gem 'matrix', '~> 0.4.1' # Ruby 3.1+ support for Prawn, see more: https://github.com/prawnpdf/prawn/issues/1195
 gem 'pg_search', '~> 2.3.5'
-gem 'skylight', '~> 6.0'
 gem 'sidekiq', '~> 6.5'
 gem 'sidekiq-cron', '~> 1.9.1'
 gem 'aws-sdk-s3', '~> 1.94', require: false
