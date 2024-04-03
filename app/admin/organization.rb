@@ -5,7 +5,7 @@ ActiveAdmin.register Organization do
       output = tag.p organization.name
 
       if organization.logo.attached?
-        output << image_tag(organization.logo.variant(resize: "40^x"))
+        output << image_tag(organization.logo.variant(resize_to_fill: [40, nil]))
       end
 
       output.html_safe
@@ -29,7 +29,7 @@ ActiveAdmin.register Organization do
   show do
     div do
       if organization.logo.attached?
-        image_tag(organization.logo.variant(resize: "100^x"))
+        image_tag(organization.logo.variant(resize_to_fill: [100, nil]))
       end
     end
     default_main_content

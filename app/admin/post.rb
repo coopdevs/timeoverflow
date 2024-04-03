@@ -30,7 +30,7 @@ ActiveAdmin.register Post do
   end
 
   form do |f|
-    f.semantic_errors *f.object.errors.keys
+    f.semantic_errors *f.object.errors.attribute_names
     f.inputs do
       f.input :type, as: :radio, collection: %w[Offer Inquiry]
       f.input :title
