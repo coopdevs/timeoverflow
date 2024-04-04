@@ -1,11 +1,12 @@
 # TimeOverflow
+
 [![Build Status](https://github.com/coopdevs/timeoverflow/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/coopdevs/timeoverflow/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/maintainability)](https://codeclimate.com/github/coopdevs/timeoverflow/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/test_coverage)](https://codeclimate.com/github/coopdevs/timeoverflow/test_coverage)
 
 #### www.timeoverflow.org
 
-:bank: :hourglass: Time Bank management system. [Learn more about Time Banks](http://www.bdtonline.org/).
+🏦 ⌛ Time Bank management system. [Learn more about Time Banks](http://www.bdtonline.org/).
 
 TimeOverflow is a software developed in an altruistic way to offer a system that
 facilitates the interaction of the members and the management of the Time Banks.
@@ -99,9 +100,15 @@ In order to configure the application you can use the following ENV variables:
 
 ## Contributions
 
-**Join our collaborators team!**
+Any kind of feedback, bug report, idea or enhancement are really appreciated.
 
-:point_right: Further information [here](CONTRIBUTING.md).
+To contribute, just fork the repo, hack on it and send a pull request. Don't forget to add tests for behaviour changes and run the test suite:
+
+```
+bundle exec rspec
+```
+
+👉 Further information in our [Wiki](https://github.com/coopdevs/timeoverflow/wiki).
 
 ## License
 
