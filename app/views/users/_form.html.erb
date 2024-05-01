@@ -1,6 +1,7 @@
 <%= show_error_messages!(@user) %>
 <%= simple_form_for @user do |f| %>
   <%= f.hidden_field :locale, value: I18n.locale %>
+  <%= invisible_captcha %>
 
   <div class="form-inputs">
     <%= f.input :username %>

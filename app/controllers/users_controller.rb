@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :user_should_be_confirmed, except: %i[signup create please_confirm]
   before_action :member_should_exist_and_be_active, except: %i[signup create edit show update please_confirm]
 
+  invisible_captcha if: -> { params[:from_signup].present? }
+
   has_scope :tagged_with, as: :tag
 
   def index
