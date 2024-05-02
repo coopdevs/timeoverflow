@@ -2,7 +2,7 @@ RSpec.describe OrganizationNotifier do
   let(:test_organization) { Fabricate(:organization) }
   let!(:offer) { Fabricate(:offer, organization: test_organization) }
   let!(:inquiry) { Fabricate(:inquiry, organization: test_organization) }
-  let(:user) { Fabricate(:user, email: "user@example.com", locale: :en) }
+  let(:user) { Fabricate(:user, email: "user@timeoverflow.org", locale: :en) }
   let(:member) { Fabricate(:member, organization: test_organization, user: user) }
 
   describe "send an email" do
@@ -17,7 +17,7 @@ RSpec.describe OrganizationNotifier do
     let(:mail) { OrganizationNotifier.recent_posts(test_organization.posts, :en, [user]) }
 
     it "receive email only active and online users" do
-      expect(mail.bcc).to eql(["user@example.com"])
+      expect(mail.bcc).to eql(["user@timeoverflow.org"])
     end
     it "to should be null" do
       expect(mail.to).to be_nil
