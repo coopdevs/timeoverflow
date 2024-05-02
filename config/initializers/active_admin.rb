@@ -7,7 +7,6 @@ ActiveAdmin.setup do |config|
   config.current_user_method = :current_user
   config.logout_link_path = :destroy_user_session_path
   config.logout_link_method = :delete
-  config.batch_actions = false
   config.comments = false
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|

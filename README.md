@@ -15,8 +15,7 @@ of it and is prepared to be able to accommodate several Time Banks in a single i
 for this account with three levels of privileges: superadmin, admin (only manages a bank)
 and members of a bank.
 
-![Users list](docs/images/usuarios.png)
-![Offers list](docs/images/ofertas.png)
+![Demo UI](docs/images/demo_ui.jpeg)
 
 TimeOverflow is divided into 2 large blocks:
 

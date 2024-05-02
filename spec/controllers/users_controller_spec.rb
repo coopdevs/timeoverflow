@@ -441,8 +441,8 @@ RSpec.describe UsersController do
 
       let(:uploaded_file) do
         Rack::Test::UploadedFile.new(
-          Rails.root.join("docs/images/ofertas.png"),
-          "image/png"
+          Rails.root.join("docs/images/demo_ui.jpeg"),
+          "image/jpeg"
         )
       end
 

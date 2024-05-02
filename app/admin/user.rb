@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  config.batch_actions = true
+
   action_item :upload_csv, only: :index do
     link_to I18n.t("active_admin.users.upload_from_csv"), action: "upload_csv"
   end
@@ -15,6 +17,7 @@ ActiveAdmin.register User do
   end
 
   index do
+    selectable_column
     column do |user|
       link_to image_tag(avatar_url(user, 24)), admin_user_path(user)
     end

@@ -41,6 +41,7 @@ class User < ApplicationRecord
   scope :actives, -> { joins(:members).where(members: { active: true }) }
   scope :online_active, -> { where("sign_in_count > 0") }
   scope :notifications, -> { where(notifications: true) }
+  scope :confirmed, -> { where.not(confirmed_at: nil) }
 
   validates :username, presence: true
   validates :email, presence: true, uniqueness: true
