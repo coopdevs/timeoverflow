@@ -15,8 +15,6 @@ development:
 test:
   <<: *defaults
   database: timeoverflow_test
-  host: localhost
-  password: <%= ENV['DATABASE_PASSWORD'] || ENV["POSTGRES_PASSWORD"] %>
 
 production:
   <<: *defaults
