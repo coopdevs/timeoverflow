@@ -5,7 +5,7 @@ gem 'rails-i18n', '~> 7.0'
 gem 'puma', '~> 6.4'
 gem 'rdiscount', '~> 2.2.7'
 gem 'rubyzip', '~> 2.3.0'
-gem 'activeadmin', '~> 2.14'
+gem 'activeadmin', '~> 3.2'
 gem 'bootsnap', '~> 1.12', require: false
 gem 'has_scope', '~> 0.7.2'
 gem 'pundit', '~> 2.1.0'
