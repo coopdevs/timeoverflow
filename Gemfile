@@ -21,7 +21,7 @@ gem 'prawn', '~> 2.5.0'
 gem 'prawn-table', '~> 0.2.2'
 gem 'pg_search', '~> 2.3.5'
 gem 'sidekiq', '~> 6.5'
-gem 'sidekiq-cron', '~> 1.9.1'
+gem 'sidekiq-cron', '~> 1.12.0'
 gem 'aws-sdk-s3', '~> 1.94', require: false
 gem 'image_processing', '~> 1.12'
 gem 'active_storage_validations', '~> 1.1.3'

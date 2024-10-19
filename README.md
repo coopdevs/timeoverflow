@@ -47,7 +47,7 @@ This site is ready to be deployed in production with an optimized Docker image w
 You can locally test the production deployment by the include docker-compose.yml file:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 The first time running it will build the image and setup the database along with some seeds in it (testing data). If the database already exists, it will run migrations (if needed) and just start the application.
