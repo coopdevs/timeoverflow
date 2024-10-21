@@ -6,6 +6,7 @@ services:
       - ./entrypoint.sh:/app/entrypoint.sh
       - ./db/seeds.rb:/app/db/seeds.rb
       - ./storage:/app/storage
+      - .:/app
     environment:
       - DATABASE_URL=postgres://postgres:timeoverflow@db/timeoverflow
       - SECRET_KEY_BASE=d2a645fb46fbd3d4380fb22230ddea4062570eb00853ca5dfe97f8bb1cbff1ad6891c573a4b4b06beb2d0baf59afc9e00794314490a644fc5808ad6cbc3a6379
@@ -14,6 +15,7 @@ services:
       - REDIS_URL=redis://redis:6379/0
       - ADMINS=admin@timeoverflow.org
       - STORAGE_PROVIDER=local
+      - RAILS_ENV=development
     ports:
       - 3000:3000
     depends_on:
@@ -33,6 +35,7 @@ services:
       - ADMINS=admin@timeoverflow.org
       - STORAGE_PROVIDER=local
       - RUN_SIDEKIQ=true
+      - RAILS_ENV=development
     depends_on:
       - db
       - redis
