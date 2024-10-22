@@ -1,16 +1,34 @@
+/* Uso de Flexbox para organizar el contenedor de los cards*/
+.row.to-member-cards {
+  display: flex;
+  flex-wrap: wrap; //Crea una nueva fila cuando se llena la segunda columna
+  align-items: stretch; // En la fila asegura que todas las columnas tengan la misma altura.
+}
+
+/* Configura las columnas para usar Flexbox y organizar el contenido verticalmente */
+.col-lg-6.col-sm-12 {
+  display: flex;
+  flex-direction: column;
+}
+
 .to-member-card {
   & {
     margin: 16px 0;
     width: 100%;
     max-width: 600px;
-    height: 178px;
+    min-height: 178px;
     background-color: white;
     box-shadow: 0 0 3px $palette-grey;
-    display: inline-block;
+    border-radius: 0.3rem;
+    display: flex; // Cambia de inline-block a flex para Flexbox
+    flex-direction: column; // Organiza el contenido verticalmente
+    justify-content: space-between; // Distribuye el espacio entre los elementos internos
+    box-sizing: border-box; // Asegura que el padding se incluya en el ancho y alto
 
     @media(max-width: $screen-sm-min) {
       height: auto;
       margin: 10px 0;
+      max-width: 100%; //Ocupa todo el ancho de pantalla para el móvil
     }
   }
 
@@ -19,6 +37,8 @@
       display: flex;
       background-color: $palette-dark-turkey;
       padding: 10px 20px;
+      align-items: center;
+      border-radius: 0.3rem 0.3rem 0 0;
     }
 
     &__avatar {
@@ -47,14 +67,19 @@
 
   &__body {
     & {
+      flex: 1; // Permite que el body ocupe el espacio restante 
       padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
     }
 
     &__description {
       margin-bottom: 10px;
       color: #666;
       font-size: 15px;
-      height: 44px;
+      min-height: auto; //Permite que la descripción se expanda según su contenido sin limitar la altura del card.
+      white-space: normal; // Permite el envolvimiento del texto
+      word-wrap: break-word; // Divide palabras largas si es necesario
 
       @media(max-width: $screen-sm-min) {
         height: auto;
@@ -63,6 +88,8 @@
 
     &__items {
       display: flex;
+      flex-wrap: wrap;
+      margin-top: auto; // Empuja los items al final del body
 
       @media(max-width: $screen-sm-min) {
         display: block;
