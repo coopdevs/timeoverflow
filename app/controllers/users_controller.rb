@@ -8,10 +8,11 @@ class UsersController < ApplicationController
   has_scope :tagged_with, as: :tag
 
   def index
-    members = current_organization.members.active
-    members = apply_scopes(members)
+  members = current_organization.members.active
+  members = apply_scopes(members)
 
-    search_and_load_members members, { s: 'user_last_sign_in_at DESC' }
+  # Pasamos directamente los parámetros sin forzar un orden en este punto
+  search_and_load_members(members, params[:q])
   end
 
   def manage
@@ -96,17 +97,25 @@ class UsersController < ApplicationController
 
   private
 
-  def search_and_load_members(members_scope, default_search_params)
-    @search = members_scope.ransack(default_search_params.merge(params.to_unsafe_h.fetch(:q, {})))
+  def search_and_load_members(members_scope, search_params)
+  # Unimos la tabla users para poder acceder a sus atributos
+  @search = members_scope.joins(:user).ransack(search_params)
 
-    result = @search.result
+  result = @search.result
+
+  # Si no hay un orden definido por el usuario, se aplica el nuevo orden predeterminado.
+  # (Administrador/a primero y luego el resto de usuarios, ambos por orden de última conexión).
+  if result.order_values.blank?
+    result = result.order('members.manager DESC, users.last_sign_in_at DESC NULLS LAST')
+  else
+    # Si hay un orden definido, ajustamos los valores NULLS FIRST/LAST según corresponda
     orders = result.order_values.map { |order| order.direction == :asc ? "#{order.to_sql} NULLS FIRST" : "#{order.to_sql} NULLS LAST" }
     result = result.except(:order).order(orders.join(", ")) if orders.count > 0
+  end
 
-    @members = result.eager_load(:account, :user).page(params[:page]).per(20)
+  @members = result.eager_load(:account, :user).page(params[:page]).per(20)
 
-    @member_view_models =
-      @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
+  @member_view_models = @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
   end
 
   def scoped_users
