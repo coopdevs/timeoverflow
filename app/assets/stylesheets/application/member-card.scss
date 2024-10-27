@@ -1,10 +1,4 @@
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-}
-
-.column {
+.column--cards {
   display: flex;
   flex-direction: column;
 }

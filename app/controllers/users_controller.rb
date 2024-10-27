@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     members = current_organization.members.active
     members = apply_scopes(members)
 
-    search_and_load_members(members, params[:q])
+    search_and_load_members members, { s: 'user_last_sign_in_at DESC' }
   end
 
   def manage
@@ -96,19 +96,17 @@ class UsersController < ApplicationController
 
   private
 
-  def search_and_load_members(members_scope, search_params)
-    @search = members_scope.joins(:user).ransack(search_params)
-    result = @search.result
+  def search_and_load_members(members_scope, default_search_params)
+    @search = members_scope.ransack(default_search_params.merge(params.to_unsafe_h.fetch(:q, {})))
 
-    if result.order_values.blank?
-      result = result.order('members.manager DESC, users.last_sign_in_at DESC NULLS LAST')
-    else
-      orders = result.order_values.map { |order| order.direction == :asc ? "#{order.to_sql} NULLS FIRST" : "#{order.to_sql} NULLS LAST" }
-      result = result.except(:order).order(orders.join(", ")) if orders.count > 0
-    end
+    result = @search.result
+    orders = result.order_values.map { |order| order.direction == :asc ? "#{order.to_sql} NULLS FIRST" : "#{order.to_sql} NULLS LAST" }
+    result = result.except(:order).order(orders.join(", ")) if orders.count > 0
 
     @members = result.eager_load(:account, :user).page(params[:page]).per(20)
-    @member_view_models = @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
+
+    @member_view_models =
+      @members.map { |m| MemberDecorator.new(m, self.class.helpers) }
   end
 
   def scoped_users
