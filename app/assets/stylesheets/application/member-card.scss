@@ -1,26 +1,17 @@
-.column--cards {
-  display: flex;
-  flex-direction: column;
-}
-
 .to-member-card {
   & {
     margin: 16px 0;
     width: 100%;
     max-width: 600px;
-    min-height: 178px;
+    height: 178px;
     background-color: white;
     box-shadow: 0 0 3px $palette-grey;
-    border-radius: 0.3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
+    display: inline-block;
+    border-radius: 4px;
 
     @media(max-width: $screen-sm-min) {
       height: auto;
       margin: 10px 0;
-      max-width: 100%;
     }
   }
 
@@ -29,8 +20,7 @@
       display: flex;
       background-color: $palette-dark-turkey;
       padding: 10px 20px;
-      align-items: center;
-      border-radius: 0.3rem 0.3rem 0 0;
+      border-radius: 4px 4px 0 0;
     }
 
     &__avatar {
@@ -59,19 +49,14 @@
 
   &__body {
     & {
-      flex: 1;
       padding: 16px 20px;
-      display: flex;
-      flex-direction: column;
     }
 
     &__description {
       margin-bottom: 10px;
       color: #666;
       font-size: 15px;
-      min-height: auto;
-      white-space: normal;
-      word-wrap: break-word;
+      height: 44px;
 
       @media(max-width: $screen-sm-min) {
         height: auto;
@@ -80,8 +65,6 @@
 
     &__items {
       display: flex;
-      flex-wrap: wrap;
-      margin-top: auto;
 
       @media(max-width: $screen-sm-min) {
         display: block;
