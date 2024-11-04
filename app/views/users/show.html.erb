@@ -5,7 +5,7 @@
         <li>
           <%= link_to edit_user_path(@user) do %>
             <%= glyph :pencil, t('global.edit') %>
-            <span class="hidden-xs hidden-sm"><%= t "global.edit" %></span>
+            <span><%= t "global.edit" %></span>
           <% end %>
         </li>
       <% end %>
@@ -13,7 +13,7 @@
         <li>
           <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id) do %>
             <%= glyph :time, t('global.give_time') %>
-            <span class="hidden-xs hidden-sm"><%= t "global.give_time" %></span>
+            <span><%= t "global.give_time" %></span>
           <% end %>
         </li>
       <% end %>
