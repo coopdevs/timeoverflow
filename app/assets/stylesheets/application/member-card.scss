@@ -1,27 +1,25 @@
-.card-container {
+.to-member-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
   gap: 20px;
 
-
-  @media(max-width: $screen-sm-min) {
+  @media(max-width: $screen-lg-min) {
     display: block;
   }
 }
 
-.card-wrapper {
+.to-member-card__wrapper {
   width: 48%;
 
-  @media (max-width: $screen-sm-min) {
+  @media (max-width: $screen-lg-min) {
     width: 100%;
   }
 }
 
 .to-member-card {
   & {
-    margin: 16px 0;
     width: 100%;
     max-width: 600px;
     min-height: 178px;
@@ -32,7 +30,7 @@
     height: 100%;
     border-radius: 4px;
 
-    @media(max-width: $screen-sm-min) {
+    @media(max-width: $screen-lg-min) {
       height: auto;
       margin: 10px 0;
     }
@@ -77,10 +75,10 @@
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
-
     }
 
     &__description {
+      margin-bottom: 10px;
       color: #666;
       font-size: 15px;
 
