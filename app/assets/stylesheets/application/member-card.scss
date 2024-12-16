@@ -100,6 +100,8 @@
     &__item {
       margin-right: 20px;
       font-size: 14px;
+      overflow-wrap: break-word;
+      white-space: normal;
 
       a {
         color: grey;
