@@ -23,7 +23,7 @@ html {
   }
 }
 
-.actions-menu>li>a {
+.actions-menu > li > a {
   color: #101010;
   padding: 10px 16px;
 
@@ -33,7 +33,7 @@ html {
   }
 }
 
-.actions-menu>li {
+.actions-menu > li {
   margin-right: 6px;
 
   @media(max-width: $screen-sm-min) {
@@ -70,23 +70,19 @@ html {
     cursor: pointer;
   }
 
-  ::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: $form-input-glyph;
   }
 
-  ::-moz-placeholder {
-    /* Firefox 19+ */
+  ::-moz-placeholder { /* Firefox 19+ */
     color: $form-input-glyph;
   }
 
-  ::-ms-input-placeholder {
-    /* IE 10+ */
+  ::-ms-input-placeholder { /* IE 10+ */
     color: $form-input-glyph;
   }
 
-  ::-moz-placeholder {
-    /* Firefox 18- */
+  ::-moz-placeholder { /* Firefox 18- */
     color: $form-input-glyph;
   }
 
@@ -116,8 +112,7 @@ html {
     }
   }
 
-  .input-lg,
-  #user_email {
+  .input-lg, #user_email {
     border-radius: 0 0.3rem 0.3rem 0;
     padding: 0 4px;
   }
@@ -126,8 +121,7 @@ html {
     border-radius: 0;
   }
 
-  .input-group-addon,
-  .input-lg {
+  .input-group-addon, .input-lg {
     background-color: $form-input-bg-color;
     border: 0;
     box-shadow: none;
@@ -155,10 +149,9 @@ html {
     box-shadow: none;
     outline: 0;
     -webkit-box-shadow: none;
-  }
+   }
 
-  .radio label,
-  .checkbox label {
+  .radio label, .checkbox label {
     padding: 0;
   }
 
@@ -249,12 +242,12 @@ html {
     border: 1px solid $border;
     border-collapse: inherit;
     border-radius: 0.3rem;
-    margin-bottom: 20px;
+    margin-bottom:20px;
     padding: 20px;
   }
 
   table.users tr:nth-of-type(2) th {
-    border-top: 0;
+    border-top:0;
   }
 
   .user-profile {
@@ -289,12 +282,12 @@ html {
 }
 
 // statistics view
-ul.statistics li {
+ul.statistics li{
   padding-right: 10px;
   padding-bottom: 10px;
 }
 
-#chart {
+#chart{
   clear: both;
 }
 
@@ -304,17 +297,17 @@ ul.statistics li {
 }
 
 /*flash*/
-.alert>ul {
+.alert > ul {
   list-style: none;
   padding-left: 1.5rem;
 }
 
 // fields that contain an error
-.field_with_errors {
+.field_with_errors{
   color: red;
 }
 
-label[required]::after {
+label[required]::after{
   content: " *";
 }
 
@@ -347,7 +340,7 @@ label[required]::after {
   margin-top: 0.2rem;
 }
 
-.navbar-nav>li>a {
+.navbar-nav > li > a {
   font-size: 1.6rem;
   font-weight: 500;
   letter-spacing: 0.013rem;
@@ -369,12 +362,7 @@ label[required]::after {
   letter-spacing: 0.019rem;
 }
 
-.landing-page,
-.login-page,
-.pages,
-.unlocks-page,
-.confirmations-page,
-.passwords-page {
+.landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-size: cover;
 
@@ -397,11 +385,7 @@ label[required]::after {
   }
 }
 
-.landing-page,
-.login-page,
-.unlocks-page,
-.confirmations-page,
-.passwords-page {
+.landing-page, .login-page, .unlocks-page, .confirmations-page, .passwords-page {
   a {
     color: $white;
   }
@@ -423,8 +407,7 @@ label[required]::after {
   }
 }
 
-.landing-page .content,
-.pages .banner {
+.landing-page .content, .pages .banner {
   h2 {
     color: $white;
     font-size: 5.76rem;
@@ -497,9 +480,7 @@ label[required]::after {
   }
 }
 
-.unlocks-page,
-.confirmations-page,
-.passwords-page {
+.unlocks-page, .confirmations-page, .passwords-page {
   #login-box form {
     border: none;
     margin-top: 3rem;
@@ -522,7 +503,7 @@ label[required]::after {
   }
 }
 
-.pages {
+.pages{
   background-image: none;
 
   h2 {
@@ -546,9 +527,7 @@ label[required]::after {
     margin-top: 1.5rem;
   }
 
-  .header,
-  .banner,
-  .section-block {
+  .header, .banner, .section-block {
     text-align: center;
   }
 
@@ -557,7 +536,7 @@ label[required]::after {
     padding: 0;
   }
 
-  .features>ul {
+  .features > ul {
     margin-top: 5rem;
   }
 
@@ -567,8 +546,7 @@ label[required]::after {
     padding: 0;
   }
 
-  .feature,
-  .feature-group {
+  .feature, .feature-group {
     background-color: $features-background;
     border-bottom: 0.1rem solid $features-separator;
     border-radius: 0;
@@ -650,12 +628,12 @@ label[required]::after {
   }
 }
 
-@media(max-width:767px) {
-  html {
-    font-size: 55.5%;
+@media(max-width:767px){
+  html{
+    font-size:55.5%;
   }
 
-  .navbar-nav>li {
+  .navbar-nav > li {
     text-align: center;
     color: $palette-dark-turkey;
   }
