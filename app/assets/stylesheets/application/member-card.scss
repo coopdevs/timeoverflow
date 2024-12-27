@@ -1,14 +1,36 @@
+.to-member-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;
+
+  @media(max-width: $screen-lg-min) {
+    display: block;
+  }
+}
+
+.to-member-card__wrapper {
+  width: 48%;
+
+  @media (max-width: $screen-lg-min) {
+    width: 100%;
+  }
+}
+
 .to-member-card {
   & {
-    margin: 16px 0;
     width: 100%;
     max-width: 600px;
-    height: 178px;
+    min-height: 178px;
     background-color: white;
     box-shadow: 0 0 3px $palette-grey;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 4px;
 
-    @media(max-width: $screen-sm-min) {
+    @media(max-width: $screen-lg-min) {
       height: auto;
       margin: 10px 0;
     }
@@ -19,6 +41,7 @@
       display: flex;
       background-color: $palette-dark-turkey;
       padding: 10px 20px;
+      border-radius: 4px 4px 0 0;
     }
 
     &__avatar {
@@ -48,13 +71,16 @@
   &__body {
     & {
       padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
     }
 
     &__description {
       margin-bottom: 10px;
       color: #666;
       font-size: 15px;
-      height: 44px;
 
       @media(max-width: $screen-sm-min) {
         height: auto;
@@ -63,6 +89,7 @@
 
     &__items {
       display: flex;
+      flex-wrap: wrap;
 
       @media(max-width: $screen-sm-min) {
         display: block;
@@ -71,11 +98,11 @@
     }
 
     &__item {
-      & {
-        margin-right: 20px;
-        font-size: 14px;
-        color: grey;
-      }
+      margin-right: 20px;
+      font-size: 14px;
+      color: gray;
+      overflow-wrap: break-word;
+      white-space: normal;
 
       a {
         color: grey;
