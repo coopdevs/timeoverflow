@@ -52,7 +52,7 @@ RSpec.feature 'time transfer' do
   end
 
   def members_list
-    find('.to-member-cards')
+    find('.member-cards')
   end
 
   def transfer_form

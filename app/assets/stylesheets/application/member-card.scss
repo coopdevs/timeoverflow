@@ -1,16 +1,17 @@
-.to-member-cards {
+.member-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
   gap: 20px;
+  margin: 10px 0;
 
   @media(max-width: $screen-lg-min) {
     display: block;
   }
 }
 
-.to-member-card__wrapper {
+.member-card__wrapper {
   width: 48%;
 
   @media (max-width: $screen-lg-min) {
@@ -18,7 +19,7 @@
   }
 }
 
-.to-member-card {
+.member-card {
   & {
     width: 100%;
     max-width: 600px;
