@@ -31,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: 'organizations_row', collection: @user_organizations, as: :org if !params[:page] || params[:page] == '1' %>
+        <%= render partial: 'organizations_row', collection: @user_organizations, as: :org if @user_organizations.present? %>
         <%= render partial: 'organizations_row', collection: @organizations, as: :org %>
       </tbody>
     </table>

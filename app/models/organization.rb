@@ -33,6 +33,10 @@ class Organization < ApplicationRecord
   before_validation :ensure_url
   after_create :create_account
 
+  def to_s
+    "#{name}"
+  end
+
   def all_transfers_with_accounts
     all_transfers.
       includes(movements: { account: :accountable }).
@@ -40,8 +44,8 @@ class Organization < ApplicationRecord
       distinct
   end
 
-  def to_s
-    "#{name}"
+  def all_managers
+    users.where(members: { manager: true })
   end
 
   def display_name_with_uid

@@ -19,7 +19,7 @@ class OrganizationNotifier < ActionMailer::Base
     I18n.with_locale(locale) do
       mail(
         subject: "New Application - #{organization.name}",
-        bcc: organization.users.joins(:members).where(members: { manager: true }).pluck(:email).uniq
+        bcc: organization.all_managers.pluck(:email).uniq
       )
     end
   end
@@ -31,6 +31,18 @@ class OrganizationNotifier < ActionMailer::Base
       mail(
         subject: 'Application sent correctly',
         to: petition.user.email
+      )
+    end
+  end
+
+  def member_deleted(member)
+    @user = member.user
+    organization = member.organization
+
+    I18n.with_locale(locale) do
+      mail(
+        subject: "Membership deleted - #{organization.name}",
+        bcc: organization.all_managers.pluck(:email).uniq
       )
     end
   end
