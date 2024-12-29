@@ -18,7 +18,7 @@ class OrganizationNotifier < ActionMailer::Base
 
     I18n.with_locale(locale) do
       mail(
-        subject: 'New Application',
+        subject: "New Application - #{organization.name}",
         bcc: organization.users.joins(:members).where(members: { manager: true }).pluck(:email).uniq
       )
     end
