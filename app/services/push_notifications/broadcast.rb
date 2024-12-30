@@ -1,3 +1,5 @@
+require "net/http"
+
 module PushNotifications
   class Broadcast
     class PostError < ::StandardError; end
