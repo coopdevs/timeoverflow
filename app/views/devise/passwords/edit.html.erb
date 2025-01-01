@@ -3,7 +3,7 @@
     <div class="panel" id="login-box">
       <div class="panel-body">
         <h2><%= t(".change_password") %></h2>
-        <%= render 'layouts/messages' %>
+        <%= render 'application/flash_messages' %>
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: password_path(resource_name), html: { method: :put } do |f| %>
           <%= f.hidden_field :reset_password_token %>
