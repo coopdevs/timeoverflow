@@ -319,6 +319,7 @@ es:
       help: Ayuda
       login: Entra
       manage_memberships: Gestionar membresia
+      no_memberhsip_warning:
     report:
       report_title: INFORME
   locales:
@@ -393,8 +394,8 @@ es:
       banner-title: "¿Eres un Banco de Tiempo?"
       empower-adbdt: ADBdT
       empower-adbdt-title: Asociación para el Desarrollo de los Bancos de Tiempo
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: ver mapa
@@ -417,7 +418,7 @@ es:
       title2: los Bancos de Tiempo
   petitions:
     application_sent: Solicitud enviada correctamente
-    application_sent_body: 'Hola! Tu solicitud a %{organization_name}  se ha enviado correctamente. '
+    application_sent_body: Hola! Tu solicitud a %{organization_name}  se ha enviado correctamente. Alguien del equipo del banco de tiempo se pondrá en contacto contigo para finalizar el proceso de alta.
     application_status: Solicitud %{status}
     applications: Solicitudes
     apply: Solicita unirte

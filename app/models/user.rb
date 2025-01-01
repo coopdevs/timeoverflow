@@ -94,6 +94,10 @@ class User < ApplicationRecord
     organization && !!(as_member_of(organization).try :active)
   end
 
+  def memberships?
+    members.any?
+  end
+
   def member(organization)
     members.where(organization_id: organization).first
   end

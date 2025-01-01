@@ -57,7 +57,7 @@ gl:
         alt_phone: Teléfono alternativo
         created_at: Creado
         date_of_birth: Data de nacemento
-        deactivated: 
+        deactivated:
         description: Descrición
         email: Correo electrónico
         gender: Xénero
@@ -65,7 +65,7 @@ gl:
         notifications: Recibir notificacións por correo electrónico
         organization: Organización
         phone: Teléfono
-        postcode: 
+        postcode:
         push_notifications: Recibir notificacións móbiles
         registration_date: Data de rexistro
         registration_number: Código de persoa usuaria
@@ -144,7 +144,7 @@ gl:
       reports: Informes
       sign_out: Saír
       statistics: Estatísticas
-      statistics_all_transfers: 
+      statistics_all_transfers:
       stats: Estatísticas
       tags: Etiquetas
       type_of_swaps: Tipo de transaccións
@@ -274,15 +274,15 @@ gl:
     contact_details: Datos de contacto
     create: Crea
     date: Datos
-    decline: 
+    decline:
     delete: Eliminar
     demote: Degradar a usuario/a normal
     edit: Actualización
-    enter_to_timebank: 
+    enter_to_timebank:
     filter: Filtro
     from: Desde
     give_time: Transferencia de tempo
-    here: 
+    here:
     home: Inicio
     information: Información
     locales_header: cambiar o idioma
@@ -290,13 +290,13 @@ gl:
     more: Máis
     movements: Transaccións
     next: Próximo
-    or: 
+    or:
     promote: Promover á persoa administradora
     reason: Razón
     required_field: "* Campo obrigatorio"
     save: Gardar
     search: Busca
-    search_location: 
+    search_location:
     show: Amosar
     source_destination: Dende/ata
     statistics: Estatísticas
@@ -313,12 +313,13 @@ gl:
   layouts:
     application:
       about: Sobre TimeOverflow
-      bdtnear: 
+      bdtnear:
       edit_org: Actualización %{organization}
       edit_profile: Actualiza o meu perfil
       help: Axuda
       login: Acceder
-      manage_memberships: 
+      manage_memberships:
+      no_memberhsip_warning:
     report:
       report_title: INFORME
   locales:
@@ -383,7 +384,7 @@ gl:
       new: Novo banco
     show:
       contact_information: Información de contacto
-      join_timebank: 
+      join_timebank:
   pages:
     about:
       app-mobile: Aplicación móbil
@@ -393,8 +394,8 @@ gl:
       banner-title: Es ti un Banco de Tempo?
       empower-adbdt: ADBdT
       empower-adbdt-title: Asociación para o Desenvolvemento de Bancos de Tempo
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: ver o mapa
@@ -416,25 +417,25 @@ gl:
       title: O software deseñado por e para
       title2: Bancos de tempo
   petitions:
-    application_sent: 
-    application_sent_body: 
-    application_status: 
-    applications: 
-    apply: 
-    new: 
-    new_body: 
+    application_sent:
+    application_sent_body:
+    application_status:
+    applications:
+    apply:
+    new:
+    new_body:
     status:
-      accepted: 
-      declined: 
-      pending: 
-      sent: 
-    status_applications: 
+      accepted:
+      declined:
+      pending:
+      sent:
+    status_applications:
   posts:
     show:
       info: Este %{type} pertence a %{organization}.
   reports:
     download: Descarga
-    download_all: 
+    download_all:
   shared:
     movements:
       delete_reason: Estás seguro/a de borrar este comentario?
@@ -521,12 +522,12 @@ gl:
       error_amount: O tempo debe ser superior a 0
   users:
     avatar:
-      change_your_image: 
-      crop_the_image: 
-      max_size_warning: 
+      change_your_image:
+      crop_the_image:
+      max_size_warning:
     confirm_email:
-      email_sent: 
-      please: 
+      email_sent:
+      please:
     edit:
       edit_user: Actualizar persoa usuaria
     form:
@@ -534,12 +535,12 @@ gl:
     give_time:
       give_time: Dálle tempo
     index:
-      account_deactivated: 
+      account_deactivated:
       actions: Accións
       active_warning: Vas cambiar o estado da conta de usuario/a %{username}
       cancel_warning: Vas borrar a conta do Banco de tempo para o usuario/a %{username}
       create: Crea unha nova persoa usuaria
-      deactivated_warning: 
+      deactivated_warning:
       manage_warning: Vas cambiar privilexios para o usuario/a %{username}
       members: Persoas usuarias
       user_created: O usuario/a %{uid} %{name} gardouse
@@ -563,7 +564,7 @@ gl:
       from_to: De / Para
       inactive: "(Inactivo/a)"
       inactive_user: A persoa usuaria non está activa
-      invalid_format: 
+      invalid_format:
       phone:
         one: Teléfono
         other: Teléfonos
@@ -576,9 +577,9 @@ gl:
       active_warning: Vas cambiar o estado da conta de usuario/a para %{user}
       cancel_warning: Vas borrar a conta do Banco de tempo para o usuario/a %{user}
       deactivate: Desactivar
-      delete_membership: 
+      delete_membership:
       manage_warning: Vas cambiar privilexios para o usuario/a %{user}
-      sure_delete: 
+      sure_delete:
   views:
     pagination:
       first: Primeira

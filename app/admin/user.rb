@@ -32,6 +32,7 @@ ActiveAdmin.register User do
     column :posts do |u|
       u.posts.count
     end
+    column :created_at
     actions
   end
 

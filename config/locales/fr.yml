@@ -319,6 +319,7 @@ fr:
       help: Aide
       login: Connexion
       manage_memberships: Gérer les inscriptions
+      no_memberhsip_warning:
     report:
       report_title: RAPPORT
   locales:
@@ -393,8 +394,8 @@ fr:
       banner-title: Êtes-vous une Banque de temps ?
       empower-adbdt: ADBdT
       empower-adbdt-title: Association pour le développement des Banques de temps
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: Voir la map
@@ -416,19 +417,19 @@ fr:
       title: L'application conçue par et pour
       title2: Banques de temps
   petitions:
-    application_sent: Demande envoyée avec succès
-    application_sent_body: Bonjour! votre demande à %{organization_name} a bien été envoyée.
-    application_status: Demande %{status}
-    applications: Applications
-    apply: Demande à nous rejoindre
-    new: Nouvelle demande
-    new_body: Bonjour! Nouvelle demande de %{username}. Gérer vos demandes %{here_link}.
+    application_sent: Demande d'inscription envoyée avec succès
+    application_sent_body: Bonjour! votre demande d'inscription à %{organization_name} a bien été envoyée.
+    application_status: Demande d'inscription %{status}
+    applications: Demandes d'inscription
+    apply: Demander à nous rejoindre
+    new: Nouvelle demande d'inscription
+    new_body: Bonjour! Nouvelle demande d'inscription de %{username}. Gérer vos demandes %{here_link}.
     status:
       accepted: acceptée
       declined: déclinée
       pending: en attente
       sent: envoyée
-    status_applications: "%{status} demandes"
+    status_applications: Demandes d'inscription %{status}
   posts:
     show:
       info: Cette %{type} appartient à %{organization}.
@@ -505,9 +506,9 @@ fr:
     alpha_grouped_index:
       maintitle: Tags disponibles
   terms:
-    accept: Accept
+    accept: Accepter
     show:
-      accept: Accept
+      accept: Accepter
   transfers:
     computation:
       hour:

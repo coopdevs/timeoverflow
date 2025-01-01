@@ -319,6 +319,7 @@ en:
       help: Help
       login: Login
       manage_memberships: Manage memberships
+      no_memberhsip_warning: Remember users without membership (15 days after register) they should ask for membership in <a href="%{link}">some Organization</a> or the user will be deleted when user have 1 month on the platform without any membership.
     report:
       report_title: REPORT
   locales:
@@ -393,8 +394,8 @@ en:
       banner-title: Are you a Time Bank?
       empower-adbdt: ADBdT
       empower-adbdt-title: Association for the Development of Time Banks
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: see map

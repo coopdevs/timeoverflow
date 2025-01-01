@@ -319,6 +319,7 @@ ca:
       help: Ajuda
       login: Entra
       manage_memberships: Gestiona membres
+      no_memberhsip_warning:
     report:
       report_title: INFORME
   locales:
@@ -393,8 +394,8 @@ ca:
       banner-title: Ets un Banc de Temps?
       empower-adbdt: ADBdT
       empower-adbdt-title: Associació pel Desenvolupament dels Bancs de Temps
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: veure mapa
@@ -417,7 +418,7 @@ ca:
       title2: als Bancs de Temps
   petitions:
     application_sent: Sol·licitud enviada correctament
-    application_sent_body: Hola! La teva sol·licitud a %{organization_name} s'ha enviat correctament.
+    application_sent_body: Hola! La teva sol·licitud a %{organization_name} s'ha enviat correctament. Algú de l'equip del banc de temps es posarà en contacte amb tu per finalitzar el procés dalta.
     application_status: Sol·licitud %{status}
     applications: Sol·licituds
     apply: Sol·licita unir-te

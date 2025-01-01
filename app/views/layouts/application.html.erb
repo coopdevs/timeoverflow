@@ -17,6 +17,7 @@
     <div class="container content">
       <%= render 'layouts/messages' unless devise_controller? %>
       <div class="container-fluid">
+        <%= render 'application/no_membership_warning' if current_user && !current_user.memberships? && !devise_controller? %>
         <%= yield %>
       </div>
       <%= organization_logo %>
