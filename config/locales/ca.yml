@@ -319,7 +319,7 @@ ca:
       help: Ajuda
       login: Entra
       manage_memberships: Gestiona membres
-      no_memberhsip_warning:
+      no_memberhsip_warning: Recordeu als usuaris sense membresia (15 dies després de registrar-se) que han de sol·licitar membresia a <a href="%{link}">alguna organització</a>, o l'usuari serà eliminat quan porti 1 mes a la plataforma sense cap membresia.
     report:
       report_title: INFORME
   locales:
@@ -371,6 +371,8 @@ ca:
       give_time_for: Transferir temps per aquesta oferta
       offered_by: Oferents
   organization_notifier:
+    member_deleted:
+      body: L'usuari %{username} s'ha donat de baixa de l'organització.
     recent_posts:
       subject: Butlletí setmanal
       text1: 'Últimas ofertas publicadas:'

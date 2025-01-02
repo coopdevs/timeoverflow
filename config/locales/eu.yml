@@ -319,7 +319,7 @@ eu:
       help: Laguntza
       login: Sartu
       manage_memberships:
-      no_memberhsip_warning:
+      no_memberhsip_warning: Erabiltzaileei, 15 egun erregistratu eta gero, jakinarazi behar dute <a href="%{link}">antolamendu batean</a> bazkidetzak eskatu behar dituztela, bestela, erabiltzailea ezabatuko da plataforman hilabete bat bazkidetzarik gabe betetzean.
     report:
       report_title: TXOSTENA
   locales:
@@ -371,6 +371,8 @@ eu:
       give_time_for: Eskaintza honengatik denbora eman
       offered_by: Eskaintzaren emaileak
   organization_notifier:
+    member_deleted:
+      body: Erabiltzaileak %{username} erakundetik baja eman du.
     recent_posts:
       subject: Asteroko buletina
       text1: Argitaraturiko azken eskaintzak

@@ -319,7 +319,7 @@ es:
       help: Ayuda
       login: Entra
       manage_memberships: Gestionar membresia
-      no_memberhsip_warning:
+      no_memberhsip_warning: Recuerda a los usuarios sin membresía (15 días después de registrarse) que deben solicitar membresía en <a href="%{link}">alguna organización</a>, o el usuario será eliminado cuando tenga 1 mes en la plataforma sin ninguna membresía.
     report:
       report_title: INFORME
   locales:
@@ -371,6 +371,8 @@ es:
       give_time_for: Transferir tiempo por esta oferta
       offered_by: Ofertantes
   organization_notifier:
+    member_deleted:
+      body: El usuario %{username} se ha dado de baja de la organización.
     recent_posts:
       subject: Boletín semanal
       text1: 'Últimas ofertas publicadas:'

@@ -319,7 +319,7 @@ fr:
       help: Aide
       login: Connexion
       manage_memberships: Gérer les inscriptions
-      no_memberhsip_warning:
+      no_memberhsip_warning: Rappelez aux utilisateurs sans adhésion (15 jours après l'inscription) qu'ils doivent demander une adhésion à <a href="%{link}">une organisation</a>, ou l'utilisateur sera supprimé après 1 mois sur la plateforme sans aucune adhésion.
     report:
       report_title: RAPPORT
   locales:
@@ -371,6 +371,8 @@ fr:
       give_time_for: Donner du temps pour cette offre
       offered_by: Offert par
   organization_notifier:
+    member_deleted:
+      body: L'utilisateur %{username} s'est désabonné de l'organisation.
     recent_posts:
       subject: Newsletter
       text1: 'Dernières offres publiées :'
