@@ -11,7 +11,7 @@ class PetitionsController < ApplicationController
 
       flash[:notice] = t('petitions.application_status', status: t("petitions.status.sent"))
     else
-      flash[:error] = t('errors.internal_server_error.description')
+      flash[:error] = petition.errors.full_messages.to_sentence
     end
 
     redirect_back fallback_location: organization_path(petition.organization)
@@ -25,7 +25,7 @@ class PetitionsController < ApplicationController
       petition.user.add_to_organization(petition.organization) if status == 'accepted'
       flash[:notice] = t('petitions.application_status', status: t("petitions.status.#{status}"))
     else
-      flash[:error] = t('errors.internal_server_error.description')
+      flash[:error] = petition.errors.full_messages.to_sentence
     end
 
     redirect_to manage_petitions_path
