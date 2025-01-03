@@ -1,5 +1,7 @@
 class Petition < ApplicationRecord
-  enum status: %i[pending accepted declined]
+  DEFAULT_STATUS = "pending"
+
+  enum status: %i[pending accepted declined], _default: DEFAULT_STATUS
 
   belongs_to :user
   belongs_to :organization

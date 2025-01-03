@@ -3,7 +3,6 @@ class PetitionsController < ApplicationController
 
   def create
     petition = Petition.new petition_params
-    petition.status = "pending"
 
     if petition.save
       OrganizationNotifier.new_petition(petition).deliver_now
@@ -32,7 +31,7 @@ class PetitionsController < ApplicationController
   end
 
   def manage
-    @status = params[:status] || 'pending'
+    @status = params[:status] || Petition::DEFAULT_STATUS
     @users = User.joins(:petitions).where(petitions: { organization_id: current_organization.id, status: @status }).page(params[:page]).per(20)
   end
 

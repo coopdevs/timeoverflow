@@ -18,7 +18,7 @@ RSpec.describe PetitionsController do
 
   describe 'PUT #update' do
     before { login(admin.user) }
-    let(:petition) { Petition.create(user: user, organization: organization, status: 'pending') }
+    let(:petition) { Petition.create(user: user, organization: organization) }
 
     it 'decline the petition' do
       put :update, params: { status: 'declined', id: petition.id }
@@ -41,7 +41,7 @@ RSpec.describe PetitionsController do
       allow(controller).to receive(:current_organization) { organization }
       login(admin.user)
     end
-    let!(:petition) { Petition.create(user: user, organization: organization, status: 'pending') }
+    let!(:petition) { Petition.create(user: user, organization: organization) }
 
     it 'populates a list of users with pending petitions' do
       get :manage
