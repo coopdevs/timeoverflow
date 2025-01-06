@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
 
     organizations  = Organization.where.not(id: @user_organizations&.pluck(:id))
     organizations  = organizations.search_by_query(params[:q]) if params[:q].present?
-    @organizations = organizations.page(params[:page]).per(25)
+    @organizations = organizations.order(highlighted: :desc).page(params[:page]).per(25)
   end
 
   def show

@@ -16,6 +16,9 @@ ActiveAdmin.register User do
     redirect_to action: :index
   end
 
+  scope :all
+  scope :without_memberships
+
   index do
     selectable_column
     column do |user|
@@ -29,6 +32,7 @@ ActiveAdmin.register User do
     column :posts do |u|
       u.posts.count
     end
+    column :created_at
     actions
   end
 

@@ -107,6 +107,7 @@ CREATE TABLE public.accounts (
 --
 
 CREATE SEQUENCE public.accounts_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -143,6 +144,7 @@ CREATE TABLE public.active_admin_comments (
 --
 
 CREATE SEQUENCE public.active_admin_comments_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -286,6 +288,7 @@ CREATE TABLE public.categories (
 --
 
 CREATE SEQUENCE public.categories_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -318,6 +321,7 @@ CREATE TABLE public.device_tokens (
 --
 
 CREATE SEQUENCE public.device_tokens_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -353,6 +357,7 @@ CREATE TABLE public.documents (
 --
 
 CREATE SEQUENCE public.documents_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -387,6 +392,7 @@ CREATE TABLE public.events (
 --
 
 CREATE SEQUENCE public.events_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -424,6 +430,7 @@ CREATE TABLE public.members (
 --
 
 CREATE SEQUENCE public.members_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -457,6 +464,7 @@ CREATE TABLE public.movements (
 --
 
 CREATE SEQUENCE public.movements_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -490,7 +498,8 @@ CREATE TABLE public.organizations (
     address text,
     neighborhood character varying,
     city character varying,
-    domain character varying
+    domain character varying,
+    highlighted boolean DEFAULT false
 );
 
 
@@ -499,6 +508,7 @@ CREATE TABLE public.organizations (
 --
 
 CREATE SEQUENCE public.organizations_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -574,6 +584,7 @@ CREATE TABLE public.posts (
 --
 
 CREATE SEQUENCE public.posts_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -610,6 +621,7 @@ CREATE TABLE public.push_notifications (
 --
 
 CREATE SEQUENCE public.push_notifications_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -652,6 +664,7 @@ CREATE TABLE public.transfers (
 --
 
 CREATE SEQUENCE public.transfers_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -713,6 +726,7 @@ CREATE TABLE public.users (
 --
 
 CREATE SEQUENCE public.users_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1305,7 +1319,7 @@ ALTER TABLE ONLY public.active_storage_attachments
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('1'),
@@ -1377,4 +1391,5 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20230314233504'),
 ('20230401114456'),
 ('20231120164231'),
-('20231120164346');
+('20231120164346'),
+('20241230170753');

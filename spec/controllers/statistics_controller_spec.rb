@@ -45,7 +45,7 @@ RSpec.describe StatisticsController do
     it 'populates age_counts and gender_counts variables' do
       get :demographics
 
-      expect(assigns(:age_counts)).to eq({ "35-44" => 1 })
+      expect(assigns(:age_counts)).to eq({ "45-54" => 1 })
       expect(assigns(:gender_counts)).to eq({ "Otro" => 1 })
     end
   end

@@ -23,6 +23,7 @@ ActiveAdmin.register Organization do
     column :posts do |organization|
       organization.posts.count
     end
+    column :highlighted
     actions
   end
 
@@ -37,6 +38,7 @@ ActiveAdmin.register Organization do
 
   form do |f|
     f.inputs do
+      f.input :highlighted, hint: "Highlighted Time Banks will appear first"
       f.input :name
       f.input :email
       f.input :web
@@ -71,7 +73,8 @@ ActiveAdmin.register Organization do
   filter :neighborhood
   filter :created_at
   filter :updated_at
+  filter :highlighted
 
   permit_params :name, :email, :web, :phone, :city, :neighborhood,
-    :address, :description, :public_opening_times, :logo
+    :address, :description, :public_opening_times, :logo, :highlighted
 end

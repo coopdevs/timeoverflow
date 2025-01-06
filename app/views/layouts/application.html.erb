@@ -15,8 +15,9 @@
   <body class="<%= get_body_css_class(controller_name) %>">
     <%= render 'navbar' %>
     <div class="container content">
-      <%= render 'layouts/messages' unless devise_controller? %>
+      <%= render 'application/flash_messages' unless devise_controller? %>
       <div class="container-fluid">
+        <%= render 'application/no_membership_warning' if show_no_membership_warning? %>
         <%= yield %>
       </div>
       <%= organization_logo %>

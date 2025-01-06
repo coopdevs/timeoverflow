@@ -4,7 +4,7 @@
       <div class="panel-body">
         <h2><%= t(".resend_instructions") %></h2>
         <p class="description"><%= t(".resend_instructions_description") %></p>
-        <%= render 'layouts/messages' %>
+        <%= render 'application/flash_messages' %>
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: confirmation_path(resource_name), html: { method: :post } do |f| %>
           <div class="form-group">
