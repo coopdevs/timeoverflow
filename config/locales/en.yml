@@ -319,7 +319,7 @@ en:
       help: Help
       login: Login
       manage_memberships: Manage memberships
-      no_memberhsip_warning: Remember users without membership (15 days after register) they should ask for membership in <a href="%{link}">some Organization</a> or the user will be deleted when user have 1 month on the platform without any membership.
+      no_memberhsip_warning: Your registration will be completed once you have requested to <a href="%{link}">join a Timebank</a> and the Timebank accepts your request. If you do not request to join a timebank within 30 days, your user will be deleted from the system.
     report:
       report_title: REPORT
   locales:
@@ -425,7 +425,7 @@ en:
     applications: Applications
     apply: Apply to join
     new: New Application
-    new_body: Hello! New petition from user %{username}. Manage your applications %{here_link}.
+    new_body: Hello, %{username} has just requested to join %{organization_name} Timebank. You can enter %{here_link} to accept or reject the request. Once you accept the request the user will automatically appear on your users list.
     status:
       accepted: accepted
       declined: declined

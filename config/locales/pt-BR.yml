@@ -319,7 +319,7 @@ pt-BR:
       help: Ajuda
       login: Entre
       manage_memberships:
-      no_memberhsip_warning: Lembre os usuários sem associação (15 dias após o registro) que eles devem solicitar associação em <a href="%{link}">alguma organização</a>, ou o usuário será excluído após 1 mês na plataforma sem nenhuma associação.
+      no_memberhsip_warning: Seu registro será concluído assim que você solicitar <a href="%{link}">entrar em um Banco de Tempo</a> e o Banco de Tempo aceitar sua solicitação. Se você não solicitar entrada em um Banco de Tempo dentro de 30 dias, seu usuário será excluído do sistema.
     report:
       report_title: INFORME
   locales:
@@ -425,7 +425,7 @@ pt-BR:
     applications:
     apply:
     new:
-    new_body:
+    new_body: Olá, %{username} acabou de solicitar entrada no Banco de Tempo %{organization_name}. Você pode acessar %{here_link} para aceitar ou rejeitar a solicitação. Assim que você aceitar a solicitação, o usuário aparecerá automaticamente na sua lista de usuários.
     status:
       accepted:
       declined:

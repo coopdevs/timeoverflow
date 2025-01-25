@@ -319,7 +319,7 @@ es:
       help: Ayuda
       login: Entra
       manage_memberships: Gestionar membresia
-      no_memberhsip_warning: Recuerda a los usuarios sin membresía (15 días después de registrarse) que deben solicitar membresía en <a href="%{link}">alguna organización</a>, o el usuario será eliminado cuando tenga 1 mes en la plataforma sin ninguna membresía.
+      no_memberhsip_warning: Tu registro se completará una vez que hayas solicitado <a href="%{link}">unirte a un Banco de Tiempo</a> y el Banco de Tiempo acepte tu solicitud. Si no solicitas unirte a un Banco de Tiempo dentro de 30 días, tu usuario será eliminado del sistema.
     report:
       report_title: INFORME
   locales:
@@ -425,7 +425,7 @@ es:
     applications: Solicitudes
     apply: Solicita unirte
     new: Nueva solicitud
-    new_body: Hola! Nueva petición del usuario %{username}. Gestiona las solicitudes %{here_link}.
+    new_body: Hola, %{username} acaba de solicitar unirse al Banco de Tiempo %{organization_name}. Puedes entrar %{here_link} para aceptar o rechazar la solicitud. Una vez que aceptes la solicitud, el usuario aparecerá automáticamente en tu lista de usuarios.
     status:
       accepted: aceptada
       declined: rechazada

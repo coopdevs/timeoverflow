@@ -115,6 +115,6 @@ module ApplicationHelper
   end
 
   def show_no_membership_warning?
-    current_user && !current_user.memberships? && !devise_controller?
+    current_user&.no_membership_warning? && !devise_controller?
   end
 end

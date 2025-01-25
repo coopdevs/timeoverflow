@@ -98,6 +98,10 @@ class User < ApplicationRecord
     members.any?
   end
 
+  def no_membership_warning?
+    confirmed? && terms_accepted_at.present? && !memberships?
+  end
+
   def member(organization)
     members.where(organization_id: organization).first
   end

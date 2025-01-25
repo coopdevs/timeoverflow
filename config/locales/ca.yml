@@ -319,7 +319,7 @@ ca:
       help: Ajuda
       login: Entra
       manage_memberships: Gestiona membres
-      no_memberhsip_warning: Recordeu als usuaris sense membresia (15 dies després de registrar-se) que han de sol·licitar membresia a <a href="%{link}">alguna organització</a>, o l'usuari serà eliminat quan porti 1 mes a la plataforma sense cap membresia.
+      no_memberhsip_warning: El teu registre es completarà un cop hagis sol·licitat <a href="%{link}">unir-te a un Banc de Temps</a> i el Banc de Temps accepti la teva sol·licitud. Si no sol·licites unir-te a un Banc de Temps en un termini de 30 dies, el teu usuari serà eliminat del sistema.
     report:
       report_title: INFORME
   locales:
@@ -425,7 +425,7 @@ ca:
     applications: Sol·licituds
     apply: Sol·licita unir-te
     new: Nova sol·licitud
-    new_body: Hola! Nova petició de l'usuari %{username}. Gestiona les sol·licituds %{here_link}.
+    new_body: Hola, %{username} acaba de sol·licitar unir-se al Banc de Temps %{organization_name}. Pots accedir %{here_link} per acceptar o rebutjar la sol·licitud. Un cop acceptis la sol·licitud, l'usuari apareixerà automàticament a la teva llista d'usuaris.
     status:
       accepted: acceptada
       declined: rebutjada

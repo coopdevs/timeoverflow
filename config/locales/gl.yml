@@ -319,7 +319,7 @@ gl:
       help: Axuda
       login: Acceder
       manage_memberships:
-      no_memberhsip_warning: Lembra aos usuarios sen membresía (15 días despois de rexistrarse) que deben solicitar unha membresía en <a href="%{link}">unha organización</a>, ou o usuario será eliminado cando teña 1 mes na plataforma sen ningunha membresía.
+      no_memberhsip_warning: O teu rexistro completarase unha vez que solicites <a href="%{link}">unirte a un Banco de Tempo</a> e o Banco de Tempo acepte a túa solicitude. Se non solicitas unirte a un Banco de Tempo dentro de 30 días, o teu usuario será eliminado do sistema.
     report:
       report_title: INFORME
   locales:

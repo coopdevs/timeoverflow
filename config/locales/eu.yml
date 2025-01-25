@@ -319,7 +319,7 @@ eu:
       help: Laguntza
       login: Sartu
       manage_memberships:
-      no_memberhsip_warning: Erabiltzaileei, 15 egun erregistratu eta gero, jakinarazi behar dute <a href="%{link}">antolamendu batean</a> bazkidetzak eskatu behar dituztela, bestela, erabiltzailea ezabatuko da plataforman hilabete bat bazkidetzarik gabe betetzean.
+      no_memberhsip_warning: Zure erregistroa osatuko da <a href="%{link}">Denbora Banku batera sartzeko</a> eskaera egin eta Denbora Bankuak zure eskaera onartzen duenean. 30 eguneko epean Denbora Banku batera sartzeko eskaerarik egiten ez baduzu, zure erabiltzailea sistematik ezabatuko da.
     report:
       report_title: TXOSTENA
   locales:

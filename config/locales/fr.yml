@@ -319,7 +319,7 @@ fr:
       help: Aide
       login: Connexion
       manage_memberships: Gérer les inscriptions
-      no_memberhsip_warning: Rappelez aux utilisateurs sans adhésion (15 jours après l'inscription) qu'ils doivent demander une adhésion à <a href="%{link}">une organisation</a>, ou l'utilisateur sera supprimé après 1 mois sur la plateforme sans aucune adhésion.
+      no_memberhsip_warning: Votre inscription sera finalisée une fois que vous aurez demandé à <a href="%{link}">rejoindre une Banque de Temps</a> et que la Banque de Temps aura accepté votre demande. Si vous ne demandez pas à rejoindre une Banque de Temps dans les 30 jours, votre compte sera supprimé du système.
     report:
       report_title: RAPPORT
   locales:
@@ -425,7 +425,7 @@ fr:
     applications: Demandes d'inscription
     apply: Demander à nous rejoindre
     new: Nouvelle demande d'inscription
-    new_body: Bonjour! Nouvelle demande d'inscription de %{username}. Gérer vos demandes %{here_link}.
+    new_body: Bonjour, %{username} vient de demander à rejoindre la Banque de Temps %{organization_name}. Vous pouvez accéder %{here_link} pour accepter ou rejeter la demande. Une fois que vous acceptez la demande, l'utilisateur apparaîtra automatiquement dans votre liste d'utilisateurs.
     status:
       accepted: acceptée
       declined: déclinée
