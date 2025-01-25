@@ -6,7 +6,7 @@ class MembersController < ApplicationController
     toggle_active_posts
     @member.destroy
 
-    OrganizationNotifier.member_deleted(@member).deliver_now
+    OrganizationNotifier.member_deleted(@member).deliver_later
 
     redirect_to request.referer.include?(organizations_path) ? organizations_path : manage_users_path
   end

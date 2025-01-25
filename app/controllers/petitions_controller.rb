@@ -5,8 +5,8 @@ class PetitionsController < ApplicationController
     petition = Petition.new petition_params
 
     if petition.save
-      OrganizationNotifier.new_petition(petition).deliver_now
-      OrganizationNotifier.petition_sent(petition).deliver_now
+      OrganizationNotifier.new_petition(petition).deliver_later
+      OrganizationNotifier.petition_sent(petition).deliver_later
 
       flash[:notice] = t('petitions.application_status', status: t("petitions.status.sent"))
     else

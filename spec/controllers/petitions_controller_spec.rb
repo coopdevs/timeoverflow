@@ -12,6 +12,7 @@ RSpec.describe PetitionsController do
       expect do
         post :create, params: { user_id: user.id, organization_id: organization.id }
       end.to change(Petition, :count).by(1)
+             .and have_enqueued_mail(OrganizationNotifier).twice
       expect(response).to redirect_to(organizations_path)
     end
   end
