@@ -2,3 +2,4 @@
 :queues:
   - default
   - cron
+  - mailers
