@@ -36,9 +36,8 @@ class OrganizationNotifier < ActionMailer::Base
     end
   end
 
-  def member_deleted(member)
-    @user = member.user
-    organization = member.organization
+  def member_deleted(username, organization)
+    @username = username
     org_managers = organization.all_managers
 
     I18n.with_locale(org_managers.first&.locale) do
@@ -53,6 +52,7 @@ class OrganizationNotifier < ActionMailer::Base
     I18n.with_locale(user.locale) do
       mail(
         subject: "Do not forget to join a Timebank",
+        to: user.email
       )
     end
   end
