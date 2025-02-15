@@ -3,15 +3,14 @@ class PetitionsController < ApplicationController
 
   def create
     petition = Petition.new petition_params
-    petition.status = "pending"
 
     if petition.save
-      OrganizationNotifier.new_petition(petition).deliver_now
-      OrganizationNotifier.petition_sent(petition).deliver_now
+      OrganizationNotifier.new_petition(petition).deliver_later
+      OrganizationNotifier.petition_sent(petition).deliver_later
 
       flash[:notice] = t('petitions.application_status', status: t("petitions.status.sent"))
     else
-      flash[:error] = t('errors.internal_server_error.description')
+      flash[:error] = petition.errors.full_messages.to_sentence
     end
 
     redirect_back fallback_location: organization_path(petition.organization)
@@ -25,14 +24,14 @@ class PetitionsController < ApplicationController
       petition.user.add_to_organization(petition.organization) if status == 'accepted'
       flash[:notice] = t('petitions.application_status', status: t("petitions.status.#{status}"))
     else
-      flash[:error] = t('errors.internal_server_error.description')
+      flash[:error] = petition.errors.full_messages.to_sentence
     end
 
     redirect_to manage_petitions_path
   end
 
   def manage
-    @status = params[:status] || 'pending'
+    @status = params[:status] || Petition::DEFAULT_STATUS
     @users = User.joins(:petitions).where(petitions: { organization_id: current_organization.id, status: @status }).page(params[:page]).per(20)
   end
 

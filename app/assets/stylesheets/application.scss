@@ -302,6 +302,10 @@ ul.statistics li{
   padding-left: 1.5rem;
 }
 
+.alert a {
+  text-decoration: underline;
+}
+
 // fields that contain an error
 .field_with_errors{
   color: red;

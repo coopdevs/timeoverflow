@@ -113,4 +113,8 @@ module ApplicationHelper
       'alert-info'
     end
   end
+
+  def show_no_membership_warning?
+    current_user&.no_membership_warning? && !devise_controller?
+  end
 end

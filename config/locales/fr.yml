@@ -319,6 +319,7 @@ fr:
       help: Aide
       login: Connexion
       manage_memberships: Gérer les inscriptions
+      no_memberhsip_warning: Votre inscription sera finalisée une fois que vous aurez demandé à <a href="%{link}">rejoindre une Banque de Temps</a> et que la Banque de Temps aura accepté votre demande. Si vous ne demandez pas à rejoindre une Banque de Temps dans les 30 jours, votre compte sera supprimé du système.
     report:
       report_title: RAPPORT
   locales:
@@ -370,6 +371,8 @@ fr:
       give_time_for: Donner du temps pour cette offre
       offered_by: Offert par
   organization_notifier:
+    member_deleted:
+      body: L'utilisateur %{username} s'est désabonné de l'organisation.
     recent_posts:
       subject: Newsletter
       text1: 'Dernières offres publiées :'
@@ -393,8 +396,8 @@ fr:
       banner-title: Êtes-vous une Banque de temps ?
       empower-adbdt: ADBdT
       empower-adbdt-title: Association pour le développement des Banques de temps
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: Voir la map
@@ -416,19 +419,19 @@ fr:
       title: L'application conçue par et pour
       title2: Banques de temps
   petitions:
-    application_sent: Demande envoyée avec succès
-    application_sent_body: Bonjour! votre demande à %{organization_name} a bien été envoyée.
-    application_status: Demande %{status}
-    applications: Applications
-    apply: Demande à nous rejoindre
-    new: Nouvelle demande
-    new_body: Bonjour! Nouvelle demande de %{username}. Gérer vos demandes %{here_link}.
+    application_sent: Demande d'inscription envoyée avec succès
+    application_sent_body: Bonjour! votre demande d'inscription à %{organization_name} a bien été envoyée.
+    application_status: Demande d'inscription %{status}
+    applications: Demandes d'inscription
+    apply: Demander à nous rejoindre
+    new: Nouvelle demande d'inscription
+    new_body: Bonjour, %{username} vient de demander à rejoindre la Banque de Temps %{organization_name}. Vous pouvez accéder %{here_link} pour accepter ou rejeter la demande. Une fois que vous acceptez la demande, l'utilisateur apparaîtra automatiquement dans votre liste d'utilisateurs.
     status:
       accepted: acceptée
       declined: déclinée
       pending: en attente
       sent: envoyée
-    status_applications: "%{status} demandes"
+    status_applications: Demandes d'inscription %{status}
   posts:
     show:
       info: Cette %{type} appartient à %{organization}.
@@ -505,9 +508,9 @@ fr:
     alpha_grouped_index:
       maintitle: Tags disponibles
   terms:
-    accept: Accept
+    accept: Accepter
     show:
-      accept: Accept
+      accept: Accepter
   transfers:
     computation:
       hour:
