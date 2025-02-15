@@ -1,5 +1,15 @@
 ActiveAdmin.register Petition do
-  actions :index
+  actions :index, :destroy
+
+  controller do
+    def destroy
+      if resource.accepted?
+        redirect_to admin_petitions_path, alert: "ACCEPTED petitions can't be deleted"
+      else
+        super
+      end
+    end
+  end
 
   index do
     id_column
@@ -9,6 +19,7 @@ ActiveAdmin.register Petition do
     column :status do |petition|
       petition.status.upcase
     end
+    actions
   end
 
   filter :organization

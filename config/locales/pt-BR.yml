@@ -57,7 +57,7 @@ pt-BR:
         alt_phone: Telefone alternativo
         created_at: Criado
         date_of_birth: Data de nascimento
-        deactivated: 
+        deactivated:
         description: Descrição
         email: E-mail
         gender: Gênero
@@ -65,7 +65,7 @@ pt-BR:
         notifications: Receber notificações
         organization: Organização
         phone: Telefone
-        postcode: 
+        postcode:
         push_notifications: Receber notificações pelo celular
         registration_date: Data de ingresso
         registration_number: Código do usuário
@@ -144,7 +144,7 @@ pt-BR:
       reports: Informes
       sign_out: Desconectar
       statistics: Estatísticas
-      statistics_all_transfers: 
+      statistics_all_transfers:
       stats: Estatísticas
       tags: Etiquetas
       type_of_swaps: Tipos de trocas
@@ -274,15 +274,15 @@ pt-BR:
     contact_details: Dados de contato
     create: Criar
     date: Data
-    decline: 
+    decline:
     delete: Apagar
     demote: Converter em usuário normal
     edit: Modificar
-    enter_to_timebank: 
+    enter_to_timebank:
     filter: Filtro
     from: De
     give_time: Transferir tempo
-    here: 
+    here:
     home: Início
     information: Informação
     locales_header: Trocar idioma
@@ -290,13 +290,13 @@ pt-BR:
     more: Ver mais
     movements: Movimentos
     next: Próximo
-    or: 
+    or:
     promote: Converter em administrador
     reason: Razão
     required_field: "* Campo obrigatório"
     save: Guardar
     search: Pesquisar
-    search_location: 
+    search_location:
     show: Mostrar
     source_destination: Origem/Destino
     statistics: Estatísticas
@@ -313,12 +313,13 @@ pt-BR:
   layouts:
     application:
       about: Sobre TimeOverflow
-      bdtnear: 
+      bdtnear:
       edit_org: Modificar %{organization}
       edit_profile: Modificar meu perfil
       help: Ajuda
       login: Entre
-      manage_memberships: 
+      manage_memberships:
+      no_memberhsip_warning: Seu registro será concluído assim que você solicitar <a href="%{link}">entrar em um Banco de Tempo</a> e o Banco de Tempo aceitar sua solicitação. Se você não solicitar entrada em um Banco de Tempo dentro de 30 dias, seu usuário será excluído do sistema.
     report:
       report_title: INFORME
   locales:
@@ -370,6 +371,8 @@ pt-BR:
       give_time_for: Transferir tempo para esta oferta
       offered_by: Ofertantes
   organization_notifier:
+    member_deleted:
+      body: O usuário %{username} cancelou a inscrição na organização.
     recent_posts:
       subject: Boletim semanal
       text1: 'Últimas ofertas publicadas:'
@@ -383,7 +386,7 @@ pt-BR:
       new: Novo banco
     show:
       contact_information: Informação de contato
-      join_timebank: 
+      join_timebank:
   pages:
     about:
       app-mobile: Aplicativo móvel
@@ -393,8 +396,8 @@ pt-BR:
       banner-title: Você é um Banco de Tempo?
       empower-adbdt: ADBdt
       empower-adbdt-title: Associação para o Desenvolvimento dos Bancos de Tempo
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: ver mapa
@@ -416,25 +419,25 @@ pt-BR:
       title: O software desenhado por e para
       title2: os Bancos de Tempo
   petitions:
-    application_sent: 
-    application_sent_body: 
-    application_status: 
-    applications: 
-    apply: 
-    new: 
-    new_body: 
+    application_sent:
+    application_sent_body:
+    application_status:
+    applications:
+    apply:
+    new:
+    new_body: Olá, %{username} acabou de solicitar entrada no Banco de Tempo %{organization_name}. Você pode acessar %{here_link} para aceitar ou rejeitar a solicitação. Assim que você aceitar a solicitação, o usuário aparecerá automaticamente na sua lista de usuários.
     status:
-      accepted: 
-      declined: 
-      pending: 
-      sent: 
-    status_applications: 
+      accepted:
+      declined:
+      pending:
+      sent:
+    status_applications:
   posts:
     show:
       info: Este %{type} pertence a %{organization}.
   reports:
     download: Baixar
-    download_all: 
+    download_all:
   shared:
     movements:
       delete_reason: Tem certeza de que quer apagar este comentário?
@@ -521,12 +524,12 @@ pt-BR:
       error_amount: O tempo deve ser maior que 0
   users:
     avatar:
-      change_your_image: 
-      crop_the_image: 
-      max_size_warning: 
+      change_your_image:
+      crop_the_image:
+      max_size_warning:
     confirm_email:
-      email_sent: 
-      please: 
+      email_sent:
+      please:
     edit:
       edit_user: Trocar usuário
     form:
@@ -534,12 +537,12 @@ pt-BR:
     give_time:
       give_time: Dar Tempo a
     index:
-      account_deactivated: 
+      account_deactivated:
       actions: Ações
       active_warning: Você mudará o status da conta para %{username}
       cancel_warning: Você deletará a conta do Banco de Tempo %{username}
       create: Criar novo usuário
-      deactivated_warning: 
+      deactivated_warning:
       manage_warning: Você mudará privilégios para o usuário %{username}
       members: Membros
       user_created: Usuário %{uid} %{name} guardado
@@ -563,7 +566,7 @@ pt-BR:
       from_to: Origem/Destino
       inactive: "(Inativo)"
       inactive_user: O usuário não está ativo
-      invalid_format: 
+      invalid_format:
       phone:
         one: Telefone
         other: Telefones
@@ -576,9 +579,9 @@ pt-BR:
       active_warning: Mudará o estado da conta do usuário %{user}
       cancel_warning: Eliminará o usuário do banco %{user}
       deactivate: Desativar
-      delete_membership: 
+      delete_membership:
       manage_warning: Mudará os privilégios do usuário %{user}
-      sure_delete: 
+      sure_delete:
   views:
     pagination:
       first: "&laquo; Primeira"

@@ -12,13 +12,14 @@ RSpec.describe PetitionsController do
       expect do
         post :create, params: { user_id: user.id, organization_id: organization.id }
       end.to change(Petition, :count).by(1)
+             .and have_enqueued_mail(OrganizationNotifier).twice
       expect(response).to redirect_to(organizations_path)
     end
   end
 
   describe 'PUT #update' do
     before { login(admin.user) }
-    let(:petition) { Petition.create(user: user, organization: organization, status: 'pending') }
+    let(:petition) { Petition.create(user: user, organization: organization) }
 
     it 'decline the petition' do
       put :update, params: { status: 'declined', id: petition.id }
@@ -41,7 +42,7 @@ RSpec.describe PetitionsController do
       allow(controller).to receive(:current_organization) { organization }
       login(admin.user)
     end
-    let!(:petition) { Petition.create(user: user, organization: organization, status: 'pending') }
+    let!(:petition) { Petition.create(user: user, organization: organization) }
 
     it 'populates a list of users with pending petitions' do
       get :manage

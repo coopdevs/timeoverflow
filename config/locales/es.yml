@@ -319,6 +319,7 @@ es:
       help: Ayuda
       login: Entra
       manage_memberships: Gestionar membresia
+      no_memberhsip_warning: Tu registro se completará una vez que hayas solicitado <a href="%{link}">unirte a un Banco de Tiempo</a> y el Banco de Tiempo acepte tu solicitud. Si no solicitas unirte a un Banco de Tiempo dentro de 30 días, tu usuario será eliminado del sistema.
     report:
       report_title: INFORME
   locales:
@@ -370,6 +371,8 @@ es:
       give_time_for: Transferir tiempo por esta oferta
       offered_by: Ofertantes
   organization_notifier:
+    member_deleted:
+      body: El usuario %{username} se ha dado de baja de la organización.
     recent_posts:
       subject: Boletín semanal
       text1: 'Últimas ofertas publicadas:'
@@ -393,8 +396,8 @@ es:
       banner-title: "¿Eres un Banco de Tiempo?"
       empower-adbdt: ADBdT
       empower-adbdt-title: Asociación para el Desarrollo de los Bancos de Tiempo
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: ver mapa
@@ -417,12 +420,12 @@ es:
       title2: los Bancos de Tiempo
   petitions:
     application_sent: Solicitud enviada correctamente
-    application_sent_body: 'Hola! Tu solicitud a %{organization_name}  se ha enviado correctamente. '
+    application_sent_body: Hola! Tu solicitud a %{organization_name}  se ha enviado correctamente. Alguien del equipo del banco de tiempo se pondrá en contacto contigo para finalizar el proceso de alta.
     application_status: Solicitud %{status}
     applications: Solicitudes
     apply: Solicita unirte
     new: Nueva solicitud
-    new_body: Hola! Nueva petición del usuario %{username}. Gestiona las solicitudes %{here_link}.
+    new_body: Hola, %{username} acaba de solicitar unirse al Banco de Tiempo %{organization_name}. Puedes entrar %{here_link} para aceptar o rechazar la solicitud. Una vez que aceptes la solicitud, el usuario aparecerá automáticamente en tu lista de usuarios.
     status:
       accepted: aceptada
       declined: rechazada

@@ -38,6 +38,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :members, allow_destroy: true
 
   default_scope { order("users.id ASC") }
+  scope :without_memberships, -> { where.missing(:members) }
   scope :actives, -> { joins(:members).where(members: { active: true }) }
   scope :online_active, -> { where("sign_in_count > 0") }
   scope :notifications, -> { where(notifications: true) }
@@ -91,6 +92,14 @@ class User < ApplicationRecord
 
   def active?(organization)
     organization && !!(as_member_of(organization).try :active)
+  end
+
+  def memberships?
+    members.any?
+  end
+
+  def no_membership_warning?
+    confirmed? && terms_accepted_at.present? && !memberships?
   end
 
   def member(organization)

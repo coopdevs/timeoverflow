@@ -22,6 +22,9 @@ module Timeoverflow
     # ActiveJob configuration
     config.active_job.queue_adapter = :sidekiq
 
+    # ActionMailer background queues
+    config.action_mailer.deliver_later_queue_name = :mailers
+
     # Use db/structure.sql with SQL as schema format
     # This is needed to store in the schema SQL statements not covered by the ORM
     config.active_record.schema_format = :sql
@@ -29,9 +32,5 @@ module Timeoverflow
     # Guard against DNS rebinding attacks by permitting hosts
     # localhost is necessary for the docker image
     config.hosts = ENV.fetch('ALLOWED_HOSTS', 'localhost').split(' ')
-    # config.hosts << 'timeoverflow.local'
-    # config.hosts << 'staging.timeoverflow.org'
-    # config.hosts << 'www.timeoverflow.org'
-    # config.hosts << 'timeoverflow.org'
   end
 end

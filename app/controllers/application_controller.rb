@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
     elsif user.members.present?
       users_path
     else
-      page_path("about")
+      organizations_path
     end
   end
 

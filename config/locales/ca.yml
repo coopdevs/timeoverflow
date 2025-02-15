@@ -319,6 +319,7 @@ ca:
       help: Ajuda
       login: Entra
       manage_memberships: Gestiona membres
+      no_memberhsip_warning: El teu registre es completarà un cop hagis sol·licitat <a href="%{link}">unir-te a un Banc de Temps</a> i el Banc de Temps accepti la teva sol·licitud. Si no sol·licites unir-te a un Banc de Temps en un termini de 30 dies, el teu usuari serà eliminat del sistema.
     report:
       report_title: INFORME
   locales:
@@ -370,6 +371,8 @@ ca:
       give_time_for: Transferir temps per aquesta oferta
       offered_by: Oferents
   organization_notifier:
+    member_deleted:
+      body: L'usuari %{username} s'ha donat de baixa de l'organització.
     recent_posts:
       subject: Butlletí setmanal
       text1: 'Últimas ofertas publicadas:'
@@ -393,8 +396,8 @@ ca:
       banner-title: Ets un Banc de Temps?
       empower-adbdt: ADBdT
       empower-adbdt-title: Associació pel Desenvolupament dels Bancs de Temps
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: veure mapa
@@ -417,12 +420,12 @@ ca:
       title2: als Bancs de Temps
   petitions:
     application_sent: Sol·licitud enviada correctament
-    application_sent_body: Hola! La teva sol·licitud a %{organization_name} s'ha enviat correctament.
+    application_sent_body: Hola! La teva sol·licitud a %{organization_name} s'ha enviat correctament. Algú de l'equip del banc de temps es posarà en contacte amb tu per finalitzar el procés dalta.
     application_status: Sol·licitud %{status}
     applications: Sol·licituds
     apply: Sol·licita unir-te
     new: Nova sol·licitud
-    new_body: Hola! Nova petició de l'usuari %{username}. Gestiona les sol·licituds %{here_link}.
+    new_body: Hola, %{username} acaba de sol·licitar unir-se al Banc de Temps %{organization_name}. Pots accedir %{here_link} per acceptar o rebutjar la sol·licitud. Un cop acceptis la sol·licitud, l'usuari apareixerà automàticament a la teva llista d'usuaris.
     status:
       accepted: acceptada
       declined: rebutjada

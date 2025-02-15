@@ -6,3 +6,7 @@ weekly_digest:
   cron: 'every monday at 9am'
   class: 'OrganizationNotifierJob'
   queue: cron
+membership_warning:
+  cron: 'every day at 10am'
+  class: 'MembershipWarningJob'
+  queue: cron
