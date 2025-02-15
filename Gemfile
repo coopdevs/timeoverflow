@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 7.1.5'
 gem 'rails-i18n', '~> 7.0'
-gem 'puma', '~> 6.5'
+gem 'puma', '~> 6.6'
 gem 'rdiscount', '~> 2.2.7'
 gem 'rubyzip', '~> 2.3.0'
 gem 'activeadmin', '~> 3.2'
