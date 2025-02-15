@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.1'
+gem 'rails', '~> 7.1.5'
 gem 'rails-i18n', '~> 7.0'
 gem 'puma', '~> 6.5'
 gem 'rdiscount', '~> 2.2.7'
