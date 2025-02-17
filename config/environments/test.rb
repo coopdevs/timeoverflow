@@ -68,6 +68,6 @@ Rails.application.configure do
   # ActiveJob configuration
   config.active_job.queue_adapter = :test
 
-  # Allow local IP for features specs
+  # Allow local IP for feature specs
   config.hosts << "127.0.0.1"
 end
