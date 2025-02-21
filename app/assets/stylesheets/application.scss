@@ -87,12 +87,12 @@ html {
     color: $form-input-glyph;
   }
 
-  .panel-heading {
+  .card-heading {
     color: darken($black, 5%);
     text-align: center;
   }
 
-  .panel-footer {
+  .card-footer {
     padding: 2rem 3rem;
 
     a {
@@ -105,7 +105,7 @@ html {
     }
   }
 
-  .input-group-addon {
+  .input-group-prepend {
     border-radius: 0.3rem 0 0 0.3rem;
 
     @include media-breakpoint-down(sm) {
@@ -113,7 +113,7 @@ html {
     }
   }
 
-  .input-lg, #user_email {
+  .form-control-lg, #user_email {
     border-radius: 0 0.3rem 0.3rem 0;
     padding: 0 4px;
   }
@@ -122,7 +122,7 @@ html {
     border-radius: 0;
   }
 
-  .input-group-addon, .input-lg {
+  .input-group-prepend, .form-control-lg {
     background-color: $form-input-bg-color;
     border: 0;
     box-shadow: none;
@@ -478,7 +478,7 @@ label[required]::after{
     background-size: 100%;
   }
 
-  #login-box .panel-footer {
+  #login-box .card-footer {
     background-color: $white;
     border-top: 0.1rem solid $form-input-button;
     font-size: 1.6rem;
@@ -492,14 +492,14 @@ label[required]::after{
     padding: 0;
   }
 
-  .panel-body h2 {
+  .card-body h2 {
     font-size: 2.24rem;
     font-weight: 500;
     margin: 0;
     padding: 0;
   }
 
-  .panel-body .description {
+  .card-body .description {
     color: $form-login-gray-text;
     font-size: 1.6rem;
     font-weight: 400;

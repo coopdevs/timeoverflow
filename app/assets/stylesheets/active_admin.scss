@@ -5,6 +5,8 @@ $table-stripe-color: #f5f5f5;
 @import "active_admin/mixins";
 @import "active_admin/base";
 @import "select2";
+@import "bootstrap";
+@import "bootstrap/variables";
 
 .global_stats_panel div {
   display: flex;

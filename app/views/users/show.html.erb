@@ -1,5 +1,5 @@
-<div class="panel user-profile">
-  <div class="panel-body">
+<div class="card user-profile">
+  <div class="card-body">
     <ul class="nav nav-pills pull-right">
       <% if admin? || @user == current_user %>
         <li>
@@ -38,21 +38,21 @@
 
       <div class="col-sm-9 col-xs-7 break-word">
         <%= m @user.description %>
-        <dl class="dl-horizontal">
+        <dl class="row">
           <% if @user.has_valid_email? %>
-            <dt>
+            <dt class="col-sm-3 text-right">
               <%= User.human_attribute_name(:email) %>
             </dt>
-            <dd>
+            <dd class="col-sm-9">
               <%= mail_to @user.email %>
             </dd>
           <% end %>
           <% phones = [@user.phone, @user.alt_phone].select(&:present?) %>
           <% if phones.present? %>
-            <dt>
+            <dt class="col-sm-3 text-right">
               <%= t(".phone", count: phones.size) %>
             </dt>
-            <dd>
+            <dd class="col-sm-9">
               <% phones.each_with_index do |phone, index| %>
                 <%= "—" if index != 0 %>
                 <%= phone_to phone %>
@@ -60,18 +60,18 @@
             </dd>
           <% end %>
           <% if @user.postcode.present? %>
-            <dt>
+            <dt class="col-sm-3 text-right">
               <%= t "activerecord.attributes.user.postcode" %>
             </dt>
-            <dd>
+            <dd class="col-sm-9">
               <%= @user.postcode %>
             </dd>
           <% end %>
           <% if @member.tags.present? %>
-            <dt>
+            <dt class="col-sm-3 text-right">
               <%= t "application.navbar.tags" %>
             </dt>
-            <dd>
+            <dd class="col-sm-9">
               <% @member.tags.each do |tag| %>
                 <span class="badge alert-info">
                   <%= link_to users_path tag: tag do %>
@@ -89,9 +89,9 @@
 </div>
 <div class="row">
   <div class="col-sm-6 offers">
-    <div class="panel panel-default break-word">
-      <div class="panel-heading">
-        <h2 class="panel-title">
+    <div class="card break-word">
+      <div class="card-heading">
+        <h2 class="card-title">
           <%= Offer.model_name.human(count: :many) %>
           <% if @user == current_user %>
             <a class="pull-right" href="<%= new_offer_path %>">
@@ -101,7 +101,7 @@
         </h2>
       </div>
         <% @member.offers.active.each do |post| %>
-          <div class="row panel-body">
+          <div class="row card-body">
             <div class="col-sm-3">
               <%= link_to post, post %>
             </div>
@@ -121,9 +121,9 @@
     </div>
   </div>
   <div class="col-sm-6 inquiries">
-    <div class="panel panel-default break-word">
-      <div class="panel-heading">
-        <h2 class="panel-title">
+    <div class="card break-word">
+      <div class="card-heading">
+        <h2 class="card-title">
           <%= Inquiry.model_name.human(count: :many) %>
           <% if @user == current_user %>
             <a class="pull-right" href="<%= new_inquiry_path %>">
@@ -133,7 +133,7 @@
         </h2>
       </div>
         <% @member.inquiries.active.each do |post| %>
-          <div class="row panel-body">
+          <div class="row card-body">
             <div class="col-sm-3">
               <%= link_to post, post %>
             </div>
@@ -148,13 +148,13 @@
 </div>
 <div class="row">
   <div class="col-sm-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
+    <div class="card">
+      <div class="card-heading">
+        <h3 class="card-title">
           <%= t(".accounts") %>
         </h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
         <% if @member.manager %>
           <p><span class="label label-default">ADMIN</span></p>
         <% end %>

@@ -32,40 +32,38 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="table-responsive">
-      <table class="table table-hover table-condensed panel">
-        <thead>
-          <tr>
-            <th></th>
+    <table class="table table-responsive table-hover table-sm card">
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            <%= sort_link @search, :member_uid, 'ID' %>
+          </th>
+          <th>
+            <%= sort_link @search, :user_username, User.human_attribute_name(:username) %>
+          </th>
+          <th>
+            <%= User.human_attribute_name(:email) %>
+          </th>
+          <th>
+            <%= User.human_attribute_name(:phone) %>
+          </th>
+          <th>
+            <%= sort_link @search, 'account_balance', Account.human_attribute_name(:balance) %>
+          </th>
+          <% if current_user.manages? current_organization %>
             <th>
-              <%= sort_link @search, :member_uid, 'ID' %>
+              <span class="glyphicon glyphicon-hand-down"></span>
+              <%= t(".actions") %>
             </th>
-            <th>
-              <%= sort_link @search, :user_username, User.human_attribute_name(:username) %>
-            </th>
-            <th>
-              <%= User.human_attribute_name(:email) %>
-            </th>
-            <th>
-              <%= User.human_attribute_name(:phone) %>
-            </th>
-            <th>
-              <%= sort_link @search, 'account_balance', Account.human_attribute_name(:balance) %>
-            </th>
-            <% if current_user.manages? current_organization %>
-              <th>
-                <span class="glyphicon glyphicon-hand-down"></span>
-                <%= t(".actions") %>
-              </th>
-            <% end %>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render partial: "user_row", collection: @member_view_models, as: :member %>
-        </tbody>
-      </table>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "user_row", collection: @member_view_models, as: :member %>
+      </tbody>
+    </table>
 
-      <%= paginate @members %>
-    </div>
+    <%= paginate @members %>
   </div>
 </div>

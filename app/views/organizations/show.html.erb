@@ -3,13 +3,13 @@
 </h1>
 <div class="row">
   <div class="col-sm-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
+    <div class="card">
+      <div class="card-heading">
+        <h3 class="card-title">
           <%= t '.contact_information' %>
         </h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
         <p>
           <strong>
             <%= Organization.human_attribute_name 'email' %>
@@ -51,13 +51,13 @@
     </div>
   </div>
   <div class="col-sm-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
+    <div class="card">
+      <div class="card-heading">
+        <h3 class="card-title">
           <%= t 'global.information' %>
         </h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
         <p>
           <strong>
             <%= Organization.human_attribute_name 'created_at' %>

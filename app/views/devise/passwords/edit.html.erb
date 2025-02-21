@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <div class="panel" id="login-box">
-      <div class="panel-body">
+    <div class="card" id="login-box">
+      <div class="card-body">
         <h2><%= t(".change_password") %></h2>
         <%= render 'application/flash_messages' %>
         <%= show_error_messages!(resource) %>
@@ -9,18 +9,18 @@
           <%= f.hidden_field :reset_password_token %>
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon">
+              <span class="input-group-prepend">
                 <%= glyph(:lock) %>
               </span>
-              <%= f.password_field :password, required: true, autofocus: true, placeholder: t(".new_password"), class: "form-control input-lg" %>
+              <%= f.password_field :password, required: true, autofocus: true, placeholder: t(".new_password"), class: "form-control form-control-lg" %>
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon">
+              <span class="input-group-prepend">
                 <%= glyph(:lock) %>
               </span>
-              <%= f.password_field :password_confirmation, required: true, placeholder: t(".confirm_password"), oninput: "this.setCustomValidity(this.value != form.user_password.value ? '#{t(".passwords_not_match")}' : '')", class: "form-control input-lg" %>
+              <%= f.password_field :password_confirmation, required: true, placeholder: t(".confirm_password"), oninput: "this.setCustomValidity(this.value != form.user_password.value ? '#{t(".passwords_not_match")}' : '')", class: "form-control form-control-lg" %>
             </div>
           </div>
           <div class="form-group">

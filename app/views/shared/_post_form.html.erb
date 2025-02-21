@@ -32,7 +32,7 @@
   </div>
   <% if current_user.manages?(current_organization) %>
     <div class="form-group">
-      <%= f.label :user, class: "control-label" %>
+      <%= f.label :user, class: "col-form-label" %>
       <%= f.select :user_id,
                    members_for_select(post),
                    {},

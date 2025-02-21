@@ -3,16 +3,16 @@
 </h1>
 <div class="row">
   <div class="sidebar col-md-3">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">
+    <div class="card card-info">
+      <div class="card-heading">
+        <h3 class="card-title">
           <%= post.class.model_name.human %>
           <% if post.is_group %>
             <div class="pull-right label label-default"><%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %></div>
           <% end %>
         </h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
         <%= l post.updated_at.to_date, format: :long %>
         <p></p>
         <%= link_to [post.class, cat: post.category] do %>
@@ -33,13 +33,13 @@
       </div>
     </div>
     <% if current_user && current_organization == post.organization && current_user.active?(current_organization) %>
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">
+      <div class="card card-info">
+        <div class="card-heading">
+          <h3 class="card-title">
             <%= link_to post.member.display_name_with_uid, post.user  %>
           </h3>
         </div>
-        <div class="panel-body">
+        <div class="card-body">
           <%= link_to image_tag(avatar_url(post.user, 100)), post.user %>
           <h3>
             <%= t "global.contact_details" %>
@@ -62,8 +62,8 @@
     <% end %>
   </div>
   <div class="col-md-9 lead">
-    <div class="panel panel-info break-word">
-      <div class="panel-body post-description">
+    <div class="card card-info break-word">
+      <div class="card-body post-description">
         <%= m post.rendered_description.to_html %>
       </div>
     </div>
