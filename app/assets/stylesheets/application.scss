@@ -1,6 +1,7 @@
+
 @import "select2";
 @import "application/variables";
-@import "bootstrap-sprockets";
+@import "bootstrap";
 @import "application/bootstrap-custom";
 @import "application/member-card";
 @import "application/avatar";
@@ -18,7 +19,7 @@ html {
   margin-bottom: 10px;
   padding: 0 10px;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     padding: 0;
   }
 }
@@ -27,7 +28,7 @@ html {
   color: #101010;
   padding: 10px 16px;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     padding: 8px;
     font-size: 15px;
   }
@@ -36,7 +37,7 @@ html {
 .actions-menu > li {
   margin-right: 6px;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     margin-right: 2px;
   }
 }
@@ -107,7 +108,7 @@ html {
   .input-group-addon {
     border-radius: 0.3rem 0 0 0.3rem;
 
-    @media(max-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       padding: 10px;
     }
   }
@@ -129,7 +130,7 @@ html {
     font-size: 2.24rem;
     letter-spacing: -0.0040rem;
 
-    @media(max-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       font-size: 1.8rem;
     }
   }
@@ -139,7 +140,7 @@ html {
     font-weight: 400;
     height: 7.5rem;
 
-    @media(max-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       height: 6rem;
     }
   }
@@ -256,7 +257,7 @@ html {
       margin-top: 0;
       font-size: 32px;
 
-      @media(max-width: $screen-sm-min) {
+      @include media-breakpoint-down(sm) {
         font-size: 26px;
       }
     }
@@ -331,7 +332,7 @@ label[required]::after{
   background-color: transparent;
   padding: 0;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     padding: 10px 15px;
   }
 }
@@ -370,7 +371,7 @@ label[required]::after{
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-size: cover;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
     background-size: cover;
   }
@@ -405,7 +406,7 @@ label[required]::after{
   background-size: cover;
   text-align: center;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
     background-size: cover;
   }
@@ -588,7 +589,7 @@ label[required]::after{
     padding: 8rem 1rem;
     text-align: center;
 
-    @media(max-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
       background-size: cover;
     }
