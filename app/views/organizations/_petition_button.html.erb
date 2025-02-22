@@ -8,7 +8,7 @@
           data: { confirm: t('users.user_rows.sure_delete', organization_name: organization.name) },
           class: 'btn btn-danger' %>
   <% elsif petition && !current_user.was_member?(petition) %>
-    <span class="badge rounded-pill"><%= petition.status %></span>
+    <span class="badge rounded-pill bg-secondary"><%= petition.status %></span>
   <% else %>
     <%= link_to t('petitions.apply'),
           petitions_path(user_id: current_user.id, organization_id: organization.id),

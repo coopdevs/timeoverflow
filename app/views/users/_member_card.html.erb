@@ -12,7 +12,7 @@
             <%= t('.no_activity') %>
           <% end %>
           <% member.tags[0..2].each do |tag| %>
-            <span class="badge rounded-pill alert-info">
+            <span class="badge rounded-pill bg-info">
               <%= link_to users_path tag: tag do %>
                 <%= glyph :tag %>
                 <%= tag&.truncate(29) %>
