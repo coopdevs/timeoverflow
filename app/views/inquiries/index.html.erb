@@ -12,7 +12,7 @@
 
   <div class="col-md-4">
     <% if current_user && current_organization && !params[:org] %>
-      <ul class="nav navbar-nav text-right">
+      <ul class="nav navbar-nav text-end">
         <li class="nav-item">
           <%= link_to new_inquiry_path, class: 'nav-link' do %>
             <%= glyph :plus %>

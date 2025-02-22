@@ -28,7 +28,7 @@
 
     <% if sources.present? %>
       <div class="form-control">
-        <%= f.label :source %>
+        <%= f.label :source, class: "form-label" %>
         <%= f.select :source,
           options_for_select(
             TransferSourcesOptions.new(sources).to_a,
@@ -43,6 +43,6 @@
 
   <div class="form-actions">
     <%= f.button :submit, class: "btn btn-secondary", data: { disable_with: "..." } %>
-    <label class="js-error-amount error invisible"><%= t ".error_amount" %></label>
+    <label class="js-error-amount form-label error invisible"><%= t ".error_amount" %></label>
   </div>
 <% end %>

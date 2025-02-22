@@ -17,7 +17,7 @@
 
     <% if short %>
       <div class="form-control">
-        <label class="col-form-label" for="user_password"><abbr title="required">*</abbr> <%= t('application.login_form.password') %></label>
+        <label class="col-form-label form-label" for="user_password"><abbr title="required">*</abbr> <%= t('application.login_form.password') %></label>
         <div class="input__password-eye">
           <input class="form-control" required type="password" name="user[password]" id="user_password">
           <span class="show-password">
@@ -39,7 +39,7 @@
     <%= f.input :postcode %>
 
     <% if current_organization %>
-      <%= label_tag :tag_list, t('activerecord.attributes.post.tag_list') %>
+      <%= label_tag :tag_list, t('activerecord.attributes.post.tag_list'), class: "form-label" %>
       <div class='form-control'>
         <%= select_tag :tag_list,
                       options_for_select(member.tags, member.tags),
@@ -51,15 +51,15 @@
     <% end %>
 
     <div class='form-control'>
-      <label><%= t('.notifications') %></label>
+      <label class="form-label"><%= t('.notifications') %></label>
       <div class="form-check">
-        <%= f.label :notifications do %>
+        <%= f.label :notifications, class: "form-label" do %>
           <%= f.check_box :notifications %>
           <%= t('activerecord.attributes.user.notifications') %>
         <% end %>
       </div>
       <div class="form-check">
-        <%= f.label :push_notifications do %>
+        <%= f.label :push_notifications, class: "form-label" do %>
           <%= f.check_box :push_notifications %>
           <%= t('activerecord.attributes.user.push_notifications') %>
         <% end %>

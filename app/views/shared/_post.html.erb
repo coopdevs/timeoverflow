@@ -8,7 +8,7 @@
         <h3 class="card-title d-flex justify-content-between">
           <%= post.class.model_name.human %>
           <% if post.is_group %>
-            <span class="badge badge-secondary"><%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %></span>
+            <span class="badge bg-secondary"><%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %></span>
           <% end %>
         </h3>
       </div>
@@ -22,7 +22,7 @@
         <p></p>
         <% if post.tags.present? %>
           <% post.tags.each do |tag| %>
-            <span class="badge badge-pill alert-info">
+            <span class="badge rounded-pill alert-info">
               <%= glyph(:tag) %>
               <%= link_to [post.class, tag: tag] do %>
                 <%= tag %>

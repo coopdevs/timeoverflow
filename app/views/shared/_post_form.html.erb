@@ -1,19 +1,19 @@
 <%= show_error_messages! post %>
 <%= form_for post, html: { name: "form", novalidate: true } do |f| %>
   <div class="form-control">
-    <%= f.label :title, required: true %>
+    <%= f.label :title, required: true, class: "form-label" %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
   <div class="form-control">
-    <%= f.label :description %>
+    <%= f.label :description,  class: "form-label" %>
     <%= f.text_area :description, rows: "10", class: "form-control" %>
-    <p class="small text-right">
+    <p class="small text-end">
       <%= t ".you_can_use" %>
       <a href="https://<%= I18n.locale %>.wikipedia.org/wiki/Markdown" title="Markdown">Markdown</a>
     </p>
   </div>
   <div class="form-control">
-    <%= f.label :category, required: true %>
+    <%= f.label :category, required: true, class: "form-label" %>
     <%= f.select :category_id, categories_for_select, { include_blank: true }, class: "form-control" %>
   </div>
   <div class="form-control">
@@ -21,7 +21,7 @@
     <%= f.check_box :is_group, class: 'inline-checkbox' %>
   </div>
   <div class="form-control">
-    <%= f.label :tag_list %>
+    <%= f.label :tag_list, class: "form-label" %>
     <%= f.select :tag_list,
                  f.object.tags || [],
                  { selected: f.object.tags },
@@ -32,7 +32,7 @@
   </div>
   <% if current_user.manages?(current_organization) %>
     <div class="form-control">
-      <%= f.label :user, class: "col-form-label" %>
+      <%= f.label :user, class: "col-form-label form-label" %>
       <%= f.select :user_id,
                    members_for_select(post),
                    {},

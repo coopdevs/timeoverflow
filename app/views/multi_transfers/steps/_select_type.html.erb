@@ -4,7 +4,7 @@
 
 <div class="form-control">
   <div class="form-check">
-    <label>
+    <label class="form-label">
       <%= radio_button_tag :type_of_transfer, :many_to_one, @type_of_transfer == :many_to_one %>
       <span class="small">
         <%= glyph :user %>
@@ -20,7 +20,7 @@
 
 <div class="form-control">
   <div class="form-check">
-    <label>
+    <label class="form-label">
       <%= radio_button_tag :type_of_transfer, :one_to_many, @type_of_transfer == :one_to_many %>
       <span class="small">
         <%= glyph :user %>

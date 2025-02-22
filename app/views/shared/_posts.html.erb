@@ -3,7 +3,7 @@
     <h4>
       <%= link_to post.title, post %>
       <% if post.is_group %>
-        <div class="post__group_label badge badge-secondary"><%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %></div>
+        <div class="post__group_label badge bg-secondary"><%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %></div>
       <% end %>
     </h4>
     <p>
@@ -20,7 +20,7 @@
           </span>
         <% end %>
         <% (post.tags || []).each do |tag| %>
-          <span class="badge badge-pill alert-info">
+          <span class="badge rounded-pill alert-info">
             <%= glyph :tag %>
             <%= link_to [post.class, tag: tag] do %>
               <%= tag %>

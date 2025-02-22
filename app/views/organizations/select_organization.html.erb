@@ -20,7 +20,7 @@
                   <%= t 'application.landing.button' %>
                 <% end %>
               <% else %>
-                <span class="badge badge-secondary"><%= t 'activerecord.attributes.user.deactivated' %></span>
+                <span class="badge bg-secondary"><%= t 'activerecord.attributes.user.deactivated' %></span>
               <% end %>
             </td>
           </tr>
@@ -29,7 +29,7 @@
             <div class='modal-dialog modal-dialog-centered'>
               <div class='modal-content'>
                 <div class='modal-header'>
-                  <button type='button' class='close' data-dismiss='modal'>X</button>
+                  <button type='button' class='btn-close' data-dismiss='modal'>X</button>
                   <h4 class='modal-title'><%= organization.name %></h4>
                 </div>
                 <div class='modal-body'>

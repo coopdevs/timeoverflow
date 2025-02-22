@@ -2,7 +2,7 @@
   <% if @user == current_user %>
     <%= image_tag avatar_url(@user, 140) %>
     <%= form_with url: update_avatar_path, id: "form_photo", method: :put do |f| %>
-      <%= label_tag "avatar-js", "avatar" do %>
+      <%= label_tag "avatar-js", "avatar", class: "form-label" do %>
         <a class="btn btn-link">
           <%= glyph :pencil %>
           <%= t ".change_your_image" %>
