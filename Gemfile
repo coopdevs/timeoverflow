@@ -28,7 +28,7 @@ gem 'active_storage_validations', '~> 1.1.3'
 
 # Assets
 gem 'jquery-rails', '~> 4.4.0'
-gem 'bootstrap', '~> 4.6'
+gem 'bootstrap', '~> 5.3.3'
 gem 'sassc-rails', '~> 2.1.2'
 gem 'select2-rails', '~> 4.0.13'
 
