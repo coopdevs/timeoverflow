@@ -1,33 +1,42 @@
 <li class="dropdown nav-item">
-  <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+  <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
     <%= glyph :wrench %>
     <%= t "application.navbar.admin" %>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <%= link_to manage_users_path, class: "dropdown-item" do %>
-      <%= glyph :user %>
-      <%= t "application.navbar.users" %>
-    <% end %>
-    <%= link_to manage_petitions_path, class: "dropdown-item" do %>
-      <%= glyph 'list-alt' %>
-      <%= t('petitions.applications') %>
-    <% end %>
-    <%= link_to offers_path(org: current_organization), class: "dropdown-item" do %>
-      <%= glyph :link %>
-      <%= glyph :eye_open %>
-      <%= t "application.navbar.offer_public_link" %>
-    <% end %>
-    <%= link_to inquiries_path(org: current_organization), class: "dropdown-item" do %>
-      <%= glyph :link %>
-      <%= glyph :eye_open %>
-      <%= t "application.navbar.inquiry_public_link" %>
-    <% end %>
-
-    <%= link_to multi_transfers_step_path(step: 1), class: "dropdown-item" do %>
-      <%= glyph :transfer %>
-      <span>
-        <%= t('multi_transfers.multi_transfers') %>
-      </span>
-    <% end %>
+    <li>
+      <%= link_to manage_users_path, class: "dropdown-item" do %>
+        <%= glyph :user %>
+        <%= t "application.navbar.users" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to manage_petitions_path, class: "dropdown-item" do %>
+        <%= glyph 'list-alt' %>
+        <%= t('petitions.applications') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to offers_path(org: current_organization), class: "dropdown-item" do %>
+        <%= glyph :link %>
+        <%= glyph :eye_open %>
+        <%= t "application.navbar.offer_public_link" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to inquiries_path(org: current_organization), class: "dropdown-item" do %>
+        <%= glyph :link %>
+        <%= glyph :eye_open %>
+        <%= t "application.navbar.inquiry_public_link" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to multi_transfers_step_path(step: 1), class: "dropdown-item" do %>
+        <%= glyph :transfer %>
+        <span>
+          <%= t('multi_transfers.multi_transfers') %>
+        </span>
+      <% end %>
+    </li>
   </ul>
 </li>

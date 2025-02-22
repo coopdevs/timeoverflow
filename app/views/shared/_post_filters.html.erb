@@ -20,17 +20,17 @@
 
   <ul class="nav navbar-nav d-none d-sm-flex">
     <li class="dropdown nav-item">
-      <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+      <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
         <%= @category ? @category.name : Category.model_name.human %>
       </a>
       <ul class="dropdown-menu" role="menu">
-        <li class="dropdown-item">
-          <%= link_to "× #{t("global.all")}", base_path %>
+        <li>
+          <%= link_to "× #{t('global.all')}", base_path, class: "dropdown-item" %>
         </li>
         <% all_categories.each do |c| %>
           <% next if c == @category %>
-          <li class="dropdown-item">
-            <%= link_to "#{base_path}?cat=#{c.id}" do %>
+          <li>
+            <%= link_to "#{base_path}?cat=#{c.id}", class: "dropdown-item" do %>
               <%= category_icon(c) %>
               <%= c.name %>
             <% end %>

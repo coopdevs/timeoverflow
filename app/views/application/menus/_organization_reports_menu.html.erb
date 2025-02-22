@@ -1,29 +1,39 @@
 <li class="dropdown nav-item">
-  <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+  <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
     <%= glyph :paperclip %>
     <%= t "application.navbar.reports" %>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <%= link_to user_list_report_path, data: { popup: true }, class: "dropdown-item" do %>
-      <%= glyph :list_alt %>
-      <%= User.model_name.human(count: :many) %>
-    <% end %>
-    <%= link_to offer_list_report_path, data: { popup: true }, class: "dropdown-item" do %>
-      <%= glyph :list_alt %>
-      <%= Offer.model_name.human(count: :many) %>
-    <% end %>
-    <%= link_to inquiry_list_report_path, data: { popup: true }, class: "dropdown-item" do %>
-      <%= glyph :list_alt %>
-      <%= Inquiry.model_name.human(count: :many) %>
-    <% end %>
-    <%= link_to transfer_list_report_path, data: { popup: true }, class: "dropdown-item" do %>
-      <%= glyph :list_alt %>
-      <%= Transfer.model_name.human(count: :many) %>
-    <% end %>
+    <li>
+      <%= link_to user_list_report_path, data: { popup: true }, class: "dropdown-item" do %>
+        <%= glyph :list_alt %>
+        <%= User.model_name.human(count: :many) %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to offer_list_report_path, data: { popup: true }, class: "dropdown-item" do %>
+        <%= glyph :list_alt %>
+        <%= Offer.model_name.human(count: :many) %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to inquiry_list_report_path, data: { popup: true }, class: "dropdown-item" do %>
+        <%= glyph :list_alt %>
+        <%= Inquiry.model_name.human(count: :many) %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to transfer_list_report_path, data: { popup: true }, class: "dropdown-item" do %>
+        <%= glyph :list_alt %>
+        <%= Transfer.model_name.human(count: :many) %>
+      <% end %>
+    </li>
     <li class="dropdown-divider" role="presentation"></li>
-    <%= link_to download_all_report_path, class: "dropdown-item" do %>
-      <%= glyph :download %>
-      <%= t 'reports.download_all' %>
-    <% end %>
+    <li>
+      <%= link_to download_all_report_path, class: "dropdown-item" do %>
+        <%= glyph :download %>
+        <%= t 'reports.download_all' %>
+      <% end %>
+    </li>
   </ul>
 </li>
