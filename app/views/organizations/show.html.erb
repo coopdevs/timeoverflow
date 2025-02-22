@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-sm-4">
     <div class="card">
-      <div class="card-heading">
+      <div class="card-header">
         <h3 class="card-title">
           <%= t '.contact_information' %>
         </h3>
@@ -52,7 +52,7 @@
   </div>
   <div class="col-sm-3">
     <div class="card">
-      <div class="card-heading">
+      <div class="card-header">
         <h3 class="card-title">
           <%= t 'global.information' %>
         </h3>
@@ -83,18 +83,18 @@
     </div>
   </div>
   <div class="col-sm-5">
-    <ul class="nav nav-pills pull-right">
+    <ul class="nav nav-pills justify-content-end">
       <% if current_user&.manages?(@organization) %>
-        <li>
-          <%= link_to edit_organization_path(@organization) do %>
+        <li class="nav-item">
+          <%= link_to edit_organization_path(@organization), class: 'nav-link' do %>
             <%= glyph :pencil %>
             <%= t "global.edit" %>
           <% end %>
         </li>
       <% end %>
       <% if current_user&.active?(@organization) %>
-        <li>
-          <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id) do %>
+        <li class="nav-item">
+          <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id), class: 'nav-link' do %>
             <%= glyph :time %>
             <%= t "global.give_time" %>
           <% end %>

@@ -12,9 +12,9 @@
 
   <div class="col-md-4">
     <% if current_user && current_organization && !params[:org] %>
-      <ul class="nav navbar-nav pull-right">
-        <li>
-          <%= link_to new_offer_path do %>
+      <ul class="nav navbar-nav text-right">
+        <li class="nav-item">
+          <%= link_to new_offer_path, class: 'nav-link' do %>
             <%= glyph :plus %>
             <%= t "helpers.submit.create", model: Offer.model_name.human %>
           <% end %>

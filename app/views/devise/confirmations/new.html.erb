@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
+  <div class="col-sm-6 offset-md-3">
      <div class="card" id="login-box">
       <div class="card-body">
         <h2><%= t(".resend_instructions") %></h2>
@@ -7,7 +7,7 @@
         <%= render 'application/flash_messages' %>
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: confirmation_path(resource_name), html: { method: :post } do |f| %>
-          <div class="form-group">
+          <div class="form-control">
             <div class="input-group">
               <span class="input-group-prepend">
                 <%= glyph(:envelope) %>
@@ -15,7 +15,7 @@
               <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control form-control-lg" %>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-control">
             <div class="row">
               <div class="col-xs-12">
                 <%= f.submit t(".resend_instructions_button"), class: "btn btn-primary btn-lg col-xs-12" %>

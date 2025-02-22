@@ -7,20 +7,20 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <ul class="nav nav-pills actions-menu">
-      <li class="<%= "active" if @status == 'pending' %>">
-        <%= link_to manage_petitions_path(status: 'pending') do %>
+      <li class="<%= "active" if @status == 'pending' %> nav-item">
+        <%= link_to manage_petitions_path(status: 'pending'), class: 'nav-link' do %>
           <%= glyph :time %>
           <%= status_applications('pending') %>
         <% end %>
       </li>
-      <li class="<%= "active" if @status == 'accepted' %>">
-        <%= link_to manage_petitions_path(status: 'accepted') do %>
+      <li class="<%= "active" if @status == 'accepted' %> nav-item">
+        <%= link_to manage_petitions_path(status: 'accepted'), class: 'nav-link' do %>
           <%= glyph :ok %>
           <%= status_applications('accepted') %>
         <% end %>
       </li>
-      <li class="<%= "active" if  @status == 'declined' %>">
-        <%= link_to manage_petitions_path(status: 'declined') do %>
+      <li class="<%= "active" if  @status == 'declined' %> nav-item">
+        <%= link_to manage_petitions_path(status: 'declined'), class: 'nav-link' do %>
           <%= glyph :remove %>
           <%= status_applications('declined') %>
         <% end %>

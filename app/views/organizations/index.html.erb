@@ -4,15 +4,15 @@
 
 <div class="row">
   <div class="col-md-6">
-    <form action="<%= organizations_path %>" class="navbar-form navbar-left" method="get">
-      <div class="form-group">
+    <form action="<%= organizations_path %>" class="form-inline navbar-left" method="get">
+      <div class="form-control">
         <input class="form-control"
                name="q"
                placeholder="<%= t "global.search_location" %>"
                type="text"
                value="<%= params[:q] %>">
       </div>
-      <button class="btn btn-default" type="submit"><%= t "global.search" %></button>
+      <button class="btn btn-secondary" type="submit"><%= t "global.search" %></button>
     </form>
   </div>
 </div>

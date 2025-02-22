@@ -9,18 +9,18 @@
 
 <div class="row">
   <div class="col-md-12">
-    <%= search_form_for(@search, class: "navbar-form navbar-left", url: manage_users_path) do |f| %>
-      <div class="form-group">
+    <%= search_form_for(@search, class: "form-inline navbar-left", url: manage_users_path) do |f| %>
+      <div class="form-control">
         <%= f.search_field :member_search_unaccent_cont, value: params.dig(:q, :member_search_unaccent_cont), class: "form-control" %>
       </div>
-      <button class="btn btn-default" type="submit">
+      <button class="btn btn-secondary" type="submit">
         <%= t 'global.search' %>
       </button>
     <% end %>
-    <ul class="nav navbar-nav pull-right">
+    <ul class="nav navbar-nav text-right">
       <% if admin? %>
-        <li>
-          <a href="<%= new_user_path %>">
+        <li class="nav-item">
+          <a href="<%= new_user_path %>" class="nav-link">
             <span class="glyphicon glyphicon-plus"></span>
             <%= t "helpers.submit.create", model: User.model_name.human %>
           </a>

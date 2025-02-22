@@ -1,17 +1,17 @@
 <div class="card user-profile">
   <div class="card-body">
-    <ul class="nav nav-pills pull-right">
+    <ul class="nav nav-pills justify-content-end">
       <% if admin? || @user == current_user %>
-        <li>
-          <%= link_to edit_user_path(@user) do %>
+        <li class="nav-item">
+          <%= link_to edit_user_path(@user), class: 'nav-link' do %>
             <%= glyph :pencil, t('global.edit') %>
             <span><%= t "global.edit" %></span>
           <% end %>
         </li>
       <% end %>
       <% if admin? || @user != current_user %>
-        <li>
-          <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id) do %>
+        <li class="nav-item">
+          <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id), class: 'nav-link' do %>
             <%= glyph :time, t('global.give_time') %>
             <span><%= t "global.give_time" %></span>
           <% end %>
@@ -27,7 +27,7 @@
       <%= @member.display_name_with_uid %>
       <small>
         <% if @user.superadmin? %>
-          <span class="label label-important">
+          <span class="badge label-important">
             <%= t ".superadmin" %>
           </span>
         <% end %>
@@ -73,7 +73,7 @@
             </dt>
             <dd class="col-sm-9">
               <% @member.tags.each do |tag| %>
-                <span class="badge alert-info">
+                <span class="badge badge-pill alert-info">
                   <%= link_to users_path tag: tag do %>
                     <%= glyph(:tag) %>
                     <%= tag %>
@@ -90,11 +90,11 @@
 <div class="row">
   <div class="col-sm-6 offers">
     <div class="card break-word">
-      <div class="card-heading">
-        <h2 class="card-title">
+      <div class="card-header">
+        <h2 class="card-title d-flex justify-content-between">
           <%= Offer.model_name.human(count: :many) %>
           <% if @user == current_user %>
-            <a class="pull-right" href="<%= new_offer_path %>">
+            <a href="<%= new_offer_path %>">
               <%= glyph :plus %>
             </a>
           <% end %>
@@ -122,11 +122,11 @@
   </div>
   <div class="col-sm-6 inquiries">
     <div class="card break-word">
-      <div class="card-heading">
-        <h2 class="card-title">
+      <div class="card-header">
+        <h2 class="card-title d-flex justify-content-between">
           <%= Inquiry.model_name.human(count: :many) %>
           <% if @user == current_user %>
-            <a class="pull-right" href="<%= new_inquiry_path %>">
+            <a href="<%= new_inquiry_path %>">
               <%= glyph :plus %>
             </a>
           <% end %>
@@ -149,14 +149,14 @@
 <div class="row">
   <div class="col-sm-4">
     <div class="card">
-      <div class="card-heading">
+      <div class="card-header">
         <h3 class="card-title">
           <%= t(".accounts") %>
         </h3>
       </div>
       <div class="card-body">
         <% if @member.manager %>
-          <p><span class="label label-default">ADMIN</span></p>
+          <p><span class="badge badge-secondary">ADMIN</span></p>
         <% end %>
         <p>
           <strong>

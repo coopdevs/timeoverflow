@@ -57,7 +57,7 @@
     }
   }
 
-  a.btn-default.dropdown-toggle {
+  a.btn-secondary.dropdown-toggle {
     & {
       background-color: transparent;
       border: 1px solid white;
@@ -65,7 +65,7 @@
     }
   }
 
-  &.open > a.btn-default.dropdown-toggle {
+  &.open > a.btn-secondary.dropdown-toggle {
     & {
       background-color: transparent;
       border: 1px solid white;

@@ -3,12 +3,12 @@
 </h1>
 <div class="row">
   <div class="sidebar col-md-3">
-    <div class="card card-info">
-      <div class="card-heading">
-        <h3 class="card-title">
+    <div class="card card-info border-info">
+      <div class="card-header bg-info">
+        <h3 class="card-title d-flex justify-content-between">
           <%= post.class.model_name.human %>
           <% if post.is_group %>
-            <div class="pull-right label label-default"><%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %></div>
+            <span class="badge badge-secondary"><%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %></span>
           <% end %>
         </h3>
       </div>
@@ -22,7 +22,7 @@
         <p></p>
         <% if post.tags.present? %>
           <% post.tags.each do |tag| %>
-            <span class="badge alert-info">
+            <span class="badge badge-pill alert-info">
               <%= glyph(:tag) %>
               <%= link_to [post.class, tag: tag] do %>
                 <%= tag %>
@@ -33,8 +33,8 @@
       </div>
     </div>
     <% if current_user && current_organization == post.organization && current_user.active?(current_organization) %>
-      <div class="card card-info">
-        <div class="card-heading">
+      <div class="card card-info border-info">
+        <div class="card-header bg-info">
           <h3 class="card-title">
             <%= link_to post.member.display_name_with_uid, post.user  %>
           </h3>
@@ -62,7 +62,7 @@
     <% end %>
   </div>
   <div class="col-md-9 lead">
-    <div class="card card-info break-word">
+    <div class="card card-info border-info break-word">
       <div class="card-body post-description">
         <%= m post.rendered_description.to_html %>
       </div>

@@ -87,7 +87,7 @@ html {
     color: $form-input-glyph;
   }
 
-  .card-heading {
+  .card-header {
     color: darken($black, 5%);
     text-align: center;
   }
@@ -327,7 +327,7 @@ label[required]::after{
   width: 100% !important;
 }
 
-.navbar-form {
+.form-inline {
   border: 0;
   background-color: transparent;
   padding: 0;
