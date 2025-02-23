@@ -2,7 +2,7 @@
   <% if @user == current_user %>
     <%= image_tag avatar_url(@user, 140) %>
     <%= form_with url: update_avatar_path, id: "form_photo", method: :put do |f| %>
-      <%= label_tag "avatar-js", "avatar" do %>
+      <%= label_tag "avatar-js", "avatar", class: "form-label" do %>
         <a class="btn btn-link">
           <%= glyph :pencil %>
           <%= t ".change_your_image" %>
@@ -20,7 +20,7 @@
             </div>
             <div class="modal-body">
               <div id="container_crop" class="col-12">
-                <div id="crop_panel"></div>
+                <div id="crop_card"></div>
                 <img id="original_img">
               </div>
             </div>
@@ -31,7 +31,7 @@
                 <%= f.hidden_field :height_offset, value: 1 %>
                 <%= f.hidden_field :original_width, value: 1 %>
 
-                <%= f.button :submit, class: "btn btn-default", data: { dismiss: "modal" } do %>
+                <%= f.button :submit, class: "btn btn-secondary", data: { dismiss: "modal" } do %>
                   <%= t("users.new.cancel") %>
                 <% end %>
                 <%= f.button :submit, class: "btn btn-primary" do %>

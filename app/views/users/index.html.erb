@@ -9,11 +9,9 @@
 
 <div class="row">
   <div class="col-md-12">
-    <%= search_form_for(@search, class: "navbar-form navbar-left", url: users_path) do |f| %>
-      <div class="form-group">
-        <%= f.search_field :member_search_unaccent_cont, value: params.dig(:q, :member_search_unaccent_cont), class: "form-control" %>
-      </div>
-      <button class="btn btn-default" type="submit">
+    <%= search_form_for(@search, class: "form-inline d-flex navbar-left", url: users_path) do |f| %>
+      <%= f.search_field :member_search_unaccent_cont, value: params.dig(:q, :member_search_unaccent_cont), class: "form-control w-auto" %>
+      <button class="btn btn-secondary ms-1" type="submit">
         <%= t 'global.search' %>
       </button>
     <% end %>

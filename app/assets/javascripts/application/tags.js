@@ -22,6 +22,8 @@ $(function() {
         $('.alpha_tag_list').html(data);
       }
     });
+    document.querySelector('.switch-tags-js .active').classList.remove('active');
+    document.querySelector(`.switch_${type == 'user' ? 'member' : type}-js`).classList.add('active');
   }
 
   $('#tags-js').select2({

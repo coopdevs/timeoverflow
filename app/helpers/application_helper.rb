@@ -62,7 +62,7 @@ module ApplicationHelper
                full_messages.map { |msg| content_tag(:li, msg) }.join
     html = <<-HTML
     <div class="alert alert-danger">
-      <button type="button" class="close" data-dismiss="alert">x</button>
+      <button type="button" class="btn-close" data-dismiss="alert">x</button>
       <ul>
         #{messages}
       </ul>
