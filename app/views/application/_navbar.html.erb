@@ -49,26 +49,26 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="nav nav-pills actions-menu">
-            <li class="<%= "active" if current_page?(users_path) %> nav-item">
-              <%= link_to users_path, class: 'nav-link' do %>
+            <li class="nav-item">
+              <%= link_to users_path, class: "nav-link #{"active" if current_page?(users_path)}" do %>
                 <%= glyph :user %>
                 <%= t("users.index.members") %>
               <% end %>
             </li>
-            <li class="<%= "active" if current_page?(offers_path) %> nav-item">
-              <%= link_to offers_path, class: 'nav-link' do %>
+            <li class="nav-item">
+              <%= link_to offers_path, class: "nav-link #{"active" if current_page?(offers_path)}" do %>
                 <%= glyph :offer %>
                 <%= Offer.model_name.human(count: :many) %>
               <% end %>
             </li>
-            <li class="<%= "active" if current_page?(inquiries_path) %> nav-item">
-              <%= link_to inquiries_path, class: 'nav-link' do %>
+            <li class="nav-item">
+              <%= link_to inquiries_path, class: "nav-link #{"active" if current_page?(inquiries_path)}" do %>
                 <%= glyph :inquiry %>
                 <%= Inquiry.model_name.human(count: :many) %>
               <% end %>
             </li>
-            <li class="<%= "active" if current_page?(alpha_grouped_index_tags_path) %> nav-item">
-              <%= link_to alpha_grouped_index_tags_path, class: 'nav-link' do %>
+            <li class="nav-item">
+              <%= link_to alpha_grouped_index_tags_path, class: "nav-link #{"active" if current_page?(alpha_grouped_index_tags_path)}" do %>
                 <%= glyph :tags %>
                 <%= t ".tags" %>
               <% end %>

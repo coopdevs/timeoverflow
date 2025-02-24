@@ -14,7 +14,7 @@
     <% if current_user && current_organization && !params[:org] %>
       <ul class="nav navbar-nav text-end">
         <li class="nav-item">
-          <%= link_to new_offer_path, class: 'nav-link' do %>
+          <%= link_to new_offer_path, class: 'nav-link text-primary' do %>
             <%= glyph :plus %>
             <%= t "helpers.submit.create", model: Offer.model_name.human %>
           <% end %>

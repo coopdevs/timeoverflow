@@ -15,7 +15,7 @@
               <%= f.password_field :password, required: true, autofocus: true, placeholder: t(".new_password"), class: "form-control form-control-lg" %>
             </div>
           </div>
-          <div class="form-control">
+          <div class="mb-3">
             <div class="input-group">
               <span class="input-group-prepend">
                 <%= glyph(:lock) %>
@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="form-control">
-            <%= f.submit t(".change_password"), class: "btn btn-primary btn-lg col-xs-12 text-white" %>
+            <%= f.submit t(".change_password"), class: "btn btn-primary btn-lg col-xs-12" %>
           </div>
         <% end %>
       </div>

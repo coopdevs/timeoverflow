@@ -20,7 +20,7 @@
     <ul class="nav navbar-nav text-end">
       <% if admin? %>
         <li class="nav-item">
-          <a href="<%= new_user_path %>" class="nav-link">
+          <a href="<%= new_user_path %>" class="nav-link text-primary">
             <span class="glyphicon glyphicon-plus"></span>
             <%= t "helpers.submit.create", model: User.model_name.human %>
           </a>
