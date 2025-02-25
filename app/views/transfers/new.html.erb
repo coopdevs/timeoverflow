@@ -27,7 +27,7 @@
     <%= f.input :destination, as: :hidden %>
 
     <% if sources.present? %>
-      <div class="form-control">
+      <div class="mb-3">
         <%= f.label :source, class: "form-label" %>
         <%= f.select :source,
           options_for_select(

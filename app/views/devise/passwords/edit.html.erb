@@ -7,7 +7,7 @@
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: password_path(resource_name), html: { method: :put } do |f| %>
           <%= f.hidden_field :reset_password_token %>
-          <div class="form-control mb-3">
+          <div class="mb-3">
             <div class="input-group">
               <span class="input-group-prepend">
                 <%= glyph(:lock) %>
@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="form-control">
-            <%= f.submit t(".change_password"), class: "btn btn-primary btn-lg col-xs-12" %>
+            <%= f.submit t(".change_password"), class: "btn btn-primary btn-lg col-12" %>
           </div>
         <% end %>
       </div>

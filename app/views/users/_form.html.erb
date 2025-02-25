@@ -16,7 +16,7 @@
     <% end %>
 
     <% if short %>
-      <div class="form-control">
+      <div class="mb-3">
         <label class="col-form-label form-label" for="user_password"><abbr title="required">*</abbr> <%= t('application.login_form.password') %></label>
         <div class="input__password-eye">
           <input class="form-control" required type="password" name="user[password]" id="user_password">
@@ -40,7 +40,7 @@
 
     <% if current_organization %>
       <%= label_tag :tag_list, t('activerecord.attributes.post.tag_list'), class: "form-label" %>
-      <div class='form-control'>
+      <div class='mb-3'>
         <%= select_tag :tag_list,
                       options_for_select(member.tags, member.tags),
                       multiple: true,
@@ -50,7 +50,7 @@
       </div>
     <% end %>
 
-    <div class='form-control'>
+    <div class='mb-3'>
       <label class="form-label"><%= t('.notifications') %></label>
       <div class="form-check">
         <%= f.label :notifications, class: "form-label" do %>

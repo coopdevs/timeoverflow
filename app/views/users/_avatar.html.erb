@@ -1,4 +1,4 @@
-<div class="col-sm-3 col-xs-5 text-center">
+<div class="col-sm-3 col-5 text-center">
   <% if @user == current_user %>
     <%= image_tag avatar_url(@user, 140) %>
     <%= form_with url: update_avatar_path, id: "form_photo", method: :put do |f| %>

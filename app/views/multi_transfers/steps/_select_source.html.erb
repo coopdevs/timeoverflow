@@ -2,7 +2,7 @@
   <%= t('multi_transfers.step.set_source.description') %>
 </div>
 
-<div class="form-control">
+<div class="mb-3">
   <%= select_tag('from[]',
     options_for_select(
       TransferSourcesOptions.new(@accounts).to_a,

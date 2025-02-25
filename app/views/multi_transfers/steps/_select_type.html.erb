@@ -2,7 +2,7 @@
   <%= t('multi_transfers.step.select_type.description') %>
 </div>
 
-<div class="form-control">
+<div class="mb-3">
   <div class="form-check">
     <label class="form-label">
       <%= radio_button_tag :type_of_transfer, :many_to_one, @type_of_transfer == :many_to_one %>
@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div class="form-control">
+<div class="mb-3">
   <div class="form-check">
     <label class="form-label">
       <%= radio_button_tag :type_of_transfer, :one_to_many, @type_of_transfer == :one_to_many %>
