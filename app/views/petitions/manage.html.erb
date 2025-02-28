@@ -31,41 +31,45 @@
 
 <div class="row">
   <div class="col-md-12">
-    <table class="table table-responsive table-hover table-sm card">
-      <thead>
-        <tr>
-          <th></th>
-          <th><%= 'ID' %></th>
-          <th><%= t('activerecord.attributes.user.username') %></th>
-          <th><%= User.human_attribute_name(:email) %></th>
-          <th><%= User.human_attribute_name(:phone) %></th>
-          <% if current_user.manages?(current_organization) && @status == 'pending' %>
-            <th>
-              <span class="glyphicon glyphicon-hand-down"></span>
-              <%= t("global.table.actions") %>
-            </th>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <%= content_tag(:tr) do %>
-            <% petition = user.petitions.where(organization_id: current_organization.id).last %>
-            <td><%= image_tag avatar_url(user.user) %></td>
-            <td><%= user.id %></td>
-            <td><%= user.username %></td>
-            <td><%= user.email %></td>
-            <td><%= phone_to user.phone %></td>
-            <% if current_user.manages?(current_organization) && @status == 'pending'  %>
-              <td>
-                <%= link_to t('terms.accept'), petition_path(id: petition.id, status: 'accepted'), class: 'btn btn-primary', method: :put %>
-                <%= link_to t('global.decline'), petition_path(id: petition.id, status: 'declined'), class: 'btn btn-danger', method: :put %>
-              </td>
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-responsive table-hover table-sm">
+          <thead>
+            <tr>
+              <th></th>
+              <th><%= 'ID' %></th>
+              <th><%= t('activerecord.attributes.user.username') %></th>
+              <th><%= User.human_attribute_name(:email) %></th>
+              <th><%= User.human_attribute_name(:phone) %></th>
+              <% if current_user.manages?(current_organization) && @status == 'pending' %>
+                <th>
+                  <span class="glyphicon glyphicon-hand-down"></span>
+                  <%= t("global.table.actions") %>
+                </th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <%= content_tag(:tr) do %>
+                <% petition = user.petitions.where(organization_id: current_organization.id).last %>
+                <td><%= image_tag avatar_url(user.user) %></td>
+                <td><%= user.id %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%= phone_to user.phone %></td>
+                <% if current_user.manages?(current_organization) && @status == 'pending'  %>
+                  <td>
+                    <%= link_to t('terms.accept'), petition_path(id: petition.id, status: 'accepted'), class: 'btn btn-primary', method: :put %>
+                    <%= link_to t('global.decline'), petition_path(id: petition.id, status: 'declined'), class: 'btn btn-danger', method: :put %>
+                  </td>
+                <% end %>
+              <% end %>
             <% end %>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <div class="paginate-align">
       <%= paginate @users %>
     </div>

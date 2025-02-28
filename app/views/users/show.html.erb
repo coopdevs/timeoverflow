@@ -1,38 +1,40 @@
-<div class="card user-profile">
+<div class="card user-profile mb-4">
   <div class="card-body">
-    <ul class="nav nav-pills justify-content-end">
-      <% if admin? || @user == current_user %>
-        <li class="nav-item">
-          <%= link_to edit_user_path(@user), class: 'nav-link' do %>
-            <%= glyph :pencil, t('global.edit') %>
-            <span><%= t "global.edit" %></span>
+    <div class="d-flex justify-content-between">
+      <h1>
+        <small>
+          <% unless  @member.active %>
+            <%= t ".inactive" %>
           <% end %>
-        </li>
-      <% end %>
-      <% if admin? || @user != current_user %>
-        <li class="nav-item">
-          <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id), class: 'nav-link' do %>
-            <%= glyph :time, t('global.give_time') %>
-            <span><%= t "global.give_time" %></span>
+        </small>
+        <%= @member.display_name_with_uid %>
+        <small>
+          <% if @user.superadmin? %>
+            <span class="badge label-important">
+              <%= t ".superadmin" %>
+            </span>
           <% end %>
-        </li>
-      <% end %>
-    </ul>
-    <h1>
-      <small>
-        <% unless  @member.active %>
-          <%= t ".inactive" %>
+        </small>
+      </h1>
+      <ul class="nav nav-pills justify-content-end">
+        <% if admin? || @user == current_user %>
+          <li class="nav-item">
+            <%= link_to edit_user_path(@user), class: 'nav-link' do %>
+              <%= glyph :pencil, t('global.edit') %>
+              <span><%= t "global.edit" %></span>
+            <% end %>
+          </li>
         <% end %>
-      </small>
-      <%= @member.display_name_with_uid %>
-      <small>
-        <% if @user.superadmin? %>
-          <span class="badge label-important">
-            <%= t ".superadmin" %>
-          </span>
+        <% if admin? || @user != current_user %>
+          <li class="nav-item">
+            <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id), class: 'nav-link' do %>
+              <%= glyph :time, t('global.give_time') %>
+              <span><%= t "global.give_time" %></span>
+            <% end %>
+          </li>
         <% end %>
-      </small>
-    </h1>
+      </ul>
+    </div>
     <div class="row">
       <%= render "users/avatar" %>
 
@@ -87,18 +89,16 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row mb-4">
   <div class="col-sm-6 offers">
     <div class="card break-word">
-      <div class="card-header">
-        <h2 class="card-title d-flex justify-content-between">
-          <%= Offer.model_name.human(count: :many) %>
-          <% if @user == current_user %>
-            <a href="<%= new_offer_path %>">
-              <%= glyph :plus %>
-            </a>
-          <% end %>
-        </h2>
+      <div class="card-header card-title d-flex justify-content-between">
+        <%= Offer.model_name.human(count: :many) %>
+        <% if @user == current_user %>
+          <a href="<%= new_offer_path %>">
+            <%= glyph :plus %>
+          </a>
+        <% end %>
       </div>
         <% @member.offers.active.each do |post| %>
           <div class="row card-body">
@@ -122,15 +122,13 @@
   </div>
   <div class="col-sm-6 inquiries">
     <div class="card break-word">
-      <div class="card-header">
-        <h2 class="card-title d-flex justify-content-between">
-          <%= Inquiry.model_name.human(count: :many) %>
-          <% if @user == current_user %>
-            <a href="<%= new_inquiry_path %>">
-              <%= glyph :plus %>
-            </a>
-          <% end %>
-        </h2>
+      <div class="card-header card-header card-title d-flex justify-content-between">
+        <%= Inquiry.model_name.human(count: :many) %>
+        <% if @user == current_user %>
+          <a href="<%= new_inquiry_path %>">
+            <%= glyph :plus %>
+          </a>
+        <% end %>
       </div>
         <% @member.inquiries.active.each do |post| %>
           <div class="row card-body">
@@ -146,7 +144,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row mb-4">
   <div class="col-sm-4">
     <div class="card">
       <div class="card-header">

@@ -1,19 +1,21 @@
 <% @category = Category.find_by(id: params[:cat]) %>
 
-<div class="col-md-8 ">
+<div class="col-md-8">
   <form action="<%= base_path %>"
-        class="form-inline d-flex navbar-left"
+        class="form-inline d-flex navbar-left align-items-center mb-2"
         method="get"
         role="search">
     <%= hidden_field_tag(:org, params[:org]) if params[:org].present? %>
-    <input class="form-control w-auto"
-            name="q"
-            placeholder="<%= t("global.search") %>"
-            type="text"
-            value="<%= params[:q] %>">
-    <button class="btn btn-secondary ms-1" type="submit">
-      <%= t("global.search") %>
-    </button>
+    <div class="d-flex h-100">
+      <input class="form-control w-auto"
+              name="q"
+              placeholder="<%= t("global.search") %>"
+              type="text"
+              value="<%= params[:q] %>">
+      <button class="btn btn-secondary ms-1" type="submit">
+        <%= t("global.search") %>
+      </button>
+    </div>
     <ul class="nav navbar-nav d-none d-sm-flex">
       <li class="dropdown nav-item">
         <a class="dropdown-toggle nav-link text-primary" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
