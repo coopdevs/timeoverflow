@@ -12,7 +12,7 @@
         <% @organizations.each_with_index do |organization, index| %>
           <tr>
             <td><%= organization.name %></td>
-            <td><a href='#' data-toggle='modal' data-target='#org_dialog<%= index %>'> <%= t 'global.show' %></a></td>
+            <td><a href='#' data-bs-toggle='modal' data-bs-target='#org_dialog<%= index %>'> <%= t 'global.show' %></a></td>
             <td>
               <% if current_user.active?(organization) %>
                 <%= link_to set_current_organization_path(organization), method: :post do %>
@@ -29,8 +29,8 @@
             <div class='modal-dialog modal-dialog-centered'>
               <div class='modal-content'>
                 <div class='modal-header'>
-                  <button type='button' class='btn-close' data-dismiss='modal'>X</button>
                   <h4 class='modal-title'><%= organization.name %></h4>
+                  <button type='button' class='btn-close' data-bs-dismiss='modal'> </button>
                 </div>
                 <div class='modal-body'>
                   <strong><%= t 'activerecord.attributes.organization.address' %>:</strong>
@@ -39,7 +39,7 @@
                   <strong><%= t 'activerecord.attributes.organization.phone' %>:</strong>
                   <%= organization.phone %>
                   <br>
-                  <strong><%= t 'activerecord.attributes.organization.email '%>:</strong>
+                  <strong><%= t 'activerecord.attributes.organization.email'%>:</strong>
                   <%= organization.email %>
                   <br>
                   <strong>Web:</strong>

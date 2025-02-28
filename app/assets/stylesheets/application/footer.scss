@@ -8,7 +8,7 @@
     padding: 0;
   }
 
-  a {
+  a:not(.dropdown-item) {
     margin: 0 0.625rem;
     color: white;
     font-weight: 500;

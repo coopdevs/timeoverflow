@@ -3,14 +3,14 @@
 </h1>
 <div class="row">
   <div class="sidebar col-md-3">
-    <div class="card card-info border-info">
+    <div class="card card-info border-info mb-4">
       <div class="card-header bg-info">
-        <h3 class="card-title d-flex justify-content-between">
+        <div class="card-title d-flex justify-content-between text-primary mb-0 font-weight-bold">
           <%= post.class.model_name.human %>
           <% if post.is_group %>
             <span class="badge bg-secondary"><%= I18n.t("activerecord.attributes.#{post.class.name.downcase}.is_group") %></span>
           <% end %>
-        </h3>
+        </div>
       </div>
       <div class="card-body">
         <%= l post.updated_at.to_date, format: :long %>
@@ -35,9 +35,9 @@
     <% if current_user && current_organization == post.organization && current_user.active?(current_organization) %>
       <div class="card card-info border-info">
         <div class="card-header bg-info">
-          <h3 class="card-title">
+          <div class="card-title font-weight-bold mb-0">
             <%= link_to post.member.display_name_with_uid, post.user  %>
-          </h3>
+          </div>
         </div>
         <div class="card-body">
           <%= link_to image_tag(avatar_url(post.user, 100)), post.user %>
