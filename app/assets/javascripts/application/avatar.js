@@ -1,8 +1,7 @@
 $(function () {
   $('#avatar-js').on("change", () => {
-    $('#dialog').modal({
-      show: true
-    });
+    const modal = new bootstrap.Modal(document.getElementById('dialog'));
+    modal.show();
 
     preview_image_modal();
 
