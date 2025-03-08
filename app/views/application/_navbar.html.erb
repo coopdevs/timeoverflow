@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="container">
       <div class="row align-content-center w-100">
-        <div class="col-12 col-sm-3 col-md-3 col-lg-3 d-flex">
+        <div class="col-12 col-md-3 d-flex">
           <div class="navbar-header w-100 d-flex">
             <% if current_user && current_organization %>
               <a class="navbar-brand align-content-center" href="<%= organization_path(current_organization) %>">TimeOverflow</a>
@@ -15,9 +15,9 @@
             </button>
           </div>
         </div>
-        <div class="col-12 col-sm-9 col-md-9 col-lg-9">
+        <div class="col-12 col-md-9">
           <div id="navbar-collapse" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav ms-auto d-none d-sm-flex">
+            <ul class="nav navbar-nav ms-auto d-none d-md-flex">
               <% if current_user %>
                 <%= render 'application/menus/user_admin_menu' %>
               <% else %>
@@ -25,7 +25,7 @@
               <% end %>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right d-sm-none">
+            <ul class="nav navbar-nav navbar-right d-md-none">
               <% if current_user %>
                 <li class="nav-item">
                   <%= image_tag avatar_url(current_user) %>
