@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row align-content-center w-100">
         <div class="col-12 col-md-3 d-flex">
-          <div class="navbar-header w-100 d-flex">
+          <div class="navbar-header w-100 d-flex align-items-center">
             <% if current_user && current_organization %>
               <a class="navbar-brand align-content-center" href="<%= organization_path(current_organization) %>">TimeOverflow</a>
             <% else %>
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="col-12 col-md-9">
-          <div id="navbar-collapse" class="collapse navbar-collapse">
+          <div id="navbar-collapse" class="collapse navbar-collapse border-top border-primary">
             <ul class="nav navbar-nav ms-auto d-none d-md-flex">
               <% if current_user %>
                 <%= render 'application/menus/user_admin_menu' %>
@@ -25,7 +25,7 @@
               <% end %>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right d-md-none">
+            <ul class="nav navbar-nav navbar-right d-md-none mt-4 text-white">
               <% if current_user %>
                 <li class="nav-item">
                   <%= image_tag avatar_url(current_user) %>

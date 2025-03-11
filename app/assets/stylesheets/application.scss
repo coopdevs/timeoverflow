@@ -232,10 +232,6 @@ html {
   padding: 20px 0;
 }
 
-.table-responsive {
-  overflow-x: inherit;
-}
-
 @media screen {
   html {
     min-height: 100%;
@@ -347,8 +343,16 @@ label[required]::after{
   }
 }
 
-.navbar {
+.navbar-toggler {
+  height: 24px;
+}
+
+.navbar-header {
   min-height: 50px;
+}
+
+.text-white .dropdown-item {
+  color: $white;
 }
 
 .navbar .container-fluid {

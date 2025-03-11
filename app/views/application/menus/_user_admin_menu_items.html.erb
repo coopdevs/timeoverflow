@@ -4,7 +4,7 @@
   </li>
   <% (current_user.organizations - [current_organization]).each do |org| %>
     <li>
-      <%= link_to set_current_organization_path(org), method: :post, class: "dropdown-item text-white" do %>
+      <%= link_to set_current_organization_path(org), method: :post, class: "dropdown-item" do %>
         <%= glyph(:retweet) %>
         <%= org.name %>
       <% end %>
@@ -14,14 +14,14 @@
 <% end %>
 
 <li>
-  <%= link_to current_user, class: "dropdown-item text-white" do %>
+  <%= link_to current_user, class: "dropdown-item" do %>
     <%= glyph :user %>
     <%= t "layouts.application.edit_profile" %>
   <% end %>
 </li>
 
 <li>
-  <%= link_to organizations_path, class: "dropdown-item text-white" do %>
+  <%= link_to organizations_path, class: "dropdown-item" do %>
     <%= glyph :list %>
     <%= t('layouts.application.manage_memberships') %>
   <% end %>
@@ -29,7 +29,7 @@
 
 <% current_user.members.where(manager: true).each do |m| %>
   <li>
-    <%= link_to m.organization, class: "dropdown-item text-white" do %>
+    <%= link_to m.organization, class: "dropdown-item" do %>
       <%= glyph :pencil %>
       <%= t "layouts.application.edit_org", organization: m.organization %>
     <% end %>
@@ -38,7 +38,7 @@
 
 <% if superadmin? %>
   <li>
-    <%= link_to admin_root_path, class: "dropdown-item text-white" do %>
+    <%= link_to admin_root_path, class: "dropdown-item" do %>
       <%= glyph :cog %>
       <%= t "application.navbar.adminshort" %>
     <% end %>
@@ -47,7 +47,7 @@
 
 <li class="dropdown-divider" role="presentation"></li>
 <li>
-  <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item text-white" do %>
+  <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
     <%= glyph :log_out %>
     <%= t "application.navbar.sign_out" %>
   <% end %>
