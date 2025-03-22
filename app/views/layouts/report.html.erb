@@ -13,9 +13,11 @@
   <body>
     <div class="container">
       <div class="row exports">
-        <%= t 'reports.download' %>
-        <%= link_to 'CSV', url_for(params.to_unsafe_h.merge(format: :csv)) %>
-        <%= link_to 'PDF', url_for(params.to_unsafe_h.merge(format: :pdf)) %>
+        <div class="col-12">
+          <%= t 'reports.download' %>
+          <%= link_to 'CSV', url_for(params.to_unsafe_h.merge(format: :csv)) %>
+          <%= link_to 'PDF', url_for(params.to_unsafe_h.merge(format: :pdf)) %>
+        </div>
       </div>
       <%= yield %>
     </div>

@@ -1,0 +1,7 @@
+.btn-primary {
+  @extend .text-white;
+}
+
+.bg-info.badge {
+  color: $primary;
+}

@@ -1,58 +1,60 @@
-<div class="panel user-profile">
-  <div class="panel-body">
-    <ul class="nav nav-pills pull-right">
-      <% if admin? || @user == current_user %>
-        <li>
-          <%= link_to edit_user_path(@user) do %>
-            <%= glyph :pencil, t('global.edit') %>
-            <span><%= t "global.edit" %></span>
+<div class="card user-profile mb-4">
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <h1>
+        <small>
+          <% unless  @member.active %>
+            <%= t ".inactive" %>
           <% end %>
-        </li>
-      <% end %>
-      <% if admin? || @user != current_user %>
-        <li>
-          <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id) do %>
-            <%= glyph :time, t('global.give_time') %>
-            <span><%= t "global.give_time" %></span>
+        </small>
+        <%= @member.display_name_with_uid %>
+        <small>
+          <% if @user.superadmin? %>
+            <span class="badge label-important">
+              <%= t ".superadmin" %>
+            </span>
           <% end %>
-        </li>
-      <% end %>
-    </ul>
-    <h1>
-      <small>
-        <% unless  @member.active %>
-          <%= t ".inactive" %>
+        </small>
+      </h1>
+      <ul class="nav nav-pills justify-content-end">
+        <% if admin? || @user == current_user %>
+          <li class="nav-item">
+            <%= link_to edit_user_path(@user), class: 'nav-link' do %>
+              <%= glyph :pencil, t('global.edit') %>
+              <span><%= t "global.edit" %></span>
+            <% end %>
+          </li>
         <% end %>
-      </small>
-      <%= @member.display_name_with_uid %>
-      <small>
-        <% if @user.superadmin? %>
-          <span class="label label-important">
-            <%= t ".superadmin" %>
-          </span>
+        <% if admin? || @user != current_user %>
+          <li class="nav-item">
+            <%= link_to new_transfer_path(id: @user.id, destination_account_id: @member.account.id), class: 'nav-link' do %>
+              <%= glyph :time, t('global.give_time') %>
+              <span><%= t "global.give_time" %></span>
+            <% end %>
+          </li>
         <% end %>
-      </small>
-    </h1>
+      </ul>
+    </div>
     <div class="row">
       <%= render "users/avatar" %>
 
-      <div class="col-sm-9 col-xs-7 break-word">
+      <div class="col-sm-9 col-7 break-word">
         <%= m @user.description %>
-        <dl class="dl-horizontal">
+        <dl class="row">
           <% if @user.has_valid_email? %>
-            <dt>
+            <dt class="col-sm-3 text-end">
               <%= User.human_attribute_name(:email) %>
             </dt>
-            <dd>
+            <dd class="col-sm-9">
               <%= mail_to @user.email %>
             </dd>
           <% end %>
           <% phones = [@user.phone, @user.alt_phone].select(&:present?) %>
           <% if phones.present? %>
-            <dt>
+            <dt class="col-sm-3 text-end">
               <%= t(".phone", count: phones.size) %>
             </dt>
-            <dd>
+            <dd class="col-sm-9">
               <% phones.each_with_index do |phone, index| %>
                 <%= "—" if index != 0 %>
                 <%= phone_to phone %>
@@ -60,20 +62,20 @@
             </dd>
           <% end %>
           <% if @user.postcode.present? %>
-            <dt>
+            <dt class="col-sm-3 text-end">
               <%= t "activerecord.attributes.user.postcode" %>
             </dt>
-            <dd>
+            <dd class="col-sm-9">
               <%= @user.postcode %>
             </dd>
           <% end %>
           <% if @member.tags.present? %>
-            <dt>
+            <dt class="col-sm-3 text-end">
               <%= t "application.navbar.tags" %>
             </dt>
-            <dd>
+            <dd class="col-sm-9">
               <% @member.tags.each do |tag| %>
-                <span class="badge alert-info">
+                <span class="badge rounded-pill bg-info">
                   <%= link_to users_path tag: tag do %>
                     <%= glyph(:tag) %>
                     <%= tag %>
@@ -87,21 +89,19 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row mb-4">
   <div class="col-sm-6 offers">
-    <div class="panel panel-default break-word">
-      <div class="panel-heading">
-        <h2 class="panel-title">
-          <%= Offer.model_name.human(count: :many) %>
-          <% if @user == current_user %>
-            <a class="pull-right" href="<%= new_offer_path %>">
-              <%= glyph :plus %>
-            </a>
-          <% end %>
-        </h2>
+    <div class="card break-word">
+      <div class="card-header card-title d-flex justify-content-between">
+        <%= Offer.model_name.human(count: :many) %>
+        <% if @user == current_user %>
+          <a href="<%= new_offer_path %>">
+            <%= glyph :plus %>
+          </a>
+        <% end %>
       </div>
         <% @member.offers.active.each do |post| %>
-          <div class="row panel-body">
+          <div class="row card-body">
             <div class="col-sm-3">
               <%= link_to post, post %>
             </div>
@@ -121,19 +121,17 @@
     </div>
   </div>
   <div class="col-sm-6 inquiries">
-    <div class="panel panel-default break-word">
-      <div class="panel-heading">
-        <h2 class="panel-title">
-          <%= Inquiry.model_name.human(count: :many) %>
-          <% if @user == current_user %>
-            <a class="pull-right" href="<%= new_inquiry_path %>">
-              <%= glyph :plus %>
-            </a>
-          <% end %>
-        </h2>
+    <div class="card break-word">
+      <div class="card-header card-header card-title d-flex justify-content-between">
+        <%= Inquiry.model_name.human(count: :many) %>
+        <% if @user == current_user %>
+          <a href="<%= new_inquiry_path %>">
+            <%= glyph :plus %>
+          </a>
+        <% end %>
       </div>
         <% @member.inquiries.active.each do |post| %>
-          <div class="row panel-body">
+          <div class="row card-body">
             <div class="col-sm-3">
               <%= link_to post, post %>
             </div>
@@ -146,17 +144,17 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row mb-4">
   <div class="col-sm-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
           <%= t(".accounts") %>
         </h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
         <% if @member.manager %>
-          <p><span class="label label-default">ADMIN</span></p>
+          <p><span class="badge bg-secondary">ADMIN</span></p>
         <% end %>
         <p>
           <strong>

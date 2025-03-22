@@ -1,5 +1,5 @@
 <div class="row">
-  <table class="table table-condensed table-bordered">
+  <table class="table table-sm table-bordered">
     <thead>
       <tr>
         <th></th>
@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       <% @posts.each do |cat, ps| %>
-        <tr class="info">
+        <tr class="table-info">
           <td colspan="5"><h4><%= cat || '—' %></h4></td>
         </tr>
         <% ps.each do |post| %>
