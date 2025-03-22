@@ -4,17 +4,17 @@
   width: 100%;
   background: rgba($palette-dark-turkey ,0.8);
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     padding: 0;
   }
 
-  a {
-    margin: 0 1rem;
+  a:not(.dropdown-item) {
+    margin: 0 0.625rem;
     color: white;
     font-weight: 500;
     font-size: 16px;
 
-    @media(max-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       text-align: center;
       font-size: 14px;
     }
@@ -24,7 +24,7 @@
 .footer-left-col {
   text-align: left;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     text-align: center;
   }
 }
@@ -36,7 +36,7 @@
 .footer-right-col {
   text-align: right;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     text-align: center;
   }
 }
@@ -51,13 +51,13 @@
   & {
     display: inline-block;
 
-    @media(max-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       display: block;
       position: relative;
     }
   }
 
-  a.btn-default.dropdown-toggle {
+  a.btn-secondary.dropdown-toggle {
     & {
       background-color: transparent;
       border: 1px solid white;
@@ -65,7 +65,7 @@
     }
   }
 
-  &.open > a.btn-default.dropdown-toggle {
+  &.open > a.btn-secondary.dropdown-toggle {
     & {
       background-color: transparent;
       border: 1px solid white;

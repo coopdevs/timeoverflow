@@ -1,13 +1,17 @@
+
 @import "select2";
 @import "application/variables";
-@import "bootstrap-sprockets";
+@import "application/bootstrap-overrides";
+@import "bootstrap";
+@import "application/bootstrap-classes-overrides";
 @import "application/bootstrap-custom";
 @import "application/member-card";
 @import "application/avatar";
 @import "application/footer";
+@import "application/glyphicons";
 
 html {
-  font-size: 62.5%;
+  font-size: 14px;
 }
 
 .content {
@@ -18,7 +22,7 @@ html {
   margin-bottom: 10px;
   padding: 0 10px;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     padding: 0;
   }
 }
@@ -27,7 +31,7 @@ html {
   color: #101010;
   padding: 10px 16px;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     padding: 8px;
     font-size: 15px;
   }
@@ -36,24 +40,24 @@ html {
 .actions-menu > li {
   margin-right: 6px;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     margin-right: 2px;
   }
 }
 
 #login-box {
-  border-radius: 0.3rem;
+  border-radius: 0.125rem;
 
   form {
     border: 0;
-    border-radius: 0.3rem;
+    border-radius: 0.125rem;
     margin: 0;
     padding: 0;
   }
 
   input {
     background-color: $form-input-bg-color;
-    border-radius: 0.3rem;
+    border-radius: 0.125rem;
   }
 
   input[type="checkbox"] {
@@ -66,7 +70,7 @@ html {
   }
 
   span.show-password {
-    border-radius: 0 0.3rem 0.3rem 0;
+    border-radius: 0 0.125rem 0.125rem 0;
     cursor: pointer;
   }
 
@@ -86,13 +90,13 @@ html {
     color: $form-input-glyph;
   }
 
-  .panel-heading {
+  .card-header {
     color: darken($black, 5%);
     text-align: center;
   }
 
-  .panel-footer {
-    padding: 2rem 3rem;
+  .card-footer {
+    padding: 1.25rem 1.875rem;
 
     a {
       color: $form-a-color;
@@ -104,16 +108,23 @@ html {
     }
   }
 
-  .input-group-addon {
-    border-radius: 0.3rem 0 0 0.3rem;
+  .input-group-prepend {
+    padding: 6px 12px;
+    white-space: nowrap;
+    vertical-align: middle;
+    line-height: 1;
+    text-align: center;
+    border-radius: 0.125rem 0 0 0.125rem;
+    display: flex;
+    align-items: center;
 
-    @media(max-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       padding: 10px;
     }
   }
 
-  .input-lg, #user_email {
-    border-radius: 0 0.3rem 0.3rem 0;
+  .form-control-lg, #user_email {
+    border-radius: 0 0.125rem 0.125rem 0;
     padding: 0 4px;
   }
 
@@ -121,25 +132,25 @@ html {
     border-radius: 0;
   }
 
-  .input-group-addon, .input-lg {
+  .input-group-prepend, .form-control-lg {
     background-color: $form-input-bg-color;
     border: 0;
     box-shadow: none;
     color: $form-input-glyph;
-    font-size: 2.24rem;
+    font-size: 1.4rem;
     letter-spacing: -0.0040rem;
 
-    @media(max-width: $screen-sm-min) {
-      font-size: 1.8rem;
+    @include media-breakpoint-down(sm) {
+      font-size: 1.15rem;
     }
   }
 
   .form-control {
     border: 0;
     font-weight: 400;
-    height: 7.5rem;
+    height: 4.7rem;
 
-    @media(max-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       height: 6rem;
     }
   }
@@ -157,11 +168,11 @@ html {
 
   .btn {
     background-color: $form-input-button;
-    font-size: 2.24rem;
+    font-size: 1.4rem;
     font-weight: 400;
     letter-spacing: -0.040rem;
-    margin-top: 1rem;
-    padding: 2rem;
+    margin-top: 0.625rem;
+    padding: 1.25rem;
     border: none;
   }
 
@@ -221,10 +232,6 @@ html {
   padding: 20px 0;
 }
 
-.table-responsive {
-  overflow-x: inherit;
-}
-
 @media screen {
   html {
     min-height: 100%;
@@ -241,7 +248,7 @@ html {
     background: $white;
     border: 1px solid $border;
     border-collapse: inherit;
-    border-radius: 0.3rem;
+    border-radius: 0.125rem;
     margin-bottom:20px;
     padding: 20px;
   }
@@ -256,7 +263,7 @@ html {
       margin-top: 0;
       font-size: 32px;
 
-      @media(max-width: $screen-sm-min) {
+      @include media-breakpoint-down(sm) {
         font-size: 26px;
       }
     }
@@ -299,7 +306,7 @@ ul.statistics li{
 /*flash*/
 .alert > ul {
   list-style: none;
-  padding-left: 1.5rem;
+  padding-left: 0.95rem;
 }
 
 .alert a {
@@ -326,14 +333,26 @@ label[required]::after{
   width: 100% !important;
 }
 
-.navbar-form {
+.form-inline {
   border: 0;
   background-color: transparent;
   padding: 0;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     padding: 10px 15px;
   }
+}
+
+.navbar-toggler {
+  height: 24px;
+}
+
+.navbar-header {
+  min-height: 50px;
+}
+
+.text-white .dropdown-item {
+  color: $white;
 }
 
 .navbar .container-fluid {
@@ -341,14 +360,14 @@ label[required]::after{
 }
 
 .navbar-block {
-  margin-top: 0.2rem;
+  margin-top: 0.1875rem;
 }
 
 .navbar-nav > li > a {
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.013rem;
-  margin: 1.4rem 2rem;
+  letter-spacing: 0.008rem;
+  margin: 0.875rem 1.25rem;
   padding: 0;
 }
 
@@ -361,7 +380,7 @@ label[required]::after{
 }
 
 .navbar-brand {
-  font-size: 2.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.019rem;
 }
@@ -370,7 +389,7 @@ label[required]::after{
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-size: cover;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
     background-size: cover;
   }
@@ -405,7 +424,7 @@ label[required]::after{
   background-size: cover;
   text-align: center;
 
-  @media(max-width: $screen-sm-min) {
+  @include media-breakpoint-down(sm) {
     background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
     background-size: cover;
   }
@@ -414,28 +433,28 @@ label[required]::after{
 .landing-page .content, .pages .banner {
   h2 {
     color: $white;
-    font-size: 5.76rem;
+    font-size: 3.6rem;
     font-weight: 700;
-    letter-spacing: -0.073rem;
+    letter-spacing: -0.045rem;
     margin: 0;
     text-shadow: 1px 1px $palette-black;
   }
 
   h3 {
     color: $white;
-    font-size: 2.88rem;
+    font-size: 1.8rem;
     font-weight: 500;
     letter-spacing: -0.107rem;
-    margin-top: 1rem;
+    margin-top: 0.625rem;
     text-shadow: 1px 1px $palette-black;
   }
 
   .btn {
-    font-size: 2.88rem;
+    font-size: 1.8rem;
     font-weight: 500;
-    letter-spacing: 0.023rem;
+    letter-spacing: 0.14rem;;
     margin-top: 4rem;
-    padding: 1.5rem 6.2rem;
+    padding: 0.95rem 3.75rem;
   }
 
   .btn-info {
@@ -452,23 +471,23 @@ label[required]::after{
 .login-page {
   .checkbox {
     color: $form-login-gray-text;
-    font-size: 1.6rem;
+    font-size: 1rem;
     font-weight: 400;
     margin-bottom: 0rem;
-    margin-top: 1rem;
+    margin-top: 0.625rem;
   }
 
   form .checkbox input[type="checkbox"] {
     display: block;
     float: left;
-    height: 2rem;
-    margin-bottom: -0.2rem;
+    height: 1.25rem;
+    margin-bottom: -0.1875rem;
     margin-left: 0;
-    margin-right: 1rem;
+    margin-right: 0.625rem;
     outline: 0;
     position: relative;
-    top: -0.2rem;
-    width: 2rem;
+    top: -0.1875rem;
+    width: 1.25rem;
     -webkit-appearance: none;
   }
 
@@ -477,33 +496,33 @@ label[required]::after{
     background-size: 100%;
   }
 
-  #login-box .panel-footer {
+  #login-box .card-footer {
     background-color: $white;
-    border-top: 0.1rem solid $form-input-button;
-    font-size: 1.6rem;
+    border-top: 0.06rem solid $form-input-button;
+    font-size: 1rem;
   }
 }
 
 .unlocks-page, .confirmations-page, .passwords-page {
   #login-box form {
     border: none;
-    margin-top: 3rem;
+    margin-top: 1.875rem;
     padding: 0;
   }
 
-  .panel-body h2 {
-    font-size: 2.24rem;
+  .card-body h2 {
+    font-size: 1.4rem;
     font-weight: 500;
     margin: 0;
     padding: 0;
   }
 
-  .panel-body .description {
+  .card-body .description {
     color: $form-login-gray-text;
-    font-size: 1.6rem;
+    font-size: 1rem;
     font-weight: 400;
     letter-spacing: -0.028rem;
-    margin-top: 1rem;
+    margin-top: 0.625rem;
   }
 }
 
@@ -512,7 +531,7 @@ label[required]::after{
 
   h2 {
     color: $pages-title;
-    font-size: 2.88rem;
+    font-size: 1.8rem;
     font-weight: 600;
     letter-spacing: -0.037rem;
     margin-bottom: 0;
@@ -525,10 +544,10 @@ label[required]::after{
 
   h3 {
     color: $pages-title;
-    font-size: 1.92rem;
+    font-size: 1.2rem;
     font-weight: 500;
     letter-spacing: 0.016rem;
-    margin-top: 1.5rem;
+    margin-top: 0.95rem;
   }
 
   .header, .banner, .section-block {
@@ -552,43 +571,43 @@ label[required]::after{
 
   .feature, .feature-group {
     background-color: $features-background;
-    border-bottom: 0.1rem solid $features-separator;
+    border-bottom: 0.06rem solid $features-separator;
     border-radius: 0;
     color: $pages-text;
     display: block;
-    font-size: 1.92rem;
+    font-size: 1.2rem;
     font-weight: 400;
     letter-spacing: 0.016rem;
-    padding: 2rem 4rem;
+    padding: 1.25rem 4rem;
   }
 
   .feature-icon {
     float: left;
-    margin-right: 2rem;
+    margin-right: 1.25rem;
   }
 
   .features .first {
-    border-radius: 0.3rem 0.3rem 0 0;
+    border-radius: 0.125rem 0.125rem 0 0;
   }
 
   .features .last .feature {
     border-bottom: 0;
-    border-radius: 0 0 0.3rem 0.3rem;
+    border-radius: 0 0 0.125rem 0.125rem;
   }
 
   .feature-group {
     font-weight: 500;
-    padding-top: 3.5rem;
+    padding-top: 2.2rem;
   }
 
   .banner {
     background: image-url('home_back.jpg') no-repeat center center;
     background-size: cover;
-    margin: 8rem 0 3rem 0;
-    padding: 8rem 1rem;
+    margin: 8rem 0 1.875rem 0;
+    padding: 8rem 0.625rem;
     text-align: center;
 
-    @media(max-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       background: image-url('home_back_mobile.jpg') no-repeat center center fixed;
       background-size: cover;
     }
@@ -599,12 +618,12 @@ label[required]::after{
     }
 
     h3 {
-      font-size: 1.92rem;
+      font-size: 1.2rem;
       font-weight: 500;
     }
 
     .btn {
-      font-size: 2.88rem;
+      font-size: 1.8rem;
     }
   }
 
@@ -614,7 +633,7 @@ label[required]::after{
     }
 
     p {
-      font-size: 1.92rem;
+      font-size: 1.2rem;
       font-weight: 400;
       letter-spacing: 0.016rem;
       margin-bottom: 4rem;
@@ -682,4 +701,8 @@ label[required]::after{
     margin-right: 12px;
     cursor: pointer;
   }
+}
+
+.hide {
+  display: none;
 }

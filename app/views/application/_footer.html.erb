@@ -1,14 +1,14 @@
 <div class="footer container-fluid">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 footer-left-col">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-4 footer-left-col">
         <a href="https://adbdt.org/contacta/" target="_blank"><%= t('layouts.application.help') %></a>
-        <%= link_to t('application.terms_conditions'), tnc_path, data: { target: '#modal', toggle: 'modal' } %>
+        <%= link_to t('application.terms_conditions'), tnc_path, remote: true, data: { bs_target: '#modal', bs_toggle: 'modal' } %>
       </div>
-      <div class="col-xs-12 col-sm-2 col-md-2 col-lg-4 footer-center-col">
+      <div class="col-12 col-sm-2 col-md-2 col-lg-4 footer-center-col">
         <%= render 'application/menus/language_switcher' %>
       </div>
-      <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 footer-right-col">
+      <div class="col-12 col-sm-5 col-md-5 col-lg-4 footer-right-col">
         <a href="https://github.com/coopdevs/timeoverflow" target="_blank">Github</a>
       </div>
     </div>

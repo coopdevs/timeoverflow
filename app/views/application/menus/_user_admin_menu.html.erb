@@ -1,8 +1,7 @@
-<li class="dropdown">
-  <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+<li class="dropdown nav-item">
+  <a class="dropdown-toggle nav-link text-white text-decoration-none" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
     <%= image_tag avatar_url(current_user), style: "margin: -8px auto" %>
     <%= current_user.email %>
-    <b class="caret"></b>
   </a>
   <ul class="dropdown-menu" role="menu">
     <%= render 'application/menus/user_admin_menu_items' %>

@@ -249,7 +249,7 @@ RSpec.describe UsersController do
         it 'links to new_transfer_path' do
           get "show", params: { id: user.id }
           expect(response.body).to include(
-            "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}\">"
+            "<a class=\"nav-link\" href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}\">"
           )
         end
 
