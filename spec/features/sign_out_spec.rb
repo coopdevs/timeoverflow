@@ -13,6 +13,6 @@ RSpec.feature 'sign out' do
     click_link user.email
     click_link I18n.t('application.navbar.sign_out')
 
-    expect(current_path).to eq(root_path)
+    expect(page).to have_text(I18n.t("layouts.application.login"))
   end
 end
