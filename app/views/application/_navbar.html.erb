@@ -25,9 +25,9 @@
               <% end %>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right d-md-none mt-4 text-white">
+            <ul class="nav navbar-nav navbar-right d-md-none text-white">
               <% if current_user %>
-                <li class="nav-item">
+                <li class="nav-item mt-4">
                   <%= image_tag avatar_url(current_user) %>
                   <%= current_user.email %>
                 </li>
