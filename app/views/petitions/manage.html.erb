@@ -41,7 +41,7 @@
               <th><%= t('activerecord.attributes.user.username') %></th>
               <th><%= User.human_attribute_name(:email) %></th>
               <th><%= User.human_attribute_name(:phone) %></th>
-              <% if current_user.manages?(current_organization) && @status == 'pending' %>
+              <% if @status == 'pending' %>
                 <th>
                   <span class="glyphicon glyphicon-hand-down"></span>
                   <%= t("global.table.actions") %>
@@ -58,7 +58,7 @@
                 <td><%= user.username %></td>
                 <td><%= user.email %></td>
                 <td><%= phone_to user.phone %></td>
-                <% if current_user.manages?(current_organization) && @status == 'pending'  %>
+                <% if @status == 'pending' %>
                   <td>
                     <%= link_to t('terms.accept'), petition_path(id: petition.id, status: 'accepted'), class: 'btn btn-primary', method: :put %>
                     <%= link_to t('global.decline'), petition_path(id: petition.id, status: 'declined'), class: 'btn btn-danger', method: :put %>
