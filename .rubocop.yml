@@ -1,244 +1,25 @@
-require: rubocop-rails
+# Omakase Ruby styling for Rails
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
 
+# Your own specialized rules go here
 AllCops:
   Exclude:
-    - db/schema.rb
+    - "db/**/*"
+    - "config/**/*"
 
-Naming/AccessorMethodName:
+Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
-
-Rails/HttpPositionalArguments:
-  Enabled: true
-
-Style/Alias:
+Layout/SpaceInsidePercentLiteralDelimiters:
   Enabled: false
-
-Style/ArrayJoin:
+Layout/CaseIndentation:
   Enabled: false
-
-Style/AsciiComments:
+Layout/EndAlignment:
   Enabled: false
-
-Naming/AsciiIdentifiers:
-  Enabled: false
-
-Style/Attr:
-  Enabled: false
-
-Metrics/BlockNesting:
-  Enabled: false
-
-Style/CaseEquality:
-  Enabled: false
-
-Style/CharacterLiteral:
-  Enabled: false
-
-Style/ClassAndModuleChildren:
-  Enabled: false
-
-Metrics/ClassLength:
-  Enabled: false
-
-Style/ClassVars:
-  Enabled: false
-
-Style/CollectionMethods:
-  PreferredMethods:
-    find: detect
-    reduce: inject
-    collect: map
-    find_all: select
-
-Style/ColonMethodCall:
-  Enabled: false
-
-Style/CommentAnnotation:
-  Enabled: false
-
-Metrics/CyclomaticComplexity:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Layout/DotPosition:
-  EnforcedStyle: trailing
-
-Layout/ConditionPosition:
-  Enabled: false
-
-Style/DoubleNegation:
-  Enabled: false
-
-Style/EachWithObject:
-  Enabled: false
-
-Style/EmptyLiteral:
-  Enabled: false
-
-Style/Encoding:
-  Enabled: false
-
-Style/EvenOdd:
-  Enabled: false
-
-Naming/FileName:
-  Enabled: false
-
-Style/FormatString:
-  Enabled: false
-
-Style/GlobalVars:
-  Enabled: false
-
-Style/GuardClause:
-  Enabled: false
-
-Style/IfUnlessModifier:
-  Enabled: false
-
-Style/IfWithSemicolon:
-  Enabled: false
-
-Style/InlineComment:
-  Enabled: false
-
-Style/Lambda:
-  Enabled: false
-
-Style/LambdaCall:
-  Enabled: false
-
-Style/LineEndConcatenation:
-  Enabled: false
-
-Layout/LineLength:
-  Max: 100
-
-Metrics/MethodLength:
-  Enabled: false
-
-Style/ModuleFunction:
-  Enabled: false
-
-Style/NegatedIf:
-  Enabled: false
-
-Style/NegatedWhile:
-  Enabled: false
-
-Style/Next:
-  Enabled: false
-
-Style/NilComparison:
-  Enabled: false
-
-Style/Not:
-  Enabled: false
-
-Style/NumericLiterals:
-  Enabled: false
-
-Style/OneLineConditional:
-  Enabled: false
-
-Metrics/ParameterLists:
+Layout/ElseAlignment:
   Enabled: false
 
 Style/PercentLiteralDelimiters:
   Enabled: false
-
-Style/PerlBackrefs:
-  Enabled: false
-
-Naming/PredicateName:
-  ForbiddenPrefixes:
-    - is_
-
-Style/Proc:
-  Enabled: false
-
-Style/RaiseArgs:
-  Enabled: false
-
-Style/RegexpLiteral:
-  Enabled: false
-
-Style/SelfAssignment:
-  Enabled: false
-
-Style/SingleLineBlockParams:
-  Enabled: false
-
-Style/SingleLineMethods:
-  Enabled: false
-
-Style/SignalException:
-  Enabled: false
-
-Style/SpecialGlobalVars:
-  Enabled: false
-
 Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
-Style/VariableInterpolation:
-  Enabled: false
-
-Style/TrailingCommaInArrayLiteral:
-  Enabled: false
-
-Style/TrailingCommaInHashLiteral:
-  Enabled: false
-
-Style/TrailingCommaInArguments:
-  Enabled: false
-
-Style/TrivialAccessors:
-  Enabled: false
-
-Style/WhenThen:
-  Enabled: false
-
-Style/WhileUntilModifier:
-  Enabled: false
-
-Lint/AmbiguousOperator:
-  Enabled: false
-
-Lint/AmbiguousRegexpLiteral:
-  Enabled: false
-
-Lint/AssignmentInCondition:
-  Enabled: false
-
-Lint/DeprecatedClassMethods:
-  Enabled: false
-
-Lint/ElseLayout:
-  Enabled: false
-
-Lint/SuppressedException:
-  Enabled: false
-
-Lint/LiteralInInterpolation:
-  Enabled: false
-
-Lint/Loop:
-  Enabled: false
-
-Lint/ParenthesesAsGroupedExpression:
-  Enabled: false
-
-Lint/RequireParentheses:
-  Enabled: false
-
-Lint/UnderscorePrefixedVariableName:
-  Enabled: false
-
-Lint/Void:
-  Enabled: false
-
-Lint/FlipFlop:
   Enabled: false

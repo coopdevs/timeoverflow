@@ -87,7 +87,7 @@ class User < ApplicationRecord
     persister = ::Persister::MemberPersister.new(member)
     persister.save
 
-    return member if member.persisted?
+    member if member.persisted?
   end
 
   def active?(organization)

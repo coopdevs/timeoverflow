@@ -45,8 +45,7 @@ end
 
 group :development, :test do
   gem 'byebug', '~> 11.0'
-  gem 'rubocop', '~> 1.6', require: false
-  gem 'rubocop-rails', '~> 2.9', require: false
+  gem 'rubocop-rails-omakase', require: false
   gem 'dotenv-rails', '~> 3.1.7'
 end
 

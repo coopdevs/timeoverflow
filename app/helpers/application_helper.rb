@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def gravatar_url(user, size = 32)
-    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+    gravatar_id = Digest::MD5.hexdigest(user.email).downcase
     gravatar_options = {
       set: "set1",
       gravatar: "hashed",

@@ -43,7 +43,7 @@ RSpec.describe InquiriesController do
           expect do
             post "create", params: { inquiry: { user: another_member.user,
                                       category_id: test_category.id,
-                                      title: "New title" }}
+                                      title: "New title" } }
           end.to change(Inquiry, :count).by(1)
         end
       end

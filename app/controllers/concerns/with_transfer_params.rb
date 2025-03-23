@@ -4,7 +4,7 @@ module WithTransferParams
       :destination,
       :amount,
       :reason,
-      :post_id,
+      :post_id
     ]
 
     permitted_transfer_params.push(:source) if admin?

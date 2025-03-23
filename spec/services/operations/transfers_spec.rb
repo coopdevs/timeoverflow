@@ -37,4 +37,3 @@ RSpec.describe Operations::Transfers do
     end
   end
 end
-

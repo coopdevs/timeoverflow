@@ -32,4 +32,3 @@ RSpec.feature 'create offer' do
     end
   end
 end
-
