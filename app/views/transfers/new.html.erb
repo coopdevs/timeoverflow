@@ -11,9 +11,7 @@
                 as: :integer,
                 input_html: {
                   min: 0,
-                  max: 20,
-                  "data-rule-either-hours-minutes-informed" => "true",
-                  "data-rule-range" => "[0,20]"
+                  "data-rule-either-hours-minutes-informed" => "true"
                 } %>
     <%= f.input :minutes,
                 as: :integer,
@@ -29,8 +27,8 @@
     <%= f.input :destination, as: :hidden %>
 
     <% if sources.present? %>
-      <div class="form-group">
-        <%= f.label :source %>
+      <div class="mb-3">
+        <%= f.label :source, class: "form-label" %>
         <%= f.select :source,
           options_for_select(
             TransferSourcesOptions.new(sources).to_a,
@@ -44,7 +42,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-default", data: { disable_with: "..." } %>
-    <label class="js-error-amount error invisible"><%= t ".error_amount" %></label>
+    <%= f.button :submit, class: "btn btn-secondary", data: { disable_with: "..." } %>
+    <label class="js-error-amount form-label error invisible"><%= t ".error_amount" %></label>
   </div>
 <% end %>

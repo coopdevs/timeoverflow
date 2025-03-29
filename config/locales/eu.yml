@@ -65,7 +65,7 @@ eu:
         notifications: Jaso eposta jakinarazpenak
         organization: Erakundea
         phone: Telefonoa
-        postcode: 
+        postcode:
         push_notifications: Jaso jakinarazpenak sakelakoan
         registration_date: Erregistratze-da
         registration_number: Erabiltzaile kodea
@@ -274,6 +274,7 @@ eu:
     contact_details: Kontaktuaren datuak
     create: Sortu
     date: Datuak
+    decline:
     delete: Ezabatu
     demote: Ohiko erabiltzaile  bihurtu
     edit: Aldaketak egin
@@ -281,6 +282,7 @@ eu:
     filter: Iragazkia
     from: tik
     give_time: Denbora eman
+    here:
     home: Hasiera
     information: Informazioa
     locales_header: Hizkuntza aldatu
@@ -288,12 +290,13 @@ eu:
     more: 'Gehiago ikusi  '
     movements: Mugimenduak
     next: Hurrengoa
+    or:
     promote: Administratzaile bihurtu
     reason: Arrazoia
     required_field: Derrigorrez bete beharrekoa
     save: Gorde
     search: Bilatu
-    search_location: 
+    search_location:
     show: Erakutsi
     source_destination: Jatorria/ helmuga
     statistics: Estatistika
@@ -310,11 +313,13 @@ eu:
   layouts:
     application:
       about: TimeOverflowri buruz
-      bdtnear: 
+      bdtnear:
       edit_org: " %{organization} aldaketak egin"
       edit_profile: Nire profila aldatu
       help: Laguntza
       login: Sartu
+      manage_memberships:
+      no_memberhsip_warning: Zure erregistroa osatuko da <a href="%{link}">Denbora Banku batera sartzeko</a> eskaera egin eta Denbora Bankuak zure eskaera onartzen duenean. 30 eguneko epean Denbora Banku batera sartzeko eskaerarik egiten ez baduzu, zure erabiltzailea sistematik ezabatuko da.
     report:
       report_title: TXOSTENA
   locales:
@@ -366,6 +371,8 @@ eu:
       give_time_for: Eskaintza honengatik denbora eman
       offered_by: Eskaintzaren emaileak
   organization_notifier:
+    member_deleted:
+      body: Erabiltzaileak %{username} erakundetik baja eman du.
     recent_posts:
       subject: Asteroko buletina
       text1: Argitaraturiko azken eskaintzak
@@ -379,7 +386,7 @@ eu:
       new: Banku berria
     show:
       contact_information: kontaktuaren informazioa
-      join_timebank: 
+      join_timebank:
   pages:
     about:
       app-mobile: Mugikorrerako Appa
@@ -389,8 +396,8 @@ eu:
       banner-title: Denbora banku bat al zara?
       empower-adbdt: ADBdT
       empower-adbdt-title: Denbora Bankuen garapenerako elkartea
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: Mapa ikusi
@@ -411,12 +418,26 @@ eu:
       subtitle: TimeOverflow librea dohakoa eta kolaborazio bidezkoa da
       title: Denbora  bankuek  diseinaturiko softwarea,
       title2: Denbora bankuentzat
+  petitions:
+    application_sent:
+    application_sent_body:
+    application_status:
+    applications:
+    apply:
+    new:
+    new_body:
+    status:
+      accepted:
+      declined:
+      pending:
+      sent:
+    status_applications:
   posts:
     show:
       info: "%{type} hau %{organization}(e)ri dagokio."
   reports:
     download: Jaitsi
-    download_all: 
+    download_all:
   shared:
     movements:
       delete_reason: Zihur zaude azalpen hau ezabatu nahi duzula?
@@ -502,6 +523,13 @@ eu:
     new:
       error_amount: Denbora 0 baino handiagoa izan behar da
   users:
+    avatar:
+      change_your_image:
+      crop_the_image:
+      max_size_warning:
+    confirm_email:
+      email_sent:
+      please:
     edit:
       edit_user: Erabiltzailea aldatu
     form:
@@ -531,7 +559,6 @@ eu:
       accounts: Kontuak
       balance: 'Balantzea:'
       categories: Eskainiriko zerbitzuak
-      change_your_image: Aldartu zure irudia
       created_at: 'Alta:'
       data: Erabiltzailearen datuak
       date: Eguna
@@ -539,6 +566,7 @@ eu:
       from_to: Jatorria/ Helmuga
       inactive: "( Ez erabilgarri)"
       inactive_user: Erabiltzailea ez dago erabilgarri
+      invalid_format:
       phone:
         one: Telefono zenbakia
         other: Telefono zenbakiak
@@ -551,7 +579,9 @@ eu:
       active_warning: " %{user} erabiltzailearen kontuaren egoera aldatuko duzu"
       cancel_warning: " %{user} erabiltzailea D bankutik ezabatuko duzu"
       deactivate: Desaktibatu
+      delete_membership:
       manage_warning: "%{user} erabiltzailearen onurak aldatuko dituzu"
+      sure_delete:
   views:
     pagination:
       first: Lehenengoa

@@ -1,8 +1,12 @@
 send_push_notifications_job:
-  cron: '*/5 * * * *'
+  cron: 'every 5 minutes'
   class: 'SendPushNotificationsJob'
   queue: cron
 weekly_digest:
-  cron: '0 9 * * 1' # every monday at 9am
+  cron: 'every monday at 9am'
   class: 'OrganizationNotifierJob'
+  queue: cron
+membership_warning:
+  cron: 'every day at 10am'
+  class: 'MembershipWarningJob'
   queue: cron

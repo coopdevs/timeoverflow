@@ -1,10 +1,16 @@
 class OrganizationsController < ApplicationController
   before_action :load_resource, only: [:show, :edit, :update, :set_current]
+  before_action :user_should_be_confirmed
 
   def index
-    organizations  = Organization.all
+    if current_user
+      user_organizations  = Organization.left_outer_joins(:petitions).where(petitions: { user_id: current_user.id })
+      @user_organizations = user_organizations.or(Organization.where(id: current_user.organizations.pluck(:id))).distinct
+    end
+
+    organizations  = Organization.where.not(id: @user_organizations&.pluck(:id))
     organizations  = organizations.search_by_query(params[:q]) if params[:q].present?
-    @organizations = organizations.page(params[:page]).per(25)
+    @organizations = organizations.order(highlighted: :desc).page(params[:page]).per(25)
   end
 
   def show
@@ -46,6 +52,6 @@ class OrganizationsController < ApplicationController
   def organization_params
     params[:organization].permit(*%w[name theme email phone web
                                      public_opening_times description address
-                                     neighborhood city domain])
+                                     neighborhood city domain logo])
   end
 end

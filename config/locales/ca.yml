@@ -274,6 +274,7 @@ ca:
     contact_details: Dades de contacte
     create: Crear
     date: Data
+    decline: rebutjar
     delete: Esborrar
     demote: Convertir en usuari normal
     edit: Modificar
@@ -281,6 +282,7 @@ ca:
     filter: Filtre
     from: Des de
     give_time: Transferir temps
+    here: aquí
     home: Inici
     information: Informació
     locales_header: canviar llengua
@@ -288,6 +290,7 @@ ca:
     more: Veure més
     movements: Moviments
     next: Següent
+    or: o
     promote: Convertir en administrador
     reason: Raó
     required_field: "* Camp obligatori"
@@ -315,6 +318,8 @@ ca:
       edit_profile: Modificar perfil
       help: Ajuda
       login: Entra
+      manage_memberships: Gestiona membres
+      no_memberhsip_warning: El teu registre es completarà un cop hagis sol·licitat <a href="%{link}">unir-te a un Banc de Temps</a> i el Banc de Temps accepti la teva sol·licitud. Si no sol·licites unir-te a un Banc de Temps en un termini de 30 dies, el teu usuari serà eliminat del sistema.
     report:
       report_title: INFORME
   locales:
@@ -366,6 +371,8 @@ ca:
       give_time_for: Transferir temps per aquesta oferta
       offered_by: Oferents
   organization_notifier:
+    member_deleted:
+      body: L'usuari %{username} s'ha donat de baixa de l'organització.
     recent_posts:
       subject: Butlletí setmanal
       text1: 'Últimas ofertas publicadas:'
@@ -389,8 +396,8 @@ ca:
       banner-title: Ets un Banc de Temps?
       empower-adbdt: ADBdT
       empower-adbdt-title: Associació pel Desenvolupament dels Bancs de Temps
-      empower-coopdevs: CoopDevs
-      empower-coopdevs-title: CoopDevs
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
       empower-github: Github
       empower-github-title: Github
       empower-showmap: veure mapa
@@ -411,6 +418,20 @@ ca:
       subtitle: TimeOverflow és lliure, gratuït i col·laboratiu
       title: El software disenyat per i per
       title2: als Bancs de Temps
+  petitions:
+    application_sent: Sol·licitud enviada correctament
+    application_sent_body: Hola! La teva sol·licitud a %{organization_name} s'ha enviat correctament. Algú de l'equip del banc de temps es posarà en contacte amb tu per finalitzar el procés dalta.
+    application_status: Sol·licitud %{status}
+    applications: Sol·licituds
+    apply: Sol·licita unir-te
+    new: Nova sol·licitud
+    new_body: Hola, %{username} acaba de sol·licitar unir-se al Banc de Temps %{organization_name}. Pots accedir %{here_link} per acceptar o rebutjar la sol·licitud. Un cop acceptis la sol·licitud, l'usuari apareixerà automàticament a la teva llista d'usuaris.
+    status:
+      accepted: acceptada
+      declined: rebutjada
+      pending: pendent
+      sent: enviada
+    status_applications: "%{status} sol·licituds"
   posts:
     show:
       info: Aquesta %{type} pertany a %{organization}.
@@ -502,6 +523,13 @@ ca:
     new:
       error_amount: El temps ha de ser més gran que 0
   users:
+    avatar:
+      change_your_image: Canvia la teva imatge
+      crop_the_image: Retalla la imatge
+      max_size_warning: La imatge és massa gran, el màxim permès és de %{size}MB
+    confirm_email:
+      email_sent: T'hem enviat un correu electrònic a %{email}. Un cop confirmis el teu compte de correu podràs sol·licitar unir-te a qualsevol organització.
+      please: Si us plau, confirma el teu correu electrònic.
     edit:
       edit_user: Canviar usuari
     form:
@@ -531,7 +559,6 @@ ca:
       accounts: Comptes
       balance: 'Balanç:'
       categories: Serveis Ofertats
-      change_your_image: Canvia la teva imatge
       created_at: 'Alta:'
       data: Dades de l'usuari
       date: Data
@@ -539,6 +566,7 @@ ca:
       from_to: Origen/Destí
       inactive: "(Inactiu)"
       inactive_user: L'usuari no està actiu
+      invalid_format: Format invàlid, trieu ".jpg", ".jpeg" o ".png".
       phone:
         one: Telèfon
         other: Telèfons
@@ -551,7 +579,9 @@ ca:
       active_warning: Vas a canviar l'estat del compte de l'usuari %{user}
       cancel_warning: Vas a eliminar del banc a l'usuari %{user}
       deactivate: Desactivar
+      delete_membership: Elimina pertinença
       manage_warning: Vas a canviar els privilegis de l'usuari %{user}
+      sure_delete: Estàs segur que vols sortir de %{organization_name}?
   views:
     pagination:
       first: "&laquo; Primera"

@@ -8,6 +8,6 @@ class TermsController < ApplicationController
 
   def accept
     current_user.touch :terms_accepted_at
-    redirect_to root_path
+    redirect_to(current_user.organizations.empty? ? organizations_path : root_path)
   end
 end

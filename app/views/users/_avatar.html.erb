@@ -1,0 +1,49 @@
+<div class="col-sm-3 col-5 text-center">
+  <% if @user == current_user %>
+    <%= image_tag avatar_url(@user, 140) %>
+    <%= form_with url: update_avatar_path, id: "form_photo", method: :put do |f| %>
+      <%= label_tag "avatar-js", "avatar", class: "form-label" do %>
+        <a class="btn btn-link">
+          <%= glyph :pencil %>
+          <%= t ".change_your_image" %>
+        </a>
+      <% end %>
+      <%= f.file_field :avatar,
+                       id: "avatar-js",
+                       class: "d-none",
+                       accept: "image/*" %>
+      <div class="modal fade" id="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><%= t ".crop_the_image" %></h4>
+            </div>
+            <div class="modal-body">
+              <div id="container_crop" class="col-12">
+                <div id="crop_panel"></div>
+                <img id="original_img">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="form-actions">
+                <%= f.hidden_field :height_width, value: 200 %>
+                <%= f.hidden_field :width_offset, value: 1 %>
+                <%= f.hidden_field :height_offset, value: 1 %>
+                <%= f.hidden_field :original_width, value: 1 %>
+
+                <%= f.button :submit, class: "btn btn-secondary", data: { dismiss: "modal" } do %>
+                  <%= t("users.new.cancel") %>
+                <% end %>
+                <%= f.button :submit, class: "btn btn-primary" do %>
+                  <%= t("global.save") %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <%= image_tag avatar_url(@user, 140) %>
+  <% end %>
+</div>

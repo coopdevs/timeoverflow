@@ -32,7 +32,7 @@ RSpec.describe MemberDecorator do
 
   describe '#link_to_self' do
     subject { decorator.link_to_self }
-    it { is_expected.to match("members/#{member.user.id}")}
+    it { is_expected.to match("members/#{member.user.id}") }
   end
 
   describe '#mail_to' do
@@ -67,11 +67,6 @@ RSpec.describe MemberDecorator do
     end
   end
 
-  describe '#avatar_img' do
-    subject { decorator.avatar_img }
-    it { is_expected.to match(/gravatar/)}
-  end
-
   describe '#account_balance' do
     subject { decorator.account_balance }
     it { is_expected.to eq('&mdash;') }
@@ -89,16 +84,16 @@ RSpec.describe MemberDecorator do
 
   describe '#toggle_manager_member_path' do
     subject { decorator.toggle_manager_member_path }
-    it { is_expected.to include("members/#{member.id}/toggle_manager")}
+    it { is_expected.to include("members/#{member.id}/toggle_manager") }
   end
 
   describe '#cancel_member_path' do
     subject { decorator.cancel_member_path }
-    it { is_expected.to include("members/#{member.id}")}
+    it { is_expected.to include("members/#{member.id}") }
   end
 
   describe '#toggle_active_member_path' do
     subject { decorator.toggle_active_member_path }
-    it { is_expected.to include("members/#{member.id}/toggle_active")}
+    it { is_expected.to include("members/#{member.id}/toggle_active") }
   end
 end

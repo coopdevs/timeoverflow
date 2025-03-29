@@ -1,15 +1,15 @@
 RSpec.describe OrganizationsController do
   let!(:organization) { Fabricate(:organization) }
+  let!(:second_organization) { Fabricate(:organization) }
   let(:member) { Fabricate(:member, organization: organization) }
   let(:user) { member.user }
-  let!(:second_organization) { Fabricate(:organization) }
 
   describe 'GET #index' do
     context 'without parameters' do
       it 'populates and array of organizations' do
         get :index
 
-        expect(assigns(:organizations)).to eq([organization, second_organization])
+        expect(assigns(:organizations)).to include(organization, second_organization)
       end
     end
 
@@ -58,6 +58,17 @@ RSpec.describe OrganizationsController do
       it 'populates an array of organizations ignoring accents' do
         get :index, params: { q: 'Sevillá' }
 
+        expect(assigns(:organizations)).to eq([second_organization])
+      end
+    end
+
+    context 'a user is logged' do
+      before { login(member.user) }
+
+      it 'populates an array of user organizations' do
+        get :index
+
+        expect(assigns(:user_organizations)).to include(member.organization)
         expect(assigns(:organizations)).to eq([second_organization])
       end
     end

@@ -1,15 +1,31 @@
 <%= show_error_messages!(@user) %>
 <%= simple_form_for @user do |f| %>
+  <%= f.hidden_field :locale, value: I18n.locale %>
+  <%= invisible_captcha %>
+
   <div class="form-inputs">
     <%= f.input :username %>
 
-    <% if admin? %>
+    <% if admin? || short %>
       <%= f.input :email %>
       <% if @user.unconfirmed_email.present? %>
         <%= f.input :unconfirmed_email, readonly: true %>
       <% end %>
     <% else %>
       <%= f.input :email, readonly: true %>
+    <% end %>
+
+    <% if short %>
+      <div class="mb-3">
+        <label class="col-form-label form-label" for="user_password"><abbr title="required">*</abbr> <%= t('application.login_form.password') %></label>
+        <div class="input__password-eye">
+          <input class="form-control" required type="password" name="user[password]" id="user_password">
+          <span class="show-password">
+            <%= glyph(:eye_close) %>
+          </span>
+        </div>
+      </div>
+      <%= hidden_field_tag 'from_signup', 'true' %>
     <% end %>
 
     <%= f.input :phone %>
@@ -21,26 +37,29 @@
                 include_blank: :true %>
     <%= f.input :description, as: "text" %>
     <%= f.input :postcode %>
-    <%= label_tag :tag_list, t('activerecord.attributes.post.tag_list') %>
-    <div class='form-group'>
-      <%= select_tag :tag_list,
-                     options_for_select(member.tags, member.tags),
-                     multiple: true,
-                     data: { placeholder: t("application.tips.entertag"), model: "member" },
-                     id: "tags-js",
-                     class: "form-control" %>
-    </div>
 
-    <div class='form-group'>
-      <label><%= t('.notifications') %></label>
-      <div class="checkbox">
-        <%= f.label :notifications do %>
+    <% if current_organization %>
+      <%= label_tag :tag_list, t('activerecord.attributes.post.tag_list'), class: "form-label" %>
+      <div class='mb-3'>
+        <%= select_tag :tag_list,
+                      options_for_select(member.tags, member.tags),
+                      multiple: true,
+                      data: { placeholder: t("application.tips.entertag"), model: "member" },
+                      id: "tags-js",
+                      class: "form-control" %>
+      </div>
+    <% end %>
+
+    <div class='mb-3'>
+      <label class="form-label"><%= t('.notifications') %></label>
+      <div class="form-check">
+        <%= f.label :notifications, class: "form-label" do %>
           <%= f.check_box :notifications %>
           <%= t('activerecord.attributes.user.notifications') %>
         <% end %>
       </div>
-      <div class="checkbox">
-        <%= f.label :push_notifications do %>
+      <div class="form-check">
+        <%= f.label :push_notifications, class: "form-label" do %>
           <%= f.check_box :push_notifications %>
           <%= t('activerecord.attributes.user.push_notifications') %>
         <% end %>
@@ -49,9 +68,12 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit %>
-    <% if @user.new_record? %>
-      <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more' %>
+
+    <% if !short %>
+      <% if @user.new_record? %>
+        <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more' %>
+      <% end %>
+      <%= link_to t('users.new.cancel'), users_path, class: "btn btn-secondary" %>
     <% end %>
-    <%= link_to t('users.new.cancel'), users_path, class: "btn btn-default" %>
   </div>
 <% end %>

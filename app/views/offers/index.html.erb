@@ -1,38 +1,32 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <%= Offer.model_name.human(count: :many) %>
-        <%= render "shared/show_filter_hint" %>
-      </h1>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <%= Offer.model_name.human(count: :many) %>
+      <%= render "shared/show_filter_hint" %>
+    </h1>
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <%= render "shared/post_filters", base_path: offers_path %>
+<div class="row">
+  <%= render "shared/post_filters", base_path: offers_path %>
 
-    <div class="col-md-4">
-      <% if current_user && current_organization && !params[:org] %>
-        <ul class="nav navbar-nav pull-right">
-          <li>
-            <%= link_to new_offer_path do %>
-              <%= glyph :plus %>
-              <%= t "helpers.submit.create", model: Offer.model_name.human %>
-            <% end %>
-          </li>
-        </ul>
-      <% end %>
-    </div>
+  <div class="col-md-4">
+    <% if current_user && current_organization && !params[:org] %>
+      <ul class="nav navbar-nav text-end">
+        <li class="nav-item">
+          <%= link_to new_offer_path, class: 'nav-link text-primary' do %>
+            <%= glyph :plus %>
+            <%= t "helpers.submit.create", model: Offer.model_name.human %>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
   </div>
 </div>
 
-<div class="container-fluid offers">
-  <div class="row">
-    <div class="col-md-12">
-      <%= render "shared/posts", posts: @offers %>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <%= render "shared/posts", posts: @offers %>
   </div>
 </div>
 

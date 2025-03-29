@@ -1,0 +1,51 @@
+version: '3'
+services:
+  app:
+    build: .
+    volumes:
+      - ./entrypoint.sh:/app/entrypoint.sh
+      - ./db/seeds.rb:/app/db/seeds.rb
+      - ./storage:/app/storage
+    environment:
+      - DATABASE_URL=postgres://postgres:timeoverflow@db/timeoverflow
+      - SECRET_KEY_BASE=d2a645fb46fbd3d4380fb22230ddea4062570eb00853ca5dfe97f8bb1cbff1ad6891c573a4b4b06beb2d0baf59afc9e00794314490a644fc5808ad6cbc3a6379
+      - FORCE_SSL=false
+      - RAILS_LOG_LEVEL=debug
+      - REDIS_URL=redis://redis:6379/0
+      - ADMINS=admin@timeoverflow.org
+      - STORAGE_PROVIDER=local
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - redis
+  sidekiq:
+    build: .
+    volumes:
+      - ./entrypoint.sh:/app/entrypoint.sh
+      - ./storage:/app/storage
+    environment:
+      - DATABASE_URL=postgres://postgres:timeoverflow@db/timeoverflow
+      - SECRET_KEY_BASE=d2a645fb46fbd3d4380fb22230ddea4062570eb00853ca5dfe97f8bb1cbff1ad6891c573a4b4b06beb2d0baf59afc9e00794314490a644fc5808ad6cbc3a6379
+      - FORCE_SSL=false
+      - RAILS_LOG_LEVEL=debug
+      - REDIS_URL=redis://redis:6379/0
+      - ADMINS=admin@timeoverflow.org
+      - STORAGE_PROVIDER=local
+      - RUN_SIDEKIQ=true
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_PASSWORD=timeoverflow
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  redis:
+    image: redis
+    volumes:
+      - redis_data:/data
+volumes:
+  pg_data:
+  redis_data:

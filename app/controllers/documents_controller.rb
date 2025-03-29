@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       format.html do
         if params[:modal]
-          render "show+modal", layout: false
+          render partial: "show+modal", layout: false
         end
       end
     end

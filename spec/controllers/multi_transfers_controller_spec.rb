@@ -37,7 +37,7 @@ RSpec.describe MultiTransfersController, type: :controller do
 
       post :step, params: params.merge!(
         step: 5,
-        transfer: {amount: 3600, reason: 'because of reasons'}
+        transfer: { amount: 3600, reason: 'because of reasons' }
       )
 
       post :create, params: params
@@ -69,7 +69,7 @@ RSpec.describe MultiTransfersController, type: :controller do
 
       post :step, params: params.merge!(
         step: 5,
-        transfer: {amount: 3600, reason: 'because of reasons'}
+        transfer: { amount: 3600, reason: 'because of reasons' }
       )
 
       post :create, params: params
@@ -102,7 +102,7 @@ RSpec.describe MultiTransfersController, type: :controller do
 
         post :step, params: params.merge!(
           step: 5,
-          transfer: {amount: 3600, reason: 'because of reasons'}
+          transfer: { amount: 3600, reason: 'because of reasons' }
         )
 
         post :create, params: params
@@ -128,4 +128,3 @@ RSpec.describe MultiTransfersController, type: :controller do
     end
   end
 end
-

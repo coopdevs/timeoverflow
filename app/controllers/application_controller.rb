@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
   MissingTOSAcceptance = Class.new(Exception)
   OutadedTOSAcceptance = Class.new(Exception)
 
-  append_before_action :check_for_terms_acceptance!, unless: :devise_controller?
+  before_action :set_locale
+  before_action :check_for_terms_acceptance!, unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_locale,
-                :set_current_organization,
+  before_action :set_current_organization,
                 :store_user_location
 
   rescue_from MissingTOSAcceptance, OutadedTOSAcceptance do
@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
     elsif user.members.present?
       users_path
     else
-      page_path("about")
+      organizations_path
     end
   end
 
@@ -121,10 +121,18 @@ class ApplicationController < ActionController::Base
     render 'errors/not_found', status: 404
   end
 
-  def member_should_be_active
-    if !current_member.active
+  def member_should_exist_and_be_active
+    if !current_member
+      redirect_to organizations_path
+    elsif !current_member.active
       flash[:error] = I18n.t('users.index.account_deactivated')
       redirect_to select_organization_path
     end
+  end
+
+  def user_should_be_confirmed
+    return if !current_user || current_user.confirmed?
+
+    redirect_to please_confirm_users_path
   end
 end

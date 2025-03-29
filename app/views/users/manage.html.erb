@@ -1,45 +1,40 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <%= link_to current_organization.name, current_organization %>
-        <%= t("users.index.members") %>
-      </h1>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <%= link_to current_organization.name, current_organization %>
+      <%= t("users.index.members") %>
+    </h1>
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <%= search_form_for(@search, class: "navbar-form navbar-left", url: manage_users_path) do |f| %>
-        <div class="form-group">
-          <%= f.search_field :member_search_cont, class: "form-control" %>
-        </div>
-        <button class="btn btn-default" type="submit">
+<div class="row">
+  <div class="col-md-12">
+    <%= search_form_for(@search, class: "form-inline w-100 d-flex justify-content-between align-items-center navbar-left mb-1", url: manage_users_path) do |f| %>
+      <div class="d-flex gap-2 h-full">
+        <%= f.search_field :member_search_unaccent_cont, value: params.dig(:q, :member_search_unaccent_cont), class: "form-control w-auto" %>
+        <button class="btn btn-secondary" type="submit">
           <%= t 'global.search' %>
         </button>
-      <% end %>
-      <ul class="nav navbar-nav pull-right">
+      </div>
+      <ul class="nav navbar-nav text-end">
         <% if admin? %>
-          <li>
-            <a href="<%= new_user_path %>">
+          <li class="nav-item">
+            <a href="<%= new_user_path %>" class="nav-link text-primary">
               <span class="glyphicon glyphicon-plus"></span>
               <%= t "helpers.submit.create", model: User.model_name.human %>
             </a>
           </li>
         <% end %>
       </ul>
-    </div>
+    <% end %>
   </div>
 </div>
-<br>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="table-responsive">
-        <table class="table table-hover table-condensed panel">
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body table-responsive">
+        <table class="table table-hover table-sm">
           <thead>
             <tr>
               <th></th>
@@ -70,9 +65,8 @@
             <%= render partial: "user_row", collection: @member_view_models, as: :member %>
           </tbody>
         </table>
-
-        <%= paginate @members %>
       </div>
     </div>
+    <%= paginate @members %>
   </div>
 </div>

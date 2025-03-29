@@ -10,9 +10,7 @@
       input_html: {
         value: @transfer_hours,
         min: 0,
-        max: 20,
-        "data-rule-either-hours-minutes-informed" => "true",
-        "data-rule-range" => "[0,20]"
+        "data-rule-either-hours-minutes-informed" => "true"
       } %>
     <%= f.input :minutes,
       required: false,
@@ -28,7 +26,7 @@
     <%= f.input :amount, as: :hidden, input_html: { value: @transfer_amount } %>
     <%= f.input :reason, required: false, input_html: { value: @transfer_reason } %>
 
-    <label class="js-error-amount error invisible"><%= t "transfers.new.error_amount" %></label>
+    <label class="js-error-amount form-label error invisible"><%= t "transfers.new.error_amount" %></label>
 
     <% if @should_render_offer_selector %>
       <%= render partial: "transfers/#{@target_accountable.model_name.singular}_offer", locals: { form: f, offer: nil, accountable: @target_accountable, value: @transfer_post_id } %>

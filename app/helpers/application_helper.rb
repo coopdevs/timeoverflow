@@ -6,9 +6,14 @@ module ApplicationHelper
     current_organization || 'TimeOverflow'
   end
 
-  # from gravatar
   def avatar_url(user, size = 32)
-    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+    user.avatar.attached? ?
+      user.avatar.variant(resize_to_fit: [size, size]) :
+      gravatar_url(user, size)
+  end
+
+  def gravatar_url(user, size = 32)
+    gravatar_id = Digest::MD5.hexdigest(user.email).downcase
     gravatar_options = {
       set: "set1",
       gravatar: "hashed",
@@ -17,6 +22,17 @@ module ApplicationHelper
     }
 
     "https://www.gravatar.com/avatar/#{gravatar_id}.png?#{gravatar_options.to_param}"
+  end
+
+  def organization_logo
+    org = @organization || @current_organization
+
+    return unless org && org.logo.attached? && org.errors.details[:logo].blank?
+    return if "#{controller_name}##{action_name}".in? %w(organizations#index pages#show)
+
+    content_tag(:div, class: "row organization-logo") do
+      image_tag org.logo.variant(resize_to_fit: [200, nil])
+    end
   end
 
   def mdash
@@ -45,11 +61,11 @@ module ApplicationHelper
     messages = resource.errors.
                full_messages.map { |msg| content_tag(:li, msg) }.join
     html = <<-HTML
-    <div class="alert alert-danger">
-      <button type="button" class="close" data-dismiss="alert">x</button>
+    <div class="alert alert-danger d-flex justify-content-between">
       <ul>
         #{messages}
       </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
     HTML
 
@@ -96,5 +112,9 @@ module ApplicationHelper
     else
       'alert-info'
     end
+  end
+
+  def show_no_membership_warning?
+    current_user&.no_membership_warning? && !devise_controller?
   end
 end

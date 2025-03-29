@@ -1,0 +1,36 @@
+#form_photo {
+  border: 0px;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+#crop_panel {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-left: 4px dashed black;
+  cursor: move;
+  touch-action: none;
+  border-top: 4px dashed black;
+}
+
+#crop_panel::before {
+  content: "";
+  border-right: 4px  dashed black;
+  position: absolute;
+  right: 0;
+  width: 16px;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+#crop_panel::after {
+  content: "";
+  border-bottom: 4px dashed black;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 16px;
+  cursor: ns-resize;
+}

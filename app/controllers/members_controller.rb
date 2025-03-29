@@ -2,11 +2,13 @@ class MembersController < ApplicationController
   before_action :authenticate_user!
 
   def destroy
-    find_member
+    @member = Member.find(params[:id])
     toggle_active_posts
     @member.destroy
 
-    redirect_to manage_users_path
+    OrganizationNotifier.member_deleted(@member.user.username, current_organization).deliver_later
+
+    redirect_to request.referer.include?(organizations_path) ? organizations_path : manage_users_path
   end
 
   def toggle_manager

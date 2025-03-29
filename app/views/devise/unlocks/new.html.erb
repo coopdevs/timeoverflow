@@ -1,25 +1,23 @@
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <div class="panel" id="login-box">
-      <div class="panel-body">
+  <div class="col-sm-6 offset-md-3">
+    <div class="card pb-3" id="login-box">
+      <div class="card-body">
         <h2><%= t(".resend_instructions") %></h2>
         <p class="description"><%= t(".resend_instructions_description") %></p>
-        <%= render 'layouts/messages' %>
+        <%= render 'application/flash_messages' %>
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: unlock_path(resource_name), html: { method: :post } do |f| %>
-          <div class="form-group">
+          <div class="mb-3">
             <div class="input-group">
-              <span class="input-group-addon">
-                <i class="material-icons">email</i>
+              <span class="input-group-prepend">
+                <%= glyph(:envelope) %>
               </span>
-              <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control input-lg" %>
+              <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control form-control-lg" %>
             </div>
           </div>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-xs-12">
-                <%= f.submit t(".resend_instructions_button"), class: "btn btn-primary btn-lg col-xs-12" %>
-              </div>
+          <div class="row">
+            <div class="col-12">
+              <%= f.submit t(".resend_instructions_button"), class: "btn btn-primary btn-lg col-12" %>
             </div>
           </div>
         <% end %>

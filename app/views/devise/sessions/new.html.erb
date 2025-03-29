@@ -1,51 +1,57 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-sm-offset-2 col-md-offset-3 col-lg-offset-3">
-    <div class="panel" id="login-box">
-      <div class="panel-body">
-        <%= render 'layouts/messages' %>
+  <div class="col-12 col-sm-8 col-md-6 col-lg-6 offset-sm-2 offset-md-3 offset-lg-3">
+    <div class="card" id="login-box">
+      <div class="card-body">
+        <%= render 'application/flash_messages' %>
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: session_path(resource_name) do |f| %>
-          <div class="form-group">
+          <div class="mb-3">
             <div class="input-group">
-              <span class="input-group-addon">
-                <i class="material-icons">email</i>
+              <span class="input-group-prepend">
+                <%= glyph(:envelope) %>
               </span>
-              <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control input-lg" %>
+              <%= f.text_field :email, required: false, autofocus: true, placeholder: t("application.login_form.email"), class: "form-control form-control-lg" %>
             </div>
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <div class="input-group">
-              <span class="input-group-addon">
-                <i class="material-icons">lock</i>
+              <span class="input-group-prepend">
+                <%= glyph(:lock) %>
               </span>
-              <%= f.password_field :password, required: false, autofocus: true, placeholder: t("application.login_form.password"), class: "form-control input-lg" %>
-              <span class="input-group-addon show-password">
-                <i class="material-icons">visibility</i>
+              <%= f.password_field :password, required: false, autofocus: true, placeholder: t("application.login_form.password"), class: "form-control form-control-lg" %>
+              <span class="input-group-prepend show-password">
+                <%= glyph(:eye_close) %>
               </span>
             </div>
           </div>
-          <div class="form-group" id="remember-me-wrapper">
+          <div class="mb-3" id="remember-me-wrapper">
             <div class="row">
-              <div class="col-xs-12">
-                <div class="checkbox">
-                  <%= f.label :remember_me do |nada| %>
-                    <%= f.check_box :remember_me %>
-                    <%= t("application.login_form.remember_check") %>
-                  <% end %>
-                </div>
+              <div class="col-12">
+                <%= f.label :remember_me, class: "form-label" do |nada| %>
+                  <%= f.check_box :remember_me %>
+                  <%= t("application.login_form.remember_check") %>
+                <% end %>
               </div>
             </div>
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <div class="row">
-              <div class="col-xs-12">
-                <%= f.submit t("application.login_form.button"), class: "btn btn-primary btn-lg col-xs-12" %>
+              <div class="col-12">
+                <%= f.submit t("application.login_form.button"), class: "btn btn-primary btn-lg col-12" %>
+              </div>
+            </div>
+          </div>
+          <div class="text-center"><%= t('global.or').upcase %></div>
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-12">
+                <%= link_to t('devise.registrations.new.sign_up'), signup_users_path, class: "btn btn-primary btn-lg col-12" %>
               </div>
             </div>
           </div>
         <% end %>
       </div>
-      <div class="panel-footer">
+      <div class="card-footer">
         <%= render "devise/shared/links" %>
       </div>
     </div>

@@ -1,22 +1,12 @@
-# If you want to change this file, please keep the changes in your working
-# copy by using
-#
-#     git update-index --skip-worktree config/database.yml
-#
-# or just use DATABASE_URL, in which case Rails will happily skip the whole
-# file.
-#
-# See https://github.com/coopdevs/timeoverflow/wiki/Keeping-your-local-files
-# for more information
-#
-
 defaults: &defaults
   adapter: postgresql
-  username: <%= ENV['DATABASE_USER'] %>  # default is null
-  collation: 'es_ES.UTF-8'
-  ctype: 'es_ES.UTF-8'
+  username: <%= ENV['DATABASE_USER'] || ENV["POSTGRES_USER"] || ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV['DATABASE_PASSWORD'] || ENV["POSTGRES_PASSWORD"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
+  port: <%= ENV.fetch("DATABASE_PORT") { "5432" } %>
   template: 'template0'
-  encoding: 'UTF8'
+  encoding: unicode
 
 development:
   <<: *defaults
@@ -24,12 +14,9 @@ development:
 
 test:
   <<: *defaults
-  database: 'timeoverflow_test'
-
-staging:
-  <<: *defaults
-  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_staging') %>
+  database: timeoverflow_test
 
 production:
   <<: *defaults
-  database: <%= ENV.fetch('DATABASE_NAME', 'timeoverflow_production') %>
+  <%= "url: #{ENV['DATABASE_URL']}" if ENV['DATABASE_URL'].present? %>
+  <%= "database: #{ENV.fetch('DATABASE_NAME', 'timeoverflow_production')}" unless ENV['DATABASE_URL'].present? %>

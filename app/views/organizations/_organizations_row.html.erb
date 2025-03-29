@@ -1,0 +1,10 @@
+<tr>
+  <td><%= link_to(org.name, org) %></td>
+  <td><%= org.city %></td>
+  <td><%= org.neighborhood %></td>
+  <td><%= link_to(org.web, org.web) if org.web.present? %></td>
+  <td><%= org.members.count %></td>
+  <td>
+    <%= render "organizations/petition_button", organization: org %>
+  </td>
+</tr>

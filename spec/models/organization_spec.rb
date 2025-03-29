@@ -1,6 +1,25 @@
 RSpec.describe Organization do
   let(:organization) { Fabricate(:organization) }
 
+  describe "logo validation" do
+    it "validates content_type" do
+      temp_file = Tempfile.new('test.txt')
+      organization.logo.attach(io: File.open(temp_file.path), filename: 'test.txt')
+
+      expect(organization).to be_invalid
+
+      temp_file = Tempfile.new('test.svg')
+      organization.logo.attach(io: File.open(temp_file.path), filename: 'test.svg')
+
+      expect(organization).to be_invalid
+
+      temp_file = Tempfile.new('test.png')
+      organization.logo.attach(io: File.open(temp_file.path), filename: 'test.png')
+
+      expect(organization).to be_valid
+    end
+  end
+
   describe '#display_id' do
     subject { organization.display_id }
 

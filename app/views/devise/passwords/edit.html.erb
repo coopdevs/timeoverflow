@@ -1,30 +1,30 @@
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <div class="panel" id="login-box">
-      <div class="panel-body">
+  <div class="col-sm-6 offset-md-3">
+    <div class="card pb-3" id="login-box">
+      <div class="card-body">
         <h2><%= t(".change_password") %></h2>
-        <%= render 'layouts/messages' %>
+        <%= render 'application/flash_messages' %>
         <%= show_error_messages!(resource) %>
         <%= form_for resource, url: password_path(resource_name), html: { method: :put } do |f| %>
           <%= f.hidden_field :reset_password_token %>
-          <div class="form-group">
+          <div class="mb-3">
             <div class="input-group">
-              <span class="input-group-addon">
-                <i class="material-icons">lock</i>
+              <span class="input-group-prepend">
+                <%= glyph(:lock) %>
               </span>
-              <%= f.password_field :password, required: true, autofocus: true, placeholder: t(".new_password"), class: "form-control input-lg" %>
+              <%= f.password_field :password, required: true, autofocus: true, placeholder: t(".new_password"), class: "form-control form-control-lg" %>
             </div>
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <div class="input-group">
-              <span class="input-group-addon">
-                <i class="material-icons">lock</i>
+              <span class="input-group-prepend">
+                <%= glyph(:lock) %>
               </span>
-              <%= f.password_field :password_confirmation, required: true, placeholder: t(".confirm_password"), oninput: "this.setCustomValidity(this.value != form.user_password.value ? '#{t(".passwords_not_match")}' : '')", class: "form-control input-lg" %>
+              <%= f.password_field :password_confirmation, required: true, placeholder: t(".confirm_password"), oninput: "this.setCustomValidity(this.value != form.user_password.value ? '#{t(".passwords_not_match")}' : '')", class: "form-control form-control-lg" %>
             </div>
           </div>
-          <div class="form-group">
-            <%= f.submit t(".change_password"), class: "btn btn-primary btn-lg col-xs-12" %>
+          <div class="form-control">
+            <%= f.submit t(".change_password"), class: "btn btn-primary btn-lg col-12" %>
           </div>
         <% end %>
       </div>

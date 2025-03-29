@@ -8,10 +8,10 @@
           </h2>
           <% vg.each do |tag, count| %>
             <p>
-              <div class="badge">
+              <div class="badge rounded-pill bg-secondary">
                 <%= count %>
               </div>
-              <%= link_to [post_type.pluralize, tag: tag] do %>
+              <%= link_to [post_type.pluralize.to_sym, tag: tag] do %>
                 <%= glyph count == 1 ? :tag : :tags %>
                 <%= tag %>
               <% end %>

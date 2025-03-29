@@ -59,5 +59,63 @@ RSpec.describe 'organizations/show' do
     it 'displays the organization page' do
       expect(rendered).to match(organization.name)
     end
+
+    it 'displays link to delete the member' do
+      expect(rendered).to have_link(
+        t('users.user_rows.delete_membership'),
+        href: member_path(member)
+      )
+    end
+  end
+
+  context 'with a logged user (but not organization member)' do
+    let(:user) { Fabricate(:user) }
+
+    before do
+      allow(view).to receive(:current_user).and_return(user)
+
+      assign :movements, Movement.page
+      render template: 'organizations/show'
+    end
+
+    it 'displays link to create petition' do
+      expect(rendered).to have_link(
+        t('petitions.apply'),
+        href: petitions_path(user_id: user.id, organization_id: organization.id)
+      )
+    end
+  end
+
+  context 'with a logged admin' do
+    let(:admin) { Fabricate(:member, organization: organization, manager: true) }
+    let(:user) { admin.user }
+
+    before do
+      allow(view).to receive(:current_user).and_return(user)
+
+      assign :movements, Movement.page
+      render template: 'organizations/show'
+    end
+
+    it 'has link to edit organization' do
+      expect(rendered).to have_link(t('global.edit'), href: edit_organization_path(organization))
+    end
+  end
+
+  context 'with a logged admin from other organization' do
+    let(:other_organization) { Fabricate(:organization) }
+    let(:admin) { Fabricate(:member, organization: other_organization, manager: true) }
+    let(:user) { admin.user }
+
+    before do
+      allow(view).to receive(:current_user).and_return(user)
+
+      assign :movements, Movement.page
+      render template: 'organizations/show'
+    end
+
+    it 'does not have link to edit organization' do
+      expect(rendered).to_not have_link(t('global.edit'), href: edit_organization_path(organization))
+    end
   end
 end

@@ -24,4 +24,3 @@ RSpec.describe Operations::Transfers::OneToMany do
     end
   end
 end
-

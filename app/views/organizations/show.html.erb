@@ -1,15 +1,15 @@
 <h1>
   <%= link_to @organization, organization_path(@organization) %>
 </h1>
-<div class="row">
+<div class="row mb-4">
   <div class="col-sm-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
           <%= t '.contact_information' %>
         </h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
         <p>
           <strong>
             <%= Organization.human_attribute_name 'email' %>
@@ -51,13 +51,13 @@
     </div>
   </div>
   <div class="col-sm-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
           <%= t 'global.information' %>
         </h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
         <p>
           <strong>
             <%= Organization.human_attribute_name 'created_at' %>
@@ -88,28 +88,29 @@
     </div>
   </div>
   <div class="col-sm-5">
-    <ul class="nav nav-pills pull-right">
-      <% if admin? %>
-        <li>
-          <%= link_to edit_organization_path(@organization) do %>
+    <ul class="nav nav-pills justify-content-end">
+      <% if current_user&.manages?(@organization) %>
+        <li class="nav-item">
+          <%= link_to edit_organization_path(@organization), class: 'nav-link' do %>
             <%= glyph :pencil %>
             <%= t "global.edit" %>
           <% end %>
         </li>
       <% end %>
       <% if current_user&.active?(@organization) %>
-        <li>
-          <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id) do %>
+        <li class="nav-item">
+          <%= link_to new_transfer_path(id: @organization, destination_account_id: @organization.account.id), class: 'nav-link' do %>
             <%= glyph :time %>
             <%= t "global.give_time" %>
           <% end %>
         </li>
       <% end %>
     </ul>
+    <%= render "organizations/petition_button", organization: @organization %>
   </div>
 </div>
 
-<% if current_user %>
+<% if current_user&.active?(@organization) %>
   <%= render "shared/movements" %>
 <% else %>
   <div class='alert alert-info'>

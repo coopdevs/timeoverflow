@@ -153,7 +153,7 @@ class StatisticsController < ApplicationController
       35..44  => "35-44",
       45..54  => "45-54",
       55..64  => "55-64",
-      65..100 => "65+",
+      65..100 => "65+"
     }
   end
 

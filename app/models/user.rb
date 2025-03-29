@@ -9,6 +9,10 @@ class User < ApplicationRecord
     :timeoutable
   ]
 
+  ransacker :username do
+    Arel.sql('unaccent(users.username)')
+  end
+
   GENDERS = %w(
     female
     male
@@ -17,6 +21,9 @@ class User < ApplicationRecord
   )
 
   attr_accessor :empty_email
+  attr_accessor :from_signup
+
+  has_one_attached :avatar
 
   has_many :members, dependent: :destroy
   has_many :organizations, through: :members
@@ -26,16 +33,20 @@ class User < ApplicationRecord
   has_many :offers
   has_many :inquiries
   has_many :device_tokens
+  has_many :petitions, dependent: :delete_all
 
-  accepts_nested_attributes_for :members
+  accepts_nested_attributes_for :members, allow_destroy: true
 
   default_scope { order("users.id ASC") }
-  scope :actives, -> { references(:members).where(members: { active: true }) }
+  scope :without_memberships, -> { where.missing(:members) }
+  scope :actives, -> { joins(:members).where(members: { active: true }) }
   scope :online_active, -> { where("sign_in_count > 0") }
   scope :notifications, -> { where(notifications: true) }
+  scope :confirmed, -> { where.not(confirmed_at: nil) }
 
   validates :username, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, if: :from_signup?
   # Allows @domain.com for dummy emails but does not allow pure invalid
   # emails like 'without email'
   validates_format_of :email,
@@ -76,11 +87,19 @@ class User < ApplicationRecord
     persister = ::Persister::MemberPersister.new(member)
     persister.save
 
-    return member if member.persisted?
+    member if member.persisted?
   end
 
   def active?(organization)
     organization && !!(as_member_of(organization).try :active)
+  end
+
+  def memberships?
+    members.any?
+  end
+
+  def no_membership_warning?
+    confirmed? && terms_accepted_at.present? && !memberships?
   end
 
   def member(organization)
@@ -97,8 +116,8 @@ class User < ApplicationRecord
     # temporary valid email with current time milliseconds
     # this will be updated to user.id@example.com later on
     self.empty_email = email.strip.empty?
-    self.email = "user#{DateTime.now.strftime('%Q')}@example.com" if empty_email
-    skip_confirmation! # auto-confirm, not sending confirmation email
+    self.email = "user#{DateTime.now.strftime('%Q')}@example.com" if empty_email && !from_signup
+    skip_confirmation! unless from_signup?
     save
   end
 
@@ -121,5 +140,13 @@ class User < ApplicationRecord
 
   def email_if_real
     has_valid_email? ? email : ""
+  end
+
+  def was_member?(petition)
+    petition.status == 'accepted' && Member.where(organization: petition.organization, user: self).none?
+  end
+
+  def from_signup?
+    from_signup
   end
 end

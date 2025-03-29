@@ -10,6 +10,8 @@ class Organization < ApplicationRecord
       }
     }
 
+  has_one_attached :logo
+
   has_many :members, dependent: :destroy
   has_many :users, -> { order "members.created_at DESC" }, through: :members
   has_many :all_accounts, class_name: "Account", inverse_of: :organization, dependent: :destroy
@@ -21,11 +23,19 @@ class Organization < ApplicationRecord
   has_many :offers
   has_many :inquiries
   has_many :documents, as: :documentable, dependent: :destroy
+  has_many :petitions, dependent: :delete_all
 
   validates :name, presence: true, uniqueness: true
 
+  LOGO_CONTENT_TYPES = %w(image/jpeg image/png image/gif)
+  validates :logo, content_type: LOGO_CONTENT_TYPES
+
   before_validation :ensure_url
   after_create :create_account
+
+  def to_s
+    "#{name}"
+  end
 
   def all_transfers_with_accounts
     all_transfers.
@@ -34,8 +44,8 @@ class Organization < ApplicationRecord
       distinct
   end
 
-  def to_s
-    "#{name}"
+  def all_managers
+    users.where(members: { manager: true })
   end
 
   def display_name_with_uid

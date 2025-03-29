@@ -200,7 +200,6 @@ RSpec.describe OffersController, type: :controller do
         get :show, params: { id: offer.id }
         expect(assigns(:offer)).to eq(offer)
       end
-
     end
   end
 
