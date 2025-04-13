@@ -71,11 +71,11 @@
                           class: 'btn btn-danger',
                           data: { confirm: t('organization_alliances.confirm_cancel') } %>
                     <% else %>
-                      <div class="btn-group" role="group" aria-label="Alliance actions">
+                      <div>
                         <%= link_to t('organization_alliances.accept'),
                             organization_alliance_path(alliance, status: 'accepted'),
                             method: :put,
-                            class: 'btn btn-success me-2' %>
+                            class: 'btn btn-primary' %>
                         <%= link_to t('organization_alliances.reject'),
                             organization_alliance_path(alliance, status: 'rejected'),
                             method: :put,
