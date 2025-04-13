@@ -9,7 +9,7 @@
   <% elsif alliance.pending? %>
     <span class="badge rounded-pill bg-secondary"><%= t('organization_alliances.pending') %></span>
   <% elsif alliance.accepted? %>
-    <span class="badge rounded-pill bg-success"><%= t('organization_alliances.active') %></span>
+    <span class="badge rounded-pill bg-primary"><%= t('organization_alliances.active') %></span>
   <% elsif alliance.rejected? %>
     <span class="badge rounded-pill bg-danger"><%= t('organization_alliances.rejected') %></span>
   <% end %>
