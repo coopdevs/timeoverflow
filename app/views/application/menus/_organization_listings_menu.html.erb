@@ -17,6 +17,12 @@
       <% end %>
     </li>
     <li>
+      <%= link_to organization_alliances_path, class: "dropdown-item" do %>
+        <%= glyph :globe %>
+        <%= t "application.navbar.organization_alliances" %>
+      <% end %>
+    </li>
+    <li>
       <%= link_to offers_path(org: current_organization), class: "dropdown-item" do %>
         <%= glyph :link %>
         <%= glyph :eye_open %>

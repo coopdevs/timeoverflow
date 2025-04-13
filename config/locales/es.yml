@@ -141,6 +141,7 @@ es:
       last_login: Último login
       offer_public_link: Enlace público a ofertas
       organizations: Organizaciones
+      organization_alliances: Organizaciones
       reports: Informes
       sign_out: Desconectar
       statistics: Estadísticas
@@ -370,6 +371,35 @@ es:
     show:
       give_time_for: Transferir tiempo por esta oferta
       offered_by: Ofertantes
+  organization_alliances:
+    title: "Alianzas"
+    created: "Solicitud de alianza enviada"
+    updated: "Estado de alianza actualizado"
+    destroyed: "La alianza ha finalizado"
+    error_destroying: "No se pudo finalizar la alianza"
+    not_authorized: "No estás autorizado para gestionar alianzas"
+    organization: "Organización"
+    city: "Ciudad"
+    members: "Miembros"
+    type: "Tipo"
+    actions: "Acciones"
+    sent: "Enviadas"
+    received: "Recibidas"
+    pending: "Pending"
+    active: "Activa"
+    rejected: "Rechazada"
+    request_alliance: "Solicitar alianza"
+    cancel_request: "Cancelar solicitud"
+    accept: "Aceptar"
+    reject: "Rechazar"
+    end_alliance: "Finalizar alianza"
+    confirm_cancel: "¿Estás seguro de que quieres cancelar esta solicitud de alianza?"
+    confirm_end: "¿Estás seguro de que quieres finalizar esta alianza?"
+    search_organizations: "Buscar organizaciones"
+    status:
+      pending: "Solicitudes Pendientes"
+      accepted: "Alianzas Activas"
+      rejected: "Solicitudes Rechazadas"
   organization_notifier:
     member_deleted:
       body: El usuario %{username} se ha dado de baja de la organización.
@@ -382,6 +412,8 @@ es:
       give_time: Dar Tiempo a
     index:
       member_count: Número de usuarios
+      membership: "Membresía"
+      alliance: "Alianza"
     new:
       new: Nuevo banco
     show:

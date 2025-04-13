@@ -25,7 +25,10 @@
           <th><%= t '.neighborhood' %></th>
           <th><%= t '.web' %></th>
           <th><%= t '.member_count' %></th>
-          <th></th>
+          <th><%= t '.membership' %></th>
+          <% if current_user&.manages?(current_organization) %>
+            <th><%= t '.alliance' %></th>
+          <% end %>
         </tr>
       </thead>
       <tbody>

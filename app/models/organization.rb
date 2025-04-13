@@ -24,6 +24,8 @@ class Organization < ApplicationRecord
   has_many :inquiries
   has_many :documents, as: :documentable, dependent: :destroy
   has_many :petitions, dependent: :delete_all
+  has_many :source_alliances, class_name: "OrganizationAlliance", foreign_key: "source_organization_id", dependent: :destroy
+  has_many :target_alliances, class_name: "OrganizationAlliance", foreign_key: "target_organization_id", dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 
@@ -59,6 +61,27 @@ class Organization < ApplicationRecord
   # @return [Integer | String]
   def display_id
     account.accountable_id
+  end
+
+  def alliance_with(organization)
+    source_alliances.find_by(target_organization: organization) ||
+      target_alliances.find_by(source_organization: organization)
+  end
+
+  def pending_sent_alliances
+    source_alliances.pending
+  end
+
+  def pending_received_alliances
+    target_alliances.pending
+  end
+
+  def accepted_alliances
+    source_alliances.accepted.or(target_alliances.accepted)
+  end
+
+  def rejected_alliances
+    source_alliances.rejected.or(target_alliances.rejected)
   end
 
   def ensure_reg_number_seq!

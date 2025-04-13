@@ -1,25 +1,13 @@
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
+SET row_security = off;
 
 --
 -- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
@@ -82,7 +70,7 @@ CREATE FUNCTION public.posts_trigger() RETURNS trigger
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_table_access_method = heap;
 
 --
 -- Name: accounts; Type: TABLE; Schema: public; Owner: -
@@ -480,6 +468,39 @@ ALTER SEQUENCE public.movements_id_seq OWNED BY public.movements.id;
 
 
 --
+-- Name: organization_alliances; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.organization_alliances (
+    id bigint NOT NULL,
+    source_organization_id bigint,
+    target_organization_id bigint,
+    status integer DEFAULT 0,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: organization_alliances_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.organization_alliances_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: organization_alliances_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.organization_alliances_id_seq OWNED BY public.organization_alliances.id;
+
+
+--
 -- Name: organizations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -819,6 +840,13 @@ ALTER TABLE ONLY public.movements ALTER COLUMN id SET DEFAULT nextval('public.mo
 
 
 --
+-- Name: organization_alliances id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.organization_alliances ALTER COLUMN id SET DEFAULT nextval('public.organization_alliances_id_seq'::regclass);
+
+
+--
 -- Name: organizations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -954,6 +982,14 @@ ALTER TABLE ONLY public.members
 
 ALTER TABLE ONLY public.movements
     ADD CONSTRAINT movements_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: organization_alliances organization_alliances_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.organization_alliances
+    ADD CONSTRAINT organization_alliances_pkey PRIMARY KEY (id);
 
 
 --
@@ -1145,6 +1181,27 @@ CREATE INDEX index_movements_on_transfer_id ON public.movements USING btree (tra
 
 
 --
+-- Name: index_org_alliances_on_source_and_target; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_org_alliances_on_source_and_target ON public.organization_alliances USING btree (source_organization_id, target_organization_id);
+
+
+--
+-- Name: index_organization_alliances_on_source_organization_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_organization_alliances_on_source_organization_id ON public.organization_alliances USING btree (source_organization_id);
+
+
+--
+-- Name: index_organization_alliances_on_target_organization_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_organization_alliances_on_target_organization_id ON public.organization_alliances USING btree (target_organization_id);
+
+
+--
 -- Name: index_organizations_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1232,7 +1289,7 @@ CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING b
 -- Name: posts tsvectorupdate; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON public.posts FOR EACH ROW EXECUTE PROCEDURE public.posts_trigger();
+CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON public.posts FOR EACH ROW EXECUTE FUNCTION public.posts_trigger();
 
 
 --
@@ -1300,6 +1357,14 @@ ALTER TABLE ONLY public.push_notifications
 
 
 --
+-- Name: organization_alliances fk_rails_7c459bc8e7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.organization_alliances
+    ADD CONSTRAINT fk_rails_7c459bc8e7 FOREIGN KEY (source_organization_id) REFERENCES public.organizations(id);
+
+
+--
 -- Name: active_storage_variant_records fk_rails_993965df05; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1316,83 +1381,93 @@ ALTER TABLE ONLY public.active_storage_attachments
 
 
 --
+-- Name: organization_alliances fk_rails_da452c7bdc; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.organization_alliances
+    ADD CONSTRAINT fk_rails_da452c7bdc FOREIGN KEY (target_organization_id) REFERENCES public.organizations(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('1'),
-('2'),
-('20121019101022'),
-('20121104004639'),
-('20121104085711'),
-('20121121233818'),
-('20130214175758'),
-('20130214181128'),
-('20130222185624'),
-('20130425165150'),
-('20130508085004'),
-('20130513092219'),
-('20130514094755'),
-('20130618210236'),
-('20130621102219'),
-('20130621103053'),
-('20130621103501'),
-('20130621105452'),
-('20130703233851'),
-('20130703234011'),
-('20130703234042'),
-('20130723160206'),
-('20131017144321'),
-('20131025202608'),
-('20131027215517'),
-('20131029202724'),
-('20131103221044'),
-('20131104004235'),
-('20131104013634'),
-('20131104013829'),
-('20131104032622'),
-('20131220160257'),
-('20131227110122'),
-('20131227142805'),
-('20131227155440'),
-('20131231110424'),
-('20140119161433'),
-('20140513141718'),
-('20140514225527'),
-('20150329193421'),
-('20150330200315'),
-('20150422162806'),
-('20180221161343'),
-('20180501093846'),
-('20180514193153'),
-('20180524143938'),
-('20180525141138'),
-('20180529144243'),
-('20180530180546'),
-('20180604145622'),
-('20180828160700'),
-('20180831161349'),
-('20180924164456'),
-('20181004200104'),
-('20190319121401'),
-('20190322180602'),
-('20190411192828'),
-('20190412163011'),
-('20190523213421'),
-('20190523225323'),
-('20210423193937'),
-('20210424174640'),
-('20210502160343'),
-('20210503201944'),
-('20221016192111'),
-('20230312231058'),
-('20230314233504'),
-('20230401114456'),
-('20231120164231'),
-('20231120164346'),
-('20241230170753'),
-('20250215163404'),
+('20250412110249'),
+('20250215163406'),
 ('20250215163405'),
-('20250215163406');
+('20250215163404'),
+('20241230170753'),
+('20231120164346'),
+('20231120164231'),
+('20230401114456'),
+('20230314233504'),
+('20230312231058'),
+('20221016192111'),
+('20210503201944'),
+('20210502160343'),
+('20210424174640'),
+('20210423193937'),
+('20190523225323'),
+('20190523213421'),
+('20190412163011'),
+('20190411192828'),
+('20190322180602'),
+('20190319121401'),
+('20181004200104'),
+('20180924164456'),
+('20180831161349'),
+('20180828160700'),
+('20180604145622'),
+('20180530180546'),
+('20180529144243'),
+('20180525141138'),
+('20180524143938'),
+('20180514193153'),
+('20180501093846'),
+('20180221161343'),
+('20150422162806'),
+('20150330200315'),
+('20150329193421'),
+('20140514225527'),
+('20140513141718'),
+('20140119161433'),
+('20131231110424'),
+('20131227155440'),
+('20131227142805'),
+('20131227110122'),
+('20131220160257'),
+('20131104032622'),
+('20131104013829'),
+('20131104013634'),
+('20131104004235'),
+('20131103221044'),
+('20131029202724'),
+('20131027215517'),
+('20131025202608'),
+('20131017144321'),
+('20130723160206'),
+('20130703234042'),
+('20130703234011'),
+('20130703233851'),
+('20130621105452'),
+('20130621103501'),
+('20130621103053'),
+('20130621102219'),
+('20130618210236'),
+('20130514094755'),
+('20130513092219'),
+('20130508085004'),
+('20130425165150'),
+('20130222185624'),
+('20130214181128'),
+('20130214175758'),
+('20121121233818'),
+('20121104085711'),
+('20121104004639'),
+('20121019101022'),
+('2'),
+('1');
+

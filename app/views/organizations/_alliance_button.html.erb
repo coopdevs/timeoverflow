@@ -1,0 +1,16 @@
+<% if current_user&.manages?(current_organization) && organization != current_organization %>
+  <% alliance = current_organization.alliance_with(organization) %>
+  <% if alliance.nil? %>
+    <%= link_to t('organization_alliances.request_alliance'),
+          organization_alliances_path(organization_alliance: { target_organization_id: organization.id }),
+          method: :post,
+          class: 'btn btn-secondary',
+          aria: { label: t('organization_alliances.request_alliance_for', org: organization.name) } %>
+  <% elsif alliance.pending? %>
+    <span class="badge rounded-pill bg-secondary"><%= t('organization_alliances.pending') %></span>
+  <% elsif alliance.accepted? %>
+    <span class="badge rounded-pill bg-success"><%= t('organization_alliances.active') %></span>
+  <% elsif alliance.rejected? %>
+    <span class="badge rounded-pill bg-danger"><%= t('organization_alliances.rejected') %></span>
+  <% end %>
+<% end %>

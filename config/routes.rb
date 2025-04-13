@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   end
   get :select_organization, to: 'organizations#select_organization'
 
+  resources :organization_alliances, only: [:index, :create, :update, :destroy] 
+    
   resources :users, concerns: :accountable, except: :destroy, :path => "members" do
     collection do
       get 'signup'

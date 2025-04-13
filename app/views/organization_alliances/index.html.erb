@@ -1,0 +1,102 @@
+<h1><%= t('organization_alliances.title') %></h1>
+
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+    <ul class="nav nav-pills actions-menu">
+      <li class="nav-item">
+        <%= link_to organization_alliances_path(status: 'pending'), class: "nav-link #{'active' if @status == 'pending'}" do %>
+          <%= glyph :time %>
+          <%= t('organization_alliances.status.pending') %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to organization_alliances_path(status: 'accepted'), class: "nav-link #{'active' if @status == 'accepted'}" do %>
+          <%= glyph :ok %>
+          <%= t('organization_alliances.status.accepted') %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to organization_alliances_path(status: 'rejected'), class: "nav-link #{'active' if @status == 'rejected'}" do %>
+          <%= glyph :remove %>
+          <%= t('organization_alliances.status.rejected') %>
+        <% end %>
+      </li>
+      <li class="nav-item ms-auto">
+        <%= link_to organizations_path, class: "text-primary" do %>
+          <%= glyph :search %>
+          <%= t('organization_alliances.search_organizations') %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body table-responsive">
+        <table class="table table-hover table-sm">
+          <thead>
+            <tr>
+              <th><%= t('organization_alliances.organization') %></th>
+              <th><%= t('organization_alliances.city') %></th>
+              <th><%= t('organization_alliances.members') %></th>
+              <th><%= t('organization_alliances.type') %></th>
+              <% if @status != 'rejected' %>
+                <th><%= t('organization_alliances.actions') %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% @alliances.each do |alliance| %>
+              <% is_sender = (alliance.source_organization_id == current_organization.id) %>
+              <% other_org = is_sender ? alliance.target_organization : alliance.source_organization %>
+              <tr>
+                <td><%= link_to other_org.name, other_org %></td>
+                <td><%= other_org.city %></td>
+                <td><%= other_org.members.count %></td>
+                <td>
+                  <% if is_sender %>
+                    <%= t('organization_alliances.sent') %>
+                  <% else %>
+                    <%= t('organization_alliances.received') %>
+                  <% end %>
+                </td>
+                <% if @status == 'pending' %>
+                  <td>
+                    <% if is_sender %>
+                      <%= link_to t('organization_alliances.cancel_request'),
+                          organization_alliance_path(alliance),
+                          method: :delete,
+                          class: 'btn btn-danger',
+                          data: { confirm: t('organization_alliances.confirm_cancel') } %>
+                    <% else %>
+                      <div class="btn-group" role="group" aria-label="Alliance actions">
+                        <%= link_to t('organization_alliances.accept'),
+                            organization_alliance_path(alliance, status: 'accepted'),
+                            method: :put,
+                            class: 'btn btn-success me-2' %>
+                        <%= link_to t('organization_alliances.reject'),
+                            organization_alliance_path(alliance, status: 'rejected'),
+                            method: :put,
+                            class: 'btn btn-danger' %>
+                      </div>
+                    <% end %>
+                  </td>
+                <% elsif @status == 'accepted' %>
+                  <td>
+                    <%= link_to t('organization_alliances.end_alliance'),
+                        organization_alliance_path(alliance),
+                        method: :delete,
+                        class: 'btn btn-danger',
+                        data: { confirm: t('organization_alliances.confirm_end') } %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
