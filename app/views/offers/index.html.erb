@@ -11,7 +11,7 @@
   <%= render "shared/post_filters", base_path: offers_path %>
 
   <div class="col-md-4">
-    <% if current_user && current_organization && !params[:org] %>
+    <% if current_user && current_organization %>
       <ul class="nav navbar-nav text-end">
         <li class="nav-item">
           <%= link_to new_offer_path, class: 'nav-link text-primary' do %>

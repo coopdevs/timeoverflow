@@ -304,6 +304,7 @@ en:
     table:
       actions: Actions
     to: To
+    filter_by_organizations: "Filter by organizations"
   inquiries:
     edit:
       submit: Change request

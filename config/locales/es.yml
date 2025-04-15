@@ -101,8 +101,8 @@ es:
         one: Oferta
         other: Ofertas
       organization:
-        one: Banco de Tiempo
-        other: Bancos de Tiempo
+        one: Organización
+        other: Organizaciones
       post:
         one: Anuncio
         other: Anuncios
@@ -304,6 +304,7 @@ es:
     table:
       actions: Acciones
     to: a
+    filter_by_organizations: "Filtrar por organizaciones"
   inquiries:
     edit:
       submit: Cambiar demanda

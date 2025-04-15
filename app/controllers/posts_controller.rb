@@ -6,12 +6,6 @@ class PostsController <  ApplicationController
   def index
     context = model.active.of_active_members
 
-    if current_organization.present?
-      context = context.where(
-        organization_id: current_organization.id
-      )
-    end
-
     posts = apply_scopes(context)
     posts = posts.search_by_query(params[:q]) if params[:q].present?
     posts = posts.page(params[:page]).per(25)
