@@ -101,8 +101,8 @@ en:
         one: Offer
         other: Offers
       organization:
-        one: Time Bank
-        other: Time Banks
+        one: Organization
+        other: Organizations
       post:
         one: Post
         other: Posts
