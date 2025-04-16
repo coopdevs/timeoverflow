@@ -52,6 +52,32 @@ RSpec.describe OffersController, type: :controller do
           expect(assigns(:offers)).to eq([other_offer])
         end
       end
+
+      context "when filtering by organization" do
+        let(:organization1) { Organization.find_by(name: "Banco de Tiempo Local") }
+        let(:organization2) { Organization.find_by(name: "El otro Banco de Tiempo :)") }
+        let(:user1) { User.find_by(email: "user@timeoverflow.org") }
+        let(:user2) { User.find_by(email: "user2@timeoverflow.org") }
+        let!(:offer1) { Offer.find_by(title: "Ruby on Rails nivel principiante") ||
+                       Fabricate(:offer, user: user1, title: "Ruby on Rails nivel principiante") }
+        let!(:offer2) { Offer.find_by(title: "Cocina low cost") ||
+                       Fabricate(:offer, user: user2, title: "Cocina low cost") }
+
+        before { login(user1) }
+
+        it 'displays only offers from the selected organization' do
+          get :index, params: { organization_id: organization1.id }
+
+          expect(assigns(:offers)).to include(offer1)
+          expect(assigns(:offers)).not_to include(offer2)
+        end
+
+        it 'displays all offers when no organization is selected' do
+          get :index
+
+          expect(assigns(:offers)).to include(offer1, offer2)
+        end
+      end
     end
 
     context "with another organization" do
