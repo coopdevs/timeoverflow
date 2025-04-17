@@ -88,7 +88,6 @@ RSpec.describe OffersController, type: :controller do
       it "skips the original org's offers" do
         separate_organization = Fabricate(:organization)
         separate_user = Fabricate(:user)
-        separate_member = Fabricate(:member, organization: separate_organization, user: separate_user)
 
         login(separate_user)
 
