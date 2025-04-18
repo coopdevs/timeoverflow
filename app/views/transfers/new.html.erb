@@ -6,7 +6,7 @@
 <% if offer %>
   <h3><%= offer %></h3>
   <% if cross_bank %>
-    <div class="alert alert-info">
+    <div class="alert bg-info">
       <%= t 'transfers.cross_bank.info', organization: offer.organization.name %>
     </div>
   <% end %>
