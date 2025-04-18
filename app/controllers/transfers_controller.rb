@@ -3,6 +3,13 @@ class TransfersController < ApplicationController
 
   def create
     @source = find_source
+
+    if params[:cross_bank] == "true" && params[:post_id].present?
+      post = Post.find(params[:post_id])
+      create_cross_bank_transfer(post)
+      return
+    end
+
     @account = Account.find(transfer_params[:destination])
 
     transfer = Transfer.new(
@@ -23,8 +30,12 @@ class TransfersController < ApplicationController
       current_organization,
       current_user,
       params[:offer],
-      params[:destination_account_id]
+      params[:destination_account_id],
+      params[:cross_bank] == "true"
     )
+
+    @cross_bank = params[:cross_bank] == "true"
+    @offer = transfer_factory.offer
 
     render(
       :new,
@@ -32,7 +43,8 @@ class TransfersController < ApplicationController
         accountable: transfer_factory.accountable,
         transfer: transfer_factory.build_transfer,
         offer: transfer_factory.offer,
-        sources: transfer_factory.transfer_sources
+        sources: transfer_factory.transfer_sources,
+        cross_bank: @cross_bank
       }
     )
   end
@@ -48,6 +60,28 @@ class TransfersController < ApplicationController
   end
 
   private
+
+  def create_cross_bank_transfer(post)
+    transfer_factory = TransferFactory.new(
+      current_organization,
+      current_user,
+      post.id,
+      nil,
+      true
+    )
+
+    transfer = transfer_factory.build_transfer
+    transfer.amount = transfer_params[:amount]
+    transfer.reason = transfer_params[:reason]
+
+    persister = ::Persister::TransferPersister.new(transfer)
+
+    if persister.save
+      redirect_to post, notice: t('transfers.cross_bank.success')
+    else
+      redirect_back fallback_location: post, alert: transfer.errors.full_messages.to_sentence
+    end
+  end
 
   def find_source
     if admin?

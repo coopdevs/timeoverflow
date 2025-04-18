@@ -408,6 +408,12 @@ es:
       subject: Boletín semanal
       text1: 'Últimas ofertas publicadas:'
       text2: 'Últimas demandas publicadas:'
+    contact_request:
+      subject: "Solicitud de contacto para tu %{post}"
+      greeting: "Hola %{name},"
+      message: "%{requester} del banco de tiempo %{organization} está interesado/a en tu %{post}."
+      requester_info: "Aquí está su información de contacto"
+      closing: "Si estás interesado/a, por favor contáctale directamente usando la información proporcionada."
   organizations:
     give_time:
       give_time: Dar Tiempo a
@@ -468,6 +474,12 @@ es:
   posts:
     show:
       info: Esta %{type} pertenece a %{organization}.
+      contact_info_hidden: "La información de contacto no es visible ya que esta %{type} es del banco de tiempo %{organization}. Haz clic en 'Solicitar Contacto' para conectar con el miembro."
+      request_contact: "Solicitar Contacto"
+      contact_confirmation: "Si confirmas, tu información de contacto será enviada por correo electrónico a la persona que ofrece este servicio. ¿Deseas continuar?"
+    contact:
+      success: "Solicitud de contacto enviada correctamente. El ofertante recibirá tu información de contacto por correo electrónico."
+      error: "No se pudo enviar la solicitud de contacto."
   reports:
     download: Descargar
     download_all: Descargar todo
@@ -555,6 +567,9 @@ es:
         other: "%{count} minutos"
     new:
       error_amount: 'El tiempo debe ser mayor que 0 '
+    cross_bank:
+      info: "Esta es una transferencia de tiempo a un miembro perteneciente a otra organización. El tiempo se transferirá a través de ambas organizaciones."
+      success: "Transferencia entre organizaciones completada con éxito."
   users:
     avatar:
       change_your_image: Cambia tu imagen

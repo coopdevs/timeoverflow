@@ -56,4 +56,18 @@ class OrganizationNotifier < ActionMailer::Base
       )
     end
   end
+
+  def contact_request(post, requester, requester_organization)
+    @post = post
+    @requester = requester
+    @requester_organization = requester_organization
+    @offerer = post.user
+
+    I18n.with_locale(@offerer.locale) do
+      mail(
+        to: @offerer.email,
+        subject: t('organization_notifier.contact_request.subject', post: @post.title)
+      )
+    end
+  end
 end

@@ -408,6 +408,12 @@ en:
       subject: Newsletter
       text1: 'Latest offers published:'
       text2: 'Latest requests published:'
+    contact_request:
+      subject: "Contact request for your %{post}"
+      greeting: "Hello %{name},"
+      message: "%{requester} from %{organization} time bank is interested in your %{post}."
+      requester_info: "Here is their contact information"
+      closing: "If you are interested, please contact them directly using the provided information."
   organizations:
     give_time:
       give_time: Give time to
@@ -468,6 +474,12 @@ en:
   posts:
     show:
       info: This %{type} belongs to %{organization}.
+      contact_info_hidden: "Contact information is not visible as this %{type} is from %{organization} time bank. Click 'Request Contact' to connect with the member."
+      request_contact: "Request Contact"
+      contact_confirmation: "If you confirm, your contact information will be sent by email to the person offering this service. Do you want to proceed?"
+    contact:
+      success: "Contact request sent successfully. The offerer will receive your contact information by email."
+      error: "Unable to send contact request."
   reports:
     download: Download
     download_all: Download all
@@ -555,6 +567,9 @@ en:
         other: "%{count} minutes"
     new:
       error_amount: Time must be greater than 0
+    cross_bank:
+      info: "This is a time transfer to a member who belongs to another organization. The time will be transferred through both organizations."
+      success: "Cross-organization transfer completed successfully."
   users:
     avatar:
       change_your_image: Change your image

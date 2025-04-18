@@ -1,0 +1,26 @@
+<%= t('organization_notifier.contact_request.greeting', name: @offerer.username) %>
+
+<%= t('organization_notifier.contact_request.message',
+          requester: @requester.username,
+          organization: @requester_organization.name,
+          post: @post.title) %>
+
+<%= t('organization_notifier.contact_request.requester_info') %>:
+
+
+  <%= t('activerecord.attributes.user.username') %>: <%= @requester.username %>
+  <% if @requester.has_valid_email? %>
+    <%= t('activerecord.attributes.user.email') %>: <%= @requester.email %>
+  <% end %>
+  <% phones = [@requester.phone, @requester.alt_phone].select(&:present?) %>
+  <% if phones.present? %>
+    <%= t('users.show.phone', count: phones.size) %>:
+      <% phones.each_with_index do |phone, index| %>
+        <%= " — " if index != 0 %>
+        <%= phone %>
+      <% end %>
+    
+  <% end %>
+
+
+<%= t('organization_notifier.contact_request.closing') %>

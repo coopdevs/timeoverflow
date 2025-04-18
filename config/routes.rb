@@ -20,8 +20,13 @@ Rails.application.routes.draw do
 
   get "/pages/:page" => "pages#show", as: :page
 
-  resources :offers
-  resources :inquiries
+  concern :contactable do
+    post :contact, on: :member
+  end
+
+  resources :offers, concerns: :contactable
+  resources :inquiries, concerns: :contactable
+  resources :posts, concerns: :contactable
   resources :device_tokens, only: :create
 
   concern :accountable do
