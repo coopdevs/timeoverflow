@@ -69,7 +69,7 @@ class PostsController <  ApplicationController
     @post = Post.find(params[:id])
 
     if current_user && current_organization != @post.organization && current_user.active?(current_organization)
-      OrganizationNotifier.contact_request(@post, current_user, current_organization).deliver_now
+      OrganizationNotifier.contact_request(@post, current_user, current_organization).deliver_later
       flash[:notice] = t('posts.contact.success')
     else
       flash[:error] = t('posts.contact.error')
