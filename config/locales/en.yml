@@ -474,7 +474,7 @@ en:
   posts:
     show:
       info: This %{type} belongs to %{organization}.
-      contact_info_hidden: "Contact information is not visible as this %{type} is from %{organization} time bank. Click 'Request Contact' to connect with the member."
+      contact_info_hidden: "Contact information is not visible because this %{type} belongs to %{organization}. Click the ‘Request Contact’ button to connect with the member."
       request_contact: "Request Contact"
       contact_confirmation: "If you confirm, your contact information will be sent by email to the person offering this service. Do you want to proceed?"
     contact:
@@ -568,7 +568,7 @@ en:
     new:
       error_amount: Time must be greater than 0
     cross_bank:
-      info: "This is a time transfer to a member who belongs to another organization. The time will be transferred through both organizations."
+      info: "This is a time transfer to a member who belongs to %{organization}. The time will be transferred through both organizations."
       success: "Cross-organization transfer completed successfully."
   users:
     avatar:

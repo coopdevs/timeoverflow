@@ -20,20 +20,29 @@
               <%= l mv.created_at.to_date, format: :long %>
             </td>
             <td>
-              <% mv.other_side.account.tap do |account| %>
-                <% if account.accountable.present? %>
-                  <% if account.accountable_type == "Organization" %>
-                    <%= link_to account,
-                        organization_path(account.accountable) %>
-                  <% elsif account.accountable.active %>
-                    <%= link_to account.accountable.display_name_with_uid,
-                        user_path(account.accountable.user) %>
-                  <% else %>
-                    <%= t("users.show.inactive_user") %>
-                  <% end %>
+              <%
+                display_account = nil
+                
+                if mv.transfer&.cross_bank?
+                  display_account = mv.transfer.related_account_for(mv)
+                  display_account ||= mv.other_side.account
+                else
+                  display_account = mv.other_side.account
+                end
+              %>
+              
+              <% if display_account.accountable.present? %>
+                <% if display_account.accountable_type == "Organization" %>
+                  <%= link_to display_account,
+                      organization_path(display_account.accountable) %>
+                <% elsif display_account.accountable.active %>
+                  <%= link_to display_account.accountable.display_name_with_uid,
+                      user_path(display_account.accountable.user) %>
                 <% else %>
-                  <%= t("users.show.deleted_user") %>
+                  <%= t("users.show.inactive_user") %>
                 <% end %>
+              <% else %>
+                <%= t("users.show.deleted_user") %>
               <% end %>
             </td>
             <td>

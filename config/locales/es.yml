@@ -474,7 +474,7 @@ es:
   posts:
     show:
       info: Esta %{type} pertenece a %{organization}.
-      contact_info_hidden: "La información de contacto no es visible ya que esta %{type} es del banco de tiempo %{organization}. Haz clic en 'Solicitar Contacto' para conectar con el miembro."
+      contact_info_hidden: "La información de contacto no es visible debido a que esta %{type} pertenece a %{organization}. Haga clic en el botón 'Solicitar Contacto' para conectar con el miembro."
       request_contact: "Solicitar Contacto"
       contact_confirmation: "Si confirmas, tu información de contacto será enviada por correo electrónico a la persona que ofrece este servicio. ¿Deseas continuar?"
     contact:
@@ -568,7 +568,7 @@ es:
     new:
       error_amount: 'El tiempo debe ser mayor que 0 '
     cross_bank:
-      info: "Esta es una transferencia de tiempo a un miembro perteneciente a otra organización. El tiempo se transferirá a través de ambas organizaciones."
+      info: "Esta es una transferencia de tiempo a un miembro perteneciente a %{organization}. El tiempo se transferirá a través de ambas organizaciones."
       success: "Transferencia entre organizaciones completada con éxito."
   users:
     avatar:
