@@ -37,5 +37,40 @@
         </ul>
       </li>
     </ul>
+<<<<<<< HEAD
+=======
+    <ul class="nav navbar-nav d-none d-sm-flex">
+      <li class="dropdown nav-item">
+        <a class="dropdown-toggle nav-link text-primary" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+          <%= selected_org ? selected_org.name : t("activerecord.models.organization.other") %>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <% 
+              query_params = {}
+              query_params[:show_allied] = true
+              query_params[:cat] = params[:cat] if params[:cat].present?
+              link_path = "#{base_path}?#{query_params.to_query}"
+            %>
+            <%= link_to "× #{t('global.all')}", link_path, class: "dropdown-item" %>
+          </li>
+          <% allied_organizations.each do |org| %>
+            <% next if org.id.to_s == params[:org] %>
+            <li>
+              <% 
+                query_params = {}
+                query_params[:org] = org.id
+                query_params[:cat] = params[:cat] if params[:cat].present?
+                link_path = "#{base_path}?#{query_params.to_query}"
+              %>
+              <%= link_to link_path, class: "dropdown-item" do %>
+                <%= org.name %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+>>>>>>> 66663daa (refactor code)
   </form>
 </div>
