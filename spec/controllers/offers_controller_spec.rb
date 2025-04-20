@@ -76,7 +76,7 @@ RSpec.describe OffersController, type: :controller do
         expect(assigns(:offers)).not_to include(offer2)
       end
 
-      it 'displays only offers from the current organization and allied organizations when no organization is selected' do
+      it 'displays only offers from the current organization when no organization is selected' do
         alliance = OrganizationAlliance.create!(
         source_organization: organization1,
         target_organization: organization2,
@@ -86,8 +86,7 @@ RSpec.describe OffersController, type: :controller do
         get :index
 
         expect(assigns(:offers)).to include(offer1)
-
-        expect(assigns(:offers)).to include(offer2)
+        expect(assigns(:offers)).not_to include(offer2)
 
         organization3 = Fabricate(:organization)
         user3 = Fabricate(:user)
@@ -95,6 +94,28 @@ RSpec.describe OffersController, type: :controller do
         offer3 = Fabricate(:offer, user: user3, organization: organization3, title: "Non-allied offer")
 
         get :index
+
+        expect(assigns(:offers)).not_to include(offer3)
+      end
+
+      it 'displays offers from the current organization and allied organizations when show_allied parameter is present' do
+        alliance = OrganizationAlliance.create!(
+        source_organization: organization1,
+        target_organization: organization2,
+        status: "accepted"
+        )
+
+        get :index, params: { show_allied: true }
+
+        expect(assigns(:offers)).to include(offer1)
+        expect(assigns(:offers)).to include(offer2)
+
+        organization3 = Fabricate(:organization)
+        user3 = Fabricate(:user)
+        member3 = Fabricate(:member, user: user3, organization: organization3)
+        offer3 = Fabricate(:offer, user: user3, organization: organization3, title: "Non-allied offer")
+
+        get :index, params: { show_allied: true }
 
         expect(assigns(:offers)).not_to include(offer3)
       end

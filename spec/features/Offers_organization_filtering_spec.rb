@@ -43,7 +43,7 @@ RSpec.feature 'Offers organization filtering' do
     visit offers_path
 
     expect(page).to have_content("Local offer")
-    expect(page).to have_content("Allied offer")
+    expect(page).not_to have_content("Allied offer")
 
     find('a.dropdown-toggle', text: Organization.model_name.human(count: :other)).click
 
