@@ -7,9 +7,13 @@ class PostsController <  ApplicationController
     context = model.active.of_active_members
 
     if current_user.present? && current_organization.present?
+      if params[:show_allied].present?
       allied_org_ids = current_organization.allied_organizations.pluck(:id)
       org_ids = [current_organization.id] + allied_org_ids
       context = context.by_organizations(org_ids)
+      elsif !params[:org].present?
+      context = context.by_organization(current_organization.id)
+      end
     end
 
     posts = apply_scopes(context)

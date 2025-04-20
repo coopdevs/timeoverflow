@@ -51,7 +51,14 @@
         </a>
         <ul class="dropdown-menu" role="menu">
           <li>
-            <%= link_to "× #{t('global.all')}", base_path + (params[:cat] ? "?cat=#{params[:cat]}" : ""), class: "dropdown-item" %>
+            <% 
+              # Enlace para mostrar todas las organizaciones (actual y aliadas)
+              query_params = {}
+              query_params[:show_allied] = true
+              query_params[:cat] = params[:cat] if params[:cat].present?
+              link_path = "#{base_path}?#{query_params.to_query}"
+            %>
+            <%= link_to "× #{t('global.all')}", link_path, class: "dropdown-item" %>
           </li>
           <% allied_organizations.each do |org| %>
             <% next if org.id.to_s == params[:org] %>
