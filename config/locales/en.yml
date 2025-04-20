@@ -83,6 +83,7 @@ en:
           attributes:
             base:
               same_account: A transfer cannot be made to the same account
+              no_alliance_between_organizations: Transfers are only allowed between allied organizations
         user:
           attributes:
             email:

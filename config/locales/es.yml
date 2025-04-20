@@ -83,6 +83,7 @@ es:
           attributes:
             base:
               same_account: No se puede hacer una transacción a la misma cuenta
+              no_alliance_between_organizations: Solo se permiten transferencias entre organizaciones aliadas
         user:
           attributes:
             email:

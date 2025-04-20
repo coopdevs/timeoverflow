@@ -19,6 +19,7 @@ class Transfer < ApplicationRecord
 
   validates :amount, numericality: { greater_than: 0 }
   validate :different_source_and_destination
+  validate :validate_organizations_alliance, if: -> { is_cross_bank && meta.present? }
 
   after_create :make_movements
 
@@ -79,6 +80,23 @@ class Transfer < ApplicationRecord
       movements_in_order[current_index - 1].account
     elsif movement.amount < 0 && current_index < movements_in_order.length - 1
       movements_in_order[current_index + 1].account
+    end
+  end
+
+  private
+
+  def validate_organizations_alliance
+    return unless meta[:source_organization_id] && meta[:destination_organization_id]
+
+    source_org = Organization.find_by(id: meta[:source_organization_id])
+    dest_org = Organization.find_by(id: meta[:destination_organization_id])
+
+    return unless source_org && dest_org
+
+    alliance = source_org.alliance_with(dest_org)
+
+    unless alliance && alliance.accepted?
+      errors.add(:base, :no_alliance_between_organizations)
     end
   end
 end
