@@ -13,6 +13,14 @@ RSpec.describe TransfersController, type: :controller do
 
   let(:offer) { Fabricate(:offer, user: dest_user, organization: dest_org) }
 
+  let!(:alliance) do
+    OrganizationAlliance.create!(
+      source_organization: source_org,
+      target_organization: dest_org,
+      status: "accepted"
+    )
+  end
+
   before do
     login(source_user)
     session[:current_organization_id] = source_org.id

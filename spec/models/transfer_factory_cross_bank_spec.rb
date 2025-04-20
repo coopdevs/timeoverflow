@@ -6,6 +6,15 @@ RSpec.describe TransferFactory do
     let!(:source_member) { Fabricate(:member, user: current_user, organization: source_org) }
     let(:offer) { Fabricate(:offer, organization: dest_org) }
 
+
+    let!(:alliance) do
+      OrganizationAlliance.create!(
+        source_organization: source_org,
+        target_organization: dest_org,
+        status: "accepted"
+      )
+    end
+
     subject(:transfer) do
       described_class.new(source_org, current_user, offer.id, nil, true).build_transfer
     end
