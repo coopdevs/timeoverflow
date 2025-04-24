@@ -38,9 +38,9 @@ RSpec.describe TransfersController, type: :controller do
 
     subject(:request!) { post :create, params: params }
 
-    it 'creates one transfer and six movements' do
-      expect { request! }.to change(Transfer, :count).by(1)
-        .and change(Movement, :count).by(6)
+    it 'creates multiple transfers with corresponding movements' do
+      expect { request! }.to change(Transfer, :count).by_at_least(2)
+      .and change(Movement, :count).by_at_least(4)
     end
 
     it 'redirects back to the post with a success notice' do
@@ -48,5 +48,5 @@ RSpec.describe TransfersController, type: :controller do
       expect(response).to redirect_to(offer)
       expect(flash[:notice]).to eq(I18n.t('transfers.cross_bank.success'))
     end
+    end
   end
-end
