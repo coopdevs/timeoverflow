@@ -136,14 +136,11 @@ RSpec.describe Organization do
         )
       end
 
-      it "returns pending sent alliances" do
-        expect(organization.pending_sent_alliances).to include(@pending_sent)
-        expect(organization.pending_sent_alliances).not_to include(@pending_received)
-      end
-
-      it "returns pending received alliances" do
-        expect(organization.pending_received_alliances).to include(@pending_received)
-        expect(organization.pending_received_alliances).not_to include(@pending_sent)
+      it "returns pending alliances" do
+        expect(organization.pending_alliances).to include(@pending_sent, @pending_received)
+        expect(organization.pending_alliances).not_to include(
+          @accepted_sent, @accepted_received, @rejected_sent, @rejected_received
+        )
       end
 
       it "returns accepted alliances" do

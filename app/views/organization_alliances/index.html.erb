@@ -49,22 +49,17 @@
           </thead>
           <tbody>
             <% @alliances.each do |alliance| %>
-              <% is_sender = (alliance.source_organization_id == current_organization.id) %>
-              <% other_org = is_sender ? alliance.target_organization : alliance.source_organization %>
+              <% other_org = alliance_recipient(alliance) %>
               <tr>
                 <td><%= link_to other_org.name, other_org %></td>
                 <td><%= other_org.city %></td>
                 <td><%= other_org.members.count %></td>
                 <td>
-                  <% if is_sender %>
-                    <%= t('organization_alliances.sent') %>
-                  <% else %>
-                    <%= t('organization_alliances.received') %>
-                  <% end %>
+                  <%= t("organization_alliances.#{alliance_initiator?(alliance) ? 'sent' : 'received'}") %>
                 </td>
                 <% if @status == 'pending' %>
                   <td>
-                    <% if is_sender %>
+                    <% if alliance_initiator?(alliance) %>
                       <%= link_to t('organization_alliances.cancel_request'),
                           organization_alliance_path(alliance),
                           method: :delete,
