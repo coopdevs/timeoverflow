@@ -9,8 +9,7 @@ class OrganizationAlliancesController < ApplicationController
 
     @alliances = case @status
                  when "pending"
-                   current_organization.pending_sent_alliances.includes(:source_organization, :target_organization) +
-                   current_organization.pending_received_alliances.includes(:source_organization, :target_organization)
+                   current_organization.pending_alliances.includes(:source_organization, :target_organization)
                  when "accepted"
                    current_organization.accepted_alliances.includes(:source_organization, :target_organization)
                  when "rejected"
@@ -21,24 +20,22 @@ class OrganizationAlliancesController < ApplicationController
   end
 
   def create
-    @alliance = OrganizationAlliance.new(
+    alliance = OrganizationAlliance.new(
       source_organization: current_organization,
-      target_organization_id: params[:organization_alliance][:target_organization_id],
+      target_organization_id: alliance_params[:target_organization_id],
       status: "pending"
     )
 
-    if @alliance.save
+    if alliance.save
       flash[:notice] = t("organization_alliances.created")
     else
-      flash[:error] = @alliance.errors.full_messages.to_sentence
+      flash[:error] = alliance.errors.full_messages.to_sentence
     end
 
     redirect_back fallback_location: organizations_path
   end
 
   def update
-    authorize @alliance
-
     if @alliance.update(status: params[:status])
       flash[:notice] = t("organization_alliances.updated")
     else
@@ -49,8 +46,6 @@ class OrganizationAlliancesController < ApplicationController
   end
 
   def destroy
-    authorize @alliance
-
     if @alliance.destroy
       flash[:notice] = t("organization_alliances.destroyed")
     else
@@ -67,10 +62,10 @@ class OrganizationAlliancesController < ApplicationController
   end
 
   def authorize_admin
-    unless current_user.manages?(current_organization)
-      flash[:error] = t("organization_alliances.not_authorized")
-      redirect_to root_path
-    end
+    return if current_user.manages?(current_organization)
+
+    flash[:error] = t("organization_alliances.not_authorized")
+    redirect_to root_path
   end
 
   def alliance_params

@@ -24,8 +24,8 @@ class Organization < ApplicationRecord
   has_many :inquiries
   has_many :documents, as: :documentable, dependent: :destroy
   has_many :petitions, dependent: :delete_all
-  has_many :source_alliances, class_name: "OrganizationAlliance", foreign_key: "source_organization_id", dependent: :destroy
-  has_many :target_alliances, class_name: "OrganizationAlliance", foreign_key: "target_organization_id", dependent: :destroy
+  has_many :initiated_alliances, class_name: "OrganizationAlliance", foreign_key: "source_organization_id", dependent: :destroy
+  has_many :received_alliances, class_name: "OrganizationAlliance", foreign_key: "target_organization_id", dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 
@@ -54,39 +54,30 @@ class Organization < ApplicationRecord
     self
   end
 
-  # Returns the id to be displayed in the :new transfer page with the given
-  # destination_accountable
-  #
-  # @params destination_accountable [Organization | Object] target of a transfer
-  # @return [Integer | String]
   def display_id
     account.accountable_id
   end
 
   def alliance_with(organization)
-    source_alliances.find_by(target_organization: organization) ||
-      target_alliances.find_by(source_organization: organization)
+    initiated_alliances.find_by(target_organization: organization) ||
+      received_alliances.find_by(source_organization: organization)
   end
 
-  def pending_sent_alliances
-    source_alliances.pending
-  end
-
-  def pending_received_alliances
-    target_alliances.pending
+  def pending_alliances
+    initiated_alliances.pending.or(received_alliances.pending)
   end
 
   def accepted_alliances
-    source_alliances.accepted.or(target_alliances.accepted)
+    initiated_alliances.accepted.or(received_alliances.accepted)
   end
 
   def rejected_alliances
-    source_alliances.rejected.or(target_alliances.rejected)
+    initiated_alliances.rejected.or(received_alliances.rejected)
   end
 
   def allied_organizations
-    source_org_ids = source_alliances.accepted.pluck(:target_organization_id)
-    target_org_ids = target_alliances.accepted.pluck(:source_organization_id)
+    source_org_ids = initiated_alliances.accepted.pluck(:target_organization_id)
+    target_org_ids = received_alliances.accepted.pluck(:source_organization_id)
     Organization.where(id: source_org_ids + target_org_ids)
   end
 

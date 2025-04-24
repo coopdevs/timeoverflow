@@ -14,4 +14,12 @@ module OrganizationsHelper
     organizations = Organization.where(id: allied_org_ids + [current_organization.id])
     organizations.order(:name)
   end
+
+  def alliance_initiator?(alliance)
+    alliance.source_organization_id == current_organization.id
+  end
+
+  def alliance_recipient(alliance)
+    alliance_initiator?(alliance) ? alliance.target_organization : alliance.source_organization
+  end
 end

@@ -386,7 +386,7 @@ es:
     actions: "Acciones"
     sent: "Enviadas"
     received: "Recibidas"
-    pending: "Pending"
+    pending: "Pendientes"
     active: "Activa"
     rejected: "Rechazada"
     request_alliance: "Solicitar alianza"
