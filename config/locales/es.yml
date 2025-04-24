@@ -571,6 +571,8 @@ es:
     cross_bank:
       info: "Esta es una transferencia de tiempo a un miembro perteneciente a %{organization}. El tiempo se transferirá a través de ambas organizaciones."
       success: "Transferencia entre organizaciones completada con éxito."
+      error: "Ha ocurrido un error al procesar la transferencia entre organizaciones."
+
   users:
     avatar:
       change_your_image: Cambia tu imagen

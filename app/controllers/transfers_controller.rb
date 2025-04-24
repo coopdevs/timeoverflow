@@ -70,17 +70,71 @@ class TransfersController < ApplicationController
       true
     )
 
-    transfer = transfer_factory.build_transfer
-    transfer.amount = transfer_params[:amount]
-    transfer.reason = transfer_params[:reason]
+    destination_organization = transfer_factory.destination_organization
 
-    persister = ::Persister::TransferPersister.new(transfer)
+    # Implementación de múltiples transferencias para operaciones entre bancos
+    @persisters = []
 
-    if persister.save
+    # 1. Usuario origen → Organización origen (si es necesario)
+    user_account = current_user.members.find_by(organization: current_organization).account
+    org_account = current_organization.account
+
+    if user_account.id != org_account.id
+      user_to_org_transfer = Transfer.new(
+        source: user_account,
+        destination: org_account,
+        amount: transfer_params[:amount],
+        reason: post.description,
+        post: post
+      )
+      @persisters << ::Persister::TransferPersister.new(user_to_org_transfer)
+    end
+
+    # 2. Organización origen → Organización destino
+    org_to_org_transfer = Transfer.new(
+      source: org_account,
+      destination: destination_organization.account,
+      amount: transfer_params[:amount],
+      reason: post.description,
+      post: post,
+      is_cross_bank: true
+    )
+    @persisters << ::Persister::TransferPersister.new(org_to_org_transfer)
+
+    # 3. Organización destino → Usuario destino (si es necesario)
+    member = post.user.members.find_by(organization: destination_organization)
+    if member && member.account
+      org_to_user_transfer = Transfer.new(
+        source: destination_organization.account,
+        destination: member.account,
+        amount: transfer_params[:amount],
+        reason: post.description,
+        post: post
+      )
+      @persisters << ::Persister::TransferPersister.new(org_to_user_transfer)
+    end
+
+    if persisters_saved?
       redirect_to post, notice: t('transfers.cross_bank.success')
     else
-      redirect_back fallback_location: post, alert: transfer.errors.full_messages.to_sentence
+      @persisters.each do |persister|
+        persister.transfer.destroy if persister.transfer.persisted?
+      end
+      redirect_back fallback_location: post, alert: @error_messages || t('transfers.cross_bank.error')
     end
+  end
+
+  def persisters_saved?
+    @error_messages = []
+
+    @persisters.each do |persister|
+      unless persister.save
+        @error_messages << persister.transfer.errors.full_messages.to_sentence
+        return false
+      end
+    end
+
+    true
   end
 
   def find_source

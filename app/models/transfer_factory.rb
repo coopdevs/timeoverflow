@@ -23,20 +23,38 @@ class TransferFactory
     transfer = Transfer.new(source: source)
 
     if cross_bank && offer && offer.organization != current_organization
-      transfer.destination = destination_organization_account.id
+      # Para transferencias entre bancos, simplemente preparamos la transferencia inicial
+      # Las transferencias adicionales serán manejadas por el controlador
+      transfer.destination = destination_account.id
       transfer.post = offer
       transfer.is_cross_bank = true
-      transfer.meta = {
-        source_organization_id: current_organization.id,
-        destination_organization_id: offer.organization.id,
-        final_destination_user_id: offer.user.id
-      }
     else
       transfer.destination = destination_account.id
       transfer.post = offer unless for_organization?
     end
 
     transfer
+  end
+
+  # Returns the source organization for the transfer
+  #
+  # @return [Organization]
+  def source_organization
+    current_organization
+  end
+
+  # Returns the destination organization for the transfer
+  #
+  # @return [Organization]
+  def destination_organization
+    offer&.organization
+  end
+
+  # Returns the final destination user for cross-bank transfers
+  #
+  # @return [User]
+  def final_destination_user
+    offer&.user
   end
 
   def transfer_sources
