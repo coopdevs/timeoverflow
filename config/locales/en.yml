@@ -141,6 +141,7 @@ en:
       last_login: Last login
       offer_public_link: Offers public link
       organizations: Organizations
+      organization_alliances: Organizations
       reports: Reports
       sign_out: Logout
       statistics: Statistics
@@ -370,6 +371,35 @@ en:
     show:
       give_time_for: Time transfer for this offer
       offered_by: Offered by
+  organization_alliances:
+    title: "Organization Alliances"
+    created: "Alliance request sent"
+    updated: "Alliance status updated"
+    destroyed: "Alliance has been ended"
+    error_destroying: "Could not end alliance"
+    not_authorized: "You are not authorized to manage alliances"
+    organization: "Organization"
+    city: "City"
+    members: "Members"
+    type: "Type"
+    actions: "Actions"
+    sent: "Sent"
+    received: "Received"
+    pending: "Pending"
+    active: "Active"
+    rejected: "Rejected"
+    request_alliance: "Request alliance"
+    cancel_request: "Cancel request"
+    accept: "Accept"
+    reject: "Reject"
+    end_alliance: "End alliance"
+    confirm_cancel: "Are you sure you want to cancel this alliance request?"
+    confirm_end: "Are you sure you want to end this alliance?"
+    search_organizations: "Search organizations"
+    status:
+      pending: "Pending Requests"
+      accepted: "Active Alliances"
+      rejected: "Rejected Requests"
   organization_notifier:
     member_deleted:
       body: User %{username} has unsubscribed from the organization.
@@ -382,6 +412,8 @@ en:
       give_time: Give time to
     index:
       member_count: Number of users
+      membership: "Membership"
+      alliance: "Alliance"
     new:
       new: New bank
     show:

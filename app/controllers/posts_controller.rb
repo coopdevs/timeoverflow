@@ -6,10 +6,14 @@ class PostsController <  ApplicationController
   def index
     context = model.active.of_active_members
 
-    if current_organization.present?
-      context = context.where(
-        organization_id: current_organization.id
-      )
+    if current_user.present? && current_organization.present?
+      if params[:show_allied].present?
+      allied_org_ids = current_organization.allied_organizations.pluck(:id)
+      org_ids = [current_organization.id] + allied_org_ids
+      context = context.by_organizations(org_ids)
+      elsif !params[:org].present?
+      context = context.by_organization(current_organization.id)
+      end
     end
 
     posts = apply_scopes(context)
@@ -98,15 +102,6 @@ class PostsController <  ApplicationController
     end
   end
 
-  # TODO: remove this horrible hack ASAP
-  #
-  # This hack set the current organization to the post's
-  # organization, both in session and controller instance variable.
-  #
-  # Before changing the current organization it's important to check that
-  # the current_user is an active member of the organization.
-  #
-  # @param organization [Organization]
   def update_current_organization!(organization)
     return unless current_user && current_user.active?(organization)
 

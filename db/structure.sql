@@ -480,6 +480,39 @@ ALTER SEQUENCE public.movements_id_seq OWNED BY public.movements.id;
 
 
 --
+-- Name: organization_alliances; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.organization_alliances (
+    id bigint NOT NULL,
+    source_organization_id bigint,
+    target_organization_id bigint,
+    status integer DEFAULT 0,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: organization_alliances_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.organization_alliances_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: organization_alliances_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.organization_alliances_id_seq OWNED BY public.organization_alliances.id;
+
+
+--
 -- Name: organizations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -819,6 +852,13 @@ ALTER TABLE ONLY public.movements ALTER COLUMN id SET DEFAULT nextval('public.mo
 
 
 --
+-- Name: organization_alliances id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.organization_alliances ALTER COLUMN id SET DEFAULT nextval('public.organization_alliances_id_seq'::regclass);
+
+
+--
 -- Name: organizations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -954,6 +994,14 @@ ALTER TABLE ONLY public.members
 
 ALTER TABLE ONLY public.movements
     ADD CONSTRAINT movements_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: organization_alliances organization_alliances_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.organization_alliances
+    ADD CONSTRAINT organization_alliances_pkey PRIMARY KEY (id);
 
 
 --
@@ -1145,6 +1193,27 @@ CREATE INDEX index_movements_on_transfer_id ON public.movements USING btree (tra
 
 
 --
+-- Name: index_org_alliances_on_source_and_target; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_org_alliances_on_source_and_target ON public.organization_alliances USING btree (source_organization_id, target_organization_id);
+
+
+--
+-- Name: index_organization_alliances_on_source_organization_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_organization_alliances_on_source_organization_id ON public.organization_alliances USING btree (source_organization_id);
+
+
+--
+-- Name: index_organization_alliances_on_target_organization_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_organization_alliances_on_target_organization_id ON public.organization_alliances USING btree (target_organization_id);
+
+
+--
 -- Name: index_organizations_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1300,6 +1369,14 @@ ALTER TABLE ONLY public.push_notifications
 
 
 --
+-- Name: organization_alliances fk_rails_7c459bc8e7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.organization_alliances
+    ADD CONSTRAINT fk_rails_7c459bc8e7 FOREIGN KEY (source_organization_id) REFERENCES public.organizations(id);
+
+
+--
 -- Name: active_storage_variant_records fk_rails_993965df05; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1313,6 +1390,14 @@ ALTER TABLE ONLY public.active_storage_variant_records
 
 ALTER TABLE ONLY public.active_storage_attachments
     ADD CONSTRAINT fk_rails_c3b3935057 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- Name: organization_alliances fk_rails_da452c7bdc; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.organization_alliances
+    ADD CONSTRAINT fk_rails_da452c7bdc FOREIGN KEY (target_organization_id) REFERENCES public.organizations(id);
 
 
 --
@@ -1395,4 +1480,5 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20241230170753'),
 ('20250215163404'),
 ('20250215163405'),
-('20250215163406');
+('20250215163406'),
+('20250412110249');
