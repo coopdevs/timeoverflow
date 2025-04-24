@@ -1,4 +1,5 @@
 <% @category = Category.find_by(id: params[:cat]) %>
+<% selected_org = Organization.find_by(id: params[:org]) %>
 
 <div class="col-md-8">
   <form action="<%= base_path %>"
@@ -23,12 +24,18 @@
         </a>
         <ul class="dropdown-menu" role="menu">
           <li>
-            <%= link_to "× #{t('global.all')}", base_path, class: "dropdown-item" %>
+            <%= link_to "× #{t('global.all')}", base_path + (params[:org] ? "?org=#{params[:org]}" : ""), class: "dropdown-item" %>
           </li>
           <% all_categories.each do |c| %>
             <% next if c == @category %>
             <li>
-              <%= link_to "#{base_path}?cat=#{c.id}", class: "dropdown-item" do %>
+              <% 
+                query_params = {}
+                query_params[:cat] = c.id
+                query_params[:org] = params[:org] if params[:org].present?
+                link_path = "#{base_path}?#{query_params.to_query}"
+              %>
+              <%= link_to link_path, class: "dropdown-item" do %>
                 <%= category_icon(c) %>
                 <%= c.name %>
               <% end %>
