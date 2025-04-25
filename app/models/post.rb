@@ -30,6 +30,9 @@ class Post < ApplicationRecord
   scope :by_organization, ->(org) {
     where(organization_id: org) if org
   }
+  scope :by_organizations, ->(org_ids) {
+  where(organization_id: org_ids) if org_ids.present?
+  }
   scope :of_active_members, -> {
     with_member.where("members.active")
   }

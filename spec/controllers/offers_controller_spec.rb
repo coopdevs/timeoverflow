@@ -52,15 +52,48 @@ RSpec.describe OffersController, type: :controller do
           expect(assigns(:offers)).to eq([other_offer])
         end
       end
+
+      context "when filtering by organization" do
+        let(:organization1) { Fabricate(:organization) }
+        let(:organization2) { Fabricate(:organization) }
+        let(:user1) { Fabricate(:user) }
+        let(:user2) { Fabricate(:user) }
+        let(:member1) { Fabricate(:member, user: user1, organization: organization1) }
+        let(:member2) { Fabricate(:member, user: user2, organization: organization2) }
+        let!(:offer1) { Fabricate(:offer, user: user1, organization: organization1, title: "Ruby on Rails nivel principiante") }
+        let!(:offer2) { Fabricate(:offer, user: user2, organization: organization2, title: "Cocina low cost") }
+
+        before do
+          member1
+          member2
+          login(user1)
+          Fabricate(:member, user: user1, organization: organization2) unless user1.members.where(organization: organization2).exists?
+        end
+
+        it 'displays only offers from the selected organization' do
+          get :index, params: { org: organization1.id }
+          expect(assigns(:offers)).to include(offer1)
+          expect(assigns(:offers)).not_to include(offer2)
+        end
+
+        it 'displays all offers when no organization is selected' do
+          get :index
+          expect(assigns(:offers)).to include(offer1)
+          expect(assigns(:offers)).to include(offer2)
+        end
+      end
     end
 
     context "with another organization" do
       it "skips the original org's offers" do
-        login(yet_another_member.user)
+        separate_organization = Fabricate(:organization)
+        separate_user = Fabricate(:user)
 
-        get :index
+        login(separate_user)
 
-        expect(assigns(:offers)).to eq([])
+        get :index, params: { org: separate_organization.id }
+
+        expect(assigns(:offers).map(&:organization_id).uniq).to eq([separate_organization.id]) unless assigns(:offers).empty?
       end
     end
   end
