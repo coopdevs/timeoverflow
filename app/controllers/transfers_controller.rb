@@ -72,10 +72,8 @@ class TransfersController < ApplicationController
 
     destination_organization = transfer_factory.destination_organization
 
-    # Implementación de múltiples transferencias para operaciones entre bancos
     @persisters = []
 
-    # 1. Usuario origen → Organización origen (si es necesario)
     user_account = current_user.members.find_by(organization: current_organization).account
     org_account = current_organization.account
 
@@ -90,7 +88,6 @@ class TransfersController < ApplicationController
       @persisters << ::Persister::TransferPersister.new(user_to_org_transfer)
     end
 
-    # 2. Organización origen → Organización destino
     org_to_org_transfer = Transfer.new(
       source: org_account,
       destination: destination_organization.account,
@@ -101,7 +98,6 @@ class TransfersController < ApplicationController
     )
     @persisters << ::Persister::TransferPersister.new(org_to_org_transfer)
 
-    # 3. Organización destino → Usuario destino (si es necesario)
     member = post.user.members.find_by(organization: destination_organization)
     if member && member.account
       org_to_user_transfer = Transfer.new(

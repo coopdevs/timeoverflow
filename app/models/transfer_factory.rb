@@ -7,24 +7,16 @@ class TransferFactory
     @cross_bank = cross_bank
   end
 
-  # Returns the offer that is the subject of the transfer
-  #
-  # @return [Maybe<Offer>]
   def offer
     if offer_id.present?
       Offer.find_by_id(offer_id)
     end
   end
 
-  # Returns a new instance of Transfer with the data provided
-  #
-  # @return [Transfer]
   def build_transfer
     transfer = Transfer.new(source: source)
 
     if cross_bank && offer && offer.organization != current_organization
-      # Para transferencias entre bancos, simplemente preparamos la transferencia inicial
-      # Las transferencias adicionales serán manejadas por el controlador
       transfer.destination = destination_account.id
       transfer.post = offer
       transfer.is_cross_bank = true
@@ -36,23 +28,14 @@ class TransferFactory
     transfer
   end
 
-  # Returns the source organization for the transfer
-  #
-  # @return [Organization]
   def source_organization
     current_organization
   end
 
-  # Returns the destination organization for the transfer
-  #
-  # @return [Organization]
   def destination_organization
     offer&.organization
   end
 
-  # Returns the final destination user for cross-bank transfers
-  #
-  # @return [User]
   def final_destination_user
     offer&.user
   end
@@ -75,17 +58,10 @@ class TransferFactory
   attr_reader :current_organization, :current_user, :offer_id,
               :destination_account_id, :cross_bank
 
-  # Returns the id of the account that acts as source of the transfer.
-  # Either the account of the organization or the account of the current user.
-  #
-  # @return [Maybe<Integer>]
   def source
     current_user.members.find_by(organization: current_organization).account.id
   end
 
-  # Checks whether the destination account is an organization
-  #
-  # @return [Boolean]
   def for_organization?
     destination_account.try(:accountable).class == Organization
   end
@@ -94,21 +70,14 @@ class TransferFactory
     current_user.try :manages?, current_organization
   end
 
-  # Returns the account of the target organization for cross-bank transfers
-  #
-  # @return [Account]
   def destination_organization_account
     offer.organization.account
   end
 
-  # Returns the account the time will be transfered to
-  #
-  # @return [Account]
   def destination_account
     @destination_account ||= if destination_account_id
       current_organization.all_accounts.find(destination_account_id)
     elsif offer
-      # Get the destination account from the offer's user
       member = offer.user.members.find_by(organization: offer.organization)
       member.account if member
     end
