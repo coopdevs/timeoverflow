@@ -427,6 +427,17 @@ en:
     show:
       contact_information: Contact information
       join_timebank: Don't hesitate to contact the time bank to join it or ask any questions.
+    transfers:
+      bank_to_bank_transfer: "Transfer time between organizations"
+      bank_transfer: "Organization to Organization transfer"
+      new:
+        title: "Transfer between Organizations"
+        submit: "Execute transfer"
+        description: "Transfer time from %{source_organization} to %{destination_organization}"
+        reason_hint: "Optional: Describe the reason for this bank-to-bank transfer"
+      create:
+        success: "Organization to Organization transfer completed successfully"
+        error: "Error processing the transfer: %{error}"
   pages:
     about:
       app-mobile: Mobile App

@@ -427,6 +427,17 @@ es:
     show:
       contact_information: Información de contacto
       join_timebank: No dudes en contactar con el Banco de Tiempo para unirte o para resolver dudas.
+    transfers:
+      bank_to_bank_transfer: "Transferir tiempo entre organizaciones"
+      bank_transfer: "Transferencia entre organizaciones"
+      new:
+        title: "Transferencia entre bancos de tiempo"
+        submit: "Crear transferencia"
+        description: "Transferir tiempo desde %{source_organization} a %{destination_organization}"
+        reason_hint: "Opcional: Describe el motivo de esta transferencia entre bancos"
+      create:
+        success: "Transferencia entre bancos realizada con éxito"
+        error: "Error al realizar la transferencia: %{error}"
   pages:
     about:
       app-mobile: App Móvil

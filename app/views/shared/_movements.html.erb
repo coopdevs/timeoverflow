@@ -48,6 +48,8 @@
             <td>
               <% if mv.transfer&.post&.active? %>
                 <%= link_to mv.transfer.post, offer_path(mv.transfer.post) %>
+              <% elsif is_bank_to_bank_transfer?(mv.transfer) %>
+                <span class="badge bg-info"><%= t("organizations.transfers.bank_transfer") %></span>
               <% else %>
                 <%= mv.transfer.post %>
               <% end %>
