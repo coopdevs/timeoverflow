@@ -431,12 +431,12 @@ es:
       bank_to_bank_transfer: "Transferir tiempo entre organizaciones"
       bank_transfer: "Transferencia entre organizaciones"
       new:
-        title: "Transferencia entre bancos de tiempo"
+        title: "Transferencia entre organizaciones"
         submit: "Crear transferencia"
         description: "Transferir tiempo desde %{source_organization} a %{destination_organization}"
-        reason_hint: "Opcional: Describe el motivo de esta transferencia entre bancos"
+        reason_hint: "Opcional: Describe el motivo de esta transferencia organizaciones"
       create:
-        success: "Transferencia entre bancos realizada con éxito"
+        success: "Transferencia entre organizaciones realizada con éxito"
         error: "Error al realizar la transferencia: %{error}"
   pages:
     about:

@@ -412,7 +412,7 @@ en:
     contact_request:
       subject: "Contact request for your %{post}"
       greeting: "Hello %{name},"
-      message: "%{requester} from %{organization} time bank is interested in your %{post}."
+      message: "%{requester} from %{organization} organization is interested in your %{post}."
       requester_info: "Here is their contact information"
       closing: "If you are interested, please contact them directly using the provided information."
   organizations:
