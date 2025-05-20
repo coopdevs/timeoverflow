@@ -27,9 +27,8 @@ RSpec.describe TransfersHelper do
         transfer = Transfer.new(
           source: organization1.account,
           destination: organization2.account,
-          amount: 60 # 1 hour
+          amount: 60
         )
-        # Save the transfer to create the movements
         ::Persister::TransferPersister.new(transfer).save
         transfer
       end
@@ -62,7 +61,7 @@ RSpec.describe TransfersHelper do
           source: organization1.account,
           destination: organization2.account,
           amount: 60,
-          post: post # With associated post
+          post: post
         )
         ::Persister::TransferPersister.new(transfer).save
         transfer
