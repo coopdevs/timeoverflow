@@ -11,7 +11,7 @@
 # account, so the total sum of the system is zero
 #
 class Transfer < ApplicationRecord
-  attr_accessor :source, :destination, :amount, :hours, :minutes, :is_cross_bank
+  attr_accessor :source, :destination, :amount, :hours, :minutes
 
   belongs_to :post, optional: true
   has_many :movements, dependent: :destroy
@@ -33,11 +33,6 @@ class Transfer < ApplicationRecord
 
   def destination_id
     destination.respond_to?(:id) ? destination.id : destination
-  end
-
-  def different_source_and_destination
-    return unless source == destination
-    errors.add(:base, :same_account)
   end
 
   private

@@ -99,8 +99,7 @@ class TransfersController < ApplicationController
       destination: destination_organization.account,
       amount: transfer_params[:amount],
       reason: post.description,
-      post: post,
-      is_cross_bank: true
+      post: post
     )
     @persisters << ::Persister::TransferPersister.new(org_to_org_transfer)
 

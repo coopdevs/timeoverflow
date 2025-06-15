@@ -24,17 +24,13 @@ module TransfersHelper
   end
 
   def is_bank_to_bank_transfer?(transfer)
-    return false unless transfer && transfer.movements.count == 2
+    return false unless transfer
 
-    source_movement = transfer.movements.find_by('amount < 0')
-    destination_movement = transfer.movements.find_by('amount > 0')
-    return false unless source_movement && destination_movement
+    source_account = transfer.movements.find_by('amount < 0')&.account
+    destination_account = transfer.movements.find_by('amount > 0')&.account
 
-    source_account = source_movement.account
-    destination_account = destination_movement.account
-
-    source_account.accountable_type == 'Organization' &&
-    destination_account.accountable_type == 'Organization' &&
+    source_account&.accountable_type == 'Organization' &&
+    destination_account&.accountable_type == 'Organization' &&
     transfer.post.nil?
   end
 end
