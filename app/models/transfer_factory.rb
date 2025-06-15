@@ -12,8 +12,7 @@ class TransferFactory
   end
 
   def build_transfer
-    transfer = Transfer.new(source: source)
-    transfer.destination = destination_account.id
+    transfer = Transfer.new(source: source, destination: destination_account.id)
 
     transfer.post = offer if (cross_bank && offer && offer.organization != current_organization) ||
                              (offer && !for_organization?)
