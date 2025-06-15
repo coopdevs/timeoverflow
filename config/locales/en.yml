@@ -580,8 +580,10 @@ en:
     new:
       error_amount: Time must be greater than 0
     cross_bank:
+      success: "Cross-organization transfer completed successfully"
+      error: "Error creating cross-bank transfer"
+      no_alliance: "Cannot perform cross-bank transfers: no active alliance exists between organizations"
       info: "This is a time transfer to a member who belongs to %{organization}. The time will be transferred through both organizations."
-      success: "Cross-organization transfer completed successfully."
   users:
     avatar:
       change_your_image: Change your image

@@ -52,7 +52,7 @@ class OrganizationTransfersController < ApplicationController
     alliance = current_organization.alliance_with(destination_organization)
     unless alliance && alliance.accepted?
       redirect_to organizations_path,
-                  alert: t('activerecord.errors.models.transfer.attributes.base.no_alliance_between_organizations')
+                  alert: t('transfers.cross_bank.no_alliance')
     end
   end
 end
