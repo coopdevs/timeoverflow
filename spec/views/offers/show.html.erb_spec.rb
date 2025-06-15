@@ -91,8 +91,6 @@ RSpec.describe 'offers/show' do
         assign :offer, offer
         render template: 'offers/show'
 
-        # Verificar que la vista muestra el nombre de la organización
-        # sin depender del formato exacto del mensaje
         expect(rendered).to include(offer.organization.name)
       end
     end
@@ -133,8 +131,6 @@ RSpec.describe 'offers/show' do
       assign :offer, offer
       render template: 'offers/show'
 
-      # Verificar que la vista muestra el nombre de la organización
-      # sin depender del formato exacto del mensaje
       expect(rendered).to include(offer.organization.name)
     end
 
