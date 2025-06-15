@@ -40,24 +40,6 @@ class Transfer < ApplicationRecord
     errors.add(:base, :same_account)
   end
 
-  def cross_bank?
-    movements.count > 2
-  end
-
-  def related_account_for(movement)
-    return nil unless movement.transfer == self
-
-    movements_in_order = movements.order(:id)
-    current_index = movements_in_order.index(movement)
-    return nil unless current_index
-
-    if movement.amount > 0 && current_index > 0
-      movements_in_order[current_index - 1].account
-    elsif movement.amount < 0 && current_index < movements_in_order.length - 1
-      movements_in_order[current_index + 1].account
-    end
-  end
-
   private
 
   def different_source_and_destination

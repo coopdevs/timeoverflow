@@ -21,14 +21,7 @@
             </td>
             <td>
               <%
-                display_account = nil
-                
-                if mv.transfer&.cross_bank?
-                  display_account = mv.transfer.related_account_for(mv)
-                  display_account ||= mv.other_side.account
-                else
-                  display_account = mv.other_side.account
-                end
+                display_account = mv.other_side.account
               %>
               
               <% if display_account.accountable.present? %>
