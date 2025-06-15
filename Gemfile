@@ -34,7 +34,7 @@ gem 'select2-rails', '~> 4.0.13'
 
 group :production do
   # we are using an ExecJS runtime only on the precompilation phase
-  gem "uglifier", "~> 4.2.0", require: false
+  gem "terser", "~> 1.2", require: false
 end
 
 group :development do
