@@ -34,4 +34,3 @@ capybara-*.html
 .env
 .DS_Store
 .idea/
-.localeapp

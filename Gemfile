@@ -38,7 +38,6 @@ group :production do
 end
 
 group :development do
-  gem 'localeapp', '~> 3.3', require: false
   gem 'letter_opener', '~> 1.7.0'
   gem 'web-console', '~> 4.2'
 end
