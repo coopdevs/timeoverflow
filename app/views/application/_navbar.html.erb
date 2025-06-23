@@ -1,26 +1,23 @@
-<nav class="navbar navbar-static-top navbar-inverse" role="navigation">
+<nav class="navbar navbar-expand-md navbar-static-top navbar-dark mb-4 p-0" role="navigation">
   <div class="container-fluid">
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
+      <div class="row align-content-center w-100">
+        <div class="col-12 col-md-3 d-flex">
+          <div class="navbar-header w-100 d-flex align-items-center">
             <% if current_user && current_organization %>
-              <a class="navbar-brand" href="<%= organization_path(current_organization) %>">TimeOverflow</a>
+              <a class="navbar-brand align-content-center" href="<%= organization_path(current_organization) %>">TimeOverflow</a>
             <% else %>
-              <a class="navbar-brand" href="/">TimeOverflow</a>
+              <a class="navbar-brand align-content-center" href="/">TimeOverflow</a>
             <% end %>
+            <button type="button" class="navbar-toggler collapsed ms-auto" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-expanded="false">
+              <span class="visually-hidden">Toggle navigation</span>
+              <span class="navbar-toggler-icon"></span>
+            </button>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-          <div id="navbar-collapse" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right hidden-xs">
+        <div class="col-12 col-md-9">
+          <div id="navbar-collapse" class="collapse navbar-collapse border-top border-primary">
+            <ul class="nav navbar-nav ms-auto d-none d-md-flex">
               <% if current_user %>
                 <%= render 'application/menus/user_admin_menu' %>
               <% else %>
@@ -28,9 +25,9 @@
               <% end %>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right hidden-sm hidden-md hidden-lg">
+            <ul class="nav navbar-nav navbar-right d-md-none text-white">
               <% if current_user %>
-                <li>
+                <li class="nav-item mt-4">
                   <%= image_tag avatar_url(current_user) %>
                   <%= current_user.email %>
                 </li>
@@ -50,28 +47,28 @@
   <nav role="navigation">
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <ul class="nav nav-pills actions-menu">
-            <li class="<%= "active" if current_page?(users_path) %>">
-              <%= link_to users_path do %>
+            <li class="nav-item">
+              <%= link_to users_path, class: "nav-link #{"active" if current_page?(users_path)}" do %>
                 <%= glyph :user %>
                 <%= t("users.index.members") %>
               <% end %>
             </li>
-            <li class="<%= "active" if current_page?(offers_path) %>">
-              <%= link_to offers_path do %>
+            <li class="nav-item">
+              <%= link_to offers_path, class: "nav-link #{"active" if current_page?(offers_path)}" do %>
                 <%= glyph :offer %>
                 <%= Offer.model_name.human(count: :many) %>
               <% end %>
             </li>
-            <li class="<%= "active" if current_page?(inquiries_path) %>">
-              <%= link_to inquiries_path do %>
+            <li class="nav-item">
+              <%= link_to inquiries_path, class: "nav-link #{"active" if current_page?(inquiries_path)}" do %>
                 <%= glyph :inquiry %>
                 <%= Inquiry.model_name.human(count: :many) %>
               <% end %>
             </li>
-            <li class="<%= "active" if current_page?(alpha_grouped_index_tags_path) %>">
-              <%= link_to alpha_grouped_index_tags_path do %>
+            <li class="nav-item">
+              <%= link_to alpha_grouped_index_tags_path, class: "nav-link #{"active" if current_page?(alpha_grouped_index_tags_path)}" do %>
                 <%= glyph :tags %>
                 <%= t ".tags" %>
               <% end %>

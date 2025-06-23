@@ -14,7 +14,6 @@ Fabricator(:inquiry) do
   description { Faker::Lorem.paragraph }
   category { Fabricate(:category) }
   active { true }
-
 end
 
 Fabricator(:offer) do

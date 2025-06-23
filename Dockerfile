@@ -54,6 +54,8 @@ RUN RAILS_ENV=production \
     SECRET_KEY_BASE=dummy \
     RAILS_MASTER_KEY=dummy \
     DB_ADAPTER=nulldb \
+    ASSETS_PRECOMPILE=true \
+    STORAGE_PROVIDER=local \
     bundle exec rails assets:precompile
 
 RUN mv config/credentials.yml.enc.bak config/credentials.yml.enc 2>/dev/null || true

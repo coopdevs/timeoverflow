@@ -16,7 +16,7 @@ RSpec.describe ApplicationHelper do
 
     it 'returns url to gravatar when there is no avatar attached' do
       user = Fabricate(:user)
-      gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+      gravatar_id = Digest::MD5.hexdigest(user.email).downcase
 
       expect(helper.avatar_url(user, 50)).to eq("https://www.gravatar.com/avatar/#{gravatar_id}.png?d=identicon&gravatar=hashed&set=set1&size=50x50")
     end

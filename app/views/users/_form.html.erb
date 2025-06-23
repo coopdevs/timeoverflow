@@ -16,8 +16,8 @@
     <% end %>
 
     <% if short %>
-      <div class="form-group">
-        <label class="control-label" for="user_password"><abbr title="required">*</abbr> <%= t('application.login_form.password') %></label>
+      <div class="mb-3">
+        <label class="col-form-label form-label" for="user_password"><abbr title="required">*</abbr> <%= t('application.login_form.password') %></label>
         <div class="input__password-eye">
           <input class="form-control" required type="password" name="user[password]" id="user_password">
           <span class="show-password">
@@ -39,8 +39,8 @@
     <%= f.input :postcode %>
 
     <% if current_organization %>
-      <%= label_tag :tag_list, t('activerecord.attributes.post.tag_list') %>
-      <div class='form-group'>
+      <%= label_tag :tag_list, t('activerecord.attributes.post.tag_list'), class: "form-label" %>
+      <div class='mb-3'>
         <%= select_tag :tag_list,
                       options_for_select(member.tags, member.tags),
                       multiple: true,
@@ -50,16 +50,16 @@
       </div>
     <% end %>
 
-    <div class='form-group'>
-      <label><%= t('.notifications') %></label>
-      <div class="checkbox">
-        <%= f.label :notifications do %>
+    <div class='mb-3'>
+      <label class="form-label"><%= t('.notifications') %></label>
+      <div class="form-check">
+        <%= f.label :notifications, class: "form-label" do %>
           <%= f.check_box :notifications %>
           <%= t('activerecord.attributes.user.notifications') %>
         <% end %>
       </div>
-      <div class="checkbox">
-        <%= f.label :push_notifications do %>
+      <div class="form-check">
+        <%= f.label :push_notifications, class: "form-label" do %>
           <%= f.check_box :push_notifications %>
           <%= t('activerecord.attributes.user.push_notifications') %>
         <% end %>
@@ -73,7 +73,7 @@
       <% if @user.new_record? %>
         <%= f.button :submit, t('users.new.create_more_users_button'), name: 'more' %>
       <% end %>
-      <%= link_to t('users.new.cancel'), users_path, class: "btn btn-default" %>
+      <%= link_to t('users.new.cancel'), users_path, class: "btn btn-secondary" %>
     <% end %>
   </div>
 <% end %>

@@ -9,7 +9,7 @@ class Movement < ApplicationRecord
   belongs_to :account, optional: true
   belongs_to :transfer, optional: true
 
-  scope :by_month, -> (month) { where(created_at: month.beginning_of_month..month.end_of_month) }
+  scope :by_month, ->(month) { where(created_at: month.beginning_of_month..month.end_of_month) }
 
   validates :amount, numericality: { other_than: 0 }
 

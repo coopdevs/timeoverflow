@@ -1,36 +1,35 @@
 <% if current_user.organizations.count > 1 %>
-  <li class="disabled">
-    <a href="#"><%= current_organization.name %></a>
+  <li>
+    <a class="dropdown-item disabled" href="#"><%= current_organization.name %></a>
   </li>
   <% (current_user.organizations - [current_organization]).each do |org| %>
     <li>
-      <%= link_to set_current_organization_path(org), method: :post do %>
+      <%= link_to set_current_organization_path(org), method: :post, class: "dropdown-item" do %>
         <%= glyph(:retweet) %>
         <%= org.name %>
       <% end %>
     </li>
   <% end %>
-
-  <li class="divider" role="presentation"></li>
+  <li class="dropdown-divider" role="presentation"></li>
 <% end %>
 
-<li role="presentation">
-  <%= link_to current_user do %>
+<li>
+  <%= link_to current_user, class: "dropdown-item" do %>
     <%= glyph :user %>
     <%= t "layouts.application.edit_profile" %>
   <% end %>
 </li>
 
-<li role="presentation">
-  <%= link_to organizations_path do %>
+<li>
+  <%= link_to organizations_path, class: "dropdown-item" do %>
     <%= glyph :list %>
     <%= t('layouts.application.manage_memberships') %>
   <% end %>
 </li>
 
 <% current_user.members.where(manager: true).each do |m| %>
-  <li role="presentation">
-    <%= link_to m.organization do %>
+  <li>
+    <%= link_to m.organization, class: "dropdown-item" do %>
       <%= glyph :pencil %>
       <%= t "layouts.application.edit_org", organization: m.organization %>
     <% end %>
@@ -38,18 +37,17 @@
 <% end %>
 
 <% if superadmin? %>
-  <li role="presentation">
-    <%= link_to admin_root_path do %>
+  <li>
+    <%= link_to admin_root_path, class: "dropdown-item" do %>
       <%= glyph :cog %>
       <%= t "application.navbar.adminshort" %>
     <% end %>
   </li>
 <% end %>
 
-<li class="divider" role="presentation"></li>
-
-<li role="presentation">
-  <%= link_to destroy_user_session_path, method: :delete do %>
+<li class="dropdown-divider" role="presentation"></li>
+<li>
+  <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
     <%= glyph :log_out %>
     <%= t "application.navbar.sign_out" %>
   <% end %>

@@ -249,7 +249,7 @@ RSpec.describe UsersController do
         it 'links to new_transfer_path' do
           get "show", params: { id: user.id }
           expect(response.body).to include(
-            "<a href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}\">"
+            "<a class=\"nav-link\" href=\"/transfers/new?destination_account_id=#{member.account.id}&amp;id=#{user.id}\">"
           )
         end
 
@@ -267,7 +267,6 @@ RSpec.describe UsersController do
 
   describe "POST #create" do
     context "with empty email" do
-
       subject do
         post "create", params: { user: Fabricate.to_params(:user,
                                        username: user.username + "2",
@@ -279,7 +278,6 @@ RSpec.describe UsersController do
       before { login(admin_user) }
 
       it "can create a user with empty email and generates dummy email" do
-
         expect { subject }.to change(User, :count).by(1)
 
         u = User.find_by(username: user.username + "2")
@@ -335,7 +333,6 @@ RSpec.describe UsersController do
           user.valid?
           expect(user.errors[:email]).not_to be_empty
         end
-
       end
 
       context 'with no logged user' do

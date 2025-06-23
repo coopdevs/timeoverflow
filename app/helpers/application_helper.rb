@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def gravatar_url(user, size = 32)
-    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+    gravatar_id = Digest::MD5.hexdigest(user.email).downcase
     gravatar_options = {
       set: "set1",
       gravatar: "hashed",
@@ -61,11 +61,11 @@ module ApplicationHelper
     messages = resource.errors.
                full_messages.map { |msg| content_tag(:li, msg) }.join
     html = <<-HTML
-    <div class="alert alert-danger">
-      <button type="button" class="close" data-dismiss="alert">x</button>
+    <div class="alert alert-danger d-flex justify-content-between">
       <ul>
         #{messages}
       </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
     HTML
 

@@ -1,12 +1,12 @@
 <% flash.each do |key, value| %>
   <% next if key == 'timedout' %>
 
-  <div class="alert <%= alert_class(key) %>">
-    <button type="button" class="close" data-dismiss="alert">x</button>
-    <ul>
+  <div class="alert <%= alert_class(key) %> d-flex justify-content-between">
+    <ul class="mb-0">
       <li>
         <%= value.html_safe %>
       </li>
     </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
   </div>
 <% end %>

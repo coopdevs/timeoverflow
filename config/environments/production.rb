@@ -1,11 +1,13 @@
+require "active_support/core_ext/integer/time"
+
 # Uglifier is only used on the precompile phase, so we can require it conditionally
-require "uglifier" if ENV["SECRET_KEY_BASE"] == "dummy"
+require "terser" if ENV["ASSETS_PRECOMPILE"] == "true"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  config.enable_reloading = false
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -26,8 +28,8 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress CSS & JS using preprocessors only on the precompile phase
-  if ENV["SECRET_KEY_BASE"] == "dummy"
-    config.assets.js_compressor = Uglifier.new(harmony: true)
+  if ENV["ASSETS_PRECOMPILE"] == "true"
+    config.assets.js_compressor = Terser.new
     config.assets.css_compressor = :sass
   end
 

@@ -18,6 +18,8 @@ class PetitionsController < ApplicationController
 
   def update
     petition = Petition.find params[:id]
+    authorize petition
+
     status = params[:status]
 
     if petition.update(status: status)
@@ -31,6 +33,8 @@ class PetitionsController < ApplicationController
   end
 
   def manage
+    authorize Petition
+
     @status = params[:status] || Petition::DEFAULT_STATUS
     @users = User.joins(:petitions).where(petitions: { organization_id: current_organization.id, status: @status }).page(params[:page]).per(20)
   end

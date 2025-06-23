@@ -101,10 +101,16 @@ In order to configure the application you can use the following ENV variables:
 
 Any kind of feedback, bug report, idea or enhancement are really appreciated.
 
-To contribute, just fork the repo, hack on it and send a pull request. Don't forget to add tests for behaviour changes and run the test suite:
+To contribute, just fork the repo, hack on it and send a pull request. Don't forget to add tests for behaviour changes and run the test suite by:
 
 ```
 bundle exec rspec
+```
+
+You can also run the linter by:
+
+```
+bundle exec rubocop
 ```
 
 👉 Further information in our [Wiki](https://github.com/coopdevs/timeoverflow/wiki).

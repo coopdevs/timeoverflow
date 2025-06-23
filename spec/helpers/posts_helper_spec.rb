@@ -9,7 +9,7 @@ RSpec.describe PostsHelper do
     end
 
     it "returns organization active members with member_uid and name" do
-      expect(helper.members_for_select(offer)).to match(/<option selected.*>#{member.member_uid} #{member.user.to_s}<\/option>/)
+      expect(helper.members_for_select(offer)).to match(/<option selected.*>#{member.member_uid} #{member.user}<\/option>/)
     end
   end
 end

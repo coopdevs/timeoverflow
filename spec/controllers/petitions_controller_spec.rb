@@ -2,6 +2,7 @@ RSpec.describe PetitionsController do
   let!(:organization) { Fabricate(:organization) }
   let(:user) { Fabricate(:user) }
   let!(:admin) { Fabricate(:member, organization: organization, manager: true) }
+  let!(:non_admin) { Fabricate(:member, organization: organization, manager: false) }
 
   describe 'POST #create' do
     before { login(user) }
@@ -40,14 +41,24 @@ RSpec.describe PetitionsController do
   describe 'GET #manage' do
     before do
       allow(controller).to receive(:current_organization) { organization }
-      login(admin.user)
     end
     let!(:petition) { Petition.create(user: user, organization: organization) }
 
-    it 'populates a list of users with pending petitions' do
+    it 'as an admin: populates a list of users with pending petitions' do
+      login(admin.user)
+
       get :manage
 
       expect(assigns(:users)).to include(user)
+    end
+
+    it 'as non-admin: not authorized' do
+      login(non_admin.user)
+
+      get :manage
+
+      expect(response).to redirect_to(root_path)
+      expect(flash[:error]).to eq('You are not authorized to perform this action.')
     end
   end
 end
