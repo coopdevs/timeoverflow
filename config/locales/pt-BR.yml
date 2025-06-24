@@ -57,7 +57,7 @@ pt-BR:
         alt_phone: Telefone alternativo
         created_at: Criado
         date_of_birth: Data de nascimento
-        deactivated:
+        deactivated: 
         description: Descrição
         email: E-mail
         gender: Gênero
@@ -65,7 +65,7 @@ pt-BR:
         notifications: Receber notificações
         organization: Organização
         phone: Telefone
-        postcode:
+        postcode: 
         push_notifications: Receber notificações pelo celular
         registration_date: Data de ingresso
         registration_number: Código do usuário
@@ -144,7 +144,7 @@ pt-BR:
       reports: Informes
       sign_out: Desconectar
       statistics: Estatísticas
-      statistics_all_transfers:
+      statistics_all_transfers: 
       stats: Estatísticas
       tags: Etiquetas
       type_of_swaps: Tipos de trocas
@@ -157,13 +157,18 @@ pt-BR:
   devise:
     confirmations:
       confirmed: Tua conta foi confirmada com êxito.
-      confirmed_and_signed_in: Tua conta foi confirmada com êxito. Agora você está registrado.
+      confirmed_and_signed_in: Tua conta foi confirmada com êxito. Agora você está
+        registrado.
       new:
         resend_instructions: Reenviar instruções de confirmação
         resend_instructions_button: Reenviar
-        resend_instructions_description: Se você mudou de e-mail deve realizar este passo para que a troca seja efetivada
-      send_instructions: Você receberá um e-mail com as instruções sobre como confirmar tua conta em alguns minutos.
-      send_paranoid_instructions: Se teus dados de e-mail existem em nossa base de dados, irá receber um e-mail com as instruções sobre como confirmar tua conta em alguns minutos.
+        resend_instructions_description: Se você mudou de e-mail deve realizar este
+          passo para que a troca seja efetivada
+      send_instructions: Você receberá um e-mail com as instruções sobre como confirmar
+        tua conta em alguns minutos.
+      send_paranoid_instructions: Se teus dados de e-mail existem em nossa base de
+        dados, irá receber um e-mail com as instruções sobre como confirmar tua conta
+        em alguns minutos.
     failure:
       already_authenticated: Já está registrado.
       inactive: Tua conta foi ativada.
@@ -175,7 +180,8 @@ pt-BR:
       unauthenticated: Você deve se cadastrar para continuar.
       unconfirmed: É necessário confirmar tua conta antes de continuar.
       user:
-        last_attempt: Atenção, te resta apenas uma tentativa antes que tua conta seja bloqueada.
+        last_attempt: Atenção, te resta apenas uma tentativa antes que tua conta seja
+          bloqueada.
     mailer:
       confirmation_instructions:
         subject: Instruções de confirmação da conta.
@@ -194,11 +200,17 @@ pt-BR:
         passwords_not_match: As senhas não coincidem
       new:
         forgot_question: Crie uma nova senha
-        forgot_question_description: Insira o endereço de e-mail associado a tua conta e te enviaremos um e-mail com o link para criar uma nova senha.
+        forgot_question_description: Insira o endereço de e-mail associado a tua conta
+          e te enviaremos um e-mail com o link para criar uma nova senha.
         send_instructions: Enviar link
-      no_token: Não é possível acessar esta página se não foi direcionada de um e-mail para recuperar a senha. Se foi direcionado de um e-mail para recuperar a senha, verifique ter utilizado a URL completa.
-      send_instructions: Você receberá um e-mail com instruções de como recuperar a tua senha em alguns minutos.
-      send_paranoid_instructions: Se teu endereço de e-mail existe em nossa base de dados, você receberá um link para recuperação da senha em teu e-mail em alguns minutos.
+      no_token: Não é possível acessar esta página se não foi direcionada de um e-mail
+        para recuperar a senha. Se foi direcionado de um e-mail para recuperar a senha,
+        verifique ter utilizado a URL completa.
+      send_instructions: Você receberá um e-mail com instruções de como recuperar
+        a tua senha em alguns minutos.
+      send_paranoid_instructions: Se teu endereço de e-mail existe em nossa base de
+        dados, você receberá um link para recuperação da senha em teu e-mail em alguns
+        minutos.
       updated: Tua senha foi trocada. Você está conectado(a).
       updated_not_active: Troca de senha realizada.
     registrations:
@@ -219,10 +231,15 @@ pt-BR:
         sign_me_up: Cadastre-se
         sign_up: Cadastro
       signed_up: Bem Vindo(a)! Cadastro realizado.
-      signed_up_but_inactive: Teu cadastro foi realizado. Porém, não é possível entrar porque tua conta ainda não foi ativada
-      signed_up_but_locked: Teu cadastro foi realizado. Porém, não é possível entrar porque tua conta está bloqueada. Clique no link 'Enviar e-mail de desbloqueio'
-      signed_up_but_unconfirmed: Foi enviada uma mensagem de confirmação ao teu endereço eletrônico. Por favor, abra o link para ativar tua conta.
-      update_needs_confirmation: Atualização de conta realizada, mas precisamos verificar teu endereço eletrônico. Por favor, confirme teu e-mail e utilize o link para confirmar teu novo endereço eletrônico.
+      signed_up_but_inactive: Teu cadastro foi realizado. Porém, não é possível entrar
+        porque tua conta ainda não foi ativada
+      signed_up_but_locked: Teu cadastro foi realizado. Porém, não é possível entrar
+        porque tua conta está bloqueada. Clique no link 'Enviar e-mail de desbloqueio'
+      signed_up_but_unconfirmed: Foi enviada uma mensagem de confirmação ao teu endereço
+        eletrônico. Por favor, abra o link para ativar tua conta.
+      update_needs_confirmation: Atualização de conta realizada, mas precisamos verificar
+        teu endereço eletrônico. Por favor, confirme teu e-mail e utilize o link para
+        confirmar teu novo endereço eletrônico.
       updated: Atualização de conta realizada.
     sessions:
       new:
@@ -243,17 +260,22 @@ pt-BR:
       new:
         resend_instructions: Reenviar instruções de desbloqueio
         resend_instructions_button: Reenviar
-        resend_instructions_description: Se você se enganou no login mais de cinco vezes, é necessário seguir este passo para desbloquear tua conta
-      send_instructions: Você receberá um e-mail com instruções de como desbloquear tua conta em alguns minutos.
-      send_paranoid_instructions: Se tua conta existe, você receberá um e-mail com instruções de como desbloqueá-la em alguns minutos.
+        resend_instructions_description: Se você se enganou no login mais de cinco
+          vezes, é necessário seguir este passo para desbloquear tua conta
+      send_instructions: Você receberá um e-mail com instruções de como desbloquear
+        tua conta em alguns minutos.
+      send_paranoid_instructions: Se tua conta existe, você receberá um e-mail com
+        instruções de como desbloqueá-la em alguns minutos.
       unlocked: Tua conta foi desbloqueada. Por favor, entre para continuar.
   errors:
     internal_server_error:
-      description: Desculpem, parece que há um erro com esta solicitação. Uma notificação nos foi enviada automaticamente, e nós resolveremos isso assim que possível.
+      description: Desculpem, parece que há um erro com esta solicitação. Uma notificação
+        nos foi enviada automaticamente, e nós resolveremos isso assim que possível.
       title: Erro do servidor interno
     messages:
       already_confirmed: já foi confirmado, por favor tente entrar
-      confirmation_period_expired: É necessário se confirmar em %{period}, por favor, solicite um novo
+      confirmation_period_expired: É necessário se confirmar em %{period}, por favor,
+        solicite um novo
       expired: Expirou, solicite um novo
       not_found: Não foi encontrado
       not_locked: Não foi bloqueado
@@ -261,7 +283,8 @@ pt-BR:
         one: '1 erro impede que este %{resource} se guarde:'
         other: "%{count} erros impedem que este %{resource} se guarde:"
     not_found:
-      description: A página que você estava procurando não existe. Você deve ter digitado o endereço errado ou a página mudou.
+      description: A página que você estava procurando não existe. Você deve ter digitado
+        o endereço errado ou a página mudou.
       title: Não encontrado
   global:
     add_new: Criar novo
@@ -274,15 +297,15 @@ pt-BR:
     contact_details: Dados de contato
     create: Criar
     date: Data
-    decline:
+    decline: 
     delete: Apagar
     demote: Converter em usuário normal
     edit: Modificar
-    enter_to_timebank:
+    enter_to_timebank: 
     filter: Filtro
     from: De
     give_time: Transferir tempo
-    here:
+    here: 
     home: Início
     information: Informação
     locales_header: Trocar idioma
@@ -290,13 +313,13 @@ pt-BR:
     more: Ver mais
     movements: Movimentos
     next: Próximo
-    or:
+    or: 
     promote: Converter em administrador
     reason: Razão
     required_field: "* Campo obrigatório"
     save: Guardar
     search: Pesquisar
-    search_location:
+    search_location: 
     show: Mostrar
     source_destination: Origem/Destino
     statistics: Estatísticas
@@ -313,13 +336,16 @@ pt-BR:
   layouts:
     application:
       about: Sobre TimeOverflow
-      bdtnear:
+      bdtnear: 
       edit_org: Modificar %{organization}
       edit_profile: Modificar meu perfil
       help: Ajuda
       login: Entre
-      manage_memberships:
-      no_memberhsip_warning: Seu registro será concluído assim que você solicitar <a href="%{link}">entrar em um Banco de Tempo</a> e o Banco de Tempo aceitar sua solicitação. Se você não solicitar entrada em um Banco de Tempo dentro de 30 dias, seu usuário será excluído do sistema.
+      manage_memberships: 
+      no_memberhsip_warning: Seu registro será concluído assim que você solicitar
+        <a href="%{link}">entrar em um Banco de Tempo</a> e o Banco de Tempo aceitar
+        sua solicitação. Se você não solicitar entrada em um Banco de Tempo dentro
+        de 30 dias, seu usuário será excluído do sistema.
     report:
       report_title: INFORME
   locales:
@@ -335,7 +361,9 @@ pt-BR:
   mailers_globals:
     footer:
       text: "%{organization_name} em"
-      text_donation: A associação ADBdT oferece TimeOverflow gratuitamente para Bancos de Tempo. Com a doação de %{href} você pode ajudar a manter e aprimorar a plataforma.
+      text_donation: A associação ADBdT oferece TimeOverflow gratuitamente para Bancos
+        de Tempo. Com a doação de %{href} você pode ajudar a manter e aprimorar a
+        plataforma.
       text_donation_link: 1€ ao mês
   multi_transfers:
     multi_transfers: Multi transferidores
@@ -386,11 +414,13 @@ pt-BR:
       new: Novo banco
     show:
       contact_information: Informação de contato
-      join_timebank:
+      join_timebank: 
   pages:
     about:
       app-mobile: Aplicativo móvel
-      app-mobile-text: O aplicativo móvel TimeOverflow está disponível. <br /> Este aplicativo foi possível graças aos colaboradores da municipalidade de Barcelona, programa %{impulsem_link} (Barcelona Ativa) 2017-2018
+      app-mobile-text: O aplicativo móvel TimeOverflow está disponível. <br /> Este
+        aplicativo foi possível graças aos colaboradores da municipalidade de Barcelona,
+        programa %{impulsem_link} (Barcelona Ativa) 2017-2018
       banner-button: Pedir acesso
       banner-subtitle: Vamos ajudá-los a começar ou obter uma demonstração
       banner-title: Você é um Banco de Tempo?
@@ -402,16 +432,21 @@ pt-BR:
       empower-github-title: Github
       empower-showmap: ver mapa
       empower-showmap-title: Bancos de Tempo
-      empower-text-1: TimeOverflow está especialmente desenhado por e para os Bancos de Tempo que existem fisicamente — %{showmap_link}, seu fim é potencializá-los.
-      empower-text-2: Graças ao trabalho conjunto de %{coopdevs_link} e a %{abdt_link} hoje podemos oferecer o software TimeOverflow a todos os Bancos de Tempo que o desejam de maneira livre e gratuita.
-      empower-text-3: O código fonte do TimeOverflow está disponível sob uma licença open source e download a %{github_link}
+      empower-text-1: TimeOverflow está especialmente desenhado por e para os Bancos
+        de Tempo que existem fisicamente — %{showmap_link}, seu fim é potencializá-los.
+      empower-text-2: Graças ao trabalho conjunto de %{coopdevs_link} e a %{abdt_link}
+        hoje podemos oferecer o software TimeOverflow a todos os Bancos de Tempo que
+        o desejam de maneira livre e gratuita.
+      empower-text-3: O código fonte do TimeOverflow está disponível sob uma licença
+        open source e download a %{github_link}
       empower-title: Empoderando os bancos de tempo
       feature-group-1: Gestão do Banco de Tempo com perfis de administração
       feature-group-2: Rede social e serviços bancários online acessíveis pelos membros
       feature-text-1: Ingresso/Cancelamento/Modificações de membros
       feature-text-2: Publicar ofertas e demandas
       feature-text-3: Introduzir cheques e gerir a contabilidade
-      feature-text-4: Os membros de um Banco de Tempo podem acessar o sistema e entrar em contato com outros membros
+      feature-text-4: Os membros de um Banco de Tempo podem acessar o sistema e entrar
+        em contato com outros membros
       feature-text-5: Publicar ofertas e demandas
       feature-text-6: Pagar horas a outros membros
       impulsem-link: Incentive quem faz
@@ -419,25 +454,28 @@ pt-BR:
       title: O software desenhado por e para
       title2: os Bancos de Tempo
   petitions:
-    application_sent:
-    application_sent_body:
-    application_status:
-    applications:
-    apply:
-    new:
-    new_body: Olá, %{username} acabou de solicitar entrada no Banco de Tempo %{organization_name}. Você pode acessar %{here_link} para aceitar ou rejeitar a solicitação. Assim que você aceitar a solicitação, o usuário aparecerá automaticamente na sua lista de usuários.
+    application_sent: 
+    application_sent_body: 
+    application_status: 
+    applications: 
+    apply: 
+    new: 
+    new_body: Olá, %{username} acabou de solicitar entrada no Banco de Tempo %{organization_name}.
+      Você pode acessar %{here_link} para aceitar ou rejeitar a solicitação. Assim
+      que você aceitar a solicitação, o usuário aparecerá automaticamente na sua lista
+      de usuários.
     status:
-      accepted:
-      declined:
-      pending:
-      sent:
-    status_applications:
+      accepted: 
+      declined: 
+      pending: 
+      sent: 
+    status_applications: 
   posts:
     show:
       info: Este %{type} pertence a %{organization}.
   reports:
     download: Baixar
-    download_all:
+    download_all: 
   shared:
     movements:
       delete_reason: Tem certeza de que quer apagar este comentário?
@@ -524,12 +562,12 @@ pt-BR:
       error_amount: O tempo deve ser maior que 0
   users:
     avatar:
-      change_your_image:
-      crop_the_image:
-      max_size_warning:
+      change_your_image: 
+      crop_the_image: 
+      max_size_warning: 
     confirm_email:
-      email_sent:
-      please:
+      email_sent: 
+      please: 
     edit:
       edit_user: Trocar usuário
     form:
@@ -537,12 +575,12 @@ pt-BR:
     give_time:
       give_time: Dar Tempo a
     index:
-      account_deactivated:
+      account_deactivated: 
       actions: Ações
       active_warning: Você mudará o status da conta para %{username}
       cancel_warning: Você deletará a conta do Banco de Tempo %{username}
       create: Criar novo usuário
-      deactivated_warning:
+      deactivated_warning: 
       manage_warning: Você mudará privilégios para o usuário %{username}
       members: Membros
       user_created: Usuário %{uid} %{name} guardado
@@ -566,7 +604,7 @@ pt-BR:
       from_to: Origem/Destino
       inactive: "(Inativo)"
       inactive_user: O usuário não está ativo
-      invalid_format:
+      invalid_format: 
       phone:
         one: Telefone
         other: Telefones
@@ -579,9 +617,9 @@ pt-BR:
       active_warning: Mudará o estado da conta do usuário %{user}
       cancel_warning: Eliminará o usuário do banco %{user}
       deactivate: Desativar
-      delete_membership:
+      delete_membership: 
       manage_warning: Mudará os privilégios do usuário %{user}
-      sure_delete:
+      sure_delete: 
   views:
     pagination:
       first: "&laquo; Primeira"

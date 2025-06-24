@@ -157,13 +157,18 @@ en:
   devise:
     confirmations:
       confirmed: Your account was successfully confirmed.
-      confirmed_and_signed_in: Your account was successfully confirmed. You are now signed in.
+      confirmed_and_signed_in: Your account was successfully confirmed. You are now
+        signed in.
       new:
         resend_instructions: Resend confirmation instructions
         resend_instructions_button: Resend
-        resend_instructions_description: If you have changed your email you must perform this step to make the change effective
-      send_instructions: You will receive an email with instructions about how to confirm your account in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.
+        resend_instructions_description: If you have changed your email you must perform
+          this step to make the change effective
+      send_instructions: You will receive an email with instructions about how to
+        confirm your account in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive an email with instructions about how to confirm your account
+        in a few minutes.
     failure:
       already_authenticated: You are already signed in.
       inactive: Your account is not activated yet.
@@ -194,15 +199,21 @@ en:
         passwords_not_match: Passwords don't match
       new:
         forgot_question: Create a new password
-        forgot_question_description: Enter the address associated with your account and we will send you an email with the link to create a new password.
+        forgot_question_description: Enter the address associated with your account
+          and we will send you an email with the link to create a new password.
         send_instructions: Send link
-      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
-      send_instructions: You will receive an email with instructions about how to reset your password in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      no_token: You can't access this page without coming from a password reset email.
+        If you do come from a password reset email, please make sure you used the
+        full URL provided.
+      send_instructions: You will receive an email with instructions about how to
+        reset your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive a password recovery link at your email address in a few minutes.
       updated: Your password was changed successfully. You are now signed in.
       updated_not_active: Your password was changed successfully.
     registrations:
-      destroyed: Bye! Your account was successfully cancelled. We hope to see you again soon.
+      destroyed: Bye! Your account was successfully cancelled. We hope to see you
+        again soon.
       edit:
         cancel_account: Cancel account
         current_password: Current password
@@ -219,10 +230,15 @@ en:
         sign_me_up: Sign me up
         sign_up: Sign up
       signed_up: Welcome! You have signed up successfully.
-      signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
-      signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
-      signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
-      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address.
+      signed_up_but_inactive: You have signed up successfully. However, we could not
+        sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not
+        sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent
+        to your email address. Please open the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need
+        to verify your new email address. Please check your email and click on the
+        confirm link to finalize confirming your new email address.
       updated: You updated your account successfully.
     sessions:
       new:
@@ -243,17 +259,22 @@ en:
       new:
         resend_instructions: Resend unlock instructions
         resend_instructions_button: Resend
-        resend_instructions_description: If you have mistakenly logged in more than five times you have to do this step to unlock your account
-      send_instructions: You will receive an email with instructions about how to unlock your account in a few minutes.
-      send_paranoid_instructions: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
+        resend_instructions_description: If you have mistakenly logged in more than
+          five times you have to do this step to unlock your account
+      send_instructions: You will receive an email with instructions about how to
+        unlock your account in a few minutes.
+      send_paranoid_instructions: If your account exists, you will receive an email
+        with instructions about how to unlock it in a few minutes.
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
   errors:
     internal_server_error:
-      description: We're sorry, there seems to be an error with this request. A notification has automatically been sent to us, and we will resolve this as soon as possible.
+      description: We're sorry, there seems to be an error with this request. A notification
+        has automatically been sent to us, and we will resolve this as soon as possible.
       title: Internal server error
     messages:
       already_confirmed: was already confirmed, please try signing in
-      confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+      confirmation_period_expired: needs to be confirmed within %{period}, please
+        request a new one
       expired: has expired, please request a new one
       not_found: not found
       not_locked: was not locked
@@ -261,7 +282,8 @@ en:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
     not_found:
-      description: The page you were looking for doesn't exist. You may have mistyped the address or the page may have moved.
+      description: The page you were looking for doesn't exist. You may have mistyped
+        the address or the page may have moved.
       title: Not found
   global:
     add_new: Create new
@@ -319,7 +341,10 @@ en:
       help: Help
       login: Login
       manage_memberships: Manage memberships
-      no_memberhsip_warning: Your registration will be completed once you have requested to <a href="%{link}">join a Timebank</a> and the Timebank accepts your request. If you do not request to join a timebank within 30 days, your user will be deleted from the system.
+      no_memberhsip_warning: Your registration will be completed once you have requested
+        to <a href="%{link}">join a Timebank</a> and the Timebank accepts your request.
+        If you do not request to join a timebank within 30 days, your user will be
+        deleted from the system.
     report:
       report_title: REPORT
   locales:
@@ -335,7 +360,8 @@ en:
   mailers_globals:
     footer:
       text: "%{organization_name} from"
-      text_donation: The ADBdT association offers TimeOverflow for free to Time Banks. If you want to help maintain and improve the platform %{href}.
+      text_donation: The ADBdT association offers TimeOverflow for free to Time Banks.
+        If you want to help maintain and improve the platform %{href}.
       text_donation_link: visit this website
   multi_transfers:
     multi_transfers: Multi transfers
@@ -386,11 +412,14 @@ en:
       new: New bank
     show:
       contact_information: Contact information
-      join_timebank: Don't hesitate to contact the time bank to join it or ask any questions.
+      join_timebank: Don't hesitate to contact the time bank to join it or ask any
+        questions.
   pages:
     about:
       app-mobile: Mobile App
-      app-mobile-text: The mobile app TimeOverflow is available. <br /> This app has been possible thanks to the collaboration of the municipality of Barcelona, program %{impulsem_link} (Barcelona Activa) 2017-2018
+      app-mobile-text: The mobile app TimeOverflow is available. <br /> This app has
+        been possible thanks to the collaboration of the municipality of Barcelona,
+        program %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Request access to TimeOverflow
       banner-subtitle: We will contact you to start it up or make you a demonstration
       banner-title: Are you a Time Bank?
@@ -402,16 +431,22 @@ en:
       empower-github-title: Github
       empower-showmap: see map
       empower-showmap-title: Time Banks
-      empower-text-1: TimeOveflow is specially designed for and by Time Banks that physically exist &mdash; %{showmap_link}, and its purpose is to boost them thanks to Internet.
-      empower-text-2: Thanks to the joint job of %{coopdevs_link} and %{abdt_link} today we can offer the software TimeOverflow to all Time Banks that want it, open and for free.
-      empower-text-3: The source code of TimeOverflow is available based on an open source license and you can download it at %{github_link}
+      empower-text-1: TimeOveflow is specially designed for and by Time Banks that
+        physically exist &mdash; %{showmap_link}, and its purpose is to boost them
+        thanks to Internet.
+      empower-text-2: Thanks to the joint job of %{coopdevs_link} and %{abdt_link}
+        today we can offer the software TimeOverflow to all Time Banks that want it,
+        open and for free.
+      empower-text-3: The source code of TimeOverflow is available based on an open
+        source license and you can download it at %{github_link}
       empower-title: Empowering the Time Banks
       feature-group-1: Time Bank management with administration roles
       feature-group-2: Social network and online banking accessible by members
       feature-text-1: Creation/deletion/updates of bank members
       feature-text-2: Posting of offers and inquiries
       feature-text-3: Enter checks and manage accounting
-      feature-text-4: Members of a Time Bank can access the system and connect with other members
+      feature-text-4: Members of a Time Bank can access the system and connect with
+        other members
       feature-text-5: Posting of offers and inquiries
       feature-text-6: Pay hours to other members
       impulsem-link: Impulsem el que fas
@@ -420,12 +455,15 @@ en:
       title2: Time Banks
   petitions:
     application_sent: Application sent correctly
-    application_sent_body: Hello! your application to %{organization_name} has been sent correctly.
+    application_sent_body: Hello! your application to %{organization_name} has been
+      sent correctly.
     application_status: Application %{status}
     applications: Applications
     apply: Apply to join
     new: New Application
-    new_body: Hello, %{username} has just requested to join %{organization_name} Timebank. You can enter %{here_link} to accept or reject the request. Once you accept the request the user will automatically appear on your users list.
+    new_body: Hello, %{username} has just requested to join %{organization_name} Timebank.
+      You can enter %{here_link} to accept or reject the request. Once you accept
+      the request the user will automatically appear on your users list.
     status:
       accepted: accepted
       declined: declined
@@ -528,7 +566,8 @@ en:
       crop_the_image: Crop the image
       max_size_warning: Image is too big, max allowed is %{size}MB
     confirm_email:
-      email_sent: An email has been sent to %{email}. After confirm you will be able to apply to any organization.
+      email_sent: An email has been sent to %{email}. After confirm you will be able
+        to apply to any organization.
       please: Please, confirm the email
     edit:
       edit_user: Update user
@@ -540,9 +579,11 @@ en:
       account_deactivated: Your account have been deactivated from this timebank
       actions: Actions
       active_warning: You are going to change user account status for %{username}
-      cancel_warning: You are going to delete account from the Time Bank for user %{username}
+      cancel_warning: You are going to delete account from the Time Bank for user
+        %{username}
       create: Create new user
-      deactivated_warning: If you think your account might have been deactivated by mistake, please contact the administrator with the information provided below.
+      deactivated_warning: If you think your account might have been deactivated by
+        mistake, please contact the administrator with the information provided below.
       manage_warning: You are going to change privileges for user %{username}
       members: Members
       user_created: User %{uid} %{name} saved

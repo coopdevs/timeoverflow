@@ -57,7 +57,7 @@ gl:
         alt_phone: Teléfono alternativo
         created_at: Creado
         date_of_birth: Data de nacemento
-        deactivated:
+        deactivated: 
         description: Descrición
         email: Correo electrónico
         gender: Xénero
@@ -65,7 +65,7 @@ gl:
         notifications: Recibir notificacións por correo electrónico
         organization: Organización
         phone: Teléfono
-        postcode:
+        postcode: 
         push_notifications: Recibir notificacións móbiles
         registration_date: Data de rexistro
         registration_number: Código de persoa usuaria
@@ -144,7 +144,7 @@ gl:
       reports: Informes
       sign_out: Saír
       statistics: Estatísticas
-      statistics_all_transfers:
+      statistics_all_transfers: 
       stats: Estatísticas
       tags: Etiquetas
       type_of_swaps: Tipo de transaccións
@@ -157,13 +157,18 @@ gl:
   devise:
     confirmations:
       confirmed: A túa conta confirmouse con éxito.
-      confirmed_and_signed_in: A túa conta confirmouse con éxito. Agora iniciaches sesión.
+      confirmed_and_signed_in: A túa conta confirmouse con éxito. Agora iniciaches
+        sesión.
       new:
         resend_instructions: Reenvía as instrucións de confirmación
         resend_instructions_button: Reenviar
-        resend_instructions_description: Se cambiou o teu correo electrónico, debes realizar este paso para que o cambio sexa efectivo
-      send_instructions: Recibirás un correo electrónico con instrucións sobre como confirmar a túa conta en poucos minutos.
-      send_paranoid_instructions: Se o enderezo de correo electrónico existe na nosa base de datos, recibirás un correo electrónico con instrucións sobre como confirmar a túa conta en poucos minutos.
+        resend_instructions_description: Se cambiou o teu correo electrónico, debes
+          realizar este paso para que o cambio sexa efectivo
+      send_instructions: Recibirás un correo electrónico con instrucións sobre como
+        confirmar a túa conta en poucos minutos.
+      send_paranoid_instructions: Se o enderezo de correo electrónico existe na nosa
+        base de datos, recibirás un correo electrónico con instrucións sobre como
+        confirmar a túa conta en poucos minutos.
     failure:
       already_authenticated: Xa estás conectado/a.
       inactive: A túa conta aínda non está activada.
@@ -194,11 +199,17 @@ gl:
         passwords_not_match: Os contrasinais non coinciden
       new:
         forgot_question: Crea un novo contrasinal
-        forgot_question_description: Introduce o enderezo asociado coa túa conta e enviarémosche un correo electrónico coa ligazón para crear un novo contrasinal.
+        forgot_question_description: Introduce o enderezo asociado coa túa conta e
+          enviarémosche un correo electrónico coa ligazón para crear un novo contrasinal.
         send_instructions: Enviar enlace
-      no_token: Non podes acceder a esta páxina sen proceder dun correo electrónico de restablecemento de contrasinal. Se provés dun correo electrónico de restablecemento de contrasinal, asegúrate de utilizar a URL completa proporcionada.
-      send_instructions: Recibirás un correo electrónico con instrucións sobre como restablecer o teu contrasinal en poucos minutos.
-      send_paranoid_instructions: Se o teu enderezo de correo electrónico existe na nosa base de datos, recibirás unha ligazón de recuperación de contrasinal no teu enderezo de correo electrónico en poucos minutos.
+      no_token: Non podes acceder a esta páxina sen proceder dun correo electrónico
+        de restablecemento de contrasinal. Se provés dun correo electrónico de restablecemento
+        de contrasinal, asegúrate de utilizar a URL completa proporcionada.
+      send_instructions: Recibirás un correo electrónico con instrucións sobre como
+        restablecer o teu contrasinal en poucos minutos.
+      send_paranoid_instructions: Se o teu enderezo de correo electrónico existe na
+        nosa base de datos, recibirás unha ligazón de recuperación de contrasinal
+        no teu enderezo de correo electrónico en poucos minutos.
       updated: O contrasinal cambiou correctamente. Agora iniciaches sesión.
       updated_not_active: O contrasinal cambiou correctamente.
     registrations:
@@ -219,10 +230,16 @@ gl:
         sign_me_up: Rexístrate
         sign_up: Incribirse
       signed_up: Benvido/a! Rexistrácheste con éxito.
-      signed_up_but_inactive: Rexistrácheste con éxito. Non obstante, non podemos rexistrarte porque a túa conta aínda non está activada.
-      signed_up_but_locked: Rexistrácheste con éxito. Non obstante, non podemos rexistrarte porque a túa conta está bloqueada.
-      signed_up_but_unconfirmed: Enviouse a mensaxe cunha ligazón de confirmación ao teu enderezo de correo electrónico. Abre a ligazón para activar a túa conta.
-      update_needs_confirmation: Actualizaches a túa conta con éxito, pero necesitamos verificar o teu novo enderezo de correo electrónico. Comproba o teu correo electrónico e fai clic na ligazón de confirmación para confirmar a confirmación do teu novo enderezo de correo electrónico.
+      signed_up_but_inactive: Rexistrácheste con éxito. Non obstante, non podemos
+        rexistrarte porque a túa conta aínda non está activada.
+      signed_up_but_locked: Rexistrácheste con éxito. Non obstante, non podemos rexistrarte
+        porque a túa conta está bloqueada.
+      signed_up_but_unconfirmed: Enviouse a mensaxe cunha ligazón de confirmación
+        ao teu enderezo de correo electrónico. Abre a ligazón para activar a túa conta.
+      update_needs_confirmation: Actualizaches a túa conta con éxito, pero necesitamos
+        verificar o teu novo enderezo de correo electrónico. Comproba o teu correo
+        electrónico e fai clic na ligazón de confirmación para confirmar a confirmación
+        do teu novo enderezo de correo electrónico.
       updated: Actualizaches a túa conta correctamente.
     sessions:
       new:
@@ -243,17 +260,22 @@ gl:
       new:
         resend_instructions: Reenviar instrucións de desbloqueo
         resend_instructions_button: Reenviar
-        resend_instructions_description: Se te rexistraches erroneamente máis de cinco veces tes que facer este paso para desbloquear a túa conta
-      send_instructions: Recibirás un correo electrónico con instrucións sobre como desbloquear a túa conta en poucos minutos.
-      send_paranoid_instructions: Se a túa conta existe, recibirás un correo electrónico con instrucións sobre como desbloqueala en poucos minutos.
+        resend_instructions_description: Se te rexistraches erroneamente máis de cinco
+          veces tes que facer este paso para desbloquear a túa conta
+      send_instructions: Recibirás un correo electrónico con instrucións sobre como
+        desbloquear a túa conta en poucos minutos.
+      send_paranoid_instructions: Se a túa conta existe, recibirás un correo electrónico
+        con instrucións sobre como desbloqueala en poucos minutos.
       unlocked: A túa conta foi desbloqueada con éxito. Inicia sesión para continuar.
   errors:
     internal_server_error:
-      description: Sentímolo, parece haber un erro con esta solicitude. Enviouse unha notificación de forma automática e resolverémolo o máis axiña posible.
+      description: Sentímolo, parece haber un erro con esta solicitude. Enviouse unha
+        notificación de forma automática e resolverémolo o máis axiña posible.
       title: Error interno do servidor
     messages:
       already_confirmed: Xa se confirmou, intenta iniciar sesión
-      confirmation_period_expired: Debe ser confirmado dentro de %{period}, solicite un novo
+      confirmation_period_expired: Debe ser confirmado dentro de %{period}, solicite
+        un novo
       expired: Caducou, por favor solicita un novo
       not_found: Non atopado
       not_locked: Non estaba bloqueado
@@ -261,7 +283,8 @@ gl:
         one: '1 erro prohibiuse que este %{resource} se gardase:'
         other: "%{count} os erros prohibiron que este %{resource} se garde:"
     not_found:
-      description: A páxina que estabas a buscar non existe. É posible que teñas mal escrita a dirección ou a páxina mudou.
+      description: A páxina que estabas a buscar non existe. É posible que teñas mal
+        escrita a dirección ou a páxina mudou.
       title: Non atopado
   global:
     add_new: Crear novo
@@ -274,15 +297,15 @@ gl:
     contact_details: Datos de contacto
     create: Crea
     date: Datos
-    decline:
+    decline: 
     delete: Eliminar
     demote: Degradar a usuario/a normal
     edit: Actualización
-    enter_to_timebank:
+    enter_to_timebank: 
     filter: Filtro
     from: Desde
     give_time: Transferencia de tempo
-    here:
+    here: 
     home: Inicio
     information: Información
     locales_header: cambiar o idioma
@@ -290,13 +313,13 @@ gl:
     more: Máis
     movements: Transaccións
     next: Próximo
-    or:
+    or: 
     promote: Promover á persoa administradora
     reason: Razón
     required_field: "* Campo obrigatorio"
     save: Gardar
     search: Busca
-    search_location:
+    search_location: 
     show: Amosar
     source_destination: Dende/ata
     statistics: Estatísticas
@@ -313,13 +336,16 @@ gl:
   layouts:
     application:
       about: Sobre TimeOverflow
-      bdtnear:
+      bdtnear: 
       edit_org: Actualización %{organization}
       edit_profile: Actualiza o meu perfil
       help: Axuda
       login: Acceder
-      manage_memberships:
-      no_memberhsip_warning: O teu rexistro completarase unha vez que solicites <a href="%{link}">unirte a un Banco de Tempo</a> e o Banco de Tempo acepte a túa solicitude. Se non solicitas unirte a un Banco de Tempo dentro de 30 días, o teu usuario será eliminado do sistema.
+      manage_memberships: 
+      no_memberhsip_warning: O teu rexistro completarase unha vez que solicites <a
+        href="%{link}">unirte a un Banco de Tempo</a> e o Banco de Tempo acepte a
+        túa solicitude. Se non solicitas unirte a un Banco de Tempo dentro de 30 días,
+        o teu usuario será eliminado do sistema.
     report:
       report_title: INFORME
   locales:
@@ -335,7 +361,8 @@ gl:
   mailers_globals:
     footer:
       text: "%{organization_name} de"
-      text_donation: A asociación ADBdT ofrece TimeOverflow gratuitamente aos bancos de tempo. Cunha doazón de %{href} podes axudar a manter e mellorar a plataforma.
+      text_donation: A asociación ADBdT ofrece TimeOverflow gratuitamente aos bancos
+        de tempo. Cunha doazón de %{href} podes axudar a manter e mellorar a plataforma.
       text_donation_link: 1€ ao mes
   multi_transfers:
     multi_transfers: Multi Transferencias
@@ -346,7 +373,8 @@ gl:
       select_type:
         description: Selecciona o tipo de transferencia
       set_params:
-        description: Especifica a cantidade a transferir, razón, e correo ( se hai ).
+        description: Especifica a cantidade a transferir, razón, e correo ( se hai
+          ).
       set_source:
         description: Selecciona a conta (ou contas) que transferirá o tempo
       set_target:
@@ -386,13 +414,16 @@ gl:
       new: Novo banco
     show:
       contact_information: Información de contacto
-      join_timebank:
+      join_timebank: 
   pages:
     about:
       app-mobile: Aplicación móbil
-      app-mobile-text: Está dispoñible a aplicación TimeOverflow para móbiles. <br /> Esta aplicación foi posible grazas á colaboración do municipio de Barcelona, ​​o programa %{impulsem_link} (Barcelona Activa) 2017-2018
+      app-mobile-text: Está dispoñible a aplicación TimeOverflow para móbiles. <br
+        /> Esta aplicación foi posible grazas á colaboración do municipio de Barcelona,
+        ​​o programa %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Solicitar acceso a TimeOverflow
-      banner-subtitle: Contamos contigo para poñelo en marcha ou para facerche unha demostración
+      banner-subtitle: Contamos contigo para poñelo en marcha ou para facerche unha
+        demostración
       banner-title: Es ti un Banco de Tempo?
       empower-adbdt: ADBdT
       empower-adbdt-title: Asociación para o Desenvolvemento de Bancos de Tempo
@@ -402,16 +433,23 @@ gl:
       empower-github-title: Github
       empower-showmap: ver o mapa
       empower-showmap-title: Bancos de Tempo
-      empower-text-1: TimeOveflow está especialmente deseñado para e por Bancos de Tempo que existen físicamente &mdash; %{showmap_link}, eo seu propósito é impulsalos grazas a Internet.
-      empower-text-2: Grazas ao traballo conxunto de %{coopdevs_link} e %{abdt_link}, hoxe podemos ofrecer o software TimeOverflow a todos os bancos de tempo que o queiran, abertos e gratuitos.
-      empower-text-3: O código fonte de TimeOverflow está dispoñible en base a unha licenza de código aberto e pode descargala en %{github_link}
+      empower-text-1: TimeOveflow está especialmente deseñado para e por Bancos de
+        Tempo que existen físicamente &mdash; %{showmap_link}, eo seu propósito é
+        impulsalos grazas a Internet.
+      empower-text-2: Grazas ao traballo conxunto de %{coopdevs_link} e %{abdt_link},
+        hoxe podemos ofrecer o software TimeOverflow a todos os bancos de tempo que
+        o queiran, abertos e gratuitos.
+      empower-text-3: O código fonte de TimeOverflow está dispoñible en base a unha
+        licenza de código aberto e pode descargala en %{github_link}
       empower-title: Empoderando os bancos de tempo
       feature-group-1: Xestión de Banco de tempo con funcións de administración
       feature-group-2: Rede social e banca en liña accesibles polas persoas usuarias
-      feature-text-1: Creación / eliminación / actualizacións das persoas usuarias do banco
+      feature-text-1: Creación / eliminación / actualizacións das persoas usuarias
+        do banco
       feature-text-2: Publicación de ofertas e consultas
       feature-text-3: Inclúe controis e xestión da contabilidade
-      feature-text-4: As persoas usuarias dun Banco de Tempo poden acceder ao sistema e conectarse con outras persoas usuarias
+      feature-text-4: As persoas usuarias dun Banco de Tempo poden acceder ao sistema
+        e conectarse con outras persoas usuarias
       feature-text-5: Publicación de ofertas e consultas
       feature-text-6: Pague horas a outras persoas usuarias
       impulsem-link: Aumenta o que fas
@@ -419,25 +457,25 @@ gl:
       title: O software deseñado por e para
       title2: Bancos de tempo
   petitions:
-    application_sent:
-    application_sent_body:
-    application_status:
-    applications:
-    apply:
-    new:
-    new_body:
+    application_sent: 
+    application_sent_body: 
+    application_status: 
+    applications: 
+    apply: 
+    new: 
+    new_body: 
     status:
-      accepted:
-      declined:
-      pending:
-      sent:
-    status_applications:
+      accepted: 
+      declined: 
+      pending: 
+      sent: 
+    status_applications: 
   posts:
     show:
       info: Este %{type} pertence a %{organization}.
   reports:
     download: Descarga
-    download_all:
+    download_all: 
   shared:
     movements:
       delete_reason: Estás seguro/a de borrar este comentario?
@@ -524,12 +562,12 @@ gl:
       error_amount: O tempo debe ser superior a 0
   users:
     avatar:
-      change_your_image:
-      crop_the_image:
-      max_size_warning:
+      change_your_image: 
+      crop_the_image: 
+      max_size_warning: 
     confirm_email:
-      email_sent:
-      please:
+      email_sent: 
+      please: 
     edit:
       edit_user: Actualizar persoa usuaria
     form:
@@ -537,12 +575,12 @@ gl:
     give_time:
       give_time: Dálle tempo
     index:
-      account_deactivated:
+      account_deactivated: 
       actions: Accións
       active_warning: Vas cambiar o estado da conta de usuario/a %{username}
       cancel_warning: Vas borrar a conta do Banco de tempo para o usuario/a %{username}
       create: Crea unha nova persoa usuaria
-      deactivated_warning:
+      deactivated_warning: 
       manage_warning: Vas cambiar privilexios para o usuario/a %{username}
       members: Persoas usuarias
       user_created: O usuario/a %{uid} %{name} gardouse
@@ -566,7 +604,7 @@ gl:
       from_to: De / Para
       inactive: "(Inactivo/a)"
       inactive_user: A persoa usuaria non está activa
-      invalid_format:
+      invalid_format: 
       phone:
         one: Teléfono
         other: Teléfonos
@@ -579,9 +617,9 @@ gl:
       active_warning: Vas cambiar o estado da conta de usuario/a para %{user}
       cancel_warning: Vas borrar a conta do Banco de tempo para o usuario/a %{user}
       deactivate: Desactivar
-      delete_membership:
+      delete_membership: 
       manage_warning: Vas cambiar privilexios para o usuario/a %{user}
-      sure_delete:
+      sure_delete: 
   views:
     pagination:
       first: Primeira
