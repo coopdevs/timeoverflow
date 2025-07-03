@@ -40,6 +40,7 @@ end
 group :development do
   gem 'letter_opener', '~> 1.7.0'
   gem 'web-console', '~> 4.2'
+  gem 'web_translate_it', '~> 3'
 end
 
 group :development, :test do
