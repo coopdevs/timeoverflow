@@ -25,6 +25,33 @@ RSpec.describe StatisticsController do
       expect(assigns(:num_swaps)).to eq(2)
       expect(assigns(:total_hours)).to eq(20)
     end
+
+    it 'populates active members count' do
+      # Create additional members - some active, some inactive
+      active_member = Fabricate(:member, organization: organization, active: true)
+      inactive_member = Fabricate(:member, organization: organization, active: false)
+
+      get :global_activity
+
+      expect(assigns(:active_members)).to be_present
+      expect(assigns(:active_members).count).to eq(2) # original member + active_member
+      expect(assigns(:active_members)).to include(member)
+      expect(assigns(:active_members)).to include(active_member)
+      expect(assigns(:active_members)).not_to include(inactive_member)
+    end
+
+    it 'excludes members with null active status' do
+      # This test reproduces the bug where members with active: NULL are not counted
+      # Create a member with NULL active status (simulating old data)
+      null_active_member = Fabricate.build(:member, organization: organization, active: nil)
+      null_active_member.save!(validate: false) # Skip validations to allow NULL
+
+      get :global_activity
+
+      # Before the fix, this would fail because NULL active members are excluded
+      expect(assigns(:active_members).count).to eq(1) # Should only count the original member
+      expect(assigns(:active_members)).not_to include(null_active_member)
+    end
   end
 
   describe 'GET #type_swaps' do
