@@ -6,19 +6,19 @@
     <ul class="nav nav-pills statistics">
       <li class="nav-item">
         <%= t '.users_reg' %>
-        <div class="badge rounded-pill">
+        <div class="badge bg-secondary rounded-pill">
           <%= @active_members.count %>
         </div>
       </li>
       <li class="nav-item">
         <%= t '.num_swaps' %>
-        <div class="badge rounded-pill">
+        <div class="badge bg-secondary rounded-pill">
           <%= @num_swaps %>
         </div>
       </li>
       <li class="nav-item">
         <%= t '.total_hours' %>
-        <div class="badge rounded-pill">
+        <div class="badge bg-secondary rounded-pill">
           <%= seconds_to_hm @total_hours %>
         </div>
       </li>
