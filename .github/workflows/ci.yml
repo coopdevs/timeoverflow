@@ -38,5 +38,5 @@ jobs:
       - name: Publish code coverage
         uses: qltysh/qlty-action/coverage@v1
         with:
-          token: {{secrets.QLTY_COVERAGE_TOKEN}}
+          token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
           files: coverage/.resultset.json
