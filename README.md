@@ -1,8 +1,8 @@
 # TimeOverflow
 
 [![Build Status](https://github.com/coopdevs/timeoverflow/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/coopdevs/timeoverflow/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/maintainability)](https://codeclimate.com/github/coopdevs/timeoverflow/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f82c6d98a2441c84f2ef/test_coverage)](https://codeclimate.com/github/coopdevs/timeoverflow/test_coverage)
+[![Maintainability](https://qlty.sh/gh/coopdevs/projects/timeoverflow/maintainability.svg)](https://qlty.sh/gh/coopdevs/projects/timeoverflow)
+[![Code Coverage](https://qlty.sh/gh/coopdevs/projects/timeoverflow/coverage.svg)](https://qlty.sh/gh/coopdevs/projects/timeoverflow)
 
 #### www.timeoverflow.org
 
