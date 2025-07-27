@@ -48,5 +48,17 @@ RSpec.describe TransfersController, type: :controller do
       expect(response).to redirect_to(offer)
       expect(flash[:notice]).to eq(I18n.t('transfers.cross_bank.success'))
     end
+
+    context 'when there is no accepted alliance between organizations' do
+      before do
+        alliance.update(status: "pending")
+      end
+
+      it 'redirects back with an error message about missing alliance' do
+        request!
+        expect(response).to redirect_to(request.referer || offer)
+        expect(flash[:alert]).to eq(I18n.t('transfers.cross_bank.no_alliance'))
+      end
     end
   end
+end

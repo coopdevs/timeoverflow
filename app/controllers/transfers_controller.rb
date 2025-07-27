@@ -72,6 +72,12 @@ class TransfersController < ApplicationController
 
     destination_organization = transfer_factory.destination_organization
 
+    unless current_organization.alliance_with(destination_organization)&.accepted?
+      redirect_back fallback_location: post,
+                    alert: t('transfers.cross_bank.no_alliance')
+      return
+    end
+
     @persisters = []
 
     user_account = current_user.members.find_by(organization: current_organization).account
@@ -93,8 +99,7 @@ class TransfersController < ApplicationController
       destination: destination_organization.account,
       amount: transfer_params[:amount],
       reason: post.description,
-      post: post,
-      is_cross_bank: true
+      post: post
     )
     @persisters << ::Persister::TransferPersister.new(org_to_org_transfer)
 
@@ -108,6 +113,9 @@ class TransfersController < ApplicationController
         post: post
       )
       @persisters << ::Persister::TransferPersister.new(org_to_user_transfer)
+    else
+      redirect_back fallback_location: post, alert: t('transfers.cross_bank.error')
+      return
     end
 
     if persisters_saved?

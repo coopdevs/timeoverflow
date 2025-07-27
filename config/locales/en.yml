@@ -412,7 +412,7 @@ en:
     contact_request:
       subject: "Contact request for your %{post}"
       greeting: "Hello %{name},"
-      message: "%{requester} from %{organization} time bank is interested in your %{post}."
+      message: "%{requester} from %{organization} organization is interested in your %{post}."
       requester_info: "Here is their contact information"
       closing: "If you are interested, please contact them directly using the provided information."
   organizations:
@@ -427,6 +427,17 @@ en:
     show:
       contact_information: Contact information
       join_timebank: Don't hesitate to contact the time bank to join it or ask any questions.
+    transfers:
+      bank_to_bank_transfer: "Transfer time between organizations"
+      bank_transfer: "Organization to Organization transfer"
+      new:
+        title: "Transfer between Organizations"
+        submit: "Execute transfer"
+        description: "Transfer time from %{source_organization} to %{destination_organization}"
+        reason_hint: "Optional: Describe the reason for this bank-to-bank transfer"
+      create:
+        success: "Organization to Organization transfer completed successfully"
+        error: "Error processing the transfer: %{error}"
   pages:
     about:
       app-mobile: Mobile App
@@ -569,8 +580,10 @@ en:
     new:
       error_amount: Time must be greater than 0
     cross_bank:
+      success: "Cross-organization transfer completed successfully"
+      error: "Error creating cross-bank transfer"
+      no_alliance: "Cannot perform cross-bank transfers: no active alliance exists between organizations"
       info: "This is a time transfer to a member who belongs to %{organization}. The time will be transferred through both organizations."
-      success: "Cross-organization transfer completed successfully."
   users:
     avatar:
       change_your_image: Change your image

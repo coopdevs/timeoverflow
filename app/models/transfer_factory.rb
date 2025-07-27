@@ -8,22 +8,14 @@ class TransferFactory
   end
 
   def offer
-    if offer_id.present?
-      Offer.find_by_id(offer_id)
-    end
+    @offer ||= Offer.find_by_id(offer_id) if offer_id.present?
   end
 
   def build_transfer
-    transfer = Transfer.new(source: source)
+    transfer = Transfer.new(source: source, destination: destination_account.id)
 
-    if cross_bank && offer && offer.organization != current_organization
-      transfer.destination = destination_account.id
-      transfer.post = offer
-      transfer.is_cross_bank = true
-    else
-      transfer.destination = destination_account.id
-      transfer.post = offer unless for_organization?
-    end
+    transfer.post = offer if (cross_bank && offer && offer.organization != current_organization) ||
+                             (offer && !for_organization?)
 
     transfer
   end
@@ -63,7 +55,7 @@ class TransferFactory
   end
 
   def for_organization?
-    destination_account.try(:accountable).class == Organization
+    destination_account&.accountable.is_a?(Organization)
   end
 
   def admin?

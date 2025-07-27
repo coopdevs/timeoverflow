@@ -21,14 +21,7 @@
             </td>
             <td>
               <%
-                display_account = nil
-                
-                if mv.transfer&.cross_bank?
-                  display_account = mv.transfer.related_account_for(mv)
-                  display_account ||= mv.other_side.account
-                else
-                  display_account = mv.other_side.account
-                end
+                display_account = mv.other_side.account
               %>
               
               <% if display_account.accountable.present? %>
@@ -48,6 +41,8 @@
             <td>
               <% if mv.transfer&.post&.active? %>
                 <%= link_to mv.transfer.post, offer_path(mv.transfer.post) %>
+              <% elsif is_bank_to_bank_transfer?(mv.transfer) %>
+                <span class="badge bg-info"><%= t("organizations.transfers.bank_transfer") %></span>
               <% else %>
                 <%= mv.transfer.post %>
               <% end %>

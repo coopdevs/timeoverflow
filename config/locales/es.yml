@@ -427,6 +427,17 @@ es:
     show:
       contact_information: Información de contacto
       join_timebank: No dudes en contactar con el Banco de Tiempo para unirte o para resolver dudas.
+    transfers:
+      bank_to_bank_transfer: "Transferir tiempo entre organizaciones"
+      bank_transfer: "Transferencia entre organizaciones"
+      new:
+        title: "Transferencia entre organizaciones"
+        submit: "Crear transferencia"
+        description: "Transferir tiempo desde %{source_organization} a %{destination_organization}"
+        reason_hint: "Opcional: Describe el motivo de esta transferencia organizaciones"
+      create:
+        success: "Transferencia entre organizaciones realizada con éxito"
+        error: "Error al realizar la transferencia: %{error}"
   pages:
     about:
       app-mobile: App Móvil
@@ -572,6 +583,7 @@ es:
       info: "Esta es una transferencia de tiempo a un miembro perteneciente a %{organization}. El tiempo se transferirá a través de ambas organizaciones."
       success: "Transferencia entre organizaciones completada con éxito."
       error: "Ha ocurrido un error al procesar la transferencia entre organizaciones."
+      no_alliance: "No se pueden realizar transferencias entre organizaciones: no existe una alianza activa entre ellas."
 
   users:
     avatar:

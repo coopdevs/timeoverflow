@@ -30,7 +30,6 @@ RSpec.describe TransferFactory do
 
     before do
       allow(transfer_factory).to receive(:destination_account).and_return(dest_org.account)
-      allow_any_instance_of(Transfer).to receive(:is_cross_bank=)
     end
 
     describe '#build_transfer' do

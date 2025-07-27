@@ -100,8 +100,23 @@
           <% end %>
         </li>
       <% end %>
+      <% if current_user&.manages?(current_organization) && 
+            @organization != current_organization && 
+            current_organization.alliance_with(@organization)&.accepted? %>
+        <li class="nav-item">
+          <%= link_to new_organization_to_organization_transfer_path(destination_organization_id: @organization.id), class: 'nav-link' do %>
+            <%= glyph :time %>
+            <%= t "organizations.transfers.bank_to_bank_transfer" %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
-    <%= render "organizations/petition_button", organization: @organization %>
+    <div class="d-flex align-items-center mt-2">
+      <%= render "organizations/petition_button", organization: @organization %>
+      <div class="ms-2">
+        <%= render "organizations/alliance_button", organization: @organization %>
+      </div>
+    </div>
   </div>
 </div>
 
