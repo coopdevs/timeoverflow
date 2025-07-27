@@ -22,65 +22,118 @@ RSpec.describe OffersController, type: :controller do
       before { login(another_member.user) }
 
       it "populates an array of offers" do
-        get :index
+      get :index
 
-        expect(assigns(:offers)).to eq([other_offer, offer])
+      expect(assigns(:offers)).to eq([other_offer, offer])
       end
 
       context "when one offer is not active" do
-        before do
-          other_offer.active = false
-          other_offer.save!
-        end
+      before do
+        other_offer.active = false
+        other_offer.save!
+      end
 
-        it "only returns active offers" do
-          get :index
+      it "only returns active offers" do
+        get :index
 
-          expect(assigns(:offers)).to eq([offer])
-        end
+        expect(assigns(:offers)).to eq([offer])
+      end
       end
 
       context "when one offer's user is not active" do
-        before do
-          member.active = false
-          member.save!
-        end
+      before do
+        member.active = false
+        member.save!
+      end
 
-        it "only returns offers from active users" do
-          get :index
+      it "only returns offers from active users" do
+        get :index
 
-          expect(assigns(:offers)).to eq([other_offer])
-        end
+        expect(assigns(:offers)).to eq([other_offer])
+      end
       end
 
       context "when filtering by organization" do
-        let(:organization1) { Fabricate(:organization) }
-        let(:organization2) { Fabricate(:organization) }
-        let(:user1) { Fabricate(:user) }
-        let(:user2) { Fabricate(:user) }
-        let(:member1) { Fabricate(:member, user: user1, organization: organization1) }
-        let(:member2) { Fabricate(:member, user: user2, organization: organization2) }
-        let!(:offer1) { Fabricate(:offer, user: user1, organization: organization1, title: "Ruby on Rails nivel principiante") }
-        let!(:offer2) { Fabricate(:offer, user: user2, organization: organization2, title: "Cocina low cost") }
+      let(:organization1) { Fabricate(:organization) }
+      let(:organization2) { Fabricate(:organization) }
+      let(:user1) { Fabricate(:user) }
+      let(:user2) { Fabricate(:user) }
+      let(:member1) { Fabricate(:member, user: user1, organization: organization1) }
+      let(:member2) { Fabricate(:member, user: user2, organization: organization2) }
+      let!(:offer1) { Fabricate(:offer, user: user1, organization: organization1, title: "Ruby on Rails nivel principiante") }
+      let!(:offer2) { Fabricate(:offer, user: user2, organization: organization2, title: "Cocina low cost") }
 
-        before do
-          member1
-          member2
-          login(user1)
-          Fabricate(:member, user: user1, organization: organization2) unless user1.members.where(organization: organization2).exists?
-        end
+      before do
+        member1
+        member2
+        login(user1)
+        Fabricate(:member, user: user1, organization: organization2) unless user1.members.where(organization: organization2).exists?
+      end
 
-        it 'displays only offers from the selected organization' do
-          get :index, params: { org: organization1.id }
-          expect(assigns(:offers)).to include(offer1)
-          expect(assigns(:offers)).not_to include(offer2)
-        end
+      it 'displays only offers from the selected organization' do
+        get :index, params: { org: organization1.id }
+        expect(assigns(:offers)).to include(offer1)
+        expect(assigns(:offers)).not_to include(offer2)
+      end
 
-        it 'displays all offers when no organization is selected' do
-          get :index
-          expect(assigns(:offers)).to include(offer1)
-          expect(assigns(:offers)).to include(offer2)
-        end
+      it 'displays only offers from the current organization when no organization is selected' do
+        alliance = OrganizationAlliance.create!(
+        source_organization: organization1,
+        target_organization: organization2,
+        status: "accepted"
+        )
+
+        get :index
+
+        expect(assigns(:offers)).to include(offer1)
+        expect(assigns(:offers)).not_to include(offer2)
+
+        organization3 = Fabricate(:organization)
+        user3 = Fabricate(:user)
+        member3 = Fabricate(:member, user: user3, organization: organization3)
+        offer3 = Fabricate(:offer, user: user3, organization: organization3, title: "Non-allied offer")
+
+        get :index
+
+        expect(assigns(:offers)).not_to include(offer3)
+      end
+
+      it 'displays offers from the current organization and allied organizations when show_allied parameter is present' do
+        alliance = OrganizationAlliance.create!(
+        source_organization: organization1,
+        target_organization: organization2,
+        status: "accepted"
+        )
+
+        get :index, params: { show_allied: true }
+
+        expect(assigns(:offers)).to include(offer1)
+        expect(assigns(:offers)).to include(offer2)
+
+        organization3 = Fabricate(:organization)
+        user3 = Fabricate(:user)
+        member3 = Fabricate(:member, user: user3, organization: organization3)
+        offer3 = Fabricate(:offer, user: user3, organization: organization3, title: "Non-allied offer")
+
+        get :index, params: { show_allied: true }
+
+        expect(assigns(:offers)).not_to include(offer3)
+      end
+
+      it 'displays all offers when user is not logged in' do
+        allow(controller).to receive(:current_user).and_return(nil)
+
+        organization3 = Fabricate(:organization)
+        user3 = Fabricate(:user)
+        member3 = Fabricate(:member, user: user3, organization: organization3)
+        offer3 = Fabricate(:offer, user: user3, organization: organization3, title: "Third org offer")
+
+        get :index
+
+        expect(assigns(:offers)).to include(offer1)
+        expect(assigns(:offers)).to include(offer2)
+        expect(assigns(:offers)).to include(offer3)
+      end
       end
     end
 

@@ -4,5 +4,17 @@
       <%= render 'shared/post_actions', post: @inquiry %>
     <% end %>
   </div>
+<% else %>
+  <div class="actions text-end">
+    <% if current_user && current_user.active?(current_organization) %>
+      <%= link_to contact_inquiry_path(@inquiry), 
+                  method: :post,
+                  data: { confirm: t('posts.show.contact_confirmation') },
+                  class: "btn btn-primary" do %>
+        <%= glyph :envelope %>
+        <%= t 'posts.show.request_contact' %>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
 <%= render "shared/post", post: @inquiry %>

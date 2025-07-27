@@ -81,6 +81,12 @@ class Organization < ApplicationRecord
     Organization.where(id: source_org_ids + target_org_ids)
   end
 
+  def allied_organizations
+    source_org_ids = source_alliances.accepted.pluck(:target_organization_id)
+    target_org_ids = target_alliances.accepted.pluck(:source_organization_id)
+    Organization.where(id: source_org_ids + target_org_ids)
+  end
+
   def ensure_reg_number_seq!
     update_column(:reg_number_seq, members.maximum(:member_uid))
   end

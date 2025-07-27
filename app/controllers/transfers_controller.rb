@@ -3,6 +3,13 @@ class TransfersController < ApplicationController
 
   def create
     @source = find_source
+
+    if params[:cross_bank] == "true" && params[:post_id].present?
+      post = Post.find(params[:post_id])
+      create_cross_bank_transfer(post)
+      return
+    end
+
     @account = Account.find(transfer_params[:destination])
 
     transfer = Transfer.new(
@@ -23,8 +30,12 @@ class TransfersController < ApplicationController
       current_organization,
       current_user,
       params[:offer],
-      params[:destination_account_id]
+      params[:destination_account_id],
+      params[:cross_bank] == "true"
     )
+
+    @cross_bank = params[:cross_bank] == "true"
+    @offer = transfer_factory.offer
 
     render(
       :new,
@@ -32,7 +43,8 @@ class TransfersController < ApplicationController
         accountable: transfer_factory.accountable,
         transfer: transfer_factory.build_transfer,
         offer: transfer_factory.offer,
-        sources: transfer_factory.transfer_sources
+        sources: transfer_factory.transfer_sources,
+        cross_bank: @cross_bank
       }
     )
   end
@@ -48,6 +60,78 @@ class TransfersController < ApplicationController
   end
 
   private
+
+  def create_cross_bank_transfer(post)
+    transfer_factory = TransferFactory.new(
+      current_organization,
+      current_user,
+      post.id,
+      nil,
+      true
+    )
+
+    destination_organization = transfer_factory.destination_organization
+
+    @persisters = []
+
+    user_account = current_user.members.find_by(organization: current_organization).account
+    org_account = current_organization.account
+
+    if user_account.id != org_account.id
+      user_to_org_transfer = Transfer.new(
+        source: user_account,
+        destination: org_account,
+        amount: transfer_params[:amount],
+        reason: post.description,
+        post: post
+      )
+      @persisters << ::Persister::TransferPersister.new(user_to_org_transfer)
+    end
+
+    org_to_org_transfer = Transfer.new(
+      source: org_account,
+      destination: destination_organization.account,
+      amount: transfer_params[:amount],
+      reason: post.description,
+      post: post,
+      is_cross_bank: true
+    )
+    @persisters << ::Persister::TransferPersister.new(org_to_org_transfer)
+
+    member = post.user.members.find_by(organization: destination_organization)
+    if member && member.account
+      org_to_user_transfer = Transfer.new(
+        source: destination_organization.account,
+        destination: member.account,
+        amount: transfer_params[:amount],
+        reason: post.description,
+        post: post
+      )
+      @persisters << ::Persister::TransferPersister.new(org_to_user_transfer)
+    end
+
+    if persisters_saved?
+      redirect_to post, notice: t('transfers.cross_bank.success')
+    else
+      @persisters.each do |persister|
+        persister.transfer.destroy if persister.transfer.persisted?
+      end
+      redirect_back fallback_location: post, alert: @error_messages || t('transfers.cross_bank.error')
+    end
+  end
+
+  def persisters_saved?
+    @error_messages = []
+
+    @persisters.each do |persister|
+      unless persister.save
+        @error_messages << persister.transfer.errors.full_messages.to_sentence
+        return false
+      end
+    end
+
+    true
+  end
 
   def find_source
     if admin?

@@ -83,6 +83,7 @@ es:
           attributes:
             base:
               same_account: No se puede hacer una transacción a la misma cuenta
+              no_alliance_between_organizations: Solo se permiten transferencias entre organizaciones aliadas
         user:
           attributes:
             email:
@@ -408,6 +409,12 @@ es:
       subject: Boletín semanal
       text1: 'Últimas ofertas publicadas:'
       text2: 'Últimas demandas publicadas:'
+    contact_request:
+      subject: "Solicitud de contacto para tu anuncio: %{post}"
+      greeting: "Hola %{name},"
+      message: "%{requester} de la organización %{organization} está interesado/a en tu anuncio: %{post}."
+      requester_info: "Aquí está su información de contacto"
+      closing: "Si estás interesado/a, por favor contáctale directamente usando la información proporcionada."
   organizations:
     give_time:
       give_time: Dar Tiempo a
@@ -468,6 +475,12 @@ es:
   posts:
     show:
       info: Esta %{type} pertenece a %{organization}.
+      contact_info_hidden: "La información de contacto no es visible debido a que esta %{type} pertenece a %{organization}. Haga clic en el botón 'Solicitar Contacto' para conectar con el miembro."
+      request_contact: "Solicitar Contacto"
+      contact_confirmation: "Si confirmas, tu información de contacto será enviada por correo electrónico a la persona que ofrece este servicio. ¿Deseas continuar?"
+    contact:
+      success: "Solicitud de contacto enviada correctamente. El ofertante recibirá tu información de contacto por correo electrónico."
+      error: "No se pudo enviar la solicitud de contacto."
   reports:
     download: Descargar
     download_all: Descargar todo
@@ -555,6 +568,11 @@ es:
         other: "%{count} minutos"
     new:
       error_amount: 'El tiempo debe ser mayor que 0 '
+    cross_bank:
+      info: "Esta es una transferencia de tiempo a un miembro perteneciente a %{organization}. El tiempo se transferirá a través de ambas organizaciones."
+      success: "Transferencia entre organizaciones completada con éxito."
+      error: "Ha ocurrido un error al procesar la transferencia entre organizaciones."
+
   users:
     avatar:
       change_your_image: Cambia tu imagen
