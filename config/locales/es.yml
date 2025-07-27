@@ -410,9 +410,9 @@ es:
       text1: 'Últimas ofertas publicadas:'
       text2: 'Últimas demandas publicadas:'
     contact_request:
-      subject: "Solicitud de contacto para tu %{post}"
+      subject: "Solicitud de contacto para tu anuncio: %{post}"
       greeting: "Hola %{name},"
-      message: "%{requester} del banco de tiempo %{organization} está interesado/a en tu %{post}."
+      message: "%{requester} de la organización %{organization} está interesado/a en tu anuncio: %{post}."
       requester_info: "Aquí está su información de contacto"
       closing: "Si estás interesado/a, por favor contáctale directamente usando la información proporcionada."
   organizations:
