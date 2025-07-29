@@ -349,15 +349,14 @@ eu:
     report:
       report_title: TXOSTENA
   locales:
-    ar: Arabiera
     ca: Katalanera
     en: Ingelesa
     es: Gaztelera
     eu: Euskara
     fr: Frantsesa
     gl: Galiziera
-    pt: Portugesa
     pt-BR: Portugesa
+    ja: 
   mailers_globals:
     footer:
       text: "%{organization_name}tik"

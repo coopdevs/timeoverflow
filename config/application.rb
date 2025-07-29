@@ -13,7 +13,7 @@ module Timeoverflow
 
     # I18n configuration
     config.i18n.default_locale = :es
-    config.i18n.available_locales = [:es, :ca, :eu, :gl, :en, :'pt-BR', :fr]
+    config.i18n.available_locales = [:es, :ca, :eu, :gl, :en, :'pt-BR', :fr, :ja]
     config.i18n.fallbacks = true
 
     # This tells Rails to serve error pages from the app itself, rather than using static error pages in public/
