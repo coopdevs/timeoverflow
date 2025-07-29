@@ -20,8 +20,13 @@ Rails.application.routes.draw do
 
   get "/pages/:page" => "pages#show", as: :page
 
-  resources :offers
-  resources :inquiries
+  concern :contactable do
+    post :contact, on: :member
+  end
+
+  resources :offers, concerns: :contactable
+  resources :inquiries, concerns: :contactable
+  resources :posts, concerns: :contactable
   resources :device_tokens, only: :create
 
   concern :accountable do
@@ -35,6 +40,10 @@ Rails.application.routes.draw do
   end
   get :select_organization, to: 'organizations#select_organization'
 
+  get 'organization_transfers/new', to: 'organization_transfers#new', as: :new_organization_to_organization_transfer
+  post 'organization_transfers', to: 'organization_transfers#create', as: :organization_to_organization_transfers
+  resources :organization_alliances, only: [:index, :create, :update, :destroy] 
+    
   resources :users, concerns: :accountable, except: :destroy, :path => "members" do
     collection do
       get 'signup'

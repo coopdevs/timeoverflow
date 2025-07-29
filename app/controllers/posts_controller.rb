@@ -6,10 +6,14 @@ class PostsController <  ApplicationController
   def index
     context = model.active.of_active_members
 
-    if current_organization.present?
-      context = context.where(
-        organization_id: current_organization.id
-      )
+    if current_user.present? && current_organization.present?
+      if params[:show_allied].present?
+      allied_org_ids = current_organization.allied_organizations.pluck(:id)
+      org_ids = [current_organization.id] + allied_org_ids
+      context = context.by_organizations(org_ids)
+      elsif !params[:org].present?
+      context = context.by_organization(current_organization.id)
+      end
     end
 
     posts = apply_scopes(context)
@@ -69,6 +73,19 @@ class PostsController <  ApplicationController
     post = current_organization.posts.find params[:id]
     authorize post
     redirect_to send("#{resources}_path") if post.update!(active: false)
+  end
+
+  def contact
+    @post = Post.find(params[:id])
+
+    if current_user && current_organization != @post.organization && current_user.active?(current_organization)
+      OrganizationNotifier.contact_request(@post, current_user, current_organization).deliver_later
+      flash[:notice] = t('posts.contact.success')
+    else
+      flash[:error] = t('posts.contact.error')
+    end
+
+    redirect_to @post
   end
 
   private

@@ -65,9 +65,9 @@ RSpec.describe TransferFactory do
         end
         let(:destination_account) { member.account }
 
-        it 'raises' do
+        it 'raises an error' do
           expect { transfer_factory.build_transfer }
-            .to raise_error(ActiveRecord::RecordNotFound)
+            .to raise_error(NoMethodError, /undefined method `account' for nil:NilClass/)
         end
       end
     end

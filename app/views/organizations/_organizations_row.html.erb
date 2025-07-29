@@ -7,4 +7,9 @@
   <td>
     <%= render "organizations/petition_button", organization: org %>
   </td>
+  <% if current_user&.manages?(current_organization) %>
+    <td>
+      <%= render "organizations/alliance_button", organization: org %>
+    </td>
+  <% end %>
 </tr>

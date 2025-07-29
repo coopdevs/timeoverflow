@@ -1,0 +1,33 @@
+<h1>
+  <%= t 'organizations.transfers.new.title' %>
+</h1>
+<div class="alert alert-info">
+  <%= t 'organizations.transfers.new.description', 
+        source_organization: @source_organization.name,
+        destination_organization: @destination_organization.name %>
+</div>
+<%= simple_form_for @transfer, url: organization_to_organization_transfers_path(destination_organization_id: @destination_organization.id) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :hours,
+                as: :integer,
+                input_html: {
+                  min: 0,
+                  "data-rule-either-hours-minutes-informed" => "true"
+                } %>
+    <%= f.input :minutes,
+                as: :integer,
+                input_html: {
+                  min: 0,
+                  max: 59,
+                  step: 15,
+                  "data-rule-either-hours-minutes-informed" => "true",
+                  "data-rule-range" => "[0,59]"
+                } %>
+    <%= f.input :amount, as: :hidden %>
+    <%= f.input :reason %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, t('organizations.transfers.new.submit'), class: "btn btn-primary" %>
+    <label class="js-error-amount form-label error invisible"><%= t "transfers.new.error_amount" %></label>
+  </div>
+<% end %>

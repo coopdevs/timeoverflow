@@ -4,8 +4,31 @@
       <%= render 'shared/post_actions', post: @offer %>
     <% end %>
     <% if current_user and @offer.user != current_user %>
+      <% if current_organization != @offer.organization && current_user.active?(current_organization) %>
+        <%= link_to t('posts.show.request_contact'),
+          contact_post_path(@offer),
+          method: :post,
+          class: "btn btn-info" %>
+      <% end %>
       <%= link_to new_transfer_path(id: @offer.user.id, offer: @offer.id, destination_account_id: @destination_account.id),
                   class: "btn btn-success" do %>
+        <%= glyph :time %>
+        <%= t ".give_time_for" %>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="actions text-end">
+    <% if current_user && current_user.active?(current_organization) %>
+      <% if current_organization != @offer.organization %>
+        <%= link_to t('posts.show.request_contact'),
+          contact_post_path(@offer),
+          method: :post,
+          data: { confirm: t('posts.show.contact_confirmation') },
+          class: "btn btn-primary me-2" %>
+      <% end %>
+      <%= link_to new_transfer_path(id: @offer.user.id, offer: @offer.id, cross_bank: true),
+                class: "btn btn-success" do %>
         <%= glyph :time %>
         <%= t ".give_time_for" %>
       <% end %>

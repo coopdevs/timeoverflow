@@ -83,6 +83,7 @@ en:
           attributes:
             base:
               same_account: A transfer cannot be made to the same account
+              no_alliance_between_organizations: Transfers are only allowed between allied organizations
         user:
           attributes:
             email:
@@ -101,8 +102,8 @@ en:
         one: Offer
         other: Offers
       organization:
-        one: Time Bank
-        other: Time Banks
+        one: Organization
+        other: Organizations
       post:
         one: Post
         other: Posts
@@ -141,6 +142,7 @@ en:
       last_login: Last login
       offer_public_link: Offers public link
       organizations: Organizations
+      organization_alliances: Organizations
       reports: Reports
       sign_out: Logout
       statistics: Statistics
@@ -303,6 +305,7 @@ en:
     table:
       actions: Actions
     to: To
+    filter_by_organizations: "Filter by organizations"
   inquiries:
     edit:
       submit: Change request
@@ -370,6 +373,35 @@ en:
     show:
       give_time_for: Time transfer for this offer
       offered_by: Offered by
+  organization_alliances:
+    title: "Organization Alliances"
+    created: "Alliance request sent"
+    updated: "Alliance status updated"
+    destroyed: "Alliance has been ended"
+    error_destroying: "Could not end alliance"
+    not_authorized: "You are not authorized to manage alliances"
+    organization: "Organization"
+    city: "City"
+    members: "Members"
+    type: "Type"
+    actions: "Actions"
+    sent: "Sent"
+    received: "Received"
+    pending: "Pending"
+    active: "Active"
+    rejected: "Rejected"
+    request_alliance: "Request alliance"
+    cancel_request: "Cancel request"
+    accept: "Accept"
+    reject: "Reject"
+    end_alliance: "End alliance"
+    confirm_cancel: "Are you sure you want to cancel this alliance request?"
+    confirm_end: "Are you sure you want to end this alliance?"
+    search_organizations: "Search organizations"
+    status:
+      pending: "Pending Requests"
+      accepted: "Active Alliances"
+      rejected: "Rejected Requests"
   organization_notifier:
     member_deleted:
       body: User %{username} has unsubscribed from the organization.
@@ -377,16 +409,35 @@ en:
       subject: Newsletter
       text1: 'Latest offers published:'
       text2: 'Latest requests published:'
+    contact_request:
+      subject: "Contact request for your %{post}"
+      greeting: "Hello %{name},"
+      message: "%{requester} from %{organization} organization is interested in your %{post}."
+      requester_info: "Here is their contact information"
+      closing: "If you are interested, please contact them directly using the provided information."
   organizations:
     give_time:
       give_time: Give time to
     index:
       member_count: Number of users
+      membership: "Membership"
+      alliance: "Alliance"
     new:
       new: New bank
     show:
       contact_information: Contact information
       join_timebank: Don't hesitate to contact the time bank to join it or ask any questions.
+    transfers:
+      bank_to_bank_transfer: "Transfer time between organizations"
+      bank_transfer: "Organization to Organization transfer"
+      new:
+        title: "Transfer between Organizations"
+        submit: "Execute transfer"
+        description: "Transfer time from %{source_organization} to %{destination_organization}"
+        reason_hint: "Optional: Describe the reason for this bank-to-bank transfer"
+      create:
+        success: "Organization to Organization transfer completed successfully"
+        error: "Error processing the transfer: %{error}"
   pages:
     about:
       app-mobile: Mobile App
@@ -435,6 +486,12 @@ en:
   posts:
     show:
       info: This %{type} belongs to %{organization}.
+      contact_info_hidden: "Contact information is not visible because this %{type} belongs to %{organization}. Click the ‘Request Contact’ button to connect with the member."
+      request_contact: "Request Contact"
+      contact_confirmation: "If you confirm, your contact information will be sent by email to the person offering this service. Do you want to proceed?"
+    contact:
+      success: "Contact request sent successfully. The offerer will receive your contact information by email."
+      error: "Unable to send contact request."
   reports:
     download: Download
     download_all: Download all
@@ -522,6 +579,11 @@ en:
         other: "%{count} minutes"
     new:
       error_amount: Time must be greater than 0
+    cross_bank:
+      success: "Cross-organization transfer completed successfully"
+      error: "Error creating cross-bank transfer"
+      no_alliance: "Cannot perform cross-bank transfers: no active alliance exists between organizations"
+      info: "This is a time transfer to a member who belongs to %{organization}. The time will be transferred through both organizations."
   users:
     avatar:
       change_your_image: Change your image

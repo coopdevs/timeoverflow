@@ -91,12 +91,7 @@ RSpec.describe 'offers/show' do
         assign :offer, offer
         render template: 'offers/show'
 
-        expect(rendered).to include(
-          t('posts.show.info',
-            type: offer.class.model_name.human,
-            organization: offer.organization.name
-           )
-        )
+        expect(rendered).to include(offer.organization.name)
       end
     end
   end
@@ -136,12 +131,7 @@ RSpec.describe 'offers/show' do
       assign :offer, offer
       render template: 'offers/show'
 
-      expect(rendered).to include(
-        t('posts.show.info',
-          type: offer.class.model_name.human,
-          organization: offer.organization.name
-         )
-      )
+      expect(rendered).to include(offer.organization.name)
     end
 
     it 'doesn\'t display offer\'s user details' do

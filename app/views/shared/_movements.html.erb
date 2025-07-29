@@ -20,25 +20,29 @@
               <%= l mv.created_at.to_date, format: :long %>
             </td>
             <td>
-              <% mv.other_side.account.tap do |account| %>
-                <% if account.accountable.present? %>
-                  <% if account.accountable_type == "Organization" %>
-                    <%= link_to account,
-                        organization_path(account.accountable) %>
-                  <% elsif account.accountable.active %>
-                    <%= link_to account.accountable.display_name_with_uid,
-                        user_path(account.accountable.user) %>
-                  <% else %>
-                    <%= t("users.show.inactive_user") %>
-                  <% end %>
+              <%
+                display_account = mv.other_side.account
+              %>
+              
+              <% if display_account.accountable.present? %>
+                <% if display_account.accountable_type == "Organization" %>
+                  <%= link_to display_account,
+                      organization_path(display_account.accountable) %>
+                <% elsif display_account.accountable.active %>
+                  <%= link_to display_account.accountable.display_name_with_uid,
+                      user_path(display_account.accountable.user) %>
                 <% else %>
-                  <%= t("users.show.deleted_user") %>
+                  <%= t("users.show.inactive_user") %>
                 <% end %>
+              <% else %>
+                <%= t("users.show.deleted_user") %>
               <% end %>
             </td>
             <td>
               <% if mv.transfer&.post&.active? %>
                 <%= link_to mv.transfer.post, offer_path(mv.transfer.post) %>
+              <% elsif is_bank_to_bank_transfer?(mv.transfer) %>
+                <span class="badge bg-info"><%= t("organizations.transfers.bank_transfer") %></span>
               <% else %>
                 <%= mv.transfer.post %>
               <% end %>

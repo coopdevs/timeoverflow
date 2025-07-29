@@ -1,10 +1,17 @@
 <h1>
   <small><%= t ".give_time" %></small>
-  <%= link_to accountable.display_name_with_uid, accountable_path(accountable) %>
+  <%= link_to accountable.try(:display_name_with_uid) || offer.user.username, accountable_path(accountable) || offer.user %>
 </h1>
+
 <% if offer %>
   <h3><%= offer %></h3>
+  <% if cross_bank %>
+    <div class="alert bg-info">
+      <%= t 'transfers.cross_bank.info', organization: offer.organization.name %>
+    </div>
+  <% end %>
 <% end %>
+
 <%= simple_form_for transfer do |f| %>
   <div class="form-inputs">
     <%= f.input :hours,
@@ -24,7 +31,13 @@
                 } %>
     <%= f.input :amount, as: :hidden %>
     <%= f.input :reason %>
-    <%= f.input :destination, as: :hidden %>
+    
+    <% if cross_bank %>
+      <%= hidden_field_tag :cross_bank, "true" %>
+      <%= hidden_field_tag :post_id, offer.id %>
+    <% else %>
+      <%= f.input :destination, as: :hidden %>
+    <% end %>
 
     <% if sources.present? %>
       <div class="mb-3">
@@ -38,7 +51,9 @@
       </div>
     <% end %>
 
-    <%= render partial: "#{accountable.model_name.singular}_offer", locals: { form: f, offer: offer, accountable: accountable } %>
+    <% unless cross_bank %>
+      <%= render partial: "#{accountable.model_name.singular}_offer", locals: { form: f, offer: offer, accountable: accountable } %>
+    <% end %>
   </div>
 
   <div class="form-actions">

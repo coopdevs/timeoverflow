@@ -35,6 +35,8 @@ class Transfer < ApplicationRecord
     destination.respond_to?(:id) ? destination.id : destination
   end
 
+  private
+
   def different_source_and_destination
     return unless source == destination
     errors.add(:base, :same_account)

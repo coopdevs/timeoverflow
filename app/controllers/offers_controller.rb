@@ -6,7 +6,9 @@ class OffersController < PostsController
   def show
     super
 
-    member = @offer.user.members.find_by(organization: current_organization)
-    @destination_account = member.account if member
+    if @offer.user
+      member = @offer.user.members.find_by(organization: current_organization)
+      @destination_account = member.account if member
+    end
   end
 end
