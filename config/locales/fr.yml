@@ -350,15 +350,14 @@ fr:
     report:
       report_title: RAPPORT
   locales:
-    ar: Arabe
     ca: Catalan
     en: Anglais
     es: Espagnol
     eu: Basque
     fr: Français
     gl: Galicien
-    pt: Portugais
     pt-BR: Portugais
+    ja: 
   mailers_globals:
     footer:
       text: "%{organization_name} de"

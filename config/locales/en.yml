@@ -348,15 +348,14 @@ en:
     report:
       report_title: REPORT
   locales:
-    ar: Arabic
     ca: Catalan
     en: English
     es: Spanish
     eu: Basque
     fr: French
     gl: Galician
-    pt: Portuguese
     pt-BR: Portuguese
+    ja: Japanese
   mailers_globals:
     footer:
       text: "%{organization_name} from"

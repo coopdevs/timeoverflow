@@ -349,15 +349,14 @@ ca:
     report:
       report_title: INFORME
   locales:
-    ar: Àrab
     ca: Català
     en: Anglès
     es: Espanyol
     eu: Basc
     fr: Francès
     gl: Gallec
-    pt: Portuguès
     pt-BR: Portuguès
+    ja: 
   mailers_globals:
     footer:
       text: "%{organization_name} en"

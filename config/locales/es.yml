@@ -351,15 +351,14 @@ es:
     report:
       report_title: INFORME
   locales:
-    ar: Árabe
     ca: Catalán
     en: Inglés
     es: Español
     eu: Euskera
     fr: Francés
     gl: Gallego
-    pt: Portugués
     pt-BR: Portugués
+    ja: Japonés
   mailers_globals:
     footer:
       text: "%{organization_name} en"
