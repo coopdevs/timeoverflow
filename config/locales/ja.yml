@@ -479,8 +479,8 @@ ja:
       global_activity: 世界的活動
       num_swaps: " 取引履歴"
       per_month: 月別
-      show: 
-      total_hours: 
+      show: 表示
+      total_hours: " 転送された時間"
       users_reg: " 登録ユーザー"
     inactive_users:
       days_without_swaps: 取引のない日数
@@ -526,40 +526,40 @@ ja:
     edit:
       edit_user: ユーザーを更新
     form:
-      notifications: 
+      notifications: 通知
     give_time:
-      give_time: 
+      give_time: 時間を与える
     index:
-      account_deactivated: 
-      actions: 
-      active_warning: 
-      cancel_warning: 
+      account_deactivated: あなたのアカウントはこのタイムバンクから無効化されました
+      actions: 操作
+      active_warning: "%{username}のユーザーアカウントのステータスを変更します"
+      cancel_warning: タイムバンクからユーザー%{username}のアカウントを削除しようとしています
       create: 新しいユーザーを作成
-      deactivated_warning: 
-      manage_warning: 
+      deactivated_warning: '誤ってアカウントが無効化されたと思われる場合は、以下の情報を添えて管理者にご連絡ください。 '
+      manage_warning: ユーザー%{username}の権限を変更します
       members: メンバー
       user_created: ユーザー%{uid} %{name}が保存しました
     member_card:
-      active_ago: 
-      no_activity: 
+      active_ago: "%{time}前にアクティブ"
+      no_activity: 活動履歴がありません。
     new:
       cancel: 取消
-      create_more_users_button: 
+      create_more_users_button: 別のユーザーを作成して追加する
       new_user: 新しいユーザ
-      user_created_add: 
+      user_created_add: ユーザー%{uid} %{name}が保存しました。次のユーザーを作成してください
     show:
-      account: 
+      account: 最後の取引
       accounts: アカウント
       balance: '残高:'
-      categories: 
-      created_at: 
-      data: 
+      categories: オファーされるサービス
+      created_at: 登録ユーザー
+      data: ユーザー詳細
       date: 日付
-      deleted_user: 
-      from_to: 
-      inactive: 
-      inactive_user: 
-      invalid_format: 
+      deleted_user: ユーザーは存在しません
+      from_to: 送信元 / 送信先
+      inactive: "(無効なアカウント)"
+      inactive_user: ユーザーはアクティブではありません
+      invalid_format: 無効な形式です。「.jpg」、「.jpeg」、または「.png」を選択してください。
       phone:
         other: 電話
       post: ポスト
@@ -567,13 +567,13 @@ ja:
       reason: 理由
       user_no: 'ユーザー＃:'
     user_rows:
-      activate: 
-      active_warning: 
-      cancel_warning: 
-      deactivate: 
-      delete_membership: 
-      manage_warning: 
-      sure_delete: 
+      activate: 有効にする
+      active_warning: "%{user}のユーザーアカウントのステータスを変更します"
+      cancel_warning: タイムバンクからユーザー%{user}のアカウントを削除しようとしています
+      deactivate: 無効にする
+      delete_membership: メンバーシップを削除する
+      manage_warning: ユーザー%{user}の権限を変更します
+      sure_delete: "%{organization_name}からメンバーシップを削除してもよろしいですか?"
   views:
     pagination:
       first: 最初
