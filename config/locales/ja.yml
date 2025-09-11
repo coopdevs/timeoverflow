@@ -1,0 +1,583 @@
+ja:
+  active_admin:
+    users:
+      organization: タイムバンク
+      upload_csv: ファイル
+      upload_from_csv: CSVをインポート
+  activerecord:
+    attributes:
+      account:
+        balance: 残高
+        organization: 組織
+      category:
+        created_at: 作成されました
+        name: 名前
+        name_translations: 名前（翻訳）
+        parent: メインカテゴリー
+        updated_at: 更新されました
+      common:
+        created_at: 作成されました
+        updated_at: 更新されました
+      inquiry:
+        is_group: グループリクエスト
+      offer:
+        is_group: グループオファー
+      organization:
+        address: 住所
+        city: 市区町村
+        created_at: 作成
+        description: 説明
+        email: メールアドレス
+        name: 名前
+        neighborhood: 地域エリア
+        phone: 電話番号
+        public_opening_times: 営業時間
+        reg_number_seq: ユーザー番号
+        updated_at: 更新
+      post:
+        category: カテゴリ
+        created_at: 作成
+        description: 説明
+        end_on: 終了日
+        start_on: 開始日
+        tag_list: タグ
+        title: タイトル
+        updated_at: 更新
+      transfer:
+        amount: 時間数
+        created_at: 作成
+        hours: 時間
+        minutes: 分
+        post: できること
+        reason: コメント
+        source: 送信元
+        updated_at: 更新
+      user:
+        admin: 管理者
+        alt_phone: 代替電話番号
+        created_at: 作成
+        date_of_birth: 生年月日
+        deactivated: 無効
+        description: 説明
+        email: メールアドレス
+        gender: 性別
+        last_sign_in_at: 最終ログイン
+        notifications: メール通知を受け取る
+        organization: 組織
+        phone: 電話番号
+        postcode: 郵便番号
+        push_notifications: モバイル通知を受け取る
+        registration_date: 登録日
+        registration_number: ユーザー番号
+        superadmin: システム管理者
+        unconfirmed_email: 未確認メールアドレス
+        updated_at: 更新
+        username: 名前
+    errors:
+      models:
+        organization:
+          attributes:
+            web:
+              url_format_invalid: 無効なURL形式
+        transfer:
+          attributes:
+            base:
+              same_account: 同じアカウント間での送信はできません
+        user:
+          attributes:
+            email:
+              invalid: 無効
+    models:
+      category:
+        other: カテゴリ
+      comment:
+        other: コメント
+      inquiry:
+        other: リクエスト
+      offer:
+        other: オファー
+      organization:
+        other: タイムバンク
+      post:
+        other: 投稿
+      transfer:
+        other: やりとり
+      user:
+        other: ユーザー
+  application:
+    landing:
+      button: 入力
+      slogan: 時間を大切にしましょう
+      sub_slogan: あなたの近くにタイムバンクがあります
+    login_form:
+      button: 入力
+      email: メールアドレス
+      password: パスワード
+      remember_check: ログイン状態を維持
+    menu:
+      sign_in: ログイン
+      sing_out: ログアウト
+    menus:
+      offers_by_tag_link:
+        tags: タグ
+    navbar:
+      admin: アドミン
+      administration: 管理
+      adminshort: 管理人
+      all_transfers: すべての転送
+      categories: サービス
+      demographics: 人口統計
+      global_activity: 全ての活動
+      inactive_users: 休止中のユーザー
+      inquiry_public_link: リクエストの公開リンク
+      last_login: 最終ログイン
+      offer_public_link: オファーの公開リンク
+      organizations: 組織
+      reports: 報告
+      sign_out: ログアウト
+      statistics: 統計
+      statistics_all_transfers: すべての転送
+      stats: 統計
+      tags: タグ
+      type_of_swaps: 取引の種類
+      users: ユーザー
+      without_offers: オファーなし
+    terms_conditions: 利用規約
+    tips:
+      entertag: タグをコンマで区切って入力してください
+      user_not_found: ユーザーが見つかりません
+  devise:
+    confirmations:
+      confirmed: アカウントが正常に確認されました。
+      confirmed_and_signed_in: アカウントが正常に確認されました。ログインしています。
+      new:
+        resend_instructions: 認証メールを再送する
+        resend_instructions_button: 再送信
+        resend_instructions_description: メールアドレスを変更した場合は、変更を有効にするためにこの手順を実行する必要があります。
+      send_instructions: 数分以内に、アカウントの確認方法を説明したメールが届きます。
+      send_paranoid_instructions: 当社のデータベースにあなたのメール アドレスが存在する場合、数分であなたのアカウントを確認する方法についての指示を記載したメールが届きます。
+    failure:
+      already_authenticated: 既にサインイン済みです。
+      inactive: アカウントはまだ有効になっていません。
+      invalid: 無効な電子メール アドレスまたはパスワードです。
+      invalid_token: 無効な認証トークン。
+      locked: アカウントがロックされています。
+      not_found_in_database: 無効な電子メール アドレスまたはパスワードです。
+      timeout: セッション切れになりました。もう一度サインインして続行してください。
+      unauthenticated: 進むにはサインインまたは新規登録する必要があります。
+      unconfirmed: 続行する前にあなたのアカウントを確認してください。
+      user:
+        last_attempt: 注意：アカウントがロックされるまであと1回試行してください
+    mailer:
+      confirmation_instructions:
+        subject: 確認手順
+      reset_password_instructions:
+        subject: パスワード再設定手続き
+      unlock_instructions:
+        subject: ロック解除説明
+    omniauth_callbacks:
+      failure: 認証できませんでしたが %{kind} から%{reason}」。
+      success: "%{kind} アカウントから正常に認証されます。"
+    passwords:
+      edit:
+        change_password: パスワードの変更
+        confirm_password: 新しいパスワードを確認して下さい。
+        new_password: 新しいパスワード
+        passwords_not_match: パスワードが一致しません
+      new:
+        forgot_question: 新しいパスワードを作成する
+        forgot_question_description: アカウントに関連付けられたアドレスを入力すると、新しいパスワードを作成するためのリンクが記載されたメールが送信されます。
+        send_instructions: リンクを送信
+      no_token: パスワードリセットのメールからではないと、このページにアクセスすることはできません。パスワードリセットのメールから来た場合は、提供された完全なURLを使用していることを確認してください。
+      send_instructions: 数分以内に、パスワードをリセットする方法を説明するメールが届きます。
+      send_paranoid_instructions: あなたのメールアドレスが私たちのデータベースに存在する場合、数分であなたのメールアドレスにパスワード回復リンクを受信します。
+      updated: あなたのパスワードは変更されました。サインイン済みです。
+      updated_not_active: あなたのパスワードは変更されました。
+    registrations:
+      destroyed: さようなら ！あなたのアカウントは正常にキャンセルされました。またすぐお会いしたいと思います。
+      edit:
+        cancel_account: アカウント登録を取り消す
+        current_password: 現在のパスワード
+        edit_user: ユーザーを編集
+        help_current_password: 現在のパスワードのヘルプ
+        help_password: ヘルプパスワード
+        password: パスワード
+        password_confirmation: パスワード確認
+        unhappy: 不満
+        update: 更新
+      new:
+        password: パスワード
+        password_confirmation: パスワード確認
+        sign_me_up: 登録する
+        sign_up: 登録
+      signed_up: ようこそ！登録が完了しました。
+      signed_up_but_inactive: ご登録手続きが完了しています。しかし、アカウントがまだ有効になっておりませんので、サインインが出来ませんでした。
+      signed_up_but_locked: ご登録手続きが完了しています。しかし、アカウントがロックされているため、サインインが出来ませんでした。
+      signed_up_but_unconfirmed: あなたのメール アドレスに確認のリンクを持つメッセージが送信されています。あなたのアカウントをアクティベートするリンクを開いてください。
+      update_needs_confirmation: 正常に、あなたのアカウントを更新した新しいメール アドレスを確認する必要があります。あなたのメール
+        アドレスを開き、新しいメール アドレスの確認を完了するリンクをクリックしてください。
+      updated: アカウントを更新しました。
+    sessions:
+      new:
+        remember_me: ログイン状態を維持
+        sign_in: ログイン
+      user:
+        signed_in: セッション開始
+        signed_out: サインアウトしました
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: 確認メールを再送信
+        didnt_receive_unlock_instructions: ロック解除手順を受け取る
+        forgot_your_password: パスワードを忘れた
+        sign_in: ログイン
+        sign_in_with: "%{provider}でログイン"
+        sign_up: 登録
+    unlocks:
+      new:
+        resend_instructions: アカウントロック解除の手順を再送信
+        resend_instructions_button: 再送信
+        resend_instructions_description: 5回以上ログインに失敗した場合、アカウントを解除するにはこのステップを行ってください
+      send_instructions: アカウント解除手順が記載されたメールが数分以内に送信されます
+      send_paranoid_instructions: アカウントが存在する場合、解除手順のメールが数分以内に送信されます
+      unlocked: アカウントのロックが解除されました。ログインして続行してください
+  errors:
+    internal_server_error:
+      description: 申し訳ありません、リクエスト中にエラーが発生しました。通知は自動送信され、できるだけ早く対応いたします
+      title: 内部サーバーエラー
+    messages:
+      already_confirmed: すでに確認済みです。ログインしてください
+      confirmation_period_expired: "%{period}以内に確認が必要です。新しい確認メールをリクエストしてください"
+      expired: 有効期限が切れています。新しいものをリクエストしてください
+      not_found: 見つかりませんでした
+      not_locked: ロックされていませんでした
+      not_saved:
+        other: "%{resource} を保存できないエラーが %{count} 件あります"
+    not_found:
+      description: お探しのページは存在しません。アドレスを間違えたか、ページが移動した可能性があります。
+      title: 見つかりませんでした
+  global:
+    add_new: 新規作成
+    all: すべて
+    amount: 数量
+    announcements: 投稿
+    back: 戻る
+    balance: '残高:'
+    cancel_membership: 完全に削除
+    contact_details: 連絡先情報
+    create: 作成
+    date: データ
+    decline: 却下
+    delete: 削除
+    demote: 通常ユーザーに降格
+    edit: 更新
+    enter_to_timebank: タイムバンクに参加する
+    filter: 絞り込み
+    from: 送信元
+    give_time: 時間の移転
+    here: こちら
+    home: ホーム
+    information: 情報
+    locales_header: 言語を変更
+    member_count: ユーザー数
+    more: 続き
+    movements: 取引履歴
+    next: 次へ
+    or: または
+    promote: 管理者に昇格
+    reason: 理由
+    required_field: "※ 必須項目"
+    save: 保存
+    search: 検索
+    search_location: 場所で検索
+    show: 表示
+    source_destination: 送信元 / 送信先
+    statistics: 統計
+    table:
+      actions: 操作
+    to: 送信先
+  inquiries:
+    edit:
+      submit: 変更リクエスト
+    index:
+      new_inquiry: 新規リクエストする
+    new:
+      submit: リクエストを作成
+  layouts:
+    application:
+      about: TimeOverflowについて
+      bdtnear: タイムバンクを検索
+      edit_org: "%{organization}を変更する"
+      edit_profile: プロフィールを変更する
+      help: ヘルプ
+      login: 入力
+      manage_memberships: メンバーシップを管理する
+      no_memberhsip_warning: <a href="%{link}">join a Timebank </a>  リクエストし、タイムバンクがリクエストを承認すると、登録が完了します。30
+        日以内にタイムバンクへの参加をリクエストしない場合、ユーザーはシステムから削除されます。
+    report:
+      report_title: 報告
+  locales:
+    ca: カタロニア語
+    en: 英語
+    es: スペイン語
+    eu: バスク語
+    fr: フランス語
+    gl: ガリシア語
+    pt-BR: ブラジルポルトガル語
+    ja: 日本語
+  mailers_globals:
+    footer:
+      text: "%{organization_name}から"
+      text_donation: ADBdT協会は、タイムバンクにTimeOverflowを無料で提供しています。プラットフォームの維持と改善にご協力いただける場合は%{href}ください。
+      text_donation_link: このウェブサイトをご覧ください
+  multi_transfers:
+    multi_transfers: 複数回の転送
+    step:
+      confirm:
+        description: 変更を確認する
+        type_of_transfer: 転送の種類
+      select_type:
+        description: 転送の種類を選択してください
+      set_params:
+        description: 時間数、理由、投稿（ある場合）を指定します。
+      set_source:
+        description: 時間を転送するアカウントを選択してください
+      set_target:
+        description: 時間を受け取るアカウントを選択してください
+    success: 転送が正常に行われました。
+    types:
+      many_to_one: 複数人対一人
+      one_to_many: 一人対複数人
+      one_to_one: 一人対一人
+  offers:
+    edit:
+      submit: オファーを変更する
+    index:
+      by_category: カテゴリー別
+      by_tag: タグ別
+      filter: フィルター
+      new_offer: 新しいオファー
+      offered_by: "%{size}によるオファー"
+    new:
+      submit: オファーを作成
+    show:
+      give_time_for: このオファーの時間転送
+      offered_by: オファー元
+  organization_notifier:
+    member_deleted:
+      body: ユーザー%{username}が退会しました。
+    recent_posts:
+      subject: ニュースレター
+      text1: '公開された最新のオファー:'
+      text2: '公開された最新のリクエスト:'
+  organizations:
+    give_time:
+      give_time: 時間を与える
+    index:
+      member_count: ユーザー数
+    new:
+      new: 新しい銀行
+    show:
+      contact_information: 連絡先
+      join_timebank: タイムバンクにご参加いただくため、ご質問等ありましたら、お気軽にお問い合わせください。
+  pages:
+    about:
+      app-mobile: モバイルアプリ
+      app-mobile-text: モバイルアプリTimeOverflowが利用可能です。<br />このアプリは、バルセロナ市の協力、プログラム%{impulsem_link}
+        （バルセロナアクティバ）2017-2018のおかげで実現しました。
+      banner-button: TimeOverflowへのアクセスをリクエストする
+      banner-subtitle: 利用開始またはデモンストレーションのために、ご連絡いたします
+      banner-title: タイムバンクですか?
+      empower-adbdt: ADBdT
+      empower-adbdt-title: タイムバンク開発協会
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
+      empower-github: Github
+      empower-github-title: Github
+      empower-showmap: マップを見る
+      empower-showmap-title: タイムバンク
+      empower-text-1: TimeOveflow は、物理的に存在するタイムバンク %{showmap_link}向けに特別に設計されており、インターネットを利用してタイムバンクを促進することを目的としています。
+      empower-text-2: "%{coopdevs_link}と%{abdt_link}の共同作業のおかげで、今日、希望するすべてのタイムバンクにソフトウェア
+        TimeOverflow をオープンかつ無料で提供できるようになりました。"
+      empower-text-3: TimeOverflowのソースコードはオープンソースライセンスに基づいて公開されており、 %{github_link}からダウンロードできます
+      empower-title: タイムバンクの推進
+      feature-group-1: 管理役割によるタイムバンク管理
+      feature-group-2: 会員がアクセスできるソーシャルネットワークとオンラインバンキング
+      feature-text-1: 銀行メンバーの作成/削除/更新
+      feature-text-2: オファーと問い合わせの投稿
+      feature-text-3: 確認して、残高を管理する
+      feature-text-4: タイムバンクの会員はシステムにアクセスし、他の会員とつながることができます
+      feature-text-5: オファーと問い合わせの投稿
+      feature-text-6: 他のメンバーに時間を支払う
+      impulsem-link: 
+      subtitle: TimeOverflowはオープンソースで無料、共同作業が可能
+      title: 
+      title2: タイムバンク
+  petitions:
+    application_sent: 申請は正常に送信されました
+    application_sent_body: こんにちは！ %{organization_name}への申請は正常に送信されました。
+    application_status: 申請%{status}
+    applications: 申請
+    apply: 参加を申し込む
+    new: 新い申請
+    new_body: こんにちは。 %{username}が%{organization_name}タイムバンクへの参加をリクエストしました。リクエストを承認または拒否するには、
+      %{here_link}を入力してください。リクエストを承認すると、ユーザーは自動的にユーザーリストに表示されます。
+    status:
+      accepted: 承認
+      declined: 却下
+      pending: 処理中
+      sent: 送信済
+    status_applications: "%{status}アプリケーション"
+  posts:
+    show:
+      info: この%{type}は%{organization}に属します。
+  reports:
+    download: ダウンロード
+    download_all: すべてダウンロード
+  shared:
+    movements:
+      delete_reason: このコメントを削除してもよろしいですか?
+      movements: 交換
+    post_form:
+      group_inquiry: グループリクエストですか？
+      group_offer: グループオファーですか?
+      you_can_use: 使用できます
+  simple_form:
+    error_notification:
+      default_message: 以下の問題を確認してください。
+    'no': いいえ
+    options:
+      user:
+        gender:
+          female: 女性
+          male: 男性
+          others: その他
+          prefer_not_to_answer: 答えたくない
+    required:
+      mark: "*"
+      text: 必須
+    'yes': はい
+  statistics:
+    all_transfers:
+      date: 日付
+      delete_reason: このコメントを削除してもよろしいですか?
+      from: から
+      post: 投稿
+      quantity: 数量
+      reason: 理由
+      to: へ
+      transfers: すべての転送
+    demographics:
+      by_ages: 年齢別
+      by_gender: 性別別
+      demographics: 人口統計
+      female: 女性
+      male: 男性
+      num_people: 人数
+      unknown: 不明
+    global_activity:
+      bank_activity: タイムバンクの活動
+      global_activity: 世界的活動
+      num_swaps: " 取引履歴"
+      per_month: 月別
+      show: 表示
+      total_hours: " 転送された時間"
+      users_reg: " 登録ユーザー"
+    inactive_users:
+      days_without_swaps: 取引のない日数
+      inactive_users: 休止中のユーザー
+      last_movement: 最終取引
+      no_movements: 取引なし
+    last_login:
+      last_login: 最終ログイン
+      never_login: ログインしない
+    type_swaps:
+      type_of_swaps: 取引の種類
+      without_category: カテゴリーなし
+      without_tags: タグなし
+    without_offers:
+      without_offers: オファーなし
+  stats:
+    min_balance:
+      title: ユーザーの最低残高
+  tags:
+    alpha_grouped_index:
+      maintitle: 利用可能なタグ
+  terms:
+    accept: 承認
+    show:
+      accept: 承認
+  transfers:
+    computation:
+      hour:
+        other: "%{count}時間"
+      joiner: と　
+      minute:
+        other: "%{count}分"
+    new:
+      error_amount: '時間は0より大きくなければなりません '
+  users:
+    avatar:
+      change_your_image: イメージを変える
+      crop_the_image: 画像をトリミングする
+      max_size_warning: 画像が大きすぎます。最大許容サイズは%{size} MB です。
+    confirm_email:
+      email_sent: "%{email}にメールを送信しました。確認後、どのグループにも応募できるようになります。"
+      please: メールを認証してください
+    edit:
+      edit_user: ユーザーを更新
+    form:
+      notifications: 通知
+    give_time:
+      give_time: 時間を与える
+    index:
+      account_deactivated: あなたのアカウントはこのタイムバンクから無効化されました
+      actions: 操作
+      active_warning: "%{username}のユーザーアカウントのステータスを変更します"
+      cancel_warning: タイムバンクからユーザー%{username}のアカウントを削除しようとしています
+      create: 新しいユーザーを作成
+      deactivated_warning: '誤ってアカウントが無効化されたと思われる場合は、以下の情報を添えて管理者にご連絡ください。 '
+      manage_warning: ユーザー%{username}の権限を変更します
+      members: メンバー
+      user_created: ユーザー%{uid} %{name}が保存しました
+    member_card:
+      active_ago: "%{time}前にアクティブ"
+      no_activity: 活動履歴がありません。
+    new:
+      cancel: 取消
+      create_more_users_button: 別のユーザーを作成して追加する
+      new_user: 新しいユーザ
+      user_created_add: ユーザー%{uid} %{name}が保存しました。次のユーザーを作成してください
+    show:
+      account: 最後の取引
+      accounts: アカウント
+      balance: '残高:'
+      categories: オファーされるサービス
+      created_at: 登録ユーザー
+      data: ユーザー詳細
+      date: 日付
+      deleted_user: ユーザーは存在しません
+      from_to: 送信元 / 送信先
+      inactive: "(無効なアカウント)"
+      inactive_user: ユーザーはアクティブではありません
+      invalid_format: 無効な形式です。「.jpg」、「.jpeg」、または「.png」を選択してください。
+      phone:
+        other: 電話
+      post: ポスト
+      quantity: 量
+      reason: 理由
+      user_no: 'ユーザー＃:'
+    user_rows:
+      activate: 有効にする
+      active_warning: "%{user}のユーザーアカウントのステータスを変更します"
+      cancel_warning: タイムバンクからユーザー%{user}のアカウントを削除しようとしています
+      deactivate: 無効にする
+      delete_membership: メンバーシップを削除する
+      manage_warning: ユーザー%{user}の権限を変更します
+      sure_delete: "%{organization_name}からメンバーシップを削除してもよろしいですか?"
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      next: 次
+      previous: 前
+      truncate: 

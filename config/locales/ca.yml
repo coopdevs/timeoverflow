@@ -157,19 +157,25 @@ ca:
   devise:
     confirmations:
       confirmed: El teu compte ha estat confirmat amb èxit.
-      confirmed_and_signed_in: El teu compte ha estat confirmat amb èxit. Ara estàs registrat.
+      confirmed_and_signed_in: El teu compte ha estat confirmat amb èxit. Ara estàs
+        registrat.
       new:
         resend_instructions: Reenviar instruccions de confirmació
         resend_instructions_button: Reenviar
-        resend_instructions_description: Si has canviat el teu correu tens que fer aquest pas perquè el canvi sigui efectiu
-      send_instructions: Rebràs un correu amb les instruccions de com confirmar el teu compte en uns minuts.
-      send_paranoid_instructions: Si la teva adreça de correu existeix a la nostra base de dades, rebràs un correu amb les instruccions de com confirmar el teu compte en uns minuts.
+        resend_instructions_description: Si has canviat el teu correu tens que fer
+          aquest pas perquè el canvi sigui efectiu
+      send_instructions: Rebràs un correu amb les instruccions de com confirmar el
+        teu compte en uns minuts.
+      send_paranoid_instructions: Si la teva adreça de correu existeix a la nostra
+        base de dades, rebràs un correu amb les instruccions de com confirmar el teu
+        compte en uns minuts.
     failure:
       already_authenticated: Ja estàs registrat.
       inactive: El teu compte no ha estat activat.
       invalid: Correu o clau invàlida.
       invalid_token: Codi d'autentificació invàlid.
-      locked: El teu compte ha estat bloquejat, fes clic al enllaç 'Enviar correu de desbloqueig'.
+      locked: El teu compte ha estat bloquejat, fes clic al enllaç 'Enviar correu
+        de desbloqueig'.
       not_found_in_database: Correu o clau invàlida.
       timeout: La teva sessió ha caducat. Si us plau, torna a entrar per continuar.
       unauthenticated: Has de entrar per continuar.
@@ -194,11 +200,16 @@ ca:
         passwords_not_match: Contrasenyes no coincideixen
       new:
         forgot_question: Crea una nova clau de pas
-        forgot_question_description: Introdueix l'adreça associada al teu compte i t'enviarem un correu amb l'enllaç per crear una nova clau de pas.
+        forgot_question_description: Introdueix l'adreça associada al teu compte i
+          t'enviarem un correu amb l'enllaç per crear una nova clau de pas.
         send_instructions: Envia enllaç
-      no_token: No pots accedir a aquesta pàgina si no véns d'un correu per restablir la contrasenya. Si véns d'un correu per a restablir la contrasenya, assegurat que has utilitzat la URL completa.
-      send_instructions: Rebràs un correu amb instruccions de com restablir la contrasenya en uns minuts.
-      send_paranoid_instructions: Si el teu correu existeix a la nostra base de dades, rebràs un enllaç al teu correu per recuperar la contrasenya en uns minuts.
+      no_token: No pots accedir a aquesta pàgina si no véns d'un correu per restablir
+        la contrasenya. Si véns d'un correu per a restablir la contrasenya, assegurat
+        que has utilitzat la URL completa.
+      send_instructions: Rebràs un correu amb instruccions de com restablir la contrasenya
+        en uns minuts.
+      send_paranoid_instructions: Si el teu correu existeix a la nostra base de dades,
+        rebràs un enllaç al teu correu per recuperar la contrasenya en uns minuts.
       updated: La teva contrasenya ha estat canviada. Estàs connectat.
       updated_not_active: Canvi de contrasenya realitzat.
     registrations:
@@ -207,7 +218,8 @@ ca:
         cancel_account: Cancel·lar el meu compte
         current_password: Contrasenya actual
         edit_user: Editar Usuari
-        help_current_password: necessitem la contrasenya actual per confirmar els canvis
+        help_current_password: necessitem la contrasenya actual per confirmar els
+          canvis
         help_password: deixa-ho en blanc si no vols canviar-la
         password: Contrasenya
         password_confirmation: Confirma la contrasenya
@@ -219,10 +231,14 @@ ca:
         sign_me_up: Registra'm
         sign_up: Registre
       signed_up: Benvingut!  Registre realitzat.
-      signed_up_but_inactive: Registre realitzat. No pots accedir perquè el teu compte no està activat
-      signed_up_but_locked: Registre realitzat. No pots accedir perquè el teu compte està bloquejat, fes clic al enllaç 'Enviar correu de desbloqueig'
-      signed_up_but_unconfirmed: S'ha enviat un correu de confirmació, si us plau, entra al teu correu i segueix les instruccions
-      update_needs_confirmation: S'ha actualitzat el teu compte, però necessitem verificar la teva adreça de correu. Si us plau, entra al teu correu i segueix les instruccions.
+      signed_up_but_inactive: Registre realitzat. No pots accedir perquè el teu compte
+        no està activat
+      signed_up_but_locked: Registre realitzat. No pots accedir perquè el teu compte
+        està bloquejat, fes clic al enllaç 'Enviar correu de desbloqueig'
+      signed_up_but_unconfirmed: S'ha enviat un correu de confirmació, si us plau,
+        entra al teu correu i segueix les instruccions
+      update_needs_confirmation: S'ha actualitzat el teu compte, però necessitem verificar
+        la teva adreça de correu. Si us plau, entra al teu correu i segueix les instruccions.
       updated: Compte actualitzat.
     sessions:
       new:
@@ -243,17 +259,23 @@ ca:
       new:
         resend_instructions: Reenviar instruccions de desbloqueig
         resend_instructions_button: Reenviar
-        resend_instructions_description: Si t'has equivocat en el login més de cinc vegades tens que fer aquest pas per desbloquejar el teu compte
-      send_instructions: Rebràs un correu amb instruccions de com desbloquejar el teu compte en uns minuts.
-      send_paranoid_instructions: Si el teu compte existeix, rebràs un correu amb instruccions de com desbloquejar el teu compte en uns minuts.
+        resend_instructions_description: Si t'has equivocat en el login més de cinc
+          vegades tens que fer aquest pas per desbloquejar el teu compte
+      send_instructions: Rebràs un correu amb instruccions de com desbloquejar el
+        teu compte en uns minuts.
+      send_paranoid_instructions: Si el teu compte existeix, rebràs un correu amb
+        instruccions de com desbloquejar el teu compte en uns minuts.
       unlocked: El teu compte ha estat desbloquejat. Si us plau, entra per continuar.
   errors:
     internal_server_error:
-      description: 'Ho sentim, sembla que hi ha un error en aquesta consulta. Una notificació s''ha enviat directament al equip tècnic, ho resoldrem tant aviat com sigui possible. '
+      description: 'Ho sentim, sembla que hi ha un error en aquesta consulta. Una
+        notificació s''ha enviat directament al equip tècnic, ho resoldrem tant aviat
+        com sigui possible. '
       title: Error intern de servidor
     messages:
       already_confirmed: ja has estat confirmat, prova a entrar-hi
-      confirmation_period_expired: necessita confirmar-se en %{period}, si us plau, sol·licita-la de nou
+      confirmation_period_expired: necessita confirmar-se en %{period}, si us plau,
+        sol·licita-la de nou
       expired: ha caducat, sol·licita-ho de nou
       not_found: no s'ha trobat
       not_locked: no es va bloquejar
@@ -261,7 +283,8 @@ ca:
         one: 'un error impedeix que aquest %{resource} es desi:'
         other: 'hi ha %{count} errors que impedeixen que aquest %{resource} es desi:'
     not_found:
-      description: La pàgina que cerques no existeix. Potser la adreça està equivocada o la pàgina s'ha mogut.
+      description: La pàgina que cerques no existeix. Potser la adreça està equivocada
+        o la pàgina s'ha mogut.
       title: No s'ha trobat
   global:
     add_new: Crear nou
@@ -319,23 +342,26 @@ ca:
       help: Ajuda
       login: Entra
       manage_memberships: Gestiona membres
-      no_memberhsip_warning: El teu registre es completarà un cop hagis sol·licitat <a href="%{link}">unir-te a un Banc de Temps</a> i el Banc de Temps accepti la teva sol·licitud. Si no sol·licites unir-te a un Banc de Temps en un termini de 30 dies, el teu usuari serà eliminat del sistema.
+      no_memberhsip_warning: El teu registre es completarà un cop hagis sol·licitat
+        <a href="%{link}">unir-te a un Banc de Temps</a> i el Banc de Temps accepti
+        la teva sol·licitud. Si no sol·licites unir-te a un Banc de Temps en un termini
+        de 30 dies, el teu usuari serà eliminat del sistema.
     report:
       report_title: INFORME
   locales:
-    ar: Àrab
     ca: Català
     en: Anglès
     es: Espanyol
     eu: Basc
     fr: Francès
     gl: Gallec
-    pt: Portuguès
     pt-BR: Portuguès
+    ja: 
   mailers_globals:
     footer:
       text: "%{organization_name} en"
-      text_donation: L'associació ADBdT ofereix TimeOverflow de forma gratuïta als Bancs de Temps. Si vols contribuir a mantenir i millorar la plataforma, %{href}.
+      text_donation: L'associació ADBdT ofereix TimeOverflow de forma gratuïta als
+        Bancs de Temps. Si vols contribuir a mantenir i millorar la plataforma, %{href}.
       text_donation_link: visita aquesta web
   multi_transfers:
     multi_transfers: 'Transferències múltiples '
@@ -346,7 +372,8 @@ ca:
       select_type:
         description: Selecciona el tipus de transferència
       set_params:
-        description: 'Especifica el total a transferir, comentaris, i la oferta (si existeix) '
+        description: 'Especifica el total a transferir, comentaris, i la oferta (si
+          existeix) '
       set_source:
         description: Selecciona els comptes on es transferirà el temps
       set_target:
@@ -386,11 +413,14 @@ ca:
       new: Nou banc
     show:
       contact_information: Informació de contacte
-      join_timebank: No dubtis en contactar amb el Banc de Temps per unir-te o per preguntar qualsevol dubte.
+      join_timebank: No dubtis en contactar amb el Banc de Temps per unir-te o per
+        preguntar qualsevol dubte.
   pages:
     about:
       app-mobile: Aplicació Mòbil
-      app-mobile-text: L'aplicació mòbil de TimeOverflow està disponible<br /> Aquesta app ha estat possible gràcies a la col·laboració de l'Ajuntament de Barcelona, a través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
+      app-mobile-text: L'aplicació mòbil de TimeOverflow està disponible<br /> Aquesta
+        app ha estat possible gràcies a la col·laboració de l'Ajuntament de Barcelona,
+        a través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Sol·licita accés
       banner-subtitle: Us ajudarem a posar-lo en marxa o fer-vos una demostració
       banner-title: Ets un Banc de Temps?
@@ -402,16 +432,22 @@ ca:
       empower-github-title: Github
       empower-showmap: veure mapa
       empower-showmap-title: Bancs de Temps
-      empower-text-1: TimeOveflow està especialment dissenyat per i per als Bancs de Temps que existeixen físicament &mdash; %{showmap_link}, la seva missió és potenciar-los.
-      empower-text-2: Gràcies al treball conjunt de %{coopdevs_link} i la %{abdt_link} avui podem oferir el sofware TimeOverflow a tots els Bancs de Temps que així ho desitgin de manera lliure i gratuïta.
-      empower-text-3: El codi font de TimeOverflow està disponible sota una llicència open source i descarregable a %{github_link}
+      empower-text-1: TimeOveflow està especialment dissenyat per i per als Bancs
+        de Temps que existeixen físicament &mdash; %{showmap_link}, la seva missió
+        és potenciar-los.
+      empower-text-2: Gràcies al treball conjunt de %{coopdevs_link} i la %{abdt_link}
+        avui podem oferir el sofware TimeOverflow a tots els Bancs de Temps que així
+        ho desitgin de manera lliure i gratuïta.
+      empower-text-3: El codi font de TimeOverflow està disponible sota una llicència
+        open source i descarregable a %{github_link}
       empower-title: Empoderant els bancs del temps
       feature-group-1: Gestió del Banc de Temps amb perfils d'administració
       feature-group-2: Xarxa social i banca en línia accessible pels membres
       feature-text-1: Altes/baixes/modificacions de membres
       feature-text-2: Publicar ofertes i demandes
       feature-text-3: Introduir xecs i gestionar la comptabilitat
-      feature-text-4: Els membres d'un Banc de Temps poden accedir al sistema i contactar amb altres membres
+      feature-text-4: Els membres d'un Banc de Temps poden accedir al sistema i contactar
+        amb altres membres
       feature-text-5: Publicar ofertes i demandes
       feature-text-6: Pagar hores a altres membres
       impulsem-link: Impulsem el que fas
@@ -420,12 +456,16 @@ ca:
       title2: als Bancs de Temps
   petitions:
     application_sent: Sol·licitud enviada correctament
-    application_sent_body: Hola! La teva sol·licitud a %{organization_name} s'ha enviat correctament. Algú de l'equip del banc de temps es posarà en contacte amb tu per finalitzar el procés dalta.
+    application_sent_body: Hola! La teva sol·licitud a %{organization_name} s'ha enviat
+      correctament. Algú de l'equip del banc de temps es posarà en contacte amb tu
+      per finalitzar el procés dalta.
     application_status: Sol·licitud %{status}
     applications: Sol·licituds
     apply: Sol·licita unir-te
     new: Nova sol·licitud
-    new_body: Hola, %{username} acaba de sol·licitar unir-se al Banc de Temps %{organization_name}. Pots accedir %{here_link} per acceptar o rebutjar la sol·licitud. Un cop acceptis la sol·licitud, l'usuari apareixerà automàticament a la teva llista d'usuaris.
+    new_body: Hola, %{username} acaba de sol·licitar unir-se al Banc de Temps %{organization_name}.
+      Pots accedir %{here_link} per acceptar o rebutjar la sol·licitud. Un cop acceptis
+      la sol·licitud, l'usuari apareixerà automàticament a la teva llista d'usuaris.
     status:
       accepted: acceptada
       declined: rebutjada
@@ -528,7 +568,8 @@ ca:
       crop_the_image: Retalla la imatge
       max_size_warning: La imatge és massa gran, el màxim permès és de %{size}MB
     confirm_email:
-      email_sent: T'hem enviat un correu electrònic a %{email}. Un cop confirmis el teu compte de correu podràs sol·licitar unir-te a qualsevol organització.
+      email_sent: T'hem enviat un correu electrònic a %{email}. Un cop confirmis el
+        teu compte de correu podràs sol·licitar unir-te a qualsevol organització.
       please: Si us plau, confirma el teu correu electrònic.
     edit:
       edit_user: Canviar usuari
@@ -542,7 +583,9 @@ ca:
       active_warning: Estàs a punt de canviar l'estat de l'usuari %{username}
       cancel_warning: Estàs a punt d'esborrar el compte de l'usuari %{username}
       create: Crear nou usuari
-      deactivated_warning: 'Si creus que el vostre compte es podria haver desactivat per error, poseu-vos en contacte amb l''administrador amb la informació que es proporciona a continuació. '
+      deactivated_warning: 'Si creus que el vostre compte es podria haver desactivat
+        per error, poseu-vos en contacte amb l''administrador amb la informació que
+        es proporciona a continuació. '
       manage_warning: Estàs a punt de canviar els permisos de l'usuari %{username}
       members: Membres
       user_created: Usuari %{uid} %{name} guardat

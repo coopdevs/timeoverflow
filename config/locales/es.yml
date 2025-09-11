@@ -157,25 +157,32 @@ es:
   devise:
     confirmations:
       confirmed: Tu cuenta ha sido confirmada con éxito.
-      confirmed_and_signed_in: Tu cuenta ha sido confirmada con éxito. Ahora estás registrado.
+      confirmed_and_signed_in: Tu cuenta ha sido confirmada con éxito. Ahora estás
+        registrado.
       new:
         resend_instructions: Reenviar instrucciones de confirmación
         resend_instructions_button: Reenviar
-        resend_instructions_description: Si has cambiado tu email debes de realizar este paso para que el cambio sea efectivo
-      send_instructions: Recibirás un correo con las instrucciones sobre como confirmar tu cuenta en unos minutos.
-      send_paranoid_instructions: Si tu dirección de correo existe in nuestra base de datos, recibirás un correo con las instrucciones sobre como confirmar tu cuenta en unos minutos.
+        resend_instructions_description: Si has cambiado tu email debes de realizar
+          este paso para que el cambio sea efectivo
+      send_instructions: Recibirás un correo con las instrucciones sobre como confirmar
+        tu cuenta en unos minutos.
+      send_paranoid_instructions: Si tu dirección de correo existe in nuestra base
+        de datos, recibirás un correo con las instrucciones sobre como confirmar tu
+        cuenta en unos minutos.
     failure:
       already_authenticated: Ya estás registrado.
       inactive: Tu cuenta no ha sido activada.
       invalid: Correo o clave inválida.
       invalid_token: Código de autentificación inválido.
-      locked: Tu cuenta ha sido bloqueada, haz clic en el enlace 'Enviar correo de desbloqueo'.
+      locked: Tu cuenta ha sido bloqueada, haz clic en el enlace 'Enviar correo de
+        desbloqueo'.
       not_found_in_database: Correo o clave inválida.
       timeout: Tu sesión ha caducado. Por favor, regístrate nuevamente para continuar.
       unauthenticated: Tienes que registrarte para continuar.
       unconfirmed: Tienes que confirmar tu cuenta antes de continuar.
       user:
-        last_attempt: Atención, te queda un solo intento antes de que tu cuenta se bloquee
+        last_attempt: Atención, te queda un solo intento antes de que tu cuenta se
+          bloquee
     mailer:
       confirmation_instructions:
         subject: Instrucciones de confirmación de cuenta
@@ -194,11 +201,16 @@ es:
         passwords_not_match: Las contraseñas no coinciden
       new:
         forgot_question: Crea una nueva contraseña
-        forgot_question_description: Introduce la dirección asociada a tu cuenta y te enviaremos un correo con el enlace para crear una nueva contraseña.
+        forgot_question_description: Introduce la dirección asociada a tu cuenta y
+          te enviaremos un correo con el enlace para crear una nueva contraseña.
         send_instructions: Envía enlace
-      no_token: No puedes acceder a esta página si no vienes de un correo para reestablecer la contraseña. Si vienes de un correo para reestablecer la contraseña, asegurate que has utilizado la URL completa.
-      send_instructions: Recibirás un correo con instrucciones de como reestablecer tu contraseña en unos minutos.
-      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, recibirás un enlace pare la recuperación de la contraseña en tu correo en unos minutos.
+      no_token: No puedes acceder a esta página si no vienes de un correo para reestablecer
+        la contraseña. Si vienes de un correo para reestablecer la contraseña, asegurate
+        que has utilizado la URL completa.
+      send_instructions: Recibirás un correo con instrucciones de como reestablecer
+        tu contraseña en unos minutos.
+      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, recibirás
+        un enlace pare la recuperación de la contraseña en tu correo en unos minutos.
       updated: Tu contraseña se ha cambiado. Estás conectado(a).
       updated_not_active: Cambio de constraseña realizado.
     registrations:
@@ -207,7 +219,8 @@ es:
         cancel_account: Cancelar mi cuenta
         current_password: Contraseña actual
         edit_user: Editar Usuario
-        help_current_password: necesitamos tu contraseña actual para confirmar tus cambios
+        help_current_password: necesitamos tu contraseña actual para confirmar tus
+          cambios
         help_password: déjalo en blanco si no quieres cambiarla
         password: Contraseña
         password_confirmation: Confirma la contraseña
@@ -219,10 +232,15 @@ es:
         sign_me_up: Regístrame
         sign_up: Registro
       signed_up: Bienvenido(a)!  Registrado realizado.
-      signed_up_but_inactive: Tu registro se ha realizado. Sin embargo, no puedes entrar porque tu cuenta no se ha activado todavía
-      signed_up_but_locked: Tu registro se ha realizado. Sin embargo, no puedes entrar porque tu cuenta está bloqueada. Haz clic en el enlace 'Enviar correo de desbloqueo'
-      signed_up_but_unconfirmed: Se ha enviado un mensaje de confirmación a tu dirección de correo. Por favor, abre el enlace para activar tu cuenta.
-      update_needs_confirmation: Actualización de cuenta realizada, pero necesitamos verificar tu dirección de correo. Por favor, comprueba tu correo y utiliza el enlace para confirmar tu nueva dirección de correo.
+      signed_up_but_inactive: Tu registro se ha realizado. Sin embargo, no puedes
+        entrar porque tu cuenta no se ha activado todavía
+      signed_up_but_locked: Tu registro se ha realizado. Sin embargo, no puedes entrar
+        porque tu cuenta está bloqueada. Haz clic en el enlace 'Enviar correo de desbloqueo'
+      signed_up_but_unconfirmed: Se ha enviado un mensaje de confirmación a tu dirección
+        de correo. Por favor, abre el enlace para activar tu cuenta.
+      update_needs_confirmation: Actualización de cuenta realizada, pero necesitamos
+        verificar tu dirección de correo. Por favor, comprueba tu correo y utiliza
+        el enlace para confirmar tu nueva dirección de correo.
       updated: Actualización de cuenta realizada.
     sessions:
       new:
@@ -243,17 +261,23 @@ es:
       new:
         resend_instructions: Reenviar instrucciones de desbloqueo
         resend_instructions_button: Reenviar
-        resend_instructions_description: Si te has equivocado en el login más de cinco veces tienes que hacer este paso para desbloquear tu cuenta
-      send_instructions: Recibirás un correo con instrucciones de como desbloquear tu cuenta en unos minutos.
-      send_paranoid_instructions: Si tu cuenta existe, recibirás un correo con instrucciones de como desbloquearla en unos minutos.
+        resend_instructions_description: Si te has equivocado en el login más de cinco
+          veces tienes que hacer este paso para desbloquear tu cuenta
+      send_instructions: Recibirás un correo con instrucciones de como desbloquear
+        tu cuenta en unos minutos.
+      send_paranoid_instructions: Si tu cuenta existe, recibirás un correo con instrucciones
+        de como desbloquearla en unos minutos.
       unlocked: Tu cuenta ha sido desbloqueada. Por favor, entra para continuar.
   errors:
     internal_server_error:
-      description: Lo sentimos, parece que hay un error en esta consulta. Una notificación se ha enviado automáticamente al departamento técnico y lo resolveremos lo antes posible.
+      description: Lo sentimos, parece que hay un error en esta consulta. Una notificación
+        se ha enviado automáticamente al departamento técnico y lo resolveremos lo
+        antes posible.
       title: Error interno de servidor
     messages:
       already_confirmed: ya fue confirmado, por favor prueba a entrar
-      confirmation_period_expired: necesita confirmarse en %{period}, por favor, solicita uno nuevo
+      confirmation_period_expired: necesita confirmarse en %{period}, por favor, solicita
+        uno nuevo
       expired: ha caducado, solicita uno nuevo
       not_found: no se ha encontrado
       not_locked: no se bloqueó
@@ -261,7 +285,8 @@ es:
         one: '1 error impide que este %{resource} se guarde:'
         other: "%{count} errores impiden que este %{resource} se guarde:"
     not_found:
-      description: La página que estás buscando no existe. Quizás la dirección no es correcta o la página ha sido movida.
+      description: La página que estás buscando no existe. Quizás la dirección no
+        es correcta o la página ha sido movida.
       title: No se encontró
   global:
     add_new: Crear nuevo
@@ -319,23 +344,27 @@ es:
       help: Ayuda
       login: Entra
       manage_memberships: Gestionar membresia
-      no_memberhsip_warning: Tu registro se completará una vez que hayas solicitado <a href="%{link}">unirte a un Banco de Tiempo</a> y el Banco de Tiempo acepte tu solicitud. Si no solicitas unirte a un Banco de Tiempo dentro de 30 días, tu usuario será eliminado del sistema.
+      no_memberhsip_warning: Tu registro se completará una vez que hayas solicitado
+        <a href="%{link}">unirte a un Banco de Tiempo</a> y el Banco de Tiempo acepte
+        tu solicitud. Si no solicitas unirte a un Banco de Tiempo dentro de 30 días,
+        tu usuario será eliminado del sistema.
     report:
       report_title: INFORME
   locales:
-    ar: Árabe
     ca: Catalán
     en: Inglés
     es: Español
     eu: Euskera
     fr: Francés
     gl: Gallego
-    pt: Portugués
     pt-BR: Portugués
+    ja: Japonés
   mailers_globals:
     footer:
       text: "%{organization_name} en"
-      text_donation: La asociación ADBdT ofrece TimeOverflow de forma gratuita a los Bancos de Tiempo. Si quieres contribuir a mantener y mejorar la plataforma, %{href}.
+      text_donation: La asociación ADBdT ofrece TimeOverflow de forma gratuita a los
+        Bancos de Tiempo. Si quieres contribuir a mantener y mejorar la plataforma,
+        %{href}.
       text_donation_link: visita esta web
   multi_transfers:
     multi_transfers: Transferencias múltiples
@@ -346,7 +375,8 @@ es:
       select_type:
         description: Seleccionar el tipo de transferencia
       set_params:
-        description: Especifica la cantidad a transferir, comentarios y oferta (si existe)
+        description: Especifica la cantidad a transferir, comentarios y oferta (si
+          existe)
       set_source:
         description: Selecciona las cuentas dónde se va a transferir tiempo
       set_target:
@@ -386,11 +416,14 @@ es:
       new: Nuevo banco
     show:
       contact_information: Información de contacto
-      join_timebank: No dudes en contactar con el Banco de Tiempo para unirte o para resolver dudas.
+      join_timebank: No dudes en contactar con el Banco de Tiempo para unirte o para
+        resolver dudas.
   pages:
     about:
       app-mobile: App Móvil
-      app-mobile-text: La app móvil de TimeOverflow está disponible<br /> Esta app ha sido posible gracias a la colaboración del Ayuntamiento de Barcelona, a través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
+      app-mobile-text: La app móvil de TimeOverflow está disponible<br /> Esta app
+        ha sido posible gracias a la colaboración del Ayuntamiento de Barcelona, a
+        través del programa %{impulsem_link} (Barcelona Activa) 2017-2018
       banner-button: Solicita acceso
       banner-subtitle: Os ayudaremos a ponerlo en marcha o a haceros una demostración
       banner-title: "¿Eres un Banco de Tiempo?"
@@ -402,16 +435,21 @@ es:
       empower-github-title: Github
       empower-showmap: ver mapa
       empower-showmap-title: Bancos de Tiempo
-      empower-text-1: TimeOveflow está especialmente diseñado por y para los Bancos de Tiempo que existen físicamente &mdash; %{showmap_link}, su fin es potenciarlos.
-      empower-text-2: Gracias al trabajo conjunto de %{coopdevs_link} y la %{abdt_link} hoy podemos ofrecer el sofware TimeOverflow a todos los Bancos de Tiempo que así lo deseen de manera libre y gratuita.
-      empower-text-3: El código fuente de TimeOverflow está disponible bajo una licencia open source y descargable a %{github_link}
+      empower-text-1: TimeOveflow está especialmente diseñado por y para los Bancos
+        de Tiempo que existen físicamente &mdash; %{showmap_link}, su fin es potenciarlos.
+      empower-text-2: Gracias al trabajo conjunto de %{coopdevs_link} y la %{abdt_link}
+        hoy podemos ofrecer el sofware TimeOverflow a todos los Bancos de Tiempo que
+        así lo deseen de manera libre y gratuita.
+      empower-text-3: El código fuente de TimeOverflow está disponible bajo una licencia
+        open source y descargable a %{github_link}
       empower-title: Empoderando los bancos de tiempo
       feature-group-1: Gestión del Banco de Tiempo con perfiles de administración
       feature-group-2: Red social y banca on-line accesible por los miembros
       feature-text-1: Altas/bajas/modificaciones de miembros
       feature-text-2: Publicar ofertas y demandas
       feature-text-3: Introducir cheques y gestionar la contabilidad
-      feature-text-4: Los miembros de un Banco de Tiempo pueden acceder al sistema y contactar con otros miembros
+      feature-text-4: Los miembros de un Banco de Tiempo pueden acceder al sistema
+        y contactar con otros miembros
       feature-text-5: Publicar ofertas y demandas
       feature-text-6: Pagar horas a otros miembros
       impulsem-link: Impulsem el que fas
@@ -420,12 +458,16 @@ es:
       title2: los Bancos de Tiempo
   petitions:
     application_sent: Solicitud enviada correctamente
-    application_sent_body: Hola! Tu solicitud a %{organization_name}  se ha enviado correctamente. Alguien del equipo del banco de tiempo se pondrá en contacto contigo para finalizar el proceso de alta.
+    application_sent_body: Hola! Tu solicitud a %{organization_name}  se ha enviado
+      correctamente. Alguien del equipo del banco de tiempo se pondrá en contacto
+      contigo para finalizar el proceso de alta.
     application_status: Solicitud %{status}
     applications: Solicitudes
     apply: Solicita unirte
     new: Nueva solicitud
-    new_body: Hola, %{username} acaba de solicitar unirse al Banco de Tiempo %{organization_name}. Puedes entrar %{here_link} para aceptar o rechazar la solicitud. Una vez que aceptes la solicitud, el usuario aparecerá automáticamente en tu lista de usuarios.
+    new_body: Hola, %{username} acaba de solicitar unirse al Banco de Tiempo %{organization_name}.
+      Puedes entrar %{here_link} para aceptar o rechazar la solicitud. Una vez que
+      aceptes la solicitud, el usuario aparecerá automáticamente en tu lista de usuarios.
     status:
       accepted: aceptada
       declined: rechazada
@@ -528,7 +570,8 @@ es:
       crop_the_image: Recortar la imagen
       max_size_warning: La imagen es demasiado grande, el máximo permitido es %{size}MB
     confirm_email:
-      email_sent: Un email se ha enviado a %{email}. Cuando lo hayas confirmado podrás solicitar unirte a cualquier organización.
+      email_sent: Un email se ha enviado a %{email}. Cuando lo hayas confirmado podrás
+        solicitar unirte a cualquier organización.
       please: Por favor, confirma el correo electrónico
     edit:
       edit_user: Cambiar usuario
@@ -542,7 +585,9 @@ es:
       active_warning: Estás a punto de cambiar el estado del usuario %{username}
       cancel_warning: Estás a punto de borrar la cuenta al usuario %{username}
       create: Crear nuevo usuario
-      deactivated_warning: 'Si crees que tu cuenta podría haber sido desactivada por error, comunícate con el administrador con la información que se proporciona a continuación. '
+      deactivated_warning: 'Si crees que tu cuenta podría haber sido desactivada por
+        error, comunícate con el administrador con la información que se proporciona
+        a continuación. '
       manage_warning: Estás a punto de cambiar los permisos del usuario %{username}
       members: Miembros
       user_created: Usuario %{uid} %{name} guardado
