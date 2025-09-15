@@ -132,7 +132,6 @@
     box-shadow: none;
     color: $form-input-glyph;
     font-size: 1.4rem;
-    letter-spacing: -0.0040rem;
 
     @include media-breakpoint-down(sm) {
       font-size: 1.15rem;
@@ -164,7 +163,6 @@
     background-color: $form-input-button;
     font-size: 1.4rem;
     font-weight: 400;
-    letter-spacing: -0.040rem;
     margin-top: 0.625rem;
     padding: 1.25rem;
     border: none;
@@ -346,11 +344,9 @@ label[required]::after{
 }
 
 .navbar-nav > li > a {
-  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.008rem;
-  margin: 0.875rem 1.25rem;
-  padding: 0;
+  margin: 0.5rem;
+  color: $white;
 }
 
 .navbar-static-top {
@@ -364,7 +360,6 @@ label[required]::after{
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: 0.019rem;
 }
 
 .landing-page, .login-page, .pages, .unlocks-page, .confirmations-page, .passwords-page {
@@ -390,16 +385,6 @@ label[required]::after{
   }
 }
 
-.landing-page, .login-page, .unlocks-page, .confirmations-page, .passwords-page {
-  a {
-    color: $white;
-  }
-
-  a:hover {
-    color: $white;
-  }
-}
-
 .landing-page {
   background: image-url('home_back.jpg') no-repeat center center fixed;
   background-color: $palette-turkey;
@@ -417,7 +402,6 @@ label[required]::after{
     color: $white;
     font-size: 3.6rem;
     font-weight: 700;
-    letter-spacing: -0.045rem;
     margin: 0;
     text-shadow: 1px 1px $palette-black;
   }
@@ -426,7 +410,6 @@ label[required]::after{
     color: $white;
     font-size: 1.8rem;
     font-weight: 500;
-    letter-spacing: -0.107rem;
     margin-top: 0.625rem;
     text-shadow: 1px 1px $palette-black;
   }
@@ -434,7 +417,6 @@ label[required]::after{
   .btn {
     font-size: 1.8rem;
     font-weight: 500;
-    letter-spacing: 0.14rem;;
     margin-top: 4rem;
     padding: 0.95rem 3.75rem;
   }
@@ -503,7 +485,6 @@ label[required]::after{
     color: $form-login-gray-text;
     font-size: 1rem;
     font-weight: 400;
-    letter-spacing: -0.028rem;
     margin-top: 0.625rem;
   }
 }
@@ -515,9 +496,8 @@ label[required]::after{
     color: $pages-title;
     font-size: 1.8rem;
     font-weight: 600;
-    letter-spacing: -0.037rem;
     margin-bottom: 0;
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   h2 span {
@@ -528,7 +508,6 @@ label[required]::after{
     color: $pages-title;
     font-size: 1.2rem;
     font-weight: 500;
-    letter-spacing: 0.016rem;
     margin-top: 0.95rem;
   }
 
@@ -542,7 +521,7 @@ label[required]::after{
   }
 
   .features > ul {
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
 
   .features ul li {
@@ -559,7 +538,6 @@ label[required]::after{
     display: block;
     font-size: 1.2rem;
     font-weight: 400;
-    letter-spacing: 0.016rem;
     padding: 1.25rem 4rem;
   }
 
@@ -585,7 +563,7 @@ label[required]::after{
   .banner {
     background: image-url('home_back.jpg') no-repeat center center;
     background-size: cover;
-    margin: 8rem 0 1.875rem 0;
+    margin: 4rem 0;
     padding: 8rem 0.625rem;
     text-align: center;
 
@@ -611,14 +589,12 @@ label[required]::after{
 
   .section-block {
     h2 {
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
     }
 
     p {
-      font-size: 1.2rem;
       font-weight: 400;
-      letter-spacing: 0.016rem;
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
       text-align: left;
     }
 
