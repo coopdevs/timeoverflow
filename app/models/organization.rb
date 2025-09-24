@@ -75,6 +75,10 @@ class Organization < ApplicationRecord
     reg_number_seq
   end
 
+  def global_balance
+    Account.where(organization_id: id).sum(:balance)
+  end
+
   def ensure_url
     return if web.blank? || URI.parse(web).is_a?(URI::HTTP)
   rescue

@@ -5,16 +5,12 @@ class TransfersController < ApplicationController
     @source = find_source
     @account = Account.find(transfer_params[:destination])
 
-    transfer = Transfer.new(
-      transfer_params.merge(source: @source, destination: @account)
-    )
+    create_persisters
 
-    persister = ::Persister::TransferPersister.new(transfer)
-
-    if persister.save
+    if persisters_saved?
       redirect_to redirect_target
     else
-      redirect_back fallback_location: redirect_target, alert: transfer.errors.full_messages.to_sentence
+      redirect_back fallback_location: redirect_target, alert: @transfer.errors.full_messages.to_sentence
     end
   end
 
@@ -23,7 +19,8 @@ class TransfersController < ApplicationController
       current_organization,
       current_user,
       params[:offer],
-      params[:destination_account_id]
+      params[:destination_account_id],
+      params[:organization_id] || current_organization.id
     )
 
     render(
@@ -57,12 +54,38 @@ class TransfersController < ApplicationController
     end
   end
 
+  def create_persisters
+    source_organization = @source.organization.account
+    source_type = @source.accountable_type
+    destination_organization = @account.organization.account
+    @persisters = Array.new
+    if source_organization == destination_organization
+      transfer_persister_between(@source, @account)
+    else
+      transfer_persister_between(@source, source_organization) if source_type == "Member"
+      transfer_persister_between(source_organization, destination_organization)
+      transfer_persister_between(destination_organization, @account)
+    end
+  end
+
+  def transfer_persister_between(source, destination)
+    @transfer = Transfer.new(
+      transfer_params.merge(source: source, destination: destination)
+    )
+
+    @persisters << ::Persister::TransferPersister.new(@transfer)
+  end
+
+  def persisters_saved?
+    @persisters.each { |persister| return false if !persister.save }
+  end
+
   def redirect_target
     case accountable = @account.accountable
     when Organization
       accountable
     when Member
-      accountable.user
+      accountable.organization == current_organization ? accountable.user : accountable.organization
     else
       raise ArgumentError
     end

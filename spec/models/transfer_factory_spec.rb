@@ -4,7 +4,8 @@ RSpec.describe TransferFactory do
       organization,
       current_user,
       offer_id,
-      destination_account_id
+      destination_account_id,
+      destination_organization_id
     )
   end
 
@@ -12,6 +13,7 @@ RSpec.describe TransferFactory do
   let(:current_user) { Fabricate(:user) }
   let(:organization_offer) { Fabricate(:offer, organization: organization) }
   let(:destination_account_id) { nil }
+  let(:destination_organization_id) { organization.id }
 
   describe '#offer' do
     subject { transfer_factory.offer }
@@ -32,6 +34,7 @@ RSpec.describe TransferFactory do
 
     let(:offer_id) { organization_offer.id }
     let(:destination_account_id) { destination_account.id }
+    let(:destination_organization_id) { organization.id }
 
     context 'when the destination account belongs to an organization' do
       let(:organization) { Fabricate(:organization) }
@@ -77,6 +80,7 @@ RSpec.describe TransferFactory do
     subject { transfer_factory.transfer_sources }
 
     let(:offer_id) { organization_offer.id }
+    let(:destination_organization_id) { organization.id }
 
     let!(:active_member) do
       Fabricate(:member, organization: organization, active: true)

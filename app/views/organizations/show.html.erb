@@ -78,6 +78,11 @@
             <%= t 'global.balance' %>
           </strong>
           <%= seconds_to_hm(@organization.account.try(:balance)) %>
+          <br/>
+          <strong>
+            <%= t 'global.global_balance' %>
+          </strong>
+          <%= seconds_to_hm(@organization.try(:global_balance)) %>
         </p>
       </div>
     </div>
