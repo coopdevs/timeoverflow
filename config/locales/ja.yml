@@ -324,6 +324,7 @@ ja:
     gl: ガリシア語
     pt-BR: ブラジルポルトガル語
     ja: 日本語
+    nl-NL: オランダ語
   mailers_globals:
     footer:
       text: "%{organization_name}から"

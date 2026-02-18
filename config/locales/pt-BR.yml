@@ -357,6 +357,7 @@ pt-BR:
     gl: Galego
     pt-BR: Português
     ja: 
+    nl-NL: Holandês
   mailers_globals:
     footer:
       text: "%{organization_name} em"

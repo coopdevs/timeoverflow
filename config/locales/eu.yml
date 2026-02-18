@@ -357,6 +357,7 @@ eu:
     gl: Galiziera
     pt-BR: Portugesa
     ja: 
+    nl-NL: Holandera
   mailers_globals:
     footer:
       text: "%{organization_name}tik"
