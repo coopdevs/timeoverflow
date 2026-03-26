@@ -82,20 +82,21 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = {
     host: ENV["MAIL_LINK_HOST"],
     protocol: ENV["MAIL_LINK_PROTO"] || "https"
   }
 
-  smtp_env = Hash[ENV.map do |k, v|
-    if /^SMTP_(.*)$/ === k
-      [$1.downcase.to_sym, YAML.load(v)]
-    end
-  end.compact]
+  smtp_env = ENV.filter { |k, _| k.start_with?("SMTP_") }
+                .to_h { |k, v| [k.delete_prefix("SMTP_").downcase.to_sym, YAML.load(v)] }
+
 
   if smtp_env.present?
+    config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = smtp_env
+  else
+    config.action_mailer.delivery_method = :test
+    warn "[TimeOverflow] No SMTP configuration found (SMTP_* env vars). Email delivery is disabled."
   end
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
