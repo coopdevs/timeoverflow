@@ -7,7 +7,9 @@ class Category < ApplicationRecord
     return name if name.present?
 
     fallback_locale, fallback_name = name_translations&.find { |_, v| v.present? }
-    "#{fallback_name} [#{fallback_locale}]" if fallback_name
+    return "#{fallback_name} [#{fallback_locale}]" if fallback_name.present?
+
+    self.class.model_name.human
   end
 
   def to_s

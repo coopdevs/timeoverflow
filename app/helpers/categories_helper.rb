@@ -1,6 +1,6 @@
 module CategoriesHelper
   def all_categories
-    @all_categories ||= Category.all.sort_by { |a| a.to_s.downcase }
+    @all_categories ||= Category.all.sort_by { |a| a.display_name.downcase }
   end
 
   def categories_for_select
