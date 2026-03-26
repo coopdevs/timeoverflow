@@ -19,7 +19,7 @@
     <ul class="nav navbar-nav d-none d-sm-flex">
       <li class="dropdown nav-item">
         <a class="dropdown-toggle nav-link text-primary" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-          <%= @category ? @category.name : Category.model_name.human %>
+          <%= @category ? @category.display_name : Category.model_name.human %>
         </a>
         <ul class="dropdown-menu" role="menu">
           <li>
@@ -30,7 +30,7 @@
             <li>
               <%= link_to "#{base_path}?cat=#{c.id}", class: "dropdown-item" do %>
                 <%= category_icon(c) %>
-                <%= c.name %>
+                <%= c.display_name %>
               <% end %>
             </li>
           <% end %>
