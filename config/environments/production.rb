@@ -96,6 +96,7 @@ Rails.application.configure do
     config.action_mailer.smtp_settings = smtp_env
   else
     config.action_mailer.delivery_method = :test
+    config.action_mailer.perform_deliveries = false
     warn "[TimeOverflow] No SMTP configuration found (SMTP_* env vars). Email delivery is disabled."
   end
 
