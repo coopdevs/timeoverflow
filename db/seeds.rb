@@ -1,3 +1,8 @@
+if Rails.env.production?
+  puts "Skipping seeds in production environment."
+  return
+end
+
 Organization.find_or_create_by(name: "Banco de Tiempo Local")
 Organization.find_or_create_by(name: "El otro Banco de Tiempo :)")
 
