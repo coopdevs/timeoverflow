@@ -5,6 +5,14 @@ ActiveAdmin.register User do
     link_to I18n.t("active_admin.users.upload_from_csv"), action: "upload_csv"
   end
 
+  action_item :confirm, only: :show do
+    unless user.confirmed?
+      link_to I18n.t("active_admin.users.confirm_user"),
+              confirm_admin_user_path(user),
+              method: :put
+    end
+  end
+
   collection_action :upload_csv do
     render "admin/csv/upload_csv"
   end
@@ -14,6 +22,11 @@ ActiveAdmin.register User do
     flash[:error] = errors.join("<br/>").html_safe if errors.present?
 
     redirect_to action: :index
+  end
+
+  member_action :confirm, method: :put do
+    resource.confirm!
+    redirect_to admin_user_path(resource), notice: I18n.t("active_admin.users.confirmed_notice")
   end
 
   scope :all
@@ -32,6 +45,7 @@ ActiveAdmin.register User do
     column :posts do |u|
       u.posts.count
     end
+    column :confirmed_at
     column :created_at
     actions
   end
@@ -53,6 +67,9 @@ ActiveAdmin.register User do
       f.input :postcode
       f.input :gender, as: :select, collection: User::GENDERS
       f.input :locale, as: :select, collection: I18n.available_locales
+      f.input :password, required: false, input_html: { autocomplete: "new-password" }
+      f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password" }
+      f.input :confirm_immediately, as: :boolean if f.object.new_record?
     end
     f.inputs "Memberships" do
       f.has_many :members, allow_destroy: true do |m|
@@ -91,6 +108,22 @@ ActiveAdmin.register User do
     end
   end
 
-  permit_params :username, :email, :phone, :postcode, :gender, :locale,
+  permit_params :username, :email, :phone, :postcode, :gender, :locale, :confirm_immediately,
+    :password, :password_confirmation,
     members_attributes: [:id, :organization_id, :active, :manager, :_destroy]
+
+  controller do
+    def create_resource(obj)
+      obj.skip_confirmation! if obj.confirm_immediately
+      super
+    end
+
+    def update_resource(obj, attributes)
+      if attributes.first[:password].blank?
+        attributes.first.delete(:password)
+        attributes.first.delete(:password_confirmation)
+      end
+      super
+    end
+  end
 end

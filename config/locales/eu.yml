@@ -2,6 +2,8 @@ eu:
   active_admin:
     users:
       organization: Denbora Bankua
+      confirm_user: Erabiltzailea baieztatu
+      confirmed_notice: Erabiltzailea berretsita
       upload_csv: Fitxategia
       upload_from_csv: Igo CSVa
   activerecord:
@@ -70,6 +72,7 @@ eu:
         registration_date: Erregistratze-da
         registration_number: Erabiltzaile kodea
         superadmin: Sistema administratzailea
+        confirm_immediately: Berehala baieztatu
         unconfirmed_email: Baieztatu gabeko eposta
         updated_at: Eguneratua
         username: Izena

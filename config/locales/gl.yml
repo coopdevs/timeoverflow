@@ -2,6 +2,8 @@ gl:
   active_admin:
     users:
       organization: Banco de tempo
+      confirm_user: Confirmar usuario
+      confirmed_notice: Usuario confirmado correctamente
       upload_csv: Ficheiro
       upload_from_csv: Importar CSV
   activerecord:
@@ -70,6 +72,7 @@ gl:
         registration_date: Data de rexistro
         registration_number: Código de persoa usuaria
         superadmin: Persoa dministradora do sistema
+        confirm_immediately: Confirmar inmediatamente
         unconfirmed_email: Correo electrónico non confirmado
         updated_at: Actualizado
         username: Nome
