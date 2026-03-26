@@ -1,5 +1,5 @@
-if Rails.env.production?
-  puts "Skipping seeds in production environment."
+if Rails.env.production? && ENV["SEED_DEMO_DATA"] != "true"
+  puts "Skipping seeds in production environment. Set SEED_DEMO_DATA=true to allow demo seeds."
   return
 end
 
