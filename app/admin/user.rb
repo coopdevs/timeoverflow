@@ -25,8 +25,11 @@ ActiveAdmin.register User do
   end
 
   member_action :confirm, method: :put do
-    resource.confirm!
-    redirect_to admin_user_path(resource), notice: I18n.t("active_admin.users.confirmed_notice")
+    if resource.confirm
+      redirect_to admin_user_path(resource), notice: I18n.t("active_admin.users.confirmed_notice")
+    else
+      redirect_to admin_user_path(resource), alert: resource.errors.full_messages.to_sentence
+    end
   end
 
   scope :all
