@@ -356,6 +356,7 @@ en:
     gl: Galician
     pt-BR: Portuguese
     ja: Japanese
+    nl-NL: Dutch
   mailers_globals:
     footer:
       text: "%{organization_name} from"

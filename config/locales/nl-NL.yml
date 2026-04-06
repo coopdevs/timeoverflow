@@ -1,0 +1,635 @@
+nl-NL:
+  active_admin:
+    users:
+      organization: Tijdbank
+      upload_csv: Bestand
+      upload_from_csv: CSV uploaden
+  activerecord:
+    attributes:
+      account:
+        balance: Balans
+        organization: Organisatie
+      category:
+        created_at: Aangemaakt
+        name: Naam
+        name_translations: Naam (vertalingen)
+        parent: Hoofdcategorie
+        updated_at: Bijgewerkt
+      common:
+        created_at: Aangemaakt
+        updated_at: Bijgewerkt
+      inquiry:
+        is_group: Groepsverzoek
+      offer:
+        is_group: Groepsaanbieding
+      organization:
+        address: Adres
+        city: Plaats
+        created_at: Aangemaakt
+        description: Omschrijving
+        email: E-mail
+        name: Naam
+        neighborhood: Buurt
+        phone: Telefoonnummer
+        public_opening_times: Openingstijden
+        reg_number_seq: Gebruikersvolgnummer
+        updated_at: Bijgewerkt
+      post:
+        category: Categorie
+        created_at: Aangemaakt
+        description: Omschrijving
+        end_on: Eindigt op
+        start_on: Begint op
+        tag_list: Labels
+        title: Titel
+        updated_at: Bijgewerkt
+      transfer:
+        amount: Aantal
+        created_at: Aangemaakt
+        hours: Uren
+        minutes: Minuten
+        post: Bericht
+        reason: Reacties
+        source: Bron
+        updated_at: Bijgewerkt
+      user:
+        admin: Organisatiebeheerder
+        alt_phone: Alternatief telefoonnummer
+        created_at: Aangemaakt
+        date_of_birth: Geboortedatum
+        deactivated: Gedeactiveerd
+        description: Omschrijving
+        email: E-mail
+        gender: Geslacht
+        last_sign_in_at: Laatste login
+        notifications: E-mailmeldingen ontvangen
+        organization: Organisatie
+        phone: Telefoonnummer
+        postcode: Postcode
+        push_notifications: Mobiele meldingen ontvangen
+        registration_date: Registratiedatum
+        registration_number: Gebruikerscode
+        superadmin: Systeembeheerder
+        unconfirmed_email: Onbevestigd e-mailadres
+        updated_at: Bijgewerkt
+        username: Naam
+    errors:
+      models:
+        organization:
+          attributes:
+            web:
+              url_format_invalid: Ongeldige URL-indeling
+        transfer:
+          attributes:
+            base:
+              same_account: Een overdracht kan niet overgemaakt worden naar
+                hetzelfde account
+        user:
+          attributes:
+            email:
+              invalid: ongeldig
+    models:
+      category:
+        one: Categorie
+        other: Categorieën
+      comment:
+        one: Opmerking
+        other: Opmerkingen
+      inquiry:
+        one: Verzoek
+        other: Verzoeken
+      offer:
+        one: Aanbieding
+        other: Aanbiedingen
+      organization:
+        one: Tijdbank
+        other: Tijdbanken
+      post:
+        one: Bericht
+        other: Berichten
+      transfer:
+        one: Overboeking
+        other: Overboekingen
+      user:
+        one: Gebruiker
+        other: Gebruikers
+  application:
+    landing:
+      button: Invoeren
+      slogan: Laten we onze tijd waarderen
+      sub_slogan: Er is een tijdbank bij u in de buurt
+    login_form:
+      button: Invoeren
+      email: E-mail
+      password: Wachtwoord
+      remember_check: Onthoud mij
+    menu:
+      sign_in: Inloggen
+      sing_out: Uitloggen
+    menus:
+      offers_by_tag_link:
+        tags: Labels
+    navbar:
+      admin: Beheren
+      administration: Administratie
+      adminshort: Beheer
+      all_transfers: Alle overboekingen
+      categories: Diensten
+      demographics: Demografische gegevens
+      global_activity: Wereldwijde activiteit
+      inactive_users: Inactieve gebruikers
+      inquiry_public_link: Openbare link naar verzoeken
+      last_login: Laatste login
+      offer_public_link: Openbare link naar aanbiedingen
+      organizations: Organisaties
+      reports: Rapporten
+      sign_out: Uitloggen
+      statistics: Statistieken
+      statistics_all_transfers: Alle overboekingen
+      stats: Statistieken
+      tags: Labels
+      type_of_swaps: Type transacties
+      users: Gebruikers
+      without_offers: Zonder aanbiedingen
+    terms_conditions: Gebruiksvoorwaarden
+    tips:
+      entertag: Voer labels gescheiden door komma's in
+      user_not_found: Gebruiker niet gevonden.
+  devise:
+    confirmations:
+      confirmed: Uw account is succesvol bevestigd.
+      confirmed_and_signed_in: Uw account is succesvol bevestigd. U bent nu ingelogd.
+      new:
+        resend_instructions: Instructies voor het opnieuw verzenden van de bevestiging
+        resend_instructions_button: Opnieuw verzenden
+        resend_instructions_description: Als u uw e-mailadres hebt gewijzigd,
+          moet u het volgende doen
+      send_instructions: U ontvangt binnen enkele minuten een e-mail met
+        instructies voor het bevestigen van uw account.
+      send_paranoid_instructions: Als uw e-mailadres in onze database staat,
+        ontvangt u binnen enkele minuten een e-mail met instructies voor het
+        bevestigen van uw account.
+    failure:
+      already_authenticated: U bent al ingelogd.
+      inactive: Uw account is nog niet geactiveerd.
+      invalid: Ongeldig e-mailadres of wachtwoord.
+      invalid_token: Ongeldig authenticatietoken.
+      locked: Uw account is geblokkeerd.
+      not_found_in_database: Ongeldig e-mailadres of wachtwoord.
+      timeout: Uw sessie is verlopen. Log opnieuw in om verder te gaan.
+      unauthenticated: U moet inloggen of registreren voordat u verder kunt gaan.
+      unconfirmed: U moet uw account bevestigen voordat u verder kunt gaan.
+      user:
+        last_attempt: Let op, u hebt nog één poging voordat uw account wordt geblokkeerd
+    mailer:
+      confirmation_instructions:
+        subject: Bevestigingsinstructies
+      reset_password_instructions:
+        subject: Instructies voor het opnieuw instellen van uw wachtwoord
+      unlock_instructions:
+        subject: Instructies voor ontgrendelen
+    omniauth_callbacks:
+      failure: Authenticatie vanaf %{kind} is niet mogelijk vanwege "%{reason}".
+      success: Authenticatie vanaf %{kind} account is succesvol voltooid.
+    passwords:
+      edit:
+        change_password: Mijn wachtwoord wijzigen
+        confirm_password: Bevestig uw nieuwe wachtwoord
+        new_password: Nieuw wachtwoord
+        passwords_not_match: Wachtwoorden komen niet overeen
+      new:
+        forgot_question: Een nieuw wachtwoord aanmaken
+        forgot_question_description: Voer het e-mailadres in dat aan uw account
+          is gekoppeld en wij sturen u een e-mail met een link om een nieuw
+          wachtwoord aan te maken.
+        send_instructions: Link verzenden
+      no_token: U hebt geen toegang tot deze pagina als u niet via een e-mail
+        voor het opnieuw instellen van uw wachtwoord op deze pagina terecht bent
+        gekomen. Als u via zo'n e-mail komt, zorg er dan voor dat u de volledige
+        URL gebruikt.
+      send_instructions: U ontvangt binnen enkele minuten een e-mail met
+        instructies voor het opnieuw instellen van uw wachtwoord.
+      send_paranoid_instructions: Als uw e-mailadres in onze database staat,
+        ontvangt u binnen enkele minuten een link voor wachtwoordherstel op uw
+        e-mailadres.
+      updated: Uw wachtwoord is succesvol gewijzigd. U bent nu ingelogd.
+      updated_not_active: Uw wachtwoord is succesvol gewijzigd.
+    registrations:
+      destroyed: Tot ziens! Uw account is succesvol geannuleerd. We hopen u
+        snel weer te zien.
+      edit:
+        cancel_account: Account annuleren
+        current_password: Huidig wachtwoord
+        edit_user: Gebruiker bewerken
+        help_current_password: Hulp bij huidig wachtwoord
+        help_password: Hulp bij wachtwoord
+        password: Wachtwoord
+        password_confirmation: Wachtwoordbevestiging
+        unhappy: Niet tevreden
+        update: Bijwerken
+      new:
+        password: Wachtwoord
+        password_confirmation: Wachtwoordbevestiging
+        sign_me_up: Meld me aan
+        sign_up: Aanmelden
+      signed_up: Welkom! U bent succesvol aangemeld.
+      signed_up_but_inactive: U hebt zich succesvol aangemeld. We konden u
+        echter niet inloggen omdat uw account nog niet is geactiveerd.
+      signed_up_but_locked: U hebt zich succesvol aangemeld. We konden u echter
+        niet inloggen omdat uw account is geblokkeerd.
+      signed_up_but_unconfirmed: Er is een bericht met een bevestigingslink
+        naar uw e-mailadres verzonden. Open de link om uw account te activeren.
+      update_needs_confirmation: U account is succesvol bijgewerkt, maar we
+        moeten uw nieuwe e-mailadres nog verifiëren. Controleer uw e-mail en klik
+        op de bevestigingslink om de verificatie van uw nieuwe e-mailadres af te
+        ronden.
+      updated: U hebt uw account succesvol bijgewerkt.
+    sessions:
+      new:
+        remember_me: Onthoud mij
+        sign_in: Inloggen
+      user:
+        signed_in: Ingelogd
+        signed_out: Uitgelogd
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: Bevestigingsmail opnieuw verzenden
+        didnt_receive_unlock_instructions: Ontgrendelingsinstructies ontvangen
+        forgot_your_password: Ik weet mijn wachtwoord niet meer
+        sign_in: Inloggen
+        sign_in_with: Inloggen met %{provider}
+        sign_up: Registreren
+    unlocks:
+      new:
+        resend_instructions: Ontgrendelingsinstructies opnieuw verzenden
+        resend_instructions_button: Opnieuw verzenden
+        resend_instructions_description: Als u per ongeluk meer dan vijf keer
+          bent ingelogd, moet u deze stap uitvoeren om uw account te
+          ontgrendelen.
+      send_instructions: U ontvangt binnen enkele minuten een e-mail met
+        instructies voor het ontgrendelen van uw account.
+      send_paranoid_instructions: Als uw account bestaat, ontvangt u binnen
+        enkele minuten een e-mail met instructies voor het ontgrendelen ervan.
+      unlocked: Uw account is succesvol ontgrendeld. Log in om verder te gaan.
+  errors:
+    internal_server_error:
+      description: Het spijt ons, er lijkt een fout te zijn opgetreden bij dit
+        verzoek. We hebben automatisch een melding ontvangen en zullen dit zo
+        snel mogelijk oplossen.
+      title: Interne serverfout
+    messages:
+      already_confirmed: is al bevestigd, probeer opnieuw in te loggen
+      confirmation_period_expired: Moet binnen %{period} bevestigd worden, vraag een nieuwe aan
+      expired: is verlopen, vraag een nieuwe aan
+      not_found: niet gevonden
+      not_locked: was niet vergrendeld
+      not_saved:
+        one: '1 fout verhinderde dat deze %{resource} kon worden opgeslagen:'
+        other: "%{count} fouten verhinderden dat deze %{resource} kon worden opgeslagen:"
+    not_found:
+      description: De pagina die u zocht bestaat niet. Mogelijk hebt u het
+        adres verkeerd ingetypt of is de pagina verplaatst.
+      title: Niet gevonden
+  global:
+    add_new: Nieuw aanmaken
+    all: Alles
+    amount: Aantal
+    announcements: Bericht
+    back: Terug
+    balance: 'Saldo:'
+    cancel_membership: Permanente verwijdering
+    contact_details: Contactgegevens
+    create: Aanmaken
+    date: Gegevens
+    decline: Weigeren
+    delete: Verwijderen
+    demote: Degraderen naar normale gebruiker
+    edit: Bijwerken
+    enter_to_timebank: Toevoegen aan tijdbank
+    filter: Filter
+    from: Van
+    give_time: Tijdsoverdracht
+    here: hier
+    home: Home
+    information: Informatie
+    locales_header: taal wijzigen
+    member_count: 'Aantal gebruikers:'
+    more: Meer
+    movements: Transacties
+    next: Volgende
+    or: of
+    promote: Promotie tot beheerder
+    reason: Reden
+    required_field: "* Verplicht veld"
+    save: Opslaan
+    search: Zoeken
+    search_location: Zoeken op locatie
+    show: Tonen
+    source_destination: Van/tot
+    statistics: Statistieken
+    table:
+      actions: Acties
+    to: Naar
+  inquiries:
+    edit:
+      submit: Verzoek wijzigen
+    index:
+      new_inquiry: Nieuw verzoek
+    new:
+      submit: Verzoek aanmaken
+  layouts:
+    application:
+      about: Over TimeOverflow
+      bdtnear: Tijdbank doorzoeken
+      edit_org: Bijwerken %{organization}
+      edit_profile: Mijn profiel bijwerken
+      help: Help
+      login: Inloggen
+      manage_memberships: Lidmaatschappen beheren
+      no_memberhsip_warning: Uw registratie is voltooid zodra u een verzoek
+        hebt ingediend om lid te worden van een Timebank en de Timebank uw
+        verzoek heeft geaccepteerd. Als u binnen 30 dagen geen verzoek indient
+        om lid te worden van een Timebank, wordt uw gebruikersaccount uit het
+        systeem verwijderd.
+    report:
+      report_title: REPORT
+  locales:
+    ca: Catalan
+    en: English
+    es: Spanish
+    eu: Basque
+    fr: French
+    gl: Galician
+    pt-BR: Portuguese
+    ja: Japanese
+    nl-NL: Nederlands
+  mailers_globals:
+    footer:
+      text: "%{organization_name} van"
+      text_donation: De ADBdT-vereniging biedt TimeOverflow gratis aan tijdbanken aan. Als u wilt helpen bij het onderhouden en verbeteren van het platform, kunt u %{href}.
+      text_donation_link: bezoek deze website
+  multi_transfers:
+    multi_transfers: Meerdere overboekingen
+    step:
+      confirm:
+        description: Bevestig de wijzigingen
+        type_of_transfer: Type overboeking
+      select_type:
+        description: Selecteer het type overboeking
+      set_params:
+        description: Geef het over te maken bedrag, de reden en de boeking
+          (indien van toepassing) op.
+      set_source:
+        description: Selecteer de rekening(en) waarnaar de tijd wordt overgeboekt
+      set_target:
+        description: Selecteer de rekening(en) die de tijd ontvangt
+    success: Succesvol aangemaakte overboekingen
+    types:
+      many_to_one: Veel-op-één
+      one_to_many: Eén-op-veel
+      one_to_one: Eén-op-één
+  offers:
+    edit:
+      submit: Aanbod wijzigen
+    index:
+      by_category: Per categorie
+      by_tag: Per label
+      filtek: Filter
+      new_offer: Nieuw aanbod
+      offered_by: Aangeboden door %{size} personen
+    new:
+      submit: Aanbod aanmaken
+    show:
+      give_time_for: Tijdsoverdracht voor dit aanbod
+      offered_by: Aangeboden door
+  organization_notifier:
+    member_deleted:
+      body: Gebruiker %{username} heeft zich afgemeld bij de organisatie.
+    recent_posts:
+      subject: Nieuwsbrief
+      text1: 'Laatst gepubliceerde aanbiedingen:'
+      text2: 'Laatst gepubliceerde aanvragen:'
+  organizations:
+    give_time:
+      give_time: Tijd geven aan
+    index:
+      member_count: Aantal gebruikers
+    new:
+      new: Nieuwe bank
+    show:
+      contact_information: Contactgegevens
+      join_timebank: Neem gerust contact op met de tijdbank om u aan te melden
+        of vragen te stellen.
+  pages:
+    about:
+      app-mobile: Mobiele app
+      app-mobile-text: De mobiele app TimeOverflow is beschikbaar. <br /> Deze app is mogelijk gemaakt dankzij de samenwerking met de gemeente Barcelona, programma %{impulsem_link} (Barcelona Activa) 2017-2018.
+      banner-button: Toegang tot TimeOverflow aanvragen
+      banner-subtitle: We nemen contact met u op om de app te starten of een demonstratie te geven
+      banner-title: Bent u een Tijdbank?
+      empower-adbdt: ADBdT
+      empower-adbdt-title: Vereniging voor de Ontwikkeling van Tijdbanken
+      empower-coopdevs: Coopdevs
+      empower-coopdevs-title: Coopdevs
+      empower-github: Github
+      empower-github-title: Github
+      empower-showmap: zie kaart
+      empower-showmap-title: Tijdbanken
+      empower-text-1: TimeOveflow is speciaal ontworpen voor en door Time Banks
+        die fysiek bestaan &mdash; %{showmap_link} – en het doel ervan is om ze
+        te versterken dankzij internet.
+      empower-text-2: Dankzij de gezamenlijke inspanningen van %{coopdevs_link}
+        en %{abdt_link} kunnen we de software TimeOverflow vandaag gratis en open
+        aanbieden aan alle tijdbanken die er gebruik van willen maken.
+      empower-text-3: De broncode van TimeOverflow is beschikbaar onder een
+        open source-licentie en je kunt deze downloaden via %{github_link}.
+      empower-title: Het versterken van de tijdbanken
+      feature-group-1: Tijdbankbeheer met beheerdersrollen
+      feature-group-2: Sociaal netwerk en online bankieren toegankelijk voor leden
+      feature-text-1: Aanmaken/verwijderen/bijwerken van bankleden
+      feature-text-2: Plaatsen van aanbiedingen en aanvragen
+      feature-text-3: Invoeren van cheques en beheren van de boekhouding
+      feature-text-4: Leden van een tijdbank hebben toegang tot het systeem en
+        kunnen verbinding maken met anderen
+      feature-text-5: Plaatsen van aanbiedingen en aanvragen
+      feature-text-6: Uren uitbetalen aan andere leden
+      impulsem-link: Impulsem el que fas
+      subtitle: TimeOverflow is open source, gratis en collaboratief
+      title: De software is ontworpen door en voor
+      title2: Tijdbanken
+  petitions:
+    application_sent: Aanvraag correct verzonden
+    application_sent_body: Hallo! Uw sollicitatie bij %{organization_name} is correct verzonden.
+    application_status: Aanvraag %{status}
+    applications: Aanvragen
+    apply: Aanmelden
+    new: Nieuwe aanvraag
+    new_body: Hallo, %{username} heeft zojuist een verzoek ingediend om lid te worden van %{organization_name} Tijdbank. U kunt %{here_link} invoeren om het verzoek te accepteren of af te wijzen. Zodra u het verzoek accepteert, verschijnt de gebruiker automatisch in uw gebruikerslijst.
+    status:
+      accepted: geaccepteerd
+      declined: afgewezen
+      pending: in behandeling
+      sent: verzonden
+    status_applications: "%{status} aanvragen"
+  posts:
+    show:
+      info: Deze %{type} behoort tot %{organization}.
+  reports:
+    download: Downloaden
+    download_all: Alles downloaden
+  shared:
+    movements:
+      delete_reason: Weet je zeker dat je deze reactie wilt verwijderen?
+      movements: Uitwisselingen
+    post_form:
+      group_inquiry: Is dit een groepsverzoek?
+      group_offer: Is dit een groepsaanbieding?
+      you_can_use: Je kunt gebruiken
+  simple_form:
+    error_notification:
+      default_message: 'Bekijk de onderstaande problemen:'
+    'nee': 'Nee'
+    options:
+      user:
+        gender:
+          female: Vrouw
+          male: Man
+          others: Anders
+          prefer_not_to_answer: Ik geef er de voorkeur aan om niet te antwoorden
+    required:
+      mark: "*"
+      text: verplicht
+    'ja': 'Ja'
+  statistics:
+    all_transfers:
+      date: Datum
+      delete_reason: Weet je zeker dat je deze reactie wilt verwijderen?
+      from: Van
+      post: Bericht
+      quantity: Aantal
+      reason: Reden
+      to: Naar
+      transfers: Alle overboekingen
+    demographics:
+      by_ages: Per leeftijd
+      by_gender: Per geslacht
+      demographics: Demografische gegevens
+      female: Vrouw
+      male: Man
+      num_people: "# aantal personen"
+      unknown: Onbekend
+    global_activity:
+      bank_activity: Bankactiviteit
+      global_activity: Wereldwijde activiteit
+      num_swaps: " Transacties"
+      per_month: Per maand
+      show: Weergeven
+      total_hours: " antal overgeboekte uren"
+      users_reg: " Geregistreerde gebruikers"
+    inactive_users:
+      days_without_swaps: Dagen zonder transacties
+      inactive_users: Inactieve gebruikers
+      last_movement: Laatste transactie
+      no_movements: Zonder transacties
+    last_login:
+      last_login: Laatste login
+      never_login: Nooit ingelogd
+    type_swaps:
+      type_of_swaps: Type transacties
+      without_category: Zonder categorie
+      without_tags: Zonder tags
+    without_offers:
+      without_offers: Zonder aanbiedingen
+  stats:
+    min_balance:
+      title: Minimumsaldo gebruikers
+  tags:
+    alpha_grouped_index:
+      maintitle: Beschikbare labels
+  terms:
+    accept: Accepteren
+    show:
+      accept: Accepteren
+  transfers:
+    computation:
+      hour:
+        one: "%{count} uur"
+        other: "%{count} uur"
+      joiner: " en "
+      minute:
+        one: "%{count} minuut"
+        other: "%{count} minuten"
+    new:
+      error_amount: Tijd moet groter zijn dan 0
+  users:
+    avatar:
+      change_your_image: Uw afbeelding wijzigen
+      crop_the_image: Afbeelding bijsnijden
+      max_size_warning: Afbeelding is te groot, maximaal toegestaan is %{size}MB
+    confirm_email:
+      email_sent: Er is een e-mail verzonden naar %{email}. Na bevestiging kunt
+        u solliciteren bij elke organisatie.
+      please: Bevestig het e-mailadres
+    edit:
+      edit_user: Gebruiker bijwerken
+    form:
+      notifications: Meldingen
+    give_time:
+      give_time: Geef het even de tijd
+    index:
+      account_deactivated: Uw account is gedeactiveerd in deze tijdbank
+      actions: Acties
+      active_warning: U gaat de accountstatus van gebruiker %{username} wijzigen
+      cancel_warning: U gaat het account van gebruiker %{username} verwijderen
+        uit de tijdbank
+      create: Nieuwe gebruiker aanmaken
+      deactivated_warning: Als u denkt dat uw account per ongeluk is
+        gedeactiveerd, neem dan contact op met de beheerder via onderstaande
+        gegevens.
+      manage_warning: U gaat de rechten van gebruiker %{username} wijzigen
+      members: Leden
+      user_created: Gebruiker %{uid} %{name} opgeslagen
+    member_card:
+      active_ago: Actief %{time} geleden
+      no_activity: Geen activiteit
+    new:
+      cancel: Annuleren
+      create_more_users_button: Een andere gebruiker aanmaken en toevoegen
+      new_user: Nieuwe gebruiker
+      user_created_add: Gebruiker %{uid} %{name} opgeslagen, maak nu de volgende aan
+    show:
+      account: Last transactions
+      accounts: Accounts
+      balance: 'Saldo:'
+      categories: Aangeboden services
+      created_at: 'Geregistreerd:'
+      data: Gebruikersgegevens
+      date: Datum
+      deleted_user: De gebruiker bestaat niet meer
+      from_to: Van/Tot
+      inactive: "(Inactief)"
+      inactive_user: De gebruiker is niet actief
+      invalid_format: Ongeldig formaat, kies een ".jpg", ".jpeg" of ".png".
+      phone:
+        one: Telefoon
+        other: Telefoons
+      post: Bericht
+      quantity: Aantal
+      reason: Reden
+      user_no: 'Gebruiker #:'
+    user_rows:
+      activate: Activeren
+      active_warning: U gaat de accountstatus van gebruiker %{user} wijzigen
+      cancel_warning: U gaat het account van gebruiker %{user} uit de Tijdbank verwijderen
+      deactivate: Deactiveren
+      delete_membership: Lidmaatschap verwijderen
+      manage_warning: U gaat de rechten van gebruiker %{user} wijzigen
+      sure_delete: Weet u zeker dat u uw lidmaatschap van %{organization_name}
+        wilt verwijderen?
+  views:
+    pagination:
+      first: Eerst
+      last: Laatste
+      next: Volgende
+      previous: Vorige
+      truncate: Afkorten
