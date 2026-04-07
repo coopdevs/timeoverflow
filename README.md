@@ -72,6 +72,8 @@ In order to configure the application you can use the following ENV variables:
 | `SECRET_KEY_BASE` | Secret key for the application, generate a new one with the command `rails secret` | |
 | `DATABASE_URL` | Database URL, the format is `postgresql://user:password@host:port/database` | |
 | `RAILS_SERVE_STATIC_FILES` | Tell the application to serve static files (you might want to turn this off if you are using an external web server to serve files from the `public` folder) | `true` |
+| `RAILS_ASSET_HOST` | CDN or external host to serve assets from (ie: `cdn.mydomain.tld`) | |
+| `ASSETS_PRECOMPILE` | Set to `true` to enable asset precompilation with compression during startup | |
 | `RAILS_LOG_TO_STDOUT` | Tell the application to log to STDOUT (useful for Docker) | `true` |
 | `RAILS_LOG_LEVEL` | Log level for the application (use `debug` for maximum information) | `info` |
 | `RAILS_MAX_THREADS` | Maximum number of threads to use in the application (use `1` if multithreading is not desired) | `5` |
@@ -83,7 +85,8 @@ In order to configure the application you can use the following ENV variables:
 | `STORAGE_PROVIDER` | Storage provider for the application (currently the application supports `local` and `amazon`) | `amazon` |
 | `FORCE_SSL` | Force SSL connections | `false` |
 | `MAIL_LINK_HOST` | Host to use in the links sent by email (use your domain without protocol `mydomain.tld`) | |
-| `MAIL_LINK_PROTOCOL` | Protocol to use in the previous host defined for links sent by email | `https` |
+| `MAIL_LINK_PROTO` | Protocol to use in the previous host defined for links sent by email | `https` |
+| `MAILER_SENDER` | Email address used as the sender for Devise emails (ie: `noreply@mydomain.tld`) | `please-change-me-at-config-initializers-devise@example.com` |
 | `SMTP_ADDRESS` | SMTP server address (ie: `smtp.mailgun.org`) | |
 | `SMTP_PORT` | SMTP server port (ie: `587`) | |
 | `SMTP_DOMAIN` | SMTP domain (usually the application's domain) | |
