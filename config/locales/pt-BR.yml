@@ -2,6 +2,8 @@ pt-BR:
   active_admin:
     users:
       organization: Banco de Tempo
+      confirm_user: Confirmar usuário
+      confirmed_notice: Usuário confirmado com sucesso
       upload_csv: Arquivo
       upload_from_csv: Importar CSV
   activerecord:
@@ -70,6 +72,7 @@ pt-BR:
         registration_date: Data de ingresso
         registration_number: Código do usuário
         superadmin: Administrador do sistema
+        confirm_immediately: Confirmar imediatamente
         unconfirmed_email: E-mail sem confirmação
         updated_at: Atualizado
         username: Nome

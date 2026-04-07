@@ -2,6 +2,8 @@ ca:
   active_admin:
     users:
       organization: Banc de temps
+      confirm_user: Confirmar usuari
+      confirmed_notice: Usuari confirmat correctament
       upload_csv: Fitxer
       upload_from_csv: Importar CSV
   activerecord:
@@ -70,6 +72,7 @@ ca:
         registration_date: Data d'alta
         registration_number: Codi d'usuari
         superadmin: SuperAdministrador del Sistema
+        confirm_immediately: Confirmar immediatament
         unconfirmed_email: Correu sense confirmar
         updated_at: Actualitzat
         username: Nom

@@ -2,6 +2,8 @@ ja:
   active_admin:
     users:
       organization: タイムバンク
+      confirm_user: ユーザーを確認
+      confirmed_notice: ユーザーが確認されました
       upload_csv: ファイル
       upload_from_csv: CSVをインポート
   activerecord:
@@ -70,6 +72,7 @@ ja:
         registration_date: 登録日
         registration_number: ユーザー番号
         superadmin: システム管理者
+        confirm_immediately: すぐに確認する
         unconfirmed_email: 未確認メールアドレス
         updated_at: 更新
         username: 名前

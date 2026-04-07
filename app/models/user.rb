@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   attr_accessor :empty_email
   attr_accessor :from_signup
+  attribute :confirm_immediately, :boolean
 
   has_one_attached :avatar
 
