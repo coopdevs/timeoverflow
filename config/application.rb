@@ -12,7 +12,7 @@ module Timeoverflow
     config.load_defaults 7.2
 
     # I18n configuration
-    config.i18n.default_locale = :es
+    config.i18n.default_locale = ENV.fetch('DEFAULT_LOCALE', 'es').to_sym
     config.i18n.available_locales = [:es, :ca, :eu, :gl, :en, :'pt-BR', :fr, :ja]
     config.i18n.fallbacks = true
 
