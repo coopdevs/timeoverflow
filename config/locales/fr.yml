@@ -2,8 +2,8 @@ fr:
   active_admin:
     users:
       organization: Banque de temps
-      confirm_user: "Confirmer l'utilisateur"
-      confirmed_notice: "Utilisateur confirmé avec succès"
+      confirm_user: Confirmer l'utilisateur
+      confirmed_notice: Utilisateur confirmé avec succès
       upload_csv: Fichier
       upload_from_csv: Uploader un CSV
   activerecord:
