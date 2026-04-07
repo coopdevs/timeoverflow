@@ -22,11 +22,11 @@ RSpec.describe Admin::UsersController, type: :controller do
     end
 
     context "when the user is already confirmed" do
-      it "redirects with an alert" do
+      it "re-confirms and redirects with notice" do
         put :confirm, params: { id: user.id }
 
         expect(response).to redirect_to(admin_user_path(user))
-        expect(flash[:alert]).to be_present
+        expect(flash[:notice]).to eq(I18n.t("active_admin.users.confirmed_notice"))
       end
     end
   end
