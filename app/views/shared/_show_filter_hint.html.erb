@@ -1,7 +1,7 @@
 <% if @category.present? %>
   <small>
     <%= glyph :category %>
-    <%= @category.name %>
+    <%= @category.display_name %>
   </small>
 <% end %>
 <% if params[:q].present? %>
