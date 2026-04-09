@@ -2,6 +2,8 @@ en:
   active_admin:
     users:
       organization: Time bank
+      confirm_user: Confirm user
+      confirmed_notice: User confirmed successfully
       upload_csv: File
       upload_from_csv: Upload CSV
   activerecord:
@@ -70,6 +72,7 @@ en:
         registration_date: Registration date
         registration_number: User code
         superadmin: System Administrator
+        confirm_immediately: Confirm immediately
         unconfirmed_email: Unconfirmed Email
         updated_at: Updated
         username: Name
@@ -356,6 +359,7 @@ en:
     gl: Galician
     pt-BR: Portuguese
     ja: Japanese
+    nl-NL: Dutch
   mailers_globals:
     footer:
       text: "%{organization_name} from"
