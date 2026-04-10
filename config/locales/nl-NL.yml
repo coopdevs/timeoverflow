@@ -2,8 +2,8 @@ nl-NL:
   active_admin:
     users:
       organization: Tijdbank
-      confirm_user: 
-      confirmed_notice: 
+      confirm_user: Gebruiker bevestigen
+      confirmed_notice: Gebruiker werd sucesvol bevestigd
       upload_csv: Bestand
       upload_from_csv: CSV uploaden
   activerecord:
@@ -72,7 +72,7 @@ nl-NL:
         registration_date: Registratiedatum
         registration_number: Gebruikerscode
         superadmin: Systeembeheerder
-        confirm_immediately: 
+        confirm_immediately: Onmiddellijk bevestigen
         unconfirmed_email: Onbevestigd e-mailadres
         updated_at: Bijgewerkt
         username: Naam
@@ -395,7 +395,7 @@ nl-NL:
     index:
       by_category: Per categorie
       by_tag: Per label
-      filter: 
+      filter: Filter
       new_offer: Nieuw aanbod
       offered_by: Aangeboden door %{size} personen
     new:
@@ -496,7 +496,7 @@ nl-NL:
   simple_form:
     error_notification:
       default_message: 'Bekijk de onderstaande problemen:'
-    'no': 
+    'no': Nee
     options:
       user:
         gender:
@@ -507,7 +507,7 @@ nl-NL:
     required:
       mark: "*"
       text: verplicht
-    'yes': 
+    'yes': Ja
   statistics:
     all_transfers:
       date: Datum
