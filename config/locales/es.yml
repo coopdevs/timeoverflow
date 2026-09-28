@@ -366,10 +366,8 @@ es:
   mailers_globals:
     footer:
       text: "%{organization_name} en"
-      text_donation: La asociación ADBdT ofrece TimeOverflow de forma gratuita a los
-        Bancos de Tiempo. Si quieres contribuir a mantener y mejorar la plataforma,
-        %{href}.
-      text_donation_link: visita esta web
+      text_donation: ¡TimeOverflow necesita tu apoyo! %{href}.
+      text_donation_link: Participa en el CROWDFUNDING
   multi_transfers:
     multi_transfers: Transferencias múltiples
     step:
