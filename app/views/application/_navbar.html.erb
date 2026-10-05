@@ -84,12 +84,13 @@
     </div>
   </nav>
   <div class="text-center my-4">
-  <%= link_to "https://www.migranodearena.org/reto/timeoverflow-necesita-tu-apoyo",
-              target: "_blank", rel: "noopener" do %>
-    <%= image_tag "crowdfunding-2026.jpg",
-                  alt: "TimeOverflow necesita tu apoyo",
-                  class: "img-fluid",
-                  style: "width: 100%; max-width: 500px;" %>
+<div class="text-center my-4">
+  <%= link_to migranodearena_cause_url, target: "_blank", rel: "noopener" do %>
+    <%= image_tag crowdfunding_image,
+	          alt: t("application.landing.crowdfunding_alt"),
+	          class: "img-fluid",
+	          style: "width: 100%; max-width: 500px;" %>
   <% end %>
+</div>
   </div>
 <% end %>
