@@ -1,4 +1,3 @@
-ruby
 # app/helpers/crowdfunding_helper.rb
 module CrowdfundingHelper
   CROWDFUNDING_LOCALES = %w[es ca en].freeze
