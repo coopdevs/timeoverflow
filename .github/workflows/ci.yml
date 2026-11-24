@@ -18,15 +18,13 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: timeoverflow_test
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
       - name: Install ImageMagick
-        uses: mfinelli/setup-imagemagick@v6
-        with:
-          cache: true
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends imagemagick
       - name: Run tests
         env:
           RAILS_ENV: test
