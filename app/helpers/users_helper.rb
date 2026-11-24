@@ -4,7 +4,7 @@ module UsersHelper
   end
 
   def phone_to(phone)
-    link_to phone, "tel://#{phone}"
+    link_to phone, "tel:#{phone.to_s.gsub(/\s+/, '')}"
   end
 
   def edit_user_path(user)
