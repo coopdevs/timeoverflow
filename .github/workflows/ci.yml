@@ -24,9 +24,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Install ImageMagick
-        uses: mfinelli/setup-imagemagick@v6
-        with:
-          cache: true
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends imagemagick
       - name: Run tests
         env:
           RAILS_ENV: test
