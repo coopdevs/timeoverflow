@@ -23,7 +23,7 @@ RSpec.describe StatisticsController do
       get :global_activity
 
       expect(assigns(:num_swaps)).to eq(2)
-      expect(assigns(:total_hours)).to eq(20)
+      expect(assigns(:total_hours)).to eq(1200)
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe StatisticsController do
       get :type_swaps
 
       expect(assigns(:offers)).to eq([
-        [category.name, "foo", 10, 1, 1.0]
+        [category.name, "foo", 600, 1, 1.0]
       ])
     end
   end

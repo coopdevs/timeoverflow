@@ -86,6 +86,9 @@ ca:
           attributes:
             base:
               same_account: No es pot fer una transacció al mateix compte
+            amount:
+              greater_than_or_equal_to: "ha de ser d'almenys 1 minut"
+              not_an_integer: "ha de ser en minuts sencers"
         user:
           attributes:
             email:
@@ -565,7 +568,7 @@ ca:
         one: "%{count} minut"
         other: "%{count} minuts"
     new:
-      error_amount: El temps ha de ser més gran que 0
+      error_amount: "El temps ha de ser d'almenys 1 minut, en minuts sencers"
   users:
     avatar:
       change_your_image: Canvia la teva imatge

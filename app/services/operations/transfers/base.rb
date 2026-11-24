@@ -43,7 +43,10 @@ module Operations
       end
 
       def transfer_params_for(source:, destination:)
-        transfer_params.merge(source: source, destination: destination)
+        params = transfer_params.merge(source: source, destination: destination)
+        key = params.delete(:idempotency_key) || params.delete("idempotency_key")
+        params[:idempotency_key] = "#{key}:#{source}:#{destination}" if key.present?
+        params
       end
     end
   end

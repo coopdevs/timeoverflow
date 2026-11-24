@@ -26,6 +26,44 @@ RSpec.describe Persister::TransferPersister do
     end
   end
 
+  describe '#save with an idempotency key' do
+    def build_transfer(key)
+      Fabricate.build(:transfer, source: source_account, destination: destination_account, idempotency_key: key)
+    end
+
+    it 'does not create a duplicated transfer when the same form is submitted twice' do
+      first = described_class.new(build_transfer('form-1')).save
+
+      expect {
+        expect(described_class.new(build_transfer('form-1')).save).to eq(first)
+      }.not_to change { [Transfer.count, Movement.count, Event.count] }
+    end
+
+    it 'does not change the balances on the second submission' do
+      described_class.new(build_transfer('form-1')).save
+
+      expect {
+        described_class.new(build_transfer('form-1')).save
+      }.not_to change { source_account.reload.balance }
+    end
+
+    it 'creates different transfers for different keys' do
+      described_class.new(build_transfer('form-1')).save
+
+      expect {
+        described_class.new(build_transfer('form-2')).save
+      }.to change(Transfer, :count).by(1)
+    end
+
+    it 'creates every transfer when no key is given' do
+      described_class.new(build_transfer(nil)).save
+
+      expect {
+        described_class.new(build_transfer(nil)).save
+      }.to change(Transfer, :count).by(1)
+    end
+  end
+
   describe '#update' do
     before { persister.update(amount: 666) }
 

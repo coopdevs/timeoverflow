@@ -51,6 +51,8 @@ class MultiTransfersController < ApplicationController
     @transfer_reason = params[:transfer] && params[:transfer][:reason]
     @transfer_minutes = params[:transfer] && params[:transfer][:minutes]
     @transfer_hours = params[:transfer] && params[:transfer][:hours]
+    # Generated once and carried through the wizard steps
+    @transfer_idempotency_key = params.dig(:transfer, :idempotency_key).presence || SecureRandom.uuid
   end
 
   def prepare_template_vars

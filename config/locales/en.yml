@@ -86,6 +86,9 @@ en:
           attributes:
             base:
               same_account: A transfer cannot be made to the same account
+            amount:
+              greater_than_or_equal_to: "must be at least 1 minute"
+              not_an_integer: "must be in whole minutes"
         user:
           attributes:
             email:
@@ -562,7 +565,7 @@ en:
         one: "%{count} minute"
         other: "%{count} minutes"
     new:
-      error_amount: Time must be greater than 0
+      error_amount: "Time must be at least 1 minute, in whole minutes"
   users:
     avatar:
       change_your_image: Change your image

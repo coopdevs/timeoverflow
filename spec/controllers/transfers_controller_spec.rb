@@ -138,7 +138,7 @@ RSpec.describe TransfersController do
           post 'create', params: { transfer: {
             source: member_giver.account.id,
             destination: member_taker.account.id,
-            amount: 5
+            amount: 300
           } }
         end
 
@@ -156,12 +156,12 @@ RSpec.describe TransfersController do
           expect do
             post_create
             member_giver.reload
-          end.to change { member_giver.account.balance.to_i }.by -5
+          end.to change { member_giver.account.balance.to_i }.by -300
 
           expect do
             post_create
             member_taker.reload
-          end.to change { member_taker.account.balance.to_i }.by 5
+          end.to change { member_taker.account.balance.to_i }.by 300
         end
       end
 
@@ -169,7 +169,7 @@ RSpec.describe TransfersController do
         subject(:post_create) do
           post 'create', params: { transfer: {
             destination: member_taker.account.id,
-            amount: 5
+            amount: 300
           } }
         end
 
@@ -187,16 +187,32 @@ RSpec.describe TransfersController do
           expect do
             post_create
             member_giver.reload
-          end.to change { member_giver.account.balance.to_i }.by -5
+          end.to change { member_giver.account.balance.to_i }.by -300
 
           expect do
             post_create
             member_taker.reload
-          end.to change { member_taker.account.balance.to_i }.by 5
+          end.to change { member_taker.account.balance.to_i }.by 300
         end
 
         it 'redirects to destination' do
           expect(post_create).to redirect_to(member_taker.user)
+        end
+      end
+
+      context 'when the same form is submitted twice (double click)' do
+        let(:user) { member_giver.user }
+        let(:params) do
+          { transfer: { destination: member_taker.account.id, amount: 300, idempotency_key: 'form-1' } }
+        end
+
+        it 'creates the transfer only once and redirects to destination both times' do
+          expect {
+            post 'create', params: params
+            expect(response).to redirect_to(member_taker.user)
+            post 'create', params: params
+            expect(response).to redirect_to(member_taker.user)
+          }.to change(Transfer, :count).by(1)
         end
       end
     end
@@ -207,6 +223,14 @@ RSpec.describe TransfersController do
 
       before do
         request.env["HTTP_REFERER"] = referer
+      end
+
+      it 'does not create any Transfer if the amount is below one minute' do
+        expect {
+          post(:create, params: { transfer: { amount: 30, destination: member_taker.account.id } })
+        }.not_to change(Transfer, :count)
+
+        expect(response).to redirect_to(referer)
       end
 
       it 'does not create any Transfer and redirects to back if the amount is 0' do

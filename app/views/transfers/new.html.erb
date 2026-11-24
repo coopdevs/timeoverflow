@@ -25,6 +25,7 @@
     <%= f.input :amount, as: :hidden %>
     <%= f.input :reason %>
     <%= f.input :destination, as: :hidden %>
+    <%= f.input :idempotency_key, as: :hidden, input_html: { value: SecureRandom.uuid } %>
 
     <% if sources.present? %>
       <div class="mb-3">

@@ -655,7 +655,8 @@ CREATE TABLE public.transfers (
     reason text,
     operator_id integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    idempotency_key character varying
 );
 
 
@@ -1201,6 +1202,13 @@ CREATE INDEX index_posts_on_user_id ON public.posts USING btree (user_id);
 
 
 --
+-- Name: index_transfers_on_idempotency_key; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_transfers_on_idempotency_key ON public.transfers USING btree (idempotency_key);
+
+
+--
 -- Name: index_transfers_on_operator_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1395,4 +1403,5 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20241230170753'),
 ('20250215163404'),
 ('20250215163405'),
-('20250215163406');
+('20250215163406'),
+('20261124115600');
