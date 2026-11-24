@@ -17,14 +17,16 @@ class Transfer < ApplicationRecord
   has_many :movements, dependent: :destroy
   has_many :events, dependent: :destroy
 
-  validates :amount, numericality: { greater_than: 0 }
+  # Amounts are seconds and the UI works in whole minutes: anything below one
+  # minute (or fractional) is a data entry error and would show as "0:00".
+  validates :amount, numericality: { only_integer: true, greater_than_or_equal_to: 60 }
   validate :different_source_and_destination
 
   after_create :make_movements
 
   def make_movements
-    movements.create(account: Account.find(source_id), amount: -amount.to_i, created_at: created_at)
-    movements.create(account: Account.find(destination_id), amount: amount.to_i, created_at: created_at)
+    movements.create!(account: Account.find(source_id), amount: -amount.to_i, created_at: created_at)
+    movements.create!(account: Account.find(destination_id), amount: amount.to_i, created_at: created_at)
   end
 
   def source_id

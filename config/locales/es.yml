@@ -86,6 +86,9 @@ es:
           attributes:
             base:
               same_account: No se puede hacer una transacción a la misma cuenta
+            amount:
+              greater_than_or_equal_to: "debe ser de al menos 1 minuto"
+              not_an_integer: "debe ser en minutos enteros"
         user:
           attributes:
             email:
@@ -567,7 +570,7 @@ es:
         one: "%{count} minuto"
         other: "%{count} minutos"
     new:
-      error_amount: 'El tiempo debe ser mayor que 0 '
+      error_amount: "El tiempo debe ser de al menos 1 minuto, en minutos enteros"
   users:
     avatar:
       change_your_image: Cambia tu imagen

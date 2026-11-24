@@ -1,6 +1,7 @@
 <h1><%= t('multi_transfers.multi_transfers') %></h1>
 
 <%= form_tag(@form_action, method: :post, id: :multi_transfer) do %>
+  <%= hidden_field_tag "transfer[idempotency_key]", @transfer_idempotency_key %>
   <% @steps.each do |step| %>
     <div class="<%= 'hide' unless step == @step_name %>">
       <%= render "multi_transfers/steps/#{step}" %>
